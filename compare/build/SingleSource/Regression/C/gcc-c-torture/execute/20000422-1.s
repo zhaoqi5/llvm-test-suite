@@ -1,0 +1,125 @@
+	.file	"20000422-1.c"
+	.text
+	.globl	main                            # -- Begin function main
+	.p2align	5
+	.type	main,@function
+main:                                   # @main
+# %bb.0:                                # %entry
+	addi.d	$sp, $sp, -16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(num)
+	ld.wu	$a0, $a0, %pc_lo12(num)
+	addi.w	$a2, $a0, 0
+	ori	$a1, $zero, 1
+	blt	$a2, $a1, .LBB0_10
+# %bb.1:                                # %for.cond1.preheader.lr.ph
+	move	$a3, $zero
+	addi.d	$a4, $a2, -1
+	addi.w	$a5, $a4, 0
+	pcalau12i	$a1, %pc_hi20(ops)
+	addi.d	$a1, $a1, %pc_lo12(ops)
+	alsl.d	$a6, $a2, $a1, 2
+	addi.d	$a6, $a6, -4
+	b	.LBB0_3
+	.p2align	4, , 16
+.LBB0_2:                                # %for.end
+                                        #   in Loop: Header=BB0_3 Depth=1
+	addi.d	$a3, $a3, 1
+	beq	$a3, $a2, .LBB0_7
+.LBB0_3:                                # %for.cond1.preheader
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_5 Depth 2
+	move	$a7, $a6
+	move	$t0, $a4
+	bltu	$a3, $a5, .LBB0_5
+	b	.LBB0_2
+	.p2align	4, , 16
+.LBB0_4:                                # %for.inc
+                                        #   in Loop: Header=BB0_5 Depth=2
+	addi.d	$t0, $t0, -1
+	addi.d	$a7, $a7, -4
+	bge	$a3, $t0, .LBB0_2
+.LBB0_5:                                # %for.body3
+                                        #   Parent Loop BB0_3 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.w	$t1, $a7, -4
+	ld.w	$t2, $a7, 0
+	bge	$t1, $t2, .LBB0_4
+# %bb.6:                                # %if.then
+                                        #   in Loop: Header=BB0_5 Depth=2
+	st.w	$t1, $a7, 0
+	st.w	$t2, $a7, -4
+	b	.LBB0_4
+.LBB0_7:                                # %for.body22.preheader
+	pcalau12i	$a2, %pc_hi20(correct)
+	addi.d	$a2, $a2, %pc_lo12(correct)
+	.p2align	4, , 16
+.LBB0_8:                                # %for.body22
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a3, $a1, 0
+	ld.w	$a4, $a2, 0
+	bne	$a3, $a4, .LBB0_11
+# %bb.9:                                # %for.cond20
+                                        #   in Loop: Header=BB0_8 Depth=1
+	addi.d	$a2, $a2, 4
+	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, 4
+	bnez	$a0, .LBB0_8
+.LBB0_10:                               # %for.end32
+	move	$a0, $zero
+	pcaddu18i	$ra, %call36(exit)
+	jirl	$ra, $ra, 0
+.LBB0_11:                               # %if.then28
+	pcaddu18i	$ra, %call36(abort)
+	jirl	$ra, $ra, 0
+.Lfunc_end0:
+	.size	main, .Lfunc_end0-main
+                                        # -- End function
+	.type	ops,@object                     # @ops
+	.data
+	.globl	ops
+	.p2align	2, 0x0
+ops:
+	.word	11                              # 0xb
+	.word	12                              # 0xc
+	.word	46                              # 0x2e
+	.word	3                               # 0x3
+	.word	2                               # 0x2
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.word	2                               # 0x2
+	.word	1                               # 0x1
+	.word	3                               # 0x3
+	.word	2                               # 0x2
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.size	ops, 52
+
+	.type	correct,@object                 # @correct
+	.globl	correct
+	.p2align	2, 0x0
+correct:
+	.word	46                              # 0x2e
+	.word	12                              # 0xc
+	.word	11                              # 0xb
+	.word	3                               # 0x3
+	.word	3                               # 0x3
+	.word	3                               # 0x3
+	.word	2                               # 0x2
+	.word	2                               # 0x2
+	.word	2                               # 0x2
+	.word	2                               # 0x2
+	.word	2                               # 0x2
+	.word	1                               # 0x1
+	.word	1                               # 0x1
+	.size	correct, 52
+
+	.type	num,@object                     # @num
+	.globl	num
+	.p2align	2, 0x0
+num:
+	.word	13                              # 0xd
+	.size	num, 4
+
+	.section	".note.GNU-stack","",@progbits
+	.addrsig

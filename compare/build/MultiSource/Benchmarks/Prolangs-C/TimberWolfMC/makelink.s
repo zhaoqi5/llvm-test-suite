@@ -1,0 +1,500 @@
+	.file	"makelink.c"
+	.text
+	.globl	makelink                        # -- Begin function makelink
+	.p2align	5
+	.type	makelink,@function
+makelink:                               # @makelink
+# %bb.0:                                # %entry
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	ori	$a0, $zero, 24
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a1, %got_pc_hi20(edgeCount)
+	ld.d	$a1, $a1, %got_pc_lo12(edgeCount)
+	pcalau12i	$a2, %got_pc_hi20(hFixedList)
+	ld.d	$s3, $a2, %got_pc_lo12(hFixedList)
+	ld.w	$s2, $a1, 0
+	move	$s0, $a0
+	st.d	$a0, $s3, 0
+	st.w	$s2, $a0, 0
+	ori	$a0, $zero, 24
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	move	$fp, $a0
+	st.d	$a0, $s0, 16
+	st.d	$zero, $s0, 8
+	st.d	$zero, $a0, 16
+	pcalau12i	$a0, %got_pc_hi20(hFixedEnd)
+	ld.d	$a0, $a0, %got_pc_lo12(hFixedEnd)
+	st.d	$s0, $fp, 8
+	addi.d	$a1, $s2, -2
+	st.w	$a1, $fp, 0
+	st.d	$fp, $a0, 0
+	ori	$a0, $zero, 24
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a1, %got_pc_hi20(vFixedList)
+	ld.d	$s4, $a1, %got_pc_lo12(vFixedList)
+	move	$s1, $a0
+	st.d	$a0, $s4, 0
+	addi.d	$a0, $s2, -3
+	st.w	$a0, $s1, 0
+	ori	$a0, $zero, 24
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $s1, 16
+	st.d	$zero, $s1, 8
+	st.d	$zero, $a0, 16
+	pcalau12i	$a1, %got_pc_hi20(vFixedEnd)
+	ld.d	$a1, $a1, %got_pc_lo12(vFixedEnd)
+	st.d	$s1, $a0, 8
+	addi.d	$a2, $s2, -1
+	st.w	$a2, $a0, 0
+	st.d	$a0, $a1, 0
+	pcalau12i	$a0, %got_pc_hi20(hFixedEdgeRoot)
+	ld.d	$a0, $a0, %got_pc_lo12(hFixedEdgeRoot)
+	addi.d	$a1, $sp, 16
+	addi.d	$a2, $sp, 12
+	addi.d	$a3, $sp, 8
+	pcaddu18i	$ra, %call36(tpop)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 16
+	beqz	$a0, .LBB0_3
+# %bb.1:                                # %if.end.preheader
+	pcalau12i	$a0, %got_pc_hi20(hFixedEdgeRoot)
+	ld.d	$s1, $a0, %got_pc_lo12(hFixedEdgeRoot)
+	.p2align	4, , 16
+.LBB0_2:                                # %if.end
+                                        # =>This Inner Loop Header: Depth=1
+	ori	$a0, $zero, 24
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $sp, 8
+	move	$s2, $a0
+	st.w	$a1, $a0, 0
+	st.d	$s0, $a0, 8
+	st.d	$fp, $a0, 16
+	st.d	$a0, $s0, 16
+	st.d	$a0, $fp, 8
+	addi.d	$a1, $sp, 16
+	addi.d	$a2, $sp, 12
+	addi.d	$a3, $sp, 8
+	move	$a0, $s1
+	pcaddu18i	$ra, %call36(tpop)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 16
+	move	$s0, $s2
+	bnez	$a0, .LBB0_2
+.LBB0_3:                                # %for.end
+	ld.d	$s2, $s4, 0
+	ld.d	$s1, $s2, 16
+	pcalau12i	$a0, %got_pc_hi20(vFixedEdgeRoot)
+	ld.d	$a0, $a0, %got_pc_lo12(vFixedEdgeRoot)
+	addi.d	$a1, $sp, 16
+	addi.d	$a2, $sp, 12
+	addi.d	$a3, $sp, 8
+	pcaddu18i	$ra, %call36(tpop)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 16
+	beqz	$a0, .LBB0_6
+# %bb.4:                                # %if.end34.lr.ph
+	pcalau12i	$a0, %got_pc_hi20(vFixedEdgeRoot)
+	ld.d	$fp, $a0, %got_pc_lo12(vFixedEdgeRoot)
+	.p2align	4, , 16
+.LBB0_5:                                # %if.end34
+                                        # =>This Inner Loop Header: Depth=1
+	ori	$a0, $zero, 24
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $sp, 8
+	move	$s0, $a0
+	st.w	$a1, $a0, 0
+	st.d	$s2, $a0, 8
+	st.d	$s1, $a0, 16
+	st.d	$a0, $s2, 16
+	st.d	$a0, $s1, 8
+	addi.d	$a1, $sp, 16
+	addi.d	$a2, $sp, 12
+	addi.d	$a3, $sp, 8
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(tpop)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 16
+	move	$s2, $s0
+	bnez	$a0, .LBB0_5
+.LBB0_6:                                # %for.end41
+	pcalau12i	$a0, %got_pc_hi20(Vroot)
+	ld.d	$a0, $a0, %got_pc_lo12(Vroot)
+	st.d	$zero, $a0, 0
+	ori	$a0, $zero, 800
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a1, %got_pc_hi20(Vptrs)
+	ld.d	$s7, $a1, %got_pc_lo12(Vptrs)
+	st.d	$a0, $s7, 0
+	ld.d	$s8, $s4, 0
+	beqz	$s8, .LBB0_13
+# %bb.7:                                # %for.body.preheader.i
+	pcalau12i	$a0, %got_pc_hi20(edgeList)
+	ld.d	$s2, $a0, %got_pc_lo12(edgeList)
+	move	$a1, $zero
+	ld.d	$a0, $s2, 0
+	lu12i.w	$a2, -245
+	ori	$a2, $a2, 3520
+	pcalau12i	$a3, %got_pc_hi20(Vroot)
+	ld.d	$fp, $a3, %got_pc_lo12(Vroot)
+	lu12i.w	$a3, -251659
+	ori	$s4, $a3, 3113
+	lu12i.w	$a3, 20971
+	ori	$s5, $a3, 2128
+	lu12i.w	$a3, 10485
+	ori	$s6, $a3, 3112
+	b	.LBB0_10
+	.p2align	4, , 16
+.LBB0_8:                                # %if.end.i
+                                        #   in Loop: Header=BB0_10 Depth=1
+	slli.d	$a1, $s1, 3
+	stx.d	$s8, $a0, $a1
+	move	$a0, $fp
+	move	$a1, $s0
+	move	$a2, $s1
+	pcaddu18i	$ra, %call36(tinsert)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $s2, 0
+	move	$a1, $s1
+	move	$a2, $s0
+.LBB0_9:                                # %for.inc.i
+                                        #   in Loop: Header=BB0_10 Depth=1
+	ld.d	$s8, $s8, 16
+	beqz	$s8, .LBB0_13
+.LBB0_10:                               # %for.body.i
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a3, $s8, 0
+	slli.d	$a4, $a3, 5
+	alsl.d	$a3, $a3, $a4, 3
+	add.d	$a3, $a0, $a3
+	ld.w	$s0, $a3, 12
+	bge	$a2, $s0, .LBB0_9
+# %bb.11:                               # %if.then.i
+                                        #   in Loop: Header=BB0_10 Depth=1
+	addi.w	$s1, $a1, 1
+	mul.d	$a2, $s1, $s4
+	ld.d	$a0, $s7, 0
+	add.d	$a2, $a2, $s5
+	rotri.w	$a2, $a2, 2
+	bltu	$s6, $a2, .LBB0_8
+# %bb.12:                               # %if.then7.i
+                                        #   in Loop: Header=BB0_10 Depth=1
+	slli.d	$a1, $a1, 3
+	addi.d	$a1, $a1, 808
+	pcaddu18i	$ra, %call36(realloc)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $s7, 0
+	b	.LBB0_8
+.LBB0_13:                               # %makeVtree.exit
+	pcalau12i	$a0, %got_pc_hi20(Hroot)
+	ld.d	$a0, $a0, %got_pc_lo12(Hroot)
+	st.d	$zero, $a0, 0
+	ori	$a0, $zero, 800
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a1, %got_pc_hi20(Hptrs)
+	ld.d	$s7, $a1, %got_pc_lo12(Hptrs)
+	ld.d	$s3, $s3, 0
+	st.d	$a0, $s7, 0
+	beqz	$s3, .LBB0_20
+# %bb.14:                               # %for.body.preheader.i20
+	pcalau12i	$a0, %got_pc_hi20(edgeList)
+	ld.d	$s2, $a0, %got_pc_lo12(edgeList)
+	move	$a1, $zero
+	ld.d	$a0, $s2, 0
+	lu12i.w	$a2, -245
+	ori	$a2, $a2, 3520
+	pcalau12i	$a3, %got_pc_hi20(Hroot)
+	ld.d	$fp, $a3, %got_pc_lo12(Hroot)
+	lu12i.w	$a3, -251659
+	ori	$s4, $a3, 3113
+	lu12i.w	$a3, 20971
+	ori	$s5, $a3, 2128
+	lu12i.w	$a3, 10485
+	ori	$s6, $a3, 3112
+	b	.LBB0_17
+	.p2align	4, , 16
+.LBB0_15:                               # %if.end.i38
+                                        #   in Loop: Header=BB0_17 Depth=1
+	slli.d	$a1, $s1, 3
+	stx.d	$s3, $a0, $a1
+	move	$a0, $fp
+	move	$a1, $s0
+	move	$a2, $s1
+	pcaddu18i	$ra, %call36(tinsert)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $s2, 0
+	move	$a1, $s1
+	move	$a2, $s0
+.LBB0_16:                               # %for.inc.i28
+                                        #   in Loop: Header=BB0_17 Depth=1
+	ld.d	$s3, $s3, 16
+	beqz	$s3, .LBB0_20
+.LBB0_17:                               # %for.body.i22
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a3, $s3, 0
+	slli.d	$a4, $a3, 5
+	alsl.d	$a3, $a3, $a4, 3
+	add.d	$a3, $a0, $a3
+	ld.w	$s0, $a3, 12
+	bge	$a2, $s0, .LBB0_16
+# %bb.18:                               # %if.then.i33
+                                        #   in Loop: Header=BB0_17 Depth=1
+	addi.w	$s1, $a1, 1
+	mul.d	$a2, $s1, $s4
+	ld.d	$a0, $s7, 0
+	add.d	$a2, $a2, $s5
+	rotri.w	$a2, $a2, 2
+	bltu	$s6, $a2, .LBB0_15
+# %bb.19:                               # %if.then7.i42
+                                        #   in Loop: Header=BB0_17 Depth=1
+	slli.d	$a1, $a1, 3
+	addi.d	$a1, $a1, 808
+	pcaddu18i	$ra, %call36(realloc)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $s7, 0
+	b	.LBB0_15
+.LBB0_20:                               # %makeHtree.exit
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
+	ret
+.Lfunc_end0:
+	.size	makelink, .Lfunc_end0-makelink
+                                        # -- End function
+	.globl	makeVtree                       # -- Begin function makeVtree
+	.p2align	5
+	.type	makeVtree,@function
+makeVtree:                              # @makeVtree
+# %bb.0:                                # %entry
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	pcalau12i	$a0, %got_pc_hi20(Vroot)
+	ld.d	$a0, $a0, %got_pc_lo12(Vroot)
+	st.d	$zero, $a0, 0
+	ori	$a0, $zero, 800
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a1, %got_pc_hi20(vFixedList)
+	ld.d	$a1, $a1, %got_pc_lo12(vFixedList)
+	pcalau12i	$a2, %got_pc_hi20(Vptrs)
+	ld.d	$s2, $a2, %got_pc_lo12(Vptrs)
+	ld.d	$s3, $a1, 0
+	st.d	$a0, $s2, 0
+	beqz	$s3, .LBB1_7
+# %bb.1:                                # %for.body.preheader
+	pcalau12i	$a0, %got_pc_hi20(edgeList)
+	ld.d	$s4, $a0, %got_pc_lo12(edgeList)
+	move	$a1, $zero
+	ld.d	$a0, $s4, 0
+	lu12i.w	$a2, -245
+	ori	$a2, $a2, 3520
+	lu12i.w	$a3, -251659
+	ori	$s5, $a3, 3113
+	lu12i.w	$a3, 20971
+	pcalau12i	$a4, %got_pc_hi20(Vroot)
+	ld.d	$fp, $a4, %got_pc_lo12(Vroot)
+	ori	$s6, $a3, 2128
+	lu12i.w	$a3, 10485
+	ori	$s7, $a3, 3112
+	b	.LBB1_4
+	.p2align	4, , 16
+.LBB1_2:                                # %if.end
+                                        #   in Loop: Header=BB1_4 Depth=1
+	slli.d	$a1, $s1, 3
+	stx.d	$s3, $a0, $a1
+	move	$a0, $fp
+	move	$a1, $s0
+	move	$a2, $s1
+	pcaddu18i	$ra, %call36(tinsert)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $s4, 0
+	move	$a1, $s1
+	move	$a2, $s0
+.LBB1_3:                                # %for.inc
+                                        #   in Loop: Header=BB1_4 Depth=1
+	ld.d	$s3, $s3, 16
+	beqz	$s3, .LBB1_7
+.LBB1_4:                                # %for.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a3, $s3, 0
+	slli.d	$a4, $a3, 5
+	alsl.d	$a3, $a3, $a4, 3
+	add.d	$a3, $a0, $a3
+	ld.w	$s0, $a3, 12
+	bge	$a2, $s0, .LBB1_3
+# %bb.5:                                # %if.then
+                                        #   in Loop: Header=BB1_4 Depth=1
+	addi.w	$s1, $a1, 1
+	mul.d	$a2, $s1, $s5
+	ld.d	$a0, $s2, 0
+	add.d	$a2, $a2, $s6
+	rotri.w	$a2, $a2, 2
+	bltu	$s7, $a2, .LBB1_2
+# %bb.6:                                # %if.then7
+                                        #   in Loop: Header=BB1_4 Depth=1
+	slli.d	$a1, $a1, 3
+	addi.d	$a1, $a1, 808
+	pcaddu18i	$ra, %call36(realloc)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $s2, 0
+	b	.LBB1_2
+.LBB1_7:                                # %for.end
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
+	ret
+.Lfunc_end1:
+	.size	makeVtree, .Lfunc_end1-makeVtree
+                                        # -- End function
+	.globl	makeHtree                       # -- Begin function makeHtree
+	.p2align	5
+	.type	makeHtree,@function
+makeHtree:                              # @makeHtree
+# %bb.0:                                # %entry
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	pcalau12i	$a0, %got_pc_hi20(Hroot)
+	ld.d	$a0, $a0, %got_pc_lo12(Hroot)
+	st.d	$zero, $a0, 0
+	ori	$a0, $zero, 800
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a1, %got_pc_hi20(hFixedList)
+	ld.d	$a1, $a1, %got_pc_lo12(hFixedList)
+	pcalau12i	$a2, %got_pc_hi20(Hptrs)
+	ld.d	$s2, $a2, %got_pc_lo12(Hptrs)
+	ld.d	$s3, $a1, 0
+	st.d	$a0, $s2, 0
+	beqz	$s3, .LBB2_7
+# %bb.1:                                # %for.body.preheader
+	pcalau12i	$a0, %got_pc_hi20(edgeList)
+	ld.d	$s4, $a0, %got_pc_lo12(edgeList)
+	move	$a1, $zero
+	ld.d	$a0, $s4, 0
+	lu12i.w	$a2, -245
+	ori	$a2, $a2, 3520
+	lu12i.w	$a3, -251659
+	ori	$s5, $a3, 3113
+	lu12i.w	$a3, 20971
+	pcalau12i	$a4, %got_pc_hi20(Hroot)
+	ld.d	$fp, $a4, %got_pc_lo12(Hroot)
+	ori	$s6, $a3, 2128
+	lu12i.w	$a3, 10485
+	ori	$s7, $a3, 3112
+	b	.LBB2_4
+	.p2align	4, , 16
+.LBB2_2:                                # %if.end
+                                        #   in Loop: Header=BB2_4 Depth=1
+	slli.d	$a1, $s1, 3
+	stx.d	$s3, $a0, $a1
+	move	$a0, $fp
+	move	$a1, $s0
+	move	$a2, $s1
+	pcaddu18i	$ra, %call36(tinsert)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $s4, 0
+	move	$a1, $s1
+	move	$a2, $s0
+.LBB2_3:                                # %for.inc
+                                        #   in Loop: Header=BB2_4 Depth=1
+	ld.d	$s3, $s3, 16
+	beqz	$s3, .LBB2_7
+.LBB2_4:                                # %for.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a3, $s3, 0
+	slli.d	$a4, $a3, 5
+	alsl.d	$a3, $a3, $a4, 3
+	add.d	$a3, $a0, $a3
+	ld.w	$s0, $a3, 12
+	bge	$a2, $s0, .LBB2_3
+# %bb.5:                                # %if.then
+                                        #   in Loop: Header=BB2_4 Depth=1
+	addi.w	$s1, $a1, 1
+	mul.d	$a2, $s1, $s5
+	ld.d	$a0, $s2, 0
+	add.d	$a2, $a2, $s6
+	rotri.w	$a2, $a2, 2
+	bltu	$s7, $a2, .LBB2_2
+# %bb.6:                                # %if.then7
+                                        #   in Loop: Header=BB2_4 Depth=1
+	slli.d	$a1, $a1, 3
+	addi.d	$a1, $a1, 808
+	pcaddu18i	$ra, %call36(realloc)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $s2, 0
+	b	.LBB2_2
+.LBB2_7:                                # %for.end
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
+	ret
+.Lfunc_end2:
+	.size	makeHtree, .Lfunc_end2-makeHtree
+                                        # -- End function
+	.section	".note.GNU-stack","",@progbits
+	.addrsig
+	.addrsig_sym hFixedEdgeRoot
+	.addrsig_sym vFixedEdgeRoot
+	.addrsig_sym Vroot
+	.addrsig_sym Hroot

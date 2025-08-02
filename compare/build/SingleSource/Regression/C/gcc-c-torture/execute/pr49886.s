@@ -1,0 +1,130 @@
+	.file	"pr49886.c"
+	.section	.text.unlikely.,"ax",@progbits
+	.globl	never_ever                      # -- Begin function never_ever
+	.p2align	5
+	.type	never_ever,@function
+never_ever:                             # @never_ever
+# %bb.0:                                # %entry
+	pcaddu18i	$ra, %call36(abort)
+	jirl	$ra, $ra, 0
+.Lfunc_end0:
+	.size	never_ever, .Lfunc_end0-never_ever
+                                        # -- End function
+	.text
+	.globl	main                            # -- Begin function main
+	.p2align	5
+	.type	main,@function
+main:                                   # @main
+# %bb.0:                                # %entry
+	pcalau12i	$a0, %pc_hi20(cond)
+	ori	$a1, $zero, 1
+	st.w	$a1, $a0, %pc_lo12(cond)
+	move	$a0, $zero
+	ret
+.Lfunc_end1:
+	.size	main, .Lfunc_end1-main
+                                        # -- End function
+	.globl	bar_1                           # -- Begin function bar_1
+	.p2align	5
+	.type	bar_1,@function
+bar_1:                                  # @bar_1
+# %bb.0:                                # %entry
+	move	$a0, $a1
+	ld.d	$a1, $a1, 8
+	addi.d	$a1, $a1, 1
+	st.d	$a1, $a0, 8
+	pcaddu18i	$t8, %call36(mark_cell)
+	jr	$t8
+.Lfunc_end2:
+	.size	bar_1, .Lfunc_end2-bar_1
+                                        # -- End function
+	.p2align	5                               # -- Begin function mark_cell
+	.type	mark_cell,@function
+mark_cell:                              # @mark_cell
+# %bb.0:                                # %entry
+	beqz	$a0, .LBB3_13
+# %bb.1:                                # %entry
+	pcalau12i	$a1, %pc_hi20(cond)
+	ld.w	$a1, $a1, %pc_lo12(cond)
+	beqz	$a1, .LBB3_13
+# %bb.2:                                # %land.lhs.true
+	ld.d	$a1, $a0, 16
+	ori	$a2, $zero, 4
+	bne	$a1, $a2, .LBB3_13
+# %bb.3:                                # %land.lhs.true2
+	ld.d	$a0, $a0, 0
+	beqz	$a0, .LBB3_13
+# %bb.4:                                # %land.lhs.true4
+	ld.wu	$a0, $a0, 0
+	lu12i.w	$a1, 64
+	and	$a1, $a0, $a1
+	beqz	$a1, .LBB3_14
+# %bb.5:                                # %land.lhs.true17
+	lu12i.w	$a1, 32
+	and	$a1, $a0, $a1
+	beqz	$a1, .LBB3_14
+# %bb.6:                                # %land.lhs.true33
+	lu12i.w	$a1, 16
+	and	$a1, $a0, $a1
+	beqz	$a1, .LBB3_14
+# %bb.7:                                # %land.lhs.true49
+	lu12i.w	$a1, 8
+	and	$a1, $a0, $a1
+	beqz	$a1, .LBB3_14
+# %bb.8:                                # %land.lhs.true65
+	lu12i.w	$a1, 4
+	and	$a1, $a0, $a1
+	beqz	$a1, .LBB3_14
+# %bb.9:                                # %land.lhs.true81
+	lu12i.w	$a1, 2
+	and	$a1, $a0, $a1
+	beqz	$a1, .LBB3_14
+# %bb.10:                               # %land.lhs.true97
+	lu12i.w	$a1, 1
+	and	$a1, $a0, $a1
+	beqz	$a1, .LBB3_14
+# %bb.11:                               # %land.lhs.true113
+	andi	$a1, $a0, 2048
+	beqz	$a1, .LBB3_14
+# %bb.12:                               # %land.lhs.true129
+	andi	$a0, $a0, 1024
+	beqz	$a0, .LBB3_14
+.LBB3_13:                               # %if.end137
+	ret
+.LBB3_14:                               # %if.then7
+	pcaddu18i	$ra, %call36(never_ever)
+	jirl	$ra, $ra, 0
+.Lfunc_end3:
+	.size	mark_cell, .Lfunc_end3-mark_cell
+                                        # -- End function
+	.globl	bar_2                           # -- Begin function bar_2
+	.p2align	5
+	.type	bar_2,@function
+bar_2:                                  # @bar_2
+# %bb.0:                                # %entry
+	move	$a0, $a1
+	ld.d	$a1, $a1, 8
+	addi.d	$a1, $a1, 2
+	st.d	$a1, $a0, 8
+	pcaddu18i	$t8, %call36(mark_cell)
+	jr	$t8
+.Lfunc_end4:
+	.size	bar_2, .Lfunc_end4-bar_2
+                                        # -- End function
+	.type	cond,@object                    # @cond
+	.bss
+	.globl	cond
+	.p2align	2, 0x0
+cond:
+	.word	0                               # 0x0
+	.size	cond, 4
+
+	.type	gi,@object                      # @gi
+	.globl	gi
+	.p2align	2, 0x0
+gi:
+	.word	0                               # 0x0
+	.size	gi, 4
+
+	.section	".note.GNU-stack","",@progbits
+	.addrsig

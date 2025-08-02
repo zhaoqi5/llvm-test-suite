@@ -1,0 +1,210 @@
+	.file	"bmhasrch.c"
+	.text
+	.globl	bmha_init                       # -- Begin function bmha_init
+	.p2align	5
+	.type	bmha_init,@function
+bmha_init:                              # @bmha_init
+# %bb.0:                                # %entry
+	addi.d	$sp, $sp, -16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
+	move	$fp, $a0
+	pcalau12i	$a0, %pc_hi20(pat)
+	st.d	$fp, $a0, %pc_lo12(pat)
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(strlen)
+	jirl	$ra, $ra, 0
+	move	$a2, $zero
+	pcalau12i	$a1, %pc_hi20(patlen)
+	st.w	$a0, $a1, %pc_lo12(patlen)
+	bstrpick.d	$a1, $a0, 31, 0
+	add.d	$a1, $a1, $fp
+	addi.d	$a3, $a1, -1
+	pcalau12i	$a1, %pc_hi20(skip)
+	addi.d	$a4, $a1, %pc_lo12(skip)
+	ori	$a5, $zero, 1
+	pcalau12i	$a1, %pc_hi20(lowervec)
+	addi.d	$a1, $a1, %pc_lo12(lowervec)
+	lu12i.w	$a6, 7
+	ori	$a6, $a6, 4095
+	ori	$a7, $zero, 256
+	b	.LBB0_2
+	.p2align	4, , 16
+.LBB0_1:                                # %for.inc32
+                                        #   in Loop: Header=BB0_2 Depth=1
+	addi.d	$a2, $a2, 1
+	beq	$a2, $a7, .LBB0_8
+.LBB0_2:                                # %for.body
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_3 Depth 2
+	alsl.d	$t0, $a2, $a4, 2
+	slli.d	$t1, $a2, 2
+	stx.w	$a0, $a4, $t1
+	move	$t2, $a3
+	ori	$t3, $zero, 1
+	.p2align	4, , 16
+.LBB0_3:                                # %for.cond2
+                                        #   Parent Loop BB0_2 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	move	$t1, $t3
+	add.d	$t3, $a0, $t3
+	addi.w	$t3, $t3, -1
+	blt	$t3, $a5, .LBB0_6
+# %bb.4:                                # %for.body5
+                                        #   in Loop: Header=BB0_3 Depth=2
+	ld.bu	$t3, $t2, 0
+	ldx.bu	$t4, $a1, $a2
+	ldx.bu	$t5, $a1, $t3
+	addi.w	$t3, $t1, -1
+	addi.d	$t2, $t2, -1
+	bne	$t4, $t5, .LBB0_3
+# %bb.5:                                # %if.then19
+                                        #   in Loop: Header=BB0_2 Depth=1
+	sub.d	$t2, $zero, $t3
+	st.w	$t2, $t0, 0
+.LBB0_6:                                # %if.end24
+                                        #   in Loop: Header=BB0_2 Depth=1
+	bne	$t1, $a5, .LBB0_1
+# %bb.7:                                # %if.then28
+                                        #   in Loop: Header=BB0_2 Depth=1
+	st.w	$a6, $t0, 0
+	b	.LBB0_1
+.LBB0_8:                                # %for.end33
+	addi.w	$a3, $a0, 0
+	pcalau12i	$a2, %pc_hi20(skip2)
+	ori	$a4, $zero, 2
+	st.w	$a0, $a2, %pc_lo12(skip2)
+	blt	$a3, $a4, .LBB0_13
+# %bb.9:                                # %for.body38.lr.ph
+	addi.w	$a0, $a0, -1
+	ldx.bu	$a3, $fp, $a0
+	ldx.bu	$a3, $a1, $a3
+	bstrpick.d	$a4, $a0, 31, 0
+	b	.LBB0_11
+	.p2align	4, , 16
+.LBB0_10:                               # %for.inc56
+                                        #   in Loop: Header=BB0_11 Depth=1
+	addi.d	$fp, $fp, 1
+	addi.d	$a4, $a4, -1
+	addi.d	$a0, $a0, -1
+	beqz	$a4, .LBB0_13
+.LBB0_11:                               # %for.body38
+                                        # =>This Inner Loop Header: Depth=1
+	ld.bu	$a5, $fp, 0
+	ldx.bu	$a5, $a1, $a5
+	bne	$a5, $a3, .LBB0_10
+# %bb.12:                               # %if.then52
+                                        #   in Loop: Header=BB0_11 Depth=1
+	st.w	$a0, $a2, %pc_lo12(skip2)
+	b	.LBB0_10
+.LBB0_13:                               # %for.end58
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
+	ret
+.Lfunc_end0:
+	.size	bmha_init, .Lfunc_end0-bmha_init
+                                        # -- End function
+	.globl	bmha_search                     # -- Begin function bmha_search
+	.p2align	5
+	.type	bmha_search,@function
+bmha_search:                            # @bmha_search
+# %bb.0:                                # %entry
+	pcalau12i	$a2, %pc_hi20(patlen)
+	ld.w	$a5, $a2, %pc_lo12(patlen)
+	nor	$a2, $a1, $zero
+	add.w	$a2, $a5, $a2
+	addi.w	$a3, $zero, -1
+	bge	$a3, $a2, .LBB1_3
+.LBB1_1:
+	move	$a0, $zero
+.LBB1_2:                                # %cleanup
+	ret
+.LBB1_3:                                # %if.end
+	add.d	$a3, $a0, $a1
+	lu12i.w	$a4, 7
+	ori	$a4, $a4, 4095
+	sub.w	$a4, $a4, $a1
+	addi.w	$a5, $a5, -1
+	pcalau12i	$a6, %pc_hi20(pat)
+	pcalau12i	$a7, %pc_hi20(skip2)
+	ld.w	$a7, $a7, %pc_lo12(skip2)
+	ld.d	$t0, $a6, %pc_lo12(pat)
+	lu12i.w	$a6, -8
+	ori	$a6, $a6, 1
+	add.d	$a7, $a7, $a6
+	bstrpick.d	$t1, $a5, 31, 0
+	add.d	$t0, $t1, $t0
+	addi.d	$t0, $t0, -1
+	add.d	$a1, $a1, $t1
+	nor	$t1, $a5, $zero
+	add.d	$a1, $t1, $a1
+	add.d	$a1, $a0, $a1
+	pcalau12i	$a0, %pc_hi20(skip)
+	addi.d	$t1, $a0, %pc_lo12(skip)
+	ori	$t2, $zero, 1
+	pcalau12i	$a0, %pc_hi20(lowervec)
+	addi.d	$t3, $a0, %pc_lo12(lowervec)
+.LBB1_4:                                # %while.cond
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB1_7 Depth 2
+	ldx.bu	$a0, $a3, $a2
+	slli.d	$a0, $a0, 2
+	ldx.w	$a0, $t1, $a0
+	add.w	$a2, $a0, $a2
+	bltz	$a2, .LBB1_4
+# %bb.5:                                # %while.end
+                                        #   in Loop: Header=BB1_4 Depth=1
+	blt	$a2, $a4, .LBB1_1
+# %bb.6:                                # %if.end8
+                                        #   in Loop: Header=BB1_4 Depth=1
+	add.w	$t4, $a2, $a6
+	sub.w	$a0, $t4, $a5
+	add.d	$a0, $a3, $a0
+	add.d	$t4, $a1, $t4
+	move	$t5, $t0
+	move	$t6, $a5
+	.p2align	4, , 16
+.LBB1_7:                                # %while.cond14
+                                        #   Parent Loop BB1_4 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	blt	$t6, $t2, .LBB1_2
+# %bb.8:                                # %land.rhs
+                                        #   in Loop: Header=BB1_7 Depth=2
+	ld.bu	$t7, $t4, 0
+	ld.bu	$t8, $t5, 0
+	ldx.bu	$t7, $t3, $t7
+	ldx.bu	$t8, $t3, $t8
+	addi.w	$t6, $t6, -1
+	addi.d	$t5, $t5, -1
+	addi.d	$t4, $t4, -1
+	beq	$t7, $t8, .LBB1_7
+# %bb.9:                                # %if.end32
+                                        #   in Loop: Header=BB1_4 Depth=1
+	add.w	$a2, $a2, $a7
+	bltz	$a2, .LBB1_4
+	b	.LBB1_1
+.Lfunc_end1:
+	.size	bmha_search, .Lfunc_end1-bmha_search
+                                        # -- End function
+	.type	lowervec,@object                # @lowervec
+	.data
+	.globl	lowervec
+lowervec:
+	.ascii	"\000\001\002\003\004\005\006\007\b\t\n\013\f\r\016\017\020\021\022\023\024\025\026\027\030\031\032\033\034\035\036\037 !\"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\177cueaaaaceeeiiiaae\221\222ooouuyou\233\234\235\236\237aiounn\246\247\250\251\252\253\254\255\256\257\260\261\262\263\264\265\266\267\270\271\272\273\274\275\276\277\300\301\302\303\304\305\306\307\310\311\312\313\314\315\316\317\320\321\322\323\324\325\326\327\330\331\332\333\334\335\336\337\340\341\342\343\344\345\346\347\350\351\352\353\354\355\356\357\360\361\362\363\364\365\366\367\370\371\372\373\374\375\376\377"
+	.size	lowervec, 256
+
+	.type	pat,@object                     # @pat
+	.local	pat
+	.comm	pat,8,8
+	.type	patlen,@object                  # @patlen
+	.local	patlen
+	.comm	patlen,4,4
+	.type	skip,@object                    # @skip
+	.local	skip
+	.comm	skip,1024,4
+	.type	skip2,@object                   # @skip2
+	.local	skip2
+	.comm	skip2,4,4
+	.section	".note.GNU-stack","",@progbits
+	.addrsig
