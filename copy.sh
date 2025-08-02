@@ -23,6 +23,7 @@ while IFS= read -r FILE; do
       mkdir -p "$DEST_DIR/$(dirname "$REL_PATH")"
       cp "$FILE" "$DEST_DIR/$REL_PATH"
     }
+    sed -i '/.ident/d' "$DEST_DIR/$REL_PATH"
   else
     echo "Warning: file not exist: $FILE"
   fi
