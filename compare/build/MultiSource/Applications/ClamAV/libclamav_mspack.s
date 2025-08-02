@@ -8886,18 +8886,18 @@ lzx_free:                               # @lzx_free
 	.type	qtm_init,@function
 qtm_init:                               # @qtm_init
 # %bb.0:                                # %entry
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
 	move	$fp, $a2
 	addi.w	$a2, $a2, -22
 	addi.w	$a6, $zero, -7
@@ -8909,8 +8909,8 @@ qtm_init:                               # @qtm_init
 	move	$s4, $a3
 	move	$s2, $a0
 	move	$s1, $a1
-	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
-	st.d	$a5, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
 	ori	$a0, $zero, 2136
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
@@ -8921,6 +8921,8 @@ qtm_init:                               # @qtm_init
 	sll.w	$s3, $s0, $fp
 	addi.w	$s0, $s4, 1
 	bstrins.d	$s0, $zero, 0, 0
+	addi.d	$s6, $a0, 2047
+	addi.d	$s5, $s6, 21
 	ori	$a3, $zero, 268
 	ori	$a4, $zero, 100
 	ori	$a5, $zero, 1
@@ -8968,6 +8970,8 @@ qtm_init:                               # @qtm_init
 	st.d	$a1, $s4, 48
 	beqz	$a1, .LBB12_14
 # %bb.7:                                # %if.end60
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.w	$s2, $a0, 0
 	st.w	$s1, $a0, 4
 	ori	$a2, $zero, 1
@@ -8986,24 +8990,24 @@ qtm_init:                               # @qtm_init
 	st.d	$s2, $a0, 368
 	st.d	$a1, $a0, 376
 	st.h	$a2, $a0, 516
-	ori	$s1, $zero, 64
-	st.h	$s1, $a0, 514
-	ori	$a3, $zero, 63
-	st.h	$a3, $a0, 518
-	ori	$ra, $zero, 62
-	st.h	$ra, $a0, 522
-	ori	$s8, $zero, 61
-	st.h	$s8, $a0, 526
-	ori	$s7, $zero, 60
-	st.h	$s7, $a0, 530
-	ori	$s6, $zero, 59
-	st.h	$s6, $a0, 534
-	ori	$s5, $zero, 58
-	st.h	$s5, $a0, 538
-	ori	$s4, $zero, 57
-	st.h	$s4, $a0, 542
-	ori	$s3, $zero, 56
-	st.h	$s3, $a0, 546
+	ori	$s4, $zero, 64
+	st.h	$s4, $a0, 514
+	ori	$s3, $zero, 63
+	st.h	$s3, $a0, 518
+	ori	$s1, $zero, 62
+	st.h	$s1, $a0, 522
+	ori	$a3, $zero, 61
+	st.h	$a3, $a0, 526
+	ori	$ra, $zero, 60
+	st.h	$ra, $a0, 530
+	ori	$s8, $zero, 59
+	st.h	$s8, $a0, 534
+	ori	$s7, $zero, 58
+	st.h	$s7, $a0, 538
+	ori	$s6, $zero, 57
+	st.h	$s6, $a0, 542
+	ori	$s5, $zero, 56
+	st.h	$s5, $a0, 546
 	ori	$s0, $zero, 55
 	st.h	$s0, $a0, 550
 	ori	$t8, $zero, 54
@@ -9339,52 +9343,52 @@ qtm_init:                               # @qtm_init
 	st.h	$a1, $a0, 1352
 	ori	$a1, $zero, 51
 	st.h	$a1, $a0, 566
-	st.h	$s1, $a0, 772
-	st.h	$s1, $a0, 774
-	st.h	$s1, $a0, 1034
-	st.h	$s1, $a0, 1294
-	ori	$s2, $zero, 50
-	st.h	$s2, $a0, 570
-	st.h	$a3, $a0, 764
-	st.h	$a3, $a0, 778
-	st.h	$a3, $a0, 1038
-	st.h	$a3, $a0, 1298
+	st.h	$s4, $a0, 772
+	st.h	$s4, $a0, 774
+	st.h	$s4, $a0, 1034
+	st.h	$s4, $a0, 1294
+	ori	$s4, $zero, 50
+	st.h	$s4, $a0, 570
+	st.h	$s3, $a0, 764
+	st.h	$s3, $a0, 778
+	st.h	$s3, $a0, 1038
+	st.h	$s3, $a0, 1298
 	ori	$t3, $zero, 18
-	st.h	$ra, $a0, 760
-	st.h	$ra, $a0, 782
-	st.h	$ra, $a0, 1042
-	st.h	$ra, $a0, 1302
+	st.h	$s1, $a0, 760
+	st.h	$s1, $a0, 782
+	st.h	$s1, $a0, 1042
+	st.h	$s1, $a0, 1302
 	ori	$t4, $zero, 19
-	st.h	$s8, $a0, 756
-	st.h	$s8, $a0, 786
-	st.h	$s8, $a0, 1046
-	st.h	$s8, $a0, 1306
+	st.h	$a3, $a0, 756
+	st.h	$a3, $a0, 786
+	st.h	$a3, $a0, 1046
+	st.h	$a3, $a0, 1306
 	ori	$t5, $zero, 20
-	st.h	$s7, $a0, 752
-	st.h	$s7, $a0, 790
-	st.h	$s7, $a0, 1050
-	st.h	$s7, $a0, 1310
+	st.h	$ra, $a0, 752
+	st.h	$ra, $a0, 790
+	st.h	$ra, $a0, 1050
+	st.h	$ra, $a0, 1310
 	ori	$t6, $zero, 21
-	st.h	$s6, $a0, 748
-	st.h	$s6, $a0, 794
-	st.h	$s6, $a0, 1054
-	st.h	$s6, $a0, 1314
+	st.h	$s8, $a0, 748
+	st.h	$s8, $a0, 794
+	st.h	$s8, $a0, 1054
+	st.h	$s8, $a0, 1314
 	ori	$s1, $zero, 22
-	st.h	$s5, $a0, 744
-	st.h	$s5, $a0, 798
-	st.h	$s5, $a0, 1058
-	st.h	$s5, $a0, 1318
-	ori	$ra, $zero, 23
-	st.h	$s4, $a0, 740
-	st.h	$s4, $a0, 802
-	st.h	$s4, $a0, 1062
-	st.h	$s4, $a0, 1322
+	st.h	$s7, $a0, 744
+	st.h	$s7, $a0, 798
+	st.h	$s7, $a0, 1058
+	st.h	$s7, $a0, 1318
+	ori	$s2, $zero, 23
+	st.h	$s6, $a0, 740
+	st.h	$s6, $a0, 802
+	st.h	$s6, $a0, 1062
+	st.h	$s6, $a0, 1322
 	ori	$t2, $zero, 24
-	st.h	$s3, $a0, 736
-	st.h	$s3, $a0, 806
-	st.h	$s3, $a0, 1066
-	st.h	$s3, $a0, 1326
-	ori	$s6, $zero, 25
+	st.h	$s5, $a0, 736
+	st.h	$s5, $a0, 806
+	st.h	$s5, $a0, 1066
+	st.h	$s5, $a0, 1326
+	ori	$s7, $zero, 25
 	st.h	$s0, $a0, 732
 	st.h	$s0, $a0, 810
 	st.h	$s0, $a0, 1070
@@ -9396,7 +9400,7 @@ qtm_init:                               # @qtm_init
 	st.h	$t8, $a0, 1334
 	pcalau12i	$a3, %pc_hi20(.LCPI12_2)
 	xvld	$xr0, $a3, %pc_lo12(.LCPI12_2)
-	ori	$s4, $zero, 27
+	ori	$s6, $zero, 27
 	st.h	$t7, $a0, 724
 	st.h	$t7, $a0, 818
 	st.h	$t7, $a0, 1078
@@ -9409,7 +9413,7 @@ qtm_init:                               # @qtm_init
 	st.h	$a2, $a0, 1342
 	ori	$a2, $zero, 48
 	st.h	$a2, $a0, 578
-	st.h	$s2, $a0, 712
+	st.h	$s4, $a0, 712
 	ori	$a3, $zero, 2
 	st.h	$a3, $a0, 1022
 	st.h	$a1, $a0, 716
@@ -9418,22 +9422,22 @@ qtm_init:                               # @qtm_init
 	st.h	$a1, $a0, 826
 	ori	$a3, $zero, 6
 	st.h	$a3, $a0, 1006
-	ori	$s8, $zero, 5
-	st.h	$s8, $a0, 1010
+	ori	$ra, $zero, 5
+	st.h	$ra, $a0, 1010
 	st.h	$t0, $a0, 1014
 	st.h	$a1, $a0, 1086
 	st.h	$a1, $a0, 1346
 	ori	$a3, $zero, 16
 	ori	$s5, $zero, 7
 	st.h	$s5, $a0, 1002
-	st.h	$s2, $a0, 830
+	st.h	$s4, $a0, 830
 	st.h	$a3, $a0, 966
 	ori	$a1, $zero, 15
 	st.h	$a1, $a0, 970
 	ori	$a1, $zero, 14
 	st.h	$a1, $a0, 974
-	ori	$s7, $zero, 13
-	st.h	$s7, $a0, 978
+	ori	$s8, $zero, 13
+	st.h	$s8, $a0, 978
 	ori	$s3, $zero, 12
 	st.h	$s3, $a0, 982
 	ori	$t1, $zero, 11
@@ -9444,8 +9448,8 @@ qtm_init:                               # @qtm_init
 	st.h	$a6, $a0, 994
 	ori	$a5, $zero, 8
 	st.h	$a5, $a0, 998
-	st.h	$s2, $a0, 1090
-	st.h	$s2, $a0, 1350
+	st.h	$s4, $a0, 1090
+	st.h	$s4, $a0, 1350
 	lu12i.w	$a1, 3328
 	ori	$a1, $a1, 49
 	st.w	$a1, $a0, 1354
@@ -9499,22 +9503,22 @@ qtm_init:                               # @qtm_init
 	st.h	$t0, $a0, 692
 	st.h	$s1, $a0, 942
 	st.h	$a2, $a0, 696
-	st.h	$ra, $a0, 938
+	st.h	$s2, $a0, 938
 	st.h	$a2, $a0, 846
 	st.h	$s0, $a0, 926
-	st.h	$s6, $a0, 930
+	st.h	$s7, $a0, 930
 	st.h	$t2, $a0, 934
 	st.h	$a2, $a0, 1106
 	st.h	$a2, $a0, 1366
 	ori	$a1, $zero, 32
-	st.h	$s4, $a0, 922
+	st.h	$s6, $a0, 922
 	st.h	$t0, $a0, 850
 	st.h	$a1, $a0, 902
 	st.h	$t8, $a0, 918
 	ori	$a2, $zero, 29
 	st.h	$a2, $a0, 914
-	ori	$s2, $zero, 30
-	st.h	$s2, $a0, 910
+	ori	$s4, $zero, 30
+	st.h	$s4, $a0, 910
 	ori	$t7, $zero, 31
 	st.h	$t7, $a0, 906
 	st.h	$t0, $a0, 1110
@@ -9541,8 +9545,8 @@ qtm_init:                               # @qtm_init
 	st.h	$t0, $a0, 894
 	ori	$t2, $zero, 35
 	st.h	$t2, $a0, 890
-	ori	$ra, $zero, 36
-	st.h	$ra, $a0, 886
+	ori	$s1, $zero, 36
+	st.h	$s1, $a0, 886
 	ori	$t3, $zero, 37
 	st.h	$t3, $a0, 882
 	ori	$t4, $zero, 38
@@ -9551,12 +9555,12 @@ qtm_init:                               # @qtm_init
 	st.h	$t5, $a0, 874
 	ori	$t6, $zero, 40
 	st.h	$t6, $a0, 870
-	ori	$s1, $zero, 41
-	st.h	$s1, $a0, 866
-	st.h	$s1, $a0, 606
-	st.h	$s1, $a0, 676
-	st.h	$s1, $a0, 1126
-	st.h	$s1, $a0, 1386
+	ori	$s2, $zero, 41
+	st.h	$s2, $a0, 866
+	st.h	$s2, $a0, 606
+	st.h	$s2, $a0, 676
+	st.h	$s2, $a0, 1126
+	st.h	$s2, $a0, 1386
 	st.h	$t6, $a0, 610
 	st.h	$t6, $a0, 672
 	st.h	$t6, $a0, 1130
@@ -9621,10 +9625,10 @@ qtm_init:                               # @qtm_init
 	st.h	$t7, $a0, 646
 	st.h	$t7, $a0, 1166
 	st.h	$t7, $a0, 1426
-	st.h	$s2, $a0, 632
-	st.h	$s2, $a0, 650
-	st.h	$s2, $a0, 1170
-	st.h	$s2, $a0, 1430
+	st.h	$s4, $a0, 632
+	st.h	$s4, $a0, 650
+	st.h	$s4, $a0, 1170
+	st.h	$s4, $a0, 1430
 	st.h	$a2, $a0, 628
 	st.h	$zero, $a0, 770
 	st.h	$a2, $a0, 654
@@ -9633,7 +9637,7 @@ qtm_init:                               # @qtm_init
 	st.h	$a4, $a0, 758
 	ori	$a4, $zero, 4
 	st.h	$a4, $a0, 754
-	st.h	$s8, $a0, 750
+	st.h	$ra, $a0, 750
 	ori	$a1, $zero, 6
 	st.h	$a1, $a0, 746
 	st.h	$s5, $a0, 742
@@ -9642,7 +9646,7 @@ qtm_init:                               # @qtm_init
 	st.h	$a7, $a0, 730
 	st.h	$t1, $a0, 726
 	st.h	$s3, $a0, 722
-	st.h	$s7, $a0, 718
+	st.h	$s8, $a0, 718
 	ori	$a1, $zero, 14
 	st.h	$a1, $a0, 714
 	ori	$a1, $zero, 15
@@ -9654,16 +9658,16 @@ qtm_init:                               # @qtm_init
 	st.h	$t8, $a0, 658
 	st.h	$t8, $a0, 1178
 	st.h	$t8, $a0, 1438
-	st.h	$s4, $a0, 620
-	st.h	$s4, $a0, 662
-	st.h	$s4, $a0, 1182
-	st.h	$s4, $a0, 1442
+	st.h	$s6, $a0, 620
+	st.h	$s6, $a0, 662
+	st.h	$s6, $a0, 1182
+	st.h	$s6, $a0, 1442
 	st.h	$s0, $a0, 616
 	st.h	$s0, $a0, 666
 	st.h	$s0, $a0, 1186
 	st.h	$s0, $a0, 1446
-	st.h	$s6, $a0, 612
-	st.h	$s6, $a0, 670
+	st.h	$s7, $a0, 612
+	st.h	$s7, $a0, 670
 	ori	$a1, $zero, 18
 	st.h	$a1, $a0, 698
 	ori	$a5, $zero, 19
@@ -9678,8 +9682,8 @@ qtm_init:                               # @qtm_init
 	st.h	$t1, $a0, 678
 	ori	$a2, $zero, 24
 	st.h	$a2, $a0, 674
-	st.h	$s6, $a0, 1190
-	st.h	$s6, $a0, 1450
+	st.h	$s7, $a0, 1190
+	st.h	$s7, $a0, 1450
 	st.h	$t1, $a0, 604
 	st.h	$t1, $a0, 1198
 	st.h	$t1, $a0, 1458
@@ -9696,8 +9700,8 @@ qtm_init:                               # @qtm_init
 	st.h	$a5, $a0, 1214
 	st.h	$a5, $a0, 1474
 	st.h	$a1, $a0, 584
-	st.h	$ra, $a0, 626
-	st.h	$ra, $a0, 656
+	st.h	$s1, $a0, 626
+	st.h	$s1, $a0, 656
 	st.h	$a1, $a0, 1218
 	st.h	$a1, $a0, 1478
 	lu12i.w	$a1, 3840
@@ -9815,7 +9819,7 @@ qtm_init:                               # @qtm_init
 	slli.d	$a6, $fp, 1
 	addi.w	$a5, $a6, 0
 	sltui	$a1, $a5, 36
-	masknez	$a2, $ra, $a1
+	masknez	$a2, $s1, $a1
 	st.w	$a7, $a0, 1648
 	maskeqz	$a1, $a5, $a1
 	or	$a4, $a1, $a2
@@ -9830,9 +9834,9 @@ qtm_init:                               # @qtm_init
 	st.d	$a1, $a0, 456
 	xvst	$xr0, $a0, 1552
 	xvst	$xr1, $a0, 1584
-	st.h	$ra, $a0, 1146
+	st.h	$s1, $a0, 1146
 	st.h	$zero, $a0, 1290
-	st.h	$ra, $a0, 1406
+	st.h	$s1, $a0, 1406
 	st.h	$zero, $a0, 1550
 	xvst	$xr2, $a0, 1616
 	st.w	$a4, $a0, 452
@@ -9841,8 +9845,8 @@ qtm_init:                               # @qtm_init
 	move	$a3, $zero
 	addi.d	$a7, $a0, 1658
 	move	$t1, $a4
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB12_9:                               # %vector.body206
                                         # =>This Inner Loop Header: Depth=1
@@ -9862,18 +9866,18 @@ qtm_init:                               # @qtm_init
 .LBB12_11:
 	move	$a0, $zero
 .LBB12_12:                              # %cleanup
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .LBB12_13:                              # %if.then52
 	move	$a0, $s4
@@ -9892,12 +9896,14 @@ qtm_init:                               # @qtm_init
 	b	.LBB12_12
 .LBB12_16:
 	move	$a7, $zero
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 .LBB12_17:                              # %for.body.i127.preheader
+	ld.d	$t2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$t3, $sp, 8                     # 8-byte Folded Reload
 	bstrpick.d	$a3, $a6, 31, 0
 	sltui	$t0, $a3, 36
-	masknez	$t1, $ra, $t0
+	masknez	$t1, $s1, $t0
 	maskeqz	$t0, $a3, $t0
 	or	$t0, $t0, $t1
 	addi.d	$t0, $t0, 1
@@ -9960,29 +9966,26 @@ qtm_init:                               # @qtm_init
 	pcalau12i	$a3, %pc_hi20(.LCPI12_6)
 	xvld	$xr1, $a3, %pc_lo12(.LCPI12_6)
 	xvst	$xr0, $a0, 1972
+	pcalau12i	$a3, %pc_hi20(.LCPI12_7)
+	xvld	$xr0, $a3, %pc_lo12(.LCPI12_7)
+	xvst	$xr1, $a0, 2004
 	addi.d	$a3, $a0, 1972
 	ori	$a4, $zero, 4
-	xvst	$xr1, $a0, 2004
-	pcalau12i	$a5, %pc_hi20(.LCPI12_7)
-	xvld	$xr0, $a5, %pc_lo12(.LCPI12_7)
+	xvst	$xr0, $a0, 2036
+	pcalau12i	$a5, %pc_hi20(.LCPI12_8)
+	xvld	$xr0, $a5, %pc_lo12(.LCPI12_8)
 	ori	$a5, $zero, 4
 	lu32i.d	$a5, 27
 	st.d	$a5, $a0, 480
 	st.d	$a3, $a0, 488
-	xvst	$xr0, $a0, 2036
-	addi.d	$a3, $a0, 2047
-	pcalau12i	$a5, %pc_hi20(.LCPI12_8)
-	xvld	$xr0, $a5, %pc_lo12(.LCPI12_8)
-	addi.d	$a3, $a3, 37
-	lu32i.d	$a4, 7
-	ori	$a5, $zero, 2068
-	xvstx	$xr0, $a0, $a5
+	addi.d	$a3, $t3, 37
+	xvst	$xr0, $t2, 0
 	pcalau12i	$a5, %pc_hi20(.LCPI12_9)
 	vld	$vr0, $a5, %pc_lo12(.LCPI12_9)
+	lu32i.d	$a4, 7
 	st.d	$a4, $a0, 496
 	st.d	$a3, $a0, 504
-	ori	$a3, $zero, 2100
-	vstx	$vr0, $a0, $a3
+	vst	$vr0, $t2, 32
 	stptr.d	$a2, $a0, 2120
 	stptr.d	$a1, $a0, 2128
 	b	.LBB12_12

@@ -70,9 +70,8 @@ main:                                   # @main
 	ori	$a0, $a0, 3021
 	lu32i.d	$a0, 434334
 	lu52i.d	$a0, $a0, 1022
-	vreplgr2vr.d	$vr0, $a0
-	ori	$a0, $zero, 2048
-	vstx	$vr0, $s0, $a0
+	stptr.d	$a0, $s0, 2048
+	stptr.d	$a0, $s0, 2056
 	addi.d	$a0, $s0, 2047
 	addi.d	$s2, $a0, 2041
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)

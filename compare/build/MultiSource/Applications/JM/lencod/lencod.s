@@ -1619,11 +1619,12 @@ init_img:                               # @init_img
 	stptr.d	$zero, $a0, 15524
 	stptr.w	$zero, $a0, 15532
 	stptr.d	$zero, $a0, 15544
+	ori	$a5, $s3, 3272
+	add.d	$a5, $a0, $a5
 	stptr.w	$zero, $a0, 15456
-	vrepli.b	$vr0, 0
-	ori	$a5, $s3, 3280
-	vstx	$vr0, $a0, $a5
 	stptr.d	$zero, $a0, 15560
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a5, 8
 	move	$a5, $a3
 .LBB4_3:                                # %if.end93
 	addi.w	$a5, $a5, 0

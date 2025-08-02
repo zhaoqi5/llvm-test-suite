@@ -4272,12 +4272,13 @@ itrans:                                 # @itrans
 	slli.d	$a3, $a3, 8
 	add.d	$a3, $a0, $a3
 	slli.d	$a4, $a4, 6
+	add.d	$a3, $a3, $a4
 	slli.d	$a2, $a2, 5
 	add.d	$a2, $a0, $a2
 	alsl.d	$a1, $a1, $a2, 1
 	ld.d	$a2, $a1, 104
-	add.d	$a3, $a3, $a4
 	ori	$a4, $zero, 2408
+	add.d	$a6, $a3, $a4
 	vldx	$vr0, $a3, $a4
 	vinsgr2vr.d	$vr1, $a2, 0
 	vrepli.b	$vr2, 0
@@ -4285,28 +4286,25 @@ itrans:                                 # @itrans
 	vadd.w	$vr0, $vr0, $vr1
 	vmaxi.w	$vr0, $vr0, 0
 	vreplgr2vr.w	$vr1, $a5
-	vmin.w	$vr0, $vr0, $vr1
 	ld.d	$a2, $a1, 136
-	ori	$a4, $zero, 2424
-	vldx	$vr3, $a3, $a4
+	vmin.w	$vr0, $vr0, $vr1
+	vld	$vr3, $a6, 16
 	vst	$vr0, $a0, 1384
 	vinsgr2vr.d	$vr0, $a2, 0
 	vilvl.h	$vr0, $vr2, $vr0
 	vadd.w	$vr0, $vr3, $vr0
 	vmaxi.w	$vr0, $vr0, 0
-	vmin.w	$vr0, $vr0, $vr1
 	ld.d	$a2, $a1, 168
-	ori	$a4, $zero, 2440
-	vldx	$vr3, $a3, $a4
+	vmin.w	$vr0, $vr0, $vr1
+	vld	$vr3, $a6, 32
 	vst	$vr0, $a0, 1448
 	vinsgr2vr.d	$vr0, $a2, 0
 	vilvl.h	$vr0, $vr2, $vr0
 	vadd.w	$vr0, $vr3, $vr0
 	vmaxi.w	$vr0, $vr0, 0
-	vmin.w	$vr0, $vr0, $vr1
 	ld.d	$a1, $a1, 200
-	ori	$a2, $zero, 2456
-	vldx	$vr3, $a3, $a2
+	vmin.w	$vr0, $vr0, $vr1
+	vld	$vr3, $a6, 48
 	vst	$vr0, $a0, 1512
 	vinsgr2vr.d	$vr0, $a1, 0
 	vilvl.h	$vr0, $vr2, $vr0

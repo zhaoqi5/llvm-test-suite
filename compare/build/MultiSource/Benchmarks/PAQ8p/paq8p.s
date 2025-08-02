@@ -24305,62 +24305,60 @@ _ZN7EncoderC2E4ModeP8_IO_FILE:          # @_ZN7EncoderC2E4ModeP8_IO_FILE
 	bstrins.d	$a0, $s1, 63, 8
 	st.w	$a0, $fp, 24
 .LBB75_3:                               # %vector.body.preheader
-	lu12i.w	$a0, 16
-	lu32i.d	$a0, 196610
-	vreplgr2vr.d	$vr0, $a0
-	lu12i.w	$a0, -1
-	lu12i.w	$a1, 4
+	pcalau12i	$a0, %pc_hi20(_ZL2dt+16)
+	addi.d	$a0, $a0, %pc_lo12(_ZL2dt+16)
+	lu12i.w	$a1, 16
+	lu32i.d	$a1, 196610
+	vreplgr2vr.d	$vr0, $a1
+	ori	$a1, $zero, 1024
+	lu12i.w	$a2, 4
 	vrepli.b	$vr1, 0
-	pcalau12i	$a2, %pc_hi20(_ZL2dt)
-	addi.d	$a2, $a2, %pc_lo12(_ZL2dt)
-	lu12i.w	$a3, 1
-	ori	$a4, $a3, 16
 	.p2align	4, , 16
 .LBB75_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vslli.h	$vr2, $vr0, 1
 	vaddi.hu	$vr3, $vr2, 3
 	vaddi.hu	$vr2, $vr2, 11
-	vpickve2gr.h	$a5, $vr3, 1
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vpickve2gr.h	$a6, $vr3, 0
-	bstrpick.d	$a6, $a6, 15, 0
-	div.du	$a6, $a1, $a6
-	vinsgr2vr.h	$vr4, $a6, 0
-	vinsgr2vr.h	$vr4, $a5, 1
-	vpickve2gr.h	$a5, $vr3, 2
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr4, $a5, 2
-	vpickve2gr.h	$a5, $vr3, 3
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr4, $a5, 3
-	vpickve2gr.h	$a5, $vr2, 1
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vpickve2gr.h	$a6, $vr2, 0
-	bstrpick.d	$a6, $a6, 15, 0
-	div.du	$a6, $a1, $a6
-	vinsgr2vr.h	$vr3, $a6, 0
-	vinsgr2vr.h	$vr3, $a5, 1
-	vpickve2gr.h	$a5, $vr2, 2
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr3, $a5, 2
-	vpickve2gr.h	$a5, $vr2, 3
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr3, $a5, 3
+	vpickve2gr.h	$a3, $vr3, 1
+	bstrpick.d	$a3, $a3, 15, 0
+	div.du	$a3, $a2, $a3
+	vpickve2gr.h	$a4, $vr3, 0
+	bstrpick.d	$a4, $a4, 15, 0
+	div.du	$a4, $a2, $a4
+	vinsgr2vr.h	$vr4, $a4, 0
+	vinsgr2vr.h	$vr4, $a3, 1
+	vpickve2gr.h	$a3, $vr3, 2
+	bstrpick.d	$a3, $a3, 15, 0
+	div.du	$a3, $a2, $a3
+	vinsgr2vr.h	$vr4, $a3, 2
+	vpickve2gr.h	$a3, $vr3, 3
+	bstrpick.d	$a3, $a3, 15, 0
+	div.du	$a3, $a2, $a3
+	vinsgr2vr.h	$vr4, $a3, 3
+	vpickve2gr.h	$a3, $vr2, 1
+	bstrpick.d	$a3, $a3, 15, 0
+	div.du	$a3, $a2, $a3
+	vpickve2gr.h	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 15, 0
+	div.du	$a4, $a2, $a4
+	vinsgr2vr.h	$vr3, $a4, 0
+	vinsgr2vr.h	$vr3, $a3, 1
+	vpickve2gr.h	$a3, $vr2, 2
+	bstrpick.d	$a3, $a3, 15, 0
+	div.du	$a3, $a2, $a3
+	vinsgr2vr.h	$vr3, $a3, 2
+	vpickve2gr.h	$a3, $vr2, 3
+	bstrpick.d	$a3, $a3, 15, 0
+	div.du	$a3, $a2, $a3
+	vinsgr2vr.h	$vr3, $a3, 3
 	vilvl.h	$vr2, $vr1, $vr4
 	vilvl.h	$vr3, $vr1, $vr3
-	add.d	$a5, $a2, $a0
-	vstx	$vr2, $a5, $a3
-	vstx	$vr3, $a5, $a4
-	addi.d	$a0, $a0, 32
+	vst	$vr2, $a0, -16
+	vst	$vr3, $a0, 0
 	vaddi.hu	$vr0, $vr0, 8
-	bnez	$a0, .LBB75_4
+	addi.d	$a1, $a1, -8
+	addi.d	$a0, $a0, 32
+	bnez	$a1, .LBB75_4
 # %bb.5:                                # %for.cond.cleanup11
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -31052,61 +31050,59 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
 	st.w	$a0, $sp, 160
 .LBB104_193:                            # %vector.body1142.preheader
-	lu12i.w	$a0, 16
-	lu32i.d	$a0, 196610
-	vreplgr2vr.d	$vr0, $a0
-	lu12i.w	$a0, -1
-	lu12i.w	$a1, 4
-	pcalau12i	$a2, %pc_hi20(_ZL2dt)
-	addi.d	$a2, $a2, %pc_lo12(_ZL2dt)
-	lu12i.w	$a3, 1
-	ori	$a4, $a3, 16
+	pcalau12i	$a0, %pc_hi20(_ZL2dt+16)
+	addi.d	$a0, $a0, %pc_lo12(_ZL2dt+16)
+	lu12i.w	$a1, 16
+	lu32i.d	$a1, 196610
+	vreplgr2vr.d	$vr0, $a1
+	ori	$a1, $zero, 1024
+	lu12i.w	$a2, 4
 	.p2align	4, , 16
 .LBB104_194:                            # %vector.body1142
                                         # =>This Inner Loop Header: Depth=1
 	vslli.h	$vr1, $vr0, 1
 	vaddi.hu	$vr2, $vr1, 3
 	vaddi.hu	$vr1, $vr1, 11
-	vpickve2gr.h	$a5, $vr2, 1
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vpickve2gr.h	$a6, $vr2, 0
-	bstrpick.d	$a6, $a6, 15, 0
-	div.du	$a6, $a1, $a6
-	vinsgr2vr.h	$vr3, $a6, 0
-	vinsgr2vr.h	$vr3, $a5, 1
-	vpickve2gr.h	$a5, $vr2, 2
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr3, $a5, 2
-	vpickve2gr.h	$a5, $vr2, 3
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr3, $a5, 3
-	vpickve2gr.h	$a5, $vr1, 1
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vpickve2gr.h	$a6, $vr1, 0
-	bstrpick.d	$a6, $a6, 15, 0
-	div.du	$a6, $a1, $a6
-	vinsgr2vr.h	$vr2, $a6, 0
-	vinsgr2vr.h	$vr2, $a5, 1
-	vpickve2gr.h	$a5, $vr1, 2
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr2, $a5, 2
-	vpickve2gr.h	$a5, $vr1, 3
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr2, $a5, 3
+	vpickve2gr.h	$a3, $vr2, 1
+	bstrpick.d	$a3, $a3, 15, 0
+	div.du	$a3, $a2, $a3
+	vpickve2gr.h	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 15, 0
+	div.du	$a4, $a2, $a4
+	vinsgr2vr.h	$vr3, $a4, 0
+	vinsgr2vr.h	$vr3, $a3, 1
+	vpickve2gr.h	$a3, $vr2, 2
+	bstrpick.d	$a3, $a3, 15, 0
+	div.du	$a3, $a2, $a3
+	vinsgr2vr.h	$vr3, $a3, 2
+	vpickve2gr.h	$a3, $vr2, 3
+	bstrpick.d	$a3, $a3, 15, 0
+	div.du	$a3, $a2, $a3
+	vinsgr2vr.h	$vr3, $a3, 3
+	vpickve2gr.h	$a3, $vr1, 1
+	bstrpick.d	$a3, $a3, 15, 0
+	div.du	$a3, $a2, $a3
+	vpickve2gr.h	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 15, 0
+	div.du	$a4, $a2, $a4
+	vinsgr2vr.h	$vr2, $a4, 0
+	vinsgr2vr.h	$vr2, $a3, 1
+	vpickve2gr.h	$a3, $vr1, 2
+	bstrpick.d	$a3, $a3, 15, 0
+	div.du	$a3, $a2, $a3
+	vinsgr2vr.h	$vr2, $a3, 2
+	vpickve2gr.h	$a3, $vr1, 3
+	bstrpick.d	$a3, $a3, 15, 0
+	div.du	$a3, $a2, $a3
+	vinsgr2vr.h	$vr2, $a3, 3
 	vilvl.h	$vr1, $vr4, $vr3
 	vilvl.h	$vr2, $vr4, $vr2
-	add.d	$a5, $a2, $a0
-	vstx	$vr1, $a5, $a3
-	vstx	$vr2, $a5, $a4
-	addi.d	$a0, $a0, 32
+	vst	$vr1, $a0, -16
+	vst	$vr2, $a0, 0
 	vaddi.hu	$vr0, $vr0, 8
-	bnez	$a0, .LBB104_194
+	addi.d	$a1, $a1, -8
+	addi.d	$a0, $a0, 32
+	bnez	$a1, .LBB104_194
 # %bb.195:                              # %invoke.cont351
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	beqz	$a0, .LBB104_203
@@ -31932,7 +31928,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .LBB104_345:                            # %lpad383
 .Ltmp395:                               # EH_LABEL
 	b	.LBB104_362
-.LBB104_346:                            # %lpad2591208
+.LBB104_346:                            # %lpad2591207
 .Ltmp387:                               # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0
@@ -31941,7 +31937,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$fp, $s5
 	move	$s8, $s4
 	b	.LBB104_389
-.LBB104_347:                            # %lpad2591209
+.LBB104_347:                            # %lpad2591208
 .Ltmp384:                               # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0

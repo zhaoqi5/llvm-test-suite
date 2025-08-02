@@ -461,23 +461,20 @@ prfs_Clean:                             # @prfs_Clean
 	st.d	$zero, $fp, 96
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $fp, 0
+	ld.d	$a0, $fp, 104
 	xvst	$xr0, $fp, 56
 	st.d	$zero, $fp, 120
 	xvst	$xr0, $fp, 128
-	ld.d	$a0, $fp, 104
-	lu12i.w	$a1, -4
-	ori	$a1, $a1, 384
+	addi.d	$a0, $a0, 32
+	ori	$a1, $zero, 4000
 	xvrepli.w	$xr0, -42
-	lu12i.w	$a3, 3
-	ori	$a2, $a3, 3712
-	ori	$a3, $a3, 3744
 	.p2align	4, , 16
 .LBB4_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $a0, $a1
-	xvstx	$xr0, $a4, $a2
-	addi.d	$a1, $a1, 64
-	xvstx	$xr0, $a4, $a3
+	xvst	$xr0, $a0, -32
+	xvst	$xr0, $a0, 0
+	addi.d	$a1, $a1, -16
+	addi.d	$a0, $a0, 64
 	bnez	$a1, .LBB4_1
 # %bb.2:                                # %symbol_ClearPrecedence.exit
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
@@ -567,23 +564,21 @@ prfs_Create:                            # @prfs_Create
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
 	xvst	$xr0, $fp, 56
-	lu12i.w	$s1, 3
-	ori	$s0, $s1, 3712
+	lu12i.w	$a0, 3
+	ori	$s0, $a0, 3712
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	lu12i.w	$a1, -4
-	ori	$a1, $a1, 384
+	move	$a1, $zero
 	xvrepli.w	$xr0, -42
-	ori	$a2, $s1, 3744
 	.p2align	4, , 16
 .LBB6_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $a0, $a1
-	xvstx	$xr0, $a3, $s0
+	add.d	$a2, $a0, $a1
+	xvstx	$xr0, $a0, $a1
 	addi.d	$a1, $a1, 64
-	xvstx	$xr0, $a3, $a2
-	bnez	$a1, .LBB6_1
+	xvst	$xr0, $a2, 32
+	bne	$a1, $s0, .LBB6_1
 # %bb.2:                                # %symbol_CreatePrecedence.exit
 	st.d	$a0, $fp, 104
 	ori	$a0, $zero, 384

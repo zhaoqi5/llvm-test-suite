@@ -93,7 +93,11 @@ main:                                   # @main
 	fsel	$fa7, $fa2, $fa7, $fcc0
 	xvreplve0.w	$xr9, $xr8
 	xvreplve0.w	$xr10, $xr7
-	move	$t0, $a3
+	ori	$t0, $zero, 2048
+	lu12i.w	$t1, 2
+	ori	$t1, $t1, 8
+	add.d	$t1, $sp, $t1
+	addi.d	$t2, $sp, 8
 	xvori.b	$xr11, $xr5, 0
 	.p2align	4, , 16
 .LBB1_2:                                # %vector.body
@@ -101,13 +105,13 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	xvffint.s.wu	$xr12, $xr11
 	xvfadd.s	$xr13, $xr9, $xr12
-	add.d	$t1, $a4, $t0
-	xvstx	$xr13, $t1, $a5
+	xvst	$xr13, $t1, 0
 	xvfadd.s	$xr12, $xr10, $xr12
-	add.d	$t1, $a6, $t0
-	xvstx	$xr12, $t1, $a5
-	addi.d	$t0, $t0, 32
+	xvst	$xr12, $t2, 0
 	xvaddi.wu	$xr11, $xr11, 8
+	addi.d	$t0, $t0, -8
+	addi.d	$t2, $t2, 32
+	addi.d	$t1, $t1, 32
 	bnez	$t0, .LBB1_2
 # %bb.3:                                # %for.body.i.preheader
                                         #   in Loop: Header=BB1_1 Depth=1

@@ -1143,30 +1143,32 @@ L3psycho_anal:                          # @L3psycho_anal
 	ori	$t0, $zero, 2044
 	ori	$t1, $zero, 512
 	ori	$a0, $zero, 2
-	ori	$a6, $zero, 4064
+	ori	$a7, $zero, 4064
 	bne	$fp, $a0, .LBB0_80
 # %bb.72:                               # %vector.body1181.preheader
                                         #   in Loop: Header=BB0_69 Depth=1
 	lu12i.w	$a5, 1
-	move	$a0, $a5
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
-	ori	$a7, $zero, 3040
+	ori	$a0, $a5, 4064
+	move	$a1, $a5
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
+	ori	$a6, $zero, 3040
 	.p2align	4, , 16
 .LBB0_73:                               # %vector.body1181
                                         #   Parent Loop BB0_69 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a1, $s4, $a0
-	xvld	$xr1, $a1, -32
-	xvldx	$xr2, $a1, $a6
+	add.d	$a2, $s4, $a1
+	xvld	$xr1, $a2, -32
+	xvldx	$xr2, $s4, $a0
 	xvfadd.s	$xr3, $xr1, $xr2
-	xvreplgr2vr.w	$xr0, $a2
+	xvreplgr2vr.w	$xr0, $a3
 	xvfmul.s	$xr3, $xr3, $xr0
-	xvst	$xr3, $a1, -32
+	xvst	$xr3, $a2, -32
 	xvfsub.s	$xr1, $xr1, $xr2
 	xvfmul.s	$xr1, $xr1, $xr0
+	xvstx	$xr1, $s4, $a0
+	addi.d	$a1, $a1, -32
 	addi.d	$a0, $a0, -32
-	xvstx	$xr1, $a1, $a6
-	bnez	$a0, .LBB0_73
+	bnez	$a1, .LBB0_73
 # %bb.74:                               # %vector.body1167.preheader
                                         #   in Loop: Header=BB0_69 Depth=1
 	move	$a1, $zero
@@ -1175,12 +1177,12 @@ L3psycho_anal:                          # @L3psycho_anal
                                         #   Parent Loop BB0_69 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a2, $a4, $a1
-	xvldx	$xr1, $a2, $a7
+	xvldx	$xr1, $a2, $a6
 	ori	$a3, $a5, 2016
 	xvldx	$xr2, $a2, $a3
 	xvfadd.s	$xr3, $xr1, $xr2
 	xvfmul.s	$xr3, $xr3, $xr0
-	xvstx	$xr3, $a2, $a7
+	xvstx	$xr3, $a2, $a6
 	xvfsub.s	$xr1, $xr1, $xr2
 	xvfmul.s	$xr1, $xr1, $xr0
 	addi.d	$a1, $a1, -32
@@ -1215,14 +1217,14 @@ L3psycho_anal:                          # @L3psycho_anal
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a2, $a4, $a1
 	xvld	$xr1, $a2, 992
-	xvldx	$xr2, $a2, $a6
+	xvldx	$xr2, $a2, $a7
 	xvfadd.s	$xr3, $xr1, $xr2
 	xvfmul.s	$xr3, $xr3, $xr0
 	xvst	$xr3, $a2, 992
 	xvfsub.s	$xr1, $xr1, $xr2
 	xvfmul.s	$xr1, $xr1, $xr0
 	addi.d	$a1, $a1, -32
-	xvstx	$xr1, $a2, $a6
+	xvstx	$xr1, $a2, $a7
 	bne	$a1, $a0, .LBB0_79
 .LBB0_80:                               # %if.end409
                                         #   in Loop: Header=BB0_69 Depth=1
@@ -1530,7 +1532,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	fdiv.d	$fa0, $fa1, $fa0
 	fcvt.s.d	$fa0, $fa0
 	b	.LBB0_97
-.LBB0_104:                              # %call.sqrt1571
+.LBB0_104:                              # %call.sqrt1566
                                         #   in Loop: Header=BB0_98 Depth=2
 	fmov.s	$fa0, $fa1
 	st.d	$t2, $sp, 512                   # 8-byte Folded Spill
@@ -1618,7 +1620,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	fcmp.cor.s	$fcc0, $fs0, $fs0
 	fmul.s	$fs3, $fa0, $fa6
 	bcnez	$fcc0, .LBB0_114
-# %bb.112:                              # %call.sqrt1572
+# %bb.112:                              # %call.sqrt1567
                                         #   in Loop: Header=BB0_110 Depth=2
 	fmov.s	$fa0, $fa5
 	st.d	$t2, $sp, 512                   # 8-byte Folded Spill
@@ -1701,7 +1703,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	fdiv.d	$fa0, $fa1, $fa0
 	fcvt.s.d	$fa0, $fa0
 	b	.LBB0_109
-.LBB0_120:                              # %call.sqrt1574
+.LBB0_120:                              # %call.sqrt1569
                                         #   in Loop: Header=BB0_110 Depth=2
 	fmov.s	$fa0, $fa1
 	st.d	$t2, $sp, 512                   # 8-byte Folded Spill
@@ -1717,7 +1719,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	ld.d	$t0, $sp, 528                   # 8-byte Folded Reload
 	ld.d	$a3, $sp, 344                   # 8-byte Folded Reload
 	b	.LBB0_118
-.LBB0_121:                              # %call.sqrt1573
+.LBB0_121:                              # %call.sqrt1568
                                         #   in Loop: Header=BB0_110 Depth=2
 	fmov.s	$fa0, $fs1
 	st.d	$t2, $sp, 512                   # 8-byte Folded Spill

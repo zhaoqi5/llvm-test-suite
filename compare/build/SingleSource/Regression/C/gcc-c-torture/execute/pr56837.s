@@ -5,19 +5,18 @@
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:                                # %entry
-	lu12i.w	$a0, -2
+	ori	$a0, $zero, 1024
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
 	addi.w	$a2, $zero, -1
 	lu32i.d	$a2, 0
 	vreplgr2vr.d	$vr0, $a2
-	lu12i.w	$a2, 2
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $a1, $a0
-	addi.d	$a0, $a0, 16
-	vstx	$vr0, $a3, $a2
+	vst	$vr0, $a1, 0
+	addi.d	$a0, $a0, -2
+	addi.d	$a1, $a1, 16
 	bnez	$a0, .LBB0_1
 # %bb.2:                                # %for.end
 	ret

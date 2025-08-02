@@ -71,13 +71,10 @@ _ZNK12MaxBenchmark4initEv:              # @_ZNK12MaxBenchmark4initEv
 # %bb.0:                                # %entry
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI2_0)
-	lu12i.w	$a0, -2
-	ori	$a0, $a0, 192
-	vrepli.w	$vr1, 1
+	ori	$a0, $zero, 1000
 	pcalau12i	$a1, %pc_hi20(U)
 	addi.d	$a1, $a1, %pc_lo12(U)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 3904
+	vrepli.w	$vr1, 1
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB2_1:                                # %vector.body
@@ -88,11 +85,11 @@ _ZNK12MaxBenchmark4initEv:              # @_ZNK12MaxBenchmark4initEv
 	vbitsel.v	$vr3, $vr4, $vr2, $vr3
 	vext2xv.d.w	$xr3, $xr3
 	xvffint.d.l	$xr3, $xr3
-	add.d	$a3, $a1, $a0
-	xvstx	$xr3, $a3, $a2
+	xvst	$xr3, $a1, 0
 	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a0, $a0, 32
 	vaddi.wu	$vr2, $vr2, 4
+	addi.d	$a0, $a0, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB2_1
 # %bb.2:                                # %for.cond.cleanup
 	ret
@@ -262,17 +259,13 @@ _ZNK15MatrixBenchmark4initEv:           # @_ZNK15MatrixBenchmark4initEv
 # %bb.0:                                # %entry
 	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI6_0)
-	lu12i.w	$a0, -5
-	ori	$a0, $a0, 480
-	pcalau12i	$a1, %pc_hi20(C)
-	addi.d	$a1, $a1, %pc_lo12(C)
-	pcalau12i	$a2, %pc_hi20(.LCPI6_1)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI6_1)
-	lu12i.w	$a4, 4
-	ori	$a2, $a4, 3616
-	pcalau12i	$a3, %pc_hi20(D)
-	addi.d	$a3, $a3, %pc_lo12(D)
-	ori	$a4, $a4, 3632
+	pcalau12i	$a0, %pc_hi20(D+16)
+	addi.d	$a0, $a0, %pc_lo12(D+16)
+	pcalau12i	$a1, %pc_hi20(.LCPI6_1)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI6_1)
+	pcalau12i	$a1, %pc_hi20(C+16)
+	addi.d	$a1, $a1, %pc_lo12(C+16)
+	ori	$a2, $zero, 2500
 	.p2align	4, , 16
 .LBB6_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -283,20 +276,20 @@ _ZNK15MatrixBenchmark4initEv:           # @_ZNK15MatrixBenchmark4initEv
 	xvffint.d.lu	$xr3, $xr3
 	vext2xv.du.wu	$xr2, $xr2
 	xvffint.d.lu	$xr2, $xr2
-	add.d	$a5, $a1, $a0
 	xvpermi.d	$xr4, $xr3, 68
 	xvpermi.d	$xr5, $xr2, 68
 	xvori.b	$xr6, $xr1, 0
 	xvshuf.d	$xr6, $xr5, $xr4
-	xvstx	$xr6, $a5, $a2
+	xvst	$xr6, $a1, -16
 	vfrecip.d	$vr3, $vr3
 	vfrecip.d	$vr2, $vr2
-	add.d	$a5, $a3, $a0
-	vstx	$vr3, $a5, $a2
-	vstx	$vr2, $a5, $a4
-	addi.d	$a0, $a0, 32
+	vst	$vr3, $a0, -16
+	vst	$vr2, $a0, 0
 	vaddi.du	$vr0, $vr0, 4
-	bnez	$a0, .LBB6_1
+	addi.d	$a2, $a2, -4
+	addi.d	$a0, $a0, 32
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB6_1
 # %bb.2:                                # %for.cond.cleanup
 	ret
 .Lfunc_end6:
@@ -421,17 +414,13 @@ _ZNK17IteratorBenchmark4initEv:         # @_ZNK17IteratorBenchmark4initEv
 # %bb.0:                                # %entry
 	pcalau12i	$a0, %pc_hi20(.LCPI10_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI10_0)
-	lu12i.w	$a0, -2
-	ori	$a0, $a0, 192
-	pcalau12i	$a1, %pc_hi20(A)
-	addi.d	$a1, $a1, %pc_lo12(A)
-	pcalau12i	$a2, %pc_hi20(.LCPI10_1)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI10_1)
-	lu12i.w	$a4, 1
-	ori	$a2, $a4, 3904
-	pcalau12i	$a3, %pc_hi20(B)
-	addi.d	$a3, $a3, %pc_lo12(B)
-	ori	$a4, $a4, 3920
+	pcalau12i	$a0, %pc_hi20(B+16)
+	addi.d	$a0, $a0, %pc_lo12(B+16)
+	pcalau12i	$a1, %pc_hi20(.LCPI10_1)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI10_1)
+	pcalau12i	$a1, %pc_hi20(A+16)
+	addi.d	$a1, $a1, %pc_lo12(A+16)
+	ori	$a2, $zero, 1000
 	.p2align	4, , 16
 .LBB10_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -442,20 +431,20 @@ _ZNK17IteratorBenchmark4initEv:         # @_ZNK17IteratorBenchmark4initEv
 	xvffint.d.lu	$xr3, $xr3
 	vext2xv.du.wu	$xr2, $xr2
 	xvffint.d.lu	$xr2, $xr2
-	add.d	$a5, $a1, $a0
 	xvpermi.d	$xr4, $xr3, 68
 	xvpermi.d	$xr5, $xr2, 68
 	xvori.b	$xr6, $xr1, 0
 	xvshuf.d	$xr6, $xr5, $xr4
-	xvstx	$xr6, $a5, $a2
+	xvst	$xr6, $a1, -16
 	vfrecip.d	$vr3, $vr3
 	vfrecip.d	$vr2, $vr2
-	add.d	$a5, $a3, $a0
-	vstx	$vr3, $a5, $a2
-	vstx	$vr2, $a5, $a4
-	addi.d	$a0, $a0, 32
+	vst	$vr3, $a0, -16
+	vst	$vr2, $a0, 0
 	vaddi.du	$vr0, $vr0, 4
-	bnez	$a0, .LBB10_1
+	addi.d	$a2, $a2, -4
+	addi.d	$a0, $a0, 32
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB10_1
 # %bb.2:                                # %for.cond.cleanup
 	ret
 .Lfunc_end10:
@@ -537,32 +526,29 @@ _ZNK16ComplexBenchmark7c_styleEv:       # @_ZNK16ComplexBenchmark7c_styleEv
 	.type	_ZNK16ComplexBenchmark9oop_styleEv,@function
 _ZNK16ComplexBenchmark9oop_styleEv:     # @_ZNK16ComplexBenchmark9oop_styleEv
 # %bb.0:                                # %entry
-	lu12i.w	$a0, -4
-	ori	$a0, $a0, 384
+	pcalau12i	$a0, %pc_hi20(X)
+	addi.d	$a0, $a0, %pc_lo12(X)
 	pcalau12i	$a1, %pc_hi20(Y)
 	addi.d	$a1, $a1, %pc_lo12(Y)
-	pcalau12i	$a2, %pc_hi20(X)
-	addi.d	$a2, $a2, %pc_lo12(X)
-	lu12i.w	$a3, 3
-	pcalau12i	$a4, %pc_hi20(.LCPI13_0)
-	vld	$vr0, $a4, %pc_lo12(.LCPI13_0)
-	ori	$a3, $a3, 3712
-	lu52i.d	$a4, $zero, 1022
-	vreplgr2vr.d	$vr1, $a4
+	pcalau12i	$a2, %pc_hi20(.LCPI13_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI13_0)
+	ori	$a2, $zero, 1000
+	lu52i.d	$a3, $zero, 1022
+	vreplgr2vr.d	$vr1, $a3
 	.p2align	4, , 16
 .LBB13_1:                               # %for.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $a2, $a0
-	vldx	$vr2, $a4, $a3
-	add.d	$a4, $a1, $a0
-	vldx	$vr3, $a4, $a3
+	vld	$vr2, $a0, 0
+	vld	$vr3, $a1, 0
 	vfmul.d	$vr4, $vr2, $vr0
 	vshuf4i.d	$vr4, $vr0, 1
 	vfmadd.d	$vr2, $vr2, $vr1, $vr4
 	vfadd.d	$vr2, $vr3, $vr2
+	vst	$vr2, $a1, 0
 	addi.d	$a0, $a0, 16
-	vstx	$vr2, $a4, $a3
-	bnez	$a0, .LBB13_1
+	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, 16
+	bnez	$a2, .LBB13_1
 # %bb.2:                                # %for.cond.cleanup
 	ret
 .Lfunc_end13:

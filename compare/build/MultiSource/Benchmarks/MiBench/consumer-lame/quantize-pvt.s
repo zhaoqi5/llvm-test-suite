@@ -711,30 +711,29 @@ ms_convert:                             # @ms_convert
 	bnez	$a3, .LBB3_3
 	b	.LBB3_6
 .LBB3_4:                                # %vector.body.preheader
-	lu12i.w	$a3, -2
-	ori	$a3, $a3, 3584
-	lu12i.w	$a4, 1
-	ori	$a4, $a4, 512
-	lu12i.w	$a5, 419827
-	ori	$a5, $a5, 3021
-	lu32i.d	$a5, 434334
-	lu52i.d	$a5, $a5, 1022
-	xvreplgr2vr.d	$xr0, $a5
+	ori	$a2, $zero, 576
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 512
+	lu12i.w	$a4, 419827
+	ori	$a4, $a4, 3021
+	lu32i.d	$a4, 434334
+	lu52i.d	$a4, $a4, 1022
+	xvreplgr2vr.d	$xr0, $a4
 	.p2align	4, , 16
 .LBB3_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a5, $a1, $a3
-	xvldx	$xr1, $a5, $a4
-	xvldx	$xr2, $a5, $a2
+	xvld	$xr1, $a1, 0
+	xvldx	$xr2, $a1, $a3
 	xvfadd.d	$xr3, $xr1, $xr2
 	xvfmul.d	$xr3, $xr3, $xr0
-	add.d	$a5, $a0, $a3
-	xvstx	$xr3, $a5, $a4
+	xvst	$xr3, $a0, 0
 	xvfsub.d	$xr1, $xr1, $xr2
 	xvfmul.d	$xr1, $xr1, $xr0
-	addi.d	$a3, $a3, 32
-	xvstx	$xr1, $a5, $a2
-	bnez	$a3, .LBB3_5
+	xvstx	$xr1, $a0, $a3
+	addi.d	$a2, $a2, -4
+	addi.d	$a0, $a0, 32
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB3_5
 .LBB3_6:                                # %for.end
 	ret
 .Lfunc_end3:
@@ -3740,41 +3739,38 @@ quantize_xrpow_ISO:                     # @quantize_xrpow_ISO
 	fdiv.d	$fa1, $fa1, $fa0
 	xvreplve0.d	$xr0, $xr0
 	xvreplve0.d	$xr1, $xr1
+	addi.d	$a1, $a1, 16
 	addi.d	$a0, $a0, 32
-	lu12i.w	$a2, -1
-	ori	$a2, $a2, 1792
+	ori	$a2, $zero, 576
 	lu12i.w	$a3, -166095
 	ori	$a3, $a3, 2300
 	lu32i.d	$a3, -396782
 	lu52i.d	$a3, $a3, 1021
 	xvreplgr2vr.d	$xr2, $a3
 	vrepli.b	$vr3, 0
-	ori	$a3, $zero, 2304
-	ori	$a4, $zero, 2320
 	.p2align	4, , 16
 .LBB13_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr4, $a0, -32
-	add.d	$a5, $a1, $a2
 	xvld	$xr5, $a0, 0
 	xvfcmp.clt.d	$xr6, $xr4, $xr1
-	xvpickve2gr.d	$a6, $xr6, 0
-	vinsgr2vr.w	$vr7, $a6, 0
-	xvpickve2gr.d	$a6, $xr6, 1
-	vinsgr2vr.w	$vr7, $a6, 1
-	xvpickve2gr.d	$a6, $xr6, 2
-	vinsgr2vr.w	$vr7, $a6, 2
-	xvpickve2gr.d	$a6, $xr6, 3
-	vinsgr2vr.w	$vr7, $a6, 3
+	xvpickve2gr.d	$a3, $xr6, 0
+	vinsgr2vr.w	$vr7, $a3, 0
+	xvpickve2gr.d	$a3, $xr6, 1
+	vinsgr2vr.w	$vr7, $a3, 1
+	xvpickve2gr.d	$a3, $xr6, 2
+	vinsgr2vr.w	$vr7, $a3, 2
+	xvpickve2gr.d	$a3, $xr6, 3
+	vinsgr2vr.w	$vr7, $a3, 3
 	xvfcmp.clt.d	$xr6, $xr5, $xr1
-	xvpickve2gr.d	$a6, $xr6, 0
-	vinsgr2vr.w	$vr8, $a6, 0
-	xvpickve2gr.d	$a6, $xr6, 1
-	vinsgr2vr.w	$vr8, $a6, 1
-	xvpickve2gr.d	$a6, $xr6, 2
-	vinsgr2vr.w	$vr8, $a6, 2
-	xvpickve2gr.d	$a6, $xr6, 3
-	vinsgr2vr.w	$vr8, $a6, 3
+	xvpickve2gr.d	$a3, $xr6, 0
+	vinsgr2vr.w	$vr8, $a3, 0
+	xvpickve2gr.d	$a3, $xr6, 1
+	vinsgr2vr.w	$vr8, $a3, 1
+	xvpickve2gr.d	$a3, $xr6, 2
+	vinsgr2vr.w	$vr8, $a3, 2
+	xvpickve2gr.d	$a3, $xr6, 3
+	vinsgr2vr.w	$vr8, $a3, 3
 	xvfmadd.d	$xr4, $xr0, $xr4, $xr2
 	xvfmadd.d	$xr5, $xr0, $xr5, $xr2
 	xvftintrz.l.d	$xr4, $xr4
@@ -3785,9 +3781,10 @@ quantize_xrpow_ISO:                     # @quantize_xrpow_ISO
 	xvpickev.w	$xr5, $xr6, $xr5
 	vbitsel.v	$vr4, $vr4, $vr3, $vr7
 	vbitsel.v	$vr5, $vr5, $vr3, $vr8
-	vstx	$vr4, $a5, $a3
-	vstx	$vr5, $a5, $a4
-	addi.d	$a2, $a2, 32
+	vst	$vr4, $a1, -16
+	vst	$vr5, $a1, 0
+	addi.d	$a1, $a1, 32
+	addi.d	$a2, $a2, -8
 	addi.d	$a0, $a0, 64
 	bnez	$a2, .LBB13_1
 # %bb.2:                                # %for.end

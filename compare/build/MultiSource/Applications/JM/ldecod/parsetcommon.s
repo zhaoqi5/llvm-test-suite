@@ -154,7 +154,7 @@ sps_is_equal:                           # @sps_is_equal
 	ld.w	$a2, $a0, 1016
 	ld.w	$a3, $a1, 1016
 	xor	$a2, $a2, $a3
-	sltu	$a3, $zero, $a2
+	sltu	$a5, $zero, $a2
 	b	.LBB4_16
 .LBB4_10:                               # %if.then46
 	vld	$vr1, $a0, 1020
@@ -178,58 +178,59 @@ sps_is_equal:                           # @sps_is_equal
 	ori	$a4, $zero, 1
 	b	.LBB4_38
 .LBB4_15:
-	move	$a3, $zero
+	move	$a5, $zero
 .LBB4_16:                               # %if.end76
 	ori	$a2, $zero, 2064
-	vldx	$vr1, $a0, $a2
-	vldx	$vr2, $a1, $a2
+	add.d	$a3, $a1, $a2
+	add.d	$a4, $a0, $a2
+	vld	$vr1, $a4, 0
+	vld	$vr2, $a3, 0
 	vseq.w	$vr1, $vr1, $vr2
 	vxor.v	$vr1, $vr1, $vr0
 	vmskltz.w	$vr1, $vr1
-	vpickve2gr.hu	$a4, $vr1, 0
+	vpickve2gr.hu	$a6, $vr1, 0
 	move	$a2, $zero
-	bnez	$a4, .LBB4_28
+	bnez	$a6, .LBB4_28
 # %bb.17:                               # %if.end76
-	ori	$a4, $zero, 2060
-	ldx.w	$a5, $a0, $a4
-	ldx.w	$a4, $a1, $a4
-	xor	$a4, $a5, $a4
-	sltu	$a4, $zero, $a4
-	bnez	$a4, .LBB4_28
+	ori	$a6, $zero, 2060
+	ldx.w	$a7, $a0, $a6
+	ldx.w	$a6, $a1, $a6
+	xor	$a6, $a7, $a6
+	sltu	$a6, $zero, $a6
+	bnez	$a6, .LBB4_28
 # %bb.18:                               # %if.end76
-	bnez	$a3, .LBB4_28
+	bnez	$a5, .LBB4_28
 # %bb.19:                               # %if.end99
 	ldptr.w	$a2, $a0, 2076
 	beqz	$a2, .LBB4_21
 # %bb.20:
-	move	$a3, $zero
-	ldptr.w	$a4, $a0, 2088
-	ldptr.w	$a5, $a1, 2088
+	move	$a5, $zero
+	ldptr.w	$a6, $a0, 2088
+	ldptr.w	$a7, $a1, 2088
 	move	$a2, $zero
-	beq	$a4, $a5, .LBB4_22
+	beq	$a6, $a7, .LBB4_22
 	b	.LBB4_28
 .LBB4_21:                               # %if.then102
 	ldptr.w	$a2, $a0, 2080
-	ldptr.w	$a3, $a1, 2080
-	xor	$a2, $a2, $a3
-	sltu	$a3, $zero, $a2
-	ldptr.w	$a4, $a0, 2088
-	ldptr.w	$a5, $a1, 2088
+	ldptr.w	$a5, $a1, 2080
+	xor	$a2, $a2, $a5
+	sltu	$a5, $zero, $a2
+	ldptr.w	$a6, $a0, 2088
+	ldptr.w	$a7, $a1, 2088
 	move	$a2, $zero
-	bne	$a4, $a5, .LBB4_28
+	bne	$a6, $a7, .LBB4_28
 .LBB4_22:                               # %if.end107
-	ori	$a5, $zero, 2084
-	ldx.w	$a6, $a1, $a5
-	ldx.w	$a5, $a0, $a5
-	bne	$a5, $a6, .LBB4_28
+	ori	$a7, $zero, 2084
+	ldx.w	$t0, $a1, $a7
+	ldx.w	$a7, $a0, $a7
+	bne	$a7, $t0, .LBB4_28
 # %bb.23:                               # %if.end107
-	bnez	$a3, .LBB4_28
+	bnez	$a5, .LBB4_28
 # %bb.24:                               # %if.end118
-	beqz	$a4, .LBB4_26
+	beqz	$a6, .LBB4_26
 # %bb.25:                               # %if.then121
-	ori	$a2, $zero, 2092
-	vldx	$vr1, $a0, $a2
-	vldx	$vr2, $a1, $a2
+	vld	$vr1, $a4, 28
+	vld	$vr2, $a3, 28
 	vseq.w	$vr1, $vr1, $vr2
 	vxor.v	$vr0, $vr1, $vr0
 	vmskltz.w	$vr0, $vr0
@@ -368,7 +369,7 @@ sps_is_equal:                           # @sps_is_equal
 	addi.d	$a6, $a6, 4
 	bnez	$a2, .LBB4_39
 .LBB4_40:                               # %if.end76.loopexit
-	sltui	$a3, $a4, 1
+	sltui	$a5, $a4, 1
 	b	.LBB4_16
 .Lfunc_end4:
 	.size	sps_is_equal, .Lfunc_end4-sps_is_equal

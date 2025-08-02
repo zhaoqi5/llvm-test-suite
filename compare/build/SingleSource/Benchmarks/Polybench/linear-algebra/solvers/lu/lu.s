@@ -565,12 +565,12 @@ init_array:                             # @init_array
 	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 128                  # 8-byte Folded Spill
-	move	$s6, $a0
+	move	$s5, $a0
 	move	$s0, $zero
 	addi.d	$a0, $a0, 8
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
-	ori	$s4, $zero, 1
-	addi.w	$s5, $zero, -8
+	ori	$s3, $zero, 1
+	addi.w	$s4, $zero, -8
 	lu12i.w	$a0, 3
 	ori	$a1, $a0, 3720
 	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
@@ -581,9 +581,9 @@ init_array:                             # @init_array
 	pcalau12i	$a0, %pc_hi20(.LCPI8_1)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI8_1)
 	vldi	$vr2, -912
-	ori	$s3, $zero, 1998
+	ori	$s8, $zero, 1998
 	lu52i.d	$s1, $zero, 1023
-	ori	$s8, $zero, 2000
+	ori	$s7, $zero, 2000
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI8_0)
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -592,7 +592,7 @@ init_array:                             # @init_array
 	lu52i.d	$a0, $a0, 1033
 	xvreplgr2vr.d	$xr3, $a0
 	xvreplgr2vr.d	$xr4, $s1
-	move	$fp, $s6
+	move	$fp, $s5
 	xvst	$xr3, $sp, 48                   # 32-byte Folded Spill
 	xvst	$xr4, $sp, 16                   # 32-byte Folded Spill
 	b	.LBB8_2
@@ -600,27 +600,27 @@ init_array:                             # @init_array
 .LBB8_1:                                # %for.end18
                                         #   in Loop: Header=BB8_2 Depth=1
 	mul.d	$a0, $s0, $s2
-	add.d	$a0, $s6, $a0
+	add.d	$a0, $s5, $a0
 	addi.d	$s0, $s0, 1
-	stx.d	$s1, $a0, $s7
-	addi.d	$s4, $s4, 1
+	stx.d	$s1, $a0, $s6
+	addi.d	$s3, $s3, 1
 	add.d	$fp, $fp, $s2
-	addi.d	$s5, $s5, -8
-	beq	$s0, $s8, .LBB8_11
+	addi.d	$s4, $s4, -8
+	beq	$s0, $s7, .LBB8_11
 .LBB8_2:                                # %for.cond1.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_5 Depth 2
                                         #     Child Loop BB8_8 Depth 2
-	bgeu	$s4, $a3, .LBB8_4
+	bgeu	$s3, $a3, .LBB8_4
 # %bb.3:                                #   in Loop: Header=BB8_2 Depth=1
 	move	$a0, $zero
 	b	.LBB8_7
 	.p2align	4, , 16
 .LBB8_4:                                # %vector.ph
                                         #   in Loop: Header=BB8_2 Depth=1
-	move	$a1, $s4
+	move	$a1, $s3
 	bstrins.d	$a1, $zero, 1, 0
-	bstrpick.d	$a0, $s4, 62, 2
+	bstrpick.d	$a0, $s3, 62, 2
 	slli.d	$a0, $a0, 2
 	move	$a2, $fp
 	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
@@ -640,7 +640,7 @@ init_array:                             # @init_array
 	bnez	$a1, .LBB8_5
 # %bb.6:                                # %middle.block
                                         #   in Loop: Header=BB8_2 Depth=1
-	beq	$s4, $a0, .LBB8_9
+	beq	$s3, $a0, .LBB8_9
 .LBB8_7:                                # %for.body3.preheader
                                         #   in Loop: Header=BB8_2 Depth=1
 	sub.w	$a1, $zero, $a0
@@ -655,13 +655,13 @@ init_array:                             # @init_array
 	fadd.d	$fa0, $fa0, $fa2
 	fstx.d	$fa0, $fp, $a0
 	addi.d	$a0, $a0, 8
-	add.d	$a2, $s5, $a0
+	add.d	$a2, $s4, $a0
 	addi.w	$a1, $a1, -1
 	bnez	$a2, .LBB8_8
 .LBB8_9:                                # %for.end
                                         #   in Loop: Header=BB8_2 Depth=1
-	slli.d	$s7, $s0, 3
-	bltu	$s3, $s0, .LBB8_1
+	slli.d	$s6, $s0, 3
+	bltu	$s8, $s0, .LBB8_1
 # %bb.10:                               # %for.body11.lr.ph
                                         #   in Loop: Header=BB8_2 Depth=1
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -669,7 +669,7 @@ init_array:                             # @init_array
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	sub.d	$a1, $a1, $s7
+	sub.d	$a1, $a1, $s6
 	bstrpick.d	$a1, $a1, 34, 3
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8
@@ -691,9 +691,9 @@ init_array:                             # @init_array
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
 	ld.d	$s0, $sp, 120
-	beqz	$s0, .LBB8_28
+	beqz	$s0, .LBB8_30
 # %bb.12:                               # %for.end25
-	bnez	$a0, .LBB8_28
+	bnez	$a0, .LBB8_30
 # %bb.13:                               # %polybench_alloc_data.exit
 	move	$a0, $s0
 	move	$a1, $zero
@@ -704,16 +704,16 @@ init_array:                             # @init_array
 	add.d	$a2, $s0, $s1
 	lu12i.w	$a0, 7808
 	ori	$a0, $a0, 2440
-	add.d	$a3, $s6, $a0
+	add.d	$a3, $s5, $a0
 	lu12i.w	$a0, 7
 	ori	$a0, $a0, 3328
-	add.d	$a4, $s6, $a0
+	add.d	$a4, $s5, $a0
 	lu12i.w	$a0, -4
 	ori	$a5, $a0, 384
 	ori	$a6, $zero, 2000
 	lu12i.w	$a7, -8
 	ori	$a7, $a7, 768
-	move	$t0, $s6
+	move	$t0, $s5
 	b	.LBB8_15
 	.p2align	4, , 16
 .LBB8_14:                               # %for.inc75
@@ -728,7 +728,7 @@ init_array:                             # @init_array
                                         #       Child Loop BB8_21 Depth 3
                                         #       Child Loop BB8_19 Depth 3
 	move	$t1, $zero
-	alsl.d	$t2, $a1, $s6, 3
+	alsl.d	$t2, $a1, $s5, 3
 	alsl.d	$t3, $a1, $a3, 3
 	sltu	$t3, $s0, $t3
 	sltu	$t4, $t2, $a2
@@ -773,78 +773,89 @@ init_array:                             # @init_array
 .LBB8_20:                               # %vector.body8.preheader
                                         #   in Loop: Header=BB8_17 Depth=2
 	xvldrepl.d	$xr0, $t5, 0
-	move	$t5, $a4
-	move	$t6, $a5
+	ori	$t5, $zero, 2000
+	move	$t6, $t4
+	move	$t7, $a4
 	.p2align	4, , 16
 .LBB8_21:                               # %vector.body8
                                         #   Parent Loop BB8_15 Depth=1
                                         #     Parent Loop BB8_17 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	fldx.d	$fa1, $t5, $a7
-	fldx.d	$fa2, $t5, $a5
-	fld.d	$fa3, $t5, 0
-	fldx.d	$fa4, $t5, $s2
+	fldx.d	$fa1, $t7, $a7
+	fldx.d	$fa2, $t7, $a5
+	fld.d	$fa3, $t7, 0
+	fldx.d	$fa4, $t7, $s2
 	xvinsve0.d	$xr1, $xr2, 1
-	add.d	$t7, $t4, $t6
-	xvldx	$xr2, $t7, $s2
+	xvld	$xr2, $t6, 0
 	xvinsve0.d	$xr1, $xr3, 2
 	xvinsve0.d	$xr1, $xr4, 3
 	xvfmul.d	$xr1, $xr0, $xr1
 	xvfadd.d	$xr1, $xr2, $xr1
-	xvstx	$xr1, $t7, $s2
+	xvst	$xr1, $t6, 0
+	addu16i.d	$t7, $t7, 1
+	addi.d	$t7, $t7, -1536
+	addi.d	$t5, $t5, -4
 	addi.d	$t6, $t6, 32
-	addu16i.d	$t5, $t5, 1
-	addi.d	$t5, $t5, -1536
-	bnez	$t6, .LBB8_21
+	bnez	$t5, .LBB8_21
 	b	.LBB8_16
 .LBB8_22:                               # %for.cond82.preheader.preheader
 	move	$a1, $zero
-	sub.d	$a2, $s6, $s0
-	ori	$a3, $zero, 64
+	sub.d	$a2, $s5, $s0
+	addi.d	$a3, $s5, 32
+	addi.d	$a4, $s0, 32
+	ori	$a5, $zero, 64
 	ori	$a0, $a0, 384
-	ori	$a4, $zero, 2000
-	lu12i.w	$a5, 3
-	ori	$a5, $a5, 3744
-	move	$a6, $s0
+	ori	$a6, $zero, 2000
+	move	$a7, $s0
 	b	.LBB8_24
 	.p2align	4, , 16
 .LBB8_23:                               # %for.inc97
                                         #   in Loop: Header=BB8_24 Depth=1
 	addi.d	$a1, $a1, 1
-	add.d	$s6, $s6, $s2
-	add.d	$a6, $a6, $s2
-	beq	$a1, $a4, .LBB8_27
+	add.d	$a3, $a3, $s2
+	add.d	$a4, $a4, $s2
+	add.d	$s5, $s5, $s2
+	add.d	$a7, $a7, $s2
+	beq	$a1, $a6, .LBB8_29
 .LBB8_24:                               # %for.cond82.preheader
                                         # =>This Loop Header: Depth=1
+                                        #     Child Loop BB8_28 Depth 2
                                         #     Child Loop BB8_26 Depth 2
-                                        #     Child Loop BB8_25 Depth 2
-	move	$a7, $a0
-	bgeu	$a2, $a3, .LBB8_26
+	bgeu	$a2, $a5, .LBB8_27
+# %bb.25:                               # %for.body85.preheader
+                                        #   in Loop: Header=BB8_24 Depth=1
+	move	$t0, $a0
 	.p2align	4, , 16
-.LBB8_25:                               # %for.body85
+.LBB8_26:                               # %for.body85
                                         #   Parent Loop BB8_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$t0, $a6, $a7
-	fldx.d	$fa0, $t0, $s2
-	add.d	$t0, $s6, $a7
-	addi.d	$a7, $a7, 8
-	fstx.d	$fa0, $t0, $s2
-	bnez	$a7, .LBB8_25
+	add.d	$t1, $a7, $t0
+	fldx.d	$fa0, $t1, $s2
+	add.d	$t1, $s5, $t0
+	addi.d	$t0, $t0, 8
+	fstx.d	$fa0, $t1, $s2
+	bnez	$t0, .LBB8_26
 	b	.LBB8_23
 	.p2align	4, , 16
-.LBB8_26:                               # %vector.body17
+.LBB8_27:                               # %vector.body17.preheader
+                                        #   in Loop: Header=BB8_24 Depth=1
+	ori	$t0, $zero, 2000
+	move	$t1, $a4
+	move	$t2, $a3
+	.p2align	4, , 16
+.LBB8_28:                               # %vector.body17
                                         #   Parent Loop BB8_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$t0, $a6, $a7
-	xvldx	$xr0, $t0, $s2
-	xvldx	$xr1, $t0, $a5
-	add.d	$t0, $s6, $a7
-	xvstx	$xr0, $t0, $s2
-	addi.d	$a7, $a7, 64
-	xvstx	$xr1, $t0, $a5
-	bnez	$a7, .LBB8_26
+	xvld	$xr0, $t1, -32
+	xvld	$xr1, $t1, 0
+	xvst	$xr0, $t2, -32
+	xvst	$xr1, $t2, 0
+	addi.d	$t0, $t0, -8
+	addi.d	$t2, $t2, 64
+	addi.d	$t1, $t1, 64
+	bnez	$t0, .LBB8_28
 	b	.LBB8_23
-.LBB8_27:                               # %for.end99
+.LBB8_29:                               # %for.end99
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -862,7 +873,7 @@ init_array:                             # @init_array
 	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 224
 	ret
-.LBB8_28:                               # %if.then.i.i
+.LBB8_30:                               # %if.then.i.i
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a3, $a0, 0
