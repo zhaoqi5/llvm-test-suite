@@ -1434,11 +1434,10 @@ _ZN9NCompress8NDeflate8NDecoder6CCoder10ReadTablesEv: # @_ZN9NCompress8NDeflate8
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB5_80
 # %bb.79:                               # %if.end52
-	addi.d	$a0, $sp, 633
-	vrepli.b	$vr0, 0
-	vst	$vr0, $a0, 32
 	st.d	$zero, $sp, 688
 	st.d	$zero, $sp, 681
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 665
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 633
 	addi.d	$a0, $sp, 376
