@@ -283,21 +283,23 @@ main:                                   # @main
 .LBB7_13:                               # %vector.ph
                                         #   in Loop: Header=BB7_10 Depth=1
 	xvreplgr2vr.d	$xr9, $a5
-	move	$t6, $t0
+	ori	$t6, $zero, 1000
+	move	$t7, $t4
+	move	$t8, $t5
 	xvori.b	$xr10, $xr3, 0
 	.p2align	4, , 16
 .LBB7_14:                               # %vector.body
                                         #   Parent Loop BB7_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvmul.d	$xr11, $xr10, $xr9
-	xvpickve2gr.d	$t7, $xr11, 0
-	vinsgr2vr.w	$vr12, $t7, 0
-	xvpickve2gr.d	$t7, $xr11, 1
-	vinsgr2vr.w	$vr12, $t7, 1
-	xvpickve2gr.d	$t7, $xr11, 2
-	vinsgr2vr.w	$vr12, $t7, 2
-	xvpickve2gr.d	$t7, $xr11, 3
-	vinsgr2vr.w	$vr12, $t7, 3
+	xvpickve2gr.d	$fp, $xr11, 0
+	vinsgr2vr.w	$vr12, $fp, 0
+	xvpickve2gr.d	$fp, $xr11, 1
+	vinsgr2vr.w	$vr12, $fp, 1
+	xvpickve2gr.d	$fp, $xr11, 2
+	vinsgr2vr.w	$vr12, $fp, 2
+	xvpickve2gr.d	$fp, $xr11, 3
+	vinsgr2vr.w	$vr12, $fp, 3
 	vaddi.wu	$vr11, $vr12, 1
 	vmuh.wu	$vr13, $vr11, $vr1
 	vsrli.w	$vr13, $vr13, 7
@@ -305,8 +307,7 @@ main:                                   # @main
 	vext2xv.du.wu	$xr11, $xr11
 	xvffint.d.lu	$xr11, $xr11
 	xvfdiv.d	$xr11, $xr11, $xr5
-	add.d	$t7, $t4, $t6
-	xvstx	$xr11, $t7, $a0
+	xvst	$xr11, $t7, 0
 	vaddi.wu	$vr11, $vr12, 2
 	vmuh.wu	$vr12, $vr11, $vr6
 	vsrli.w	$vr12, $vr12, 6
@@ -314,10 +315,11 @@ main:                                   # @main
 	vext2xv.du.wu	$xr11, $xr11
 	xvffint.d.lu	$xr11, $xr11
 	xvfdiv.d	$xr11, $xr11, $xr8
-	add.d	$t7, $t5, $t6
-	xvstx	$xr11, $t7, $a0
-	addi.d	$t6, $t6, 32
+	xvst	$xr11, $t8, 0
 	xvaddi.du	$xr10, $xr10, 4
+	addi.d	$t6, $t6, -4
+	addi.d	$t8, $t8, 32
+	addi.d	$t7, $t7, 32
 	bnez	$t6, .LBB7_14
 	b	.LBB7_9
 .LBB7_15:                               # %for.cond24.preheader.i.preheader
@@ -383,21 +385,23 @@ main:                                   # @main
 .LBB7_20:                               # %vector.ph128
                                         #   in Loop: Header=BB7_17 Depth=1
 	xvreplgr2vr.d	$xr5, $a6
-	move	$t4, $t1
+	ori	$t4, $zero, 1200
+	move	$t5, $a2
+	move	$t6, $t3
 	xvori.b	$xr6, $xr2, 0
 	.p2align	4, , 16
 .LBB7_21:                               # %vector.body131
                                         #   Parent Loop BB7_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvmul.d	$xr7, $xr6, $xr5
-	xvpickve2gr.d	$t5, $xr7, 0
-	vinsgr2vr.w	$vr8, $t5, 0
-	xvpickve2gr.d	$t5, $xr7, 1
-	vinsgr2vr.w	$vr8, $t5, 1
-	xvpickve2gr.d	$t5, $xr7, 2
-	vinsgr2vr.w	$vr8, $t5, 2
-	xvpickve2gr.d	$t5, $xr7, 3
-	vinsgr2vr.w	$vr8, $t5, 3
+	xvpickve2gr.d	$t7, $xr7, 0
+	vinsgr2vr.w	$vr8, $t7, 0
+	xvpickve2gr.d	$t7, $xr7, 1
+	vinsgr2vr.w	$vr8, $t7, 1
+	xvpickve2gr.d	$t7, $xr7, 2
+	vinsgr2vr.w	$vr8, $t7, 2
+	xvpickve2gr.d	$t7, $xr7, 3
+	vinsgr2vr.w	$vr8, $t7, 3
 	vaddi.wu	$vr7, $vr8, 3
 	vmuh.wu	$vr8, $vr7, $vr1
 	vsrli.w	$vr8, $vr8, 7
@@ -405,12 +409,12 @@ main:                                   # @main
 	vext2xv.du.wu	$xr7, $xr7
 	xvffint.d.lu	$xr7, $xr7
 	xvfdiv.d	$xr7, $xr7, $xr4
-	add.d	$t5, $a2, $t4
-	xvstx	$xr7, $t5, $s4
-	add.d	$t5, $t3, $t4
-	xvstx	$xr7, $t5, $s4
-	addi.d	$t4, $t4, 32
+	xvst	$xr7, $t5, 0
+	xvst	$xr7, $t6, 0
 	xvaddi.du	$xr6, $xr6, 4
+	addi.d	$t4, $t4, -4
+	addi.d	$t6, $t6, 32
+	addi.d	$t5, $t5, 32
 	bnez	$t4, .LBB7_21
 	b	.LBB7_16
 .LBB7_22:                               # %for.cond1.preheader.i41.preheader

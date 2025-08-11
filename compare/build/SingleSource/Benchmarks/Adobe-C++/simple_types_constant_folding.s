@@ -459,19 +459,16 @@ _Z5timerv:                              # @_Z5timerv
 main:                                   # @main
 	.cfi_startproc
 # %bb.0:                                # %entry
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	.cfi_def_cfa_offset 80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -480,9 +477,6 @@ main:                                   # @main
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
-	.cfi_offset 30, -80
-	.cfi_offset 31, -88
 	move	$s0, $a0
 	ori	$s2, $zero, 2
 	pcalau12i	$s1, %pc_hi20(base_iterations)
@@ -930,23 +924,18 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s3, 0
 	ftintrz.l.d	$fa0, $fa0
-	movfr2gr.d	$a0, $fa0
-	xvreplgr2vr.h	$xr0, $a0
-	lu12i.w	$s8, -4
-	ori	$a0, $s8, 384
-	pcalau12i	$a1, %pc_hi20(data16)
-	addi.d	$a1, $a1, %pc_lo12(data16)
-	lu12i.w	$a2, 3
-	ori	$s6, $a2, 3712
-	ori	$s7, $a2, 3744
+	movfr2gr.d	$a1, $fa0
+	pcalau12i	$a0, %pc_hi20(data16+32)
+	addi.d	$a0, $a0, %pc_lo12(data16+32)
+	xvreplgr2vr.h	$xr0, $a1
 	.p2align	4, , 16
 .LBB5_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a1, $a0
-	xvstx	$xr0, $a2, $s6
+	xvst	$xr0, $a0, -32
+	xvst	$xr0, $a0, 0
+	addi.d	$fp, $fp, -32
 	addi.d	$a0, $a0, 64
-	xvstx	$xr0, $a2, $s7
-	bnez	$a0, .LBB5_4
+	bnez	$fp, .LBB5_4
 # %bb.5:                                # %_Z4fillIPssEvT_S1_T0_.exit
 	ld.w	$a0, $s1, %pc_lo12(base_iterations)
 	st.w	$a0, $s2, %pc_lo12(iterations)
@@ -954,6 +943,7 @@ main:                                   # @main
 	addi.d	$s0, $a0, %pc_lo12(data16)
 	pcalau12i	$a0, %pc_hi20(.L.str.75)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.75)
+	ori	$fp, $s4, 3904
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIs10custom_twoIsEEvPT_iPKc)
@@ -1152,19 +1142,18 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s3, 0
 	ftintrz.l.d	$fa0, $fa0
-	movfr2gr.d	$a0, $fa0
-	xvreplgr2vr.h	$xr0, $a0
-	ori	$a0, $s8, 384
-	pcalau12i	$a1, %pc_hi20(data16unsigned)
-	addi.d	$a1, $a1, %pc_lo12(data16unsigned)
+	movfr2gr.d	$a1, $fa0
+	pcalau12i	$a0, %pc_hi20(data16unsigned+32)
+	addi.d	$a0, $a0, %pc_lo12(data16unsigned+32)
+	xvreplgr2vr.h	$xr0, $a1
 	.p2align	4, , 16
 .LBB5_6:                                # %vector.body37
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a1, $a0
-	xvstx	$xr0, $a2, $s6
+	xvst	$xr0, $a0, -32
+	xvst	$xr0, $a0, 0
+	addi.d	$fp, $fp, -32
 	addi.d	$a0, $a0, 64
-	xvstx	$xr0, $a2, $s7
-	bnez	$a0, .LBB5_6
+	bnez	$fp, .LBB5_6
 # %bb.7:                                # %_Z4fillIPttEvT_S1_T0_.exit
 	ld.w	$a0, $s1, %pc_lo12(base_iterations)
 	st.w	$a0, $s2, %pc_lo12(iterations)
@@ -1172,6 +1161,7 @@ main:                                   # @main
 	addi.d	$s0, $a0, %pc_lo12(data16unsigned)
 	pcalau12i	$a0, %pc_hi20(.L.str.107)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.107)
+	ori	$fp, $s4, 3904
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIt10custom_twoItEEvPT_iPKc)
@@ -1370,23 +1360,18 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s3, 0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a0, $fa0
-	xvreplgr2vr.w	$xr0, $a0
-	lu12i.w	$s8, -8
-	ori	$a0, $s8, 768
-	pcalau12i	$a1, %pc_hi20(data32)
-	addi.d	$a1, $a1, %pc_lo12(data32)
-	lu12i.w	$a2, 7
-	ori	$s6, $a2, 3328
-	ori	$s7, $a2, 3360
+	movfr2gr.s	$a1, $fa0
+	pcalau12i	$a0, %pc_hi20(data32+32)
+	addi.d	$a0, $a0, %pc_lo12(data32+32)
+	xvreplgr2vr.w	$xr0, $a1
 	.p2align	4, , 16
 .LBB5_8:                                # %vector.body47
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a1, $a0
-	xvstx	$xr0, $a2, $s6
+	xvst	$xr0, $a0, -32
+	xvst	$xr0, $a0, 0
+	addi.d	$fp, $fp, -16
 	addi.d	$a0, $a0, 64
-	xvstx	$xr0, $a2, $s7
-	bnez	$a0, .LBB5_8
+	bnez	$fp, .LBB5_8
 # %bb.9:                                # %_Z4fillIPiiEvT_S1_T0_.exit
 	ld.w	$a0, $s1, %pc_lo12(base_iterations)
 	st.w	$a0, $s2, %pc_lo12(iterations)
@@ -1394,6 +1379,7 @@ main:                                   # @main
 	addi.d	$s0, $a0, %pc_lo12(data32)
 	pcalau12i	$a0, %pc_hi20(.L.str.139)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.139)
+	ori	$fp, $s4, 3904
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIi10custom_twoIiEEvPT_iPKc)
@@ -1592,19 +1578,18 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s3, 0
 	ftintrz.l.d	$fa0, $fa0
-	movfr2gr.d	$a0, $fa0
-	xvreplgr2vr.w	$xr0, $a0
-	ori	$a0, $s8, 768
-	pcalau12i	$a1, %pc_hi20(data32unsigned)
-	addi.d	$a1, $a1, %pc_lo12(data32unsigned)
+	movfr2gr.d	$a1, $fa0
+	pcalau12i	$a0, %pc_hi20(data32unsigned+32)
+	addi.d	$a0, $a0, %pc_lo12(data32unsigned+32)
+	xvreplgr2vr.w	$xr0, $a1
 	.p2align	4, , 16
 .LBB5_10:                               # %vector.body57
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a1, $a0
-	xvstx	$xr0, $a2, $s6
+	xvst	$xr0, $a0, -32
+	xvst	$xr0, $a0, 0
+	addi.d	$fp, $fp, -16
 	addi.d	$a0, $a0, 64
-	xvstx	$xr0, $a2, $s7
-	bnez	$a0, .LBB5_10
+	bnez	$fp, .LBB5_10
 # %bb.11:                               # %_Z4fillIPjjEvT_S1_T0_.exit
 	ld.w	$a0, $s1, %pc_lo12(base_iterations)
 	st.w	$a0, $s2, %pc_lo12(iterations)
@@ -1612,6 +1597,7 @@ main:                                   # @main
 	addi.d	$s0, $a0, %pc_lo12(data32unsigned)
 	pcalau12i	$a0, %pc_hi20(.L.str.171)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.171)
+	ori	$fp, $s4, 3904
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIj10custom_twoIjEEvPT_iPKc)
@@ -2258,18 +2244,17 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s3, 0
 	fcvt.s.d	$fa0, $fa0
+	pcalau12i	$a0, %pc_hi20(dataFloat+32)
+	addi.d	$a0, $a0, %pc_lo12(dataFloat+32)
 	xvreplve0.w	$xr0, $xr0
-	ori	$a0, $s8, 768
-	pcalau12i	$a1, %pc_hi20(dataFloat)
-	addi.d	$a1, $a1, %pc_lo12(dataFloat)
 	.p2align	4, , 16
 .LBB5_16:                               # %vector.body87
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a1, $a0
-	xvstx	$xr0, $a2, $s6
+	xvst	$xr0, $a0, -32
+	xvst	$xr0, $a0, 0
+	addi.d	$fp, $fp, -16
 	addi.d	$a0, $a0, 64
-	xvstx	$xr0, $a2, $s7
-	bnez	$a0, .LBB5_16
+	bnez	$fp, .LBB5_16
 # %bb.17:                               # %_Z4fillIPffEvT_S1_T0_.exit
 	ld.w	$a0, $s1, %pc_lo12(base_iterations)
 	st.w	$a0, $s2, %pc_lo12(iterations)
@@ -2277,6 +2262,7 @@ main:                                   # @main
 	addi.d	$s0, $a0, %pc_lo12(dataFloat)
 	pcalau12i	$a0, %pc_hi20(.L.str.267)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.267)
+	ori	$fp, $s4, 3904
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIf10custom_twoIfEEvPT_iPKc)
@@ -2497,18 +2483,15 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Z13test_constantId30custom_multiple_constant_mixedIdEEvPT_iPKc)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end5:
 	.size	main, .Lfunc_end5-main

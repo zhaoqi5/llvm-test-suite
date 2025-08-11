@@ -195,65 +195,67 @@ LzmaEncProps_GetDictSize:               # @LzmaEncProps_GetDictSize
 	.type	LzmaEnc_FastPosInit,@function
 LzmaEnc_FastPosInit:                    # @LzmaEnc_FastPosInit
 # %bb.0:                                # %entry
-	lu12i.w	$a1, 12320
-	ori	$a1, $a1, 256
-	lu32i.d	$a1, 328708
-	lu52i.d	$a1, $a1, 80
-	st.d	$a1, $a0, 0
-	lu12i.w	$a1, 24672
-	ori	$a1, $a1, 1542
-	pcalau12i	$a2, %pc_hi20(.LCPI3_0)
-	vld	$vr0, $a2, %pc_lo12(.LCPI3_0)
-	lu32i.d	$a1, 460551
-	lu52i.d	$a1, $a1, 112
-	st.d	$a1, $a0, 8
+	ori	$a2, $zero, 2048
+	add.d	$a1, $a0, $a2
+	lu12i.w	$a3, 12320
+	ori	$a3, $a3, 256
+	lu32i.d	$a3, 328708
+	lu52i.d	$a3, $a3, 80
+	st.d	$a3, $a0, 0
+	pcalau12i	$a3, %pc_hi20(.LCPI3_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI3_0)
+	lu12i.w	$a3, 24672
+	ori	$a3, $a3, 1542
+	lu32i.d	$a3, 460551
+	lu52i.d	$a3, $a3, 112
+	st.d	$a3, $a0, 8
 	vst	$vr0, $a0, 16
-	lu12i.w	$a1, 41120
-	ori	$a1, $a1, 2570
-	bstrins.d	$a1, $a1, 59, 32
-	st.d	$a1, $a0, 32
-	st.d	$a1, $a0, 40
-	lu12i.w	$a1, 45232
-	ori	$a1, $a1, 2827
-	bstrins.d	$a1, $a1, 59, 32
-	st.d	$a1, $a0, 48
-	st.d	$a1, $a0, 56
-	lu12i.w	$a1, 49344
-	ori	$a1, $a1, 3084
-	bstrins.d	$a1, $a1, 59, 32
-	st.d	$a1, $a0, 64
-	st.d	$a1, $a0, 72
-	st.d	$a1, $a0, 80
-	st.d	$a1, $a0, 88
-	lu12i.w	$a1, 53456
-	ori	$a1, $a1, 3341
-	bstrins.d	$a1, $a1, 59, 32
-	st.d	$a1, $a0, 120
-	st.d	$a1, $a0, 112
-	st.d	$a1, $a0, 104
-	st.d	$a1, $a0, 96
-	lu12i.w	$a1, 57568
-	ori	$a1, $a1, 3598
-	bstrins.d	$a1, $a1, 59, 32
-	st.d	$a1, $a0, 128
-	st.d	$a1, $a0, 136
-	st.d	$a1, $a0, 144
-	st.d	$a1, $a0, 152
-	st.d	$a1, $a0, 160
-	st.d	$a1, $a0, 168
-	st.d	$a1, $a0, 176
-	st.d	$a1, $a0, 184
-	lu12i.w	$a1, 61680
-	ori	$a1, $a1, 3855
-	bstrins.d	$a1, $a1, 59, 32
-	st.d	$a1, $a0, 248
-	st.d	$a1, $a0, 240
-	st.d	$a1, $a0, 232
-	st.d	$a1, $a0, 224
-	st.d	$a1, $a0, 216
-	st.d	$a1, $a0, 208
-	st.d	$a1, $a0, 200
-	st.d	$a1, $a0, 192
+	lu12i.w	$a3, 41120
+	ori	$a3, $a3, 2570
+	bstrins.d	$a3, $a3, 59, 32
+	st.d	$a3, $a0, 32
+	st.d	$a3, $a0, 40
+	lu12i.w	$a3, 45232
+	ori	$a3, $a3, 2827
+	bstrins.d	$a3, $a3, 59, 32
+	st.d	$a3, $a0, 48
+	st.d	$a3, $a0, 56
+	lu12i.w	$a3, 49344
+	ori	$a3, $a3, 3084
+	bstrins.d	$a3, $a3, 59, 32
+	st.d	$a3, $a0, 64
+	st.d	$a3, $a0, 72
+	st.d	$a3, $a0, 80
+	st.d	$a3, $a0, 88
+	lu12i.w	$a3, 53456
+	ori	$a3, $a3, 3341
+	bstrins.d	$a3, $a3, 59, 32
+	st.d	$a3, $a0, 120
+	st.d	$a3, $a0, 112
+	st.d	$a3, $a0, 104
+	st.d	$a3, $a0, 96
+	lu12i.w	$a3, 57568
+	ori	$a3, $a3, 3598
+	bstrins.d	$a3, $a3, 59, 32
+	st.d	$a3, $a0, 128
+	st.d	$a3, $a0, 136
+	st.d	$a3, $a0, 144
+	st.d	$a3, $a0, 152
+	st.d	$a3, $a0, 160
+	st.d	$a3, $a0, 168
+	st.d	$a3, $a0, 176
+	st.d	$a3, $a0, 184
+	lu12i.w	$a3, 61680
+	ori	$a3, $a3, 3855
+	bstrins.d	$a3, $a3, 59, 32
+	st.d	$a3, $a0, 248
+	st.d	$a3, $a0, 240
+	st.d	$a3, $a0, 232
+	st.d	$a3, $a0, 224
+	st.d	$a3, $a0, 216
+	st.d	$a3, $a0, 208
+	st.d	$a3, $a0, 200
+	st.d	$a3, $a0, 192
 	xvrepli.b	$xr0, 16
 	xvst	$xr0, $a0, 256
 	xvst	$xr0, $a0, 288
@@ -317,135 +319,71 @@ LzmaEnc_FastPosInit:                    # @LzmaEnc_FastPosInit
 	xvst	$xr0, $a0, 1984
 	xvst	$xr0, $a0, 2016
 	xvrepli.b	$xr0, 22
-	ori	$a1, $zero, 2048
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2080
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2112
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2144
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2176
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2208
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2240
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2272
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2304
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2336
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2368
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2400
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2432
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2464
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2496
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2528
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2560
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2592
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2624
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2656
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2688
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2720
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2752
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2784
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2816
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2848
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2880
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2912
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2944
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2976
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3008
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3040
-	xvstx	$xr0, $a0, $a1
+	xvstx	$xr0, $a0, $a2
+	xvst	$xr0, $a1, 32
+	xvst	$xr0, $a1, 64
+	xvst	$xr0, $a1, 96
+	xvst	$xr0, $a1, 128
+	xvst	$xr0, $a1, 160
+	xvst	$xr0, $a1, 192
+	xvst	$xr0, $a1, 224
+	xvst	$xr0, $a1, 256
+	xvst	$xr0, $a1, 288
+	xvst	$xr0, $a1, 320
+	xvst	$xr0, $a1, 352
+	xvst	$xr0, $a1, 384
+	xvst	$xr0, $a1, 416
+	xvst	$xr0, $a1, 448
+	xvst	$xr0, $a1, 480
+	xvst	$xr0, $a1, 512
+	xvst	$xr0, $a1, 544
+	xvst	$xr0, $a1, 576
+	xvst	$xr0, $a1, 608
+	xvst	$xr0, $a1, 640
+	xvst	$xr0, $a1, 672
+	xvst	$xr0, $a1, 704
+	xvst	$xr0, $a1, 736
+	xvst	$xr0, $a1, 768
+	xvst	$xr0, $a1, 800
+	xvst	$xr0, $a1, 832
+	xvst	$xr0, $a1, 864
+	xvst	$xr0, $a1, 896
+	xvst	$xr0, $a1, 928
+	xvst	$xr0, $a1, 960
+	xvst	$xr0, $a1, 992
 	xvrepli.b	$xr0, 23
-	ori	$a1, $zero, 3072
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3104
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3136
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3168
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3200
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3232
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3264
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3296
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3328
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3360
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3392
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3424
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3456
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3488
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3520
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3552
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3584
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3616
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3648
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3680
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3712
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3744
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3776
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3808
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3840
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3872
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3904
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3936
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3968
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 4000
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 4032
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 4064
-	xvstx	$xr0, $a0, $a1
+	xvst	$xr0, $a1, 1024
+	xvst	$xr0, $a1, 1056
+	xvst	$xr0, $a1, 1088
+	xvst	$xr0, $a1, 1120
+	xvst	$xr0, $a1, 1152
+	xvst	$xr0, $a1, 1184
+	xvst	$xr0, $a1, 1216
+	xvst	$xr0, $a1, 1248
+	xvst	$xr0, $a1, 1280
+	xvst	$xr0, $a1, 1312
+	xvst	$xr0, $a1, 1344
+	xvst	$xr0, $a1, 1376
+	xvst	$xr0, $a1, 1408
+	xvst	$xr0, $a1, 1440
+	xvst	$xr0, $a1, 1472
+	xvst	$xr0, $a1, 1504
+	xvst	$xr0, $a1, 1536
+	xvst	$xr0, $a1, 1568
+	xvst	$xr0, $a1, 1600
+	xvst	$xr0, $a1, 1632
+	xvst	$xr0, $a1, 1664
+	xvst	$xr0, $a1, 1696
+	xvst	$xr0, $a1, 1728
+	xvst	$xr0, $a1, 1760
+	xvst	$xr0, $a1, 1792
+	xvst	$xr0, $a1, 1824
+	xvst	$xr0, $a1, 1856
+	xvst	$xr0, $a1, 1888
+	xvst	$xr0, $a1, 1920
+	xvst	$xr0, $a1, 1952
+	xvst	$xr0, $a1, 1984
+	xvst	$xr0, $a1, 2016
 	xvrepli.b	$xr0, 24
 	lu12i.w	$a1, 1
 	xvstx	$xr0, $a0, $a1
@@ -1779,114 +1717,114 @@ LzmaEnc_Destroy:                        # @LzmaEnc_Destroy
 LzmaEnc_Init:                           # @LzmaEnc_Init
 # %bb.0:                                # %entry
 	lu12i.w	$a1, 61
-	ori	$a6, $a1, 2384
-	add.d	$a7, $a0, $a6
+	ori	$a4, $a1, 2384
+	add.d	$a6, $a0, $a4
 	lu12i.w	$a1, 57
 	ori	$a1, $a1, 254
-	add.d	$a3, $a0, $a1
-	lu12i.w	$a1, 52
-	ori	$a2, $a1, 3032
-	add.d	$a5, $a0, $a2
-	ori	$t1, $a1, 978
-	add.d	$a2, $a0, $t1
-	lu12i.w	$a4, 51
-	ori	$a1, $a4, 1492
-	add.d	$a1, $a0, $a1
-	ori	$a4, $a4, 1496
-	add.d	$t0, $a0, $a4
+	add.d	$a2, $a0, $a1
+	lu12i.w	$a7, 52
+	ori	$a1, $a7, 3032
+	add.d	$a5, $a0, $a1
+	ori	$t1, $a7, 978
+	add.d	$a1, $a0, $t1
+	addi.w	$a3, $zero, -1
+	lu12i.w	$t0, 51
+	move	$t2, $a3
+	lu32i.d	$t2, 0
+	stx.w	$t2, $a0, $a4
+	ori	$a4, $t0, 1492
+	add.d	$a4, $a0, $a4
+	ori	$t0, $t0, 1496
 	vrepli.b	$vr0, 0
-	vstx	$vr0, $a0, $a4
-	addi.w	$a4, $zero, -1
-	st.w	$zero, $t0, 16
-	move	$t0, $a4
+	vstx	$vr0, $a0, $t0
 	pcalau12i	$t2, %pc_hi20(.LCPI13_0)
 	vld	$vr0, $t2, %pc_lo12(.LCPI13_0)
-	lu32i.d	$t0, 0
-	ld.d	$t2, $a7, 40
-	stx.w	$t0, $a0, $a6
-	vst	$vr0, $a7, 8
-	st.b	$zero, $a7, 4
-	st.d	$t2, $a7, 24
-	st.d	$zero, $a7, 56
-	st.w	$zero, $a7, 64
+	add.d	$t0, $a0, $t0
+	ld.d	$t2, $a6, 40
+	st.w	$zero, $t0, 16
+	vst	$vr0, $a6, 8
+	st.b	$zero, $a6, 4
+	st.d	$t2, $a6, 24
+	st.d	$zero, $a6, 56
+	st.w	$zero, $a6, 64
 	ori	$a6, $zero, 1024
 	xvreplgr2vr.h	$xr0, $a6
-	ori	$a7, $zero, 3196
-	xvstx	$xr0, $a1, $a7
-	xvst	$xr0, $a2, 94
-	ori	$a7, $zero, 3580
-	stx.h	$a6, $a1, $a7
-	st.h	$a6, $a2, 22
-	st.h	$a6, $a2, 46
-	st.h	$a6, $a2, 70
-	ori	$a7, $zero, 3228
-	xvstx	$xr0, $a1, $a7
-	lu12i.w	$a7, 16384
-	ori	$t0, $a7, 1024
-	xvst	$xr0, $a2, 126
-	move	$a7, $t0
-	bstrins.d	$a7, $t0, 58, 32
-	stx.d	$a7, $a0, $t1
-	st.d	$a7, $a2, 24
-	st.d	$a7, $a2, 48
-	st.d	$a7, $a2, 72
-	ori	$t1, $zero, 3260
-	xvstx	$xr0, $a1, $t1
-	xvst	$xr0, $a2, 158
-	ori	$t1, $zero, 3292
-	xvstx	$xr0, $a1, $t1
-	xvst	$xr0, $a2, 190
-	ori	$t1, $zero, 3324
-	xvstx	$xr0, $a1, $t1
-	xvst	$xr0, $a2, 222
-	ori	$t1, $zero, 3356
-	xvstx	$xr0, $a1, $t1
-	xvst	$xr0, $a2, 254
-	st.h	$a6, $a2, 8
-	st.h	$a6, $a2, 32
-	st.h	$a6, $a2, 56
-	st.h	$a6, $a2, 80
-	ori	$t1, $zero, 3388
-	xvstx	$xr0, $a1, $t1
-	xvst	$xr0, $a2, 286
-	st.d	$a7, $a2, 10
-	st.d	$a7, $a2, 34
-	st.d	$a7, $a2, 58
-	st.d	$a7, $a2, 82
-	ori	$a7, $zero, 3420
-	xvstx	$xr0, $a1, $a7
-	xvst	$xr0, $a2, 318
-	ori	$a7, $zero, 3452
-	xvstx	$xr0, $a1, $a7
-	xvst	$xr0, $a2, 350
-	ori	$a7, $zero, 3484
-	xvstx	$xr0, $a1, $a7
-	xvst	$xr0, $a2, 382
-	ori	$a7, $zero, 3516
-	xvstx	$xr0, $a1, $a7
-	xvst	$xr0, $a2, 414
-	st.h	$a6, $a2, 18
-	st.h	$a6, $a2, 42
-	st.h	$a6, $a2, 66
-	st.h	$a6, $a2, 90
-	ori	$a7, $zero, 3548
-	xvstx	$xr0, $a1, $a7
-	xvst	$xr0, $a2, 446
+	ori	$t0, $a7, 592
+	xvstx	$xr0, $a0, $t0
+	xvst	$xr0, $a1, 94
+	ori	$t0, $zero, 3580
+	stx.h	$a6, $a4, $t0
+	st.h	$a6, $a1, 22
+	st.h	$a6, $a1, 46
+	st.h	$a6, $a1, 70
+	ori	$t0, $a7, 624
+	xvstx	$xr0, $a0, $t0
+	lu12i.w	$t0, 16384
+	ori	$t0, $t0, 1024
+	xvst	$xr0, $a1, 126
+	move	$t2, $t0
+	bstrins.d	$t2, $t0, 58, 32
+	stx.d	$t2, $a0, $t1
+	st.d	$t2, $a1, 24
+	st.d	$t2, $a1, 48
+	st.d	$t2, $a1, 72
+	ori	$t1, $a7, 656
+	xvstx	$xr0, $a0, $t1
+	xvst	$xr0, $a1, 158
+	ori	$t1, $a7, 688
+	xvstx	$xr0, $a0, $t1
+	xvst	$xr0, $a1, 190
+	ori	$t1, $a7, 720
+	xvstx	$xr0, $a0, $t1
+	xvst	$xr0, $a1, 222
+	ori	$t1, $a7, 752
+	xvstx	$xr0, $a0, $t1
+	xvst	$xr0, $a1, 254
+	st.h	$a6, $a1, 8
+	st.h	$a6, $a1, 32
+	st.h	$a6, $a1, 56
+	st.h	$a6, $a1, 80
+	ori	$t1, $a7, 784
+	xvstx	$xr0, $a0, $t1
+	xvst	$xr0, $a1, 286
+	st.d	$t2, $a1, 10
+	st.d	$t2, $a1, 34
+	st.d	$t2, $a1, 58
+	st.d	$t2, $a1, 82
+	ori	$t1, $a7, 816
+	xvstx	$xr0, $a0, $t1
+	xvst	$xr0, $a1, 318
+	ori	$t1, $a7, 848
+	xvstx	$xr0, $a0, $t1
+	xvst	$xr0, $a1, 350
+	ori	$t1, $a7, 880
+	xvstx	$xr0, $a0, $t1
+	xvst	$xr0, $a1, 382
+	ori	$t1, $a7, 912
+	xvstx	$xr0, $a0, $t1
+	xvst	$xr0, $a1, 414
+	st.h	$a6, $a1, 18
+	st.h	$a6, $a1, 42
+	st.h	$a6, $a1, 66
+	st.h	$a6, $a1, 90
+	ori	$a7, $a7, 944
+	xvstx	$xr0, $a0, $a7
+	xvst	$xr0, $a1, 446
 	ori	$a7, $zero, 3172
-	ldx.w	$a7, $a1, $a7
+	ldx.w	$a7, $a4, $a7
 	ori	$t1, $zero, 3168
-	ldx.w	$t1, $a1, $t1
-	st.h	$a6, $a2, 20
-	st.h	$a6, $a2, 44
-	st.h	$a6, $a2, 68
+	ldx.w	$t1, $a4, $t1
+	st.h	$a6, $a1, 20
+	st.h	$a6, $a1, 44
+	st.h	$a6, $a1, 68
 	add.w	$t1, $t1, $a7
 	ori	$t2, $zero, 23
-	st.h	$a6, $a2, 92
+	st.h	$a6, $a1, 92
 	bltu	$t2, $t1, .LBB13_6
 # %bb.1:                                # %iter.check
 	ori	$t2, $zero, 768
 	sll.w	$t2, $t2, $t1
-	ldptr.d	$t1, $a1, 3188
+	ldptr.d	$t1, $a4, 3188
 	ori	$t3, $zero, 1
 	sltu	$t4, $t3, $t2
 	maskeqz	$t2, $t2, $t4
@@ -1921,57 +1859,57 @@ LzmaEnc_Init:                           # @LzmaEnc_Init
 	addi.d	$t1, $t1, 2
 	bnez	$t2, .LBB13_5
 .LBB13_6:                               # %iter.check106
-	xvst	$xr0, $a2, 478
-	xvst	$xr0, $a2, 510
-	xvst	$xr0, $a2, 542
-	xvst	$xr0, $a2, 574
-	xvst	$xr0, $a2, 606
-	xvst	$xr0, $a2, 638
-	xvst	$xr0, $a2, 670
-	xvst	$xr0, $a2, 702
-	xvst	$xr0, $a2, 734
-	xvst	$xr0, $a2, 766
-	xvst	$xr0, $a2, 798
-	xvst	$xr0, $a2, 830
-	xvst	$xr0, $a2, 862
-	xvst	$xr0, $a2, 894
-	xvst	$xr0, $a2, 926
-	xvst	$xr0, $a2, 958
-	xvst	$xr0, $a2, 990
-	xvst	$xr0, $a2, 1022
-	xvst	$xr0, $a2, 1054
-	xvst	$xr0, $a2, 1086
-	xvst	$xr0, $a2, 1118
-	xvst	$xr0, $a2, 1150
-	xvst	$xr0, $a2, 1182
-	st.w	$t0, $a2, 1214
-	st.h	$a6, $a2, 1252
-	st.h	$a6, $a2, 1250
-	xvst	$xr0, $a2, 1254
-	xvst	$xr0, $a2, 1286
-	xvst	$xr0, $a2, 1318
-	xvst	$xr0, $a2, 1350
-	xvst	$xr0, $a2, 1382
-	xvst	$xr0, $a2, 1414
-	xvst	$xr0, $a2, 1446
-	xvst	$xr0, $a2, 1478
-	xvst	$xr0, $a2, 1510
-	xvst	$xr0, $a2, 1542
-	xvst	$xr0, $a2, 1574
-	xvst	$xr0, $a2, 1606
-	xvst	$xr0, $a2, 1638
-	xvst	$xr0, $a2, 1670
-	xvst	$xr0, $a2, 1702
-	xvst	$xr0, $a2, 1734
-	xvst	$xr0, $a2, 1766
-	xvst	$xr0, $a2, 1798
-	xvst	$xr0, $a2, 1830
-	xvst	$xr0, $a2, 1862
-	xvst	$xr0, $a2, 1894
-	xvst	$xr0, $a2, 1926
-	xvst	$xr0, $a2, 1958
-	xvst	$xr0, $a2, 1990
-	xvst	$xr0, $a2, 2022
+	xvst	$xr0, $a1, 478
+	xvst	$xr0, $a1, 510
+	xvst	$xr0, $a1, 542
+	xvst	$xr0, $a1, 574
+	xvst	$xr0, $a1, 606
+	xvst	$xr0, $a1, 638
+	xvst	$xr0, $a1, 670
+	xvst	$xr0, $a1, 702
+	xvst	$xr0, $a1, 734
+	xvst	$xr0, $a1, 766
+	xvst	$xr0, $a1, 798
+	xvst	$xr0, $a1, 830
+	xvst	$xr0, $a1, 862
+	xvst	$xr0, $a1, 894
+	xvst	$xr0, $a1, 926
+	xvst	$xr0, $a1, 958
+	xvst	$xr0, $a1, 990
+	xvst	$xr0, $a1, 1022
+	xvst	$xr0, $a1, 1054
+	xvst	$xr0, $a1, 1086
+	xvst	$xr0, $a1, 1118
+	xvst	$xr0, $a1, 1150
+	xvst	$xr0, $a1, 1182
+	st.w	$t0, $a1, 1214
+	st.h	$a6, $a1, 1252
+	st.h	$a6, $a1, 1250
+	xvst	$xr0, $a1, 1254
+	xvst	$xr0, $a1, 1286
+	xvst	$xr0, $a1, 1318
+	xvst	$xr0, $a1, 1350
+	xvst	$xr0, $a1, 1382
+	xvst	$xr0, $a1, 1414
+	xvst	$xr0, $a1, 1446
+	xvst	$xr0, $a1, 1478
+	xvst	$xr0, $a1, 1510
+	xvst	$xr0, $a1, 1542
+	xvst	$xr0, $a1, 1574
+	xvst	$xr0, $a1, 1606
+	xvst	$xr0, $a1, 1638
+	xvst	$xr0, $a1, 1670
+	xvst	$xr0, $a1, 1702
+	xvst	$xr0, $a1, 1734
+	xvst	$xr0, $a1, 1766
+	xvst	$xr0, $a1, 1798
+	xvst	$xr0, $a1, 1830
+	xvst	$xr0, $a1, 1862
+	xvst	$xr0, $a1, 1894
+	xvst	$xr0, $a1, 1926
+	xvst	$xr0, $a1, 1958
+	xvst	$xr0, $a1, 1990
+	xvst	$xr0, $a1, 2022
 	xvst	$xr0, $a5, 0
 	xvst	$xr0, $a5, 32
 	xvst	$xr0, $a5, 64
@@ -1979,53 +1917,53 @@ LzmaEnc_Init:                           # @LzmaEnc_Init
 	xvst	$xr0, $a5, 128
 	xvst	$xr0, $a5, 160
 	xvst	$xr0, $a5, 192
-	st.h	$a6, $a3, 0
+	st.h	$a6, $a2, 0
 	lu12i.w	$t0, 4
 	ori	$t0, $t0, 1316
 	stx.h	$a6, $a5, $t0
-	xvst	$xr0, $a3, 2
-	xvst	$xr0, $a3, 34
-	xvst	$xr0, $a3, 66
-	xvst	$xr0, $a3, 98
-	xvst	$xr0, $a3, 130
-	xvst	$xr0, $a3, 162
-	xvst	$xr0, $a3, 194
-	xvst	$xr0, $a3, 226
-	xvst	$xr0, $a3, 258
-	xvst	$xr0, $a3, 290
-	xvst	$xr0, $a3, 322
-	xvst	$xr0, $a3, 354
-	xvst	$xr0, $a3, 386
-	xvst	$xr0, $a3, 418
-	xvst	$xr0, $a3, 450
-	xvst	$xr0, $a3, 482
-	xvst	$xr0, $a3, 514
-	xvst	$xr0, $a3, 546
-	xvst	$xr0, $a3, 578
-	xvst	$xr0, $a3, 610
-	xvst	$xr0, $a3, 642
-	xvst	$xr0, $a3, 674
-	xvst	$xr0, $a3, 706
-	xvst	$xr0, $a3, 738
-	xvst	$xr0, $a3, 770
-	xvst	$xr0, $a3, 802
-	xvst	$xr0, $a3, 834
-	xvst	$xr0, $a3, 866
-	xvst	$xr0, $a3, 898
-	xvst	$xr0, $a3, 930
-	xvst	$xr0, $a3, 962
-	xvst	$xr0, $a3, 994
-	ori	$a3, $zero, 3176
-	ldx.wu	$a3, $a1, $a3
-	xvst	$xr0, $a2, 1218
+	xvst	$xr0, $a2, 2
+	xvst	$xr0, $a2, 34
+	xvst	$xr0, $a2, 66
+	xvst	$xr0, $a2, 98
+	xvst	$xr0, $a2, 130
+	xvst	$xr0, $a2, 162
+	xvst	$xr0, $a2, 194
+	xvst	$xr0, $a2, 226
+	xvst	$xr0, $a2, 258
+	xvst	$xr0, $a2, 290
+	xvst	$xr0, $a2, 322
+	xvst	$xr0, $a2, 354
+	xvst	$xr0, $a2, 386
+	xvst	$xr0, $a2, 418
+	xvst	$xr0, $a2, 450
+	xvst	$xr0, $a2, 482
+	xvst	$xr0, $a2, 514
+	xvst	$xr0, $a2, 546
+	xvst	$xr0, $a2, 578
+	xvst	$xr0, $a2, 610
+	xvst	$xr0, $a2, 642
+	xvst	$xr0, $a2, 674
+	xvst	$xr0, $a2, 706
+	xvst	$xr0, $a2, 738
+	xvst	$xr0, $a2, 770
+	xvst	$xr0, $a2, 802
+	xvst	$xr0, $a2, 834
+	xvst	$xr0, $a2, 866
+	xvst	$xr0, $a2, 898
+	xvst	$xr0, $a2, 930
+	xvst	$xr0, $a2, 962
+	xvst	$xr0, $a2, 994
+	ori	$a2, $zero, 3176
+	ldx.wu	$a2, $a4, $a2
+	xvst	$xr0, $a1, 1218
 	stptr.d	$zero, $a0, 2856
-	st.w	$zero, $a1, 0
-	sll.w	$a0, $a4, $a3
+	st.w	$zero, $a4, 0
+	sll.w	$a0, $a3, $a2
 	nor	$a0, $a0, $zero
-	stptr.w	$a0, $a1, 3184
-	sll.w	$a0, $a4, $a7
+	stptr.w	$a0, $a4, 3184
+	sll.w	$a0, $a3, $a7
 	nor	$a0, $a0, $zero
-	stptr.w	$a0, $a1, 3180
+	stptr.w	$a0, $a4, 3180
 	ret
 .Lfunc_end13:
 	.size	LzmaEnc_Init, .Lfunc_end13-LzmaEnc_Init
@@ -2260,10 +2198,12 @@ FillDistancesPrices:                    # @FillDistancesPrices
 	bnez	$t5, .LBB15_4
 	b	.LBB15_1
 .LBB15_5:                               # %for.cond8.preheader
-	ldptr.w	$t1, $a2, 14064
 	lu12i.w	$a7, 2
+	ldptr.w	$t1, $a2, 14064
 	ori	$t0, $a7, 2732
 	add.d	$t2, $a2, $t0
+	ori	$t0, $a7, 3756
+	add.d	$t0, $a2, $t0
 	beqz	$t1, .LBB15_13
 # %bb.6:                                # %for.body23.preheader
 	move	$t3, $zero
@@ -2323,10 +2263,9 @@ FillDistancesPrices:                    # @FillDistancesPrices
 	addi.w	$t5, $t5, 8
 	bltu	$t4, $t6, .LBB15_12
 .LBB15_13:                              # %for.body65.preheader
-	vldx	$vr0, $a2, $t0
+	vld	$vr0, $t2, 0
 	move	$t3, $zero
-	ori	$t0, $a7, 3756
-	vstx	$vr0, $a2, $t0
+	vst	$vr0, $t0, 0
 	addi.d	$t0, $sp, 24
 	lu12i.w	$t1, 51
 	ori	$t4, $t1, 2556
@@ -2346,69 +2285,69 @@ FillDistancesPrices:                    # @FillDistancesPrices
 	addi.d	$t6, $t6, 1
 	bne	$t3, $t5, .LBB15_14
 # %bb.15:                               # %for.end78
-	ldptr.w	$t4, $a2, 14064
-	ori	$t3, $a7, 2988
-	add.d	$t2, $a2, $t3
-	beqz	$t4, .LBB15_23
+	ldptr.w	$t3, $a2, 14064
+	ori	$t2, $a7, 2988
+	add.d	$t2, $a2, $t2
+	beqz	$t3, .LBB15_23
 # %bb.16:                               # %for.body23.1.preheader
-	move	$t5, $zero
-	ori	$t4, $a6, 1584
-	add.d	$t6, $a0, $t4
-	ori	$t7, $zero, 1
-	ori	$t4, $a3, 1776
+	move	$t4, $zero
+	ori	$t3, $a6, 1584
+	add.d	$t5, $a0, $t3
+	ori	$t6, $zero, 1
+	ori	$t3, $a3, 1776
 	.p2align	4, , 16
 .LBB15_17:                              # %for.body23.1
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB15_18 Depth 2
-	move	$t8, $zero
-	ori	$fp, $t5, 64
+	move	$t7, $zero
+	ori	$t8, $t4, 64
 	.p2align	4, , 16
 .LBB15_18:                              # %while.body.i.1
                                         #   Parent Loop BB15_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bstrpick.d	$s0, $fp, 31, 1
-	slli.d	$s1, $s0, 1
-	ldx.h	$s1, $t6, $s1
-	andi	$fp, $fp, 1
-	sub.d	$fp, $zero, $fp
-	andi	$fp, $fp, 2032
-	xor	$fp, $fp, $s1
-	srli.d	$fp, $fp, 2
-	and	$fp, $fp, $a5
-	ldx.w	$fp, $a4, $fp
-	add.d	$t8, $fp, $t8
-	move	$fp, $s0
-	bne	$s0, $t7, .LBB15_18
+	bstrpick.d	$fp, $t8, 31, 1
+	slli.d	$s0, $fp, 1
+	ldx.h	$s0, $t5, $s0
+	andi	$t8, $t8, 1
+	sub.d	$t8, $zero, $t8
+	andi	$t8, $t8, 2032
+	xor	$t8, $t8, $s0
+	srli.d	$t8, $t8, 2
+	and	$t8, $t8, $a5
+	ldx.w	$t8, $a4, $t8
+	add.d	$t7, $t8, $t7
+	move	$t8, $fp
+	bne	$fp, $t6, .LBB15_18
 # %bb.19:                               # %RcTree_GetPrice.exit.1
                                         #   in Loop: Header=BB15_17 Depth=1
-	slli.d	$fp, $t5, 2
-	stx.w	$t8, $t2, $fp
-	ldx.wu	$t8, $a2, $t4
-	addi.d	$t5, $t5, 1
-	bltu	$t5, $t8, .LBB15_17
+	slli.d	$t8, $t4, 2
+	stx.w	$t7, $t2, $t8
+	ldx.wu	$t7, $a2, $t3
+	addi.d	$t4, $t4, 1
+	bltu	$t4, $t7, .LBB15_17
 # %bb.20:                               # %for.cond32.preheader.1
-	ori	$t5, $zero, 15
-	bltu	$t8, $t5, .LBB15_23
+	ori	$t4, $zero, 15
+	bltu	$t7, $t4, .LBB15_23
 # %bb.21:                               # %for.body36.1.preheader
-	ori	$t5, $a7, 3044
-	add.d	$t5, $a2, $t5
-	ori	$t6, $zero, 14
-	ori	$t7, $zero, 112
+	ori	$t4, $a7, 3044
+	add.d	$t4, $a2, $t4
+	ori	$t5, $zero, 14
+	ori	$t6, $zero, 112
 	.p2align	4, , 16
 .LBB15_22:                              # %for.body36.1
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t8, $t5, 0
-	bstrpick.d	$fp, $t7, 31, 4
-	alsl.d	$t8, $fp, $t8, 4
-	addi.d	$t8, $t8, -80
-	st.w	$t8, $t5, 0
-	ldx.wu	$t8, $a2, $t4
-	addi.d	$t6, $t6, 1
-	addi.d	$t5, $t5, 4
-	addi.w	$t7, $t7, 8
-	bltu	$t6, $t8, .LBB15_22
+	ld.w	$t7, $t4, 0
+	bstrpick.d	$t8, $t6, 31, 4
+	alsl.d	$t7, $t8, $t7, 4
+	addi.d	$t7, $t7, -80
+	st.w	$t7, $t4, 0
+	ldx.wu	$t7, $a2, $t3
+	addi.d	$t5, $t5, 1
+	addi.d	$t4, $t4, 4
+	addi.w	$t6, $t6, 8
+	bltu	$t5, $t7, .LBB15_22
 .LBB15_23:                              # %for.body65.preheader.1
-	vldx	$vr0, $a2, $t3
+	vld	$vr0, $t2, 0
 	move	$t3, $zero
 	ori	$t4, $a3, 172
 	vstx	$vr0, $a2, $t4
@@ -2429,69 +2368,69 @@ FillDistancesPrices:                    # @FillDistancesPrices
 	addi.d	$t6, $t6, 1
 	bne	$t3, $t5, .LBB15_24
 # %bb.25:                               # %for.end78.1
-	ldptr.w	$t4, $a2, 14064
-	ori	$t3, $a7, 3244
-	add.d	$t2, $a2, $t3
-	beqz	$t4, .LBB15_33
+	ldptr.w	$t3, $a2, 14064
+	ori	$t2, $a7, 3244
+	add.d	$t2, $a2, $t2
+	beqz	$t3, .LBB15_33
 # %bb.26:                               # %for.body23.2.preheader
-	move	$t5, $zero
-	ori	$t4, $a6, 1712
-	add.d	$t6, $a0, $t4
-	ori	$t7, $zero, 1
-	ori	$t4, $a3, 1776
+	move	$t4, $zero
+	ori	$t3, $a6, 1712
+	add.d	$t5, $a0, $t3
+	ori	$t6, $zero, 1
+	ori	$t3, $a3, 1776
 	.p2align	4, , 16
 .LBB15_27:                              # %for.body23.2
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB15_28 Depth 2
-	move	$t8, $zero
-	ori	$fp, $t5, 64
+	move	$t7, $zero
+	ori	$t8, $t4, 64
 	.p2align	4, , 16
 .LBB15_28:                              # %while.body.i.2
                                         #   Parent Loop BB15_27 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bstrpick.d	$s0, $fp, 31, 1
-	slli.d	$s1, $s0, 1
-	ldx.h	$s1, $t6, $s1
-	andi	$fp, $fp, 1
-	sub.d	$fp, $zero, $fp
-	andi	$fp, $fp, 2032
-	xor	$fp, $fp, $s1
-	srli.d	$fp, $fp, 2
-	and	$fp, $fp, $a5
-	ldx.w	$fp, $a4, $fp
-	add.d	$t8, $fp, $t8
-	move	$fp, $s0
-	bne	$s0, $t7, .LBB15_28
+	bstrpick.d	$fp, $t8, 31, 1
+	slli.d	$s0, $fp, 1
+	ldx.h	$s0, $t5, $s0
+	andi	$t8, $t8, 1
+	sub.d	$t8, $zero, $t8
+	andi	$t8, $t8, 2032
+	xor	$t8, $t8, $s0
+	srli.d	$t8, $t8, 2
+	and	$t8, $t8, $a5
+	ldx.w	$t8, $a4, $t8
+	add.d	$t7, $t8, $t7
+	move	$t8, $fp
+	bne	$fp, $t6, .LBB15_28
 # %bb.29:                               # %RcTree_GetPrice.exit.2
                                         #   in Loop: Header=BB15_27 Depth=1
-	slli.d	$fp, $t5, 2
-	stx.w	$t8, $t2, $fp
-	ldx.wu	$t8, $a2, $t4
-	addi.d	$t5, $t5, 1
-	bltu	$t5, $t8, .LBB15_27
+	slli.d	$t8, $t4, 2
+	stx.w	$t7, $t2, $t8
+	ldx.wu	$t7, $a2, $t3
+	addi.d	$t4, $t4, 1
+	bltu	$t4, $t7, .LBB15_27
 # %bb.30:                               # %for.cond32.preheader.2
-	ori	$t5, $zero, 15
-	bltu	$t8, $t5, .LBB15_33
+	ori	$t4, $zero, 15
+	bltu	$t7, $t4, .LBB15_33
 # %bb.31:                               # %for.body36.2.preheader
-	ori	$t5, $a7, 3300
-	add.d	$t5, $a2, $t5
-	ori	$t6, $zero, 14
-	ori	$t7, $zero, 112
+	ori	$t4, $a7, 3300
+	add.d	$t4, $a2, $t4
+	ori	$t5, $zero, 14
+	ori	$t6, $zero, 112
 	.p2align	4, , 16
 .LBB15_32:                              # %for.body36.2
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t8, $t5, 0
-	bstrpick.d	$fp, $t7, 31, 4
-	alsl.d	$t8, $fp, $t8, 4
-	addi.d	$t8, $t8, -80
-	st.w	$t8, $t5, 0
-	ldx.wu	$t8, $a2, $t4
-	addi.d	$t6, $t6, 1
-	addi.d	$t5, $t5, 4
-	addi.w	$t7, $t7, 8
-	bltu	$t6, $t8, .LBB15_32
+	ld.w	$t7, $t4, 0
+	bstrpick.d	$t8, $t6, 31, 4
+	alsl.d	$t7, $t8, $t7, 4
+	addi.d	$t7, $t7, -80
+	st.w	$t7, $t4, 0
+	ldx.wu	$t7, $a2, $t3
+	addi.d	$t5, $t5, 1
+	addi.d	$t4, $t4, 4
+	addi.w	$t6, $t6, 8
+	bltu	$t5, $t7, .LBB15_32
 .LBB15_33:                              # %for.body65.preheader.2
-	vldx	$vr0, $a2, $t3
+	vld	$vr0, $t2, 0
 	move	$t3, $zero
 	ori	$t4, $a3, 684
 	vstx	$vr0, $a2, $t4
@@ -2512,49 +2451,49 @@ FillDistancesPrices:                    # @FillDistancesPrices
 	addi.d	$t6, $t6, 1
 	bne	$t3, $t5, .LBB15_34
 # %bb.35:                               # %for.end78.2
-	ldptr.w	$t4, $a2, 14064
-	ori	$t3, $a7, 3500
-	add.d	$t2, $a2, $t3
-	beqz	$t4, .LBB15_43
+	ldptr.w	$t3, $a2, 14064
+	ori	$t2, $a7, 3500
+	add.d	$t2, $a2, $t2
+	beqz	$t3, .LBB15_43
 # %bb.36:                               # %for.body23.3.preheader
-	move	$t4, $zero
+	move	$t3, $zero
 	ori	$a6, $a6, 1840
-	add.d	$t5, $a0, $a6
-	ori	$t6, $zero, 1
+	add.d	$t4, $a0, $a6
+	ori	$t5, $zero, 1
 	ori	$a6, $a3, 1776
 	.p2align	4, , 16
 .LBB15_37:                              # %for.body23.3
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB15_38 Depth 2
-	move	$t7, $zero
-	ori	$t8, $t4, 64
+	move	$t6, $zero
+	ori	$t7, $t3, 64
 	.p2align	4, , 16
 .LBB15_38:                              # %while.body.i.3
                                         #   Parent Loop BB15_37 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bstrpick.d	$fp, $t8, 31, 1
-	slli.d	$s0, $fp, 1
-	ldx.h	$s0, $t5, $s0
-	andi	$t8, $t8, 1
-	sub.d	$t8, $zero, $t8
-	andi	$t8, $t8, 2032
-	xor	$t8, $t8, $s0
-	srli.d	$t8, $t8, 2
-	and	$t8, $t8, $a5
-	ldx.w	$t8, $a4, $t8
-	add.d	$t7, $t8, $t7
-	move	$t8, $fp
-	bne	$fp, $t6, .LBB15_38
+	bstrpick.d	$t8, $t7, 31, 1
+	slli.d	$fp, $t8, 1
+	ldx.h	$fp, $t4, $fp
+	andi	$t7, $t7, 1
+	sub.d	$t7, $zero, $t7
+	andi	$t7, $t7, 2032
+	xor	$t7, $t7, $fp
+	srli.d	$t7, $t7, 2
+	and	$t7, $t7, $a5
+	ldx.w	$t7, $a4, $t7
+	add.d	$t6, $t7, $t6
+	move	$t7, $t8
+	bne	$t8, $t5, .LBB15_38
 # %bb.39:                               # %RcTree_GetPrice.exit.3
                                         #   in Loop: Header=BB15_37 Depth=1
-	slli.d	$t8, $t4, 2
-	stx.w	$t7, $t2, $t8
-	ldx.wu	$t7, $a2, $a6
-	addi.d	$t4, $t4, 1
-	bltu	$t4, $t7, .LBB15_37
+	slli.d	$t7, $t3, 2
+	stx.w	$t6, $t2, $t7
+	ldx.wu	$t6, $a2, $a6
+	addi.d	$t3, $t3, 1
+	bltu	$t3, $t6, .LBB15_37
 # %bb.40:                               # %for.cond32.preheader.3
 	ori	$a4, $zero, 15
-	bltu	$t7, $a4, .LBB15_43
+	bltu	$t6, $a4, .LBB15_43
 # %bb.41:                               # %for.body36.3.preheader
 	ori	$a4, $a7, 3556
 	add.d	$a4, $a2, $a4
@@ -2563,18 +2502,18 @@ FillDistancesPrices:                    # @FillDistancesPrices
 	.p2align	4, , 16
 .LBB15_42:                              # %for.body36.3
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t4, $a4, 0
-	bstrpick.d	$t5, $a7, 31, 4
-	alsl.d	$t4, $t5, $t4, 4
-	addi.d	$t4, $t4, -80
-	st.w	$t4, $a4, 0
-	ldx.wu	$t4, $a2, $a6
+	ld.w	$t3, $a4, 0
+	bstrpick.d	$t4, $a7, 31, 4
+	alsl.d	$t3, $t4, $t3, 4
+	addi.d	$t3, $t3, -80
+	st.w	$t3, $a4, 0
+	ldx.wu	$t3, $a2, $a6
 	addi.d	$a5, $a5, 1
 	addi.d	$a4, $a4, 4
 	addi.w	$a7, $a7, 8
-	bltu	$a5, $t4, .LBB15_42
+	bltu	$a5, $t3, .LBB15_42
 .LBB15_43:                              # %for.body65.preheader.3
-	vldx	$vr0, $a2, $t3
+	vld	$vr0, $t2, 0
 	move	$a4, $zero
 	ori	$a3, $a3, 1196
 	vstx	$vr0, $a2, $a3

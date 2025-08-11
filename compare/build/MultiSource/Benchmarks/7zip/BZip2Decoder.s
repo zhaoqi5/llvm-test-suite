@@ -5263,19 +5263,19 @@ _ZN9NCompress6NBZip212CNsisDecoder4ReadEPvjPj: # @_ZN9NCompress6NBZip212CNsisDec
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception9
 # %bb.0:                                # %entry
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	.cfi_def_cfa_offset 112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -5405,7 +5405,7 @@ _ZN9NCompress6NBZip212CNsisDecoder4ReadEPvjPj: # @_ZN9NCompress6NBZip212CNsisDec
 	ori	$a0, $a1, 312
 	ldx.w	$a0, $fp, $a0
 	ori	$a1, $a1, 320
-	ldx.w	$a5, $fp, $a1
+	ldx.w	$a3, $fp, $a1
 	ldptr.d	$a2, $fp, 28368
 .LBB43_24:                              # %if.end61
 	lu12i.w	$a1, 7
@@ -5415,41 +5415,41 @@ _ZN9NCompress6NBZip212CNsisDecoder4ReadEPvjPj: # @_ZN9NCompress6NBZip212CNsisDec
 	.p2align	4, , 16
 .LBB43_25:                              # %while.cond
                                         # =>This Inner Loop Header: Depth=1
-	ldptr.w	$a3, $fp, 28988
-	beqz	$a3, .LBB43_29
+	ldptr.w	$a4, $fp, 28988
+	beqz	$a4, .LBB43_29
 # %bb.26:                               # %while.body
                                         #   in Loop: Header=BB43_25 Depth=1
-	addi.d	$a3, $a3, -1
-	stptr.w	$a3, $fp, 28988
+	addi.d	$a4, $a4, -1
+	stptr.w	$a4, $fp, 28988
 	st.b	$a0, $s1, 0
-	ld.w	$a3, $s0, 0
+	ld.w	$a4, $s0, 0
 	addi.d	$s1, $s1, 1
-	addi.d	$a3, $a3, 1
+	addi.d	$a4, $a4, 1
 	addi.w	$s2, $s2, -1
-	st.w	$a3, $s0, 0
+	st.w	$a4, $s0, 0
 	bnez	$s2, .LBB43_25
 .LBB43_27:
 	move	$s3, $zero
 .LBB43_28:                              # %return
 	move	$a0, $s3
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .LBB43_29:                              # %while.end
 	beqz	$a1, .LBB43_45
 # %bb.30:
-	ori	$a3, $zero, 4
-	ori	$a4, $zero, 1
+	ori	$a4, $zero, 4
+	ori	$a5, $zero, 1
 	.p2align	4, , 16
 .LBB43_31:                              # %do.body
                                         # =>This Loop Header: Depth=1
@@ -5460,7 +5460,7 @@ _ZN9NCompress6NBZip212CNsisDecoder4ReadEPvjPj: # @_ZN9NCompress6NBZip212CNsisDec
 	slli.d	$a6, $a6, 2
 	ldx.w	$a6, $a2, $a6
 	andi	$t0, $a7, 255
-	bne	$a5, $a3, .LBB43_35
+	bne	$a3, $a4, .LBB43_35
 # %bb.32:                               # %if.then88
                                         #   in Loop: Header=BB43_31 Depth=1
 	beqz	$t0, .LBB43_36
@@ -5470,29 +5470,29 @@ _ZN9NCompress6NBZip212CNsisDecoder4ReadEPvjPj: # @_ZN9NCompress6NBZip212CNsisDec
                                         # =>  This Inner Loop Header: Depth=2
 	st.b	$a0, $s1, 0
 	ld.w	$a7, $s0, 0
-	move	$a5, $t0
+	move	$a3, $t0
 	move	$t1, $s2
 	addi.w	$t0, $t0, -1
 	addi.d	$s1, $s1, 1
 	addi.d	$a7, $a7, 1
 	st.w	$a7, $s0, 0
 	addi.w	$s2, $s2, -1
-	beq	$t1, $a4, .LBB43_37
+	beq	$t1, $a5, .LBB43_37
 # %bb.34:                               # %while.body91
                                         #   in Loop: Header=BB43_33 Depth=2
-	bne	$a5, $a4, .LBB43_33
+	bne	$a3, $a5, .LBB43_33
 	b	.LBB43_37
 	.p2align	4, , 16
 .LBB43_35:                              # %if.end102
                                         #   in Loop: Header=BB43_31 Depth=1
 	xor	$a0, $t0, $a0
 	sltui	$a0, $a0, 1
-	addi.w	$a5, $a5, 1
-	masknez	$t1, $a4, $a0
+	addi.w	$a3, $a3, 1
+	masknez	$t1, $a5, $a0
 	st.b	$a7, $s1, 0
 	ld.w	$a7, $s0, 0
-	maskeqz	$a0, $a5, $a0
-	or	$a5, $a0, $t1
+	maskeqz	$a0, $a3, $a0
+	or	$a3, $a0, $t1
 	addi.d	$s1, $s1, 1
 	addi.d	$a0, $a7, 1
 	st.w	$a0, $s0, 0
@@ -5503,7 +5503,7 @@ _ZN9NCompress6NBZip212CNsisDecoder4ReadEPvjPj: # @_ZN9NCompress6NBZip212CNsisDec
 	move	$t0, $zero
 .LBB43_37:                              # %while.end100
                                         #   in Loop: Header=BB43_31 Depth=1
-	move	$a5, $zero
+	move	$a3, $zero
 	stptr.w	$t0, $fp, 28988
 .LBB43_38:                              # %cleanup111
                                         #   in Loop: Header=BB43_31 Depth=1
@@ -5517,7 +5517,7 @@ _ZN9NCompress6NBZip212CNsisDecoder4ReadEPvjPj: # @_ZN9NCompress6NBZip212CNsisDec
 	move	$s3, $zero
 	stptr.w	$a6, $fp, 28980
 	stptr.w	$a0, $fp, 28984
-	stptr.w	$a5, $fp, 28992
+	stptr.w	$a3, $fp, 28992
 	stptr.w	$a1, $fp, 28996
 	b	.LBB43_28
 .LBB43_41:                              # %if.end38
@@ -5526,13 +5526,13 @@ _ZN9NCompress6NBZip212CNsisDecoder4ReadEPvjPj: # @_ZN9NCompress6NBZip212CNsisDec
 	lu12i.w	$a0, 4
 	ori	$a0, $a0, 1708
 	add.d	$a4, $fp, $a0
-	lu12i.w	$s4, 7
-	ori	$a0, $s4, 324
+	lu12i.w	$a0, 7
+	ori	$a0, $a0, 324
 	add.d	$a5, $fp, $a0
 .Ltmp135:                               # EH_LABEL
 	lu12i.w	$a0, 219
 	ori	$a2, $a0, 2976
-	addi.d	$a6, $sp, 36
+	addi.d	$a6, $sp, 20
 	move	$a0, $s3
 	move	$a7, $zero
 	pcaddu18i	$ra, %call36(_ZN9NCompress6NBZip2L9ReadBlockEPN5NBitm8CDecoderI9CInBufferEEPjjPhPNS_8NHuffman8CDecoderILi20ELj258EEES6_S6_Pb)
@@ -5546,7 +5546,7 @@ _ZN9NCompress6NBZip212CNsisDecoder4ReadEPvjPj: # @_ZN9NCompress6NBZip212CNsisDec
 	pcaddu18i	$ra, %call36(_ZN9NCompress6NBZip2L12DecodeBlock1EPjj)
 	jirl	$ra, $ra, 0
 	ldptr.d	$a2, $fp, 28368
-	ld.wu	$a0, $sp, 36
+	ld.wu	$a0, $sp, 20
 	addi.d	$a1, $a2, 1024
 	slli.d	$a0, $a0, 2
 	ldx.wu	$a0, $a1, $a0
@@ -5555,17 +5555,13 @@ _ZN9NCompress6NBZip212CNsisDecoder4ReadEPvjPj: # @_ZN9NCompress6NBZip212CNsisDec
 	ori	$a3, $a3, 4092
 	and	$a0, $a0, $a3
 	ldx.wu	$a7, $a1, $a0
+	move	$a3, $zero
+	stptr.w	$a7, $fp, 28980
+	ori	$a0, $zero, 2
+	stptr.w	$a0, $fp, 28976
 	andi	$a0, $a7, 255
-	stptr.w	$zero, $fp, 28992
-	st.w	$zero, $sp, 28
-	ori	$a1, $zero, 2
-	st.w	$a1, $sp, 16
-	st.w	$a7, $sp, 20
-	st.w	$a0, $sp, 24
-	vld	$vr0, $sp, 16
-	move	$a5, $zero
-	ori	$a1, $s4, 304
-	vstx	$vr0, $fp, $a1
+	stptr.w	$a0, $fp, 28984
+	stptr.d	$zero, $fp, 28988
 	b	.LBB43_24
 .LBB43_44:                              # %if.then36
 	ori	$a0, $zero, 4

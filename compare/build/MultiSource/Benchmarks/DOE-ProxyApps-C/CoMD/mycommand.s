@@ -36,9 +36,11 @@ parseCommandLine:                       # @parseCommandLine
 	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	move	$s1, $a0
-	addi.d	$s3, $a0, 1024
-	addi.d	$s2, $a0, 2047
-	addi.d	$s0, $s2, 1
+	ori	$fp, $zero, 3072
+	add.d	$s7, $a0, $fp
+	addi.d	$s2, $a0, 1024
+	addi.d	$s3, $a0, 2047
+	addi.d	$s0, $s3, 1
 	addi.d	$a0, $a0, 5
 	ori	$a2, $zero, 3067
 	move	$a1, $zero
@@ -56,36 +58,33 @@ parseCommandLine:                       # @parseCommandLine
 	st.b	$a0, $s1, 4
 	stptr.w	$a3, $s1, 2048
 	st.w	$a2, $s0, 3
-	ori	$a0, $zero, 3072
-	add.d	$s8, $s1, $a0
-	addi.d	$s7, $s2, 1029
-	addi.d	$s6, $s2, 1033
-	addi.d	$s5, $s2, 1037
-	addi.d	$s4, $s2, 1041
-	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
-	addi.d	$fp, $s2, 1045
-	addi.d	$a1, $s2, 1049
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	addi.d	$a1, $s2, 1053
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	xvstx	$xr0, $s1, $a0
-	addi.d	$a0, $s2, 1057
+	addi.d	$s8, $s3, 1029
+	addi.d	$s6, $s3, 1033
+	addi.d	$s5, $s3, 1037
+	addi.d	$s4, $s3, 1041
+	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
+	addi.d	$a0, $s3, 1045
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$a0, $s3, 1049
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$a0, $s3, 1053
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	xvstx	$xr0, $s1, $fp
+	addi.d	$a0, $s3, 1057
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ori	$a0, $zero, 10
 	stptr.w	$a0, $s1, 3104
-	ori	$a0, $zero, 3112
-	add.d	$a1, $s1, $a0
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_1)
-	addi.d	$a1, $s2, 1073
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$a1, $s2, 1081
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$a1, $s2, 1089
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	xvstx	$xr0, $s1, $a0
+	addi.d	$a0, $s7, 40
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI0_1)
+	addi.d	$a0, $s3, 1073
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$a0, $s3, 1081
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$fp, $s3, 1089
+	xvst	$xr0, $s7, 40
 	st.w	$zero, $sp, 84
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
@@ -117,7 +116,7 @@ parseCommandLine:                       # @parseCommandLine
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 115
 	ori	$a5, $zero, 1024
-	move	$a4, $s3
+	move	$a4, $s2
 	pcaddu18i	$ra, %call36(addArg)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
@@ -138,7 +137,7 @@ parseCommandLine:                       # @parseCommandLine
 	ori	$a1, $zero, 101
 	ori	$a3, $zero, 105
 	move	$a2, $zero
-	move	$a4, $s8
+	move	$a4, $s7
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(addArg)
 	jirl	$ra, $ra, 0
@@ -149,7 +148,7 @@ parseCommandLine:                       # @parseCommandLine
 	ori	$a1, $zero, 120
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 105
-	move	$a4, $s7
+	move	$a4, $s8
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(addArg)
 	jirl	$ra, $ra, 0
@@ -193,7 +192,7 @@ parseCommandLine:                       # @parseCommandLine
 	ori	$a1, $zero, 106
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 105
-	move	$a4, $fp
+	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(addArg)
 	jirl	$ra, $ra, 0
@@ -204,7 +203,7 @@ parseCommandLine:                       # @parseCommandLine
 	ori	$a1, $zero, 107
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 105
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(addArg)
 	jirl	$ra, $ra, 0
@@ -215,7 +214,7 @@ parseCommandLine:                       # @parseCommandLine
 	ori	$a1, $zero, 78
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 105
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(addArg)
 	jirl	$ra, $ra, 0
@@ -226,7 +225,7 @@ parseCommandLine:                       # @parseCommandLine
 	ori	$a1, $zero, 110
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 105
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(addArg)
 	jirl	$ra, $ra, 0
@@ -237,7 +236,7 @@ parseCommandLine:                       # @parseCommandLine
 	ori	$a1, $zero, 68
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 100
-	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(addArg)
 	jirl	$ra, $ra, 0
@@ -248,7 +247,7 @@ parseCommandLine:                       # @parseCommandLine
 	ori	$a1, $zero, 108
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 100
-	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(addArg)
 	jirl	$ra, $ra, 0
@@ -259,7 +258,7 @@ parseCommandLine:                       # @parseCommandLine
 	ori	$a1, $zero, 84
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 100
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(addArg)
 	jirl	$ra, $ra, 0
@@ -270,7 +269,7 @@ parseCommandLine:                       # @parseCommandLine
 	ori	$a1, $zero, 114
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 100
-	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
+	move	$a4, $fp
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(addArg)
 	jirl	$ra, $ra, 0
@@ -293,8 +292,8 @@ parseCommandLine:                       # @parseCommandLine
 	addi.d	$a0, $a0, %pc_lo12(.L.str.38)
 	ld.d	$a1, $a0, 7
 	ld.d	$a0, $a0, 0
-	st.d	$a1, $s3, 7
-	st.d	$a0, $s3, 0
+	st.d	$a1, $s2, 7
+	st.d	$a0, $s2, 0
 .LBB0_3:                                # %if.end
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.2)
@@ -308,8 +307,8 @@ parseCommandLine:                       # @parseCommandLine
 	addi.d	$a0, $a0, %pc_lo12(.L.str.39)
 	ld.h	$a1, $a0, 8
 	ld.d	$a0, $a0, 0
-	st.h	$a1, $s3, 8
-	st.d	$a0, $s3, 0
+	st.h	$a1, $s2, 8
+	st.d	$a0, $s2, 0
 .LBB0_5:                                # %if.end67
 	ld.w	$a0, $sp, 84
 	bnez	$a0, .LBB0_7

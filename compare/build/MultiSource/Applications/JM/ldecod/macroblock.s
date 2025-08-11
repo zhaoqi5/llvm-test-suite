@@ -9205,34 +9205,34 @@ readCBPandCoeffsFromNAL:                # @readCBPandCoeffsFromNAL
 # %bb.158:                              # %for.cond1033.preheader
 	ldptr.w	$a1, $s4, 5924
 	ori	$a2, $zero, 1
-	xvrepli.b	$xr4, 0
 	lu12i.w	$a0, -1
-	ld.d	$a7, $sp, 80                    # 8-byte Folded Reload
+	xvrepli.b	$xr4, 0
+	ld.d	$a6, $sp, 80                    # 8-byte Folded Reload
 	blt	$a1, $a2, .LBB15_161
 # %bb.159:                              # %for.cond1038.preheader.preheader
-	lu12i.w	$a5, 1
-	ori	$a1, $a5, 872
+	lu12i.w	$a4, 1
+	ori	$a1, $a4, 872
 	add.d	$a1, $s4, $a1
 	ori	$a2, $zero, 3
-	ori	$a3, $a0, 1824
-	ori	$a4, $a0, 1792
-	ori	$a5, $a5, 1828
+	ori	$a3, $a0, 1792
+	ori	$a4, $a4, 1828
 	.p2align	4, , 16
 .LBB15_160:                             # %for.cond1038.preheader
                                         # =>This Inner Loop Header: Depth=1
+	add.d	$a5, $a1, $a3
 	xvstx	$xr4, $a1, $a3
-	xvstx	$xr4, $a1, $a4
+	xvst	$xr4, $a5, 32
 	xvst	$xr4, $a1, -1536
 	xvst	$xr4, $a1, -1504
 	xvst	$xr4, $a1, -768
 	xvst	$xr4, $a1, -736
 	xvst	$xr4, $a1, 0
 	xvst	$xr4, $a1, 32
-	ldx.w	$a6, $s4, $a5
-	addi.w	$a6, $a6, 3
+	ldx.w	$a5, $s4, $a4
+	addi.w	$a5, $a5, 3
 	addi.d	$a2, $a2, 1
 	addi.d	$a1, $a1, 64
-	blt	$a2, $a6, .LBB15_160
+	blt	$a2, $a5, .LBB15_160
 .LBB15_161:                             # %for.end1054
 	ori	$a3, $zero, 16
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
@@ -9257,11 +9257,11 @@ readCBPandCoeffsFromNAL:                # @readCBPandCoeffsFromNAL
 	pcalau12i	$a2, %pc_hi20(InvLevelScale4x4Chroma_Inter)
 	addi.d	$a2, $a2, %pc_lo12(InvLevelScale4x4Chroma_Inter)
 	st.d	$a2, $sp, 256                   # 8-byte Folded Spill
-	masknez	$a2, $a2, $a7
+	masknez	$a2, $a2, $a6
 	pcalau12i	$a3, %pc_hi20(InvLevelScale4x4Chroma_Intra)
 	addi.d	$a3, $a3, %pc_lo12(InvLevelScale4x4Chroma_Intra)
 	st.d	$a3, $sp, 248                   # 8-byte Folded Spill
-	maskeqz	$a3, $a3, $a7
+	maskeqz	$a3, $a3, $a6
 	or	$a2, $a3, $a2
 	st.d	$a2, $sp, 264                   # 8-byte Folded Spill
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload

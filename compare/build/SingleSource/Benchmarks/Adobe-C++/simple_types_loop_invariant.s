@@ -459,23 +459,23 @@ _Z5timerv:                              # @_Z5timerv
 main:                                   # @main
 	.cfi_startproc
 # %bb.0:                                # %entry
-	addi.d	$sp, $sp, -176
-	.cfi_def_cfa_offset 176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 56                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 40                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -494,7 +494,7 @@ main:                                   # @main
 	move	$s0, $a0
 	ori	$s1, $zero, 2
 	pcalau12i	$a0, %pc_hi20(init_value)
-	addi.d	$s7, $a0, %pc_lo12(init_value)
+	addi.d	$s8, $a0, %pc_lo12(init_value)
 	blt	$s0, $s1, .LBB5_4
 # %bb.1:                                # %if.end
 	move	$fp, $a1
@@ -512,7 +512,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(strtod)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 4
-	fst.d	$fa0, $s7, 0
+	fst.d	$fa0, $s8, 0
 	bltu	$s0, $a0, .LBB5_4
 # %bb.3:                                # %if.then7
 	ld.d	$a0, $fp, 24
@@ -524,28 +524,28 @@ main:                                   # @main
 .LBB5_4:
 	vldi	$vr0, -912
 .LBB5_5:                                # %if.end10
-	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	fld.d	$fa0, $s7, 0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	fld.d	$fa0, $s8, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(data8)
 	addi.d	$s3, $a0, %pc_lo12(data8)
-	lu12i.w	$a0, 1
-	ori	$s2, $a0, 3904
+	lu12i.w	$s7, 1
+	ori	$s2, $s7, 3904
 	move	$a0, $s3
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$fp, $fa0
-	slli.d	$s8, $fp, 1
-	ext.w.b	$s4, $s8
-	addi.d	$s0, $fp, 2
-	ext.w.b	$s5, $s0
+	slli.d	$s0, $fp, 1
+	ext.w.b	$s4, $s0
+	addi.d	$s1, $fp, 2
+	ext.w.b	$s5, $s1
 	div.d	$a0, $s4, $s5
-	add.d	$s1, $a0, $fp
+	add.d	$s6, $a0, $fp
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.11)
 	move	$a0, $s3
@@ -560,7 +560,7 @@ main:                                   # @main
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc)
 	jirl	$ra, $ra, 0
-	ext.w.b	$s6, $s1
+	ext.w.b	$s6, $s6
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a6, $a0, %pc_lo12(.L.str.13)
 	move	$a0, $s3
@@ -703,7 +703,7 @@ main:                                   # @main
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(_Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s7, 0
+	fld.d	$fa0, $s8, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(data8unsigned)
@@ -712,11 +712,10 @@ main:                                   # @main
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	andi	$s4, $s0, 255
-	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
-	andi	$s5, $s8, 254
+	andi	$s4, $s1, 255
+	andi	$s5, $s0, 254
 	div.du	$a0, $s5, $s4
-	add.d	$s1, $a0, $fp
+	add.d	$s6, $a0, $fp
 	pcalau12i	$a0, %pc_hi20(.L.str.29)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.29)
 	move	$a0, $s3
@@ -731,7 +730,7 @@ main:                                   # @main
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc)
 	jirl	$ra, $ra, 0
-	andi	$s6, $s1, 255
+	andi	$s6, $s6, 255
 	pcalau12i	$a0, %pc_hi20(.L.str.31)
 	addi.d	$a6, $a0, %pc_lo12(.L.str.31)
 	move	$a0, $s3
@@ -874,36 +873,30 @@ main:                                   # @main
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(_Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
-	fld.d	$fa0, $s7, 0
+	fld.d	$fa0, $s8, 0
 	ftintrz.l.d	$fa0, $fa0
-	movfr2gr.d	$a0, $fa0
-	xvreplgr2vr.h	$xr0, $a0
-	lu12i.w	$s8, -4
-	ori	$a0, $s8, 384
-	pcalau12i	$a1, %pc_hi20(data16)
-	addi.d	$a1, $a1, %pc_lo12(data16)
-	lu12i.w	$a2, 3
-	ori	$s1, $a2, 3712
-	ori	$s7, $a2, 3744
+	movfr2gr.d	$a1, $fa0
+	pcalau12i	$a0, %pc_hi20(data16+32)
+	addi.d	$a0, $a0, %pc_lo12(data16+32)
+	xvreplgr2vr.h	$xr0, $a1
 	.p2align	4, , 16
 .LBB5_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a1, $a0
-	xvstx	$xr0, $a2, $s1
+	xvst	$xr0, $a0, -32
+	xvst	$xr0, $a0, 0
+	addi.d	$s2, $s2, -32
 	addi.d	$a0, $a0, 64
-	xvstx	$xr0, $a2, $s7
-	bnez	$a0, .LBB5_6
+	bnez	$s2, .LBB5_6
 # %bb.7:                                # %_Z4fillIPssEvT_S1_T0_.exit
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	ext.w.h	$s3, $a0
-	ext.w.h	$s4, $s0
+	ext.w.h	$s3, $s0
+	ext.w.h	$s4, $s1
 	div.w	$a0, $s3, $s4
 	add.d	$s6, $a0, $fp
 	pcalau12i	$a0, %pc_hi20(data16)
 	addi.d	$s5, $a0, %pc_lo12(data16)
 	pcalau12i	$a0, %pc_hi20(.L.str.47)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.47)
+	ori	$s2, $s7, 3904
 	move	$a0, $s5
 	move	$a1, $s2
 	move	$a2, $fp
@@ -1059,33 +1052,31 @@ main:                                   # @main
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(_Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	fld.d	$fa0, $a0, 0
+	fld.d	$fa0, $s8, 0
 	ftintrz.l.d	$fa0, $fa0
-	movfr2gr.d	$a0, $fa0
-	xvreplgr2vr.h	$xr0, $a0
-	ori	$a0, $s8, 384
-	pcalau12i	$a1, %pc_hi20(data16unsigned)
-	addi.d	$a1, $a1, %pc_lo12(data16unsigned)
+	movfr2gr.d	$a1, $fa0
+	pcalau12i	$a0, %pc_hi20(data16unsigned+32)
+	addi.d	$a0, $a0, %pc_lo12(data16unsigned+32)
+	xvreplgr2vr.h	$xr0, $a1
 	.p2align	4, , 16
 .LBB5_8:                                # %vector.body511
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a1, $a0
-	xvstx	$xr0, $a2, $s1
+	xvst	$xr0, $a0, -32
+	xvst	$xr0, $a0, 0
+	addi.d	$s2, $s2, -32
 	addi.d	$a0, $a0, 64
-	xvstx	$xr0, $a2, $s7
-	bnez	$a0, .LBB5_8
+	bnez	$s2, .LBB5_8
 # %bb.9:                                # %_Z4fillIPttEvT_S1_T0_.exit
-	bstrpick.d	$s3, $s0, 15, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	bstrpick.d	$a0, $a0, 15, 1
+	bstrpick.d	$s3, $s1, 15, 0
+	bstrpick.d	$a0, $s0, 15, 1
 	slli.d	$s4, $a0, 1
 	div.du	$a0, $s4, $s3
-	add.d	$s1, $a0, $fp
+	add.d	$s6, $a0, $fp
 	pcalau12i	$a0, %pc_hi20(data16unsigned)
 	addi.d	$s5, $a0, %pc_lo12(data16unsigned)
 	pcalau12i	$a0, %pc_hi20(.L.str.65)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.65)
+	ori	$s2, $s7, 3904
 	move	$a0, $s5
 	move	$a1, $s2
 	move	$a2, $fp
@@ -1098,7 +1089,7 @@ main:                                   # @main
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$s6, $s1, 15, 0
+	bstrpick.d	$s6, $s6, 15, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.67)
 	addi.d	$a6, $a0, %pc_lo12(.L.str.67)
 	move	$a0, $s5
@@ -1241,28 +1232,22 @@ main:                                   # @main
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(_Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	fld.d	$fa0, $a0, 0
+	fld.d	$fa0, $s8, 0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a0, $fa0
-	xvreplgr2vr.w	$xr0, $a0
-	lu12i.w	$a0, -8
-	ori	$a0, $a0, 768
-	pcalau12i	$a1, %pc_hi20(data32)
-	addi.d	$a1, $a1, %pc_lo12(data32)
-	lu12i.w	$a2, 7
-	ori	$s8, $a2, 3328
-	ori	$s1, $a2, 3360
+	movfr2gr.s	$a1, $fa0
+	pcalau12i	$a0, %pc_hi20(data32+32)
+	addi.d	$a0, $a0, %pc_lo12(data32+32)
+	xvreplgr2vr.w	$xr0, $a1
 	.p2align	4, , 16
 .LBB5_10:                               # %vector.body521
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a1, $a0
-	xvstx	$xr0, $a2, $s8
+	xvst	$xr0, $a0, -32
+	xvst	$xr0, $a0, 0
+	addi.d	$s2, $s2, -16
 	addi.d	$a0, $a0, 64
-	xvstx	$xr0, $a2, $s1
-	bnez	$a0, .LBB5_10
+	bnez	$s2, .LBB5_10
 # %bb.11:                               # %_Z4fillIPiiEvT_S1_T0_.exit
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$s3, $fa0
 	slli.w	$s4, $s3, 1
@@ -1273,6 +1258,8 @@ main:                                   # @main
 	addi.d	$s7, $a0, %pc_lo12(data32)
 	pcalau12i	$a0, %pc_hi20(.L.str.83)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.83)
+	lu12i.w	$a0, 1
+	ori	$s2, $a0, 3904
 	move	$a0, $s7
 	move	$a1, $s2
 	move	$a2, $s3
@@ -1427,27 +1414,23 @@ main:                                   # @main
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(_Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	fld.d	$fa0, $a0, 0
+	fld.d	$fa0, $s8, 0
 	ftintrz.l.d	$fa0, $fa0
-	movfr2gr.d	$a0, $fa0
-	xvreplgr2vr.w	$xr0, $a0
-	lu12i.w	$a0, -8
-	ori	$a0, $a0, 768
-	pcalau12i	$a1, %pc_hi20(data32unsigned)
-	addi.d	$a1, $a1, %pc_lo12(data32unsigned)
+	movfr2gr.d	$a1, $fa0
+	pcalau12i	$a0, %pc_hi20(data32unsigned+32)
+	addi.d	$a0, $a0, %pc_lo12(data32unsigned+32)
+	xvreplgr2vr.w	$xr0, $a1
 	.p2align	4, , 16
 .LBB5_12:                               # %vector.body531
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a1, $a0
-	xvstx	$xr0, $a2, $s8
+	xvst	$xr0, $a0, -32
+	xvst	$xr0, $a0, 0
+	addi.d	$s2, $s2, -16
 	addi.d	$a0, $a0, 64
-	xvstx	$xr0, $a2, $s1
-	bnez	$a0, .LBB5_12
+	bnez	$s2, .LBB5_12
 # %bb.13:                               # %_Z4fillIPjjEvT_S1_T0_.exit
-	addi.w	$s3, $s0, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	addi.w	$s4, $a0, 0
+	addi.w	$s3, $s1, 0
+	addi.w	$s4, $s0, 0
 	div.wu	$a0, $s4, $s3
 	add.w	$s5, $a0, $fp
 	addi.w	$s6, $fp, 0
@@ -1455,6 +1438,8 @@ main:                                   # @main
 	addi.d	$s7, $a0, %pc_lo12(data32unsigned)
 	pcalau12i	$a0, %pc_hi20(.L.str.101)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.101)
+	lu12i.w	$a0, 1
+	ori	$s2, $a0, 3904
 	move	$a0, $s7
 	move	$a1, $s2
 	move	$a2, $s6
@@ -1609,8 +1594,7 @@ main:                                   # @main
 	move	$a5, $s5
 	pcaddu18i	$ra, %call36(_Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	fld.d	$fa0, $s6, 0
+	fld.d	$fa0, $s8, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(data64+32)
@@ -1625,15 +1609,14 @@ main:                                   # @main
 	addi.d	$a0, $a0, 64
 	bnez	$s2, .LBB5_14
 # %bb.15:                               # %_Z4fillIPllEvT_S1_T0_.exit
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	div.d	$a0, $s5, $s0
+	div.d	$a0, $s0, $s1
 	add.d	$s3, $a0, $fp
 	pcalau12i	$a0, %pc_hi20(data64)
 	addi.d	$s4, $a0, %pc_lo12(data64)
 	pcalau12i	$a0, %pc_hi20(.L.str.119)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.119)
-	lu12i.w	$s7, 1
-	ori	$s2, $s7, 3904
+	lu12i.w	$s5, 1
+	ori	$s2, $s5, 3904
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $fp
@@ -1651,8 +1634,8 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $fp
-	move	$a3, $s5
-	move	$a4, $s0
+	move	$a3, $s0
+	move	$a4, $s1
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Il28custom_add_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
@@ -1668,8 +1651,8 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $fp
-	move	$a3, $s5
-	move	$a4, $s0
+	move	$a3, $s0
+	move	$a4, $s1
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Il28custom_sub_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
@@ -1685,8 +1668,8 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $fp
-	move	$a3, $s5
-	move	$a4, $s0
+	move	$a3, $s0
+	move	$a4, $s1
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Il33custom_multiply_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
@@ -1695,8 +1678,8 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $fp
-	move	$a3, $s5
-	move	$a4, $s0
+	move	$a3, $s0
+	move	$a4, $s1
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Il34custom_multiply_multiple_variable2IlEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
@@ -1712,8 +1695,8 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $fp
-	move	$a3, $s5
-	move	$a4, $s0
+	move	$a3, $s0
+	move	$a4, $s1
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Il31custom_divide_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
@@ -1722,8 +1705,8 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $fp
-	move	$a3, $s5
-	move	$a4, $s0
+	move	$a3, $s0
+	move	$a4, $s1
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Il32custom_divide_multiple_variable2IlEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
@@ -1732,8 +1715,8 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $fp
-	move	$a3, $s5
-	move	$a4, $s0
+	move	$a3, $s0
+	move	$a4, $s1
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Il30custom_mixed_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
@@ -1749,8 +1732,8 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $fp
-	move	$a3, $s5
-	move	$a4, $s0
+	move	$a3, $s0
+	move	$a4, $s1
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Il28custom_multiple_variable_andIlEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
@@ -1766,8 +1749,8 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $fp
-	move	$a3, $s5
-	move	$a4, $s0
+	move	$a3, $s0
+	move	$a4, $s1
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Il27custom_multiple_variable_orIlEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
@@ -1783,12 +1766,12 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $fp
-	move	$a3, $s5
-	move	$a4, $s0
+	move	$a3, $s0
+	move	$a4, $s1
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Il28custom_multiple_variable_xorIlEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa1, $s6, 0
+	fld.d	$fa1, $s8, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
 	fld.d	$fa0, $a0, %pc_lo12(.LCPI5_0)
 	fcmp.clt.d	$fcc0, $fa1, $fa0
@@ -1815,7 +1798,7 @@ main:                                   # @main
 	addi.d	$a1, $a1, 64
 	bnez	$s2, .LBB5_16
 # %bb.17:                               # %_Z4fillIPmmEvT_S1_T0_.exit
-	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	fcmp.clt.d	$fcc0, $fa1, $fa0
 	fsub.d	$fa0, $fa1, $fa0
 	ftintrz.l.d	$fa0, $fa0
@@ -1825,15 +1808,15 @@ main:                                   # @main
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $fp, $a1
 	or	$s0, $a1, $a0
-	slli.d	$s5, $s0, 1
+	slli.d	$s1, $s0, 1
 	addi.d	$s2, $s0, 2
-	div.du	$a0, $s5, $s2
+	div.du	$a0, $s1, $s2
 	add.d	$s3, $a0, $s0
 	pcalau12i	$a0, %pc_hi20(data64unsigned)
 	addi.d	$s4, $a0, %pc_lo12(data64unsigned)
 	pcalau12i	$a0, %pc_hi20(.L.str.137)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.137)
-	ori	$fp, $s7, 3904
+	ori	$fp, $s5, 3904
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
@@ -1851,7 +1834,7 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
-	move	$a3, $s5
+	move	$a3, $s1
 	move	$a4, $s2
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Im28custom_add_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc)
@@ -1868,7 +1851,7 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
-	move	$a3, $s5
+	move	$a3, $s1
 	move	$a4, $s2
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Im28custom_sub_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc)
@@ -1885,7 +1868,7 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
-	move	$a3, $s5
+	move	$a3, $s1
 	move	$a4, $s2
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Im33custom_multiply_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc)
@@ -1895,7 +1878,7 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
-	move	$a3, $s5
+	move	$a3, $s1
 	move	$a4, $s2
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Im34custom_multiply_multiple_variable2ImEEvPT_iS2_S2_S2_S2_PKc)
@@ -1912,7 +1895,7 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
-	move	$a3, $s5
+	move	$a3, $s1
 	move	$a4, $s2
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Im31custom_divide_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc)
@@ -1922,7 +1905,7 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
-	move	$a3, $s5
+	move	$a3, $s1
 	move	$a4, $s2
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Im32custom_divide_multiple_variable2ImEEvPT_iS2_S2_S2_S2_PKc)
@@ -1932,7 +1915,7 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
-	move	$a3, $s5
+	move	$a3, $s1
 	move	$a4, $s2
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Im30custom_mixed_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc)
@@ -1949,7 +1932,7 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
-	move	$a3, $s5
+	move	$a3, $s1
 	move	$a4, $s2
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Im28custom_multiple_variable_andImEEvPT_iS2_S2_S2_S2_PKc)
@@ -1966,7 +1949,7 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
-	move	$a3, $s5
+	move	$a3, $s1
 	move	$a4, $s2
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Im27custom_multiple_variable_orImEEvPT_iS2_S2_S2_S2_PKc)
@@ -1983,28 +1966,26 @@ main:                                   # @main
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
-	move	$a3, $s5
+	move	$a3, $s1
 	move	$a4, $s2
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Im28custom_multiple_variable_xorImEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s6, 0
+	fld.d	$fa0, $s8, 0
 	fcvt.s.d	$fa0, $fa0
+	pcalau12i	$a0, %pc_hi20(dataFloat+32)
+	addi.d	$a0, $a0, %pc_lo12(dataFloat+32)
 	xvreplve0.w	$xr0, $xr0
-	lu12i.w	$a0, -8
-	ori	$a0, $a0, 768
-	pcalau12i	$a1, %pc_hi20(dataFloat)
-	addi.d	$a1, $a1, %pc_lo12(dataFloat)
 	.p2align	4, , 16
 .LBB5_18:                               # %vector.body561
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a1, $a0
-	xvstx	$xr0, $a2, $s8
+	xvst	$xr0, $a0, -32
+	xvst	$xr0, $a0, 0
+	addi.d	$fp, $fp, -16
 	addi.d	$a0, $a0, 64
-	xvstx	$xr0, $a2, $s1
-	bnez	$a0, .LBB5_18
+	bnez	$fp, .LBB5_18
 # %bb.19:                               # %_Z4fillIPffEvT_S1_T0_.exit
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	fcvt.s.d	$fs0, $fa0
 	fadd.s	$fs1, $fs0, $fs0
 	vldi	$vr0, -1280
@@ -2015,6 +1996,7 @@ main:                                   # @main
 	addi.d	$s0, $a0, %pc_lo12(dataFloat)
 	pcalau12i	$a0, %pc_hi20(.L.str.155)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.155)
+	ori	$fp, $s5, 3904
 	move	$a0, $s0
 	move	$a1, $fp
 	fmov.s	$fa0, $fs0
@@ -2118,7 +2100,7 @@ main:                                   # @main
 	fmov.s	$fa3, $fs3
 	pcaddu18i	$ra, %call36(_Z14test_variable4If30custom_mixed_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	xvldrepl.d	$xr0, $s6, 0
+	xvldrepl.d	$xr0, $s8, 0
 	pcalau12i	$a0, %pc_hi20(dataDouble+32)
 	addi.d	$a0, $a0, %pc_lo12(dataDouble+32)
 	.p2align	4, , 16
@@ -2130,7 +2112,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, 64
 	bnez	$fp, .LBB5_20
 # %bb.21:                               # %_Z4fillIPddEvT_S1_T0_.exit
-	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	fadd.d	$fs0, $fa1, $fa1
 	vldi	$vr0, -1024
 	fadd.d	$fs1, $fa1, $fa0
@@ -2141,7 +2123,7 @@ main:                                   # @main
 	addi.d	$fp, $a0, %pc_lo12(dataDouble)
 	pcalau12i	$a0, %pc_hi20(.L.str.167)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.167)
-	ori	$s0, $s7, 3904
+	ori	$s0, $s5, 3904
 	move	$a0, $fp
 	move	$a1, $s0
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
@@ -2151,7 +2133,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, %pc_lo12(.L.str.168)
 	move	$a0, $fp
 	move	$a1, $s0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(_Z22test_hoisted_variable1Id19custom_add_variableIdEEvPT_iS2_PKc)
 	jirl	$ra, $ra, 0
@@ -2159,7 +2141,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, %pc_lo12(.L.str.169)
 	move	$a0, $fp
 	move	$a1, $s0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	fmov.d	$fa1, $fs0
 	fmov.d	$fa2, $fs1
@@ -2170,7 +2152,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, %pc_lo12(.L.str.170)
 	move	$a0, $fp
 	move	$a1, $s0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(_Z14test_variable1Id19custom_sub_variableIdEEvPT_iS2_PKc)
 	jirl	$ra, $ra, 0
@@ -2178,7 +2160,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, %pc_lo12(.L.str.171)
 	move	$a0, $fp
 	move	$a1, $s0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	fmov.d	$fa1, $fs0
 	fmov.d	$fa2, $fs1
@@ -2189,7 +2171,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, %pc_lo12(.L.str.172)
 	move	$a0, $fp
 	move	$a1, $s0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(_Z14test_variable1Id24custom_multiply_variableIdEEvPT_iS2_PKc)
 	jirl	$ra, $ra, 0
@@ -2197,7 +2179,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, %pc_lo12(.L.str.173)
 	move	$a0, $fp
 	move	$a1, $s0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	fmov.d	$fa1, $fs0
 	fmov.d	$fa2, $fs1
@@ -2208,7 +2190,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, %pc_lo12(.L.str.174)
 	move	$a0, $fp
 	move	$a1, $s0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	fmov.d	$fa1, $fs0
 	fmov.d	$fa2, $fs1
@@ -2219,7 +2201,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, %pc_lo12(.L.str.175)
 	move	$a0, $fp
 	move	$a1, $s0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(_Z14test_variable1Id22custom_divide_variableIdEEvPT_iS2_PKc)
 	jirl	$ra, $ra, 0
@@ -2227,7 +2209,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, %pc_lo12(.L.str.176)
 	move	$a0, $fp
 	move	$a1, $s0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	fmov.d	$fa1, $fs0
 	fmov.d	$fa2, $fs1
@@ -2238,7 +2220,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, %pc_lo12(.L.str.177)
 	move	$a0, $fp
 	move	$a1, $s0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	fmov.d	$fa1, $fs0
 	fmov.d	$fa2, $fs1
@@ -2249,7 +2231,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, %pc_lo12(.L.str.178)
 	move	$a0, $fp
 	move	$a1, $s0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	fmov.d	$fa1, $fs0
 	fmov.d	$fa2, $fs1
@@ -2257,22 +2239,22 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Z14test_variable4Id30custom_mixed_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	fld.d	$fs3, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 64                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	fld.d	$fs3, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .Lfunc_end5:
 	.size	main, .Lfunc_end5-main

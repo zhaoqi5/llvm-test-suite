@@ -54749,12 +54749,13 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	ld.d	$a1, $a0, 0
 	move	$a4, $zero
 	xvinsgr2vr.d	$xr0, $a1, 3
+	addi.d	$a1, $a0, 2047
+	addi.d	$a5, $a1, 1129
 	lu12i.w	$a2, -524288
 	xvreplgr2vr.d	$xr1, $a2
 	lu12i.w	$a1, 524287
 	ori	$a3, $a1, 4094
 	xvreplgr2vr.d	$xr2, $a3
-	ori	$a5, $zero, 3176
 	xvrepli.d	$xr3, 1
 	xvrepli.b	$xr4, -1
 	lu12i.w	$a1, -421749
@@ -54768,16 +54769,16 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	xvori.b	$xr6, $xr0, 0
 	add.d	$a7, $a0, $a4
 	xvld	$xr0, $a7, 8
-	xvpickve2gr.d	$t0, $xr6, 3
-	xvinsgr2vr.d	$xr6, $t0, 0
-	xvpickve2gr.d	$t0, $xr0, 0
-	xvinsgr2vr.d	$xr6, $t0, 1
-	xvpickve2gr.d	$t0, $xr0, 1
-	xvinsgr2vr.d	$xr6, $t0, 2
-	xvpickve2gr.d	$t0, $xr0, 2
-	xvinsgr2vr.d	$xr6, $t0, 3
+	xvpickve2gr.d	$a7, $xr6, 3
+	xvinsgr2vr.d	$xr6, $a7, 0
+	xvpickve2gr.d	$a7, $xr0, 0
+	xvinsgr2vr.d	$xr6, $a7, 1
+	xvpickve2gr.d	$a7, $xr0, 1
+	xvinsgr2vr.d	$xr6, $a7, 2
+	xvpickve2gr.d	$a7, $xr0, 2
+	xvinsgr2vr.d	$xr6, $a7, 3
 	xvand.v	$xr6, $xr6, $xr1
-	xvldx	$xr7, $a7, $a5
+	xvldx	$xr7, $a5, $a4
 	xvand.v	$xr8, $xr0, $xr2
 	xvor.v	$xr6, $xr8, $xr6
 	xvsrli.d	$xr6, $xr6, 1
@@ -54826,25 +54827,20 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	xor	$a4, $a4, $a5
 	st.d	$a4, $a0, 1808
 	vinsgr2vr.d	$vr5, $a6, 1
-	lu12i.w	$a4, -1
-	ori	$a4, $a4, 928
-	lu12i.w	$a6, 1
-	ori	$a5, $a6, 896
+	addi.d	$a4, $a0, 1824
+	ori	$a5, $zero, 396
 	vreplgr2vr.d	$vr0, $a2
 	vreplgr2vr.d	$vr1, $a3
-	ori	$a2, $zero, 3168
 	vrepli.d	$vr2, 1
 	vrepli.b	$vr3, -1
 	vreplgr2vr.d	$vr4, $a1
-	ori	$a3, $a6, 888
 	.p2align	4, , 16
 .LBB285_4:                              # %vector.body12
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a6, $a0, $a4
-	vldx	$vr6, $a6, $a5
+	vld	$vr6, $a4, 0
 	vshuf4i.d	$vr5, $vr6, 9
 	vand.v	$vr5, $vr5, $vr0
-	vldx	$vr7, $a6, $a2
+	vld	$vr7, $a4, -1824
 	vand.v	$vr8, $vr6, $vr1
 	vor.v	$vr5, $vr8, $vr5
 	vsrli.d	$vr5, $vr5, 1
@@ -54854,10 +54850,11 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	vxor.v	$vr7, $vr7, $vr3
 	vand.v	$vr7, $vr7, $vr4
 	vxor.v	$vr5, $vr5, $vr7
+	vst	$vr5, $a4, -8
+	addi.d	$a5, $a5, -2
 	addi.d	$a4, $a4, 16
-	vstx	$vr5, $a6, $a3
 	vori.b	$vr5, $vr6, 0
-	bnez	$a4, .LBB285_4
+	bnez	$a5, .LBB285_4
 # %bb.5:                                # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE11_M_gen_randEv.exit
 	ld.d	$a3, $a0, 0
 	move	$a2, $zero

@@ -24,28 +24,31 @@ TreeCCParse:                            # @TreeCCParse
 	beqz	$a0, .LBB0_280
 # %bb.1:                                # %do.body.preheader
 	ldptr.d	$s1, $s7, 8192
+	lu12i.w	$a1, 2
+	ori	$a0, $a1, 16
+	add.d	$a0, $s7, $a0
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ld.w	$a0, $s1, 0
 	ori	$s8, $zero, 36
-	pcalau12i	$a1, %pc_hi20(.LJTI0_0)
-	addi.d	$a1, $a1, %pc_lo12(.LJTI0_0)
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.L.str.10)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.10)
-	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(.LJTI0_0)
+	addi.d	$a2, $a2, %pc_lo12(.LJTI0_0)
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(.L.str.10)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.10)
+	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
 	ori	$s4, $zero, 1
 	ori	$s0, $zero, 3
 	ori	$s3, $zero, 2
 	ori	$s5, $zero, 4
-	lu12i.w	$a1, -293760
-	ori	$a1, $a1, 23
-	lu32i.d	$a1, 31
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	lu12i.w	$a1, 8
-	ori	$a1, $a1, 259
-	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
-	lu12i.w	$a1, 2
+	lu12i.w	$a2, -293760
+	ori	$a2, $a2, 23
+	lu32i.d	$a2, 31
+	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
+	lu12i.w	$a2, 8
+	ori	$a2, $a2, 259
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	ori	$a1, $a1, 48
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
 	b	.LBB0_6
 .LBB0_2:                                # %cleanup
@@ -241,13 +244,13 @@ TreeCCParse:                            # @TreeCCParse
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(TreeCCValue)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 152
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(TreeCCNextToken)
 	jirl	$ra, $ra, 0
 	andi	$a0, $s2, 1
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	beqz	$a0, .LBB0_129
 	b	.LBB0_197
 .LBB0_28:                               # %sw.bb49
@@ -281,11 +284,9 @@ TreeCCParse:                            # @TreeCCParse
 	b	.LBB0_134
 .LBB0_31:                               # %sw.bb126
                                         #   in Loop: Header=BB0_6 Depth=1
-	lu12i.w	$a1, 2
-	ori	$a0, $a1, 16
-	vldx	$vr0, $s7, $a0
-	ori	$a0, $a1, 32
-	vstx	$vr0, $s7, $a0
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	vld	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
 	b	.LBB0_174
 .LBB0_32:                               # %sw.bb131
                                         #   in Loop: Header=BB0_6 Depth=1
@@ -851,7 +852,8 @@ TreeCCParse:                            # @TreeCCParse
 	bnez	$a1, .LBB0_174
 # %bb.103:                              # %if.then69
                                         #   in Loop: Header=BB0_6 Depth=1
-	stptr.d	$a0, $s7, 8224
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	st.d	$a0, $a1, 16
 	b	.LBB0_174
 .LBB0_104:                              # %sw.bb51
                                         #   in Loop: Header=BB0_6 Depth=1
@@ -892,7 +894,7 @@ TreeCCParse:                            # @TreeCCParse
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(TreeCCNextToken)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ldx.hu	$a0, $s7, $a0
 	andi	$a0, $a0, 1
 	bnez	$a0, .LBB0_187
@@ -1057,10 +1059,10 @@ TreeCCParse:                            # @TreeCCParse
 	addi.d	$a1, $a0, %pc_lo12(.L.str.44)
 	b	.LBB0_3
 .LBB0_128:                              #   in Loop: Header=BB0_6 Depth=1
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	move	$fp, $zero
 	andi	$a0, $s2, 1
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	bnez	$a0, .LBB0_197
 .LBB0_129:                              # %land.lhs.true52.i
                                         #   in Loop: Header=BB0_6 Depth=1
@@ -1072,7 +1074,7 @@ TreeCCParse:                            # @TreeCCParse
 # %bb.131:                              # %if.else57.i
                                         #   in Loop: Header=BB0_6 Depth=1
 	move	$a0, $fp
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB0_197
@@ -1238,7 +1240,7 @@ TreeCCParse:                            # @TreeCCParse
 	jirl	$ra, $ra, 0
 .LBB0_159:                              # %while.cond80.i.preheader
                                         #   in Loop: Header=BB0_143 Depth=3
-	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
 	b	.LBB0_161
 	.p2align	4, , 16
 .LBB0_160:                              # %while.body93.i
@@ -1406,7 +1408,7 @@ TreeCCParse:                            # @TreeCCParse
 .LBB0_186:                              # %if.end19.i
                                         #   in Loop: Header=BB0_6 Depth=1
 	move	$s5, $zero
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ldx.hu	$a0, $s7, $a0
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB0_190
@@ -1483,8 +1485,8 @@ TreeCCParse:                            # @TreeCCParse
                                         #   in Loop: Header=BB0_6 Depth=1
 	ld.w	$a0, $s1, 0
 	ori	$a1, $zero, 5
-	st.d	$s5, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
 	bne	$a0, $a1, .LBB0_228
 # %bb.198:                              # %if.then66.i
                                         #   in Loop: Header=BB0_6 Depth=1
@@ -1751,7 +1753,7 @@ TreeCCParse:                            # @TreeCCParse
 	ori	$s0, $zero, 3
 .LBB0_234:                              # %while.end.i129
                                         #   in Loop: Header=BB0_6 Depth=1
-	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
 	ori	$s8, $zero, 36
 	ori	$a0, $zero, 6
 	ori	$s3, $zero, 2
@@ -1779,7 +1781,7 @@ TreeCCParse:                            # @TreeCCParse
 	beq	$a0, $a1, .LBB0_229
 .LBB0_237:                              # %if.else150.i
                                         #   in Loop: Header=BB0_6 Depth=1
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	bnez	$a1, .LBB0_252
 # %bb.238:                              # %land.lhs.true153.i
                                         #   in Loop: Header=BB0_6 Depth=1
@@ -1894,14 +1896,14 @@ TreeCCParse:                            # @TreeCCParse
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 .LBB0_254:                              # %if.end178.i
                                         #   in Loop: Header=BB0_6 Depth=1
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	bnez	$a0, .LBB0_256
 # %bb.255:                              #   in Loop: Header=BB0_6 Depth=1
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
 	b	.LBB0_267
 .LBB0_256:                              # %if.then181.i
                                         #   in Loop: Header=BB0_6 Depth=1
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
 	beqz	$s7, .LBB0_262
 # %bb.257:                              # %if.then181.i
                                         #   in Loop: Header=BB0_6 Depth=1
@@ -1974,13 +1976,13 @@ TreeCCParse:                            # @TreeCCParse
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(TreeCCErrorOnLine)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	beqz	$a0, .LBB0_270
 # %bb.269:                              # %if.then217.i
                                         #   in Loop: Header=BB0_6 Depth=1
@@ -2034,9 +2036,9 @@ TreeCCParse:                            # @TreeCCParse
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	st.d	$a0, $sp, 0
 	move	$a0, $fp
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	move	$a2, $s0
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	move	$a4, $s5
 	move	$a5, $s7
 	ld.d	$a7, $sp, 112                   # 8-byte Folded Reload

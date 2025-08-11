@@ -219,7 +219,7 @@ main:                                   # @main
 # %bb.13:                               # %polybench_alloc_data.exit63
 	bnez	$a0, .LBB7_47
 # %bb.14:                               # %polybench_alloc_data.exit70
-	move	$t1, $zero
+	move	$t0, $zero
 	lu52i.d	$a0, $zero, 1107
 	pcalau12i	$a1, %pc_hi20(.LCPI7_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI7_0)
@@ -233,72 +233,71 @@ main:                                   # @main
 	ori	$a5, $zero, 4
 	pcalau12i	$a6, %pc_hi20(.LCPI7_2)
 	xvld	$xr3, $a6, %pc_lo12(.LCPI7_2)
-	lu12i.w	$s7, -4
-	ori	$a6, $s7, 384
-	lu12i.w	$a7, 67108
-	ori	$a7, $a7, 3539
-	vreplgr2vr.w	$vr4, $a7
-	ori	$a7, $zero, 2000
-	vreplgr2vr.w	$vr5, $a7
-	ori	$t0, $zero, 0
-	lu32i.d	$t0, -49152
-	lu52i.d	$t0, $t0, 1033
-	xvreplgr2vr.d	$xr6, $t0
-	move	$t0, $fp
+	lu12i.w	$a6, 67108
+	ori	$a6, $a6, 3539
+	vreplgr2vr.w	$vr4, $a6
+	ori	$a6, $zero, 2000
+	vreplgr2vr.w	$vr5, $a6
+	ori	$a7, $zero, 0
+	lu32i.d	$a7, -49152
+	lu52i.d	$a7, $a7, 1033
+	xvreplgr2vr.d	$xr6, $a7
+	move	$a7, $fp
 	.p2align	4, , 16
 .LBB7_15:                               # %for.body.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_16 Depth 2
-	srli.d	$t2, $t1, 32
-	or	$t2, $t2, $a0
-	movgr2fr.d	$fa7, $t2
+	srli.d	$t1, $t0, 32
+	or	$t1, $t1, $a0
+	movgr2fr.d	$fa7, $t1
 	fsub.d	$fa7, $fa7, $fa0
-	move	$t2, $t1
-	bstrins.d	$t2, $a1, 63, 32
-	movgr2fr.d	$ft0, $t2
+	move	$t1, $t0
+	bstrins.d	$t1, $a1, 63, 32
+	movgr2fr.d	$ft0, $t1
 	fadd.d	$fa7, $ft0, $fa7
 	fdiv.d	$fa7, $fa7, $fa1
-	slli.d	$t2, $t1, 3
-	fstx.d	$fa7, $s0, $t2
-	fstx.d	$fa7, $s2, $t2
-	sltui	$t3, $t1, 1997
-	masknez	$t4, $a2, $t3
-	maskeqz	$t3, $a3, $t3
+	slli.d	$t1, $t0, 3
+	fstx.d	$fa7, $s0, $t1
+	fstx.d	$fa7, $s2, $t1
+	sltui	$t2, $t0, 1997
+	masknez	$t3, $a2, $t2
+	maskeqz	$t2, $a3, $t2
+	or	$t2, $t2, $t3
+	add.d	$t2, $t2, $t0
+	sltui	$t3, $t0, 1996
+	masknez	$t4, $a4, $t3
+	maskeqz	$t3, $a5, $t3
 	or	$t3, $t3, $t4
-	add.d	$t3, $t3, $t1
-	sltui	$t4, $t1, 1996
-	masknez	$t5, $a4, $t4
-	maskeqz	$t4, $a5, $t4
-	or	$t4, $t4, $t5
-	add.d	$t4, $t4, $t1
-	xvreplgr2vr.d	$xr7, $t1
-	addi.d	$t1, $t1, 1
-	srli.d	$t5, $t1, 32
-	or	$t5, $t5, $a0
-	movgr2fr.d	$ft0, $t5
+	add.d	$t3, $t3, $t0
+	xvreplgr2vr.d	$xr7, $t0
+	addi.d	$t0, $t0, 1
+	srli.d	$t4, $t0, 32
+	or	$t4, $t4, $a0
+	movgr2fr.d	$ft0, $t4
 	fsub.d	$ft0, $ft0, $fa0
-	move	$t5, $t1
-	bstrins.d	$t5, $a1, 63, 32
-	movgr2fr.d	$ft1, $t5
+	move	$t4, $t0
+	bstrins.d	$t4, $a1, 63, 32
+	movgr2fr.d	$ft1, $t4
 	fadd.d	$ft0, $ft1, $ft0
-	addi.d	$t5, $t1, -2000
-	sltui	$t5, $t5, 1
+	addi.d	$t4, $t0, -2000
+	sltui	$t4, $t4, 1
 	fdiv.d	$ft0, $ft0, $fa1
-	movgr2cf	$fcc0, $t5
+	movgr2cf	$fcc0, $t4
 	fsel	$ft0, $ft0, $fa2, $fcc0
-	fstx.d	$ft0, $s1, $t2
-	fstx.d	$ft0, $s3, $t2
-	bstrpick.d	$t3, $t3, 31, 0
-	movgr2fr.d	$ft0, $t3
+	fstx.d	$ft0, $s1, $t1
+	fstx.d	$ft0, $s3, $t1
+	bstrpick.d	$t2, $t2, 31, 0
+	movgr2fr.d	$ft0, $t2
 	ffint.d.l	$ft0, $ft0
 	fdiv.d	$ft0, $ft0, $fa1
-	fstx.d	$ft0, $s4, $t2
-	bstrpick.d	$t3, $t4, 31, 0
-	movgr2fr.d	$ft0, $t3
+	fstx.d	$ft0, $s4, $t1
+	bstrpick.d	$t2, $t3, 31, 0
+	movgr2fr.d	$ft0, $t2
 	ffint.d.l	$ft0, $ft0
 	fdiv.d	$ft0, $ft0, $fa1
-	fstx.d	$ft0, $s5, $t2
-	move	$t2, $a6
+	fstx.d	$ft0, $s5, $t1
+	move	$t1, $a7
+	ori	$t2, $zero, 2000
 	xvori.b	$xr8, $xr3, 0
 	.p2align	4, , 16
 .LBB7_16:                               # %vector.body
@@ -319,17 +318,18 @@ main:                                   # @main
 	vext2xv.du.wu	$xr9, $xr10
 	xvffint.d.lu	$xr9, $xr9
 	xvfdiv.d	$xr9, $xr9, $xr6
-	add.d	$t3, $t0, $t2
-	xvstx	$xr9, $t3, $s6
-	addi.d	$t2, $t2, 32
+	xvst	$xr9, $t1, 0
 	xvaddi.du	$xr8, $xr8, 4
+	addi.d	$t2, $t2, -4
+	addi.d	$t1, $t1, 32
 	bnez	$t2, .LBB7_16
 # %bb.17:                               # %middle.block
                                         #   in Loop: Header=BB7_15 Depth=1
-	add.d	$t0, $t0, $s6
-	bne	$t1, $a7, .LBB7_15
+	add.d	$a7, $a7, $s6
+	bne	$t0, $a6, .LBB7_15
 # %bb.18:                               # %for.cond1.preheader.i.preheader
 	move	$a0, $zero
+	lu12i.w	$s7, -4
 	ori	$a1, $s7, 384
 	ori	$a2, $zero, 2000
 	move	$a3, $fp

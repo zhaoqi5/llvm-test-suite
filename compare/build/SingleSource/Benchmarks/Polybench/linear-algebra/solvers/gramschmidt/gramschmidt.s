@@ -177,7 +177,7 @@ main:                                   # @main
 # %bb.5:                                # %polybench_alloc_data.exit20
 	bnez	$a0, .LBB7_35
 # %bb.6:                                # %polybench_alloc_data.exit27
-	move	$t4, $zero
+	move	$a0, $zero
 	move	$a1, $zero
 	ld.d	$t1, $sp, 104                   # 8-byte Folded Reload
 	sub.d	$a2, $t2, $t1
@@ -214,7 +214,6 @@ main:                                   # @main
 	move	$a7, $t1
 	st.d	$t2, $sp, 88                    # 8-byte Folded Spill
 	move	$t0, $t2
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	b	.LBB7_8
 	.p2align	4, , 16
 .LBB7_7:                                # %for.inc12.i
@@ -222,7 +221,7 @@ main:                                   # @main
 	addi.d	$a1, $a1, 1
 	add.d	$t0, $t0, $s4
 	add.d	$a7, $a7, $s4
-	addi.d	$t4, $t4, 1
+	addi.d	$a0, $a0, 1
 	beq	$a1, $a6, .LBB7_13
 .LBB7_8:                                # %for.cond1.preheader.i
                                         # =>This Loop Header: Depth=1
@@ -253,28 +252,30 @@ main:                                   # @main
 	add.d	$t3, $t0, $t2
 	stptr.d	$zero, $t3, 9600
 	addi.d	$t2, $t2, 8
-	add.w	$t1, $t1, $t4
+	add.w	$t1, $t1, $a0
 	bnez	$t2, .LBB7_10
 	b	.LBB7_7
 	.p2align	4, , 16
 .LBB7_11:                               # %vector.ph
                                         #   in Loop: Header=BB7_8 Depth=1
 	xvreplgr2vr.d	$xr10, $a1
-	move	$t1, $a4
+	ori	$t1, $zero, 1200
+	move	$t2, $a7
+	move	$t3, $t0
 	xvori.b	$xr11, $xr3, 0
 	.p2align	4, , 16
 .LBB7_12:                               # %vector.body
                                         #   Parent Loop BB7_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvmul.d	$xr12, $xr11, $xr10
-	xvpickve2gr.d	$t2, $xr12, 0
-	vinsgr2vr.w	$vr13, $t2, 0
-	xvpickve2gr.d	$t2, $xr12, 1
-	vinsgr2vr.w	$vr13, $t2, 1
-	xvpickve2gr.d	$t2, $xr12, 2
-	vinsgr2vr.w	$vr13, $t2, 2
-	xvpickve2gr.d	$t2, $xr12, 3
-	vinsgr2vr.w	$vr13, $t2, 3
+	xvpickve2gr.d	$t4, $xr12, 0
+	vinsgr2vr.w	$vr13, $t4, 0
+	xvpickve2gr.d	$t4, $xr12, 1
+	vinsgr2vr.w	$vr13, $t4, 1
+	xvpickve2gr.d	$t4, $xr12, 2
+	vinsgr2vr.w	$vr13, $t4, 2
+	xvpickve2gr.d	$t4, $xr12, 3
+	vinsgr2vr.w	$vr13, $t4, 3
 	vmuh.wu	$vr12, $vr13, $vr4
 	vsrli.w	$vr12, $vr12, 6
 	vmsub.w	$vr13, $vr12, $vr5
@@ -283,31 +284,33 @@ main:                                   # @main
 	xvfdiv.d	$xr12, $xr12, $xr6
 	xvfmul.d	$xr12, $xr12, $xr7
 	xvfadd.d	$xr12, $xr12, $xr8
-	add.d	$t2, $a7, $t1
-	xvstx	$xr12, $t2, $s4
-	add.d	$t2, $t0, $t1
-	xvstx	$xr9, $t2, $s4
-	addi.d	$t1, $t1, 32
+	xvst	$xr12, $t2, 0
+	xvst	$xr9, $t3, 0
 	xvaddi.du	$xr11, $xr11, 4
+	addi.d	$t1, $t1, -4
+	addi.d	$t3, $t3, 32
+	addi.d	$t2, $t2, 32
 	bnez	$t1, .LBB7_12
 	b	.LBB7_7
 .LBB7_13:                               # %init_array.exit
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	move	$a0, $s1
 	move	$a1, $zero
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.d	$t4, $sp, 96                    # 8-byte Folded Reload
+	move	$t4, $s1
 	move	$s5, $zero
 	ld.d	$t3, $sp, 104                   # 8-byte Folded Reload
 	add.d	$t6, $t3, $s2
 	ld.d	$t5, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a0, $t5, $s2
-	add.d	$a1, $t4, $s3
+	add.d	$a1, $s1, $s3
 	sltu	$a2, $t5, $t6
 	sltu	$a3, $t3, $a0
 	and	$a2, $a2, $a3
 	sltu	$a1, $t5, $a1
-	sltu	$a0, $t4, $a0
+	sltu	$a0, $s1, $a0
 	and	$a0, $a1, $a0
 	or	$t7, $a2, $a0
 	addi.d	$t8, $t3, 8

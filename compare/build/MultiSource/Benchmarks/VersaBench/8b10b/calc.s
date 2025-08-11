@@ -133,52 +133,50 @@ bigTableSetup:                          # @bigTableSetup
 	move	$a0, $zero
 	pcalau12i	$a1, %pc_hi20(.LCPI4_0)
 	xvld	$xr0, $a1, %pc_lo12(.LCPI4_0)
-	lu12i.w	$a1, -1
+	ori	$a1, $zero, 1024
+	pcalau12i	$a2, %pc_hi20(bigTable)
+	addi.d	$a2, $a2, %pc_lo12(bigTable)
 	xvrepli.w	$xr1, 1
 	xvrepli.w	$xr2, 7
-	pcalau12i	$a2, %pc_hi20(lookupTable5B)
-	addi.d	$a2, $a2, %pc_lo12(lookupTable5B)
-	pcalau12i	$a3, %pc_hi20(lookupTable3B)
-	addi.d	$a3, $a3, %pc_lo12(lookupTable3B)
-	lu12i.w	$a4, 16
-	xvreplgr2vr.w	$xr3, $a4
+	pcalau12i	$a3, %pc_hi20(lookupTable5B)
+	addi.d	$a3, $a3, %pc_lo12(lookupTable5B)
+	pcalau12i	$a4, %pc_hi20(lookupTable3B)
+	addi.d	$a4, $a4, %pc_lo12(lookupTable3B)
+	lu12i.w	$a5, 16
+	xvreplgr2vr.w	$xr3, $a5
 	xvrepli.w	$xr4, 29
-	pcalau12i	$a5, %pc_hi20(bigTable)
-	addi.d	$a5, $a5, %pc_lo12(bigTable)
-	lu12i.w	$a6, 1
 	.p2align	4, , 16
 .LBB4_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvsrli.w	$xr5, $xr0, 9
 	xvsrli.w	$xr6, $xr0, 8
 	xvand.v	$xr7, $xr6, $xr1
-	xvpickve2gr.w	$a7, $xr6, 0
-	move	$t0, $a0
-	bstrins.d	$t0, $a7, 63, 5
+	xvpickve2gr.w	$a6, $xr6, 0
+	move	$a7, $a0
+	bstrins.d	$a7, $a6, 63, 5
 	xvand.v	$xr6, $xr0, $xr2
 	xvslli.w	$xr7, $xr7, 3
 	xvor.v	$xr6, $xr7, $xr6
-	andi	$a7, $t0, 63
-	slli.d	$a7, $a7, 2
-	ldx.wu	$a7, $a2, $a7
+	andi	$a6, $a7, 63
+	slli.d	$a6, $a6, 2
+	ldx.wu	$a6, $a3, $a6
 	xvpermi.q	$xr7, $xr6, 1
-	vpickve2gr.w	$t0, $vr7, 3
+	vpickve2gr.w	$a7, $vr7, 3
+	andi	$a7, $a7, 15
+	vpickve2gr.w	$t0, $vr7, 2
 	andi	$t0, $t0, 15
-	vpickve2gr.w	$t1, $vr7, 2
+	vpickve2gr.w	$t1, $vr7, 1
 	andi	$t1, $t1, 15
-	vpickve2gr.w	$t2, $vr7, 1
+	vpickve2gr.w	$t2, $vr7, 0
 	andi	$t2, $t2, 15
-	vpickve2gr.w	$t3, $vr7, 0
+	vpickve2gr.w	$t3, $vr6, 3
 	andi	$t3, $t3, 15
-	vpickve2gr.w	$t4, $vr6, 3
+	vpickve2gr.w	$t4, $vr6, 2
 	andi	$t4, $t4, 15
-	vpickve2gr.w	$t5, $vr6, 2
+	vpickve2gr.w	$t5, $vr6, 1
 	andi	$t5, $t5, 15
-	vpickve2gr.w	$t6, $vr6, 1
+	vpickve2gr.w	$t6, $vr6, 0
 	andi	$t6, $t6, 15
-	vpickve2gr.w	$t7, $vr6, 0
-	andi	$t7, $t7, 15
-	slli.d	$t7, $t7, 2
 	slli.d	$t6, $t6, 2
 	slli.d	$t5, $t5, 2
 	slli.d	$t4, $t4, 2
@@ -186,38 +184,39 @@ bigTableSetup:                          # @bigTableSetup
 	slli.d	$t2, $t2, 2
 	slli.d	$t1, $t1, 2
 	slli.d	$t0, $t0, 2
-	ldx.w	$t7, $a3, $t7
-	ldx.w	$t6, $a3, $t6
-	ldx.w	$t5, $a3, $t5
-	ldx.w	$t4, $a3, $t4
-	ldx.w	$t3, $a3, $t3
-	ldx.w	$t2, $a3, $t2
-	ldx.w	$t1, $a3, $t1
-	ldx.w	$t0, $a3, $t0
-	xvinsgr2vr.w	$xr6, $t7, 0
-	xvinsgr2vr.w	$xr6, $t6, 1
-	xvinsgr2vr.w	$xr6, $t5, 2
-	xvinsgr2vr.w	$xr6, $t4, 3
-	xvinsgr2vr.w	$xr6, $t3, 4
-	xvinsgr2vr.w	$xr6, $t2, 5
-	xvinsgr2vr.w	$xr6, $t1, 6
-	xvinsgr2vr.w	$xr6, $t0, 7
-	and	$t0, $a7, $a4
-	sltui	$t0, $t0, 1
-	xvreplgr2vr.w	$xr7, $t0
+	slli.d	$a7, $a7, 2
+	ldx.w	$t6, $a4, $t6
+	ldx.w	$t5, $a4, $t5
+	ldx.w	$t4, $a4, $t4
+	ldx.w	$t3, $a4, $t3
+	ldx.w	$t2, $a4, $t2
+	ldx.w	$t1, $a4, $t1
+	ldx.w	$t0, $a4, $t0
+	ldx.w	$a7, $a4, $a7
+	xvinsgr2vr.w	$xr6, $t6, 0
+	xvinsgr2vr.w	$xr6, $t5, 1
+	xvinsgr2vr.w	$xr6, $t4, 2
+	xvinsgr2vr.w	$xr6, $t3, 3
+	xvinsgr2vr.w	$xr6, $t2, 4
+	xvinsgr2vr.w	$xr6, $t1, 5
+	xvinsgr2vr.w	$xr6, $t0, 6
+	xvinsgr2vr.w	$xr6, $a7, 7
+	and	$a7, $a6, $a5
+	sltui	$a7, $a7, 1
+	xvreplgr2vr.w	$xr7, $a7
 	xvslli.w	$xr7, $xr7, 31
 	xvsrai.w	$xr7, $xr7, 31
-	andi	$t0, $a7, 994
-	xvreplgr2vr.w	$xr8, $t0
-	bstrpick.d	$t1, $a7, 18, 18
-	xvreplgr2vr.w	$xr9, $t1
+	andi	$a7, $a6, 994
+	xvreplgr2vr.w	$xr8, $a7
+	bstrpick.d	$t0, $a6, 18, 18
+	xvreplgr2vr.w	$xr9, $t0
 	xvseq.w	$xr9, $xr5, $xr9
-	xori	$t0, $t0, 994
-	xvreplgr2vr.w	$xr10, $t0
-	xvbitsel.v	$xr9, $xr10, $xr8, $xr9
-	srli.d	$a7, $a7, 19
-	andi	$a7, $a7, 1
+	xori	$a7, $a7, 994
 	xvreplgr2vr.w	$xr10, $a7
+	xvbitsel.v	$xr9, $xr10, $xr8, $xr9
+	srli.d	$a6, $a6, 19
+	andi	$a6, $a6, 1
+	xvreplgr2vr.w	$xr10, $a6
 	xvand.v	$xr10, $xr7, $xr10
 	xvxor.v	$xr5, $xr5, $xr10
 	xvbitsel.v	$xr7, $xr8, $xr9, $xr7
@@ -237,10 +236,10 @@ bigTableSetup:                          # @bigTableSetup
 	xvor.v	$xr7, $xr7, $xr8
 	xvslli.w	$xr6, $xr6, 16
 	xvor.v	$xr6, $xr7, $xr6
-	add.d	$a7, $a5, $a1
-	xvstx	$xr6, $a7, $a6
+	xvst	$xr6, $a2, 0
 	xvaddi.wu	$xr0, $xr0, 8
-	addi.d	$a1, $a1, 32
+	addi.d	$a1, $a1, -8
+	addi.d	$a2, $a2, 32
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB4_1
 # %bb.2:                                # %middle.block
