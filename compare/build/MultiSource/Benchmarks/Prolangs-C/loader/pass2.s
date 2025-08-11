@@ -1,0 +1,477 @@
+	.file	"pass2.c"
+	.text
+	.globl	PASS2                           # -- Begin function PASS2
+	.p2align	5
+	.type	PASS2,@function
+PASS2:                                  # @PASS2
+# %bb.0:                                # %entry
+	addi.d	$sp, $sp, -192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	move	$fp, $a4
+	move	$s0, $a3
+	move	$s1, $a2
+	move	$s2, $a1
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	move	$a0, $a4
+	pcaddu18i	$ra, %call36(feof)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB0_2
+.LBB0_1:                                # %while.end135
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
+	ret
+.LBB0_2:                                # %land.rhs.lr.ph
+	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
+	lu12i.w	$s6, 256
+	ori	$s4, $zero, 12
+	pcalau12i	$a0, %pc_hi20(.LJTI0_0)
+	addi.d	$s5, $a0, %pc_lo12(.LJTI0_0)
+	ori	$a0, $s6, 1
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(.Lstr)
+	addi.d	$a0, $a0, %pc_lo12(.Lstr)
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	ori	$s7, $zero, 1
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(.L.str.2)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(.L.str.4)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	ori	$s3, $zero, 32
+	b	.LBB0_8
+.LBB0_3:                                # %if.end123.thread
+                                        #   in Loop: Header=BB0_8 Depth=1
+	st.w	$s7, $sp, 84
+.LBB0_4:                                # %if.then125
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+.LBB0_5:                                # %sw.epilog130
+                                        #   in Loop: Header=BB0_8 Depth=1
+	move	$a1, $s8
+.LBB0_6:                                # %sw.epilog130
+                                        #   in Loop: Header=BB0_8 Depth=1
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+.LBB0_7:                                # %sw.epilog130
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ld.w	$a0, $s0, 0
+	ld.w	$a1, $sp, 84
+	or	$a0, $a0, $a1
+	sltu	$a0, $zero, $a0
+	st.w	$a0, $s0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(feof)
+	jirl	$ra, $ra, 0
+	bnez	$a0, .LBB0_1
+.LBB0_8:                                # %land.rhs
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_32 Depth 2
+	ld.w	$a0, $s1, 0
+	blt	$s6, $a0, .LBB0_1
+# %bb.9:                                # %while.body
+                                        #   in Loop: Header=BB0_8 Depth=1
+	st.w	$zero, $sp, 84
+	addi.d	$a0, $sp, 96
+	move	$a1, $fp
+	pcaddu18i	$ra, %call36(GET_LINE)
+	jirl	$ra, $ra, 0
+	ld.d	$s8, $sp, 96
+	ld.bu	$a0, $s8, 0
+	addi.d	$a0, $a0, -72
+	bltu	$s4, $a0, .LBB0_7
+# %bb.10:                               # %while.body
+                                        #   in Loop: Header=BB0_8 Depth=1
+	slli.d	$a0, $a0, 2
+	ldx.w	$a0, $s5, $a0
+	add.d	$a0, $s5, $a0
+	jr	$a0
+.LBB0_11:                               # %sw.bb20
+                                        #   in Loop: Header=BB0_8 Depth=1
+	move	$a0, $s8
+	pcaddu18i	$ra, %call36(strlen)
+	jirl	$ra, $ra, 0
+	ori	$a1, $zero, 21
+	bne	$a0, $a1, .LBB0_28
+# %bb.12:                               # %if.else25
+                                        #   in Loop: Header=BB0_8 Depth=1
+	addi.d	$a0, $s8, 9
+	ori	$a1, $zero, 6
+	ori	$a2, $zero, 16
+	addi.d	$a3, $sp, 72
+	addi.d	$a4, $sp, 84
+	pcaddu18i	$ra, %call36(STR_TO_NUM)
+	jirl	$ra, $ra, 0
+	ld.w	$s4, $s1, 0
+	ld.d	$a0, $sp, 96
+	ld.w	$s8, $sp, 72
+	addi.d	$a0, $a0, 15
+	ori	$a1, $zero, 6
+	ori	$a2, $zero, 16
+	addi.d	$a3, $sp, 72
+	addi.d	$a4, $sp, 84
+	pcaddu18i	$ra, %call36(STR_TO_NUM)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 72
+	ld.w	$a1, $s1, 0
+	add.w	$a0, $a1, $a0
+	st.w	$a0, $s1, 0
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	blt	$a0, $a1, .LBB0_14
+# %bb.13:                               # %if.then33
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(puts)
+	jirl	$ra, $ra, 0
+.LBB0_14:                               # %if.end35
+                                        #   in Loop: Header=BB0_8 Depth=1
+	sub.w	$a0, $s4, $s8
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	ori	$s4, $zero, 12
+	b	.LBB0_7
+.LBB0_15:                               # %sw.bb79
+                                        #   in Loop: Header=BB0_8 Depth=1
+	move	$a0, $s8
+	pcaddu18i	$ra, %call36(strlen)
+	jirl	$ra, $ra, 0
+	ori	$a1, $zero, 74
+	bgeu	$a0, $a1, .LBB0_3
+# %bb.16:                               # %if.else84
+                                        #   in Loop: Header=BB0_8 Depth=1
+	st.b	$zero, $sp, 80
+	move	$a0, $s8
+	pcaddu18i	$ra, %call36(strlen)
+	jirl	$ra, $ra, 0
+	ori	$a1, $zero, 9
+	bgeu	$a0, $a1, .LBB0_29
+# %bb.17:                               #   in Loop: Header=BB0_8 Depth=1
+	ori	$a1, $zero, 1
+	bne	$a0, $a1, .LBB0_3
+	b	.LBB0_40
+.LBB0_18:                               # %sw.bb37
+                                        #   in Loop: Header=BB0_8 Depth=1
+	move	$a0, $s8
+	pcaddu18i	$ra, %call36(strlen)
+	jirl	$ra, $ra, 0
+	ori	$a1, $zero, 9
+	bltu	$a0, $a1, .LBB0_48
+# %bb.19:                               # %if.else42
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ori	$a1, $zero, 18
+	beq	$a0, $a1, .LBB0_41
+# %bb.20:                               # %if.else42
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ori	$a1, $zero, 9
+	bne	$a0, $a1, .LBB0_48
+# %bb.21:                               # %if.then46
+                                        #   in Loop: Header=BB0_8 Depth=1
+	addi.d	$a0, $s8, 1
+	ori	$a1, $zero, 6
+	ori	$a2, $zero, 16
+	addi.d	$a3, $sp, 92
+	addi.d	$a4, $sp, 84
+	pcaddu18i	$ra, %call36(STR_TO_NUM)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 96
+	addi.d	$a0, $a0, 7
+	ori	$a1, $zero, 2
+	ori	$a2, $zero, 16
+	addi.d	$a3, $sp, 88
+	addi.d	$a4, $sp, 84
+	pcaddu18i	$ra, %call36(STR_TO_NUM)
+	jirl	$ra, $ra, 0
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	move	$a0, $a3
+	b	.LBB0_47
+.LBB0_22:                               # %sw.bb
+                                        #   in Loop: Header=BB0_8 Depth=1
+	move	$a0, $s8
+	pcaddu18i	$ra, %call36(strlen)
+	jirl	$ra, $ra, 0
+	ori	$a1, $zero, 8
+	bgeu	$a1, $a0, .LBB0_26
+# %bb.23:                               # %if.else
+                                        #   in Loop: Header=BB0_8 Depth=1
+	addi.d	$a0, $s8, 1
+	ori	$a1, $zero, 6
+	ori	$a2, $zero, 16
+	addi.d	$a3, $sp, 92
+	addi.d	$a4, $sp, 84
+	pcaddu18i	$ra, %call36(STR_TO_NUM)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 96
+	addi.d	$a0, $a0, 7
+	ori	$a1, $zero, 2
+	ori	$a2, $zero, 16
+	addi.d	$a3, $sp, 88
+	addi.d	$a4, $sp, 84
+	pcaddu18i	$ra, %call36(STR_TO_NUM)
+	jirl	$ra, $ra, 0
+	ld.d	$s8, $sp, 96
+	move	$a0, $s8
+	pcaddu18i	$ra, %call36(strlen)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $sp, 88
+	ori	$a2, $zero, 9
+	alsl.w	$a2, $a1, $a2, 1
+	bne	$a0, $a2, .LBB0_26
+# %bb.24:                               # %if.end15
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ld.w	$a2, $sp, 92
+	addi.d	$a0, $s8, 9
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	add.w	$a2, $a2, $a3
+	addi.d	$a4, $sp, 84
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(STORE_AT)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 84
+	beqz	$a0, .LBB0_7
+# %bb.25:                               # %if.end15.if.then17_crit_edge
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ld.d	$s8, $sp, 96
+	b	.LBB0_27
+.LBB0_26:                               # %if.then11
+                                        #   in Loop: Header=BB0_8 Depth=1
+	st.w	$s7, $sp, 84
+.LBB0_27:                               # %if.then17
+                                        #   in Loop: Header=BB0_8 Depth=1
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	b	.LBB0_5
+.LBB0_28:                               # %if.then24
+                                        #   in Loop: Header=BB0_8 Depth=1
+	st.w	$s7, $sp, 84
+	b	.LBB0_7
+.LBB0_29:                               # %while.body92.preheader
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ori	$s4, $zero, 9
+	b	.LBB0_32
+	.p2align	4, , 16
+.LBB0_30:                               # %for.end
+                                        #   in Loop: Header=BB0_32 Depth=2
+	addi.d	$a1, $sp, 72
+	stx.b	$zero, $a0, $a1
+	pcalau12i	$a0, %pc_hi20(.L.str.3)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	st.w	$s7, $s0, 0
+.LBB0_31:                               # %if.end115
+                                        #   in Loop: Header=BB0_32 Depth=2
+	ld.d	$s8, $sp, 96
+	addi.d	$s4, $s4, 8
+	move	$a0, $s8
+	pcaddu18i	$ra, %call36(strlen)
+	jirl	$ra, $ra, 0
+	bltu	$a0, $s4, .LBB0_39
+.LBB0_32:                               # %while.body92
+                                        #   Parent Loop BB0_8 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	add.d	$a0, $s8, $s4
+	addi.d	$a1, $a0, -8
+	addi.d	$a0, $sp, 72
+	ori	$a2, $zero, 8
+	pcaddu18i	$ra, %call36(strncpy)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.2)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
+	addi.d	$a1, $sp, 72
+	move	$a2, $s2
+	pcaddu18i	$ra, %call36(LOOK_UP_SYMBOL)
+	jirl	$ra, $ra, 0
+	bnez	$a0, .LBB0_31
+# %bb.33:                               # %lor.rhs.peel
+                                        #   in Loop: Header=BB0_32 Depth=2
+	pcalau12i	$a0, %pc_hi20(.L.str.2)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
+	addi.d	$a1, $sp, 72
+	ori	$a3, $zero, 5
+	move	$a2, $zero
+	move	$a4, $s2
+	pcaddu18i	$ra, %call36(INSERT_IN_SYM_TAB)
+	jirl	$ra, $ra, 0
+	ld.bu	$a1, $sp, 79
+	ori	$a0, $zero, 8
+	bne	$a1, $s3, .LBB0_30
+# %bb.34:                               # %lor.rhs.peel41
+                                        #   in Loop: Header=BB0_32 Depth=2
+	ld.bu	$a1, $sp, 78
+	ori	$a0, $zero, 7
+	bne	$a1, $s3, .LBB0_30
+# %bb.35:                               # %lor.rhs.peel50
+                                        #   in Loop: Header=BB0_32 Depth=2
+	ld.bu	$a1, $sp, 77
+	ori	$a0, $zero, 6
+	bne	$a1, $s3, .LBB0_30
+# %bb.36:                               # %lor.rhs.peel59
+                                        #   in Loop: Header=BB0_32 Depth=2
+	ld.bu	$a1, $sp, 76
+	ori	$a0, $zero, 5
+	bne	$a1, $s3, .LBB0_30
+# %bb.37:                               # %lor.rhs.peel68
+                                        #   in Loop: Header=BB0_32 Depth=2
+	ld.bu	$a1, $sp, 75
+	ori	$a0, $zero, 4
+	bne	$a1, $s3, .LBB0_30
+# %bb.38:                               # %lor.rhs.peel77
+                                        #   in Loop: Header=BB0_32 Depth=2
+	ld.bu	$a0, $sp, 74
+	addi.d	$a0, $a0, -32
+	sltui	$a0, $a0, 1
+	xori	$a0, $a0, 3
+	b	.LBB0_30
+.LBB0_39:                               # %while.end.loopexit
+                                        #   in Loop: Header=BB0_8 Depth=1
+	addi.d	$a1, $s4, -8
+	bstrpick.d	$a1, $a1, 31, 0
+	ori	$s4, $zero, 12
+	bne	$a0, $a1, .LBB0_3
+.LBB0_40:                               # %if.end123
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ld.w	$a0, $sp, 84
+	bnez	$a0, .LBB0_4
+	b	.LBB0_7
+.LBB0_41:                               # %if.else55
+                                        #   in Loop: Header=BB0_8 Depth=1
+	addi.d	$a0, $s8, 1
+	ori	$a1, $zero, 6
+	ori	$a2, $zero, 16
+	addi.d	$a3, $sp, 92
+	addi.d	$a4, $sp, 84
+	pcaddu18i	$ra, %call36(STR_TO_NUM)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 96
+	addi.d	$a0, $a0, 7
+	ori	$a1, $zero, 2
+	ori	$a2, $zero, 16
+	addi.d	$a3, $sp, 88
+	addi.d	$a4, $sp, 84
+	pcaddu18i	$ra, %call36(STR_TO_NUM)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 96
+	ld.bu	$a1, $a0, 9
+	addi.d	$s4, $zero, -1
+	ori	$a2, $zero, 45
+	beq	$a1, $a2, .LBB0_45
+# %bb.42:                               # %if.else55
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ori	$a2, $zero, 43
+	bne	$a1, $a2, .LBB0_44
+# %bb.43:                               # %sw.bb61
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ori	$s4, $zero, 1
+	b	.LBB0_45
+.LBB0_44:                               # %sw.default
+                                        #   in Loop: Header=BB0_8 Depth=1
+	move	$s4, $zero
+	st.w	$s7, $sp, 84
+.LBB0_45:                               # %sw.epilog
+                                        #   in Loop: Header=BB0_8 Depth=1
+	addi.d	$a1, $a0, 10
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	move	$a2, $s2
+	pcaddu18i	$ra, %call36(LOOK_UP_SYMBOL)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB0_48
+# %bb.46:                               # %if.else67
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ld.w	$a0, $a0, 20
+	mul.w	$a0, $a0, $s4
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+.LBB0_47:                               # %if.end74
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ld.w	$a1, $sp, 92
+	ld.w	$a2, $sp, 88
+	add.w	$a1, $a1, $a3
+	addi.d	$a4, $sp, 84
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(ADD_INT_TO_LOC)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 84
+	ori	$s4, $zero, 12
+	bnez	$a0, .LBB0_49
+	b	.LBB0_7
+.LBB0_48:                               # %if.then76.sink.split
+                                        #   in Loop: Header=BB0_8 Depth=1
+	st.w	$s7, $sp, 84
+	ori	$s4, $zero, 12
+.LBB0_49:                               # %if.then76
+                                        #   in Loop: Header=BB0_8 Depth=1
+	ld.d	$a1, $sp, 96
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	b	.LBB0_6
+.Lfunc_end0:
+	.size	PASS2, .Lfunc_end0-PASS2
+	.section	.rodata,"a",@progbits
+	.p2align	2, 0x0
+.LJTI0_0:
+	.word	.LBB0_11-.LJTI0_0
+	.word	.LBB0_7-.LJTI0_0
+	.word	.LBB0_7-.LJTI0_0
+	.word	.LBB0_7-.LJTI0_0
+	.word	.LBB0_7-.LJTI0_0
+	.word	.LBB0_18-.LJTI0_0
+	.word	.LBB0_7-.LJTI0_0
+	.word	.LBB0_7-.LJTI0_0
+	.word	.LBB0_7-.LJTI0_0
+	.word	.LBB0_7-.LJTI0_0
+	.word	.LBB0_15-.LJTI0_0
+	.word	.LBB0_7-.LJTI0_0
+	.word	.LBB0_22-.LJTI0_0
+                                        # -- End function
+	.type	.L.str,@object                  # @.str
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.L.str:
+	.asciz	"ERROR: Illegal text record = %s\n"
+	.size	.L.str, 33
+
+	.type	.L.str.2,@object                # @.str.2
+.L.str.2:
+	.asciz	"_GLOBAL "
+	.size	.L.str.2, 9
+
+	.type	.L.str.3,@object                # @.str.3
+.L.str.3:
+	.asciz	"ERROR: Undefined global %s. Program not loaded.\n"
+	.size	.L.str.3, 49
+
+	.type	.L.str.4,@object                # @.str.4
+.L.str.4:
+	.asciz	"ERROR: Illegal define record = %s\n"
+	.size	.L.str.4, 35
+
+	.type	START_ADDRESS,@object           # @START_ADDRESS
+	.comm	START_ADDRESS,4,4
+	.type	MAIN_ROUTINE,@object            # @MAIN_ROUTINE
+	.comm	MAIN_ROUTINE,9,1
+	.type	.Lstr,@object                   # @str
+.Lstr:
+	.asciz	"ERROR: Program does not fit in memory. Aborting."
+	.size	.Lstr, 49
+
+	.section	".note.GNU-stack","",@progbits
+	.addrsig

@@ -1,0 +1,610 @@
+	.file	"equiv.c"
+	.text
+	.globl	find_equiv_outputs              # -- Begin function find_equiv_outputs
+	.p2align	5
+	.type	find_equiv_outputs,@function
+find_equiv_outputs:                     # @find_equiv_outputs
+# %bb.0:                                # %entry
+	addi.d	$sp, $sp, -160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	move	$s5, $a0
+	pcaddu18i	$ra, %call36(makeup_labels)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %got_pc_hi20(cube)
+	ld.d	$fp, $a0, %got_pc_lo12(cube)
+	ld.w	$s1, $fp, 124
+	ld.d	$a0, $fp, 32
+	slli.d	$a1, $s1, 2
+	ldx.w	$s2, $a0, $a1
+	slli.d	$s0, $s2, 3
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	ori	$a1, $zero, 1
+	move	$s3, $a0
+	blt	$s2, $a1, .LBB0_51
+# %bb.1:                                # %for.body.lr.ph
+	move	$s0, $zero
+	move	$s2, $zero
+	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	.p2align	4, , 16
+.LBB0_2:                                # %for.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a0, $fp, 16
+	slli.d	$a1, $s1, 2
+	ldx.w	$a1, $a0, $a1
+	ld.d	$a0, $s5, 16
+	add.w	$a1, $s0, $a1
+	pcaddu18i	$ra, %call36(cof_output)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $s3, 0
+	pcaddu18i	$ra, %call36(cube1list)
+	jirl	$ra, $ra, 0
+	pcaddu18i	$ra, %call36(complement)
+	jirl	$ra, $ra, 0
+	ld.w	$s1, $fp, 124
+	ld.d	$a1, $fp, 32
+	st.d	$a0, $s4, 0
+	slli.d	$a0, $s1, 2
+	ldx.w	$a0, $a1, $a0
+	addi.d	$s2, $s2, 1
+	addi.d	$s0, $s0, 1
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, 8
+	blt	$s2, $a0, .LBB0_2
+# %bb.3:                                # %for.cond22.preheader
+	ori	$a2, $zero, 2
+	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
+	blt	$a0, $a2, .LBB0_51
+# %bb.4:                                # %for.body27.lr.ph
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	move	$a3, $zero
+	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
+	ori	$s4, $zero, 1
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	b	.LBB0_6
+	.p2align	4, , 16
+.LBB0_5:                                # %for.cond22.loopexit
+                                        #   in Loop: Header=BB0_6 Depth=1
+	addi.w	$a2, $a0, -1
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$s4, $s4, 1
+	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	bge	$a3, $a2, .LBB0_47
+.LBB0_6:                                # %for.body27
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_8 Depth 2
+                                        #       Child Loop BB0_10 Depth 3
+                                        #       Child Loop BB0_16 Depth 3
+                                        #       Child Loop BB0_25 Depth 3
+                                        #       Child Loop BB0_31 Depth 3
+                                        #       Child Loop BB0_36 Depth 3
+                                        #       Child Loop BB0_42 Depth 3
+	addi.d	$a2, $a3, 1
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	bge	$a2, $a0, .LBB0_5
+# %bb.7:                                # %for.body34.lr.ph
+                                        #   in Loop: Header=BB0_6 Depth=1
+	slli.d	$a0, $a3, 3
+	ldx.d	$s3, $s2, $a0
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
+	alsl.d	$a0, $a3, $a0, 3
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	.p2align	4, , 16
+.LBB0_8:                                # %for.body34
+                                        #   Parent Loop BB0_6 Depth=1
+                                        # =>  This Loop Header: Depth=2
+                                        #       Child Loop BB0_10 Depth 3
+                                        #       Child Loop BB0_16 Depth 3
+                                        #       Child Loop BB0_25 Depth 3
+                                        #       Child Loop BB0_31 Depth 3
+                                        #       Child Loop BB0_36 Depth 3
+                                        #       Child Loop BB0_42 Depth 3
+	ld.d	$a0, $fp, 16
+	slli.d	$a1, $s1, 2
+	ldx.w	$s1, $a0, $a1
+	slli.d	$s0, $s4, 3
+	ldx.d	$s5, $s2, $s0
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(cube1list)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $s5, 12
+	ld.w	$a2, $s5, 0
+	mul.w	$a1, $a2, $a1
+	move	$s6, $a0
+	ori	$a0, $zero, 1
+	blt	$a1, $a0, .LBB0_12
+# %bb.9:                                # %for.body.i.preheader
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$s7, $s5, 24
+	alsl.d	$s8, $a1, $s7, 2
+	.p2align	4, , 16
+.LBB0_10:                               # %for.body.i
+                                        #   Parent Loop BB0_6 Depth=1
+                                        #     Parent Loop BB0_8 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	move	$a0, $s6
+	move	$a1, $s7
+	pcaddu18i	$ra, %call36(cube_is_covered)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB0_23
+# %bb.11:                               # %for.inc.i
+                                        #   in Loop: Header=BB0_10 Depth=3
+	ld.w	$a0, $s5, 0
+	alsl.d	$s7, $a0, $s7, 2
+	bltu	$s7, $s8, .LBB0_10
+.LBB0_12:                               # %for.end.i
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$a0, $s6, 0
+	beqz	$a0, .LBB0_14
+# %bb.13:                               # %if.then6.i
+                                        #   in Loop: Header=BB0_8 Depth=2
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB0_14:                               # %if.then11.i
+                                        #   in Loop: Header=BB0_8 Depth=2
+	move	$a0, $s6
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+	move	$a0, $s5
+	pcaddu18i	$ra, %call36(cube1list)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $s3, 12
+	ld.w	$a2, $s3, 0
+	mul.w	$a1, $a2, $a1
+	move	$s7, $a0
+	ori	$a0, $zero, 1
+	blt	$a1, $a0, .LBB0_18
+# %bb.15:                               # %for.body22.i.preheader
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$s6, $s3, 24
+	alsl.d	$s8, $a1, $s6, 2
+	.p2align	4, , 16
+.LBB0_16:                               # %for.body22.i
+                                        #   Parent Loop BB0_6 Depth=1
+                                        #     Parent Loop BB0_8 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	move	$a0, $s7
+	move	$a1, $s6
+	pcaddu18i	$ra, %call36(cube_is_covered)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB0_23
+# %bb.17:                               # %for.inc27.i
+                                        #   in Loop: Header=BB0_16 Depth=3
+	ld.w	$a0, $s3, 0
+	alsl.d	$s6, $a0, $s6, 2
+	bltu	$s6, $s8, .LBB0_16
+.LBB0_18:                               # %for.end31.i
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$a0, $s7, 0
+	pcalau12i	$a1, %pc_hi20(.L.str)
+	addi.d	$s5, $a1, %pc_lo12(.L.str)
+	beqz	$a0, .LBB0_20
+.LBB0_19:                               # %for.inc99.sink.split.sink.split.sink.split
+                                        #   in Loop: Header=BB0_8 Depth=2
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB0_20:                               # %for.inc99.sink.split.sink.split
+                                        #   in Loop: Header=BB0_8 Depth=2
+	move	$a0, $s7
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB0_21:                               # %for.inc99.sink.split
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $a0, 56
+	add.w	$a3, $s1, $a1
+	add.w	$a2, $s1, $s4
+	slli.d	$a3, $a3, 3
+	ldx.d	$a3, $a0, $a3
+	slli.d	$a2, $a2, 3
+	ldx.d	$a4, $a0, $a2
+	move	$a0, $s5
+	move	$a2, $s4
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	ori	$a0, $zero, 1
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+.LBB0_22:                               # %for.inc99
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.w	$s1, $fp, 124
+	ld.d	$a1, $fp, 32
+	slli.d	$a0, $s1, 2
+	ldx.w	$a0, $a1, $a0
+	addi.d	$s4, $s4, 1
+	addi.w	$a2, $s4, 0
+	blt	$a2, $a0, .LBB0_8
+	b	.LBB0_5
+	.p2align	4, , 16
+.LBB0_23:                               # %if.else
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ldx.d	$s6, $a0, $s0
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(cube1list)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $s6, 12
+	ld.w	$a2, $s6, 0
+	mul.w	$a1, $a2, $a1
+	move	$s7, $a0
+	ori	$a0, $zero, 1
+	blt	$a1, $a0, .LBB0_27
+# %bb.24:                               # %for.body.i96.preheader
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$s8, $s6, 24
+	alsl.d	$s0, $a1, $s8, 2
+	.p2align	4, , 16
+.LBB0_25:                               # %for.body.i96
+                                        #   Parent Loop BB0_6 Depth=1
+                                        #     Parent Loop BB0_8 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	move	$a0, $s7
+	move	$a1, $s8
+	pcaddu18i	$ra, %call36(cube_is_covered)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB0_34
+# %bb.26:                               # %for.inc.i100
+                                        #   in Loop: Header=BB0_25 Depth=3
+	ld.w	$a0, $s6, 0
+	alsl.d	$s8, $a0, $s8, 2
+	bltu	$s8, $s0, .LBB0_25
+.LBB0_27:                               # %for.end.i71
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$a0, $s7, 0
+	beqz	$a0, .LBB0_29
+# %bb.28:                               # %if.then6.i73
+                                        #   in Loop: Header=BB0_8 Depth=2
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB0_29:                               # %if.then11.i74
+                                        #   in Loop: Header=BB0_8 Depth=2
+	move	$a0, $s7
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+	move	$a0, $s6
+	pcaddu18i	$ra, %call36(cube1list)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $s3, 12
+	ld.w	$a2, $s3, 0
+	mul.w	$a1, $a2, $a1
+	move	$s7, $a0
+	ori	$a0, $zero, 1
+	blt	$a1, $a0, .LBB0_33
+# %bb.30:                               # %for.body22.i88.preheader
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$s8, $s3, 24
+	alsl.d	$s0, $a1, $s8, 2
+	.p2align	4, , 16
+.LBB0_31:                               # %for.body22.i88
+                                        #   Parent Loop BB0_6 Depth=1
+                                        #     Parent Loop BB0_8 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	move	$a0, $s7
+	move	$a1, $s8
+	pcaddu18i	$ra, %call36(cube_is_covered)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB0_34
+# %bb.32:                               # %for.inc27.i92
+                                        #   in Loop: Header=BB0_31 Depth=3
+	ld.w	$a0, $s3, 0
+	alsl.d	$s8, $a0, $s8, 2
+	bltu	$s8, $s0, .LBB0_31
+.LBB0_33:                               # %for.end31.i83
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$a0, $s7, 0
+	pcalau12i	$a1, %pc_hi20(.L.str.1)
+	addi.d	$s5, $a1, %pc_lo12(.L.str.1)
+	bnez	$a0, .LBB0_19
+	b	.LBB0_20
+	.p2align	4, , 16
+.LBB0_34:                               # %if.else66
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s8, $a0, 0
+	move	$a0, $s8
+	pcaddu18i	$ra, %call36(cube1list)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $s5, 12
+	ld.w	$a2, $s5, 0
+	mul.w	$a1, $a2, $a1
+	move	$s7, $a0
+	ori	$a0, $zero, 1
+	blt	$a1, $a0, .LBB0_38
+# %bb.35:                               # %for.body.i138.preheader
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$s0, $s5, 24
+	alsl.d	$s2, $a1, $s0, 2
+	.p2align	4, , 16
+.LBB0_36:                               # %for.body.i138
+                                        #   Parent Loop BB0_6 Depth=1
+                                        #     Parent Loop BB0_8 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	move	$a0, $s7
+	move	$a1, $s0
+	pcaddu18i	$ra, %call36(cube_is_covered)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB0_45
+# %bb.37:                               # %for.inc.i142
+                                        #   in Loop: Header=BB0_36 Depth=3
+	ld.w	$a0, $s5, 0
+	alsl.d	$s0, $a0, $s0, 2
+	bltu	$s0, $s2, .LBB0_36
+.LBB0_38:                               # %for.end.i113
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$a0, $s7, 0
+	beqz	$a0, .LBB0_40
+# %bb.39:                               # %if.then6.i115
+                                        #   in Loop: Header=BB0_8 Depth=2
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB0_40:                               # %if.then11.i116
+                                        #   in Loop: Header=BB0_8 Depth=2
+	move	$a0, $s7
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+	move	$a0, $s5
+	pcaddu18i	$ra, %call36(cube1list)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $s8, 12
+	ld.w	$a2, $s8, 0
+	mul.w	$a1, $a2, $a1
+	move	$s7, $a0
+	ori	$a0, $zero, 1
+	blt	$a1, $a0, .LBB0_44
+# %bb.41:                               # %for.body22.i130.preheader
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$s0, $s8, 24
+	alsl.d	$s2, $a1, $s0, 2
+	.p2align	4, , 16
+.LBB0_42:                               # %for.body22.i130
+                                        #   Parent Loop BB0_6 Depth=1
+                                        #     Parent Loop BB0_8 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	move	$a0, $s7
+	move	$a1, $s0
+	pcaddu18i	$ra, %call36(cube_is_covered)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB0_45
+# %bb.43:                               # %for.inc27.i134
+                                        #   in Loop: Header=BB0_42 Depth=3
+	ld.w	$a0, $s8, 0
+	alsl.d	$s0, $a0, $s0, 2
+	bltu	$s0, $s2, .LBB0_42
+.LBB0_44:                               # %for.end31.i125
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.d	$a0, $s7, 0
+	pcalau12i	$a1, %pc_hi20(.L.str.2)
+	addi.d	$s5, $a1, %pc_lo12(.L.str.2)
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	bnez	$a0, .LBB0_19
+	b	.LBB0_20
+.LBB0_45:                               # %if.else81
+                                        #   in Loop: Header=BB0_8 Depth=2
+	move	$a0, $s8
+	move	$a1, $s6
+	pcaddu18i	$ra, %call36(check_equiv)
+	jirl	$ra, $ra, 0
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	beqz	$a0, .LBB0_22
+# %bb.46:                               #   in Loop: Header=BB0_8 Depth=2
+	pcalau12i	$a0, %pc_hi20(.L.str.3)
+	addi.d	$s5, $a0, %pc_lo12(.L.str.3)
+	b	.LBB0_21
+.LBB0_47:                               # %for.end104
+	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	beqz	$a0, .LBB0_51
+# %bb.48:                               # %if.end108
+	slli.d	$a0, $s1, 2
+	ldx.w	$a0, $a1, $a0
+	ori	$a1, $zero, 1
+	blt	$a0, $a1, .LBB0_52
+.LBB0_49:                               # %for.body114.preheader
+	move	$s0, $zero
+	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
+	move	$s2, $s3
+	.p2align	4, , 16
+.LBB0_50:                               # %for.body114
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a0, $s1, 0
+	pcaddu18i	$ra, %call36(sf_free)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $s2, 0
+	pcaddu18i	$ra, %call36(sf_free)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, 124
+	ld.d	$a1, $fp, 32
+	slli.d	$a0, $a0, 2
+	ldx.w	$a0, $a1, $a0
+	addi.d	$s0, $s0, 1
+	addi.d	$s2, $s2, 8
+	addi.d	$s1, $s1, 8
+	blt	$s0, $a0, .LBB0_50
+	b	.LBB0_53
+.LBB0_51:                               # %if.then106
+	pcalau12i	$a0, %pc_hi20(.Lstr)
+	addi.d	$a0, $a0, %pc_lo12(.Lstr)
+	pcaddu18i	$ra, %call36(puts)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $fp, 32
+	ld.w	$s1, $fp, 124
+	slli.d	$a0, $s1, 2
+	ldx.w	$a0, $a1, $a0
+	ori	$a1, $zero, 1
+	bge	$a0, $a1, .LBB0_49
+.LBB0_52:                               # %for.end121
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	beqz	$a0, .LBB0_54
+.LBB0_53:                               # %if.then123
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB0_54:                               # %if.end124
+	beqz	$s3, .LBB0_56
+# %bb.55:                               # %if.then126
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB0_56:                               # %if.end127
+	move	$a0, $zero
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
+	ret
+.Lfunc_end0:
+	.size	find_equiv_outputs, .Lfunc_end0-find_equiv_outputs
+                                        # -- End function
+	.globl	check_equiv                     # -- Begin function check_equiv
+	.p2align	5
+	.type	check_equiv,@function
+check_equiv:                            # @check_equiv
+# %bb.0:                                # %entry
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
+	move	$s0, $a1
+	move	$fp, $a0
+	pcaddu18i	$ra, %call36(cube1list)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $s0, 12
+	ld.w	$a2, $s0, 0
+	mul.w	$a1, $a2, $a1
+	ori	$a2, $zero, 1
+	move	$s1, $a0
+	blt	$a1, $a2, .LBB1_4
+# %bb.1:                                # %for.body.preheader
+	ld.d	$s2, $s0, 24
+	alsl.d	$s3, $a1, $s2, 2
+	.p2align	4, , 16
+.LBB1_2:                                # %for.body
+                                        # =>This Inner Loop Header: Depth=1
+	move	$a0, $s1
+	move	$a1, $s2
+	pcaddu18i	$ra, %call36(cube_is_covered)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB1_13
+# %bb.3:                                # %for.inc
+                                        #   in Loop: Header=BB1_2 Depth=1
+	ld.w	$a0, $s0, 0
+	alsl.d	$s2, $a0, $s2, 2
+	bltu	$s2, $s3, .LBB1_2
+.LBB1_4:                                # %for.end
+	ld.d	$a0, $s1, 0
+	beqz	$a0, .LBB1_6
+# %bb.5:                                # %if.then6
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB1_6:                                # %if.then11
+	move	$a0, $s1
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(cube1list)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $fp, 12
+	ld.w	$a2, $fp, 0
+	mul.w	$a1, $a2, $a1
+	ori	$a2, $zero, 1
+	move	$s0, $a0
+	blt	$a1, $a2, .LBB1_10
+# %bb.7:                                # %for.body22.preheader
+	ld.d	$s1, $fp, 24
+	alsl.d	$s2, $a1, $s1, 2
+	.p2align	4, , 16
+.LBB1_8:                                # %for.body22
+                                        # =>This Inner Loop Header: Depth=1
+	move	$a0, $s0
+	move	$a1, $s1
+	pcaddu18i	$ra, %call36(cube_is_covered)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB1_13
+# %bb.9:                                # %for.inc27
+                                        #   in Loop: Header=BB1_8 Depth=1
+	ld.w	$a0, $fp, 0
+	alsl.d	$s1, $a0, $s1, 2
+	bltu	$s1, $s2, .LBB1_8
+.LBB1_10:                               # %for.end31
+	ld.d	$a0, $s0, 0
+	beqz	$a0, .LBB1_12
+# %bb.11:                               # %if.then34
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB1_12:                               # %if.then39
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+	ori	$a0, $zero, 1
+	b	.LBB1_14
+.LBB1_13:
+	move	$a0, $zero
+.LBB1_14:                               # %cleanup
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
+	ret
+.Lfunc_end1:
+	.size	check_equiv, .Lfunc_end1-check_equiv
+                                        # -- End function
+	.type	.L.str,@object                  # @.str
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.L.str:
+	.asciz	"# Outputs %d and %d (%s and %s) are equivalent\n"
+	.size	.L.str, 48
+
+	.type	.L.str.1,@object                # @.str.1
+.L.str.1:
+	.asciz	"# Outputs %d and NOT %d (%s and %s) are equivalent\n"
+	.size	.L.str.1, 52
+
+	.type	.L.str.2,@object                # @.str.2
+.L.str.2:
+	.asciz	"# Outputs NOT %d and %d (%s and %s) are equivalent\n"
+	.size	.L.str.2, 52
+
+	.type	.L.str.3,@object                # @.str.3
+.L.str.3:
+	.asciz	"# Outputs NOT %d and NOT %d (%s and %s) are equivalent\n"
+	.size	.L.str.3, 56
+
+	.type	.Lstr,@object                   # @str
+.Lstr:
+	.asciz	"# No outputs are equivalent"
+	.size	.Lstr, 28
+
+	.section	".note.GNU-stack","",@progbits
+	.addrsig
