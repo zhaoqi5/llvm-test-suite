@@ -1636,8 +1636,7 @@ _ZL9init_dataIiEvPT_j:                  # @_ZL9init_dataIiEvPT_j
 # %bb.6:                                # %vector.ph15
                                         #   in Loop: Header=BB21_5 Depth=2
 	move	$a1, $zero
-	vinsgr2vr.d	$vr2, $fp, 1
-	xvpermi.q	$xr2, $xr2, 2
+	xvinsgr2vr.d	$xr2, $fp, 3
 	.p2align	4, , 16
 .LBB21_7:                               # %vector.body16
                                         #   Parent Loop BB21_3 Depth=1
@@ -2273,8 +2272,7 @@ _ZL9init_dataIdEvPT_j:                  # @_ZL9init_dataIdEvPT_j
 # %bb.6:                                # %vector.ph15
                                         #   in Loop: Header=BB26_5 Depth=2
 	move	$a1, $zero
-	vinsgr2vr.d	$vr2, $fp, 1
-	xvpermi.q	$xr2, $xr2, 2
+	xvinsgr2vr.d	$xr2, $fp, 3
 	.p2align	4, , 16
 .LBB26_7:                               # %vector.body16
                                         #   Parent Loop BB26_3 Depth=1

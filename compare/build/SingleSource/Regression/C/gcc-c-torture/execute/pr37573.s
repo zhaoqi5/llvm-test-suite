@@ -236,8 +236,7 @@ foo:                                    # @foo
 	ld.w	$a2, $a0, 12
 	move	$a4, $zero
 	addi.d	$a1, $a0, 12
-	vinsgr2vr.w	$vr0, $a2, 3
-	xvpermi.q	$xr0, $xr0, 2
+	xvinsgr2vr.w	$xr0, $a2, 7
 	lu12i.w	$a2, 524287
 	ori	$a2, $a2, 4094
 	xvreplgr2vr.w	$xr1, $a2

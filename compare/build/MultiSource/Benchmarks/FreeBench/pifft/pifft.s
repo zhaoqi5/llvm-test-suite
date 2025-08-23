@@ -480,8 +480,7 @@ main:                                   # @main
 	move	$t1, $a4
 	ori	$a7, $zero, 2
 	bstrins.d	$t1, $a7, 2, 0
-	vinsgr2vr.w	$vr0, $a6, 3
-	xvpermi.q	$xr0, $xr0, 2
+	xvinsgr2vr.w	$xr0, $a6, 7
 	move	$a6, $a5
 	ld.d	$a7, $sp, 88                    # 8-byte Folded Reload
 	.p2align	4, , 16
@@ -578,8 +577,7 @@ main:                                   # @main
 	ori	$a7, $zero, 2
 	move	$a2, $a4
 	bstrins.d	$a2, $a7, 2, 0
-	vinsgr2vr.w	$vr0, $a5, 3
-	xvpermi.q	$xr0, $xr0, 2
+	xvinsgr2vr.w	$xr0, $a5, 7
 	move	$a5, $a6
 	move	$a7, $t0
 	.p2align	4, , 16
@@ -757,8 +755,7 @@ main:                                   # @main
 	ori	$a7, $zero, 2
 	move	$a2, $a4
 	bstrins.d	$a2, $a7, 2, 0
-	vinsgr2vr.w	$vr0, $a5, 3
-	xvpermi.q	$xr0, $xr0, 2
+	xvinsgr2vr.w	$xr0, $a5, 7
 	move	$a5, $a6
 	ld.d	$t0, $sp, 88                    # 8-byte Folded Reload
 	xvld	$xr4, $sp, 128                  # 32-byte Folded Reload

@@ -13440,8 +13440,7 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 # %bb.6:                                # %vector.ph264
                                         #   in Loop: Header=BB36_5 Depth=2
 	move	$a1, $zero
-	vinsgr2vr.d	$vr2, $s0, 1
-	xvpermi.q	$xr2, $xr2, 2
+	xvinsgr2vr.d	$xr2, $s0, 3
 	.p2align	4, , 16
 .LBB36_7:                               # %vector.body265
                                         #   Parent Loop BB36_3 Depth=1
@@ -13645,8 +13644,7 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 # %bb.15:                               # %vector.ph240
                                         #   in Loop: Header=BB36_14 Depth=2
 	move	$a1, $zero
-	vinsgr2vr.d	$vr2, $s0, 1
-	xvpermi.q	$xr2, $xr2, 2
+	xvinsgr2vr.d	$xr2, $s0, 3
 	.p2align	4, , 16
 .LBB36_16:                              # %vector.body241
                                         #   Parent Loop BB36_3 Depth=1
@@ -13845,8 +13843,7 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 # %bb.24:                               # %vector.ph219
                                         #   in Loop: Header=BB36_23 Depth=2
 	move	$a1, $zero
-	vinsgr2vr.d	$vr2, $s0, 1
-	xvpermi.q	$xr2, $xr2, 2
+	xvinsgr2vr.d	$xr2, $s0, 3
 	.p2align	4, , 16
 .LBB36_25:                              # %vector.body220
                                         #   Parent Loop BB36_3 Depth=1
@@ -14350,8 +14347,7 @@ _ZL9init_dataIdEvPT_S1_S1_:             # @_ZL9init_dataIdEvPT_S1_S1_
 # %bb.6:                                # %vector.ph264
                                         #   in Loop: Header=BB37_5 Depth=2
 	move	$a1, $zero
-	vinsgr2vr.d	$vr2, $s0, 1
-	xvpermi.q	$xr2, $xr2, 2
+	xvinsgr2vr.d	$xr2, $s0, 3
 	.p2align	4, , 16
 .LBB37_7:                               # %vector.body265
                                         #   Parent Loop BB37_3 Depth=1
@@ -14552,8 +14548,7 @@ _ZL9init_dataIdEvPT_S1_S1_:             # @_ZL9init_dataIdEvPT_S1_S1_
 # %bb.15:                               # %vector.ph240
                                         #   in Loop: Header=BB37_14 Depth=2
 	move	$a1, $zero
-	vinsgr2vr.d	$vr2, $s0, 1
-	xvpermi.q	$xr2, $xr2, 2
+	xvinsgr2vr.d	$xr2, $s0, 3
 	.p2align	4, , 16
 .LBB37_16:                              # %vector.body241
                                         #   Parent Loop BB37_3 Depth=1
@@ -14749,8 +14744,7 @@ _ZL9init_dataIdEvPT_S1_S1_:             # @_ZL9init_dataIdEvPT_S1_S1_
 # %bb.24:                               # %vector.ph219
                                         #   in Loop: Header=BB37_23 Depth=2
 	move	$a1, $zero
-	vinsgr2vr.d	$vr2, $s0, 1
-	xvpermi.q	$xr2, $xr2, 2
+	xvinsgr2vr.d	$xr2, $s0, 3
 	.p2align	4, , 16
 .LBB37_25:                              # %vector.body220
                                         #   Parent Loop BB37_3 Depth=1

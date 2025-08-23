@@ -75,10 +75,8 @@ write_node_info:                        # @write_node_info
 .LBB0_6:                                # %vector.ph
 	bstrpick.d	$a2, $a0, 30, 4
 	slli.d	$a3, $a2, 4
-	vinsgr2vr.w	$vr0, $a4, 3
-	xvpermi.q	$xr0, $xr0, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	xvpermi.q	$xr5, $xr1, 2
+	xvinsgr2vr.w	$xr0, $a4, 7
+	xvinsgr2vr.w	$xr5, $a6, 7
 	move	$s3, $s6
 	add.d	$a2, $s6, $a1
 	addi.d	$a2, $a2, 40
@@ -503,10 +501,8 @@ write_node_info:                        # @write_node_info
 	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a2, $a0, 30, 4
 	slli.d	$a4, $a2, 4
-	vinsgr2vr.w	$vr0, $a5, 3
-	xvpermi.q	$xr0, $xr0, 2
-	vinsgr2vr.w	$vr1, $a7, 3
-	xvpermi.q	$xr5, $xr1, 2
+	xvinsgr2vr.w	$xr0, $a5, 7
+	xvinsgr2vr.w	$xr5, $a7, 7
 	add.d	$a2, $a3, $a1
 	addi.d	$a2, $a2, 40
 	xvrepli.b	$xr1, 0
@@ -1389,8 +1385,7 @@ write_node_info:                        # @write_node_info
 .LBB0_43:                               # %vector.ph150
 	bstrpick.d	$a2, $a1, 31, 4
 	slli.d	$a3, $a2, 4
-	vinsgr2vr.w	$vr0, $a4, 3
-	xvpermi.q	$xr0, $xr0, 2
+	xvinsgr2vr.w	$xr0, $a4, 7
 	add.d	$a2, $s6, $a0
 	addi.d	$a2, $a2, 36
 	xvrepli.b	$xr1, 0
@@ -2252,10 +2247,8 @@ tr_non_safe_moves_a_little_touchy:      # @tr_non_safe_moves_a_little_touchy
 .LBB1_4:                                # %vector.ph
 	bstrpick.d	$a1, $a2, 30, 4
 	slli.d	$a5, $a1, 4
-	vinsgr2vr.w	$vr0, $a6, 3
-	xvpermi.q	$xr0, $xr0, 2
-	vinsgr2vr.w	$vr1, $t0, 3
-	xvpermi.q	$xr4, $xr1, 2
+	xvinsgr2vr.w	$xr0, $a6, 7
+	xvinsgr2vr.w	$xr4, $t0, 7
 	add.d	$a1, $a4, $a3
 	addi.d	$a1, $a1, 40
 	xvrepli.b	$xr1, 0

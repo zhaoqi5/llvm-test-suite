@@ -5130,8 +5130,7 @@ MT_decrypt:                             # @MT_decrypt
 	ori	$t8, $zero, 2512
 	add.d	$t8, $sp, $t8
 	stptr.w	$a5, $t8, 0
-	vinsgr2vr.w	$vr10, $a2, 3
-	xvpermi.q	$xr10, $xr10, 2
+	xvinsgr2vr.w	$xr10, $a2, 7
 	.p2align	4, , 16
 .LBB1_8:                                # %vector.body21
                                         #   Parent Loop BB1_6 Depth=1

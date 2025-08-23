@@ -224,8 +224,7 @@ stencil_calc:                           # @stencil_calc
 	bltu	$s6, $a0, .LBB0_17
 # %bb.13:                               # %vector.ph490
                                         #   in Loop: Header=BB0_12 Depth=3
-	vextrins.d	$vr0, $vr0, 16
-	xvpermi.q	$xr0, $xr0, 2
+	xvinsve0.d	$xr0, $xr0, 3
 	addi.d	$s2, $t5, 16
 	addi.d	$ra, $t4, 8
 	addi.d	$a0, $t6, 8
@@ -593,7 +592,7 @@ stencil_calc:                           # @stencil_calc
 .LBB0_36:                               #   in Loop: Header=BB0_35 Depth=3
 	fmov.d	$ft6, $fa5
 	fmov.d	$ft8, $fa4
-	fmov.d	$ft10, $fa3
+	fmov.d	$ft9, $fa3
 	fmov.d	$ft5, $fa2
 	fmov.d	$ft7, $fa1
 	fmov.d	$ft1, $fa0
@@ -617,16 +616,16 @@ stencil_calc:                           # @stencil_calc
                                         #       Parent Loop BB0_35 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	add.d	$t1, $s2, $a4
-	fld.d	$ft9, $t1, -8
+	fld.d	$ft10, $t1, -8
 	fldx.d	$ft11, $s2, $a4
-	fadd.d	$ft9, $ft9, $ft11
+	fadd.d	$ft10, $ft10, $ft11
 	fld.d	$ft11, $t1, 8
 	add.d	$t1, $ra, $a4
 	fld.d	$ft12, $t1, -8
 	fldx.d	$ft13, $ra, $a4
 	fld.d	$ft14, $t1, 8
-	fadd.d	$ft9, $ft9, $ft11
-	fadd.d	$ft9, $ft9, $fa6
+	fadd.d	$ft10, $ft10, $ft11
+	fadd.d	$ft10, $ft10, $fa6
 	fmov.d	$fa6, $ft3
 	fadd.d	$ft3, $ft12, $ft13
 	fadd.d	$ft3, $ft3, $ft14
@@ -636,44 +635,44 @@ stencil_calc:                           # @stencil_calc
 	fld.d	$ft4, $t1, -16
 	fld.d	$ft12, $t1, -8
 	fldx.d	$ft13, $a3, $a4
-	fadd.d	$ft9, $ft9, $fa6
+	fadd.d	$ft10, $ft10, $fa6
 	fldx.d	$ft3, $a6, $a4
 	fadd.d	$ft4, $ft4, $ft12
 	fadd.d	$ft4, $ft4, $ft13
 	fadd.d	$ft0, $ft4, $ft0
 	fmov.d	$ft12, $ft2
-	fadd.d	$ft9, $ft9, $ft3
+	fadd.d	$ft10, $ft10, $ft3
 	fadd.d	$ft11, $ft11, $fa7
 	fldx.d	$ft4, $s5, $a4
 	fadd.d	$ft0, $ft0, $ft2
 	fldx.d	$ft2, $s8, $a4
-	fadd.d	$ft1, $ft9, $ft1
-	fmov.d	$ft9, $ft7
+	fadd.d	$ft1, $ft10, $ft1
+	fmov.d	$ft10, $ft7
 	fadd.d	$ft7, $ft11, $ft4
 	fadd.d	$ft5, $ft7, $ft5
-	fmov.d	$ft11, $ft10
+	fmov.d	$ft11, $ft9
 	fadd.d	$ft0, $ft0, $ft2
 	fadd.d	$ft0, $ft0, $ft8
 	fmov.d	$ft8, $ft6
-	fadd.d	$ft13, $ft1, $ft9
+	fadd.d	$ft13, $ft1, $ft10
 	fldx.d	$ft7, $s3, $a4
-	fadd.d	$ft14, $ft5, $ft10
-	fldx.d	$ft10, $s6, $a4
+	fadd.d	$ft14, $ft5, $ft9
+	fldx.d	$ft9, $s6, $a4
 	fldx.d	$ft6, $s7, $a4
 	fadd.d	$ft15, $ft0, $ft8
                                         # kill: def $f16_64 killed $f16_64 def $xr16
 	fmov.d	$ft0, $ft12
 	fmov.d	$ft5, $ft11
                                         # kill: def $f7_64 killed $f7_64 def $xr7
-	fmov.d	$ft1, $ft9
+	fmov.d	$ft1, $ft10
                                         # kill: def $f6_64 killed $f6_64 def $xr6
-	fadd.d	$ft9, $ft13, $ft7
-	fadd.d	$ft11, $ft14, $ft10
+	fadd.d	$ft10, $ft13, $ft7
+	fadd.d	$ft11, $ft14, $ft9
 	fadd.d	$ft12, $ft15, $ft6
-	fadd.d	$ft9, $ft9, $ft11
-	fadd.d	$ft9, $ft9, $ft12
-	fdiv.d	$ft9, $ft9, $fs6
-	fstx.d	$ft9, $t6, $a4
+	fadd.d	$ft10, $ft10, $ft11
+	fadd.d	$ft10, $ft10, $ft12
+	fdiv.d	$ft10, $ft10, $fs6
+	fstx.d	$ft10, $t6, $a4
 	addi.d	$a6, $a6, 8
 	addi.d	$s3, $s3, 8
 	addi.d	$s5, $s5, 8
@@ -760,30 +759,18 @@ stencil_calc:                           # @stencil_calc
 # %bb.48:                               # %vector.ph
                                         #   in Loop: Header=BB0_35 Depth=3
 	move	$s6, $zero
-	vextrins.d	$vr9, $vr5, 16
-	xvpermi.q	$xr24, $xr9, 2
-	vextrins.d	$vr9, $vr4, 16
-	xvpermi.q	$xr14, $xr9, 2
-	vextrins.d	$vr9, $vr10, 16
-	xvpermi.q	$xr23, $xr9, 2
-	vextrins.d	$vr8, $vr8, 16
-	xvpermi.q	$xr10, $xr8, 2
-	vextrins.d	$vr8, $vr3, 16
-	xvpermi.q	$xr20, $xr8, 2
-	vextrins.d	$vr8, $vr2, 16
-	xvpermi.q	$xr19, $xr8, 2
-	vextrins.d	$vr8, $vr12, 16
-	xvpermi.q	$xr17, $xr8, 2
-	vextrins.d	$vr7, $vr7, 16
-	xvpermi.q	$xr22, $xr7, 2
-	vextrins.d	$vr7, $vr1, 16
-	xvpermi.q	$xr15, $xr7, 2
-	vextrins.d	$vr7, $vr0, 16
-	xvpermi.q	$xr18, $xr7, 2
-	vextrins.d	$vr7, $vr11, 16
-	xvpermi.q	$xr11, $xr7, 2
-	vextrins.d	$vr6, $vr6, 16
-	xvpermi.q	$xr12, $xr6, 2
+	xvinsve0.d	$xr24, $xr5, 3
+	xvinsve0.d	$xr14, $xr4, 3
+	xvinsve0.d	$xr23, $xr10, 3
+	xvinsve0.d	$xr17, $xr8, 3
+	xvinsve0.d	$xr20, $xr3, 3
+	xvinsve0.d	$xr19, $xr2, 3
+	xvinsve0.d	$xr12, $xr12, 3
+	xvinsve0.d	$xr22, $xr7, 3
+	xvinsve0.d	$xr15, $xr1, 3
+	xvinsve0.d	$xr18, $xr0, 3
+	xvinsve0.d	$xr11, $xr11, 3
+	xvinsve0.d	$xr10, $xr6, 3
 	ld.d	$a7, $fp, -216                  # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_49:                               # %vector.body
@@ -807,22 +794,22 @@ stencil_calc:                           # @stencil_calc
 	xvrepl128vei.d	$xr9, $xr9, 1
 	vextrins.d	$vr9, $vr6, 16
 	xvpickve.d	$xr13, $xr11, 0
-	xvpermi.d	$xr23, $xr12, 78
-	xvrepl128vei.d	$xr12, $xr21, 1
-	vextrins.d	$vr12, $vr13, 16
-	xvpermi.q	$xr12, $xr9, 2
-	xvpickve.d	$xr9, $xr12, 2
-	xvpermi.d	$xr13, $xr12, 68
+	xvpermi.d	$xr23, $xr10, 78
+	xvrepl128vei.d	$xr10, $xr21, 1
+	vextrins.d	$vr10, $vr13, 16
+	xvpermi.q	$xr10, $xr9, 2
+	xvpickve.d	$xr9, $xr10, 2
+	xvpermi.d	$xr13, $xr10, 68
 	xvrepl128vei.d	$xr13, $xr13, 1
 	vextrins.d	$vr13, $vr9, 16
-	xvpickve.d	$xr9, $xr12, 0
+	xvpickve.d	$xr9, $xr10, 0
 	xvrepl128vei.d	$xr21, $xr23, 1
 	vextrins.d	$vr21, $vr9, 16
 	xvpermi.q	$xr21, $xr13, 2
 	xvpermi.d	$xr13, $xr15, 78
 	xvldx	$xr15, $a4, $s6
 	xvfadd.d	$xr7, $xr7, $xr21
-	xvfadd.d	$xr7, $xr7, $xr12
+	xvfadd.d	$xr7, $xr7, $xr10
 	xvfadd.d	$xr7, $xr7, $xr11
 	xvpickve.d	$xr9, $xr15, 2
 	xvpermi.d	$xr21, $xr15, 68
@@ -847,16 +834,16 @@ stencil_calc:                           # @stencil_calc
 	xvldx	$xr13, $ra, $s6
 	xvld	$xr23, $t6, 8
 	xvld	$xr24, $t6, 16
-	xvpermi.d	$xr25, $xr17, 78
-	xvldx	$xr17, $s5, $s6
+	xvpermi.d	$xr25, $xr12, 78
+	xvldx	$xr12, $s5, $s6
 	xvfadd.d	$xr21, $xr7, $xr15
 	xvfadd.d	$xr7, $xr13, $xr23
 	xvfadd.d	$xr13, $xr7, $xr24
-	xvpickve.d	$xr7, $xr17, 2
-	xvpermi.d	$xr23, $xr17, 68
+	xvpickve.d	$xr7, $xr12, 2
+	xvpermi.d	$xr23, $xr12, 68
 	xvrepl128vei.d	$xr23, $xr23, 1
 	vextrins.d	$vr23, $vr7, 16
-	xvpickve.d	$xr24, $xr17, 0
+	xvpickve.d	$xr24, $xr12, 0
 	xvpermi.d	$xr26, $xr22, 78
 	xvrepl128vei.d	$xr22, $xr25, 1
 	vextrins.d	$vr22, $vr24, 16
@@ -873,7 +860,7 @@ stencil_calc:                           # @stencil_calc
 	xvldx	$xr20, $s3, $s6
 	xvfadd.d	$xr13, $xr13, $xr25
 	xvfadd.d	$xr13, $xr13, $xr22
-	xvfadd.d	$xr24, $xr13, $xr17
+	xvfadd.d	$xr24, $xr13, $xr12
 	xvpickve.d	$xr13, $xr20, 2
 	xvpermi.d	$xr25, $xr20, 68
 	xvrepl128vei.d	$xr25, $xr25, 1
@@ -907,22 +894,22 @@ stencil_calc:                           # @stencil_calc
 	xvrepl128vei.d	$xr24, $xr24, 1
 	vextrins.d	$vr24, $vr8, 16
 	xvpickve.d	$xr27, $xr23, 0
-	xvpermi.d	$xr28, $xr10, 78
-	xvrepl128vei.d	$xr10, $xr29, 1
-	vextrins.d	$vr10, $vr27, 16
-	xvpermi.q	$xr10, $xr24, 2
-	xvpickve.d	$xr24, $xr10, 2
-	xvpermi.d	$xr27, $xr10, 68
+	xvpermi.d	$xr28, $xr17, 78
+	xvrepl128vei.d	$xr17, $xr29, 1
+	vextrins.d	$vr17, $vr27, 16
+	xvpermi.q	$xr17, $xr24, 2
+	xvpickve.d	$xr24, $xr17, 2
+	xvpermi.d	$xr27, $xr17, 68
 	xvrepl128vei.d	$xr27, $xr27, 1
 	vextrins.d	$vr27, $vr24, 16
-	xvpickve.d	$xr24, $xr10, 0
+	xvpickve.d	$xr24, $xr17, 0
 	xvrepl128vei.d	$xr28, $xr28, 1
 	vextrins.d	$vr28, $vr24, 16
 	xvpermi.q	$xr28, $xr27, 2
 	xvpermi.d	$xr27, $xr16, 78
 	xvldx	$xr24, $s8, $s6
 	xvfadd.d	$xr16, $xr26, $xr28
-	xvfadd.d	$xr16, $xr16, $xr10
+	xvfadd.d	$xr16, $xr16, $xr17
 	xvfadd.d	$xr26, $xr16, $xr23
 	xvpickve.d	$xr16, $xr24, 2
 	xvpermi.d	$xr28, $xr24, 68
@@ -961,8 +948,8 @@ stencil_calc:                           # @stencil_calc
 # %bb.51:                               #   in Loop: Header=BB0_35 Depth=3
 	xvpickve.d	$xr14, $xr24, 3
 	xvpickve.d	$xr10, $xr23, 3
-	xvpickve.d	$xr18, $xr20, 3
-	xvpickve.d	$xr12, $xr17, 3
+	xvpickve.d	$xr17, $xr20, 3
+	xvpickve.d	$xr12, $xr12, 3
 	xvpickve.d	$xr15, $xr15, 3
 	xvpickve.d	$xr11, $xr11, 3
 	ld.d	$a7, $fp, -232                  # 8-byte Folded Reload

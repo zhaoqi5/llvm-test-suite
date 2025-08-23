@@ -1112,10 +1112,8 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	add.d	$a6, $s2, $s8
 	st.d	$a6, $sp, 8                     # 8-byte Folded Spill
 	add.d	$s7, $s3, $s8
-	vinsgr2vr.w	$vr1, $s5, 3
-	xvpermi.q	$xr19, $xr1, 2
-	vinsgr2vr.w	$vr1, $s6, 3
-	xvpermi.q	$xr18, $xr1, 2
+	xvinsgr2vr.w	$xr19, $s5, 7
+	xvinsgr2vr.w	$xr18, $s6, 7
 	move	$ra, $s8
 	.p2align	4, , 16
 .LBB7_16:                               # %vector.body92
@@ -1855,10 +1853,8 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
 	add.d	$s5, $s1, $s7
 	add.d	$s6, $s2, $s7
-	vinsgr2vr.w	$vr1, $ra, 3
-	xvpermi.q	$xr19, $xr1, 2
-	vinsgr2vr.w	$vr1, $s4, 3
-	xvpermi.q	$xr18, $xr1, 2
+	xvinsgr2vr.w	$xr19, $ra, 7
+	xvinsgr2vr.w	$xr18, $s4, 7
 	move	$s8, $s7
 	.p2align	4, , 16
 .LBB7_22:                               # %vector.body

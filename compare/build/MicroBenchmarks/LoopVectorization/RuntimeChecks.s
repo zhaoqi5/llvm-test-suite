@@ -1209,8 +1209,7 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 # %bb.1:                                # %vector.ph
 	ld.d	$a1, $a0, 0
 	move	$a4, $zero
-	vinsgr2vr.d	$vr0, $a1, 1
-	xvpermi.q	$xr0, $xr0, 2
+	xvinsgr2vr.d	$xr0, $a1, 3
 	lu12i.w	$a2, -524288
 	xvreplgr2vr.d	$xr1, $a2
 	lu12i.w	$a1, 524287

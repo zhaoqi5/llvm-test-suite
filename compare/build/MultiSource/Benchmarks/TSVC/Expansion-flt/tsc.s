@@ -11520,8 +11520,7 @@ s3251:                                  # @s3251
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB9_3 Depth 2
 	fld.s	$fa0, $fp, 0
-	vextrins.w	$vr0, $vr0, 48
-	xvpermi.q	$xr0, $xr0, 2
+	xvinsve0.w	$xr0, $xr0, 7
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	move	$a1, $fp
 	.p2align	4, , 16
@@ -12105,8 +12104,7 @@ s254:                                   # @s254
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	fldx.s	$fa0, $fp, $a0
 	move	$a0, $zero
-	vextrins.w	$vr0, $vr0, 48
-	xvpermi.q	$xr0, $xr0, 2
+	xvinsve0.w	$xr0, $xr0, 7
 	.p2align	4, , 16
 .LBB12_3:                               # %vector.body
                                         #   Parent Loop BB12_2 Depth=1
@@ -12273,10 +12271,8 @@ s255:                                   # @s255
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	fldx.s	$fa1, $fp, $a0
 	move	$a0, $zero
-	vextrins.w	$vr0, $vr0, 48
-	xvpermi.q	$xr2, $xr0, 2
-	vextrins.w	$vr0, $vr1, 48
-	xvpermi.q	$xr1, $xr0, 2
+	xvinsve0.w	$xr2, $xr0, 7
+	xvinsve0.w	$xr1, $xr1, 7
 	.p2align	4, , 16
 .LBB13_3:                               # %vector.body
                                         #   Parent Loop BB13_2 Depth=1
