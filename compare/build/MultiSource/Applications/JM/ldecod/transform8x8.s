@@ -2311,14 +2311,15 @@ itrans8x8:                              # @itrans8x8
 	ldx.w	$s1, $t5, $s1
 	ldx.w	$s2, $t5, $s2
 	add.d	$t5, $t5, $a5
-	xvinsgr2vr.w	$xr0, $s3, 0
-	xvinsgr2vr.w	$xr0, $t6, 1
-	xvinsgr2vr.w	$xr0, $t7, 2
-	xvinsgr2vr.w	$xr0, $t8, 3
-	xvinsgr2vr.w	$xr0, $fp, 4
-	xvinsgr2vr.w	$xr0, $s0, 5
-	xvinsgr2vr.w	$xr0, $s1, 6
-	xvinsgr2vr.w	$xr0, $s2, 7
+	vinsgr2vr.w	$vr0, $s3, 0
+	vinsgr2vr.w	$vr0, $t6, 1
+	vinsgr2vr.w	$vr0, $t7, 2
+	vinsgr2vr.w	$vr0, $t8, 3
+	vinsgr2vr.w	$vr1, $fp, 0
+	vinsgr2vr.w	$vr1, $s0, 1
+	vinsgr2vr.w	$vr1, $s1, 2
+	vinsgr2vr.w	$vr1, $s2, 3
+	xvpermi.q	$xr0, $xr1, 2
 	ld.w	$t6, $t5, 16
 	ld.w	$t7, $a6, 16
 	ld.w	$t8, $a7, 16
@@ -2327,14 +2328,15 @@ itrans8x8:                              # @itrans8x8
 	ld.w	$s1, $t2, 16
 	ld.w	$s2, $t3, 16
 	ld.w	$s3, $t4, 16
-	xvinsgr2vr.w	$xr1, $t6, 0
-	xvinsgr2vr.w	$xr1, $t7, 1
-	xvinsgr2vr.w	$xr1, $t8, 2
-	xvinsgr2vr.w	$xr1, $fp, 3
-	xvinsgr2vr.w	$xr1, $s0, 4
-	xvinsgr2vr.w	$xr1, $s1, 5
-	xvinsgr2vr.w	$xr1, $s2, 6
-	xvinsgr2vr.w	$xr1, $s3, 7
+	vinsgr2vr.w	$vr1, $t6, 0
+	vinsgr2vr.w	$vr1, $t7, 1
+	vinsgr2vr.w	$vr1, $t8, 2
+	vinsgr2vr.w	$vr1, $fp, 3
+	vinsgr2vr.w	$vr2, $s0, 0
+	vinsgr2vr.w	$vr2, $s1, 1
+	vinsgr2vr.w	$vr2, $s2, 2
+	vinsgr2vr.w	$vr2, $s3, 3
+	xvpermi.q	$xr1, $xr2, 2
 	xvadd.w	$xr3, $xr1, $xr0
 	xvsub.w	$xr2, $xr0, $xr1
 	ld.w	$t6, $t5, 8
@@ -2345,14 +2347,15 @@ itrans8x8:                              # @itrans8x8
 	ld.w	$s1, $t2, 8
 	ld.w	$s2, $t3, 8
 	ld.w	$s3, $t4, 8
-	xvinsgr2vr.w	$xr0, $t6, 0
-	xvinsgr2vr.w	$xr0, $t7, 1
-	xvinsgr2vr.w	$xr0, $t8, 2
-	xvinsgr2vr.w	$xr0, $fp, 3
-	xvinsgr2vr.w	$xr0, $s0, 4
-	xvinsgr2vr.w	$xr0, $s1, 5
-	xvinsgr2vr.w	$xr0, $s2, 6
-	xvinsgr2vr.w	$xr0, $s3, 7
+	vinsgr2vr.w	$vr0, $t6, 0
+	vinsgr2vr.w	$vr0, $t7, 1
+	vinsgr2vr.w	$vr0, $t8, 2
+	vinsgr2vr.w	$vr0, $fp, 3
+	vinsgr2vr.w	$vr1, $s0, 0
+	vinsgr2vr.w	$vr1, $s1, 1
+	vinsgr2vr.w	$vr1, $s2, 2
+	vinsgr2vr.w	$vr1, $s3, 3
+	xvpermi.q	$xr0, $xr1, 2
 	xvsrai.w	$xr1, $xr0, 1
 	ld.w	$t6, $t5, 24
 	ld.w	$t7, $a6, 24
@@ -2362,14 +2365,15 @@ itrans8x8:                              # @itrans8x8
 	ld.w	$s1, $t2, 24
 	ld.w	$s2, $t3, 24
 	ld.w	$s3, $t4, 24
-	xvinsgr2vr.w	$xr4, $t6, 0
-	xvinsgr2vr.w	$xr4, $t7, 1
-	xvinsgr2vr.w	$xr4, $t8, 2
-	xvinsgr2vr.w	$xr4, $fp, 3
-	xvinsgr2vr.w	$xr4, $s0, 4
-	xvinsgr2vr.w	$xr4, $s1, 5
-	xvinsgr2vr.w	$xr4, $s2, 6
-	xvinsgr2vr.w	$xr4, $s3, 7
+	vinsgr2vr.w	$vr4, $t6, 0
+	vinsgr2vr.w	$vr4, $t7, 1
+	vinsgr2vr.w	$vr4, $t8, 2
+	vinsgr2vr.w	$vr4, $fp, 3
+	vinsgr2vr.w	$vr5, $s0, 0
+	vinsgr2vr.w	$vr5, $s1, 1
+	vinsgr2vr.w	$vr5, $s2, 2
+	vinsgr2vr.w	$vr5, $s3, 3
+	xvpermi.q	$xr4, $xr5, 2
 	xvsub.w	$xr5, $xr1, $xr4
 	xvsrai.w	$xr1, $xr4, 1
 	xvadd.w	$xr4, $xr1, $xr0
@@ -2385,14 +2389,15 @@ itrans8x8:                              # @itrans8x8
 	ld.w	$s1, $t2, 12
 	ld.w	$s2, $t3, 12
 	ld.w	$s3, $t4, 12
-	xvinsgr2vr.w	$xr4, $t6, 0
-	xvinsgr2vr.w	$xr4, $t7, 1
-	xvinsgr2vr.w	$xr4, $t8, 2
-	xvinsgr2vr.w	$xr4, $fp, 3
-	xvinsgr2vr.w	$xr4, $s0, 4
-	xvinsgr2vr.w	$xr4, $s1, 5
-	xvinsgr2vr.w	$xr4, $s2, 6
-	xvinsgr2vr.w	$xr4, $s3, 7
+	vinsgr2vr.w	$vr4, $t6, 0
+	vinsgr2vr.w	$vr4, $t7, 1
+	vinsgr2vr.w	$vr4, $t8, 2
+	vinsgr2vr.w	$vr4, $fp, 3
+	vinsgr2vr.w	$vr5, $s0, 0
+	vinsgr2vr.w	$vr5, $s1, 1
+	vinsgr2vr.w	$vr5, $s2, 2
+	vinsgr2vr.w	$vr5, $s3, 3
+	xvpermi.q	$xr4, $xr5, 2
 	ld.w	$t6, $t5, 20
 	ld.w	$t7, $a6, 20
 	ld.w	$t8, $a7, 20
@@ -2401,14 +2406,15 @@ itrans8x8:                              # @itrans8x8
 	ld.w	$s1, $t2, 20
 	ld.w	$s2, $t3, 20
 	ld.w	$s3, $t4, 20
-	xvinsgr2vr.w	$xr5, $t6, 0
-	xvinsgr2vr.w	$xr5, $t7, 1
-	xvinsgr2vr.w	$xr5, $t8, 2
-	xvinsgr2vr.w	$xr5, $fp, 3
-	xvinsgr2vr.w	$xr5, $s0, 4
-	xvinsgr2vr.w	$xr5, $s1, 5
-	xvinsgr2vr.w	$xr5, $s2, 6
-	xvinsgr2vr.w	$xr5, $s3, 7
+	vinsgr2vr.w	$vr5, $t6, 0
+	vinsgr2vr.w	$vr5, $t7, 1
+	vinsgr2vr.w	$vr5, $t8, 2
+	vinsgr2vr.w	$vr5, $fp, 3
+	vinsgr2vr.w	$vr6, $s0, 0
+	vinsgr2vr.w	$vr6, $s1, 1
+	vinsgr2vr.w	$vr6, $s2, 2
+	vinsgr2vr.w	$vr6, $s3, 3
+	xvpermi.q	$xr5, $xr6, 2
 	ld.w	$t6, $t5, 28
 	ld.w	$t7, $a6, 28
 	ld.w	$t8, $a7, 28
@@ -2417,14 +2423,15 @@ itrans8x8:                              # @itrans8x8
 	ld.w	$s1, $t2, 28
 	ld.w	$s2, $t3, 28
 	ld.w	$s3, $t4, 28
-	xvinsgr2vr.w	$xr6, $t6, 0
-	xvinsgr2vr.w	$xr6, $t7, 1
-	xvinsgr2vr.w	$xr6, $t8, 2
-	xvinsgr2vr.w	$xr6, $fp, 3
-	xvinsgr2vr.w	$xr6, $s0, 4
-	xvinsgr2vr.w	$xr6, $s1, 5
-	xvinsgr2vr.w	$xr6, $s2, 6
-	xvinsgr2vr.w	$xr6, $s3, 7
+	vinsgr2vr.w	$vr6, $t6, 0
+	vinsgr2vr.w	$vr6, $t7, 1
+	vinsgr2vr.w	$vr6, $t8, 2
+	vinsgr2vr.w	$vr6, $fp, 3
+	vinsgr2vr.w	$vr7, $s0, 0
+	vinsgr2vr.w	$vr7, $s1, 1
+	vinsgr2vr.w	$vr7, $s2, 2
+	vinsgr2vr.w	$vr7, $s3, 3
+	xvpermi.q	$xr6, $xr7, 2
 	xvsrai.w	$xr7, $xr6, 1
 	xvadd.w	$xr8, $xr4, $xr6
 	xvadd.w	$xr7, $xr8, $xr7
@@ -2437,14 +2444,15 @@ itrans8x8:                              # @itrans8x8
 	ld.w	$t2, $t2, 4
 	ld.w	$t3, $t3, 4
 	ld.w	$t4, $t4, 4
-	xvinsgr2vr.w	$xr8, $t5, 0
-	xvinsgr2vr.w	$xr8, $a6, 1
-	xvinsgr2vr.w	$xr8, $a7, 2
-	xvinsgr2vr.w	$xr8, $t0, 3
-	xvinsgr2vr.w	$xr8, $t1, 4
-	xvinsgr2vr.w	$xr8, $t2, 5
-	xvinsgr2vr.w	$xr8, $t3, 6
-	xvinsgr2vr.w	$xr8, $t4, 7
+	vinsgr2vr.w	$vr8, $t5, 0
+	vinsgr2vr.w	$vr8, $a6, 1
+	vinsgr2vr.w	$vr8, $a7, 2
+	vinsgr2vr.w	$vr8, $t0, 3
+	vinsgr2vr.w	$vr9, $t1, 0
+	vinsgr2vr.w	$vr9, $t2, 1
+	vinsgr2vr.w	$vr9, $t3, 2
+	vinsgr2vr.w	$vr9, $t4, 3
+	xvpermi.q	$xr8, $xr9, 2
 	xvsrai.w	$xr9, $xr4, 1
 	xvadd.w	$xr9, $xr9, $xr4
 	xvsub.w	$xr9, $xr6, $xr9

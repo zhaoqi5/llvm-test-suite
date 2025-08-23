@@ -596,42 +596,40 @@ gx_path_merge:                          # @gx_path_merge
 	.type	gx_path_translate,@function
 gx_path_translate:                      # @gx_path_translate
 # %bb.0:                                # %entry
-	xvld	$xr1, $a0, 16
 	pcalau12i	$a3, %pc_hi20(.LCPI10_0)
 	xvld	$xr0, $a3, %pc_lo12(.LCPI10_0)
-	xvinsgr2vr.d	$xr2, $a1, 0
-	xvinsgr2vr.d	$xr2, $a2, 1
-	xvpermi.d	$xr2, $xr2, 68
-	xvshuf.d	$xr0, $xr0, $xr2
-	xvadd.d	$xr1, $xr1, $xr0
-	xvst	$xr1, $a0, 16
-	vld	$vr2, $a0, 120
-	ld.d	$a3, $a0, 88
+	xvld	$xr2, $a0, 16
 	vinsgr2vr.d	$vr1, $a1, 0
 	vinsgr2vr.d	$vr1, $a2, 1
-	vadd.d	$vr2, $vr2, $vr1
+	xvpermi.d	$xr3, $xr1, 68
+	xvshuf.d	$xr0, $xr0, $xr3
+	vld	$vr3, $a0, 120
+	ld.d	$a1, $a0, 88
+	xvadd.d	$xr2, $xr2, $xr0
+	xvst	$xr2, $a0, 16
+	vadd.d	$vr2, $vr3, $vr1
 	vst	$vr2, $a0, 120
-	beqz	$a3, .LBB10_5
+	beqz	$a1, .LBB10_5
 # %bb.1:                                # %while.body.preheader
 	ori	$a0, $zero, 3
 	b	.LBB10_3
 	.p2align	4, , 16
 .LBB10_2:                               # %sw.default
                                         #   in Loop: Header=BB10_3 Depth=1
-	vld	$vr2, $a3, 24
+	vld	$vr2, $a1, 24
 	vadd.d	$vr2, $vr2, $vr1
-	vst	$vr2, $a3, 24
-	ld.d	$a3, $a3, 8
-	beqz	$a3, .LBB10_5
+	vst	$vr2, $a1, 24
+	ld.d	$a1, $a1, 8
+	beqz	$a1, .LBB10_5
 .LBB10_3:                               # %while.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a1, $a3, 16
-	bne	$a1, $a0, .LBB10_2
+	ld.w	$a2, $a1, 16
+	bne	$a2, $a0, .LBB10_2
 # %bb.4:                                # %sw.bb
                                         #   in Loop: Header=BB10_3 Depth=1
-	xvld	$xr2, $a3, 40
+	xvld	$xr2, $a1, 40
 	xvadd.d	$xr2, $xr2, $xr0
-	xvst	$xr2, $a3, 40
+	xvst	$xr2, $a1, 40
 	b	.LBB10_2
 .LBB10_5:                               # %while.end
 	move	$a0, $zero

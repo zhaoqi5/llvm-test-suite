@@ -56,14 +56,15 @@ msum_i4:                                # @msum_i4
 	ld.w	$t1, $a1, 28
 	ld.w	$t2, $a1, 40
 	ld.w	$t3, $a1, 52
-	xvinsgr2vr.w	$xr0, $a4, 0
-	xvinsgr2vr.w	$xr0, $a5, 1
-	xvinsgr2vr.w	$xr0, $a6, 2
-	xvinsgr2vr.w	$xr0, $a7, 3
-	xvinsgr2vr.w	$xr0, $t0, 4
-	xvinsgr2vr.w	$xr0, $t1, 5
-	xvinsgr2vr.w	$xr0, $t2, 6
-	xvinsgr2vr.w	$xr0, $t3, 7
+	vinsgr2vr.w	$vr0, $t0, 0
+	vinsgr2vr.w	$vr0, $t1, 1
+	vinsgr2vr.w	$vr0, $t2, 2
+	vinsgr2vr.w	$vr0, $t3, 3
+	vinsgr2vr.w	$vr1, $a4, 0
+	vinsgr2vr.w	$vr1, $a5, 1
+	vinsgr2vr.w	$vr1, $a6, 2
+	vinsgr2vr.w	$vr1, $a7, 3
+	xvpermi.q	$xr1, $xr0, 2
 	ld.w	$a4, $a1, -36
 	ld.w	$a5, $a1, -24
 	ld.w	$a6, $a1, -12
@@ -72,15 +73,16 @@ msum_i4:                                # @msum_i4
 	ld.w	$t1, $a1, 24
 	ld.w	$t2, $a1, 36
 	ld.w	$t3, $a1, 48
-	xvinsgr2vr.w	$xr1, $a4, 0
-	xvinsgr2vr.w	$xr1, $a5, 1
-	xvinsgr2vr.w	$xr1, $a6, 2
-	xvinsgr2vr.w	$xr1, $a7, 3
-	xvinsgr2vr.w	$xr1, $t0, 4
-	xvinsgr2vr.w	$xr1, $t1, 5
-	xvinsgr2vr.w	$xr1, $t2, 6
-	xvinsgr2vr.w	$xr1, $t3, 7
-	xvsub.w	$xr0, $xr0, $xr1
+	vinsgr2vr.w	$vr0, $t0, 0
+	vinsgr2vr.w	$vr0, $t1, 1
+	vinsgr2vr.w	$vr0, $t2, 2
+	vinsgr2vr.w	$vr0, $t3, 3
+	vinsgr2vr.w	$vr2, $a4, 0
+	vinsgr2vr.w	$vr2, $a5, 1
+	vinsgr2vr.w	$vr2, $a6, 2
+	vinsgr2vr.w	$vr2, $a7, 3
+	xvpermi.q	$xr2, $xr0, 2
+	xvsub.w	$xr0, $xr1, $xr2
 	xvaddi.wu	$xr0, $xr0, 1
 	xvst	$xr0, $a2, 0
 	addi.d	$a3, $a3, -8

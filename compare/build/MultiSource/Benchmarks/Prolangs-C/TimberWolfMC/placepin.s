@@ -43,7 +43,6 @@ placepin:                               # @placepin
 	ori	$a2, $zero, 1
                                         # implicit-def: $r30
 	st.d	$t0, $sp, 8                     # 8-byte Folded Spill
-	pcalau12i	$s5, %pc_hi20(.LCPI0_0)
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_2:                                # %for.inc313.loopexit
@@ -147,6 +146,7 @@ placepin:                               # @placepin
 # %bb.10:                               # %if.then10
                                         #   in Loop: Header=BB0_9 Depth=2
 	ld.w	$s8, $s4, 16
+	pcalau12i	$s5, %pc_hi20(.LCPI0_0)
 	beq	$s8, $a4, .LBB0_14
 # %bb.11:                               # %if.then10
                                         #   in Loop: Header=BB0_9 Depth=2
@@ -270,14 +270,15 @@ placepin:                               # @placepin
 	ld.w	$s0, $a0, -60
 	ld.w	$fp, $a0, -40
 	ld.w	$t6, $a0, -20
-	xvinsgr2vr.w	$xr4, $a2, 0
-	xvinsgr2vr.w	$xr4, $a7, 1
-	xvinsgr2vr.w	$xr4, $t0, 2
-	xvinsgr2vr.w	$xr4, $t7, 3
-	xvinsgr2vr.w	$xr4, $t8, 4
-	xvinsgr2vr.w	$xr4, $s0, 5
-	xvinsgr2vr.w	$xr4, $fp, 6
-	xvinsgr2vr.w	$xr4, $t6, 7
+	vinsgr2vr.w	$vr4, $t8, 0
+	vinsgr2vr.w	$vr4, $s0, 1
+	vinsgr2vr.w	$vr4, $fp, 2
+	vinsgr2vr.w	$vr4, $t6, 3
+	vinsgr2vr.w	$vr5, $a2, 0
+	vinsgr2vr.w	$vr5, $a7, 1
+	vinsgr2vr.w	$vr5, $t0, 2
+	vinsgr2vr.w	$vr5, $t7, 3
+	xvpermi.q	$xr5, $xr4, 2
 	ld.w	$a2, $a0, 0
 	ld.w	$a7, $a0, 20
 	ld.w	$t0, $a0, 40
@@ -286,16 +287,17 @@ placepin:                               # @placepin
 	ld.w	$t8, $a0, 100
 	ld.w	$fp, $a0, 120
 	ld.w	$s0, $a0, 140
-	xvinsgr2vr.w	$xr5, $a2, 0
-	xvinsgr2vr.w	$xr5, $a7, 1
-	xvinsgr2vr.w	$xr5, $t0, 2
-	xvinsgr2vr.w	$xr5, $t6, 3
-	xvinsgr2vr.w	$xr5, $t7, 4
-	xvinsgr2vr.w	$xr5, $t8, 5
-	xvinsgr2vr.w	$xr5, $fp, 6
-	xvinsgr2vr.w	$xr5, $s0, 7
-	xvadd.w	$xr2, $xr4, $xr2
-	xvadd.w	$xr3, $xr5, $xr3
+	vinsgr2vr.w	$vr4, $t7, 0
+	vinsgr2vr.w	$vr4, $t8, 1
+	vinsgr2vr.w	$vr4, $fp, 2
+	vinsgr2vr.w	$vr4, $s0, 3
+	vinsgr2vr.w	$vr6, $a2, 0
+	vinsgr2vr.w	$vr6, $a7, 1
+	vinsgr2vr.w	$vr6, $t0, 2
+	vinsgr2vr.w	$vr6, $t6, 3
+	xvpermi.q	$xr6, $xr4, 2
+	xvadd.w	$xr2, $xr5, $xr2
+	xvadd.w	$xr3, $xr6, $xr3
 	addi.d	$t1, $t1, -16
 	addi.d	$a0, $a0, 320
 	bnez	$t1, .LBB0_33
@@ -342,14 +344,15 @@ placepin:                               # @placepin
 	ld.w	$fp, $a0, -60
 	ld.w	$s0, $a0, -40
 	ld.w	$t4, $a0, -20
-	xvinsgr2vr.w	$xr4, $a2, 0
-	xvinsgr2vr.w	$xr4, $a7, 1
-	xvinsgr2vr.w	$xr4, $t6, 2
-	xvinsgr2vr.w	$xr4, $t7, 3
-	xvinsgr2vr.w	$xr4, $t8, 4
-	xvinsgr2vr.w	$xr4, $fp, 5
-	xvinsgr2vr.w	$xr4, $s0, 6
-	xvinsgr2vr.w	$xr4, $t4, 7
+	vinsgr2vr.w	$vr4, $t8, 0
+	vinsgr2vr.w	$vr4, $fp, 1
+	vinsgr2vr.w	$vr4, $s0, 2
+	vinsgr2vr.w	$vr4, $t4, 3
+	vinsgr2vr.w	$vr5, $a2, 0
+	vinsgr2vr.w	$vr5, $a7, 1
+	vinsgr2vr.w	$vr5, $t6, 2
+	vinsgr2vr.w	$vr5, $t7, 3
+	xvpermi.q	$xr5, $xr4, 2
 	ld.w	$a2, $a0, 0
 	ld.w	$a7, $a0, 20
 	ld.w	$t4, $a0, 40
@@ -358,16 +361,17 @@ placepin:                               # @placepin
 	ld.w	$t8, $a0, 100
 	ld.w	$fp, $a0, 120
 	ld.w	$s0, $a0, 140
-	xvinsgr2vr.w	$xr5, $a2, 0
-	xvinsgr2vr.w	$xr5, $a7, 1
-	xvinsgr2vr.w	$xr5, $t4, 2
-	xvinsgr2vr.w	$xr5, $t6, 3
-	xvinsgr2vr.w	$xr5, $t7, 4
-	xvinsgr2vr.w	$xr5, $t8, 5
-	xvinsgr2vr.w	$xr5, $fp, 6
-	xvinsgr2vr.w	$xr5, $s0, 7
-	xvadd.w	$xr2, $xr4, $xr2
-	xvadd.w	$xr3, $xr5, $xr3
+	vinsgr2vr.w	$vr4, $t7, 0
+	vinsgr2vr.w	$vr4, $t8, 1
+	vinsgr2vr.w	$vr4, $fp, 2
+	vinsgr2vr.w	$vr4, $s0, 3
+	vinsgr2vr.w	$vr6, $a2, 0
+	vinsgr2vr.w	$vr6, $a7, 1
+	vinsgr2vr.w	$vr6, $t4, 2
+	vinsgr2vr.w	$vr6, $t6, 3
+	xvpermi.q	$xr6, $xr4, 2
+	xvadd.w	$xr2, $xr5, $xr2
+	xvadd.w	$xr3, $xr6, $xr3
 	addi.d	$t1, $t1, -16
 	addi.d	$a0, $a0, 320
 	bnez	$t1, .LBB0_37
@@ -411,14 +415,15 @@ placepin:                               # @placepin
 	ld.w	$t7, $a0, -40
 	ld.w	$t8, $a0, -20
 	ld.w	$fp, $a0, 0
-	xvinsgr2vr.w	$xr4, $a2, 0
-	xvinsgr2vr.w	$xr4, $a7, 1
-	xvinsgr2vr.w	$xr4, $t2, 2
-	xvinsgr2vr.w	$xr4, $t4, 3
-	xvinsgr2vr.w	$xr4, $t6, 4
-	xvinsgr2vr.w	$xr4, $t7, 5
-	xvinsgr2vr.w	$xr4, $t8, 6
-	xvinsgr2vr.w	$xr4, $fp, 7
+	vinsgr2vr.w	$vr4, $t6, 0
+	vinsgr2vr.w	$vr4, $t7, 1
+	vinsgr2vr.w	$vr4, $t8, 2
+	vinsgr2vr.w	$vr4, $fp, 3
+	vinsgr2vr.w	$vr5, $a2, 0
+	vinsgr2vr.w	$vr5, $a7, 1
+	vinsgr2vr.w	$vr5, $t2, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	xvpermi.q	$xr5, $xr4, 2
 	ld.w	$a2, $a0, 20
 	ld.w	$a7, $a0, 40
 	ld.w	$t2, $a0, 60
@@ -427,16 +432,17 @@ placepin:                               # @placepin
 	ld.w	$t7, $a0, 120
 	ld.w	$t8, $a0, 140
 	ld.w	$fp, $a0, 160
-	xvinsgr2vr.w	$xr5, $a2, 0
-	xvinsgr2vr.w	$xr5, $a7, 1
-	xvinsgr2vr.w	$xr5, $t2, 2
-	xvinsgr2vr.w	$xr5, $t4, 3
-	xvinsgr2vr.w	$xr5, $t6, 4
-	xvinsgr2vr.w	$xr5, $t7, 5
-	xvinsgr2vr.w	$xr5, $t8, 6
-	xvinsgr2vr.w	$xr5, $fp, 7
-	xvadd.w	$xr2, $xr4, $xr2
-	xvadd.w	$xr3, $xr5, $xr3
+	vinsgr2vr.w	$vr4, $t6, 0
+	vinsgr2vr.w	$vr4, $t7, 1
+	vinsgr2vr.w	$vr4, $t8, 2
+	vinsgr2vr.w	$vr4, $fp, 3
+	vinsgr2vr.w	$vr6, $a2, 0
+	vinsgr2vr.w	$vr6, $a7, 1
+	vinsgr2vr.w	$vr6, $t2, 2
+	vinsgr2vr.w	$vr6, $t4, 3
+	xvpermi.q	$xr6, $xr4, 2
+	xvadd.w	$xr2, $xr5, $xr2
+	xvadd.w	$xr3, $xr6, $xr3
 	addi.d	$t0, $t0, -16
 	addi.d	$a0, $a0, 320
 	bnez	$t0, .LBB0_41
@@ -702,14 +708,15 @@ placepin:                               # @placepin
 	ld.w	$t8, $a0, -60
 	ld.w	$fp, $a0, -40
 	ld.w	$s0, $a0, -20
-	xvinsgr2vr.w	$xr4, $a2, 0
-	xvinsgr2vr.w	$xr4, $a7, 1
-	xvinsgr2vr.w	$xr4, $t4, 2
-	xvinsgr2vr.w	$xr4, $t6, 3
-	xvinsgr2vr.w	$xr4, $t7, 4
-	xvinsgr2vr.w	$xr4, $t8, 5
-	xvinsgr2vr.w	$xr4, $fp, 6
-	xvinsgr2vr.w	$xr4, $s0, 7
+	vinsgr2vr.w	$vr4, $t7, 0
+	vinsgr2vr.w	$vr4, $t8, 1
+	vinsgr2vr.w	$vr4, $fp, 2
+	vinsgr2vr.w	$vr4, $s0, 3
+	vinsgr2vr.w	$vr5, $a2, 0
+	vinsgr2vr.w	$vr5, $a7, 1
+	vinsgr2vr.w	$vr5, $t4, 2
+	vinsgr2vr.w	$vr5, $t6, 3
+	xvpermi.q	$xr5, $xr4, 2
 	ld.w	$a2, $a0, 0
 	ld.w	$a7, $a0, 20
 	ld.w	$t4, $a0, 40
@@ -718,16 +725,17 @@ placepin:                               # @placepin
 	ld.w	$t8, $a0, 100
 	ld.w	$fp, $a0, 120
 	ld.w	$s0, $a0, 140
-	xvinsgr2vr.w	$xr5, $a2, 0
-	xvinsgr2vr.w	$xr5, $a7, 1
-	xvinsgr2vr.w	$xr5, $t4, 2
-	xvinsgr2vr.w	$xr5, $t6, 3
-	xvinsgr2vr.w	$xr5, $t7, 4
-	xvinsgr2vr.w	$xr5, $t8, 5
-	xvinsgr2vr.w	$xr5, $fp, 6
-	xvinsgr2vr.w	$xr5, $s0, 7
-	xvadd.w	$xr2, $xr4, $xr2
-	xvadd.w	$xr3, $xr5, $xr3
+	vinsgr2vr.w	$vr4, $t7, 0
+	vinsgr2vr.w	$vr4, $t8, 1
+	vinsgr2vr.w	$vr4, $fp, 2
+	vinsgr2vr.w	$vr4, $s0, 3
+	vinsgr2vr.w	$vr6, $a2, 0
+	vinsgr2vr.w	$vr6, $a7, 1
+	vinsgr2vr.w	$vr6, $t4, 2
+	vinsgr2vr.w	$vr6, $t6, 3
+	xvpermi.q	$xr6, $xr4, 2
+	xvadd.w	$xr2, $xr5, $xr2
+	xvadd.w	$xr3, $xr6, $xr3
 	addi.d	$t0, $t0, -16
 	addi.d	$a0, $a0, 320
 	bnez	$t0, .LBB0_72
@@ -860,9 +868,9 @@ placepin:                               # @placepin
 	bnez	$a0, .LBB0_96
 .LBB0_88:                               # %if.then216
                                         #   in Loop: Header=BB0_9 Depth=2
-	ld.w	$t1, $s4, 20
+	ld.w	$ra, $s4, 20
 	vldi	$vr2, -912
-	move	$a0, $t1
+	move	$a0, $ra
 	b	.LBB0_97
 .LBB0_89:                               #   in Loop: Header=BB0_9 Depth=2
 	addi.d	$t0, $t1, 1
@@ -924,9 +932,9 @@ placepin:                               # @placepin
 	addi.w	$a2, $s7, 0
 	alsl.d	$a7, $a2, $a0, 3
 	slli.d	$a2, $a2, 3
-	ldx.w	$t1, $a0, $a2
+	ldx.w	$ra, $a0, $a2
 	ld.w	$a0, $a7, 4
-	sub.d	$a2, $a0, $t1
+	sub.d	$a2, $a0, $ra
 	addi.d	$a2, $a2, 1
 	movgr2fr.w	$fa2, $a2
 	ffint.d.w	$fa2, $fa2
@@ -950,17 +958,17 @@ placepin:                               # @placepin
 	fdiv.d	$fa3, $fa4, $fa3
 	fmul.d	$fa3, $fa2, $fa3
 	ftintrz.w.d	$fa3, $fa3
-	movfr2gr.s	$s6, $fa3
-	add.w	$t8, $t1, $s6
+	movfr2gr.s	$t1, $fa3
+	add.w	$t8, $ra, $t1
 	st.w	$t7, $t0, 0
 	blt	$a0, $t8, .LBB0_98
 # %bb.99:                               # %if.else245.lr.ph
                                         #   in Loop: Header=BB0_98 Depth=3
 	move	$a7, $zero
 	ld.w	$t2, $s4, 28
-	add.d	$ra, $t1, $s6
-	slli.d	$t4, $ra, 4
-	alsl.d	$t4, $ra, $t4, 2
+	add.d	$t1, $ra, $t1
+	slli.d	$t4, $t1, 4
+	alsl.d	$t4, $t1, $t4, 2
 	add.d	$s8, $t5, $t4
 	move	$s6, $t8
 	.p2align	4, , 16
@@ -981,20 +989,20 @@ placepin:                               # @placepin
 	.p2align	4, , 16
 .LBB0_102:                              # %for.cond264.loopexit
                                         #   in Loop: Header=BB0_9 Depth=2
-	move	$s4, $zero
-	move	$t1, $s3
+	move	$s5, $zero
+	move	$s4, $s3
 	blt	$t8, $s6, .LBB0_107
 .LBB0_103:                              # %for.end289
                                         #   in Loop: Header=BB0_9 Depth=2
 	ld.w	$a2, $s8, 0
-	sub.w	$a0, $t2, $s4
+	sub.w	$a0, $t2, $s5
 	add.d	$a2, $a2, $a0
 	st.w	$a2, $s8, 0
 	blt	$a0, $a1, .LBB0_8
 # %bb.104:                              # %for.body302.preheader
                                         #   in Loop: Header=BB0_9 Depth=2
-	add.w	$a0, $t1, $a0
-	addi.w	$t1, $t1, 0
+	add.w	$a0, $s4, $a0
+	addi.w	$t1, $s4, 0
 	addi.d	$a2, $t1, 1
 	slt	$a7, $a0, $a2
 	masknez	$t0, $a0, $a7
@@ -1008,31 +1016,31 @@ placepin:                               # @placepin
 	.p2align	4, , 16
 .LBB0_106:                              # %for.end285
                                         #   in Loop: Header=BB0_107 Depth=3
-	addi.d	$ra, $ra, 1
-	add.d	$s4, $a0, $s4
-	beq	$ra, $s6, .LBB0_103
+	addi.d	$t1, $t1, 1
+	add.d	$s5, $a0, $s5
+	beq	$t1, $s6, .LBB0_103
 .LBB0_107:                              # %for.body267
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_9 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB0_111 Depth 4
                                         #         Child Loop BB0_114 Depth 4
-	slli.d	$a0, $ra, 4
-	alsl.d	$a7, $ra, $a0, 2
+	slli.d	$a0, $t1, 4
+	alsl.d	$a7, $t1, $a0, 2
 	add.d	$a0, $t5, $a7
 	ld.w	$a0, $a0, 8
 	ldx.w	$t0, $t5, $a7
-	move	$a2, $t1
+	move	$a2, $s4
 	add.d	$t0, $t0, $a0
 	stx.w	$t0, $t5, $a7
-	add.w	$t1, $a0, $t1
+	add.w	$s4, $a0, $s4
 	blt	$a0, $a1, .LBB0_106
 # %bb.108:                              # %for.body279.preheader
                                         #   in Loop: Header=BB0_107 Depth=3
 	addi.w	$t7, $a2, 0
 	addi.d	$a2, $t7, 1
-	slt	$a7, $t1, $a2
-	masknez	$t0, $t1, $a7
+	slt	$a7, $s4, $a2
+	masknez	$t0, $s4, $a7
 	maskeqz	$a2, $a2, $a7
 	or	$a2, $a2, $t0
 	sub.d	$t0, $a2, $t7
@@ -1055,8 +1063,8 @@ placepin:                               # @placepin
                                         #     Parent Loop BB0_9 Depth=2
                                         #       Parent Loop BB0_107 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	st.w	$ra, $t7, -44
-	st.w	$ra, $t7, 0
+	st.w	$t1, $t7, -44
+	st.w	$t1, $t7, 0
 	addi.d	$t8, $t8, -2
 	addi.d	$t7, $t7, 88
 	bnez	$t8, .LBB0_111
@@ -1073,10 +1081,10 @@ placepin:                               # @placepin
                                         #     Parent Loop BB0_9 Depth=2
                                         #       Parent Loop BB0_107 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	st.w	$ra, $a7, 0
+	st.w	$t1, $a7, 0
 	addi.d	$a2, $a2, 1
 	addi.d	$a7, $a7, 44
-	blt	$a2, $t1, .LBB0_114
+	blt	$a2, $s4, .LBB0_114
 	b	.LBB0_106
 .LBB0_115:                              # %vector.ph
                                         #   in Loop: Header=BB0_9 Depth=2

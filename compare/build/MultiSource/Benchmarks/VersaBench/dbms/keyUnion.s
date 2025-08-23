@@ -51,24 +51,25 @@ keysUnion:                              # @keysUnion
 	xvpickve2gr.w	$a7, $xr2, 6
 	xvpickve2gr.w	$t0, $xr2, 5
 	xvpickve2gr.w	$t1, $xr2, 4
+	ext.w.h	$t1, $t1
+	vinsgr2vr.w	$vr2, $t1, 0
+	ext.w.h	$t0, $t0
+	vinsgr2vr.w	$vr2, $t0, 1
+	ext.w.h	$a7, $a7
+	vinsgr2vr.w	$vr2, $a7, 2
+	ext.w.h	$a6, $a6
+	vinsgr2vr.w	$vr2, $a6, 3
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 0
+	vinsgr2vr.w	$vr3, $a5, 0
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr2, $a4, 1
+	vinsgr2vr.w	$vr3, $a4, 1
 	ext.w.h	$a3, $a3
-	xvinsgr2vr.w	$xr2, $a3, 2
+	vinsgr2vr.w	$vr3, $a3, 2
 	ext.w.h	$a2, $a2
-	xvinsgr2vr.w	$xr2, $a2, 3
-	ext.w.h	$a2, $t1
-	xvinsgr2vr.w	$xr2, $a2, 4
-	ext.w.h	$a2, $t0
-	xvinsgr2vr.w	$xr2, $a2, 5
-	ext.w.h	$a2, $a7
-	xvinsgr2vr.w	$xr2, $a2, 6
 	ld.d	$a0, $a0, 40
-	ext.w.h	$a2, $a6
-	xvinsgr2vr.w	$xr2, $a2, 7
-	xvbitsel.v	$xr0, $xr0, $xr1, $xr2
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr3, $xr2, 2
+	xvbitsel.v	$xr0, $xr0, $xr1, $xr3
 	xvst	$xr0, $a1, 0
 	bnez	$a0, .LBB1_2
 .LBB1_3:                                # %for.end

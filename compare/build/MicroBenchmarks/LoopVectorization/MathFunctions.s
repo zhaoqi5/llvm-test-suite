@@ -13440,7 +13440,8 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 # %bb.6:                                # %vector.ph264
                                         #   in Loop: Header=BB36_5 Depth=2
 	move	$a1, $zero
-	xvinsgr2vr.d	$xr2, $s0, 3
+	vinsgr2vr.d	$vr2, $s0, 1
+	xvpermi.q	$xr2, $xr2, 2
 	.p2align	4, , 16
 .LBB36_7:                               # %vector.body265
                                         #   Parent Loop BB36_3 Depth=1
@@ -13449,13 +13450,15 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	xvori.b	$xr3, $xr2, 0
 	add.d	$a2, $s5, $a1
 	xvld	$xr2, $a2, 8
-	xvpickve.d	$xr3, $xr3, 3
-	xvinsve0.d	$xr3, $xr3, 0
-	xvinsve0.d	$xr3, $xr2, 1
-	xvpickve.d	$xr4, $xr2, 1
-	xvinsve0.d	$xr3, $xr4, 2
-	xvpickve.d	$xr4, $xr2, 2
-	xvinsve0.d	$xr3, $xr4, 3
+	xvpickve2gr.d	$a3, $xr3, 3
+	vinsgr2vr.d	$vr3, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 0
+	vinsgr2vr.d	$vr3, $a3, 1
+	xvpickve2gr.d	$a3, $xr2, 1
+	vinsgr2vr.d	$vr4, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 2
+	vinsgr2vr.d	$vr4, $a3, 1
+	xvpermi.q	$xr3, $xr4, 2
 	xvand.v	$xr3, $xr3, $xr6
 	xvldx	$xr4, $a2, $s7
 	xvand.v	$xr5, $xr2, $xr7
@@ -13642,7 +13645,8 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 # %bb.15:                               # %vector.ph240
                                         #   in Loop: Header=BB36_14 Depth=2
 	move	$a1, $zero
-	xvinsgr2vr.d	$xr2, $s0, 3
+	vinsgr2vr.d	$vr2, $s0, 1
+	xvpermi.q	$xr2, $xr2, 2
 	.p2align	4, , 16
 .LBB36_16:                              # %vector.body241
                                         #   Parent Loop BB36_3 Depth=1
@@ -13651,13 +13655,15 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	xvori.b	$xr3, $xr2, 0
 	add.d	$a2, $s5, $a1
 	xvld	$xr2, $a2, 8
-	xvpickve.d	$xr3, $xr3, 3
-	xvinsve0.d	$xr3, $xr3, 0
-	xvinsve0.d	$xr3, $xr2, 1
-	xvpickve.d	$xr4, $xr2, 1
-	xvinsve0.d	$xr3, $xr4, 2
-	xvpickve.d	$xr4, $xr2, 2
-	xvinsve0.d	$xr3, $xr4, 3
+	xvpickve2gr.d	$a3, $xr3, 3
+	vinsgr2vr.d	$vr3, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 0
+	vinsgr2vr.d	$vr3, $a3, 1
+	xvpickve2gr.d	$a3, $xr2, 1
+	vinsgr2vr.d	$vr4, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 2
+	vinsgr2vr.d	$vr4, $a3, 1
+	xvpermi.q	$xr3, $xr4, 2
 	xvand.v	$xr3, $xr3, $xr6
 	xvldx	$xr4, $a2, $s7
 	xvand.v	$xr5, $xr2, $xr7
@@ -13839,7 +13845,8 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 # %bb.24:                               # %vector.ph219
                                         #   in Loop: Header=BB36_23 Depth=2
 	move	$a1, $zero
-	xvinsgr2vr.d	$xr2, $s0, 3
+	vinsgr2vr.d	$vr2, $s0, 1
+	xvpermi.q	$xr2, $xr2, 2
 	.p2align	4, , 16
 .LBB36_25:                              # %vector.body220
                                         #   Parent Loop BB36_3 Depth=1
@@ -13848,13 +13855,15 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	xvori.b	$xr3, $xr2, 0
 	add.d	$a2, $s5, $a1
 	xvld	$xr2, $a2, 8
-	xvpickve.d	$xr3, $xr3, 3
-	xvinsve0.d	$xr3, $xr3, 0
-	xvinsve0.d	$xr3, $xr2, 1
-	xvpickve.d	$xr4, $xr2, 1
-	xvinsve0.d	$xr3, $xr4, 2
-	xvpickve.d	$xr4, $xr2, 2
-	xvinsve0.d	$xr3, $xr4, 3
+	xvpickve2gr.d	$a3, $xr3, 3
+	vinsgr2vr.d	$vr3, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 0
+	vinsgr2vr.d	$vr3, $a3, 1
+	xvpickve2gr.d	$a3, $xr2, 1
+	vinsgr2vr.d	$vr4, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 2
+	vinsgr2vr.d	$vr4, $a3, 1
+	xvpermi.q	$xr3, $xr4, 2
 	xvand.v	$xr3, $xr3, $xr6
 	xvldx	$xr4, $a2, $s7
 	xvand.v	$xr5, $xr2, $xr7
@@ -14341,7 +14350,8 @@ _ZL9init_dataIdEvPT_S1_S1_:             # @_ZL9init_dataIdEvPT_S1_S1_
 # %bb.6:                                # %vector.ph264
                                         #   in Loop: Header=BB37_5 Depth=2
 	move	$a1, $zero
-	xvinsgr2vr.d	$xr2, $s0, 3
+	vinsgr2vr.d	$vr2, $s0, 1
+	xvpermi.q	$xr2, $xr2, 2
 	.p2align	4, , 16
 .LBB37_7:                               # %vector.body265
                                         #   Parent Loop BB37_3 Depth=1
@@ -14350,13 +14360,15 @@ _ZL9init_dataIdEvPT_S1_S1_:             # @_ZL9init_dataIdEvPT_S1_S1_
 	xvori.b	$xr3, $xr2, 0
 	add.d	$a2, $s5, $a1
 	xvld	$xr2, $a2, 8
-	xvpickve.d	$xr3, $xr3, 3
-	xvinsve0.d	$xr3, $xr3, 0
-	xvinsve0.d	$xr3, $xr2, 1
-	xvpickve.d	$xr4, $xr2, 1
-	xvinsve0.d	$xr3, $xr4, 2
-	xvpickve.d	$xr4, $xr2, 2
-	xvinsve0.d	$xr3, $xr4, 3
+	xvpickve2gr.d	$a3, $xr3, 3
+	vinsgr2vr.d	$vr3, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 0
+	vinsgr2vr.d	$vr3, $a3, 1
+	xvpickve2gr.d	$a3, $xr2, 1
+	vinsgr2vr.d	$vr4, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 2
+	vinsgr2vr.d	$vr4, $a3, 1
+	xvpermi.q	$xr3, $xr4, 2
 	xvand.v	$xr3, $xr3, $xr6
 	xvldx	$xr4, $a2, $s7
 	xvand.v	$xr5, $xr2, $xr7
@@ -14540,7 +14552,8 @@ _ZL9init_dataIdEvPT_S1_S1_:             # @_ZL9init_dataIdEvPT_S1_S1_
 # %bb.15:                               # %vector.ph240
                                         #   in Loop: Header=BB37_14 Depth=2
 	move	$a1, $zero
-	xvinsgr2vr.d	$xr2, $s0, 3
+	vinsgr2vr.d	$vr2, $s0, 1
+	xvpermi.q	$xr2, $xr2, 2
 	.p2align	4, , 16
 .LBB37_16:                              # %vector.body241
                                         #   Parent Loop BB37_3 Depth=1
@@ -14549,13 +14562,15 @@ _ZL9init_dataIdEvPT_S1_S1_:             # @_ZL9init_dataIdEvPT_S1_S1_
 	xvori.b	$xr3, $xr2, 0
 	add.d	$a2, $s5, $a1
 	xvld	$xr2, $a2, 8
-	xvpickve.d	$xr3, $xr3, 3
-	xvinsve0.d	$xr3, $xr3, 0
-	xvinsve0.d	$xr3, $xr2, 1
-	xvpickve.d	$xr4, $xr2, 1
-	xvinsve0.d	$xr3, $xr4, 2
-	xvpickve.d	$xr4, $xr2, 2
-	xvinsve0.d	$xr3, $xr4, 3
+	xvpickve2gr.d	$a3, $xr3, 3
+	vinsgr2vr.d	$vr3, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 0
+	vinsgr2vr.d	$vr3, $a3, 1
+	xvpickve2gr.d	$a3, $xr2, 1
+	vinsgr2vr.d	$vr4, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 2
+	vinsgr2vr.d	$vr4, $a3, 1
+	xvpermi.q	$xr3, $xr4, 2
 	xvand.v	$xr3, $xr3, $xr6
 	xvldx	$xr4, $a2, $s7
 	xvand.v	$xr5, $xr2, $xr7
@@ -14734,7 +14749,8 @@ _ZL9init_dataIdEvPT_S1_S1_:             # @_ZL9init_dataIdEvPT_S1_S1_
 # %bb.24:                               # %vector.ph219
                                         #   in Loop: Header=BB37_23 Depth=2
 	move	$a1, $zero
-	xvinsgr2vr.d	$xr2, $s0, 3
+	vinsgr2vr.d	$vr2, $s0, 1
+	xvpermi.q	$xr2, $xr2, 2
 	.p2align	4, , 16
 .LBB37_25:                              # %vector.body220
                                         #   Parent Loop BB37_3 Depth=1
@@ -14743,13 +14759,15 @@ _ZL9init_dataIdEvPT_S1_S1_:             # @_ZL9init_dataIdEvPT_S1_S1_
 	xvori.b	$xr3, $xr2, 0
 	add.d	$a2, $s5, $a1
 	xvld	$xr2, $a2, 8
-	xvpickve.d	$xr3, $xr3, 3
-	xvinsve0.d	$xr3, $xr3, 0
-	xvinsve0.d	$xr3, $xr2, 1
-	xvpickve.d	$xr4, $xr2, 1
-	xvinsve0.d	$xr3, $xr4, 2
-	xvpickve.d	$xr4, $xr2, 2
-	xvinsve0.d	$xr3, $xr4, 3
+	xvpickve2gr.d	$a3, $xr3, 3
+	vinsgr2vr.d	$vr3, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 0
+	vinsgr2vr.d	$vr3, $a3, 1
+	xvpickve2gr.d	$a3, $xr2, 1
+	vinsgr2vr.d	$vr4, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 2
+	vinsgr2vr.d	$vr4, $a3, 1
+	xvpermi.q	$xr3, $xr4, 2
 	xvand.v	$xr3, $xr3, $xr6
 	xvldx	$xr4, $a2, $s7
 	xvand.v	$xr5, $xr2, $xr7

@@ -285,11 +285,18 @@ _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm:  # @_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	vrepli.b	$vr0, 0
 .LBB2_7:                                # %if.end
 	ld.w	$a1, $sp, 164
-	ld.d	$a2, $sp, 168
-	xvinsgr2vr.w	$xr1, $a0, 4
-	xvinsgr2vr.w	$xr1, $a1, 5
-	xvpermi.q	$xr1, $xr0, 48
-	xvinsgr2vr.d	$xr1, $a2, 3
+	vinsgr2vr.w	$vr1, $a0, 0
+	vinsgr2vr.w	$vr1, $a1, 1
+	xvpermi.q	$xr0, $xr1, 2
+	xvpickve2gr.d	$a0, $xr0, 0
+	vinsgr2vr.d	$vr1, $a0, 0
+	xvpickve2gr.d	$a0, $xr0, 1
+	ld.d	$a1, $sp, 168
+	vinsgr2vr.d	$vr1, $a0, 1
+	xvpickve2gr.d	$a0, $xr0, 2
+	vinsgr2vr.d	$vr0, $a0, 0
+	vinsgr2vr.d	$vr0, $a1, 1
+	xvpermi.q	$xr1, $xr0, 2
 	xvld	$xr0, $sp, 176
 	xvrepli.b	$xr2, 54
 	xvxor.v	$xr1, $xr1, $xr2

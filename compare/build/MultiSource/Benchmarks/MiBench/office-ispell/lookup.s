@@ -662,36 +662,38 @@ linit:                                  # @linit
 	.p2align	4, , 16
 .LBB0_89:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a7, $a5, -40
-	ld.d	$t0, $a5, -16
-	ld.d	$t1, $a5, 8
-	ld.d	$t2, $a5, 32
-	xvinsgr2vr.d	$xr4, $a7, 0
-	xvinsgr2vr.d	$xr4, $t0, 1
-	xvinsgr2vr.d	$xr4, $t1, 2
-	xvinsgr2vr.d	$xr4, $t2, 3
-	xvslli.d	$xr5, $xr4, 32
-	xvsrai.d	$xr5, $xr5, 32
-	xvadd.d	$xr5, $xr1, $xr5
-	xvseqi.d	$xr4, $xr4, -1
-	xvxor.v	$xr4, $xr4, $xr0
-	xvand.v	$xr4, $xr4, $xr5
+	ld.d	$a7, $a5, 8
+	ld.d	$t0, $a5, 32
+	ld.d	$t1, $a5, -40
+	ld.d	$t2, $a5, -16
+	vinsgr2vr.d	$vr4, $a7, 0
+	vinsgr2vr.d	$vr4, $t0, 1
+	vinsgr2vr.d	$vr5, $t1, 0
+	vinsgr2vr.d	$vr5, $t2, 1
+	xvpermi.q	$xr5, $xr4, 2
+	xvslli.d	$xr4, $xr5, 32
+	xvsrai.d	$xr4, $xr4, 32
+	xvadd.d	$xr4, $xr1, $xr4
+	xvseqi.d	$xr5, $xr5, -1
+	xvxor.v	$xr5, $xr5, $xr0
+	xvand.v	$xr4, $xr5, $xr4
 	xvpickve2gr.d	$a7, $xr4, 1
 	xvpickve2gr.d	$t0, $xr4, 2
 	xvpickve2gr.d	$t1, $xr4, 3
-	ld.d	$t2, $a5, -48
-	ld.d	$t3, $a5, -24
-	ld.d	$t4, $a5, 0
-	ld.d	$t5, $a5, 24
-	xvinsgr2vr.d	$xr5, $t2, 0
-	xvinsgr2vr.d	$xr5, $t3, 1
-	xvinsgr2vr.d	$xr5, $t4, 2
-	xvinsgr2vr.d	$xr5, $t5, 3
-	xvslli.d	$xr6, $xr5, 32
-	xvsrai.d	$xr6, $xr6, 32
+	ld.d	$t2, $a5, 0
+	ld.d	$t3, $a5, 24
+	ld.d	$t4, $a5, -48
+	ld.d	$t5, $a5, -24
+	vinsgr2vr.d	$vr5, $t2, 0
+	vinsgr2vr.d	$vr5, $t3, 1
+	vinsgr2vr.d	$vr6, $t4, 0
+	vinsgr2vr.d	$vr6, $t5, 1
+	xvpermi.q	$xr6, $xr5, 2
+	xvslli.d	$xr5, $xr6, 32
+	xvsrai.d	$xr5, $xr5, 32
 	xvori.b	$xr7, $xr2, 0
-	xvmadd.d	$xr7, $xr6, $xr3
-	xvseqi.d	$xr5, $xr5, -1
+	xvmadd.d	$xr7, $xr5, $xr3
+	xvseqi.d	$xr5, $xr6, -1
 	xvxor.v	$xr5, $xr5, $xr0
 	xvand.v	$xr5, $xr5, $xr7
 	vpackev.d	$vr4, $vr4, $vr5

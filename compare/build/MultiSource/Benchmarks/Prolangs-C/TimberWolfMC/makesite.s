@@ -191,15 +191,16 @@ Vside:                                  # @Vside
 	ld.w	$t4, $a5, 40
 	ld.w	$t5, $a5, 60
 	ld.w	$t6, $a5, 80
-	xvinsgr2vr.w	$xr0, $a7, 0
-	xvinsgr2vr.w	$xr0, $t0, 1
-	xvinsgr2vr.w	$xr0, $t1, 2
-	xvinsgr2vr.w	$xr0, $t2, 3
-	xvinsgr2vr.w	$xr0, $t3, 4
-	xvinsgr2vr.w	$xr0, $t4, 5
-	xvinsgr2vr.w	$xr0, $t5, 6
-	xvinsgr2vr.w	$xr0, $t6, 7
-	xvaddi.wu	$xr0, $xr0, 1
+	vinsgr2vr.w	$vr0, $t3, 0
+	vinsgr2vr.w	$vr0, $t4, 1
+	vinsgr2vr.w	$vr0, $t5, 2
+	vinsgr2vr.w	$vr0, $t6, 3
+	vinsgr2vr.w	$vr1, $a7, 0
+	vinsgr2vr.w	$vr1, $t0, 1
+	vinsgr2vr.w	$vr1, $t1, 2
+	vinsgr2vr.w	$vr1, $t2, 3
+	xvpermi.q	$xr1, $xr0, 2
+	xvaddi.wu	$xr0, $xr1, 1
 	xvstelm.w	$xr0, $a5, -60, 0
 	xvstelm.w	$xr0, $a5, -40, 1
 	xvstelm.w	$xr0, $a5, -20, 2
@@ -813,15 +814,16 @@ Hside:                                  # @Hside
 	ld.w	$t4, $a5, 40
 	ld.w	$t5, $a5, 60
 	ld.w	$t6, $a5, 80
-	xvinsgr2vr.w	$xr0, $a7, 0
-	xvinsgr2vr.w	$xr0, $t0, 1
-	xvinsgr2vr.w	$xr0, $t1, 2
-	xvinsgr2vr.w	$xr0, $t2, 3
-	xvinsgr2vr.w	$xr0, $t3, 4
-	xvinsgr2vr.w	$xr0, $t4, 5
-	xvinsgr2vr.w	$xr0, $t5, 6
-	xvinsgr2vr.w	$xr0, $t6, 7
-	xvaddi.wu	$xr0, $xr0, 1
+	vinsgr2vr.w	$vr0, $t3, 0
+	vinsgr2vr.w	$vr0, $t4, 1
+	vinsgr2vr.w	$vr0, $t5, 2
+	vinsgr2vr.w	$vr0, $t6, 3
+	vinsgr2vr.w	$vr1, $a7, 0
+	vinsgr2vr.w	$vr1, $t0, 1
+	vinsgr2vr.w	$vr1, $t1, 2
+	vinsgr2vr.w	$vr1, $t2, 3
+	xvpermi.q	$xr1, $xr0, 2
+	xvaddi.wu	$xr0, $xr1, 1
 	xvstelm.w	$xr0, $a5, -60, 0
 	xvstelm.w	$xr0, $a5, -40, 1
 	xvstelm.w	$xr0, $a5, -20, 2

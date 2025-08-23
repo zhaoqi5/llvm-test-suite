@@ -586,17 +586,17 @@ main:                                   # @main
 	fldx.d	$fa6, $t1, $a3
 	fld.d	$fa7, $t1, 0
 	fldx.d	$ft0, $t1, $a0
-	xvinsve0.d	$xr5, $xr6, 1
-	xvinsve0.d	$xr5, $xr7, 2
-	xvinsve0.d	$xr5, $xr8, 3
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr7, $vr8, 16
 	fldx.d	$fa6, $t2, $a2
-	fldx.d	$fa7, $t2, $a3
-	fld.d	$ft0, $t2, 0
-	fldx.d	$ft1, $t2, $a0
+	fldx.d	$ft0, $t2, $a3
+	fld.d	$ft1, $t2, 0
+	fldx.d	$ft2, $t2, $a0
+	xvpermi.q	$xr5, $xr7, 2
 	xvfmul.d	$xr5, $xr5, $xr2
-	xvinsve0.d	$xr6, $xr7, 1
-	xvinsve0.d	$xr6, $xr8, 2
-	xvinsve0.d	$xr6, $xr9, 3
+	vextrins.d	$vr6, $vr8, 16
+	vextrins.d	$vr9, $vr10, 16
+	xvpermi.q	$xr6, $xr9, 2
 	xvld	$xr7, $fp, 0
 	xvfmul.d	$xr6, $xr6, $xr2
 	xvfmul.d	$xr6, $xr6, $xr4
@@ -798,18 +798,18 @@ main:                                   # @main
 	fldx.d	$fa6, $t1, $a3
 	fld.d	$fa7, $t1, 0
 	fldx.d	$ft0, $t1, $a0
-	xvinsve0.d	$xr5, $xr6, 1
-	xvinsve0.d	$xr5, $xr7, 2
-	xvinsve0.d	$xr5, $xr8, 3
-	xvfmul.d	$xr5, $xr5, $xr2
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr7, $vr8, 16
+	xvpermi.q	$xr5, $xr7, 2
 	fldx.d	$fa6, $s2, $a2
 	fldx.d	$fa7, $s2, $a3
 	fld.d	$ft0, $s2, 0
 	fldx.d	$ft1, $s2, $a0
+	xvfmul.d	$xr5, $xr5, $xr2
 	xvfmul.d	$xr5, $xr5, $xr3
-	xvinsve0.d	$xr6, $xr7, 1
-	xvinsve0.d	$xr6, $xr8, 2
-	xvinsve0.d	$xr6, $xr9, 3
+	vextrins.d	$vr6, $vr7, 16
+	vextrins.d	$vr8, $vr9, 16
+	xvpermi.q	$xr6, $xr8, 2
 	xvld	$xr7, $t7, 0
 	xvfmul.d	$xr6, $xr6, $xr2
 	xvfmul.d	$xr6, $xr6, $xr4

@@ -423,15 +423,16 @@ ParamInt:                               # @ParamInt
 	ld.w	$t4, $a4, -64
 	ld.w	$t5, $a4, -96
 	ld.w	$t6, $a4, -128
-	xvinsgr2vr.w	$xr1, $a7, 0
-	xvinsgr2vr.w	$xr1, $t0, 1
-	xvinsgr2vr.w	$xr1, $t1, 2
-	xvinsgr2vr.w	$xr1, $t2, 3
-	xvinsgr2vr.w	$xr1, $t3, 4
-	xvinsgr2vr.w	$xr1, $t4, 5
-	xvinsgr2vr.w	$xr1, $t5, 6
-	xvinsgr2vr.w	$xr1, $t6, 7
-	xvseq.w	$xr1, $xr1, $xr0
+	vinsgr2vr.w	$vr1, $t3, 0
+	vinsgr2vr.w	$vr1, $t4, 1
+	vinsgr2vr.w	$vr1, $t5, 2
+	vinsgr2vr.w	$vr1, $t6, 3
+	vinsgr2vr.w	$vr2, $a7, 0
+	vinsgr2vr.w	$vr2, $t0, 1
+	vinsgr2vr.w	$vr2, $t1, 2
+	vinsgr2vr.w	$vr2, $t2, 3
+	xvpermi.q	$xr2, $xr1, 2
+	xvseq.w	$xr1, $xr2, $xr0
 	xvpickve2gr.w	$a7, $xr1, 0
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB6_13

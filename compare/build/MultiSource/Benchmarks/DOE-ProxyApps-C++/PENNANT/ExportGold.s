@@ -6285,21 +6285,30 @@ _ZN10ExportGold12writeVarFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB6_62:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a3, 0
+	vpickve2gr.w	$a6, $vr0, 2
+	vinsgr2vr.d	$vr1, $a6, 0
 	vpickve2gr.w	$a6, $vr0, 3
-	vpickve2gr.w	$a7, $vr0, 2
-	vpickve2gr.w	$t0, $vr0, 1
-	vpickve2gr.w	$t1, $vr0, 0
-	slli.d	$t1, $t1, 3
-	slli.d	$t0, $t0, 3
-	slli.d	$a7, $a7, 3
+	vinsgr2vr.d	$vr1, $a6, 1
+	xvpermi.q	$xr1, $xr1, 2
+	vpickve2gr.w	$a6, $vr0, 0
+	vinsgr2vr.d	$vr2, $a6, 0
+	vpickve2gr.w	$a6, $vr0, 1
+	vinsgr2vr.d	$vr2, $a6, 1
+	xvpickve2gr.d	$a6, $xr2, 0
 	slli.d	$a6, $a6, 3
-	fldx.d	$fa0, $s1, $t1
-	fldx.d	$fa1, $s1, $t0
-	fldx.d	$fa2, $s1, $a7
-	fldx.d	$fa3, $s1, $a6
-	xvinsve0.d	$xr0, $xr1, 1
-	xvinsve0.d	$xr0, $xr2, 2
-	xvinsve0.d	$xr0, $xr3, 3
+	xvpickve2gr.d	$a7, $xr2, 1
+	slli.d	$a7, $a7, 3
+	xvpickve2gr.d	$t0, $xr1, 2
+	slli.d	$t0, $t0, 3
+	xvpickve2gr.d	$t1, $xr1, 3
+	slli.d	$t1, $t1, 3
+	fldx.d	$fa0, $s1, $a6
+	fldx.d	$fa1, $s1, $a7
+	fldx.d	$fa2, $s1, $t0
+	fldx.d	$fa3, $s1, $t1
+	vextrins.d	$vr0, $vr1, 16
+	vextrins.d	$vr2, $vr3, 16
+	xvpermi.q	$xr0, $xr2, 2
 	xvst	$xr0, $a4, 0
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
@@ -6556,21 +6565,30 @@ _ZN10ExportGold12writeVarFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB6_104:                              # %vector.body729
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a4, 0
+	vpickve2gr.w	$a7, $vr0, 2
+	vinsgr2vr.d	$vr1, $a7, 0
 	vpickve2gr.w	$a7, $vr0, 3
-	vpickve2gr.w	$t0, $vr0, 2
-	vpickve2gr.w	$t1, $vr0, 1
-	vpickve2gr.w	$t2, $vr0, 0
-	slli.d	$t2, $t2, 3
-	slli.d	$t1, $t1, 3
-	slli.d	$t0, $t0, 3
+	vinsgr2vr.d	$vr1, $a7, 1
+	xvpermi.q	$xr1, $xr1, 2
+	vpickve2gr.w	$a7, $vr0, 0
+	vinsgr2vr.d	$vr2, $a7, 0
+	vpickve2gr.w	$a7, $vr0, 1
+	vinsgr2vr.d	$vr2, $a7, 1
+	xvpickve2gr.d	$a7, $xr2, 0
 	slli.d	$a7, $a7, 3
-	fldx.d	$fa0, $s1, $t2
-	fldx.d	$fa1, $s1, $t1
-	fldx.d	$fa2, $s1, $t0
-	fldx.d	$fa3, $s1, $a7
-	xvinsve0.d	$xr0, $xr1, 1
-	xvinsve0.d	$xr0, $xr2, 2
-	xvinsve0.d	$xr0, $xr3, 3
+	xvpickve2gr.d	$t0, $xr2, 1
+	slli.d	$t0, $t0, 3
+	xvpickve2gr.d	$t1, $xr1, 2
+	slli.d	$t1, $t1, 3
+	xvpickve2gr.d	$t2, $xr1, 3
+	slli.d	$t2, $t2, 3
+	fldx.d	$fa0, $s1, $a7
+	fldx.d	$fa1, $s1, $t0
+	fldx.d	$fa2, $s1, $t1
+	fldx.d	$fa3, $s1, $t2
+	vextrins.d	$vr0, $vr1, 16
+	vextrins.d	$vr2, $vr3, 16
+	xvpermi.q	$xr0, $xr2, 2
 	xvst	$xr0, $a5, 0
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
@@ -6821,21 +6839,30 @@ _ZN10ExportGold12writeVarFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB6_146:                              # %vector.body741
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a4, 0
+	vpickve2gr.w	$a7, $vr0, 2
+	vinsgr2vr.d	$vr1, $a7, 0
 	vpickve2gr.w	$a7, $vr0, 3
-	vpickve2gr.w	$t0, $vr0, 2
-	vpickve2gr.w	$t1, $vr0, 1
-	vpickve2gr.w	$t2, $vr0, 0
-	slli.d	$t2, $t2, 3
-	slli.d	$t1, $t1, 3
-	slli.d	$t0, $t0, 3
+	vinsgr2vr.d	$vr1, $a7, 1
+	xvpermi.q	$xr1, $xr1, 2
+	vpickve2gr.w	$a7, $vr0, 0
+	vinsgr2vr.d	$vr2, $a7, 0
+	vpickve2gr.w	$a7, $vr0, 1
+	vinsgr2vr.d	$vr2, $a7, 1
+	xvpickve2gr.d	$a7, $xr2, 0
 	slli.d	$a7, $a7, 3
-	fldx.d	$fa0, $s1, $t2
-	fldx.d	$fa1, $s1, $t1
-	fldx.d	$fa2, $s1, $t0
-	fldx.d	$fa3, $s1, $a7
-	xvinsve0.d	$xr0, $xr1, 1
-	xvinsve0.d	$xr0, $xr2, 2
-	xvinsve0.d	$xr0, $xr3, 3
+	xvpickve2gr.d	$t0, $xr2, 1
+	slli.d	$t0, $t0, 3
+	xvpickve2gr.d	$t1, $xr1, 2
+	slli.d	$t1, $t1, 3
+	xvpickve2gr.d	$t2, $xr1, 3
+	slli.d	$t2, $t2, 3
+	fldx.d	$fa0, $s1, $a7
+	fldx.d	$fa1, $s1, $t0
+	fldx.d	$fa2, $s1, $t1
+	fldx.d	$fa3, $s1, $t2
+	vextrins.d	$vr0, $vr1, 16
+	vextrins.d	$vr2, $vr3, 16
+	xvpermi.q	$xr0, $xr2, 2
 	xvst	$xr0, $a5, 0
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32

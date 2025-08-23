@@ -3043,22 +3043,22 @@ rc_init_GOP:                            # @rc_init_GOP
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr3, $t0, 0
 	xvfmadd.d	$xr3, $xr3, $xr1, $xr2
+	xvpickve.d	$xr4, $xr3, 3
+	vreplvei.d	$vr4, $vr4, 0
+	vfrintrm.d	$vr4, $vr4
+	xvpickve.d	$xr5, $xr3, 2
+	vreplvei.d	$vr5, $vr5, 0
+	vfrintrm.d	$vr5, $vr5
+	vextrins.d	$vr5, $vr4, 16
 	xvpickve.d	$xr4, $xr3, 1
 	vreplvei.d	$vr4, $vr4, 0
 	vfrintrm.d	$vr4, $vr4
-	xvpickve.d	$xr5, $xr3, 0
-	vreplvei.d	$vr5, $vr5, 0
-	vfrintrm.d	$vr5, $vr5
-	xvinsve0.d	$xr5, $xr4, 1
-	xvpickve.d	$xr4, $xr3, 2
-	vreplvei.d	$vr4, $vr4, 0
-	vfrintrm.d	$vr4, $vr4
-	xvinsve0.d	$xr5, $xr4, 2
-	xvpickve.d	$xr3, $xr3, 3
+	xvpickve.d	$xr3, $xr3, 0
 	vreplvei.d	$vr3, $vr3, 0
 	vfrintrm.d	$vr3, $vr3
-	xvinsve0.d	$xr5, $xr3, 3
-	xvftintrz.l.d	$xr3, $xr5
+	vextrins.d	$vr3, $vr4, 16
+	xvpermi.q	$xr3, $xr5, 2
+	xvftintrz.l.d	$xr3, $xr3
 	xvpermi.d	$xr4, $xr3, 238
 	xvpickev.w	$xr3, $xr4, $xr3
 	vst	$vr3, $t1, 0

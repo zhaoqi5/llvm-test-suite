@@ -3084,21 +3084,30 @@ _ZN10MallocPlus14memory_reorderEPdPi:   # @_ZN10MallocPlus14memory_reorderEPdPi
 .LBB11_24:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a3, 0
+	vpickve2gr.w	$a6, $vr0, 2
+	vinsgr2vr.d	$vr1, $a6, 0
 	vpickve2gr.w	$a6, $vr0, 3
-	vpickve2gr.w	$a7, $vr0, 2
-	vpickve2gr.w	$t0, $vr0, 1
-	vpickve2gr.w	$t1, $vr0, 0
-	slli.d	$t1, $t1, 3
-	slli.d	$t0, $t0, 3
-	slli.d	$a7, $a7, 3
+	vinsgr2vr.d	$vr1, $a6, 1
+	xvpermi.q	$xr1, $xr1, 2
+	vpickve2gr.w	$a6, $vr0, 0
+	vinsgr2vr.d	$vr2, $a6, 0
+	vpickve2gr.w	$a6, $vr0, 1
+	vinsgr2vr.d	$vr2, $a6, 1
+	xvpickve2gr.d	$a6, $xr2, 0
 	slli.d	$a6, $a6, 3
-	fldx.d	$fa0, $a1, $t1
-	fldx.d	$fa1, $a1, $t0
-	fldx.d	$fa2, $a1, $a7
-	fldx.d	$fa3, $a1, $a6
-	xvinsve0.d	$xr0, $xr1, 1
-	xvinsve0.d	$xr0, $xr2, 2
-	xvinsve0.d	$xr0, $xr3, 3
+	xvpickve2gr.d	$a7, $xr2, 1
+	slli.d	$a7, $a7, 3
+	xvpickve2gr.d	$t0, $xr1, 2
+	slli.d	$t0, $t0, 3
+	xvpickve2gr.d	$t1, $xr1, 3
+	slli.d	$t1, $t1, 3
+	fldx.d	$fa0, $a1, $a6
+	fldx.d	$fa1, $a1, $a7
+	fldx.d	$fa2, $a1, $t0
+	fldx.d	$fa3, $a1, $t1
+	vextrins.d	$vr0, $vr1, 16
+	vextrins.d	$vr2, $vr3, 16
+	xvpermi.q	$xr0, $xr2, 2
 	xvst	$xr0, $a4, 0
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
@@ -3350,37 +3359,55 @@ _ZN10MallocPlus14memory_reorderEPfPi:   # @_ZN10MallocPlus14memory_reorderEPfPi
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a3, 0
 	xvpermi.q	$xr1, $xr0, 1
+	vpickve2gr.w	$a6, $vr1, 2
+	vinsgr2vr.d	$vr2, $a6, 0
 	vpickve2gr.w	$a6, $vr1, 3
-	vpickve2gr.w	$a7, $vr1, 2
-	vpickve2gr.w	$t0, $vr1, 1
-	vpickve2gr.w	$t1, $vr1, 0
-	vpickve2gr.w	$t2, $vr0, 3
-	vpickve2gr.w	$t3, $vr0, 2
-	vpickve2gr.w	$t4, $vr0, 1
-	vpickve2gr.w	$t5, $vr0, 0
-	slli.d	$t5, $t5, 2
-	slli.d	$t4, $t4, 2
-	slli.d	$t3, $t3, 2
-	slli.d	$t2, $t2, 2
-	slli.d	$t1, $t1, 2
-	slli.d	$t0, $t0, 2
-	slli.d	$a7, $a7, 2
+	vinsgr2vr.d	$vr2, $a6, 1
+	xvpermi.q	$xr2, $xr2, 2
+	vpickve2gr.w	$a6, $vr1, 0
+	vinsgr2vr.d	$vr3, $a6, 0
+	vpickve2gr.w	$a6, $vr1, 1
+	vinsgr2vr.d	$vr3, $a6, 1
+	vpickve2gr.w	$a6, $vr0, 2
+	vinsgr2vr.d	$vr1, $a6, 0
+	vpickve2gr.w	$a6, $vr0, 3
+	vinsgr2vr.d	$vr1, $a6, 1
+	xvpermi.q	$xr1, $xr1, 2
+	vpickve2gr.w	$a6, $vr0, 0
+	vinsgr2vr.d	$vr4, $a6, 0
+	vpickve2gr.w	$a6, $vr0, 1
+	vinsgr2vr.d	$vr4, $a6, 1
+	xvpickve2gr.d	$a6, $xr4, 0
 	slli.d	$a6, $a6, 2
-	fldx.s	$fa0, $a1, $t5
-	fldx.s	$fa1, $a1, $t4
-	fldx.s	$fa2, $a1, $t3
+	xvpickve2gr.d	$a7, $xr4, 1
+	slli.d	$a7, $a7, 2
+	xvpickve2gr.d	$t0, $xr1, 2
+	slli.d	$t0, $t0, 2
+	xvpickve2gr.d	$t1, $xr1, 3
+	slli.d	$t1, $t1, 2
+	xvpickve2gr.d	$t2, $xr3, 0
+	slli.d	$t2, $t2, 2
+	xvpickve2gr.d	$t3, $xr3, 1
+	slli.d	$t3, $t3, 2
+	xvpickve2gr.d	$t4, $xr2, 2
+	slli.d	$t4, $t4, 2
+	xvpickve2gr.d	$t5, $xr2, 3
+	slli.d	$t5, $t5, 2
+	fldx.s	$fa0, $a1, $a6
+	fldx.s	$fa1, $a1, $a7
+	fldx.s	$fa2, $a1, $t0
 	fldx.s	$fa3, $a1, $t2
-	fldx.s	$fa4, $a1, $t1
-	fldx.s	$fa5, $a1, $t0
-	fldx.s	$fa6, $a1, $a7
-	fldx.s	$fa7, $a1, $a6
-	xvinsve0.w	$xr0, $xr1, 1
-	xvinsve0.w	$xr0, $xr2, 2
-	xvinsve0.w	$xr0, $xr3, 3
-	xvinsve0.w	$xr0, $xr4, 4
-	xvinsve0.w	$xr0, $xr5, 5
-	xvinsve0.w	$xr0, $xr6, 6
-	xvinsve0.w	$xr0, $xr7, 7
+	fldx.s	$fa4, $a1, $t3
+	fldx.s	$fa5, $a1, $t4
+	fldx.s	$fa6, $a1, $t5
+	fldx.s	$fa7, $a1, $t1
+	vextrins.w	$vr3, $vr4, 16
+	vextrins.w	$vr3, $vr5, 32
+	vextrins.w	$vr3, $vr6, 48
+	vextrins.w	$vr0, $vr1, 16
+	vextrins.w	$vr0, $vr2, 32
+	vextrins.w	$vr0, $vr7, 48
+	xvpermi.q	$xr0, $xr3, 2
 	xvst	$xr0, $a4, 0
 	addi.d	$a5, $a5, -8
 	addi.d	$a4, $a4, 32
@@ -3632,39 +3659,58 @@ _ZN10MallocPlus14memory_reorderEPiS0_:  # @_ZN10MallocPlus14memory_reorderEPiS0_
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a3, 0
 	xvpermi.q	$xr1, $xr0, 1
+	vpickve2gr.w	$a6, $vr1, 2
+	vinsgr2vr.d	$vr2, $a6, 0
 	vpickve2gr.w	$a6, $vr1, 3
-	vpickve2gr.w	$a7, $vr1, 2
-	vpickve2gr.w	$t0, $vr1, 1
-	vpickve2gr.w	$t1, $vr1, 0
-	vpickve2gr.w	$t2, $vr0, 3
-	vpickve2gr.w	$t3, $vr0, 2
-	vpickve2gr.w	$t4, $vr0, 1
-	vpickve2gr.w	$t5, $vr0, 0
-	slli.d	$t5, $t5, 2
-	slli.d	$t4, $t4, 2
-	slli.d	$t3, $t3, 2
-	slli.d	$t2, $t2, 2
-	slli.d	$t1, $t1, 2
-	slli.d	$t0, $t0, 2
-	slli.d	$a7, $a7, 2
+	vinsgr2vr.d	$vr2, $a6, 1
+	xvpermi.q	$xr2, $xr2, 2
+	vpickve2gr.w	$a6, $vr1, 0
+	vinsgr2vr.d	$vr3, $a6, 0
+	vpickve2gr.w	$a6, $vr1, 1
+	vinsgr2vr.d	$vr3, $a6, 1
+	vpickve2gr.w	$a6, $vr0, 2
+	vinsgr2vr.d	$vr1, $a6, 0
+	vpickve2gr.w	$a6, $vr0, 3
+	vinsgr2vr.d	$vr1, $a6, 1
+	xvpermi.q	$xr1, $xr1, 2
+	vpickve2gr.w	$a6, $vr0, 0
+	vinsgr2vr.d	$vr4, $a6, 0
+	vpickve2gr.w	$a6, $vr0, 1
+	vinsgr2vr.d	$vr4, $a6, 1
+	xvpickve2gr.d	$a6, $xr4, 0
 	slli.d	$a6, $a6, 2
-	ldx.w	$t5, $a1, $t5
-	ldx.w	$t4, $a1, $t4
-	ldx.w	$t3, $a1, $t3
-	ldx.w	$t2, $a1, $t2
-	ldx.w	$t1, $a1, $t1
-	ldx.w	$t0, $a1, $t0
-	ldx.w	$a7, $a1, $a7
+	xvpickve2gr.d	$a7, $xr4, 1
+	slli.d	$a7, $a7, 2
+	xvpickve2gr.d	$t0, $xr1, 2
+	slli.d	$t0, $t0, 2
+	xvpickve2gr.d	$t1, $xr1, 3
+	slli.d	$t1, $t1, 2
+	xvpickve2gr.d	$t2, $xr3, 0
+	slli.d	$t2, $t2, 2
+	xvpickve2gr.d	$t3, $xr3, 1
+	slli.d	$t3, $t3, 2
+	xvpickve2gr.d	$t4, $xr2, 2
+	slli.d	$t4, $t4, 2
+	xvpickve2gr.d	$t5, $xr2, 3
+	slli.d	$t5, $t5, 2
 	ldx.w	$a6, $a1, $a6
-	xvinsgr2vr.w	$xr0, $t5, 0
-	xvinsgr2vr.w	$xr0, $t4, 1
-	xvinsgr2vr.w	$xr0, $t3, 2
-	xvinsgr2vr.w	$xr0, $t2, 3
-	xvinsgr2vr.w	$xr0, $t1, 4
-	xvinsgr2vr.w	$xr0, $t0, 5
-	xvinsgr2vr.w	$xr0, $a7, 6
-	xvinsgr2vr.w	$xr0, $a6, 7
-	xvst	$xr0, $a4, 0
+	ldx.w	$a7, $a1, $a7
+	ldx.w	$t0, $a1, $t0
+	ldx.w	$t1, $a1, $t1
+	ldx.w	$t2, $a1, $t2
+	ldx.w	$t3, $a1, $t3
+	ldx.w	$t4, $a1, $t4
+	ldx.w	$t5, $a1, $t5
+	vinsgr2vr.w	$vr0, $t2, 0
+	vinsgr2vr.w	$vr0, $t3, 1
+	vinsgr2vr.w	$vr0, $t4, 2
+	vinsgr2vr.w	$vr0, $t5, 3
+	vinsgr2vr.w	$vr1, $a6, 0
+	vinsgr2vr.w	$vr1, $a7, 1
+	vinsgr2vr.w	$vr1, $t0, 2
+	vinsgr2vr.w	$vr1, $t1, 3
+	xvpermi.q	$xr1, $xr0, 2
+	xvst	$xr1, $a4, 0
 	addi.d	$a5, $a5, -8
 	addi.d	$a4, $a4, 32
 	addi.d	$a3, $a3, 32

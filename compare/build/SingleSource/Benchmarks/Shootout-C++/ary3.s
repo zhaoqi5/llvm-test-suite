@@ -123,21 +123,22 @@ main:                                   # @main
 .LBB0_12:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvpickve2gr.d	$a5, $xr1, 0
-	xvinsgr2vr.w	$xr2, $a5, 0
+	vinsgr2vr.w	$vr2, $a5, 0
 	xvpickve2gr.d	$a5, $xr1, 1
-	xvinsgr2vr.w	$xr2, $a5, 1
+	vinsgr2vr.w	$vr2, $a5, 1
 	xvpickve2gr.d	$a5, $xr1, 2
-	xvinsgr2vr.w	$xr2, $a5, 2
+	vinsgr2vr.w	$vr2, $a5, 2
 	xvpickve2gr.d	$a5, $xr1, 3
-	xvinsgr2vr.w	$xr2, $a5, 3
+	vinsgr2vr.w	$vr2, $a5, 3
 	xvpickve2gr.d	$a5, $xr0, 0
-	xvinsgr2vr.w	$xr2, $a5, 4
+	vinsgr2vr.w	$vr3, $a5, 0
 	xvpickve2gr.d	$a5, $xr0, 1
-	xvinsgr2vr.w	$xr2, $a5, 5
+	vinsgr2vr.w	$vr3, $a5, 1
 	xvpickve2gr.d	$a5, $xr0, 2
-	xvinsgr2vr.w	$xr2, $a5, 6
+	vinsgr2vr.w	$vr3, $a5, 2
 	xvpickve2gr.d	$a5, $xr0, 3
-	xvinsgr2vr.w	$xr2, $a5, 7
+	vinsgr2vr.w	$vr3, $a5, 3
+	xvpermi.q	$xr2, $xr3, 2
 	xvaddi.wu	$xr2, $xr2, 1
 	xvst	$xr2, $a3, 0
 	xvaddi.du	$xr1, $xr1, 8

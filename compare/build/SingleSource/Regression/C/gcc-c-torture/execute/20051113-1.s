@@ -56,24 +56,26 @@ Sum:                                    # @Sum
 	xvpickve2gr.d	$t2, $xr6, 1
 	xvpickve2gr.d	$t3, $xr6, 2
 	xvpickve2gr.d	$t4, $xr6, 3
-	ldx.d	$a5, $a1, $a5
-	ldx.d	$a6, $a1, $a6
 	ldx.d	$a7, $a1, $a7
 	ldx.d	$t0, $a1, $t0
-	xvinsgr2vr.d	$xr5, $a5, 0
-	xvinsgr2vr.d	$xr5, $a6, 1
-	xvinsgr2vr.d	$xr5, $a7, 2
-	xvinsgr2vr.d	$xr5, $t0, 3
-	ldx.d	$a5, $a1, $t1
-	ldx.d	$a6, $a1, $t2
-	ldx.d	$a7, $a1, $t3
-	ldx.d	$t0, $a1, $t4
-	xvinsgr2vr.d	$xr6, $a5, 0
-	xvinsgr2vr.d	$xr6, $a6, 1
-	xvinsgr2vr.d	$xr6, $a7, 2
-	xvinsgr2vr.d	$xr6, $t0, 3
-	xvadd.d	$xr0, $xr5, $xr0
-	xvadd.d	$xr2, $xr6, $xr2
+	ldx.d	$a5, $a1, $a5
+	ldx.d	$a6, $a1, $a6
+	vinsgr2vr.d	$vr5, $a7, 0
+	vinsgr2vr.d	$vr5, $t0, 1
+	vinsgr2vr.d	$vr6, $a5, 0
+	vinsgr2vr.d	$vr6, $a6, 1
+	xvpermi.q	$xr6, $xr5, 2
+	ldx.d	$a5, $a1, $t3
+	ldx.d	$a6, $a1, $t4
+	ldx.d	$a7, $a1, $t1
+	ldx.d	$t0, $a1, $t2
+	vinsgr2vr.d	$vr5, $a5, 0
+	vinsgr2vr.d	$vr5, $a6, 1
+	vinsgr2vr.d	$vr7, $a7, 0
+	vinsgr2vr.d	$vr7, $t0, 1
+	xvpermi.q	$xr7, $xr5, 2
+	xvadd.d	$xr0, $xr6, $xr0
+	xvadd.d	$xr2, $xr7, $xr2
 	addi.d	$a4, $a4, -8
 	xvaddi.du	$xr1, $xr1, 8
 	bnez	$a4, .LBB0_5
@@ -166,24 +168,26 @@ Sum2:                                   # @Sum2
 	xvpickve2gr.d	$t2, $xr6, 1
 	xvpickve2gr.d	$t3, $xr6, 2
 	xvpickve2gr.d	$t4, $xr6, 3
-	ldx.d	$a5, $a1, $a5
-	ldx.d	$a6, $a1, $a6
 	ldx.d	$a7, $a1, $a7
 	ldx.d	$t0, $a1, $t0
-	xvinsgr2vr.d	$xr5, $a5, 0
-	xvinsgr2vr.d	$xr5, $a6, 1
-	xvinsgr2vr.d	$xr5, $a7, 2
-	xvinsgr2vr.d	$xr5, $t0, 3
-	ldx.d	$a5, $a1, $t1
-	ldx.d	$a6, $a1, $t2
-	ldx.d	$a7, $a1, $t3
-	ldx.d	$t0, $a1, $t4
-	xvinsgr2vr.d	$xr6, $a5, 0
-	xvinsgr2vr.d	$xr6, $a6, 1
-	xvinsgr2vr.d	$xr6, $a7, 2
-	xvinsgr2vr.d	$xr6, $t0, 3
-	xvadd.d	$xr0, $xr5, $xr0
-	xvadd.d	$xr2, $xr6, $xr2
+	ldx.d	$a5, $a1, $a5
+	ldx.d	$a6, $a1, $a6
+	vinsgr2vr.d	$vr5, $a7, 0
+	vinsgr2vr.d	$vr5, $t0, 1
+	vinsgr2vr.d	$vr6, $a5, 0
+	vinsgr2vr.d	$vr6, $a6, 1
+	xvpermi.q	$xr6, $xr5, 2
+	ldx.d	$a5, $a1, $t3
+	ldx.d	$a6, $a1, $t4
+	ldx.d	$a7, $a1, $t1
+	ldx.d	$t0, $a1, $t2
+	vinsgr2vr.d	$vr5, $a5, 0
+	vinsgr2vr.d	$vr5, $a6, 1
+	vinsgr2vr.d	$vr7, $a7, 0
+	vinsgr2vr.d	$vr7, $t0, 1
+	xvpermi.q	$xr7, $xr5, 2
+	xvadd.d	$xr0, $xr6, $xr0
+	xvadd.d	$xr2, $xr7, $xr2
 	addi.d	$a4, $a4, -8
 	xvaddi.du	$xr1, $xr1, 8
 	bnez	$a4, .LBB1_5

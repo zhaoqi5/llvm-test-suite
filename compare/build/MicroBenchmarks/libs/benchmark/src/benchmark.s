@@ -2920,24 +2920,26 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 .LBB22_55:                              # %vector.body
                                         #   Parent Loop BB22_48 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a7, $a5, -192
-	ld.d	$t0, $a5, -144
-	ld.d	$t1, $a5, -96
-	ld.d	$t2, $a5, -48
-	xvinsgr2vr.d	$xr2, $a7, 0
-	xvinsgr2vr.d	$xr2, $t0, 1
-	xvinsgr2vr.d	$xr2, $t1, 2
-	xvinsgr2vr.d	$xr2, $t2, 3
-	ld.d	$a7, $a5, 0
-	ld.d	$t0, $a5, 48
-	ld.d	$t1, $a5, 96
-	ld.d	$t2, $a5, 144
-	xvinsgr2vr.d	$xr3, $a7, 0
-	xvinsgr2vr.d	$xr3, $t0, 1
-	xvinsgr2vr.d	$xr3, $t1, 2
-	xvinsgr2vr.d	$xr3, $t2, 3
-	xvmax.du	$xr0, $xr0, $xr2
-	xvmax.du	$xr1, $xr1, $xr3
+	ld.d	$a7, $a5, -96
+	ld.d	$t0, $a5, -48
+	ld.d	$t1, $a5, -192
+	ld.d	$t2, $a5, -144
+	vinsgr2vr.d	$vr2, $a7, 0
+	vinsgr2vr.d	$vr2, $t0, 1
+	vinsgr2vr.d	$vr3, $t1, 0
+	vinsgr2vr.d	$vr3, $t2, 1
+	xvpermi.q	$xr3, $xr2, 2
+	ld.d	$a7, $a5, 96
+	ld.d	$t0, $a5, 144
+	ld.d	$t1, $a5, 0
+	ld.d	$t2, $a5, 48
+	vinsgr2vr.d	$vr2, $a7, 0
+	vinsgr2vr.d	$vr2, $t0, 1
+	vinsgr2vr.d	$vr4, $t1, 0
+	vinsgr2vr.d	$vr4, $t2, 1
+	xvpermi.q	$xr4, $xr2, 2
+	xvmax.du	$xr0, $xr0, $xr3
+	xvmax.du	$xr1, $xr1, $xr4
 	addi.d	$a6, $a6, -8
 	addi.d	$a5, $a5, 384
 	bnez	$a6, .LBB22_55
@@ -3448,11 +3450,11 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	lu52i.d	$a1, $a1, -713
 	mul.d	$a0, $a0, $a1
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	ori	$s8, $zero, 1
+	ori	$s3, $zero, 1
 	addi.w	$a0, $zero, -8
-	lu52i.d	$s2, $a0, 2047
+	lu52i.d	$s8, $a0, 2047
 	addi.w	$a0, $zero, -1
-	lu52i.d	$s3, $a0, 255
+	lu52i.d	$s2, $a0, 255
 	move	$s6, $s7
 	b	.LBB22_122
 	.p2align	4, , 16
@@ -3475,7 +3477,7 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	mul.d	$a1, $s0, $a1
 	add.d	$a0, $a0, $a1
 	ld.w	$a0, $a0, 108
-	blt	$a0, $s8, .LBB22_120
+	blt	$a0, $s3, .LBB22_120
 # %bb.123:                              # %for.body.i.i.preheader
                                         #   in Loop: Header=BB22_122 Depth=1
 	addi.d	$s4, $a0, 1
@@ -3487,7 +3489,7 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	move	$s5, $s7
 	addi.w	$s4, $s4, -1
 	addi.d	$s6, $s6, 8
-	bge	$s8, $s4, .LBB22_121
+	bge	$s3, $s4, .LBB22_121
 .LBB22_125:                             # %for.body.i.i
                                         #   Parent Loop BB22_122 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -3495,18 +3497,18 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 # %bb.126:                              # %if.else.i.i.i.i
                                         #   in Loop: Header=BB22_125 Depth=2
 	sub.d	$s6, $fp, $s7
-	beq	$s6, $s2, .LBB22_208
+	beq	$s6, $s8, .LBB22_208
 # %bb.127:                              # %_ZNKSt6vectorImSaImEE12_M_check_lenEmPKc.exit.i.i.i.i.i
                                         #   in Loop: Header=BB22_125 Depth=2
 	srai.d	$a0, $s6, 3
-	sltu	$a1, $s8, $a0
-	masknez	$a2, $s8, $a1
+	sltu	$a1, $s3, $a0
+	masknez	$a2, $s3, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	sltu	$a1, $a0, $s3
+	sltu	$a1, $a0, $s2
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s3, $a1
+	masknez	$a1, $s2, $a1
 	or	$s1, $a0, $a1
 	slli.d	$a0, $s1, 3
 .Ltmp137:                               # EH_LABEL
@@ -3517,7 +3519,7 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
                                         #   in Loop: Header=BB22_125 Depth=2
 	move	$s5, $a0
 	stx.d	$s0, $a0, $s6
-	blt	$s6, $s8, .LBB22_130
+	blt	$s6, $s3, .LBB22_130
 # %bb.129:                              # %if.then.i.i.i.i.i.i.i.i
                                         #   in Loop: Header=BB22_125 Depth=2
 	move	$a0, $s5
@@ -3541,7 +3543,7 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	move	$s7, $s5
 	addi.w	$s4, $s4, -1
 	addi.d	$s6, $s6, 8
-	blt	$s8, $s4, .LBB22_125
+	blt	$s3, $s4, .LBB22_125
 	b	.LBB22_121
 .LBB22_133:
 	move	$s5, $s7
@@ -8764,7 +8766,8 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 # %bb.1:                                # %vector.ph
 	ld.d	$a1, $a0, 0
 	move	$a4, $zero
-	xvinsgr2vr.d	$xr0, $a1, 3
+	vinsgr2vr.d	$vr0, $a1, 1
+	xvpermi.q	$xr0, $xr0, 2
 	lu12i.w	$a2, -524288
 	xvreplgr2vr.d	$xr1, $a2
 	lu12i.w	$a1, 524287
@@ -8784,13 +8787,15 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	xvori.b	$xr6, $xr0, 0
 	add.d	$a7, $a0, $a4
 	xvld	$xr0, $a7, 8
-	xvpickve.d	$xr6, $xr6, 3
-	xvinsve0.d	$xr6, $xr6, 0
-	xvinsve0.d	$xr6, $xr0, 1
-	xvpickve.d	$xr7, $xr0, 1
-	xvinsve0.d	$xr6, $xr7, 2
-	xvpickve.d	$xr7, $xr0, 2
-	xvinsve0.d	$xr6, $xr7, 3
+	xvpickve2gr.d	$t0, $xr6, 3
+	vinsgr2vr.d	$vr6, $t0, 0
+	xvpickve2gr.d	$t0, $xr0, 0
+	vinsgr2vr.d	$vr6, $t0, 1
+	xvpickve2gr.d	$t0, $xr0, 1
+	vinsgr2vr.d	$vr7, $t0, 0
+	xvpickve2gr.d	$t0, $xr0, 2
+	vinsgr2vr.d	$vr7, $t0, 1
+	xvpermi.q	$xr6, $xr7, 2
 	xvand.v	$xr6, $xr6, $xr1
 	xvldx	$xr7, $a7, $a5
 	xvand.v	$xr8, $xr0, $xr2

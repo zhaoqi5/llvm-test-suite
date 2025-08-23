@@ -207,17 +207,18 @@ test6:                                  # @test6
 test7:                                  # @test7
 # %bb.0:                                # %entry
 	ld.d	$t0, $sp, 0
-	xvinsgr2vr.w	$xr0, $a0, 0
-	xvinsgr2vr.w	$xr0, $a1, 1
-	xvinsgr2vr.w	$xr0, $a2, 2
-	xvinsgr2vr.w	$xr0, $a3, 3
-	xvinsgr2vr.w	$xr0, $a4, 4
+	vinsgr2vr.w	$vr0, $a4, 0
+	vinsgr2vr.w	$vr0, $a5, 1
+	vinsgr2vr.w	$vr0, $a6, 2
+	vinsgr2vr.w	$vr0, $t0, 3
+	vinsgr2vr.w	$vr1, $a0, 0
+	vinsgr2vr.w	$vr1, $a1, 1
 	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI6_0)
-	xvinsgr2vr.w	$xr0, $a5, 5
-	xvinsgr2vr.w	$xr0, $a6, 6
-	xvinsgr2vr.w	$xr0, $t0, 7
-	xvseq.w	$xr0, $xr0, $xr1
+	xvld	$xr2, $a0, %pc_lo12(.LCPI6_0)
+	vinsgr2vr.w	$vr1, $a2, 2
+	vinsgr2vr.w	$vr1, $a3, 3
+	xvpermi.q	$xr1, $xr0, 2
+	xvseq.w	$xr0, $xr1, $xr2
 	xvrepli.b	$xr1, -1
 	xvxor.v	$xr0, $xr0, $xr1
 	xvmskltz.w	$xr0, $xr0
@@ -256,17 +257,18 @@ test7:                                  # @test7
 	.type	test8,@function
 test8:                                  # @test8
 # %bb.0:                                # %entry
-	xvinsgr2vr.w	$xr0, $a0, 0
-	xvinsgr2vr.w	$xr0, $a1, 1
-	xvinsgr2vr.w	$xr0, $a2, 2
-	xvinsgr2vr.w	$xr0, $a3, 3
-	xvinsgr2vr.w	$xr0, $a4, 4
+	vinsgr2vr.w	$vr0, $a4, 0
+	vinsgr2vr.w	$vr0, $a5, 1
+	vinsgr2vr.w	$vr0, $a6, 2
+	vinsgr2vr.w	$vr0, $a7, 3
+	vinsgr2vr.w	$vr1, $a0, 0
+	vinsgr2vr.w	$vr1, $a1, 1
 	pcalau12i	$a0, %pc_hi20(.LCPI7_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI7_0)
-	xvinsgr2vr.w	$xr0, $a5, 5
-	xvinsgr2vr.w	$xr0, $a6, 6
-	xvinsgr2vr.w	$xr0, $a7, 7
-	xvseq.w	$xr0, $xr0, $xr1
+	xvld	$xr2, $a0, %pc_lo12(.LCPI7_0)
+	vinsgr2vr.w	$vr1, $a2, 2
+	vinsgr2vr.w	$vr1, $a3, 3
+	xvpermi.q	$xr1, $xr0, 2
+	xvseq.w	$xr0, $xr1, $xr2
 	xvrepli.b	$xr1, -1
 	xvxor.v	$xr0, $xr0, $xr1
 	xvmskltz.w	$xr0, $xr0

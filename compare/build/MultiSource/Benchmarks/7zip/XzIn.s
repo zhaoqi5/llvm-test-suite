@@ -258,24 +258,26 @@ Xzs_GetNumBlocks:                       # @Xzs_GetNumBlocks
 	.p2align	4, , 16
 .LBB6_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a0, -160
-	ld.d	$a6, $a0, -120
-	ld.d	$a7, $a0, -80
-	ld.d	$t0, $a0, -40
-	xvinsgr2vr.d	$xr2, $a5, 0
-	xvinsgr2vr.d	$xr2, $a6, 1
-	xvinsgr2vr.d	$xr2, $a7, 2
-	xvinsgr2vr.d	$xr2, $t0, 3
-	ld.d	$a5, $a0, 0
-	ld.d	$a6, $a0, 40
-	ld.d	$a7, $a0, 80
-	ld.d	$t0, $a0, 120
-	xvinsgr2vr.d	$xr3, $a5, 0
-	xvinsgr2vr.d	$xr3, $a6, 1
-	xvinsgr2vr.d	$xr3, $a7, 2
-	xvinsgr2vr.d	$xr3, $t0, 3
-	xvadd.d	$xr0, $xr2, $xr0
-	xvadd.d	$xr1, $xr3, $xr1
+	ld.d	$a5, $a0, -80
+	ld.d	$a6, $a0, -40
+	ld.d	$a7, $a0, -160
+	ld.d	$t0, $a0, -120
+	vinsgr2vr.d	$vr2, $a5, 0
+	vinsgr2vr.d	$vr2, $a6, 1
+	vinsgr2vr.d	$vr3, $a7, 0
+	vinsgr2vr.d	$vr3, $t0, 1
+	xvpermi.q	$xr3, $xr2, 2
+	ld.d	$a5, $a0, 80
+	ld.d	$a6, $a0, 120
+	ld.d	$a7, $a0, 0
+	ld.d	$t0, $a0, 40
+	vinsgr2vr.d	$vr2, $a5, 0
+	vinsgr2vr.d	$vr2, $a6, 1
+	vinsgr2vr.d	$vr4, $a7, 0
+	vinsgr2vr.d	$vr4, $t0, 1
+	xvpermi.q	$xr4, $xr2, 2
+	xvadd.d	$xr0, $xr3, $xr0
+	xvadd.d	$xr1, $xr4, $xr1
 	addi.d	$a4, $a4, -8
 	addi.d	$a0, $a0, 320
 	bnez	$a4, .LBB6_5

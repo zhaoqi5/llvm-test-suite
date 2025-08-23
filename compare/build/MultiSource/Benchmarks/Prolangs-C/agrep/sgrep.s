@@ -3608,31 +3608,32 @@ m_preprocess:                           # @m_preprocess
 	xvadd.d	$xr19, $xr10, $xr9
 	xvpickve2gr.d	$a7, $xr19, 0
 	xvldx	$xr18, $fp, $a7
-	vpickve2gr.b	$t0, $vr18, 0
-	andi	$t0, $t0, 255
-	xvinsgr2vr.w	$xr20, $t0, 0
-	vpickve2gr.b	$t0, $vr18, 1
-	andi	$t0, $t0, 255
-	xvinsgr2vr.w	$xr20, $t0, 1
-	vpickve2gr.b	$t0, $vr18, 2
-	andi	$t0, $t0, 255
-	xvinsgr2vr.w	$xr20, $t0, 2
-	vpickve2gr.b	$t0, $vr18, 3
-	andi	$t0, $t0, 255
-	xvinsgr2vr.w	$xr20, $t0, 3
 	vpickve2gr.b	$t0, $vr18, 4
 	andi	$t0, $t0, 255
-	xvinsgr2vr.w	$xr20, $t0, 4
+	vinsgr2vr.w	$vr20, $t0, 0
 	vpickve2gr.b	$t0, $vr18, 5
 	andi	$t0, $t0, 255
-	xvinsgr2vr.w	$xr20, $t0, 5
+	vinsgr2vr.w	$vr20, $t0, 1
 	vpickve2gr.b	$t0, $vr18, 6
 	andi	$t0, $t0, 255
-	xvinsgr2vr.w	$xr20, $t0, 6
+	vinsgr2vr.w	$vr20, $t0, 2
 	vpickve2gr.b	$t0, $vr18, 7
 	andi	$t0, $t0, 255
-	xvinsgr2vr.w	$xr20, $t0, 7
-	xvseq.w	$xr20, $xr8, $xr20
+	vinsgr2vr.w	$vr20, $t0, 3
+	vpickve2gr.b	$t0, $vr18, 0
+	andi	$t0, $t0, 255
+	vinsgr2vr.w	$vr21, $t0, 0
+	vpickve2gr.b	$t0, $vr18, 1
+	andi	$t0, $t0, 255
+	vinsgr2vr.w	$vr21, $t0, 1
+	vpickve2gr.b	$t0, $vr18, 2
+	andi	$t0, $t0, 255
+	vinsgr2vr.w	$vr21, $t0, 2
+	vpickve2gr.b	$t0, $vr18, 3
+	andi	$t0, $t0, 255
+	vinsgr2vr.w	$vr21, $t0, 3
+	xvpermi.q	$xr21, $xr20, 2
+	xvseq.w	$xr20, $xr8, $xr21
 	xvpickve2gr.w	$t0, $xr20, 0
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB11_40
@@ -3678,31 +3679,32 @@ m_preprocess:                           # @m_preprocess
 	stx.b	$a1, $fp, $a7
 .LBB11_14:                              # %pred.store.continue63
                                         #   in Loop: Header=BB11_5 Depth=2
-	vpickve2gr.b	$a7, $vr18, 8
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 0
-	vpickve2gr.b	$a7, $vr18, 9
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 1
-	vpickve2gr.b	$a7, $vr18, 10
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 2
-	vpickve2gr.b	$a7, $vr18, 11
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 3
 	vpickve2gr.b	$a7, $vr18, 12
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 4
+	vinsgr2vr.w	$vr19, $a7, 0
 	vpickve2gr.b	$a7, $vr18, 13
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 5
+	vinsgr2vr.w	$vr19, $a7, 1
 	vpickve2gr.b	$a7, $vr18, 14
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 6
+	vinsgr2vr.w	$vr19, $a7, 2
 	vpickve2gr.b	$a7, $vr18, 15
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 7
-	xvseq.w	$xr19, $xr8, $xr19
+	vinsgr2vr.w	$vr19, $a7, 3
+	vpickve2gr.b	$a7, $vr18, 8
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr20, $a7, 0
+	vpickve2gr.b	$a7, $vr18, 9
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr20, $a7, 1
+	vpickve2gr.b	$a7, $vr18, 10
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr20, $a7, 2
+	vpickve2gr.b	$a7, $vr18, 11
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr20, $a7, 3
+	xvpermi.q	$xr20, $xr19, 2
+	xvseq.w	$xr19, $xr8, $xr20
 	xvpickve2gr.w	$a7, $xr19, 0
 	andi	$a7, $a7, 1
 	xvadd.d	$xr20, $xr12, $xr9
@@ -3750,31 +3752,32 @@ m_preprocess:                           # @m_preprocess
 .LBB11_23:                              # %pred.store.continue79
                                         #   in Loop: Header=BB11_5 Depth=2
 	xvpermi.q	$xr18, $xr18, 1
-	vpickve2gr.b	$a7, $vr18, 0
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 0
-	vpickve2gr.b	$a7, $vr18, 1
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 1
-	vpickve2gr.b	$a7, $vr18, 2
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 2
-	vpickve2gr.b	$a7, $vr18, 3
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 3
 	vpickve2gr.b	$a7, $vr18, 4
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 4
+	vinsgr2vr.w	$vr19, $a7, 0
 	vpickve2gr.b	$a7, $vr18, 5
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 5
+	vinsgr2vr.w	$vr19, $a7, 1
 	vpickve2gr.b	$a7, $vr18, 6
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 6
+	vinsgr2vr.w	$vr19, $a7, 2
 	vpickve2gr.b	$a7, $vr18, 7
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 7
-	xvseq.w	$xr19, $xr8, $xr19
+	vinsgr2vr.w	$vr19, $a7, 3
+	vpickve2gr.b	$a7, $vr18, 0
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr20, $a7, 0
+	vpickve2gr.b	$a7, $vr18, 1
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr20, $a7, 1
+	vpickve2gr.b	$a7, $vr18, 2
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr20, $a7, 2
+	vpickve2gr.b	$a7, $vr18, 3
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr20, $a7, 3
+	xvpermi.q	$xr20, $xr19, 2
+	xvseq.w	$xr19, $xr8, $xr20
 	xvpickve2gr.w	$a7, $xr19, 0
 	andi	$a7, $a7, 1
 	xvadd.d	$xr20, $xr14, $xr9
@@ -3821,31 +3824,32 @@ m_preprocess:                           # @m_preprocess
 	stx.b	$a1, $fp, $a7
 .LBB11_32:                              # %pred.store.continue95
                                         #   in Loop: Header=BB11_5 Depth=2
-	vpickve2gr.b	$a7, $vr18, 8
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 0
-	vpickve2gr.b	$a7, $vr18, 9
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 1
-	vpickve2gr.b	$a7, $vr18, 10
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 2
-	vpickve2gr.b	$a7, $vr18, 11
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 3
 	vpickve2gr.b	$a7, $vr18, 12
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 4
+	vinsgr2vr.w	$vr19, $a7, 0
 	vpickve2gr.b	$a7, $vr18, 13
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 5
+	vinsgr2vr.w	$vr19, $a7, 1
 	vpickve2gr.b	$a7, $vr18, 14
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 6
+	vinsgr2vr.w	$vr19, $a7, 2
 	vpickve2gr.b	$a7, $vr18, 15
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr19, $a7, 7
-	xvseq.w	$xr18, $xr8, $xr19
+	vinsgr2vr.w	$vr19, $a7, 3
+	vpickve2gr.b	$a7, $vr18, 8
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr20, $a7, 0
+	vpickve2gr.b	$a7, $vr18, 9
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr20, $a7, 1
+	vpickve2gr.b	$a7, $vr18, 10
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr20, $a7, 2
+	vpickve2gr.b	$a7, $vr18, 11
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr20, $a7, 3
+	xvpermi.q	$xr20, $xr19, 2
+	xvseq.w	$xr18, $xr8, $xr20
 	xvpickve2gr.w	$a7, $xr18, 0
 	andi	$a7, $a7, 1
 	xvadd.d	$xr19, $xr16, $xr9
@@ -4771,31 +4775,32 @@ sgrep:                                  # @sgrep
 	xvadd.d	$xr19, $xr10, $xr9
 	xvpickve2gr.d	$a6, $xr19, 0
 	xvldx	$xr18, $s3, $a6
-	vpickve2gr.b	$a7, $vr18, 0
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr20, $a7, 0
-	vpickve2gr.b	$a7, $vr18, 1
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr20, $a7, 1
-	vpickve2gr.b	$a7, $vr18, 2
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr20, $a7, 2
-	vpickve2gr.b	$a7, $vr18, 3
-	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr20, $a7, 3
 	vpickve2gr.b	$a7, $vr18, 4
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr20, $a7, 4
+	vinsgr2vr.w	$vr20, $a7, 0
 	vpickve2gr.b	$a7, $vr18, 5
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr20, $a7, 5
+	vinsgr2vr.w	$vr20, $a7, 1
 	vpickve2gr.b	$a7, $vr18, 6
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr20, $a7, 6
+	vinsgr2vr.w	$vr20, $a7, 2
 	vpickve2gr.b	$a7, $vr18, 7
 	andi	$a7, $a7, 255
-	xvinsgr2vr.w	$xr20, $a7, 7
-	xvseq.w	$xr20, $xr8, $xr20
+	vinsgr2vr.w	$vr20, $a7, 3
+	vpickve2gr.b	$a7, $vr18, 0
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr21, $a7, 0
+	vpickve2gr.b	$a7, $vr18, 1
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr21, $a7, 1
+	vpickve2gr.b	$a7, $vr18, 2
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr21, $a7, 2
+	vpickve2gr.b	$a7, $vr18, 3
+	andi	$a7, $a7, 255
+	vinsgr2vr.w	$vr21, $a7, 3
+	xvpermi.q	$xr21, $xr20, 2
+	xvseq.w	$xr20, $xr8, $xr21
 	xvpickve2gr.w	$a7, $xr20, 0
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB15_51
@@ -4841,31 +4846,32 @@ sgrep:                                  # @sgrep
 	stx.b	$a0, $s3, $a6
 .LBB15_25:                              # %pred.store.continue165
                                         #   in Loop: Header=BB15_16 Depth=2
-	vpickve2gr.b	$a6, $vr18, 8
-	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 0
-	vpickve2gr.b	$a6, $vr18, 9
-	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 1
-	vpickve2gr.b	$a6, $vr18, 10
-	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 2
-	vpickve2gr.b	$a6, $vr18, 11
-	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 3
 	vpickve2gr.b	$a6, $vr18, 12
 	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 4
+	vinsgr2vr.w	$vr19, $a6, 0
 	vpickve2gr.b	$a6, $vr18, 13
 	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 5
+	vinsgr2vr.w	$vr19, $a6, 1
 	vpickve2gr.b	$a6, $vr18, 14
 	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 6
+	vinsgr2vr.w	$vr19, $a6, 2
 	vpickve2gr.b	$a6, $vr18, 15
 	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 7
-	xvseq.w	$xr19, $xr8, $xr19
+	vinsgr2vr.w	$vr19, $a6, 3
+	vpickve2gr.b	$a6, $vr18, 8
+	andi	$a6, $a6, 255
+	vinsgr2vr.w	$vr20, $a6, 0
+	vpickve2gr.b	$a6, $vr18, 9
+	andi	$a6, $a6, 255
+	vinsgr2vr.w	$vr20, $a6, 1
+	vpickve2gr.b	$a6, $vr18, 10
+	andi	$a6, $a6, 255
+	vinsgr2vr.w	$vr20, $a6, 2
+	vpickve2gr.b	$a6, $vr18, 11
+	andi	$a6, $a6, 255
+	vinsgr2vr.w	$vr20, $a6, 3
+	xvpermi.q	$xr20, $xr19, 2
+	xvseq.w	$xr19, $xr8, $xr20
 	xvpickve2gr.w	$a6, $xr19, 0
 	andi	$a6, $a6, 1
 	xvadd.d	$xr20, $xr12, $xr9
@@ -4913,31 +4919,32 @@ sgrep:                                  # @sgrep
 .LBB15_34:                              # %pred.store.continue181
                                         #   in Loop: Header=BB15_16 Depth=2
 	xvpermi.q	$xr18, $xr18, 1
-	vpickve2gr.b	$a6, $vr18, 0
-	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 0
-	vpickve2gr.b	$a6, $vr18, 1
-	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 1
-	vpickve2gr.b	$a6, $vr18, 2
-	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 2
-	vpickve2gr.b	$a6, $vr18, 3
-	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 3
 	vpickve2gr.b	$a6, $vr18, 4
 	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 4
+	vinsgr2vr.w	$vr19, $a6, 0
 	vpickve2gr.b	$a6, $vr18, 5
 	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 5
+	vinsgr2vr.w	$vr19, $a6, 1
 	vpickve2gr.b	$a6, $vr18, 6
 	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 6
+	vinsgr2vr.w	$vr19, $a6, 2
 	vpickve2gr.b	$a6, $vr18, 7
 	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 7
-	xvseq.w	$xr19, $xr8, $xr19
+	vinsgr2vr.w	$vr19, $a6, 3
+	vpickve2gr.b	$a6, $vr18, 0
+	andi	$a6, $a6, 255
+	vinsgr2vr.w	$vr20, $a6, 0
+	vpickve2gr.b	$a6, $vr18, 1
+	andi	$a6, $a6, 255
+	vinsgr2vr.w	$vr20, $a6, 1
+	vpickve2gr.b	$a6, $vr18, 2
+	andi	$a6, $a6, 255
+	vinsgr2vr.w	$vr20, $a6, 2
+	vpickve2gr.b	$a6, $vr18, 3
+	andi	$a6, $a6, 255
+	vinsgr2vr.w	$vr20, $a6, 3
+	xvpermi.q	$xr20, $xr19, 2
+	xvseq.w	$xr19, $xr8, $xr20
 	xvpickve2gr.w	$a6, $xr19, 0
 	andi	$a6, $a6, 1
 	xvadd.d	$xr20, $xr14, $xr9
@@ -4984,31 +4991,32 @@ sgrep:                                  # @sgrep
 	stx.b	$a0, $s3, $a6
 .LBB15_43:                              # %pred.store.continue197
                                         #   in Loop: Header=BB15_16 Depth=2
-	vpickve2gr.b	$a6, $vr18, 8
-	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 0
-	vpickve2gr.b	$a6, $vr18, 9
-	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 1
-	vpickve2gr.b	$a6, $vr18, 10
-	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 2
-	vpickve2gr.b	$a6, $vr18, 11
-	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 3
 	vpickve2gr.b	$a6, $vr18, 12
 	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 4
+	vinsgr2vr.w	$vr19, $a6, 0
 	vpickve2gr.b	$a6, $vr18, 13
 	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 5
+	vinsgr2vr.w	$vr19, $a6, 1
 	vpickve2gr.b	$a6, $vr18, 14
 	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 6
+	vinsgr2vr.w	$vr19, $a6, 2
 	vpickve2gr.b	$a6, $vr18, 15
 	andi	$a6, $a6, 255
-	xvinsgr2vr.w	$xr19, $a6, 7
-	xvseq.w	$xr18, $xr8, $xr19
+	vinsgr2vr.w	$vr19, $a6, 3
+	vpickve2gr.b	$a6, $vr18, 8
+	andi	$a6, $a6, 255
+	vinsgr2vr.w	$vr20, $a6, 0
+	vpickve2gr.b	$a6, $vr18, 9
+	andi	$a6, $a6, 255
+	vinsgr2vr.w	$vr20, $a6, 1
+	vpickve2gr.b	$a6, $vr18, 10
+	andi	$a6, $a6, 255
+	vinsgr2vr.w	$vr20, $a6, 2
+	vpickve2gr.b	$a6, $vr18, 11
+	andi	$a6, $a6, 255
+	vinsgr2vr.w	$vr20, $a6, 3
+	xvpermi.q	$xr20, $xr19, 2
+	xvseq.w	$xr18, $xr8, $xr20
 	xvpickve2gr.w	$a6, $xr18, 0
 	andi	$a6, $a6, 1
 	xvadd.d	$xr19, $xr16, $xr9

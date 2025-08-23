@@ -1408,24 +1408,26 @@ ComputeFrameMAD:                        # @ComputeFrameMAD
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a3, -16
 	vld	$vr3, $a3, 0
-	vpickve2gr.w	$a5, $vr2, 0
-	xvinsgr2vr.d	$xr4, $a5, 0
-	vpickve2gr.w	$a5, $vr2, 1
-	xvinsgr2vr.d	$xr4, $a5, 1
 	vpickve2gr.w	$a5, $vr2, 2
-	xvinsgr2vr.d	$xr4, $a5, 2
+	vinsgr2vr.d	$vr4, $a5, 0
 	vpickve2gr.w	$a5, $vr2, 3
-	xvinsgr2vr.d	$xr4, $a5, 3
-	vpickve2gr.w	$a5, $vr3, 0
-	xvinsgr2vr.d	$xr2, $a5, 0
-	vpickve2gr.w	$a5, $vr3, 1
-	xvinsgr2vr.d	$xr2, $a5, 1
+	vinsgr2vr.d	$vr4, $a5, 1
+	vpickve2gr.w	$a5, $vr2, 0
+	vinsgr2vr.d	$vr5, $a5, 0
+	vpickve2gr.w	$a5, $vr2, 1
+	vinsgr2vr.d	$vr5, $a5, 1
+	xvpermi.q	$xr5, $xr4, 2
 	vpickve2gr.w	$a5, $vr3, 2
-	xvinsgr2vr.d	$xr2, $a5, 2
+	vinsgr2vr.d	$vr2, $a5, 0
 	vpickve2gr.w	$a5, $vr3, 3
-	xvinsgr2vr.d	$xr2, $a5, 3
-	xvadd.d	$xr0, $xr0, $xr4
-	xvadd.d	$xr1, $xr1, $xr2
+	vinsgr2vr.d	$vr2, $a5, 1
+	vpickve2gr.w	$a5, $vr3, 0
+	vinsgr2vr.d	$vr4, $a5, 0
+	vpickve2gr.w	$a5, $vr3, 1
+	vinsgr2vr.d	$vr4, $a5, 1
+	xvpermi.q	$xr4, $xr2, 2
+	xvadd.d	$xr0, $xr0, $xr5
+	xvadd.d	$xr1, $xr1, $xr4
 	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB4_5

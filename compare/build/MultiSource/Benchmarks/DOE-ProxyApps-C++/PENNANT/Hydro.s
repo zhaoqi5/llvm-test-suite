@@ -2501,34 +2501,34 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr0, $a7, 0
 	xvfcmp.clt.d	$xr1, $xr0, $xr8
-	xvbitsel.v	$xr0, $xr0, $xr8, $xr1
-	fld.d	$fa1, $t3, -32
-	fld.d	$fa2, $t3, -16
+	fld.d	$fa2, $t3, -32
 	fld.d	$fa3, $t3, 0
 	fld.d	$fa4, $t3, 16
+	fld.d	$fa5, $t3, -16
+	xvbitsel.v	$xr0, $xr0, $xr8, $xr1
 	xvfrecip.d	$xr0, $xr0
-	xvinsve0.d	$xr1, $xr2, 1
-	xvinsve0.d	$xr1, $xr3, 2
-	xvinsve0.d	$xr1, $xr4, 3
-	fld.d	$fa2, $t3, -24
-	fld.d	$fa3, $t3, -8
-	xvfmul.d	$xr1, $xr1, $xr0
-	fld.d	$fa4, $t3, 8
-	fld.d	$fa5, $t3, 24
-	xvinsve0.d	$xr2, $xr3, 1
+	vextrins.d	$vr3, $vr4, 16
+	vextrins.d	$vr2, $vr5, 16
+	xvpermi.q	$xr2, $xr3, 2
+	fld.d	$fa1, $t3, 8
+	fld.d	$fa3, $t3, 24
+	xvfmul.d	$xr2, $xr2, $xr0
+	fld.d	$fa4, $t3, -24
+	fld.d	$fa5, $t3, -8
+	vextrins.d	$vr1, $vr3, 16
 	pcalau12i	$t5, %pc_hi20(.LCPI5_0)
 	xvld	$xr3, $t5, %pc_lo12(.LCPI5_0)
-	xvinsve0.d	$xr2, $xr4, 2
-	xvinsve0.d	$xr2, $xr5, 3
-	xvfmul.d	$xr0, $xr2, $xr0
-	xvshuf.d	$xr3, $xr0, $xr1
+	vextrins.d	$vr4, $vr5, 16
+	xvpermi.q	$xr4, $xr1, 2
+	xvfmul.d	$xr0, $xr4, $xr0
+	xvshuf.d	$xr3, $xr0, $xr2
 	xvst	$xr3, $t2, -16
-	xvpickve.d	$xr2, $xr0, 3
-	xvpermi.d	$xr3, $xr1, 78
+	xvpickve.d	$xr1, $xr0, 3
+	xvpermi.d	$xr3, $xr2, 78
 	xvrepl128vei.d	$xr3, $xr3, 1
-	vextrins.d	$vr3, $vr2, 16
+	vextrins.d	$vr3, $vr1, 16
 	vst	$vr3, $t2, 16
-	vpackev.d	$vr0, $vr0, $vr1
+	vpackev.d	$vr0, $vr0, $vr2
 	vst	$vr0, $t2, -32
 	addi.d	$t4, $t4, -4
 	addi.d	$t2, $t2, 64
@@ -3297,24 +3297,24 @@ _ZN5Hydro9calcAccelEPK7double2PKdPS0_ii: # @_ZN5Hydro9calcAccelEPK7double2PKdPS0
 .LBB10_8:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a6, 0
-	xvfcmp.clt.d	$xr3, $xr2, $xr1
-	xvbitsel.v	$xr2, $xr2, $xr1, $xr3
 	fld.d	$fa3, $t1, -32
-	fld.d	$fa4, $t1, -16
-	fld.d	$fa5, $t1, 0
-	fld.d	$fa6, $t1, 16
-	xvfrecip.d	$xr2, $xr2
-	xvinsve0.d	$xr3, $xr4, 1
-	xvinsve0.d	$xr3, $xr5, 2
-	xvinsve0.d	$xr3, $xr6, 3
+	fld.d	$fa4, $t1, 0
+	fld.d	$fa5, $t1, 16
+	fld.d	$fa6, $t1, -16
+	xvfcmp.clt.d	$xr7, $xr2, $xr1
+	xvbitsel.v	$xr2, $xr2, $xr1, $xr7
+	vextrins.d	$vr4, $vr5, 16
+	vextrins.d	$vr3, $vr6, 16
+	xvpermi.q	$xr3, $xr4, 2
 	fld.d	$fa4, $t1, -24
-	fld.d	$fa5, $t1, -8
-	fld.d	$fa6, $t1, 8
-	fld.d	$fa7, $t1, 24
+	fld.d	$fa5, $t1, 8
+	fld.d	$fa6, $t1, 24
+	fld.d	$fa7, $t1, -8
+	xvfrecip.d	$xr2, $xr2
 	xvfmul.d	$xr3, $xr3, $xr2
-	xvinsve0.d	$xr4, $xr5, 1
-	xvinsve0.d	$xr4, $xr6, 2
-	xvinsve0.d	$xr4, $xr7, 3
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr4, $vr7, 16
+	xvpermi.q	$xr4, $xr5, 2
 	xvfmul.d	$xr2, $xr4, $xr2
 	xvori.b	$xr4, $xr0, 0
 	xvshuf.d	$xr4, $xr2, $xr3

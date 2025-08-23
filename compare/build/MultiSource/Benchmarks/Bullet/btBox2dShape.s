@@ -658,19 +658,19 @@ _ZNK12btBox2dShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVecto
 	fld.s	$fa1, $a5, -64
 	fld.s	$fa2, $a5, -48
 	fld.s	$fa3, $a5, -32
-	fld.s	$fa4, $a5, -16
-	fld.s	$fa5, $a5, 0
-	fld.s	$fa6, $a5, 16
-	fld.s	$fa7, $a5, 32
-	fld.s	$ft0, $a5, 48
-	xvinsve0.w	$xr1, $xr2, 1
-	xvinsve0.w	$xr1, $xr3, 2
-	xvinsve0.w	$xr1, $xr4, 3
-	xvinsve0.w	$xr1, $xr5, 4
+	fld.s	$fa4, $a5, 0
+	fld.s	$fa5, $a5, 16
+	fld.s	$fa6, $a5, 32
+	fld.s	$fa7, $a5, 48
+	fld.s	$ft0, $a5, -16
+	vextrins.w	$vr4, $vr5, 16
+	vextrins.w	$vr4, $vr6, 32
+	vextrins.w	$vr4, $vr7, 48
+	vextrins.w	$vr1, $vr2, 16
 	vld	$vr2, $a0, 40
-	xvinsve0.w	$xr1, $xr6, 5
-	xvinsve0.w	$xr1, $xr7, 6
-	xvinsve0.w	$xr1, $xr8, 7
+	vextrins.w	$vr1, $vr3, 32
+	vextrins.w	$vr1, $vr8, 48
+	xvpermi.q	$xr1, $xr4, 2
 	xvpermi.d	$xr2, $xr2, 68
 	xvrepl128vei.w	$xr2, $xr2, 0
 	xvbitrevi.w	$xr3, $xr2, 31
@@ -679,19 +679,19 @@ _ZNK12btBox2dShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVecto
 	fld.s	$fa2, $a5, -60
 	fld.s	$fa3, $a5, -44
 	fld.s	$fa4, $a5, -28
-	fld.s	$fa5, $a5, -12
-	fld.s	$fa6, $a5, 4
-	fld.s	$fa7, $a5, 20
-	fld.s	$ft0, $a5, 36
-	fld.s	$ft1, $a5, 52
-	xvinsve0.w	$xr2, $xr3, 1
-	xvinsve0.w	$xr2, $xr4, 2
-	xvinsve0.w	$xr2, $xr5, 3
-	xvinsve0.w	$xr2, $xr6, 4
+	fld.s	$fa5, $a5, 4
+	fld.s	$fa6, $a5, 20
+	fld.s	$fa7, $a5, 36
+	fld.s	$ft0, $a5, 52
+	fld.s	$ft1, $a5, -12
+	vextrins.w	$vr5, $vr6, 16
+	vextrins.w	$vr5, $vr7, 32
+	vextrins.w	$vr5, $vr8, 48
+	vextrins.w	$vr2, $vr3, 16
 	vld	$vr3, $a0, 44
-	xvinsve0.w	$xr2, $xr7, 5
-	xvinsve0.w	$xr2, $xr8, 6
-	xvinsve0.w	$xr2, $xr9, 7
+	vextrins.w	$vr2, $vr4, 32
+	vextrins.w	$vr2, $vr9, 48
+	xvpermi.q	$xr2, $xr5, 2
 	xvpermi.d	$xr3, $xr3, 68
 	xvrepl128vei.w	$xr3, $xr3, 0
 	xvbitrevi.w	$xr4, $xr3, 31
@@ -700,19 +700,19 @@ _ZNK12btBox2dShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVecto
 	fld.s	$fa3, $a5, -56
 	fld.s	$fa4, $a5, -40
 	fld.s	$fa5, $a5, -24
-	fld.s	$fa6, $a5, -8
-	fld.s	$fa7, $a5, 8
-	fld.s	$ft0, $a5, 24
-	fld.s	$ft1, $a5, 40
-	fld.s	$ft2, $a5, 56
-	xvinsve0.w	$xr3, $xr4, 1
-	xvinsve0.w	$xr3, $xr5, 2
-	xvinsve0.w	$xr3, $xr6, 3
-	xvinsve0.w	$xr3, $xr7, 4
+	fld.s	$fa6, $a5, 8
+	fld.s	$fa7, $a5, 24
+	fld.s	$ft0, $a5, 40
+	fld.s	$ft1, $a5, 56
+	fld.s	$ft2, $a5, -8
+	vextrins.w	$vr6, $vr7, 16
+	vextrins.w	$vr6, $vr8, 32
+	vextrins.w	$vr6, $vr9, 48
+	vextrins.w	$vr3, $vr4, 16
 	vld	$vr4, $a0, 48
-	xvinsve0.w	$xr3, $xr8, 5
-	xvinsve0.w	$xr3, $xr9, 6
-	xvinsve0.w	$xr3, $xr10, 7
+	vextrins.w	$vr3, $vr5, 32
+	vextrins.w	$vr3, $vr10, 48
+	xvpermi.q	$xr3, $xr6, 2
 	xvpermi.d	$xr4, $xr4, 68
 	xvrepl128vei.w	$xr4, $xr4, 0
 	xvbitrevi.w	$xr5, $xr4, 31

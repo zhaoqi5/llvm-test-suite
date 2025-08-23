@@ -3890,31 +3890,32 @@ action_row:                             # @action_row
 .LBB21_116:                             # %vector.body150
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr1, $a3, -16
-	vpickve2gr.h	$a5, $vr1, 0
-	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 0
-	vpickve2gr.h	$a5, $vr1, 1
-	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 1
-	vpickve2gr.h	$a5, $vr1, 2
-	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 2
-	vpickve2gr.h	$a5, $vr1, 3
-	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 3
 	vpickve2gr.h	$a5, $vr1, 4
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 4
+	vinsgr2vr.w	$vr2, $a5, 0
 	vpickve2gr.h	$a5, $vr1, 5
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 5
+	vinsgr2vr.w	$vr2, $a5, 1
 	vpickve2gr.h	$a5, $vr1, 6
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 6
+	vinsgr2vr.w	$vr2, $a5, 2
 	vpickve2gr.h	$a5, $vr1, 7
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 7
-	xvseq.w	$xr2, $xr0, $xr2
+	vinsgr2vr.w	$vr2, $a5, 3
+	vpickve2gr.h	$a5, $vr1, 0
+	ext.w.h	$a5, $a5
+	vinsgr2vr.w	$vr3, $a5, 0
+	vpickve2gr.h	$a5, $vr1, 1
+	ext.w.h	$a5, $a5
+	vinsgr2vr.w	$vr3, $a5, 1
+	vpickve2gr.h	$a5, $vr1, 2
+	ext.w.h	$a5, $a5
+	vinsgr2vr.w	$vr3, $a5, 2
+	vpickve2gr.h	$a5, $vr1, 3
+	ext.w.h	$a5, $a5
+	vinsgr2vr.w	$vr3, $a5, 3
+	xvpermi.q	$xr3, $xr2, 2
+	xvseq.w	$xr2, $xr0, $xr3
 	xvpickve2gr.w	$a5, $xr2, 0
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_124
@@ -4003,31 +4004,32 @@ action_row:                             # @action_row
 .LBB21_132:                             # %pred.store.continue166
                                         #   in Loop: Header=BB21_116 Depth=1
 	xvpermi.q	$xr1, $xr1, 1
-	vpickve2gr.h	$a5, $vr1, 0
-	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 0
-	vpickve2gr.h	$a5, $vr1, 1
-	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 1
-	vpickve2gr.h	$a5, $vr1, 2
-	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 2
-	vpickve2gr.h	$a5, $vr1, 3
-	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 3
 	vpickve2gr.h	$a5, $vr1, 4
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 4
+	vinsgr2vr.w	$vr2, $a5, 0
 	vpickve2gr.h	$a5, $vr1, 5
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 5
+	vinsgr2vr.w	$vr2, $a5, 1
 	vpickve2gr.h	$a5, $vr1, 6
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 6
+	vinsgr2vr.w	$vr2, $a5, 2
 	vpickve2gr.h	$a5, $vr1, 7
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 7
-	xvseq.w	$xr1, $xr0, $xr2
+	vinsgr2vr.w	$vr2, $a5, 3
+	vpickve2gr.h	$a5, $vr1, 0
+	ext.w.h	$a5, $a5
+	vinsgr2vr.w	$vr3, $a5, 0
+	vpickve2gr.h	$a5, $vr1, 1
+	ext.w.h	$a5, $a5
+	vinsgr2vr.w	$vr3, $a5, 1
+	vpickve2gr.h	$a5, $vr1, 2
+	ext.w.h	$a5, $a5
+	vinsgr2vr.w	$vr3, $a5, 2
+	vpickve2gr.h	$a5, $vr1, 3
+	ext.w.h	$a5, $a5
+	vinsgr2vr.w	$vr3, $a5, 3
+	xvpermi.q	$xr3, $xr2, 2
+	xvseq.w	$xr1, $xr0, $xr3
 	xvpickve2gr.w	$a5, $xr1, 0
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_140

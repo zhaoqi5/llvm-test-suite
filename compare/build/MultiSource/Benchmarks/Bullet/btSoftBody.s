@@ -4801,15 +4801,16 @@ _ZN10btSoftBody17pointersToIndicesEv:   # @_ZN10btSoftBody17pointersToIndicesEv
 	.p2align	4, , 16
 .LBB32_17:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$t0, $a6, -208
-	ld.d	$t1, $a6, -104
-	ld.d	$t2, $a6, 0
-	ld.d	$t3, $a6, 104
-	xvinsgr2vr.d	$xr2, $t0, 0
-	xvinsgr2vr.d	$xr2, $t1, 1
-	xvinsgr2vr.d	$xr2, $t2, 2
-	xvinsgr2vr.d	$xr2, $t3, 3
-	xvsub.d	$xr2, $xr2, $xr0
+	ld.d	$t0, $a6, 0
+	ld.d	$t1, $a6, 104
+	ld.d	$t2, $a6, -208
+	ld.d	$t3, $a6, -104
+	vinsgr2vr.d	$vr2, $t0, 0
+	vinsgr2vr.d	$vr2, $t1, 1
+	vinsgr2vr.d	$vr3, $t2, 0
+	vinsgr2vr.d	$vr3, $t3, 1
+	xvpermi.q	$xr3, $xr2, 2
+	xvsub.d	$xr2, $xr3, $xr0
 	xvsrai.d	$xr2, $xr2, 3
 	xvmul.d	$xr2, $xr2, $xr1
 	xvstelm.d	$xr2, $a6, -208, 0
@@ -5340,17 +5341,18 @@ _ZN10btSoftBody17indicesToPointersEPKi: # @_ZN10btSoftBody17indicesToPointersEPK
 	slli.d	$t8, $t8, 2
 	xvpickve2gr.d	$fp, $xr2, 3
 	slli.d	$fp, $fp, 2
-	ldx.w	$t6, $a1, $t6
-	ldx.w	$t7, $a1, $t7
 	ldx.w	$t8, $a1, $t8
 	ldx.w	$fp, $a1, $fp
-	xvinsgr2vr.d	$xr2, $t6, 0
-	xvinsgr2vr.d	$xr2, $t7, 1
-	xvinsgr2vr.d	$xr2, $t8, 2
-	xvinsgr2vr.d	$xr2, $fp, 3
-	xvori.b	$xr3, $xr0, 0
-	xvmadd.d	$xr3, $xr2, $xr1
-	xvst	$xr3, $t4, 0
+	ldx.w	$t6, $a1, $t6
+	ldx.w	$t7, $a1, $t7
+	vinsgr2vr.d	$vr2, $t8, 0
+	vinsgr2vr.d	$vr2, $fp, 1
+	vinsgr2vr.d	$vr3, $t6, 0
+	vinsgr2vr.d	$vr3, $t7, 1
+	xvpermi.q	$xr3, $xr2, 2
+	xvori.b	$xr2, $xr0, 0
+	xvmadd.d	$xr2, $xr3, $xr1
+	xvst	$xr2, $t4, 0
 	addi.d	$t5, $t5, -4
 	addi.d	$t4, $t4, 32
 	bnez	$t5, .LBB33_59
@@ -7859,18 +7861,18 @@ _ZN10btSoftBody12setTotalMassEfb:       # @_ZN10btSoftBody12setTotalMassEfb
 	fld.s	$fa1, $a4, -480
 	fld.s	$fa2, $a4, -360
 	fld.s	$fa3, $a4, -240
-	fld.s	$fa4, $a4, -120
-	fld.s	$fa5, $a4, 0
-	fld.s	$fa6, $a4, 120
-	fld.s	$fa7, $a4, 240
-	fld.s	$ft0, $a4, 360
-	xvinsve0.w	$xr1, $xr2, 1
-	xvinsve0.w	$xr1, $xr3, 2
-	xvinsve0.w	$xr1, $xr4, 3
-	xvinsve0.w	$xr1, $xr5, 4
-	xvinsve0.w	$xr1, $xr6, 5
-	xvinsve0.w	$xr1, $xr7, 6
-	xvinsve0.w	$xr1, $xr8, 7
+	fld.s	$fa4, $a4, 0
+	fld.s	$fa5, $a4, 120
+	fld.s	$fa6, $a4, 240
+	fld.s	$fa7, $a4, 360
+	fld.s	$ft0, $a4, -120
+	vextrins.w	$vr4, $vr5, 16
+	vextrins.w	$vr4, $vr6, 32
+	vextrins.w	$vr4, $vr7, 48
+	vextrins.w	$vr1, $vr2, 16
+	vextrins.w	$vr1, $vr3, 32
+	vextrins.w	$vr1, $vr8, 48
+	xvpermi.q	$xr1, $xr4, 2
 	xvfrecip.s	$xr1, $xr1
 	xvstelm.w	$xr1, $a4, -480, 0
 	xvstelm.w	$xr1, $a4, -360, 1
@@ -7938,18 +7940,18 @@ _ZN10btSoftBody12setTotalMassEfb:       # @_ZN10btSoftBody12setTotalMassEfb
 	fld.s	$fa2, $a4, -480
 	fld.s	$fa3, $a4, -360
 	fld.s	$fa4, $a4, -240
-	fld.s	$fa5, $a4, -120
-	fld.s	$fa6, $a4, 0
-	fld.s	$fa7, $a4, 120
-	fld.s	$ft0, $a4, 240
-	fld.s	$ft1, $a4, 360
-	xvinsve0.w	$xr2, $xr3, 1
-	xvinsve0.w	$xr2, $xr4, 2
-	xvinsve0.w	$xr2, $xr5, 3
-	xvinsve0.w	$xr2, $xr6, 4
-	xvinsve0.w	$xr2, $xr7, 5
-	xvinsve0.w	$xr2, $xr8, 6
-	xvinsve0.w	$xr2, $xr9, 7
+	fld.s	$fa5, $a4, 0
+	fld.s	$fa6, $a4, 120
+	fld.s	$fa7, $a4, 240
+	fld.s	$ft0, $a4, 360
+	fld.s	$ft1, $a4, -120
+	vextrins.w	$vr5, $vr6, 16
+	vextrins.w	$vr5, $vr7, 32
+	vextrins.w	$vr5, $vr8, 48
+	vextrins.w	$vr2, $vr3, 16
+	vextrins.w	$vr2, $vr4, 32
+	vextrins.w	$vr2, $vr9, 48
+	xvpermi.q	$xr2, $xr5, 2
 	xvfdiv.s	$xr2, $xr2, $xr1
 	xvstelm.w	$xr2, $a4, -480, 0
 	xvstelm.w	$xr2, $a4, -360, 1
@@ -8354,18 +8356,18 @@ _ZN10btSoftBody13setVolumeMassEf:       # @_ZN10btSoftBody13setVolumeMassEf
 	fld.s	$fa2, $a3, -480
 	fld.s	$fa3, $a3, -360
 	fld.s	$fa4, $a3, -240
-	fld.s	$fa5, $a3, -120
-	fld.s	$fa6, $a3, 0
-	fld.s	$fa7, $a3, 120
-	fld.s	$ft0, $a3, 240
-	fld.s	$ft1, $a3, 360
-	xvinsve0.w	$xr2, $xr3, 1
-	xvinsve0.w	$xr2, $xr4, 2
-	xvinsve0.w	$xr2, $xr5, 3
-	xvinsve0.w	$xr2, $xr6, 4
-	xvinsve0.w	$xr2, $xr7, 5
-	xvinsve0.w	$xr2, $xr8, 6
-	xvinsve0.w	$xr2, $xr9, 7
+	fld.s	$fa5, $a3, 0
+	fld.s	$fa6, $a3, 120
+	fld.s	$fa7, $a3, 240
+	fld.s	$ft0, $a3, 360
+	fld.s	$ft1, $a3, -120
+	vextrins.w	$vr5, $vr6, 16
+	vextrins.w	$vr5, $vr7, 32
+	vextrins.w	$vr5, $vr8, 48
+	vextrins.w	$vr2, $vr3, 16
+	vextrins.w	$vr2, $vr4, 32
+	vextrins.w	$vr2, $vr9, 48
+	xvpermi.q	$xr2, $xr5, 2
 	xvfdiv.s	$xr2, $xr2, $xr1
 	xvstelm.w	$xr2, $a3, -480, 0
 	xvstelm.w	$xr2, $a3, -360, 1
@@ -9605,18 +9607,18 @@ _ZN10btSoftBody7setPoseEbb:             # @_ZN10btSoftBody7setPoseEbb
 	fld.s	$fa3, $a3, -480
 	fld.s	$fa4, $a3, -360
 	fld.s	$fa5, $a3, -240
-	fld.s	$fa6, $a3, -120
-	fld.s	$fa7, $a3, 0
-	fld.s	$ft0, $a3, 120
-	fld.s	$ft1, $a3, 240
-	fld.s	$ft2, $a3, 360
-	xvinsve0.w	$xr3, $xr4, 1
-	xvinsve0.w	$xr3, $xr5, 2
-	xvinsve0.w	$xr3, $xr6, 3
-	xvinsve0.w	$xr3, $xr7, 4
-	xvinsve0.w	$xr3, $xr8, 5
-	xvinsve0.w	$xr3, $xr9, 6
-	xvinsve0.w	$xr3, $xr10, 7
+	fld.s	$fa6, $a3, 0
+	fld.s	$fa7, $a3, 120
+	fld.s	$ft0, $a3, 240
+	fld.s	$ft1, $a3, 360
+	fld.s	$ft2, $a3, -120
+	vextrins.w	$vr6, $vr7, 16
+	vextrins.w	$vr6, $vr8, 32
+	vextrins.w	$vr6, $vr9, 48
+	vextrins.w	$vr3, $vr4, 16
+	vextrins.w	$vr3, $vr5, 32
+	vextrins.w	$vr3, $vr10, 48
+	xvpermi.q	$xr3, $xr6, 2
 	xvfcmp.clt.s	$xr4, $xr14, $xr3
 	xvfmul.s	$xr3, $xr1, $xr3
 	xvfrecip.s	$xr3, $xr3

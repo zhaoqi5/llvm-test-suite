@@ -370,14 +370,15 @@ main:                                   # @main
 	ld.w	$t5, $t5, 0
 	xvpickve2gr.d	$t6, $xr16, 3
 	ld.w	$t6, $t6, 0
-	xvinsgr2vr.w	$xr16, $a7, 0
-	xvinsgr2vr.w	$xr16, $t0, 1
-	xvinsgr2vr.w	$xr16, $t1, 2
-	xvinsgr2vr.w	$xr16, $t2, 3
-	xvinsgr2vr.w	$xr16, $t3, 4
-	xvinsgr2vr.w	$xr16, $t4, 5
-	xvinsgr2vr.w	$xr16, $t5, 6
-	xvinsgr2vr.w	$xr16, $t6, 7
+	vinsgr2vr.w	$vr16, $a7, 0
+	vinsgr2vr.w	$vr16, $t0, 1
+	vinsgr2vr.w	$vr16, $t1, 2
+	vinsgr2vr.w	$vr16, $t2, 3
+	vinsgr2vr.w	$vr17, $t3, 0
+	vinsgr2vr.w	$vr17, $t4, 1
+	vinsgr2vr.w	$vr17, $t5, 2
+	vinsgr2vr.w	$vr17, $t6, 3
+	xvpermi.q	$xr16, $xr17, 2
 	xvori.b	$xr17, $xr13, 0
 	xvmadd.d	$xr17, $xr15, $xr4
 	xvori.b	$xr18, $xr12, 0
@@ -398,14 +399,15 @@ main:                                   # @main
 	ld.w	$t5, $t5, 0
 	xvpickve2gr.d	$t6, $xr17, 3
 	ld.w	$t6, $t6, 0
-	xvinsgr2vr.w	$xr17, $a7, 0
-	xvinsgr2vr.w	$xr17, $t0, 1
-	xvinsgr2vr.w	$xr17, $t1, 2
-	xvinsgr2vr.w	$xr17, $t2, 3
-	xvinsgr2vr.w	$xr17, $t3, 4
-	xvinsgr2vr.w	$xr17, $t4, 5
-	xvinsgr2vr.w	$xr17, $t5, 6
-	xvinsgr2vr.w	$xr17, $t6, 7
+	vinsgr2vr.w	$vr17, $a7, 0
+	vinsgr2vr.w	$vr17, $t0, 1
+	vinsgr2vr.w	$vr17, $t1, 2
+	vinsgr2vr.w	$vr17, $t2, 3
+	vinsgr2vr.w	$vr18, $t3, 0
+	vinsgr2vr.w	$vr18, $t4, 1
+	vinsgr2vr.w	$vr18, $t5, 2
+	vinsgr2vr.w	$vr18, $t6, 3
+	xvpermi.q	$xr17, $xr18, 2
 	xvmadd.w	$xr9, $xr17, $xr16
 	xvaddi.du	$xr14, $xr14, 1
 	xvpickve2gr.d	$a7, $xr14, 0
@@ -637,14 +639,15 @@ main:                                   # @main
 	ld.w	$t1, $t1, 0
 	xvpickve2gr.d	$t2, $xr9, 3
 	ld.w	$t2, $t2, 0
-	xvinsgr2vr.w	$xr9, $a3, 0
-	xvinsgr2vr.w	$xr9, $a4, 1
-	xvinsgr2vr.w	$xr9, $a5, 2
-	xvinsgr2vr.w	$xr9, $a6, 3
-	xvinsgr2vr.w	$xr9, $a7, 4
-	xvinsgr2vr.w	$xr9, $t0, 5
-	xvinsgr2vr.w	$xr9, $t1, 6
-	xvinsgr2vr.w	$xr9, $t2, 7
+	vinsgr2vr.w	$vr9, $a3, 0
+	vinsgr2vr.w	$vr9, $a4, 1
+	vinsgr2vr.w	$vr9, $a5, 2
+	vinsgr2vr.w	$vr9, $a6, 3
+	vinsgr2vr.w	$vr10, $a7, 0
+	vinsgr2vr.w	$vr10, $t0, 1
+	vinsgr2vr.w	$vr10, $t1, 2
+	vinsgr2vr.w	$vr10, $t2, 3
+	xvpermi.q	$xr9, $xr10, 2
 	xvori.b	$xr10, $xr4, 0
 	xvori.b	$xr11, $xr4, 0
 	.p2align	4, , 16
@@ -671,14 +674,15 @@ main:                                   # @main
 	ld.w	$t1, $t1, 0
 	xvpickve2gr.d	$t2, $xr12, 3
 	ld.w	$t2, $t2, 0
-	xvinsgr2vr.w	$xr12, $a3, 0
-	xvinsgr2vr.w	$xr12, $a4, 1
-	xvinsgr2vr.w	$xr12, $a5, 2
-	xvinsgr2vr.w	$xr12, $a6, 3
-	xvinsgr2vr.w	$xr12, $a7, 4
-	xvinsgr2vr.w	$xr12, $t0, 5
-	xvinsgr2vr.w	$xr12, $t1, 6
-	xvinsgr2vr.w	$xr12, $t2, 7
+	vinsgr2vr.w	$vr12, $a3, 0
+	vinsgr2vr.w	$vr12, $a4, 1
+	vinsgr2vr.w	$vr12, $a5, 2
+	vinsgr2vr.w	$vr12, $a6, 3
+	vinsgr2vr.w	$vr13, $a7, 0
+	vinsgr2vr.w	$vr13, $t0, 1
+	vinsgr2vr.w	$vr13, $t1, 2
+	vinsgr2vr.w	$vr13, $t2, 3
+	xvpermi.q	$xr12, $xr13, 2
 	xvmadd.w	$xr9, $xr12, $xr2
 	xvaddi.du	$xr10, $xr10, 1
 	xvpickve2gr.d	$a3, $xr10, 0
@@ -919,35 +923,37 @@ main:                                   # @main
 	ld.w	$a7, $a7, 0
 	xvpickve2gr.d	$t0, $xr12, 0
 	ld.w	$t0, $t0, 0
-	xvpickve2gr.d	$t1, $xr12, 1
+	xvpickve2gr.d	$t1, $xr12, 2
 	ld.w	$t1, $t1, 0
-	xvpickve2gr.d	$t2, $xr12, 2
+	xvpickve2gr.d	$t2, $xr12, 3
 	ld.w	$t2, $t2, 0
-	xvpickve2gr.d	$t3, $xr12, 3
+	xvpickve2gr.d	$t3, $xr12, 1
 	ld.w	$t3, $t3, 0
-	xvinsgr2vr.d	$xr11, $t0, 0
-	xvinsgr2vr.d	$xr11, $t1, 1
-	xvinsgr2vr.d	$xr11, $t2, 2
-	xvinsgr2vr.d	$xr11, $t3, 3
-	xvinsgr2vr.d	$xr12, $a4, 0
-	xvinsgr2vr.d	$xr12, $a5, 1
-	xvinsgr2vr.d	$xr12, $a6, 2
-	xvinsgr2vr.d	$xr12, $a7, 3
-	xvmuh.du	$xr13, $xr12, $xr4
-	xvsub.d	$xr14, $xr12, $xr13
+	vinsgr2vr.d	$vr11, $t1, 0
+	vinsgr2vr.d	$vr11, $t2, 1
+	vinsgr2vr.d	$vr12, $t0, 0
+	vinsgr2vr.d	$vr12, $t3, 1
+	xvpermi.q	$xr12, $xr11, 2
+	vinsgr2vr.d	$vr11, $a6, 0
+	vinsgr2vr.d	$vr11, $a7, 1
+	vinsgr2vr.d	$vr13, $a4, 0
+	vinsgr2vr.d	$vr13, $a5, 1
+	xvpermi.q	$xr13, $xr11, 2
+	xvmuh.du	$xr11, $xr13, $xr4
+	xvsub.d	$xr14, $xr13, $xr11
 	xvsrli.d	$xr14, $xr14, 1
-	xvadd.d	$xr13, $xr14, $xr13
-	xvsrli.d	$xr13, $xr13, 6
-	xvmsub.d	$xr12, $xr13, $xr5
-	xvmuh.du	$xr13, $xr11, $xr4
-	xvsub.d	$xr14, $xr11, $xr13
+	xvadd.d	$xr11, $xr14, $xr11
+	xvsrli.d	$xr11, $xr11, 6
+	xvmsub.d	$xr13, $xr11, $xr5
+	xvmuh.du	$xr11, $xr12, $xr4
+	xvsub.d	$xr14, $xr12, $xr11
 	xvsrli.d	$xr14, $xr14, 1
-	xvadd.d	$xr13, $xr14, $xr13
-	xvsrli.d	$xr13, $xr13, 6
-	xvmsub.d	$xr11, $xr13, $xr5
-	xvslli.d	$xr11, $xr11, 2
+	xvadd.d	$xr11, $xr14, $xr11
+	xvsrli.d	$xr11, $xr11, 6
+	xvmsub.d	$xr12, $xr11, $xr5
+	xvslli.d	$xr11, $xr12, 2
 	xvadd.d	$xr11, $xr6, $xr11
-	xvslli.d	$xr12, $xr12, 2
+	xvslli.d	$xr12, $xr13, 2
 	xvadd.d	$xr12, $xr6, $xr12
 	xvpickve2gr.d	$a4, $xr12, 0
 	ld.w	$a4, $a4, 0
@@ -965,14 +971,15 @@ main:                                   # @main
 	ld.w	$t2, $t2, 0
 	xvpickve2gr.d	$t3, $xr11, 3
 	ld.w	$t3, $t3, 0
-	xvinsgr2vr.w	$xr11, $a4, 0
-	xvinsgr2vr.w	$xr11, $a5, 1
-	xvinsgr2vr.w	$xr11, $a6, 2
-	xvinsgr2vr.w	$xr11, $a7, 3
-	xvinsgr2vr.w	$xr11, $t0, 4
-	xvinsgr2vr.w	$xr11, $t1, 5
-	xvinsgr2vr.w	$xr11, $t2, 6
-	xvinsgr2vr.w	$xr11, $t3, 7
+	vinsgr2vr.w	$vr11, $a4, 0
+	vinsgr2vr.w	$vr11, $a5, 1
+	vinsgr2vr.w	$vr11, $a6, 2
+	vinsgr2vr.w	$vr11, $a7, 3
+	vinsgr2vr.w	$vr12, $t0, 0
+	vinsgr2vr.w	$vr12, $t1, 1
+	vinsgr2vr.w	$vr12, $t2, 2
+	vinsgr2vr.w	$vr12, $t3, 3
+	xvpermi.q	$xr11, $xr12, 2
 	xvadd.w	$xr8, $xr11, $xr8
 	xvaddi.du	$xr9, $xr9, 1
 	xvpickve2gr.d	$a4, $xr9, 0
@@ -1267,21 +1274,22 @@ main:                                   # @main
 	xvpickve2gr.d	$a6, $xr12, 3
 	st.w	$zero, $a6, 0
 	xvpickve2gr.d	$a6, $xr7, 0
-	xvinsgr2vr.w	$xr5, $a6, 0
+	vinsgr2vr.w	$vr5, $a6, 0
 	xvpickve2gr.d	$a7, $xr7, 1
-	xvinsgr2vr.w	$xr5, $a7, 1
+	vinsgr2vr.w	$vr5, $a7, 1
 	xvpickve2gr.d	$t0, $xr7, 2
-	xvinsgr2vr.w	$xr5, $t0, 2
+	vinsgr2vr.w	$vr5, $t0, 2
 	xvpickve2gr.d	$t1, $xr7, 3
-	xvinsgr2vr.w	$xr5, $t1, 3
+	vinsgr2vr.w	$vr5, $t1, 3
 	xvpickve2gr.d	$t2, $xr6, 0
-	xvinsgr2vr.w	$xr5, $t2, 4
+	vinsgr2vr.w	$vr7, $t2, 0
 	xvpickve2gr.d	$t3, $xr6, 1
-	xvinsgr2vr.w	$xr5, $t3, 5
+	vinsgr2vr.w	$vr7, $t3, 1
 	xvpickve2gr.d	$t4, $xr6, 2
-	xvinsgr2vr.w	$xr5, $t4, 6
+	vinsgr2vr.w	$vr7, $t4, 2
 	xvpickve2gr.d	$t5, $xr6, 3
-	xvinsgr2vr.w	$xr5, $t5, 7
+	vinsgr2vr.w	$vr7, $t5, 3
+	xvpermi.q	$xr5, $xr7, 2
 	xvaddi.du	$xr6, $xr12, 4
 	xvaddi.du	$xr7, $xr0, 4
 	xvpickve2gr.d	$t6, $xr7, 0

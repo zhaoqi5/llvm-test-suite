@@ -73,11 +73,18 @@ common:                                 # @common
 	ld.w	$t0, $sp, 80
 	xvld	$xr3, $sp, 92
 	ld.w	$a6, $sp, 124
-	ld.d	$t2, $sp, 84
-	xvrepli.b	$xr4, 0
-	xvinsgr2vr.w	$xr4, $a7, 0
-	xvinsgr2vr.w	$xr4, $t0, 5
-	xvinsgr2vr.d	$xr4, $t2, 3
+	xvrepli.b	$xr5, 0
+	xvinsgr2vr.w	$xr5, $a7, 0
+	xvinsgr2vr.w	$xr5, $t0, 5
+	xvpickve2gr.d	$a7, $xr5, 0
+	vinsgr2vr.d	$vr4, $a7, 0
+	xvpickve2gr.d	$a7, $xr5, 1
+	ld.d	$t0, $sp, 84
+	vinsgr2vr.d	$vr4, $a7, 1
+	xvpickve2gr.d	$a7, $xr5, 2
+	vinsgr2vr.d	$vr5, $a7, 0
+	vinsgr2vr.d	$vr5, $t0, 1
+	xvpermi.q	$xr4, $xr5, 2
 	pcalau12i	$a7, %got_pc_hi20(team_plays)
 	ld.d	$a7, $a7, %got_pc_lo12(team_plays)
 	addi.d	$t0, $a0, 4

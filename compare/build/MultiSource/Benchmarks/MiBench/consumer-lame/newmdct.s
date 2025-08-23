@@ -922,91 +922,91 @@ mdct_sub48:                             # @mdct_sub48
 	fmul.d	$fa0, $fa4, $fa5
 	fmadd.d	$fa0, $fa1, $fa6, $fa0
 	fst.d	$fa0, $s3, 744
-	fld.d	$fa0, $a2, 1792
+	fld.d	$fa1, $a2, 1792
 	ori	$a5, $zero, 2560
-	fldx.d	$fa1, $a2, $a5
-	fld.d	$fa2, $a0, 1792
-	fldx.d	$fa3, $a0, $a5
-	fld.d	$fa4, $a2, 1536
+	fldx.d	$fa2, $a2, $a5
+	fld.d	$fa3, $a0, 1792
+	fldx.d	$fa4, $a0, $a5
+	fld.d	$fa5, $a2, 1536
 	ori	$a5, $zero, 2816
-	fldx.d	$fa5, $a2, $a5
-	fld.d	$fa6, $a0, 1536
+	fldx.d	$fa6, $a2, $a5
+	fld.d	$fa0, $a0, 1536
 	fldx.d	$fa7, $a0, $a5
 	fld.d	$ft0, $a2, 1280
 	ori	$a5, $zero, 3072
 	fldx.d	$ft1, $a2, $a5
 	fld.d	$ft2, $a0, 1280
 	fldx.d	$ft3, $a0, $a5
+	fld.d	$ft4, $a2, 1024
 	ori	$a5, $zero, 3328
-	fldx.d	$ft4, $a2, $a5
-	fld.d	$ft5, $a2, 1024
+	fldx.d	$ft5, $a2, $a5
 	xvld	$xr14, $a3, 32
 	xvld	$xr15, $a3, 104
-	xvinsve0.d	$xr12, $xr9, 1
-	xvinsve0.d	$xr12, $xr5, 2
-	xvinsve0.d	$xr12, $xr1, 3
-	xvbitrevi.d	$xr1, $xr12, 63
-	xvfmul.d	$xr1, $xr15, $xr1
-	xvinsve0.d	$xr13, $xr8, 1
-	xvinsve0.d	$xr13, $xr4, 2
-	xvinsve0.d	$xr13, $xr0, 3
-	xvfmadd.d	$xr0, $xr14, $xr13, $xr1
-	xvst	$xr0, $s3, 640
-	fldx.d	$fa0, $a0, $a5
+	vextrins.d	$vr6, $vr2, 16
+	vextrins.d	$vr13, $vr9, 16
+	xvpermi.q	$xr13, $xr6, 2
+	xvbitrevi.d	$xr2, $xr13, 63
+	xvfmul.d	$xr2, $xr15, $xr2
+	vextrins.d	$vr5, $vr1, 16
+	vextrins.d	$vr12, $vr8, 16
+	xvpermi.q	$xr12, $xr5, 2
+	xvfmadd.d	$xr1, $xr14, $xr12, $xr2
+	xvst	$xr1, $s3, 640
 	fld.d	$fa1, $a0, 1024
-	xvld	$xr4, $a3, 176
-	xvld	$xr5, $a3, 248
-	xvinsve0.d	$xr0, $xr11, 1
-	xvinsve0.d	$xr0, $xr7, 2
-	xvinsve0.d	$xr0, $xr3, 3
-	xvfmul.d	$xr0, $xr5, $xr0
-	xvinsve0.d	$xr1, $xr10, 1
-	xvinsve0.d	$xr1, $xr6, 2
-	xvinsve0.d	$xr1, $xr2, 3
-	xvfmadd.d	$xr0, $xr4, $xr1, $xr0
+	fldx.d	$fa2, $a0, $a5
+	xvld	$xr5, $a3, 176
+	xvld	$xr6, $a3, 248
+	vextrins.d	$vr7, $vr4, 16
+	vextrins.d	$vr2, $vr11, 16
+	xvpermi.q	$xr2, $xr7, 2
+	xvfmul.d	$xr2, $xr6, $xr2
+	vextrins.d	$vr0, $vr3, 16
+	vextrins.d	$vr1, $vr10, 16
+	xvpermi.q	$xr1, $xr0, 2
+	xvfmadd.d	$xr0, $xr5, $xr1, $xr2
 	xvst	$xr0, $s3, 712
-	fld.d	$fa0, $a2, 768
+	fld.d	$fa1, $a2, 768
 	ori	$a5, $zero, 3584
-	fldx.d	$fa1, $a2, $a5
-	fld.d	$fa2, $a0, 768
-	fldx.d	$fa3, $a0, $a5
-	fld.d	$fa4, $a2, 512
+	fldx.d	$fa2, $a2, $a5
+	fld.d	$fa3, $a0, 768
+	fldx.d	$fa4, $a0, $a5
+	fld.d	$fa5, $a2, 512
 	ori	$a5, $zero, 3840
-	fldx.d	$fa5, $a2, $a5
-	fld.d	$fa6, $a0, 512
+	fldx.d	$fa6, $a2, $a5
+	fld.d	$fa0, $a0, 512
 	fldx.d	$fa7, $a0, $a5
 	fld.d	$ft0, $a2, 256
 	lu12i.w	$a5, 1
 	fldx.d	$ft1, $a2, $a5
 	fld.d	$ft2, $a0, 256
 	fldx.d	$ft3, $a0, $a5
+	fldx.d	$ft4, $s6, $a1
 	ld.d	$a5, $sp, 336                   # 8-byte Folded Reload
-	fldx.d	$ft4, $a2, $a5
-	fldx.d	$ft5, $s6, $a1
+	fldx.d	$ft5, $a2, $a5
 	xvldx	$xr14, $s3, $a4
 	xvld	$xr15, $a3, 72
-	xvinsve0.d	$xr12, $xr9, 1
-	xvinsve0.d	$xr12, $xr5, 2
-	xvinsve0.d	$xr12, $xr1, 3
-	xvbitrevi.d	$xr1, $xr12, 63
-	xvfmul.d	$xr1, $xr15, $xr1
-	xvinsve0.d	$xr13, $xr8, 1
-	xvinsve0.d	$xr13, $xr4, 2
-	xvinsve0.d	$xr13, $xr0, 3
-	xvfmadd.d	$xr0, $xr14, $xr13, $xr1
-	xvst	$xr0, $s3, 608
-	fldx.d	$fa0, $a0, $a5
+	vextrins.d	$vr6, $vr2, 16
+	vextrins.d	$vr13, $vr9, 16
+	xvpermi.q	$xr13, $xr6, 2
+	xvbitrevi.d	$xr2, $xr13, 63
+	xvfmul.d	$xr2, $xr15, $xr2
+	vextrins.d	$vr5, $vr1, 16
+	vextrins.d	$vr12, $vr8, 16
+	xvpermi.q	$xr12, $xr5, 2
+	xvfmadd.d	$xr1, $xr14, $xr12, $xr2
+	xvst	$xr1, $s3, 608
 	fldx.d	$fa1, $a7, $a1
-	xvld	$xr4, $a3, 144
-	xvld	$xr5, $a3, 216
-	xvinsve0.d	$xr0, $xr11, 1
-	xvinsve0.d	$xr0, $xr7, 2
-	xvinsve0.d	$xr0, $xr3, 3
-	xvfmul.d	$xr0, $xr5, $xr0
-	xvinsve0.d	$xr1, $xr10, 1
-	xvinsve0.d	$xr1, $xr6, 2
-	xvinsve0.d	$xr1, $xr2, 3
-	xvfmadd.d	$xr0, $xr4, $xr1, $xr0
+	fldx.d	$fa2, $a0, $a5
+	xvld	$xr5, $a3, 144
+	xvld	$xr6, $a3, 216
+	vextrins.d	$vr7, $vr4, 16
+	vextrins.d	$vr2, $vr11, 16
+	xvpermi.q	$xr2, $xr7, 2
+	xvfmul.d	$xr2, $xr6, $xr2
+	vextrins.d	$vr0, $vr3, 16
+	vextrins.d	$vr1, $vr10, 16
+	xvpermi.q	$xr1, $xr0, 2
+	xvfmadd.d	$xr0, $xr5, $xr1, $xr2
 	xvst	$xr0, $s3, 680
 	fld.d	$fa0, $s3, 608
 	fld.d	$fa1, $s3, 616
@@ -1559,24 +1559,24 @@ mdct_sub48:                             # @mdct_sub48
 	.type	mdct_init48,@function
 mdct_init48:                            # @mdct_init48
 # %bb.0:                                # %for.cond61.preheader
-	addi.d	$sp, $sp, -640
-	st.d	$ra, $sp, 632                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 624                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 616                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 608                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 600                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 592                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 584                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 576                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 568                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 560                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 552                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 544                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 536                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 528                  # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 520                  # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 512                  # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 504                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -624
+	st.d	$ra, $sp, 616                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 608                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 600                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 592                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 584                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 576                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 568                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 560                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 552                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 544                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 536                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 528                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 520                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 512                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 488                  # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(ca.0)
 	lu12i.w	$a1, -207109
 	ori	$a1, $a1, 3789
@@ -1822,7 +1822,7 @@ mdct_init48:                            # @mdct_init48
 	pcalau12i	$a2, %pc_hi20(.LCPI1_36)
 	fld.d	$fs2, $a2, %pc_lo12(.LCPI1_36)
 	xvreplgr2vr.d	$xr0, $a1
-	xvst	$xr0, $sp, 224                  # 32-byte Folded Spill
+	xvst	$xr0, $sp, 208                  # 32-byte Folded Spill
 	vreplgr2vr.d	$vr0, $a1
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	addi.w	$s3, $zero, -4
@@ -1842,13 +1842,13 @@ mdct_init48:                            # @mdct_init48
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 192                  # 32-byte Folded Spill
+	xvst	$xr0, $sp, 176                  # 32-byte Folded Spill
 	fld.d	$fa0, $sp, 104                  # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 160                  # 32-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
 	fld.d	$fa0, $sp, 96                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
@@ -1859,14 +1859,14 @@ mdct_init48:                            # @mdct_init48
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvld	$xr1, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr2, $sp, 160                  # 32-byte Folded Reload
-	xvinsve0.d	$xr1, $xr2, 1
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	xvld	$xr1, $sp, 176                  # 32-byte Folded Reload
+	vld	$vr2, $sp, 160                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr2, 16
 	xvld	$xr2, $sp, 128                  # 32-byte Folded Reload
-	xvinsve0.d	$xr1, $xr2, 2
-	xvinsve0.d	$xr1, $xr0, 3
-	xvld	$xr0, $sp, 224                  # 32-byte Folded Reload
+	vextrins.d	$vr2, $vr0, 16
+	xvpermi.q	$xr1, $xr2, 2
+	xvld	$xr0, $sp, 208                  # 32-byte Folded Reload
 	xvfmul.d	$xr0, $xr1, $xr0
 	xvst	$xr0, $s0, 0
 	fld.d	$fa0, $sp, 80                   # 8-byte Folded Reload
@@ -1874,13 +1874,13 @@ mdct_init48:                            # @mdct_init48
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 192                  # 32-byte Folded Spill
+	xvst	$xr0, $sp, 176                  # 32-byte Folded Spill
 	fld.d	$fa0, $sp, 72                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 160                  # 32-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
 	fld.d	$fa0, $sp, 64                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
@@ -1891,14 +1891,14 @@ mdct_init48:                            # @mdct_init48
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvld	$xr1, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr2, $sp, 160                  # 32-byte Folded Reload
-	xvinsve0.d	$xr1, $xr2, 1
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	xvld	$xr1, $sp, 176                  # 32-byte Folded Reload
+	vld	$vr2, $sp, 160                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr2, 16
 	xvld	$xr2, $sp, 128                  # 32-byte Folded Reload
-	xvinsve0.d	$xr1, $xr2, 2
-	xvinsve0.d	$xr1, $xr0, 3
-	xvld	$xr0, $sp, 224                  # 32-byte Folded Reload
+	vextrins.d	$vr2, $vr0, 16
+	xvpermi.q	$xr1, $xr2, 2
+	xvld	$xr0, $sp, 208                  # 32-byte Folded Reload
 	xvfmul.d	$xr0, $xr1, $xr0
 	xvst	$xr0, $s0, 32
 	fld.d	$fa0, $sp, 48                   # 8-byte Folded Reload
@@ -1906,13 +1906,13 @@ mdct_init48:                            # @mdct_init48
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 192                  # 32-byte Folded Spill
+	xvst	$xr0, $sp, 176                  # 32-byte Folded Spill
 	fld.d	$fa0, $sp, 40                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 160                  # 32-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
 	fld.d	$fa0, $sp, 32                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
@@ -1922,26 +1922,26 @@ mdct_init48:                            # @mdct_init48
 	fmul.d	$fa0, $fs3, $fs4
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvld	$xr1, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr2, $sp, 160                  # 32-byte Folded Reload
-	xvinsve0.d	$xr1, $xr2, 1
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	xvld	$xr1, $sp, 176                  # 32-byte Folded Reload
+	vld	$vr2, $sp, 160                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr2, 16
 	xvld	$xr2, $sp, 128                  # 32-byte Folded Reload
-	xvinsve0.d	$xr1, $xr2, 2
-	xvinsve0.d	$xr1, $xr0, 3
-	xvld	$xr0, $sp, 224                  # 32-byte Folded Reload
+	vextrins.d	$vr2, $vr0, 16
+	xvpermi.q	$xr1, $xr2, 2
+	xvld	$xr0, $sp, 208                  # 32-byte Folded Reload
 	xvfmul.d	$xr0, $xr1, $xr0
 	xvst	$xr0, $s0, 64
 	fmul.d	$fa0, $fs3, $fs5
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 192                  # 32-byte Folded Spill
+	xvst	$xr0, $sp, 176                  # 32-byte Folded Spill
 	fmul.d	$fa0, $fs3, $fs6
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 160                  # 32-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
 	fmul.d	$fa0, $fs3, $fs7
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
@@ -1950,26 +1950,26 @@ mdct_init48:                            # @mdct_init48
 	fmul.d	$fa0, $fs3, $fs0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvld	$xr1, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr2, $sp, 160                  # 32-byte Folded Reload
-	xvinsve0.d	$xr1, $xr2, 1
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	xvld	$xr1, $sp, 176                  # 32-byte Folded Reload
+	vld	$vr2, $sp, 160                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr2, 16
 	xvld	$xr2, $sp, 128                  # 32-byte Folded Reload
-	xvinsve0.d	$xr1, $xr2, 2
-	xvinsve0.d	$xr1, $xr0, 3
-	xvld	$xr0, $sp, 224                  # 32-byte Folded Reload
+	vextrins.d	$vr2, $vr0, 16
+	xvpermi.q	$xr1, $xr2, 2
+	xvld	$xr0, $sp, 208                  # 32-byte Folded Reload
 	xvfmul.d	$xr0, $xr1, $xr0
 	xvst	$xr0, $s0, 96
 	fmul.d	$fa0, $fs3, $fs1
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 192                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 176                  # 16-byte Folded Spill
 	fmul.d	$fa0, $fs3, $fs2
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	vld	$vr1, $sp, 192                  # 16-byte Folded Reload
+	vld	$vr1, $sp, 176                  # 16-byte Folded Reload
 	vextrins.d	$vr1, $vr0, 16
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vfmul.d	$vr0, $vr1, $vr0
@@ -2006,7 +2006,7 @@ mdct_init48:                            # @mdct_init48
 	xvst	$xr2, $s0, 336
 	fdiv.d	$fa0, $fa3, $fa4
 	xvld	$xr1, $a1, 8
-	fst.d	$fa0, $sp, 376
+	fst.d	$fa0, $sp, 360
 	xvreplve0.d	$xr0, $xr3
 	fld.d	$fa2, $a1, 40
 	xvfdiv.d	$xr0, $xr1, $xr0
@@ -2020,9 +2020,9 @@ mdct_init48:                            # @mdct_init48
 	addi.d	$a6, $a1, 56
 	fdiv.d	$fa0, $fa1, $fa3
 	fst.d	$fa0, $a1, 48
-	addi.d	$a3, $sp, 368
+	addi.d	$a3, $sp, 352
 	addi.d	$a2, $a1, 120
-	addi.d	$a4, $sp, 384
+	addi.d	$a4, $sp, 368
 	ori	$a5, $zero, 120
 	.p2align	4, , 16
 .LBB1_3:                                # %for.body199
@@ -2103,7 +2103,7 @@ mdct_init48:                            # @mdct_init48
 	fst.d	$fa0, $a1, 160
 	fld.d	$fa0, $a2, 0
 	move	$s0, $zero
-	xvst	$xr4, $sp, 224                  # 32-byte Folded Spill
+	xvst	$xr4, $sp, 208                  # 32-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa4
 	fst.d	$fa0, $a1, 168
 	ori	$s2, $zero, 31
@@ -2113,7 +2113,7 @@ mdct_init48:                            # @mdct_init48
 	pcalau12i	$a1, %pc_hi20(.LCPI1_45)
 	fld.d	$fs1, $a1, %pc_lo12(.LCPI1_45)
 	addi.d	$s1, $a0, %pc_lo12(mm)
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_5:                                # %for.body239
@@ -2134,7 +2134,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.6:                                # %for.body239.1.preheader
 	move	$s2, $zero
 	ori	$s3, $zero, 29
-	addi.d	$s4, $sp, 256
+	addi.d	$s4, $sp, 240
 	ori	$s5, $zero, 248
 	.p2align	4, , 16
 .LBB1_7:                                # %for.body239.1
@@ -2158,7 +2158,7 @@ mdct_init48:                            # @mdct_init48
 	add.d	$a0, $s1, $s0
 	add.d	$s0, $a0, $s2
 	ori	$s1, $zero, 27
-	addi.d	$s2, $sp, 256
+	addi.d	$s2, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_9:                                # %for.body239.2
@@ -2181,7 +2181,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.10:                               # %for.body239.3.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 25
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_11:                               # %for.body239.3
@@ -2204,7 +2204,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.12:                               # %for.body239.4.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 23
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_13:                               # %for.body239.4
@@ -2227,7 +2227,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.14:                               # %for.body239.5.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 21
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_15:                               # %for.body239.5
@@ -2250,7 +2250,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.16:                               # %for.body239.6.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 19
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_17:                               # %for.body239.6
@@ -2273,7 +2273,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.18:                               # %for.body239.7.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 17
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_19:                               # %for.body239.7
@@ -2296,7 +2296,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.20:                               # %for.body239.8.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 15
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_21:                               # %for.body239.8
@@ -2319,7 +2319,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.22:                               # %for.body239.9.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 13
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_23:                               # %for.body239.9
@@ -2342,7 +2342,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.24:                               # %for.body239.10.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 11
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_25:                               # %for.body239.10
@@ -2365,7 +2365,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.26:                               # %for.body239.11.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 9
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_27:                               # %for.body239.11
@@ -2388,7 +2388,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.28:                               # %for.body239.12.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 7
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_29:                               # %for.body239.12
@@ -2411,7 +2411,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.30:                               # %for.body239.13.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 5
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_31:                               # %for.body239.13
@@ -2434,7 +2434,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.32:                               # %for.body239.14.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 3
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_33:                               # %for.body239.14
@@ -2457,7 +2457,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.34:                               # %for.body239.15.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 1
-	addi.d	$s3, $sp, 256
+	addi.d	$s3, $sp, 240
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_35:                               # %for.body239.15
@@ -2576,7 +2576,7 @@ mdct_init48:                            # @mdct_init48
 	fst.d	$fa0, $fp, 1120
 	fst.d	$fa1, $fp, 1104
 	xvld	$xr1, $fp, 0
-	xvld	$xr4, $sp, 224                  # 32-byte Folded Reload
+	xvld	$xr4, $sp, 208                  # 32-byte Folded Reload
 	fmul.d	$fa0, $fa4, $fa2
 	xvreplve0.d	$xr0, $xr0
 	xvld	$xr2, $fp, 288
@@ -2764,24 +2764,24 @@ mdct_init48:                            # @mdct_init48
 	fst.d	$fa0, $a0, 256
 	fmul.d	$fa0, $fa3, $fa2
 	fst.d	$fa0, $a0, 280
-	fld.d	$fs7, $sp, 504                  # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 512                  # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 520                  # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 528                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 536                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 544                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 552                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 560                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 568                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 576                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 584                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 592                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 600                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 608                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 616                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 624                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 632                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 640
+	fld.d	$fs7, $sp, 488                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 496                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 504                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 512                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 520                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 528                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 536                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 544                  # 8-byte Folded Reload
+	ld.d	$s6, $sp, 552                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 560                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 568                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 576                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 584                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 592                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 600                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 608                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 616                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 624
 	ret
 .Lfunc_end1:
 	.size	mdct_init48, .Lfunc_end1-mdct_init48

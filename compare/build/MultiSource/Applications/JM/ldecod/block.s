@@ -1971,112 +1971,187 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	vstelm.h	$vr22, $a2, 214, 6
 	vori.b	$vr23, $vr18, 0
 	vshuf.h	$vr23, $vr22, $vr24
+	vadd.w	$vr22, $vr21, $vr0
+	vsrai.w	$vr22, $vr22, 5
+	vmaxi.w	$vr22, $vr22, 0
+	vmin.w	$vr22, $vr22, $vr2
+	vstelm.h	$vr22, $a2, 152, 2
+	vstelm.h	$vr22, $a2, 184, 4
+	vstelm.h	$vr22, $a2, 216, 6
+	vadd.w	$vr24, $vr21, $vr9
+	vsrai.w	$vr24, $vr24, 5
+	vmaxi.w	$vr24, $vr24, 0
+	vmin.w	$vr24, $vr24, $vr2
+	vstelm.h	$vr24, $a2, 154, 2
+	vstelm.h	$vr24, $a2, 186, 4
+	vstelm.h	$vr24, $a2, 218, 6
+	vextrins.h	$vr22, $vr24, 16
+	vadd.w	$vr24, $vr21, $vr10
+	vsrai.w	$vr24, $vr24, 5
+	vmaxi.w	$vr24, $vr24, 0
+	vmin.w	$vr24, $vr24, $vr2
+	vstelm.h	$vr24, $a2, 156, 2
+	vstelm.h	$vr24, $a2, 188, 4
+	vstelm.h	$vr24, $a2, 220, 6
+	xvpermi.q	$xr23, $xr22, 2
+	vadd.w	$vr22, $vr21, $vr7
+	vsrai.w	$vr22, $vr22, 5
+	vmaxi.w	$vr22, $vr22, 0
+	vmin.w	$vr22, $vr22, $vr2
+	vstelm.h	$vr22, $a2, 158, 2
+	vstelm.h	$vr22, $a2, 190, 4
+	vstelm.h	$vr22, $a2, 222, 6
+	xvpickve2gr.w	$a3, $xr23, 0
+	xvpickve2gr.w	$a4, $xr23, 1
+	xvpickve2gr.w	$a5, $xr23, 2
+	xvpickve2gr.w	$a6, $xr23, 3
+	xvpickve2gr.w	$a7, $xr23, 4
+	vinsgr2vr.w	$vr23, $a3, 0
+	vinsgr2vr.w	$vr23, $a4, 1
+	vinsgr2vr.w	$vr23, $a5, 2
+	vinsgr2vr.w	$vr23, $a6, 3
+	xvpickve2gr.w	$a3, $xr24, 0
+	vinsgr2vr.w	$vr24, $a7, 0
+	vinsgr2vr.w	$vr24, $a3, 1
+	xvpermi.q	$xr23, $xr24, 2
+	xvpermi.d	$xr24, $xr23, 14
+	vpickve2gr.h	$a3, $vr24, 0
+	vpickve2gr.h	$a4, $vr24, 1
+	vpickve2gr.h	$a5, $vr24, 2
+	vinsgr2vr.h	$vr24, $a3, 0
+	vinsgr2vr.h	$vr24, $a4, 1
+	vinsgr2vr.h	$vr24, $a5, 2
+	vextrins.h	$vr24, $vr22, 48
+	vadd.w	$vr22, $vr21, $vr11
+	vsrai.w	$vr22, $vr22, 5
+	vmaxi.w	$vr22, $vr22, 0
+	vmin.w	$vr22, $vr22, $vr2
+	vstelm.h	$vr22, $a2, 160, 2
+	vstelm.h	$vr22, $a2, 192, 4
+	vstelm.h	$vr22, $a2, 224, 6
+	vpickve2gr.h	$a3, $vr23, 0
+	vpickve2gr.h	$a4, $vr23, 1
+	vpickve2gr.h	$a5, $vr23, 2
+	vpickve2gr.h	$a6, $vr23, 3
+	vpickve2gr.h	$a7, $vr23, 4
+	vpickve2gr.h	$t0, $vr23, 5
+	vpickve2gr.h	$t1, $vr23, 6
+	vpickve2gr.h	$t2, $vr23, 7
+	vinsgr2vr.h	$vr23, $a3, 0
+	vinsgr2vr.h	$vr23, $a4, 1
+	vinsgr2vr.h	$vr23, $a5, 2
+	vinsgr2vr.h	$vr23, $a6, 3
+	vinsgr2vr.h	$vr23, $a7, 4
+	vinsgr2vr.h	$vr23, $t0, 5
+	vinsgr2vr.h	$vr23, $t1, 6
+	vinsgr2vr.h	$vr23, $t2, 7
+	xvpermi.q	$xr23, $xr24, 2
+	vadd.w	$vr24, $vr21, $vr12
+	vsrai.w	$vr24, $vr24, 5
+	vmaxi.w	$vr24, $vr24, 0
+	vmin.w	$vr24, $vr24, $vr2
+	vstelm.h	$vr24, $a2, 162, 2
+	vstelm.h	$vr24, $a2, 194, 4
+	vstelm.h	$vr24, $a2, 226, 6
+	xvpickve2gr.d	$a3, $xr23, 0
+	xvpickve2gr.d	$a4, $xr23, 1
+	xvpickve2gr.d	$a5, $xr23, 2
+	vinsgr2vr.d	$vr23, $a3, 0
+	vinsgr2vr.d	$vr23, $a4, 1
+	xvpickve2gr.d	$a3, $xr22, 0
+	vinsgr2vr.d	$vr22, $a5, 0
+	vinsgr2vr.d	$vr22, $a3, 1
+	xvpermi.q	$xr23, $xr22, 2
+	xvpermi.d	$xr22, $xr23, 14
+	vpickve2gr.h	$a3, $vr22, 0
+	vpickve2gr.h	$a4, $vr22, 1
+	vpickve2gr.h	$a5, $vr22, 2
+	vpickve2gr.h	$a6, $vr22, 3
+	vpickve2gr.h	$a7, $vr22, 4
+	vinsgr2vr.h	$vr22, $a3, 0
+	vinsgr2vr.h	$vr22, $a4, 1
+	vinsgr2vr.h	$vr22, $a5, 2
+	vinsgr2vr.h	$vr22, $a6, 3
+	vinsgr2vr.h	$vr22, $a7, 4
+	vextrins.h	$vr22, $vr24, 80
+	vpickve2gr.h	$a3, $vr23, 0
+	vpickve2gr.h	$a4, $vr23, 1
+	vpickve2gr.h	$a5, $vr23, 2
+	vpickve2gr.h	$a6, $vr23, 3
+	vpickve2gr.h	$a7, $vr23, 4
+	vpickve2gr.h	$t0, $vr23, 5
+	vpickve2gr.h	$t1, $vr23, 6
+	vpickve2gr.h	$t2, $vr23, 7
+	vinsgr2vr.h	$vr23, $a3, 0
+	vinsgr2vr.h	$vr23, $a4, 1
+	vinsgr2vr.h	$vr23, $a5, 2
+	vinsgr2vr.h	$vr23, $a6, 3
+	vinsgr2vr.h	$vr23, $a7, 4
+	vinsgr2vr.h	$vr23, $t0, 5
+	vinsgr2vr.h	$vr23, $t1, 6
+	vinsgr2vr.h	$vr23, $t2, 7
+	xvpermi.q	$xr23, $xr22, 2
+	vadd.w	$vr22, $vr21, $vr13
+	vsrai.w	$vr22, $vr22, 5
+	vmaxi.w	$vr22, $vr22, 0
+	vmin.w	$vr22, $vr22, $vr2
+	vstelm.h	$vr22, $a2, 164, 2
+	vstelm.h	$vr22, $a2, 196, 4
+	vstelm.h	$vr22, $a2, 228, 6
+	xvpickve2gr.w	$a3, $xr23, 4
+	xvpickve2gr.w	$a4, $xr22, 0
+	vinsgr2vr.w	$vr22, $a3, 0
+	xvpickve2gr.w	$a3, $xr23, 5
+	vinsgr2vr.w	$vr22, $a3, 1
+	xvpickve2gr.w	$a3, $xr23, 6
+	vinsgr2vr.w	$vr22, $a3, 2
+	vinsgr2vr.w	$vr22, $a4, 3
+	xvpickve2gr.w	$a3, $xr23, 0
+	xvpickve2gr.w	$a4, $xr23, 1
+	xvpickve2gr.w	$a5, $xr23, 2
+	xvpickve2gr.w	$a6, $xr23, 3
+	vinsgr2vr.w	$vr23, $a3, 0
+	vinsgr2vr.w	$vr23, $a4, 1
+	vinsgr2vr.w	$vr23, $a5, 2
+	vinsgr2vr.w	$vr23, $a6, 3
+	xvpermi.q	$xr23, $xr22, 2
 	vpickve2gr.h	$a3, $vr23, 0
 	vinsgr2vr.h	$vr22, $a3, 0
 	vpickve2gr.h	$a3, $vr23, 1
-	xvreplgr2vr.h	$xr24, $a3
-	xvpermi.q	$xr24, $xr22, 18
-	xvextrins.h	$xr22, $xr24, 17
+	vinsgr2vr.h	$vr22, $a3, 1
 	vpickve2gr.h	$a3, $vr23, 2
-	xvreplgr2vr.h	$xr24, $a3
-	xvpermi.q	$xr24, $xr22, 18
-	xvextrins.h	$xr22, $xr24, 34
+	vinsgr2vr.h	$vr22, $a3, 2
 	vpickve2gr.h	$a3, $vr23, 3
-	xvreplgr2vr.h	$xr24, $a3
-	xvpermi.q	$xr24, $xr22, 18
-	xvextrins.h	$xr22, $xr24, 51
+	vinsgr2vr.h	$vr22, $a3, 3
 	vpickve2gr.h	$a3, $vr23, 4
-	xvreplgr2vr.h	$xr24, $a3
-	xvpermi.q	$xr24, $xr22, 18
-	xvextrins.h	$xr22, $xr24, 68
+	vinsgr2vr.h	$vr22, $a3, 4
 	vpickve2gr.h	$a3, $vr23, 5
-	xvreplgr2vr.h	$xr24, $a3
-	xvpermi.q	$xr24, $xr22, 18
-	xvextrins.h	$xr22, $xr24, 85
+	vinsgr2vr.h	$vr22, $a3, 5
 	vpickve2gr.h	$a3, $vr23, 6
-	xvreplgr2vr.h	$xr24, $a3
-	xvpermi.q	$xr24, $xr22, 18
-	xvextrins.h	$xr22, $xr24, 102
+	vinsgr2vr.h	$vr22, $a3, 6
 	vpickve2gr.h	$a3, $vr23, 7
-	xvreplgr2vr.h	$xr23, $a3
-	xvpermi.q	$xr23, $xr22, 18
-	xvextrins.h	$xr22, $xr23, 119
-	vadd.w	$vr23, $vr21, $vr0
-	vsrai.w	$vr23, $vr23, 5
-	vmaxi.w	$vr23, $vr23, 0
-	vmin.w	$vr23, $vr23, $vr2
-	vstelm.h	$vr23, $a2, 152, 2
-	vstelm.h	$vr23, $a2, 184, 4
-	vstelm.h	$vr23, $a2, 216, 6
+	vinsgr2vr.h	$vr22, $a3, 7
+	xvpermi.d	$xr23, $xr23, 14
 	vpickve2gr.h	$a3, $vr23, 0
-	xvreplgr2vr.h	$xr23, $a3
-	xvpermi.q	$xr23, $xr22, 48
-	xvextrins.h	$xr22, $xr23, 0
-	vadd.w	$vr23, $vr21, $vr9
-	vsrai.w	$vr23, $vr23, 5
-	vmaxi.w	$vr23, $vr23, 0
-	vmin.w	$vr23, $vr23, $vr2
-	vstelm.h	$vr23, $a2, 154, 2
-	vstelm.h	$vr23, $a2, 186, 4
-	vstelm.h	$vr23, $a2, 218, 6
-	vpickve2gr.h	$a3, $vr23, 0
-	xvreplgr2vr.h	$xr23, $a3
-	xvpermi.q	$xr23, $xr22, 48
-	xvextrins.h	$xr22, $xr23, 17
-	vadd.w	$vr23, $vr21, $vr10
-	vsrai.w	$vr23, $vr23, 5
-	vmaxi.w	$vr23, $vr23, 0
-	vmin.w	$vr23, $vr23, $vr2
-	vstelm.h	$vr23, $a2, 156, 2
-	vstelm.h	$vr23, $a2, 188, 4
-	vstelm.h	$vr23, $a2, 220, 6
-	xvinsve0.w	$xr22, $xr23, 5
-	vadd.w	$vr23, $vr21, $vr7
-	vsrai.w	$vr23, $vr23, 5
-	vmaxi.w	$vr23, $vr23, 0
-	vmin.w	$vr23, $vr23, $vr2
-	vstelm.h	$vr23, $a2, 158, 2
-	vstelm.h	$vr23, $a2, 190, 4
-	vstelm.h	$vr23, $a2, 222, 6
-	vpickve2gr.h	$a3, $vr23, 0
-	xvreplgr2vr.h	$xr23, $a3
-	xvpermi.q	$xr23, $xr22, 48
-	xvextrins.h	$xr22, $xr23, 51
-	vadd.w	$vr23, $vr21, $vr11
-	vsrai.w	$vr23, $vr23, 5
-	vmaxi.w	$vr23, $vr23, 0
-	vmin.w	$vr23, $vr23, $vr2
-	vstelm.h	$vr23, $a2, 160, 2
-	vstelm.h	$vr23, $a2, 192, 4
-	vstelm.h	$vr23, $a2, 224, 6
-	xvinsve0.d	$xr22, $xr23, 3
-	vadd.w	$vr23, $vr21, $vr12
-	vsrai.w	$vr23, $vr23, 5
-	vmaxi.w	$vr23, $vr23, 0
-	vmin.w	$vr23, $vr23, $vr2
-	vstelm.h	$vr23, $a2, 162, 2
-	vstelm.h	$vr23, $a2, 194, 4
-	vstelm.h	$vr23, $a2, 226, 6
-	vpickve2gr.h	$a3, $vr23, 0
-	xvreplgr2vr.h	$xr23, $a3
-	xvpermi.q	$xr23, $xr22, 48
-	xvextrins.h	$xr22, $xr23, 85
-	vadd.w	$vr23, $vr21, $vr13
-	vsrai.w	$vr23, $vr23, 5
-	vmaxi.w	$vr23, $vr23, 0
-	vmin.w	$vr23, $vr23, $vr2
-	vstelm.h	$vr23, $a2, 164, 2
-	vstelm.h	$vr23, $a2, 196, 4
-	vstelm.h	$vr23, $a2, 228, 6
+	vpickve2gr.h	$a4, $vr23, 1
+	vpickve2gr.h	$a5, $vr23, 2
+	vpickve2gr.h	$a6, $vr23, 3
+	vpickve2gr.h	$a7, $vr23, 4
+	vpickve2gr.h	$t0, $vr23, 5
+	vpickve2gr.h	$t1, $vr23, 6
+	vinsgr2vr.h	$vr23, $a3, 0
+	vinsgr2vr.h	$vr23, $a4, 1
+	vinsgr2vr.h	$vr23, $a5, 2
+	vinsgr2vr.h	$vr23, $a6, 3
+	vinsgr2vr.h	$vr23, $a7, 4
+	vinsgr2vr.h	$vr23, $t0, 5
 	vadd.w	$vr21, $vr21, $vr19
 	vsrai.w	$vr21, $vr21, 5
 	vmaxi.w	$vr21, $vr21, 0
 	vmin.w	$vr21, $vr21, $vr2
-	xvinsve0.w	$xr22, $xr23, 7
-	vpickve2gr.h	$a3, $vr21, 0
-	xvreplgr2vr.h	$xr23, $a3
-	xvpermi.q	$xr23, $xr22, 48
-	xvextrins.h	$xr22, $xr23, 119
+	vinsgr2vr.h	$vr23, $t1, 6
+	vextrins.h	$vr23, $vr21, 112
+	xvpermi.q	$xr22, $xr23, 2
 	xvst	$xr22, $a2, 104
 	vstelm.h	$vr21, $a2, 166, 2
 	vstelm.h	$vr21, $a2, 198, 4

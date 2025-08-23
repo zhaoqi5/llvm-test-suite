@@ -280,12 +280,12 @@ Crystal_div:                            # @Crystal_div
 	add.d	$t6, $t3, $t6
 	add.d	$t7, $t3, $t7
 	fldx.d	$fa3, $t3, $t4
-	fld.d	$fa4, $t5, 8
-	fld.d	$fa5, $t6, 16
-	fld.d	$fa6, $t7, 24
-	xvinsve0.d	$xr3, $xr4, 1
-	xvinsve0.d	$xr3, $xr5, 2
-	xvinsve0.d	$xr3, $xr6, 3
+	fld.d	$fa4, $t6, 16
+	fld.d	$fa5, $t7, 24
+	fld.d	$fa6, $t5, 8
+	vextrins.d	$vr4, $vr5, 16
+	vextrins.d	$vr3, $vr6, 16
+	xvpermi.q	$xr3, $xr4, 2
 	xvfrecip.d	$xr3, $xr3
 	xvst	$xr3, $t1, 0
 	xvaddi.du	$xr1, $xr1, 4

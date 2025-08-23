@@ -1760,56 +1760,58 @@ get_state:                              # @get_state
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a3, -16
 	vld	$vr3, $a3, 0
-	vpickve2gr.h	$a5, $vr2, 0
-	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr4, $a5, 0
-	vpickve2gr.h	$a5, $vr2, 1
-	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr4, $a5, 1
-	vpickve2gr.h	$a5, $vr2, 2
-	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr4, $a5, 2
-	vpickve2gr.h	$a5, $vr2, 3
-	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr4, $a5, 3
 	vpickve2gr.h	$a5, $vr2, 4
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr4, $a5, 4
+	vinsgr2vr.w	$vr4, $a5, 0
 	vpickve2gr.h	$a5, $vr2, 5
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr4, $a5, 5
+	vinsgr2vr.w	$vr4, $a5, 1
 	vpickve2gr.h	$a5, $vr2, 6
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr4, $a5, 6
+	vinsgr2vr.w	$vr4, $a5, 2
 	vpickve2gr.h	$a5, $vr2, 7
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr4, $a5, 7
-	vpickve2gr.h	$a5, $vr3, 0
+	vinsgr2vr.w	$vr4, $a5, 3
+	vpickve2gr.h	$a5, $vr2, 0
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 0
-	vpickve2gr.h	$a5, $vr3, 1
+	vinsgr2vr.w	$vr5, $a5, 0
+	vpickve2gr.h	$a5, $vr2, 1
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 1
-	vpickve2gr.h	$a5, $vr3, 2
+	vinsgr2vr.w	$vr5, $a5, 1
+	vpickve2gr.h	$a5, $vr2, 2
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 2
-	vpickve2gr.h	$a5, $vr3, 3
+	vinsgr2vr.w	$vr5, $a5, 2
+	vpickve2gr.h	$a5, $vr2, 3
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 3
+	vinsgr2vr.w	$vr5, $a5, 3
+	xvpermi.q	$xr5, $xr4, 2
 	vpickve2gr.h	$a5, $vr3, 4
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 4
+	vinsgr2vr.w	$vr2, $a5, 0
 	vpickve2gr.h	$a5, $vr3, 5
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 5
+	vinsgr2vr.w	$vr2, $a5, 1
 	vpickve2gr.h	$a5, $vr3, 6
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 6
+	vinsgr2vr.w	$vr2, $a5, 2
 	vpickve2gr.h	$a5, $vr3, 7
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr2, $a5, 7
-	xvadd.w	$xr0, $xr0, $xr4
-	xvadd.w	$xr1, $xr1, $xr2
+	vinsgr2vr.w	$vr2, $a5, 3
+	vpickve2gr.h	$a5, $vr3, 0
+	ext.w.h	$a5, $a5
+	vinsgr2vr.w	$vr4, $a5, 0
+	vpickve2gr.h	$a5, $vr3, 1
+	ext.w.h	$a5, $a5
+	vinsgr2vr.w	$vr4, $a5, 1
+	vpickve2gr.h	$a5, $vr3, 2
+	ext.w.h	$a5, $a5
+	vinsgr2vr.w	$vr4, $a5, 2
+	vpickve2gr.h	$a5, $vr3, 3
+	ext.w.h	$a5, $a5
+	vinsgr2vr.w	$vr4, $a5, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvadd.w	$xr0, $xr0, $xr5
+	xvadd.w	$xr1, $xr1, $xr4
 	addi.d	$a4, $a4, -16
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB10_7

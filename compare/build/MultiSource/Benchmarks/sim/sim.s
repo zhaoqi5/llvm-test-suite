@@ -4473,7 +4473,7 @@ diff:                                   # @diff
 	mul.d	$a4, $t3, $t2
 	sub.d	$t1, $a4, $s3
 	slli.d	$a4, $t2, 3
-	xvinsgr2vr.w	$xr4, $a4, 0
+	vinsgr2vr.w	$vr4, $a4, 0
 	xvreplgr2vr.w	$xr0, $a4
 	xvreplgr2vr.w	$xr1, $s3
 	pcalau12i	$a4, %pc_hi20(.LCPI8_0)

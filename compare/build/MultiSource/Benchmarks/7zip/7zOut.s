@@ -4960,24 +4960,26 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	vslli.w	$vr5, $vr5, 1
 	vaddi.wu	$vr4, $vr4, 2
 	vaddi.wu	$vr5, $vr5, 2
-	vpickve2gr.w	$a5, $vr4, 0
-	xvinsgr2vr.d	$xr6, $a5, 0
-	vpickve2gr.w	$a5, $vr4, 1
-	xvinsgr2vr.d	$xr6, $a5, 1
 	vpickve2gr.w	$a5, $vr4, 2
-	xvinsgr2vr.d	$xr6, $a5, 2
+	vinsgr2vr.d	$vr6, $a5, 0
 	vpickve2gr.w	$a5, $vr4, 3
-	xvinsgr2vr.d	$xr6, $a5, 3
-	vpickve2gr.w	$a5, $vr5, 0
-	xvinsgr2vr.d	$xr4, $a5, 0
-	vpickve2gr.w	$a5, $vr5, 1
-	xvinsgr2vr.d	$xr4, $a5, 1
+	vinsgr2vr.d	$vr6, $a5, 1
+	vpickve2gr.w	$a5, $vr4, 0
+	vinsgr2vr.d	$vr7, $a5, 0
+	vpickve2gr.w	$a5, $vr4, 1
+	vinsgr2vr.d	$vr7, $a5, 1
+	xvpermi.q	$xr7, $xr6, 2
 	vpickve2gr.w	$a5, $vr5, 2
-	xvinsgr2vr.d	$xr4, $a5, 2
+	vinsgr2vr.d	$vr4, $a5, 0
 	vpickve2gr.w	$a5, $vr5, 3
-	xvinsgr2vr.d	$xr4, $a5, 3
-	xvadd.d	$xr2, $xr2, $xr6
-	xvadd.d	$xr3, $xr3, $xr4
+	vinsgr2vr.d	$vr4, $a5, 1
+	vpickve2gr.w	$a5, $vr5, 0
+	vinsgr2vr.d	$vr6, $a5, 0
+	vpickve2gr.w	$a5, $vr5, 1
+	vinsgr2vr.d	$vr6, $a5, 1
+	xvpermi.q	$xr6, $xr4, 2
+	xvadd.d	$xr2, $xr2, $xr7
+	xvadd.d	$xr3, $xr3, $xr6
 	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, 64
 	bnez	$a4, .LBB23_116

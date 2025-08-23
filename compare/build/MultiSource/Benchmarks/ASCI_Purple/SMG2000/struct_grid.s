@@ -407,14 +407,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$s8, $t7, -72
 	ld.w	$ra, $t7, -48
 	ld.w	$s1, $t7, -24
-	xvinsgr2vr.w	$xr4, $s3, 0
-	xvinsgr2vr.w	$xr4, $s4, 1
-	xvinsgr2vr.w	$xr4, $s5, 2
-	xvinsgr2vr.w	$xr4, $s6, 3
-	xvinsgr2vr.w	$xr4, $s7, 4
-	xvinsgr2vr.w	$xr4, $s8, 5
-	xvinsgr2vr.w	$xr4, $ra, 6
-	xvinsgr2vr.w	$xr4, $s1, 7
+	vinsgr2vr.w	$vr4, $s7, 0
+	vinsgr2vr.w	$vr4, $s8, 1
+	vinsgr2vr.w	$vr4, $ra, 2
+	vinsgr2vr.w	$vr4, $s1, 3
+	vinsgr2vr.w	$vr5, $s3, 0
+	vinsgr2vr.w	$vr5, $s4, 1
+	vinsgr2vr.w	$vr5, $s5, 2
+	vinsgr2vr.w	$vr5, $s6, 3
+	xvpermi.q	$xr5, $xr4, 2
 	ld.w	$s1, $t7, 0
 	ld.w	$s3, $t7, 24
 	ld.w	$s4, $t7, 48
@@ -423,16 +424,17 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$s7, $t7, 120
 	ld.w	$s8, $t7, 144
 	ld.w	$ra, $t7, 168
-	xvinsgr2vr.w	$xr5, $s1, 0
-	xvinsgr2vr.w	$xr5, $s3, 1
-	xvinsgr2vr.w	$xr5, $s4, 2
-	xvinsgr2vr.w	$xr5, $s5, 3
-	xvinsgr2vr.w	$xr5, $s6, 4
-	xvinsgr2vr.w	$xr5, $s7, 5
-	xvinsgr2vr.w	$xr5, $s8, 6
-	xvinsgr2vr.w	$xr5, $ra, 7
-	xvmin.w	$xr0, $xr0, $xr4
-	xvmin.w	$xr1, $xr1, $xr5
+	vinsgr2vr.w	$vr4, $s6, 0
+	vinsgr2vr.w	$vr4, $s7, 1
+	vinsgr2vr.w	$vr4, $s8, 2
+	vinsgr2vr.w	$vr4, $ra, 3
+	vinsgr2vr.w	$vr6, $s1, 0
+	vinsgr2vr.w	$vr6, $s3, 1
+	vinsgr2vr.w	$vr6, $s4, 2
+	vinsgr2vr.w	$vr6, $s5, 3
+	xvpermi.q	$xr6, $xr4, 2
+	xvmin.w	$xr0, $xr0, $xr5
+	xvmin.w	$xr1, $xr1, $xr6
 	ld.w	$s1, $t7, -180
 	ld.w	$s3, $t7, -156
 	ld.w	$s4, $t7, -132
@@ -441,14 +443,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$s7, $t7, -60
 	ld.w	$s8, $t7, -36
 	ld.w	$ra, $t7, -12
-	xvinsgr2vr.w	$xr4, $s1, 0
-	xvinsgr2vr.w	$xr4, $s3, 1
-	xvinsgr2vr.w	$xr4, $s4, 2
-	xvinsgr2vr.w	$xr4, $s5, 3
-	xvinsgr2vr.w	$xr4, $s6, 4
-	xvinsgr2vr.w	$xr4, $s7, 5
-	xvinsgr2vr.w	$xr4, $s8, 6
-	xvinsgr2vr.w	$xr4, $ra, 7
+	vinsgr2vr.w	$vr4, $s6, 0
+	vinsgr2vr.w	$vr4, $s7, 1
+	vinsgr2vr.w	$vr4, $s8, 2
+	vinsgr2vr.w	$vr4, $ra, 3
+	vinsgr2vr.w	$vr5, $s1, 0
+	vinsgr2vr.w	$vr5, $s3, 1
+	vinsgr2vr.w	$vr5, $s4, 2
+	vinsgr2vr.w	$vr5, $s5, 3
+	xvpermi.q	$xr5, $xr4, 2
 	ld.w	$s1, $t7, 12
 	ld.w	$s3, $t7, 36
 	ld.w	$s4, $t7, 60
@@ -457,16 +460,17 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$s7, $t7, 132
 	ld.w	$s8, $t7, 156
 	ld.w	$ra, $t7, 180
-	xvinsgr2vr.w	$xr5, $s1, 0
-	xvinsgr2vr.w	$xr5, $s3, 1
-	xvinsgr2vr.w	$xr5, $s4, 2
-	xvinsgr2vr.w	$xr5, $s5, 3
-	xvinsgr2vr.w	$xr5, $s6, 4
-	xvinsgr2vr.w	$xr5, $s7, 5
-	xvinsgr2vr.w	$xr5, $s8, 6
-	xvinsgr2vr.w	$xr5, $ra, 7
-	xvmax.w	$xr2, $xr2, $xr4
-	xvmax.w	$xr3, $xr3, $xr5
+	vinsgr2vr.w	$vr4, $s6, 0
+	vinsgr2vr.w	$vr4, $s7, 1
+	vinsgr2vr.w	$vr4, $s8, 2
+	vinsgr2vr.w	$vr4, $ra, 3
+	vinsgr2vr.w	$vr6, $s1, 0
+	vinsgr2vr.w	$vr6, $s3, 1
+	vinsgr2vr.w	$vr6, $s4, 2
+	vinsgr2vr.w	$vr6, $s5, 3
+	xvpermi.q	$xr6, $xr4, 2
+	xvmax.w	$xr2, $xr2, $xr5
+	xvmax.w	$xr3, $xr3, $xr6
 	addi.d	$t8, $t8, -16
 	addi.d	$t7, $t7, 384
 	bnez	$t8, .LBB8_10
@@ -669,14 +673,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a4, 36
 	ld.w	$t3, $a4, 60
 	ld.w	$t4, $a4, 84
-	xvinsgr2vr.w	$xr1, $a5, 0
-	xvinsgr2vr.w	$xr1, $a6, 1
-	xvinsgr2vr.w	$xr1, $a7, 2
-	xvinsgr2vr.w	$xr1, $t0, 3
-	xvinsgr2vr.w	$xr1, $t1, 4
-	xvinsgr2vr.w	$xr1, $t2, 5
-	xvinsgr2vr.w	$xr1, $t3, 6
-	xvinsgr2vr.w	$xr1, $t4, 7
+	vinsgr2vr.w	$vr1, $t1, 0
+	vinsgr2vr.w	$vr1, $t2, 1
+	vinsgr2vr.w	$vr1, $t3, 2
+	vinsgr2vr.w	$vr1, $t4, 3
+	vinsgr2vr.w	$vr2, $a5, 0
+	vinsgr2vr.w	$vr2, $a6, 1
+	vinsgr2vr.w	$vr2, $a7, 2
+	vinsgr2vr.w	$vr2, $t0, 3
+	xvpermi.q	$xr2, $xr1, 2
 	ld.w	$a5, $a4, -96
 	ld.w	$a6, $a4, -72
 	ld.w	$a7, $a4, -48
@@ -685,15 +690,16 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a4, 24
 	ld.w	$t3, $a4, 48
 	ld.w	$t4, $a4, 72
-	xvinsgr2vr.w	$xr2, $a5, 0
-	xvinsgr2vr.w	$xr2, $a6, 1
-	xvinsgr2vr.w	$xr2, $a7, 2
-	xvinsgr2vr.w	$xr2, $t0, 3
-	xvinsgr2vr.w	$xr2, $t1, 4
-	xvinsgr2vr.w	$xr2, $t2, 5
-	xvinsgr2vr.w	$xr2, $t3, 6
-	xvinsgr2vr.w	$xr2, $t4, 7
-	xvsub.w	$xr1, $xr1, $xr2
+	vinsgr2vr.w	$vr1, $t1, 0
+	vinsgr2vr.w	$vr1, $t2, 1
+	vinsgr2vr.w	$vr1, $t3, 2
+	vinsgr2vr.w	$vr1, $t4, 3
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr3, $a6, 1
+	vinsgr2vr.w	$vr3, $a7, 2
+	vinsgr2vr.w	$vr3, $t0, 3
+	xvpermi.q	$xr3, $xr1, 2
+	xvsub.w	$xr1, $xr2, $xr3
 	xvmaxi.w	$xr1, $xr1, -1
 	xvaddi.wu	$xr1, $xr1, 1
 	ld.w	$a5, $a4, -80
@@ -704,14 +710,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a4, 40
 	ld.w	$t3, $a4, 64
 	ld.w	$t4, $a4, 88
-	xvinsgr2vr.w	$xr2, $a5, 0
-	xvinsgr2vr.w	$xr2, $a6, 1
-	xvinsgr2vr.w	$xr2, $a7, 2
-	xvinsgr2vr.w	$xr2, $t0, 3
-	xvinsgr2vr.w	$xr2, $t1, 4
-	xvinsgr2vr.w	$xr2, $t2, 5
-	xvinsgr2vr.w	$xr2, $t3, 6
-	xvinsgr2vr.w	$xr2, $t4, 7
+	vinsgr2vr.w	$vr2, $t1, 0
+	vinsgr2vr.w	$vr2, $t2, 1
+	vinsgr2vr.w	$vr2, $t3, 2
+	vinsgr2vr.w	$vr2, $t4, 3
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr3, $a6, 1
+	vinsgr2vr.w	$vr3, $a7, 2
+	vinsgr2vr.w	$vr3, $t0, 3
+	xvpermi.q	$xr3, $xr2, 2
 	ld.w	$a5, $a4, -92
 	ld.w	$a6, $a4, -68
 	ld.w	$a7, $a4, -44
@@ -720,15 +727,16 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a4, 28
 	ld.w	$t3, $a4, 52
 	ld.w	$t4, $a4, 76
-	xvinsgr2vr.w	$xr3, $a5, 0
-	xvinsgr2vr.w	$xr3, $a6, 1
-	xvinsgr2vr.w	$xr3, $a7, 2
-	xvinsgr2vr.w	$xr3, $t0, 3
-	xvinsgr2vr.w	$xr3, $t1, 4
-	xvinsgr2vr.w	$xr3, $t2, 5
-	xvinsgr2vr.w	$xr3, $t3, 6
-	xvinsgr2vr.w	$xr3, $t4, 7
-	xvsub.w	$xr2, $xr2, $xr3
+	vinsgr2vr.w	$vr2, $t1, 0
+	vinsgr2vr.w	$vr2, $t2, 1
+	vinsgr2vr.w	$vr2, $t3, 2
+	vinsgr2vr.w	$vr2, $t4, 3
+	vinsgr2vr.w	$vr4, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 1
+	vinsgr2vr.w	$vr4, $a7, 2
+	vinsgr2vr.w	$vr4, $t0, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvsub.w	$xr2, $xr3, $xr4
 	xvmaxi.w	$xr2, $xr2, -1
 	xvaddi.wu	$xr2, $xr2, 1
 	xvmul.w	$xr1, $xr2, $xr1
@@ -740,14 +748,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a4, 44
 	ld.w	$t3, $a4, 68
 	ld.w	$t4, $a4, 92
-	xvinsgr2vr.w	$xr2, $a5, 0
-	xvinsgr2vr.w	$xr2, $a6, 1
-	xvinsgr2vr.w	$xr2, $a7, 2
-	xvinsgr2vr.w	$xr2, $t0, 3
-	xvinsgr2vr.w	$xr2, $t1, 4
-	xvinsgr2vr.w	$xr2, $t2, 5
-	xvinsgr2vr.w	$xr2, $t3, 6
-	xvinsgr2vr.w	$xr2, $t4, 7
+	vinsgr2vr.w	$vr2, $t1, 0
+	vinsgr2vr.w	$vr2, $t2, 1
+	vinsgr2vr.w	$vr2, $t3, 2
+	vinsgr2vr.w	$vr2, $t4, 3
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr3, $a6, 1
+	vinsgr2vr.w	$vr3, $a7, 2
+	vinsgr2vr.w	$vr3, $t0, 3
+	xvpermi.q	$xr3, $xr2, 2
 	ld.w	$a5, $a4, -88
 	ld.w	$a6, $a4, -64
 	ld.w	$a7, $a4, -40
@@ -756,15 +765,16 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a4, 32
 	ld.w	$t3, $a4, 56
 	ld.w	$t4, $a4, 80
-	xvinsgr2vr.w	$xr3, $a5, 0
-	xvinsgr2vr.w	$xr3, $a6, 1
-	xvinsgr2vr.w	$xr3, $a7, 2
-	xvinsgr2vr.w	$xr3, $t0, 3
-	xvinsgr2vr.w	$xr3, $t1, 4
-	xvinsgr2vr.w	$xr3, $t2, 5
-	xvinsgr2vr.w	$xr3, $t3, 6
-	xvinsgr2vr.w	$xr3, $t4, 7
-	xvsub.w	$xr2, $xr2, $xr3
+	vinsgr2vr.w	$vr2, $t1, 0
+	vinsgr2vr.w	$vr2, $t2, 1
+	vinsgr2vr.w	$vr2, $t3, 2
+	vinsgr2vr.w	$vr2, $t4, 3
+	vinsgr2vr.w	$vr4, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 1
+	vinsgr2vr.w	$vr4, $a7, 2
+	vinsgr2vr.w	$vr4, $t0, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvsub.w	$xr2, $xr3, $xr4
 	xvmaxi.w	$xr2, $xr2, -1
 	xvaddi.wu	$xr2, $xr2, 1
 	xvmadd.w	$xr0, $xr1, $xr2
@@ -802,14 +812,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, -60
 	ld.w	$t3, $a3, -36
 	ld.w	$t4, $a3, -12
-	xvinsgr2vr.w	$xr2, $a5, 0
-	xvinsgr2vr.w	$xr2, $a6, 1
-	xvinsgr2vr.w	$xr2, $a7, 2
-	xvinsgr2vr.w	$xr2, $t0, 3
-	xvinsgr2vr.w	$xr2, $t1, 4
-	xvinsgr2vr.w	$xr2, $t2, 5
-	xvinsgr2vr.w	$xr2, $t3, 6
-	xvinsgr2vr.w	$xr2, $t4, 7
+	vinsgr2vr.w	$vr3, $t1, 0
+	vinsgr2vr.w	$vr3, $t2, 1
+	vinsgr2vr.w	$vr3, $t3, 2
+	vinsgr2vr.w	$vr3, $t4, 3
+	vinsgr2vr.w	$vr2, $a5, 0
+	vinsgr2vr.w	$vr2, $a6, 1
+	vinsgr2vr.w	$vr2, $a7, 2
+	vinsgr2vr.w	$vr2, $t0, 3
+	xvpermi.q	$xr2, $xr3, 2
 	ld.w	$a5, $a3, 12
 	ld.w	$a6, $a3, 36
 	ld.w	$a7, $a3, 60
@@ -818,14 +829,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, 132
 	ld.w	$t3, $a3, 156
 	ld.w	$t4, $a3, 180
-	xvinsgr2vr.w	$xr3, $a5, 0
-	xvinsgr2vr.w	$xr3, $a6, 1
-	xvinsgr2vr.w	$xr3, $a7, 2
-	xvinsgr2vr.w	$xr3, $t0, 3
-	xvinsgr2vr.w	$xr3, $t1, 4
-	xvinsgr2vr.w	$xr3, $t2, 5
-	xvinsgr2vr.w	$xr3, $t3, 6
-	xvinsgr2vr.w	$xr3, $t4, 7
+	vinsgr2vr.w	$vr3, $t1, 0
+	vinsgr2vr.w	$vr3, $t2, 1
+	vinsgr2vr.w	$vr3, $t3, 2
+	vinsgr2vr.w	$vr3, $t4, 3
+	vinsgr2vr.w	$vr4, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 1
+	vinsgr2vr.w	$vr4, $a7, 2
+	vinsgr2vr.w	$vr4, $t0, 3
+	xvpermi.q	$xr4, $xr3, 2
 	ld.w	$a5, $a3, -192
 	ld.w	$a6, $a3, -168
 	ld.w	$a7, $a3, -144
@@ -834,14 +846,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, -72
 	ld.w	$t3, $a3, -48
 	ld.w	$t4, $a3, -24
-	xvinsgr2vr.w	$xr4, $a5, 0
-	xvinsgr2vr.w	$xr4, $a6, 1
-	xvinsgr2vr.w	$xr4, $a7, 2
-	xvinsgr2vr.w	$xr4, $t0, 3
-	xvinsgr2vr.w	$xr4, $t1, 4
-	xvinsgr2vr.w	$xr4, $t2, 5
-	xvinsgr2vr.w	$xr4, $t3, 6
-	xvinsgr2vr.w	$xr4, $t4, 7
+	vinsgr2vr.w	$vr3, $t1, 0
+	vinsgr2vr.w	$vr3, $t2, 1
+	vinsgr2vr.w	$vr3, $t3, 2
+	vinsgr2vr.w	$vr3, $t4, 3
+	vinsgr2vr.w	$vr5, $a5, 0
+	vinsgr2vr.w	$vr5, $a6, 1
+	vinsgr2vr.w	$vr5, $a7, 2
+	vinsgr2vr.w	$vr5, $t0, 3
+	xvpermi.q	$xr5, $xr3, 2
 	ld.w	$a5, $a3, 0
 	ld.w	$a6, $a3, 24
 	ld.w	$a7, $a3, 48
@@ -850,16 +863,17 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, 120
 	ld.w	$t3, $a3, 144
 	ld.w	$t4, $a3, 168
-	xvinsgr2vr.w	$xr5, $a5, 0
-	xvinsgr2vr.w	$xr5, $a6, 1
-	xvinsgr2vr.w	$xr5, $a7, 2
-	xvinsgr2vr.w	$xr5, $t0, 3
-	xvinsgr2vr.w	$xr5, $t1, 4
-	xvinsgr2vr.w	$xr5, $t2, 5
-	xvinsgr2vr.w	$xr5, $t3, 6
-	xvinsgr2vr.w	$xr5, $t4, 7
-	xvsub.w	$xr2, $xr2, $xr4
-	xvsub.w	$xr3, $xr3, $xr5
+	vinsgr2vr.w	$vr3, $t1, 0
+	vinsgr2vr.w	$vr3, $t2, 1
+	vinsgr2vr.w	$vr3, $t3, 2
+	vinsgr2vr.w	$vr3, $t4, 3
+	vinsgr2vr.w	$vr6, $a5, 0
+	vinsgr2vr.w	$vr6, $a6, 1
+	vinsgr2vr.w	$vr6, $a7, 2
+	vinsgr2vr.w	$vr6, $t0, 3
+	xvpermi.q	$xr6, $xr3, 2
+	xvsub.w	$xr2, $xr2, $xr5
+	xvsub.w	$xr3, $xr4, $xr6
 	xvmaxi.w	$xr2, $xr2, -1
 	xvmaxi.w	$xr3, $xr3, -1
 	xvaddi.wu	$xr2, $xr2, 1
@@ -872,14 +886,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, -56
 	ld.w	$t3, $a3, -32
 	ld.w	$t4, $a3, -8
-	xvinsgr2vr.w	$xr3, $a5, 0
-	xvinsgr2vr.w	$xr3, $a6, 1
-	xvinsgr2vr.w	$xr3, $a7, 2
-	xvinsgr2vr.w	$xr3, $t0, 3
-	xvinsgr2vr.w	$xr3, $t1, 4
-	xvinsgr2vr.w	$xr3, $t2, 5
-	xvinsgr2vr.w	$xr3, $t3, 6
-	xvinsgr2vr.w	$xr3, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr3, $a6, 1
+	vinsgr2vr.w	$vr3, $a7, 2
+	vinsgr2vr.w	$vr3, $t0, 3
+	xvpermi.q	$xr3, $xr5, 2
 	ld.w	$a5, $a3, 16
 	ld.w	$a6, $a3, 40
 	ld.w	$a7, $a3, 64
@@ -888,14 +903,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, 136
 	ld.w	$t3, $a3, 160
 	ld.w	$t4, $a3, 184
-	xvinsgr2vr.w	$xr5, $a5, 0
-	xvinsgr2vr.w	$xr5, $a6, 1
-	xvinsgr2vr.w	$xr5, $a7, 2
-	xvinsgr2vr.w	$xr5, $t0, 3
-	xvinsgr2vr.w	$xr5, $t1, 4
-	xvinsgr2vr.w	$xr5, $t2, 5
-	xvinsgr2vr.w	$xr5, $t3, 6
-	xvinsgr2vr.w	$xr5, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr6, $a5, 0
+	vinsgr2vr.w	$vr6, $a6, 1
+	vinsgr2vr.w	$vr6, $a7, 2
+	vinsgr2vr.w	$vr6, $t0, 3
+	xvpermi.q	$xr6, $xr5, 2
 	ld.w	$a5, $a3, -188
 	ld.w	$a6, $a3, -164
 	ld.w	$a7, $a3, -140
@@ -904,14 +920,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, -68
 	ld.w	$t3, $a3, -44
 	ld.w	$t4, $a3, -20
-	xvinsgr2vr.w	$xr6, $a5, 0
-	xvinsgr2vr.w	$xr6, $a6, 1
-	xvinsgr2vr.w	$xr6, $a7, 2
-	xvinsgr2vr.w	$xr6, $t0, 3
-	xvinsgr2vr.w	$xr6, $t1, 4
-	xvinsgr2vr.w	$xr6, $t2, 5
-	xvinsgr2vr.w	$xr6, $t3, 6
-	xvinsgr2vr.w	$xr6, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr7, $a5, 0
+	vinsgr2vr.w	$vr7, $a6, 1
+	vinsgr2vr.w	$vr7, $a7, 2
+	vinsgr2vr.w	$vr7, $t0, 3
+	xvpermi.q	$xr7, $xr5, 2
 	ld.w	$a5, $a3, 4
 	ld.w	$a6, $a3, 28
 	ld.w	$a7, $a3, 52
@@ -920,16 +937,17 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, 124
 	ld.w	$t3, $a3, 148
 	ld.w	$t4, $a3, 172
-	xvinsgr2vr.w	$xr7, $a5, 0
-	xvinsgr2vr.w	$xr7, $a6, 1
-	xvinsgr2vr.w	$xr7, $a7, 2
-	xvinsgr2vr.w	$xr7, $t0, 3
-	xvinsgr2vr.w	$xr7, $t1, 4
-	xvinsgr2vr.w	$xr7, $t2, 5
-	xvinsgr2vr.w	$xr7, $t3, 6
-	xvinsgr2vr.w	$xr7, $t4, 7
-	xvsub.w	$xr3, $xr3, $xr6
-	xvsub.w	$xr5, $xr5, $xr7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr8, $a5, 0
+	vinsgr2vr.w	$vr8, $a6, 1
+	vinsgr2vr.w	$vr8, $a7, 2
+	vinsgr2vr.w	$vr8, $t0, 3
+	xvpermi.q	$xr8, $xr5, 2
+	xvsub.w	$xr3, $xr3, $xr7
+	xvsub.w	$xr5, $xr6, $xr8
 	xvmaxi.w	$xr3, $xr3, -1
 	xvmaxi.w	$xr5, $xr5, -1
 	xvaddi.wu	$xr3, $xr3, 1
@@ -944,14 +962,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, -52
 	ld.w	$t3, $a3, -28
 	ld.w	$t4, $a3, -4
-	xvinsgr2vr.w	$xr4, $a5, 0
-	xvinsgr2vr.w	$xr4, $a6, 1
-	xvinsgr2vr.w	$xr4, $a7, 2
-	xvinsgr2vr.w	$xr4, $t0, 3
-	xvinsgr2vr.w	$xr4, $t1, 4
-	xvinsgr2vr.w	$xr4, $t2, 5
-	xvinsgr2vr.w	$xr4, $t3, 6
-	xvinsgr2vr.w	$xr4, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr4, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 1
+	vinsgr2vr.w	$vr4, $a7, 2
+	vinsgr2vr.w	$vr4, $t0, 3
+	xvpermi.q	$xr4, $xr5, 2
 	ld.w	$a5, $a3, 20
 	ld.w	$a6, $a3, 44
 	ld.w	$a7, $a3, 68
@@ -960,14 +979,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, 140
 	ld.w	$t3, $a3, 164
 	ld.w	$t4, $a3, 188
-	xvinsgr2vr.w	$xr5, $a5, 0
-	xvinsgr2vr.w	$xr5, $a6, 1
-	xvinsgr2vr.w	$xr5, $a7, 2
-	xvinsgr2vr.w	$xr5, $t0, 3
-	xvinsgr2vr.w	$xr5, $t1, 4
-	xvinsgr2vr.w	$xr5, $t2, 5
-	xvinsgr2vr.w	$xr5, $t3, 6
-	xvinsgr2vr.w	$xr5, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr6, $a5, 0
+	vinsgr2vr.w	$vr6, $a6, 1
+	vinsgr2vr.w	$vr6, $a7, 2
+	vinsgr2vr.w	$vr6, $t0, 3
+	xvpermi.q	$xr6, $xr5, 2
 	ld.w	$a5, $a3, -184
 	ld.w	$a6, $a3, -160
 	ld.w	$a7, $a3, -136
@@ -976,14 +996,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, -64
 	ld.w	$t3, $a3, -40
 	ld.w	$t4, $a3, -16
-	xvinsgr2vr.w	$xr6, $a5, 0
-	xvinsgr2vr.w	$xr6, $a6, 1
-	xvinsgr2vr.w	$xr6, $a7, 2
-	xvinsgr2vr.w	$xr6, $t0, 3
-	xvinsgr2vr.w	$xr6, $t1, 4
-	xvinsgr2vr.w	$xr6, $t2, 5
-	xvinsgr2vr.w	$xr6, $t3, 6
-	xvinsgr2vr.w	$xr6, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr7, $a5, 0
+	vinsgr2vr.w	$vr7, $a6, 1
+	vinsgr2vr.w	$vr7, $a7, 2
+	vinsgr2vr.w	$vr7, $t0, 3
+	xvpermi.q	$xr7, $xr5, 2
 	ld.w	$a5, $a3, 8
 	ld.w	$a6, $a3, 32
 	ld.w	$a7, $a3, 56
@@ -992,16 +1013,17 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, 128
 	ld.w	$t3, $a3, 152
 	ld.w	$t4, $a3, 176
-	xvinsgr2vr.w	$xr7, $a5, 0
-	xvinsgr2vr.w	$xr7, $a6, 1
-	xvinsgr2vr.w	$xr7, $a7, 2
-	xvinsgr2vr.w	$xr7, $t0, 3
-	xvinsgr2vr.w	$xr7, $t1, 4
-	xvinsgr2vr.w	$xr7, $t2, 5
-	xvinsgr2vr.w	$xr7, $t3, 6
-	xvinsgr2vr.w	$xr7, $t4, 7
-	xvsub.w	$xr4, $xr4, $xr6
-	xvsub.w	$xr5, $xr5, $xr7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr8, $a5, 0
+	vinsgr2vr.w	$vr8, $a6, 1
+	vinsgr2vr.w	$vr8, $a7, 2
+	vinsgr2vr.w	$vr8, $t0, 3
+	xvpermi.q	$xr8, $xr5, 2
+	xvsub.w	$xr4, $xr4, $xr7
+	xvsub.w	$xr5, $xr6, $xr8
 	xvmaxi.w	$xr4, $xr4, -1
 	xvmaxi.w	$xr5, $xr5, -1
 	xvaddi.wu	$xr4, $xr4, 1
@@ -1175,14 +1197,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a4, 36
 	ld.w	$t3, $a4, 60
 	ld.w	$t4, $a4, 84
-	xvinsgr2vr.w	$xr1, $a5, 0
-	xvinsgr2vr.w	$xr1, $a6, 1
-	xvinsgr2vr.w	$xr1, $a7, 2
-	xvinsgr2vr.w	$xr1, $t0, 3
-	xvinsgr2vr.w	$xr1, $t1, 4
-	xvinsgr2vr.w	$xr1, $t2, 5
-	xvinsgr2vr.w	$xr1, $t3, 6
-	xvinsgr2vr.w	$xr1, $t4, 7
+	vinsgr2vr.w	$vr1, $t1, 0
+	vinsgr2vr.w	$vr1, $t2, 1
+	vinsgr2vr.w	$vr1, $t3, 2
+	vinsgr2vr.w	$vr1, $t4, 3
+	vinsgr2vr.w	$vr2, $a5, 0
+	vinsgr2vr.w	$vr2, $a6, 1
+	vinsgr2vr.w	$vr2, $a7, 2
+	vinsgr2vr.w	$vr2, $t0, 3
+	xvpermi.q	$xr2, $xr1, 2
 	ld.w	$a5, $a4, -96
 	ld.w	$a6, $a4, -72
 	ld.w	$a7, $a4, -48
@@ -1191,15 +1214,16 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a4, 24
 	ld.w	$t3, $a4, 48
 	ld.w	$t4, $a4, 72
-	xvinsgr2vr.w	$xr2, $a5, 0
-	xvinsgr2vr.w	$xr2, $a6, 1
-	xvinsgr2vr.w	$xr2, $a7, 2
-	xvinsgr2vr.w	$xr2, $t0, 3
-	xvinsgr2vr.w	$xr2, $t1, 4
-	xvinsgr2vr.w	$xr2, $t2, 5
-	xvinsgr2vr.w	$xr2, $t3, 6
-	xvinsgr2vr.w	$xr2, $t4, 7
-	xvsub.w	$xr1, $xr1, $xr2
+	vinsgr2vr.w	$vr1, $t1, 0
+	vinsgr2vr.w	$vr1, $t2, 1
+	vinsgr2vr.w	$vr1, $t3, 2
+	vinsgr2vr.w	$vr1, $t4, 3
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr3, $a6, 1
+	vinsgr2vr.w	$vr3, $a7, 2
+	vinsgr2vr.w	$vr3, $t0, 3
+	xvpermi.q	$xr3, $xr1, 2
+	xvsub.w	$xr1, $xr2, $xr3
 	xvmaxi.w	$xr1, $xr1, -1
 	xvaddi.wu	$xr1, $xr1, 1
 	ld.w	$a5, $a4, -80
@@ -1210,14 +1234,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a4, 40
 	ld.w	$t3, $a4, 64
 	ld.w	$t4, $a4, 88
-	xvinsgr2vr.w	$xr2, $a5, 0
-	xvinsgr2vr.w	$xr2, $a6, 1
-	xvinsgr2vr.w	$xr2, $a7, 2
-	xvinsgr2vr.w	$xr2, $t0, 3
-	xvinsgr2vr.w	$xr2, $t1, 4
-	xvinsgr2vr.w	$xr2, $t2, 5
-	xvinsgr2vr.w	$xr2, $t3, 6
-	xvinsgr2vr.w	$xr2, $t4, 7
+	vinsgr2vr.w	$vr2, $t1, 0
+	vinsgr2vr.w	$vr2, $t2, 1
+	vinsgr2vr.w	$vr2, $t3, 2
+	vinsgr2vr.w	$vr2, $t4, 3
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr3, $a6, 1
+	vinsgr2vr.w	$vr3, $a7, 2
+	vinsgr2vr.w	$vr3, $t0, 3
+	xvpermi.q	$xr3, $xr2, 2
 	ld.w	$a5, $a4, -92
 	ld.w	$a6, $a4, -68
 	ld.w	$a7, $a4, -44
@@ -1226,15 +1251,16 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a4, 28
 	ld.w	$t3, $a4, 52
 	ld.w	$t4, $a4, 76
-	xvinsgr2vr.w	$xr3, $a5, 0
-	xvinsgr2vr.w	$xr3, $a6, 1
-	xvinsgr2vr.w	$xr3, $a7, 2
-	xvinsgr2vr.w	$xr3, $t0, 3
-	xvinsgr2vr.w	$xr3, $t1, 4
-	xvinsgr2vr.w	$xr3, $t2, 5
-	xvinsgr2vr.w	$xr3, $t3, 6
-	xvinsgr2vr.w	$xr3, $t4, 7
-	xvsub.w	$xr2, $xr2, $xr3
+	vinsgr2vr.w	$vr2, $t1, 0
+	vinsgr2vr.w	$vr2, $t2, 1
+	vinsgr2vr.w	$vr2, $t3, 2
+	vinsgr2vr.w	$vr2, $t4, 3
+	vinsgr2vr.w	$vr4, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 1
+	vinsgr2vr.w	$vr4, $a7, 2
+	vinsgr2vr.w	$vr4, $t0, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvsub.w	$xr2, $xr3, $xr4
 	xvmaxi.w	$xr2, $xr2, -1
 	xvaddi.wu	$xr2, $xr2, 1
 	xvmul.w	$xr1, $xr2, $xr1
@@ -1246,14 +1272,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a4, 44
 	ld.w	$t3, $a4, 68
 	ld.w	$t4, $a4, 92
-	xvinsgr2vr.w	$xr2, $a5, 0
-	xvinsgr2vr.w	$xr2, $a6, 1
-	xvinsgr2vr.w	$xr2, $a7, 2
-	xvinsgr2vr.w	$xr2, $t0, 3
-	xvinsgr2vr.w	$xr2, $t1, 4
-	xvinsgr2vr.w	$xr2, $t2, 5
-	xvinsgr2vr.w	$xr2, $t3, 6
-	xvinsgr2vr.w	$xr2, $t4, 7
+	vinsgr2vr.w	$vr2, $t1, 0
+	vinsgr2vr.w	$vr2, $t2, 1
+	vinsgr2vr.w	$vr2, $t3, 2
+	vinsgr2vr.w	$vr2, $t4, 3
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr3, $a6, 1
+	vinsgr2vr.w	$vr3, $a7, 2
+	vinsgr2vr.w	$vr3, $t0, 3
+	xvpermi.q	$xr3, $xr2, 2
 	ld.w	$a5, $a4, -88
 	ld.w	$a6, $a4, -64
 	ld.w	$a7, $a4, -40
@@ -1262,15 +1289,16 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a4, 32
 	ld.w	$t3, $a4, 56
 	ld.w	$t4, $a4, 80
-	xvinsgr2vr.w	$xr3, $a5, 0
-	xvinsgr2vr.w	$xr3, $a6, 1
-	xvinsgr2vr.w	$xr3, $a7, 2
-	xvinsgr2vr.w	$xr3, $t0, 3
-	xvinsgr2vr.w	$xr3, $t1, 4
-	xvinsgr2vr.w	$xr3, $t2, 5
-	xvinsgr2vr.w	$xr3, $t3, 6
-	xvinsgr2vr.w	$xr3, $t4, 7
-	xvsub.w	$xr2, $xr2, $xr3
+	vinsgr2vr.w	$vr2, $t1, 0
+	vinsgr2vr.w	$vr2, $t2, 1
+	vinsgr2vr.w	$vr2, $t3, 2
+	vinsgr2vr.w	$vr2, $t4, 3
+	vinsgr2vr.w	$vr4, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 1
+	vinsgr2vr.w	$vr4, $a7, 2
+	vinsgr2vr.w	$vr4, $t0, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvsub.w	$xr2, $xr3, $xr4
 	xvmaxi.w	$xr2, $xr2, -1
 	xvaddi.wu	$xr2, $xr2, 1
 	xvmadd.w	$xr0, $xr1, $xr2
@@ -1308,14 +1336,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, -60
 	ld.w	$t3, $a3, -36
 	ld.w	$t4, $a3, -12
-	xvinsgr2vr.w	$xr2, $a5, 0
-	xvinsgr2vr.w	$xr2, $a6, 1
-	xvinsgr2vr.w	$xr2, $a7, 2
-	xvinsgr2vr.w	$xr2, $t0, 3
-	xvinsgr2vr.w	$xr2, $t1, 4
-	xvinsgr2vr.w	$xr2, $t2, 5
-	xvinsgr2vr.w	$xr2, $t3, 6
-	xvinsgr2vr.w	$xr2, $t4, 7
+	vinsgr2vr.w	$vr3, $t1, 0
+	vinsgr2vr.w	$vr3, $t2, 1
+	vinsgr2vr.w	$vr3, $t3, 2
+	vinsgr2vr.w	$vr3, $t4, 3
+	vinsgr2vr.w	$vr2, $a5, 0
+	vinsgr2vr.w	$vr2, $a6, 1
+	vinsgr2vr.w	$vr2, $a7, 2
+	vinsgr2vr.w	$vr2, $t0, 3
+	xvpermi.q	$xr2, $xr3, 2
 	ld.w	$a5, $a3, 12
 	ld.w	$a6, $a3, 36
 	ld.w	$a7, $a3, 60
@@ -1324,14 +1353,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, 132
 	ld.w	$t3, $a3, 156
 	ld.w	$t4, $a3, 180
-	xvinsgr2vr.w	$xr3, $a5, 0
-	xvinsgr2vr.w	$xr3, $a6, 1
-	xvinsgr2vr.w	$xr3, $a7, 2
-	xvinsgr2vr.w	$xr3, $t0, 3
-	xvinsgr2vr.w	$xr3, $t1, 4
-	xvinsgr2vr.w	$xr3, $t2, 5
-	xvinsgr2vr.w	$xr3, $t3, 6
-	xvinsgr2vr.w	$xr3, $t4, 7
+	vinsgr2vr.w	$vr3, $t1, 0
+	vinsgr2vr.w	$vr3, $t2, 1
+	vinsgr2vr.w	$vr3, $t3, 2
+	vinsgr2vr.w	$vr3, $t4, 3
+	vinsgr2vr.w	$vr4, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 1
+	vinsgr2vr.w	$vr4, $a7, 2
+	vinsgr2vr.w	$vr4, $t0, 3
+	xvpermi.q	$xr4, $xr3, 2
 	ld.w	$a5, $a3, -192
 	ld.w	$a6, $a3, -168
 	ld.w	$a7, $a3, -144
@@ -1340,14 +1370,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, -72
 	ld.w	$t3, $a3, -48
 	ld.w	$t4, $a3, -24
-	xvinsgr2vr.w	$xr4, $a5, 0
-	xvinsgr2vr.w	$xr4, $a6, 1
-	xvinsgr2vr.w	$xr4, $a7, 2
-	xvinsgr2vr.w	$xr4, $t0, 3
-	xvinsgr2vr.w	$xr4, $t1, 4
-	xvinsgr2vr.w	$xr4, $t2, 5
-	xvinsgr2vr.w	$xr4, $t3, 6
-	xvinsgr2vr.w	$xr4, $t4, 7
+	vinsgr2vr.w	$vr3, $t1, 0
+	vinsgr2vr.w	$vr3, $t2, 1
+	vinsgr2vr.w	$vr3, $t3, 2
+	vinsgr2vr.w	$vr3, $t4, 3
+	vinsgr2vr.w	$vr5, $a5, 0
+	vinsgr2vr.w	$vr5, $a6, 1
+	vinsgr2vr.w	$vr5, $a7, 2
+	vinsgr2vr.w	$vr5, $t0, 3
+	xvpermi.q	$xr5, $xr3, 2
 	ld.w	$a5, $a3, 0
 	ld.w	$a6, $a3, 24
 	ld.w	$a7, $a3, 48
@@ -1356,16 +1387,17 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, 120
 	ld.w	$t3, $a3, 144
 	ld.w	$t4, $a3, 168
-	xvinsgr2vr.w	$xr5, $a5, 0
-	xvinsgr2vr.w	$xr5, $a6, 1
-	xvinsgr2vr.w	$xr5, $a7, 2
-	xvinsgr2vr.w	$xr5, $t0, 3
-	xvinsgr2vr.w	$xr5, $t1, 4
-	xvinsgr2vr.w	$xr5, $t2, 5
-	xvinsgr2vr.w	$xr5, $t3, 6
-	xvinsgr2vr.w	$xr5, $t4, 7
-	xvsub.w	$xr2, $xr2, $xr4
-	xvsub.w	$xr3, $xr3, $xr5
+	vinsgr2vr.w	$vr3, $t1, 0
+	vinsgr2vr.w	$vr3, $t2, 1
+	vinsgr2vr.w	$vr3, $t3, 2
+	vinsgr2vr.w	$vr3, $t4, 3
+	vinsgr2vr.w	$vr6, $a5, 0
+	vinsgr2vr.w	$vr6, $a6, 1
+	vinsgr2vr.w	$vr6, $a7, 2
+	vinsgr2vr.w	$vr6, $t0, 3
+	xvpermi.q	$xr6, $xr3, 2
+	xvsub.w	$xr2, $xr2, $xr5
+	xvsub.w	$xr3, $xr4, $xr6
 	xvmaxi.w	$xr2, $xr2, -1
 	xvmaxi.w	$xr3, $xr3, -1
 	xvaddi.wu	$xr2, $xr2, 1
@@ -1378,14 +1410,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, -56
 	ld.w	$t3, $a3, -32
 	ld.w	$t4, $a3, -8
-	xvinsgr2vr.w	$xr3, $a5, 0
-	xvinsgr2vr.w	$xr3, $a6, 1
-	xvinsgr2vr.w	$xr3, $a7, 2
-	xvinsgr2vr.w	$xr3, $t0, 3
-	xvinsgr2vr.w	$xr3, $t1, 4
-	xvinsgr2vr.w	$xr3, $t2, 5
-	xvinsgr2vr.w	$xr3, $t3, 6
-	xvinsgr2vr.w	$xr3, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr3, $a6, 1
+	vinsgr2vr.w	$vr3, $a7, 2
+	vinsgr2vr.w	$vr3, $t0, 3
+	xvpermi.q	$xr3, $xr5, 2
 	ld.w	$a5, $a3, 16
 	ld.w	$a6, $a3, 40
 	ld.w	$a7, $a3, 64
@@ -1394,14 +1427,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, 136
 	ld.w	$t3, $a3, 160
 	ld.w	$t4, $a3, 184
-	xvinsgr2vr.w	$xr5, $a5, 0
-	xvinsgr2vr.w	$xr5, $a6, 1
-	xvinsgr2vr.w	$xr5, $a7, 2
-	xvinsgr2vr.w	$xr5, $t0, 3
-	xvinsgr2vr.w	$xr5, $t1, 4
-	xvinsgr2vr.w	$xr5, $t2, 5
-	xvinsgr2vr.w	$xr5, $t3, 6
-	xvinsgr2vr.w	$xr5, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr6, $a5, 0
+	vinsgr2vr.w	$vr6, $a6, 1
+	vinsgr2vr.w	$vr6, $a7, 2
+	vinsgr2vr.w	$vr6, $t0, 3
+	xvpermi.q	$xr6, $xr5, 2
 	ld.w	$a5, $a3, -188
 	ld.w	$a6, $a3, -164
 	ld.w	$a7, $a3, -140
@@ -1410,14 +1444,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, -68
 	ld.w	$t3, $a3, -44
 	ld.w	$t4, $a3, -20
-	xvinsgr2vr.w	$xr6, $a5, 0
-	xvinsgr2vr.w	$xr6, $a6, 1
-	xvinsgr2vr.w	$xr6, $a7, 2
-	xvinsgr2vr.w	$xr6, $t0, 3
-	xvinsgr2vr.w	$xr6, $t1, 4
-	xvinsgr2vr.w	$xr6, $t2, 5
-	xvinsgr2vr.w	$xr6, $t3, 6
-	xvinsgr2vr.w	$xr6, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr7, $a5, 0
+	vinsgr2vr.w	$vr7, $a6, 1
+	vinsgr2vr.w	$vr7, $a7, 2
+	vinsgr2vr.w	$vr7, $t0, 3
+	xvpermi.q	$xr7, $xr5, 2
 	ld.w	$a5, $a3, 4
 	ld.w	$a6, $a3, 28
 	ld.w	$a7, $a3, 52
@@ -1426,16 +1461,17 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, 124
 	ld.w	$t3, $a3, 148
 	ld.w	$t4, $a3, 172
-	xvinsgr2vr.w	$xr7, $a5, 0
-	xvinsgr2vr.w	$xr7, $a6, 1
-	xvinsgr2vr.w	$xr7, $a7, 2
-	xvinsgr2vr.w	$xr7, $t0, 3
-	xvinsgr2vr.w	$xr7, $t1, 4
-	xvinsgr2vr.w	$xr7, $t2, 5
-	xvinsgr2vr.w	$xr7, $t3, 6
-	xvinsgr2vr.w	$xr7, $t4, 7
-	xvsub.w	$xr3, $xr3, $xr6
-	xvsub.w	$xr5, $xr5, $xr7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr8, $a5, 0
+	vinsgr2vr.w	$vr8, $a6, 1
+	vinsgr2vr.w	$vr8, $a7, 2
+	vinsgr2vr.w	$vr8, $t0, 3
+	xvpermi.q	$xr8, $xr5, 2
+	xvsub.w	$xr3, $xr3, $xr7
+	xvsub.w	$xr5, $xr6, $xr8
 	xvmaxi.w	$xr3, $xr3, -1
 	xvmaxi.w	$xr5, $xr5, -1
 	xvaddi.wu	$xr3, $xr3, 1
@@ -1450,14 +1486,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, -52
 	ld.w	$t3, $a3, -28
 	ld.w	$t4, $a3, -4
-	xvinsgr2vr.w	$xr4, $a5, 0
-	xvinsgr2vr.w	$xr4, $a6, 1
-	xvinsgr2vr.w	$xr4, $a7, 2
-	xvinsgr2vr.w	$xr4, $t0, 3
-	xvinsgr2vr.w	$xr4, $t1, 4
-	xvinsgr2vr.w	$xr4, $t2, 5
-	xvinsgr2vr.w	$xr4, $t3, 6
-	xvinsgr2vr.w	$xr4, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr4, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 1
+	vinsgr2vr.w	$vr4, $a7, 2
+	vinsgr2vr.w	$vr4, $t0, 3
+	xvpermi.q	$xr4, $xr5, 2
 	ld.w	$a5, $a3, 20
 	ld.w	$a6, $a3, 44
 	ld.w	$a7, $a3, 68
@@ -1466,14 +1503,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, 140
 	ld.w	$t3, $a3, 164
 	ld.w	$t4, $a3, 188
-	xvinsgr2vr.w	$xr5, $a5, 0
-	xvinsgr2vr.w	$xr5, $a6, 1
-	xvinsgr2vr.w	$xr5, $a7, 2
-	xvinsgr2vr.w	$xr5, $t0, 3
-	xvinsgr2vr.w	$xr5, $t1, 4
-	xvinsgr2vr.w	$xr5, $t2, 5
-	xvinsgr2vr.w	$xr5, $t3, 6
-	xvinsgr2vr.w	$xr5, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr6, $a5, 0
+	vinsgr2vr.w	$vr6, $a6, 1
+	vinsgr2vr.w	$vr6, $a7, 2
+	vinsgr2vr.w	$vr6, $t0, 3
+	xvpermi.q	$xr6, $xr5, 2
 	ld.w	$a5, $a3, -184
 	ld.w	$a6, $a3, -160
 	ld.w	$a7, $a3, -136
@@ -1482,14 +1520,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, -64
 	ld.w	$t3, $a3, -40
 	ld.w	$t4, $a3, -16
-	xvinsgr2vr.w	$xr6, $a5, 0
-	xvinsgr2vr.w	$xr6, $a6, 1
-	xvinsgr2vr.w	$xr6, $a7, 2
-	xvinsgr2vr.w	$xr6, $t0, 3
-	xvinsgr2vr.w	$xr6, $t1, 4
-	xvinsgr2vr.w	$xr6, $t2, 5
-	xvinsgr2vr.w	$xr6, $t3, 6
-	xvinsgr2vr.w	$xr6, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr7, $a5, 0
+	vinsgr2vr.w	$vr7, $a6, 1
+	vinsgr2vr.w	$vr7, $a7, 2
+	vinsgr2vr.w	$vr7, $t0, 3
+	xvpermi.q	$xr7, $xr5, 2
 	ld.w	$a5, $a3, 8
 	ld.w	$a6, $a3, 32
 	ld.w	$a7, $a3, 56
@@ -1498,16 +1537,17 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ld.w	$t2, $a3, 128
 	ld.w	$t3, $a3, 152
 	ld.w	$t4, $a3, 176
-	xvinsgr2vr.w	$xr7, $a5, 0
-	xvinsgr2vr.w	$xr7, $a6, 1
-	xvinsgr2vr.w	$xr7, $a7, 2
-	xvinsgr2vr.w	$xr7, $t0, 3
-	xvinsgr2vr.w	$xr7, $t1, 4
-	xvinsgr2vr.w	$xr7, $t2, 5
-	xvinsgr2vr.w	$xr7, $t3, 6
-	xvinsgr2vr.w	$xr7, $t4, 7
-	xvsub.w	$xr4, $xr4, $xr6
-	xvsub.w	$xr5, $xr5, $xr7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr8, $a5, 0
+	vinsgr2vr.w	$vr8, $a6, 1
+	vinsgr2vr.w	$vr8, $a7, 2
+	vinsgr2vr.w	$vr8, $t0, 3
+	xvpermi.q	$xr8, $xr5, 2
+	xvsub.w	$xr4, $xr4, $xr7
+	xvsub.w	$xr5, $xr6, $xr8
 	xvmaxi.w	$xr4, $xr4, -1
 	xvmaxi.w	$xr5, $xr5, -1
 	xvaddi.wu	$xr4, $xr4, 1

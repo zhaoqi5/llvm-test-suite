@@ -715,14 +715,15 @@ main:                                   # @main
 	ld.w	$t4, $a4, 80
 	ld.w	$t5, $a4, 96
 	ld.w	$a4, $a4, 112
-	xvinsgr2vr.w	$xr3, $a6, 0
-	xvinsgr2vr.w	$xr3, $ra, 1
-	xvinsgr2vr.w	$xr3, $a7, 2
-	xvinsgr2vr.w	$xr3, $t0, 3
-	xvinsgr2vr.w	$xr3, $t1, 4
-	xvinsgr2vr.w	$xr3, $t4, 5
-	xvinsgr2vr.w	$xr3, $t5, 6
-	xvinsgr2vr.w	$xr3, $a4, 7
+	vinsgr2vr.w	$vr3, $a6, 0
+	vinsgr2vr.w	$vr3, $ra, 1
+	vinsgr2vr.w	$vr3, $a7, 2
+	vinsgr2vr.w	$vr3, $t0, 3
+	vinsgr2vr.w	$vr4, $t1, 0
+	vinsgr2vr.w	$vr4, $t4, 1
+	vinsgr2vr.w	$vr4, $t5, 2
+	vinsgr2vr.w	$vr4, $a4, 3
+	xvpermi.q	$xr3, $xr4, 2
 	ori	$a4, $a5, 786
 	xvreplgr2vr.w	$xr4, $a4
 	xvxor.v	$xr3, $xr3, $xr4
@@ -776,14 +777,15 @@ main:                                   # @main
 	ld.w	$t5, $a4, 40
 	ld.w	$ra, $a4, 48
 	ld.w	$a4, $a4, 56
-	xvinsgr2vr.w	$xr3, $a6, 0
-	xvinsgr2vr.w	$xr3, $a7, 1
-	xvinsgr2vr.w	$xr3, $t0, 2
-	xvinsgr2vr.w	$xr3, $t1, 3
-	xvinsgr2vr.w	$xr3, $t4, 4
-	xvinsgr2vr.w	$xr3, $t5, 5
-	xvinsgr2vr.w	$xr3, $ra, 6
-	xvinsgr2vr.w	$xr3, $a4, 7
+	vinsgr2vr.w	$vr3, $a6, 0
+	vinsgr2vr.w	$vr3, $a7, 1
+	vinsgr2vr.w	$vr3, $t0, 2
+	vinsgr2vr.w	$vr3, $t1, 3
+	vinsgr2vr.w	$vr4, $t4, 0
+	vinsgr2vr.w	$vr4, $t5, 1
+	vinsgr2vr.w	$vr4, $ra, 2
+	vinsgr2vr.w	$vr4, $a4, 3
+	xvpermi.q	$xr3, $xr4, 2
 	ori	$a4, $t2, 393
 	xvreplgr2vr.w	$xr4, $a4
 	xvxor.v	$xr3, $xr3, $xr4

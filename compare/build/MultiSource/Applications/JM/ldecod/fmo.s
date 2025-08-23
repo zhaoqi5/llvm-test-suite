@@ -556,40 +556,42 @@ FmoInit:                                # @FmoInit
 	xvaddi.du	$xr6, $xr2, 8
 	xvslt.du	$xr7, $xr2, $xr0
 	xvpickve2gr.d	$t0, $xr7, 0
-	xvinsgr2vr.w	$xr8, $t0, 0
+	vinsgr2vr.w	$vr8, $t0, 0
 	xvpickve2gr.d	$t0, $xr7, 1
-	xvinsgr2vr.w	$xr8, $t0, 1
+	vinsgr2vr.w	$vr8, $t0, 1
 	xvpickve2gr.d	$t0, $xr7, 2
-	xvinsgr2vr.w	$xr8, $t0, 2
+	vinsgr2vr.w	$vr8, $t0, 2
 	xvpickve2gr.d	$t0, $xr7, 3
-	xvinsgr2vr.w	$xr8, $t0, 3
+	vinsgr2vr.w	$vr8, $t0, 3
 	xvslt.du	$xr7, $xr1, $xr0
 	xvpickve2gr.d	$t0, $xr7, 0
-	xvinsgr2vr.w	$xr8, $t0, 4
+	vinsgr2vr.w	$vr9, $t0, 0
 	xvpickve2gr.d	$t0, $xr7, 1
-	xvinsgr2vr.w	$xr8, $t0, 5
+	vinsgr2vr.w	$vr9, $t0, 1
 	xvpickve2gr.d	$t0, $xr7, 2
-	xvinsgr2vr.w	$xr8, $t0, 6
+	vinsgr2vr.w	$vr9, $t0, 2
 	xvpickve2gr.d	$t0, $xr7, 3
-	xvinsgr2vr.w	$xr8, $t0, 7
+	vinsgr2vr.w	$vr9, $t0, 3
+	xvpermi.q	$xr8, $xr9, 2
 	xvslt.du	$xr6, $xr6, $xr0
 	xvpickve2gr.d	$t0, $xr6, 0
-	xvinsgr2vr.w	$xr7, $t0, 0
+	vinsgr2vr.w	$vr7, $t0, 0
 	xvpickve2gr.d	$t0, $xr6, 1
-	xvinsgr2vr.w	$xr7, $t0, 1
+	vinsgr2vr.w	$vr7, $t0, 1
 	xvpickve2gr.d	$t0, $xr6, 2
-	xvinsgr2vr.w	$xr7, $t0, 2
+	vinsgr2vr.w	$vr7, $t0, 2
 	xvpickve2gr.d	$t0, $xr6, 3
-	xvinsgr2vr.w	$xr7, $t0, 3
+	vinsgr2vr.w	$vr7, $t0, 3
 	xvslt.du	$xr5, $xr5, $xr0
 	xvpickve2gr.d	$t0, $xr5, 0
-	xvinsgr2vr.w	$xr7, $t0, 4
+	vinsgr2vr.w	$vr6, $t0, 0
 	xvpickve2gr.d	$t0, $xr5, 1
-	xvinsgr2vr.w	$xr7, $t0, 5
+	vinsgr2vr.w	$vr6, $t0, 1
 	xvpickve2gr.d	$t0, $xr5, 2
-	xvinsgr2vr.w	$xr7, $t0, 6
+	vinsgr2vr.w	$vr6, $t0, 2
 	xvpickve2gr.d	$t0, $xr5, 3
-	xvinsgr2vr.w	$xr7, $t0, 7
+	vinsgr2vr.w	$vr6, $t0, 3
+	xvpermi.q	$xr7, $xr6, 2
 	xvbitsel.v	$xr5, $xr4, $xr3, $xr8
 	xvbitsel.v	$xr6, $xr4, $xr3, $xr7
 	xvst	$xr5, $a6, -32

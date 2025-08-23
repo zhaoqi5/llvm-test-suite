@@ -267,12 +267,12 @@ main:                                   # @main
 	xvpickve2gr.d	$a4, $xr1, 3
 	add.d	$a4, $s3, $a4
 	fld.d	$fa1, $a1, 8
-	fld.d	$fa2, $a2, 8
-	fld.d	$fa3, $a3, 8
-	fld.d	$fa4, $a4, 8
-	xvinsve0.d	$xr1, $xr2, 1
-	xvinsve0.d	$xr1, $xr3, 2
-	xvinsve0.d	$xr1, $xr4, 3
+	fld.d	$fa2, $a3, 8
+	fld.d	$fa3, $a4, 8
+	fld.d	$fa4, $a2, 8
+	vextrins.d	$vr2, $vr3, 16
+	vextrins.d	$vr1, $vr4, 16
+	xvpermi.q	$xr1, $xr2, 2
 	xvbitrevi.d	$xr1, $xr1, 63
 	xvstelm.d	$xr1, $a1, 8, 0
 	xvstelm.d	$xr1, $a2, 8, 1
@@ -1803,149 +1803,149 @@ cft1st:                                 # @cft1st
 	xvpickve2gr.d	$t2, $xr4, 0
 	slli.d	$t2, $t2, 3
 	xvpickve2gr.d	$t3, $xr4, 1
-	slli.d	$t3, $t3, 3
 	xvpickve2gr.d	$t4, $xr4, 2
 	slli.d	$t4, $t4, 3
 	xvpickve2gr.d	$t5, $xr4, 3
-	fldx.d	$fa2, $a2, $t2
-	fldx.d	$fa3, $a2, $t3
+	slli.d	$t5, $t5, 3
 	fldx.d	$fa5, $a2, $t4
-	slli.d	$t2, $t5, 3
-	fldx.d	$fa6, $a2, $t2
-	xvinsve0.d	$xr2, $xr3, 1
-	xvinsve0.d	$xr2, $xr5, 2
+	fldx.d	$fa3, $a2, $t5
+	slli.d	$t3, $t3, 3
+	fldx.d	$fa2, $a2, $t2
+	fldx.d	$fa6, $a2, $t3
+	vextrins.d	$vr5, $vr3, 16
 	fld.d	$fa3, $a7, -48
-	fld.d	$fa5, $a7, -32
 	fld.d	$fa7, $a7, -16
 	fld.d	$ft0, $a7, 0
-	xvinsve0.d	$xr2, $xr6, 3
-	xvinsve0.d	$xr3, $xr5, 1
-	xvinsve0.d	$xr3, $xr7, 2
-	xvinsve0.d	$xr3, $xr8, 3
+	fld.d	$ft1, $a7, -32
+	vextrins.d	$vr2, $vr6, 16
+	xvpermi.q	$xr2, $xr5, 2
+	vextrins.d	$vr7, $vr8, 16
+	vextrins.d	$vr3, $vr9, 16
+	xvpermi.q	$xr3, $xr7, 2
 	xvslli.d	$xr4, $xr4, 4
-	xvpickve2gr.d	$t5, $xr4, 0
-	add.d	$t2, $a2, $t5
-	xvpickve2gr.d	$t6, $xr4, 1
+	xvpickve2gr.d	$t6, $xr4, 0
 	add.d	$t3, $a2, $t6
-	xvpickve2gr.d	$t7, $xr4, 2
-	add.d	$t4, $a2, $t7
+	xvpickve2gr.d	$t7, $xr4, 1
+	add.d	$t2, $a2, $t7
+	xvpickve2gr.d	$t5, $xr4, 2
+	add.d	$t4, $a2, $t5
 	xvpickve2gr.d	$t8, $xr4, 3
-	fldx.d	$fa6, $a2, $t5
-	fldx.d	$fa4, $a2, $t6
-	fldx.d	$fa5, $a2, $t7
+	fldx.d	$fa4, $a2, $t5
+	fldx.d	$fa5, $a2, $t8
 	add.d	$t5, $a2, $t8
-	fldx.d	$ft0, $a2, $t8
-	xvinsve0.d	$xr6, $xr4, 1
-	xvinsve0.d	$xr6, $xr5, 2
-	fld.d	$fa7, $t2, 8
-	fld.d	$fa4, $t3, 8
+	fldx.d	$fa6, $a2, $t6
+	fldx.d	$ft0, $a2, $t7
+	vextrins.d	$vr4, $vr5, 16
+	fld.d	$fa7, $t3, 8
 	fld.d	$fa5, $t4, 8
 	fld.d	$ft1, $t5, 8
-	xvinsve0.d	$xr6, $xr8, 3
-	xvinsve0.d	$xr7, $xr4, 1
-	xvinsve0.d	$xr7, $xr5, 2
-	xvinsve0.d	$xr7, $xr9, 3
+	fld.d	$ft2, $t2, 8
+	vextrins.d	$vr6, $vr8, 16
+	xvpermi.q	$xr6, $xr4, 2
+	vextrins.d	$vr5, $vr9, 16
+	vextrins.d	$vr7, $vr10, 16
+	xvpermi.q	$xr7, $xr5, 2
 	xvfadd.d	$xr5, $xr3, $xr3
 	xvbitrevi.d	$xr4, $xr5, 63
 	xvfmadd.d	$xr4, $xr4, $xr7, $xr6
-	fld.d	$ft0, $t0, -192
-	fld.d	$ft1, $t0, -64
-	fld.d	$ft2, $t0, 64
+	fld.d	$ft1, $t0, 64
+	fld.d	$ft2, $t0, 192
 	xvfmsub.d	$xr5, $xr5, $xr6, $xr7
-	fld.d	$ft3, $t0, 192
-	xvinsve0.d	$xr8, $xr9, 1
-	xvinsve0.d	$xr8, $xr10, 2
-	fld.d	$ft1, $t0, -176
-	fld.d	$ft2, $t0, -48
-	fld.d	$ft4, $t0, 80
+	fld.d	$ft0, $t0, -192
+	fld.d	$ft3, $t0, -64
+	vextrins.d	$vr9, $vr10, 16
+	fld.d	$ft4, $t0, -176
+	fld.d	$ft2, $t0, 80
 	fld.d	$ft5, $t0, 208
-	xvinsve0.d	$xr8, $xr11, 3
-	xvinsve0.d	$xr9, $xr10, 1
-	xvinsve0.d	$xr9, $xr12, 2
-	xvinsve0.d	$xr9, $xr13, 3
-	fld.d	$ft3, $t0, -184
-	fld.d	$ft4, $t0, -56
-	fld.d	$ft5, $t0, 72
-	xvfadd.d	$xr10, $xr8, $xr9
-	fld.d	$ft6, $t0, 200
-	xvinsve0.d	$xr11, $xr12, 1
-	xvinsve0.d	$xr11, $xr13, 2
-	fld.d	$ft4, $t0, -168
-	fld.d	$ft5, $t0, -40
-	fld.d	$ft7, $t0, 88
+	fld.d	$ft6, $t0, -48
+	vextrins.d	$vr8, $vr11, 16
+	xvpermi.q	$xr8, $xr9, 2
+	vextrins.d	$vr10, $vr13, 16
+	vextrins.d	$vr12, $vr14, 16
+	xvpermi.q	$xr12, $xr10, 2
+	fld.d	$ft1, $t0, 72
+	fld.d	$ft3, $t0, 200
+	xvfadd.d	$xr10, $xr8, $xr12
+	fld.d	$ft5, $t0, -184
+	fld.d	$ft6, $t0, -56
+	vextrins.d	$vr9, $vr11, 16
+	fld.d	$ft7, $t0, -168
+	fld.d	$ft3, $t0, 88
 	fld.d	$ft8, $t0, 216
-	xvinsve0.d	$xr11, $xr14, 3
-	xvinsve0.d	$xr12, $xr13, 1
-	xvinsve0.d	$xr12, $xr15, 2
-	xvinsve0.d	$xr12, $xr16, 3
-	xvfadd.d	$xr13, $xr11, $xr12
-	xvfsub.d	$xr8, $xr8, $xr9
-	fld.d	$ft6, $t0, -160
-	fld.d	$ft7, $t0, -32
-	fld.d	$ft8, $t0, 96
-	xvfsub.d	$xr9, $xr11, $xr12
-	fld.d	$ft3, $t0, 224
-	xvinsve0.d	$xr14, $xr15, 1
-	xvinsve0.d	$xr14, $xr16, 2
-	fld.d	$ft4, $t0, -144
-	fld.d	$ft7, $t0, -16
+	fld.d	$ft9, $t0, -40
+	vextrins.d	$vr13, $vr14, 16
+	xvpermi.q	$xr13, $xr9, 2
+	vextrins.d	$vr11, $vr16, 16
+	vextrins.d	$vr15, $vr17, 16
+	xvpermi.q	$xr15, $xr11, 2
+	xvfadd.d	$xr11, $xr13, $xr15
+	xvfsub.d	$xr8, $xr8, $xr12
+	fld.d	$ft6, $t0, 96
+	fld.d	$ft8, $t0, 224
+	xvfsub.d	$xr9, $xr13, $xr15
+	fld.d	$ft4, $t0, -160
+	fld.d	$ft5, $t0, -32
+	vextrins.d	$vr14, $vr16, 16
+	fld.d	$ft7, $t0, -144
 	fld.d	$ft8, $t0, 112
 	fld.d	$ft9, $t0, 240
-	xvinsve0.d	$xr14, $xr11, 3
-	xvinsve0.d	$xr12, $xr15, 1
-	xvinsve0.d	$xr12, $xr16, 2
-	xvinsve0.d	$xr12, $xr17, 3
-	fld.d	$ft3, $t0, -152
-	fld.d	$ft7, $t0, -24
-	fld.d	$ft8, $t0, 104
-	xvfadd.d	$xr17, $xr14, $xr12
-	fld.d	$ft10, $t0, 232
-	xvinsve0.d	$xr11, $xr15, 1
-	xvinsve0.d	$xr11, $xr16, 2
+	fld.d	$ft10, $t0, -16
+	vextrins.d	$vr12, $vr13, 16
+	xvpermi.q	$xr12, $xr14, 2
+	vextrins.d	$vr16, $vr17, 16
+	vextrins.d	$vr15, $vr18, 16
+	xvpermi.q	$xr15, $xr16, 2
+	fld.d	$ft5, $t0, 104
+	fld.d	$ft8, $t0, 232
+	xvfadd.d	$xr14, $xr12, $xr15
+	fld.d	$ft10, $t0, -152
+	fld.d	$ft9, $t0, -24
+	vextrins.d	$vr13, $vr16, 16
 	fld.d	$ft8, $t0, -136
-	fld.d	$ft7, $t0, -8
 	fld.d	$ft11, $t0, 120
 	fld.d	$ft12, $t0, 248
-	xvinsve0.d	$xr11, $xr18, 3
-	xvinsve0.d	$xr16, $xr15, 1
-	xvinsve0.d	$xr16, $xr19, 2
-	xvinsve0.d	$xr16, $xr20, 3
-	xvfadd.d	$xr19, $xr11, $xr16
-	xvfsub.d	$xr15, $xr14, $xr12
-	xvfsub.d	$xr18, $xr11, $xr16
-	xvfadd.d	$xr14, $xr10, $xr17
-	xvfadd.d	$xr11, $xr13, $xr19
-	xvpickve.d	$xr16, $xr11, 1
-	xvpermi.d	$xr12, $xr14, 68
-	xvrepl128vei.d	$xr20, $xr12, 1
+	fld.d	$ft13, $t0, -8
+	vextrins.d	$vr18, $vr17, 16
+	xvpermi.q	$xr18, $xr13, 2
+	vextrins.d	$vr19, $vr20, 16
+	vextrins.d	$vr16, $vr21, 16
+	xvpermi.q	$xr16, $xr19, 2
+	xvfadd.d	$xr19, $xr18, $xr16
+	xvfsub.d	$xr17, $xr12, $xr15
+	xvfsub.d	$xr18, $xr18, $xr16
+	xvfadd.d	$xr15, $xr10, $xr14
+	xvfadd.d	$xr12, $xr11, $xr19
+	xvpickve.d	$xr16, $xr12, 1
+	xvpermi.d	$xr13, $xr15, 68
+	xvrepl128vei.d	$xr20, $xr13, 1
 	vextrins.d	$vr20, $vr16, 16
 	vst	$vr20, $t0, -64
-	xvpickve.d	$xr16, $xr11, 2
-	xvpermi.d	$xr14, $xr14, 78
-	xvrepl128vei.d	$xr20, $xr14, 0
+	xvpickve.d	$xr16, $xr12, 2
+	xvpermi.d	$xr15, $xr15, 78
+	xvrepl128vei.d	$xr20, $xr15, 0
 	vextrins.d	$vr20, $vr16, 16
 	vst	$vr20, $t0, 64
-	xvpickve.d	$xr16, $xr11, 3
-	xvrepl128vei.d	$xr14, $xr14, 1
-	vextrins.d	$vr14, $vr16, 16
-	vst	$vr14, $t0, 192
-	xvfsub.d	$xr14, $xr10, $xr17
-	xvfsub.d	$xr13, $xr13, $xr19
-	xvbitrevi.d	$xr10, $xr13, 63
+	xvpickve.d	$xr16, $xr12, 3
+	xvrepl128vei.d	$xr15, $xr15, 1
+	vextrins.d	$vr15, $vr16, 16
+	vst	$vr15, $t0, 192
+	xvfsub.d	$xr14, $xr10, $xr14
+	xvfsub.d	$xr11, $xr11, $xr19
+	xvbitrevi.d	$xr10, $xr11, 63
 	xvfmul.d	$xr10, $xr3, $xr10
 	xvfmadd.d	$xr10, $xr2, $xr14, $xr10
 	xvstelm.d	$xr10, $t0, -32, 1
 	xvstelm.d	$xr10, $t0, 96, 2
 	xvstelm.d	$xr10, $t0, 224, 3
 	xvfmul.d	$xr14, $xr3, $xr14
-	xvfmadd.d	$xr19, $xr2, $xr13, $xr14
-	xvpermi.d	$xr13, $xr19, 68
-	xvrepl128vei.d	$xr20, $xr13, 1
-	xvfadd.d	$xr16, $xr8, $xr18
-	xvfsub.d	$xr17, $xr9, $xr15
-	xvbitrevi.d	$xr14, $xr17, 63
+	xvfmadd.d	$xr19, $xr2, $xr11, $xr14
+	xvpermi.d	$xr11, $xr19, 68
+	xvrepl128vei.d	$xr20, $xr11, 1
+	xvfadd.d	$xr15, $xr8, $xr18
+	xvfsub.d	$xr16, $xr9, $xr17
+	xvbitrevi.d	$xr14, $xr16, 63
 	xvfmul.d	$xr14, $xr5, $xr14
-	xvfmadd.d	$xr14, $xr4, $xr16, $xr14
+	xvfmadd.d	$xr14, $xr4, $xr15, $xr14
 	xvpickve.d	$xr21, $xr14, 1
 	vextrins.d	$vr20, $vr21, 16
 	vst	$vr20, $t0, -24
@@ -1959,6 +1959,189 @@ cft1st:                                 # @cft1st
 	vextrins.d	$vr19, $vr20, 16
 	vst	$vr19, $t0, 232
 	xvfsub.d	$xr8, $xr8, $xr18
+	xvfadd.d	$xr9, $xr9, $xr17
+	xvbitrevi.d	$xr17, $xr9, 63
+	xvfmul.d	$xr17, $xr7, $xr17
+	xvfmadd.d	$xr17, $xr6, $xr8, $xr17
+	xvfmul.d	$xr7, $xr7, $xr8
+	xvfmadd.d	$xr6, $xr6, $xr9, $xr7
+	xvpickve.d	$xr7, $xr6, 1
+	xvpermi.d	$xr8, $xr17, 68
+	xvrepl128vei.d	$xr9, $xr8, 1
+	vextrins.d	$vr9, $vr7, 16
+	vst	$vr9, $t0, -48
+	xvpickve.d	$xr7, $xr6, 2
+	xvpermi.d	$xr9, $xr17, 78
+	xvrepl128vei.d	$xr17, $xr9, 0
+	vextrins.d	$vr17, $vr7, 16
+	vst	$vr17, $t0, 80
+	xvpickve.d	$xr7, $xr6, 3
+	xvrepl128vei.d	$xr9, $xr9, 1
+	vextrins.d	$vr9, $vr7, 16
+	vst	$vr9, $t0, 208
+	xvpermi.d	$xr7, $xr12, 68
+	xvpackev.d	$xr7, $xr7, $xr13
+	xvpermi.d	$xr7, $xr7, 68
+	xvori.b	$xr9, $xr1, 0
+	xvshuf.d	$xr9, $xr8, $xr7
+	xvpickve.d	$xr7, $xr9, 1
+	xvpermi.d	$xr8, $xr9, 78
+                                        # kill: def $vr9 killed $vr9 killed $xr9 def $xr9
+	vextrins.d	$vr9, $vr7, 16
+	xvrepl128vei.d	$xr7, $xr8, 0
+	xvpickve.d	$xr6, $xr6, 0
+	vextrins.d	$vr7, $vr6, 16
+	xvpermi.q	$xr9, $xr7, 2
+	xvst	$xr9, $t0, -192
+	xvfmul.d	$xr5, $xr5, $xr15
+	xvfmadd.d	$xr4, $xr4, $xr16, $xr5
+	xvpermi.d	$xr5, $xr10, 68
+	xvpackev.d	$xr5, $xr11, $xr5
+	xvpermi.d	$xr5, $xr5, 68
+	xvpermi.d	$xr6, $xr14, 68
+	xvori.b	$xr7, $xr1, 0
+	xvshuf.d	$xr7, $xr6, $xr5
+	xvpickve.d	$xr5, $xr7, 1
+	xvpermi.d	$xr6, $xr7, 78
+                                        # kill: def $vr7 killed $vr7 killed $xr7 def $xr7
+	vextrins.d	$vr7, $vr5, 16
+	xvrepl128vei.d	$xr5, $xr6, 0
+	xvpickve.d	$xr6, $xr4, 0
+	vextrins.d	$vr5, $vr6, 16
+	xvpermi.q	$xr7, $xr5, 2
+	xvst	$xr7, $t0, -160
+	xvstelm.d	$xr4, $t0, -8, 1
+	xvstelm.d	$xr4, $t0, 120, 2
+	fld.d	$fa5, $t4, 16
+	fld.d	$fa7, $t5, 16
+	xvstelm.d	$xr4, $t0, 248, 3
+	fld.d	$fa6, $t3, 16
+	fld.d	$fa4, $t2, 16
+	vextrins.d	$vr5, $vr7, 16
+	fld.d	$fa7, $t3, 24
+	fld.d	$ft0, $t4, 24
+	fld.d	$ft1, $t5, 24
+	fld.d	$ft2, $t2, 24
+	vextrins.d	$vr6, $vr4, 16
+	xvpermi.q	$xr6, $xr5, 2
+	vextrins.d	$vr8, $vr9, 16
+	vextrins.d	$vr7, $vr10, 16
+	xvpermi.q	$xr7, $xr8, 2
+	xvfadd.d	$xr5, $xr2, $xr2
+	xvbitrevi.d	$xr4, $xr5, 63
+	xvfmadd.d	$xr4, $xr4, $xr7, $xr6
+	fld.d	$ft1, $t0, 128
+	fld.d	$ft2, $t0, 256
+	xvfmsub.d	$xr5, $xr5, $xr6, $xr7
+	fld.d	$ft0, $t0, -128
+	fld.d	$ft3, $t0, 0
+	vextrins.d	$vr9, $vr10, 16
+	fld.d	$ft4, $t0, -112
+	fld.d	$ft2, $t0, 144
+	fld.d	$ft5, $t0, 272
+	fld.d	$ft6, $t0, 16
+	vextrins.d	$vr8, $vr11, 16
+	xvpermi.q	$xr8, $xr9, 2
+	vextrins.d	$vr10, $vr13, 16
+	vextrins.d	$vr12, $vr14, 16
+	xvpermi.q	$xr12, $xr10, 2
+	fld.d	$ft1, $t0, 136
+	fld.d	$ft3, $t0, 264
+	xvfadd.d	$xr10, $xr8, $xr12
+	fld.d	$ft5, $t0, -120
+	fld.d	$ft6, $t0, 8
+	vextrins.d	$vr9, $vr11, 16
+	fld.d	$ft7, $t0, -104
+	fld.d	$ft3, $t0, 152
+	fld.d	$ft8, $t0, 280
+	fld.d	$ft9, $t0, 24
+	vextrins.d	$vr13, $vr14, 16
+	xvpermi.q	$xr13, $xr9, 2
+	vextrins.d	$vr11, $vr16, 16
+	vextrins.d	$vr15, $vr17, 16
+	xvpermi.q	$xr15, $xr11, 2
+	xvfadd.d	$xr11, $xr13, $xr15
+	xvfsub.d	$xr8, $xr8, $xr12
+	fld.d	$ft6, $t0, 160
+	fld.d	$ft8, $t0, 288
+	xvfsub.d	$xr9, $xr13, $xr15
+	fld.d	$ft4, $t0, -96
+	fld.d	$ft5, $t0, 32
+	vextrins.d	$vr14, $vr16, 16
+	fld.d	$ft7, $t0, -80
+	fld.d	$ft8, $t0, 176
+	fld.d	$ft9, $t0, 304
+	fld.d	$ft10, $t0, 48
+	vextrins.d	$vr12, $vr13, 16
+	xvpermi.q	$xr12, $xr14, 2
+	vextrins.d	$vr16, $vr17, 16
+	vextrins.d	$vr15, $vr18, 16
+	xvpermi.q	$xr15, $xr16, 2
+	fld.d	$ft5, $t0, 168
+	fld.d	$ft8, $t0, 296
+	xvfadd.d	$xr14, $xr12, $xr15
+	fld.d	$ft9, $t0, -88
+	fld.d	$ft10, $t0, 40
+	vextrins.d	$vr13, $vr16, 16
+	fld.d	$ft8, $t0, -72
+	fld.d	$ft11, $t0, 184
+	fld.d	$ft12, $t0, 312
+	fld.d	$ft13, $t0, 56
+	vextrins.d	$vr17, $vr18, 16
+	xvpermi.q	$xr17, $xr13, 2
+	vextrins.d	$vr19, $vr20, 16
+	vextrins.d	$vr16, $vr21, 16
+	xvpermi.q	$xr16, $xr19, 2
+	xvfadd.d	$xr18, $xr17, $xr16
+	xvfsub.d	$xr15, $xr12, $xr15
+	xvfsub.d	$xr16, $xr17, $xr16
+	xvfadd.d	$xr17, $xr10, $xr14
+	xvfadd.d	$xr12, $xr11, $xr18
+	xvpickve.d	$xr19, $xr12, 1
+	xvpermi.d	$xr13, $xr17, 68
+	xvrepl128vei.d	$xr20, $xr13, 1
+	vextrins.d	$vr20, $vr19, 16
+	vst	$vr20, $t0, 0
+	xvpickve.d	$xr19, $xr12, 2
+	xvpermi.d	$xr17, $xr17, 78
+	xvrepl128vei.d	$xr20, $xr17, 0
+	vextrins.d	$vr20, $vr19, 16
+	vst	$vr20, $t0, 128
+	xvpickve.d	$xr19, $xr12, 3
+	xvrepl128vei.d	$xr17, $xr17, 1
+	vextrins.d	$vr17, $vr19, 16
+	vst	$vr17, $t0, 256
+	xvfsub.d	$xr10, $xr10, $xr14
+	xvfsub.d	$xr11, $xr11, $xr18
+	xvbitrevi.d	$xr14, $xr3, 63
+	xvbitrevi.d	$xr3, $xr11, 63
+	xvfmul.d	$xr3, $xr2, $xr3
+	xvfmadd.d	$xr3, $xr14, $xr10, $xr3
+	xvstelm.d	$xr3, $t0, 32, 1
+	xvstelm.d	$xr3, $t0, 160, 2
+	xvstelm.d	$xr3, $t0, 288, 3
+	xvfmul.d	$xr2, $xr2, $xr10
+	xvfmadd.d	$xr17, $xr14, $xr11, $xr2
+	xvfadd.d	$xr2, $xr8, $xr16
+	xvfsub.d	$xr10, $xr9, $xr15
+	xvbitrevi.d	$xr11, $xr10, 63
+	xvfmul.d	$xr11, $xr5, $xr11
+	xvfmadd.d	$xr11, $xr4, $xr2, $xr11
+	xvpickve.d	$xr18, $xr11, 1
+	xvpermi.d	$xr14, $xr17, 68
+	xvrepl128vei.d	$xr19, $xr14, 1
+	vextrins.d	$vr19, $vr18, 16
+	vst	$vr19, $t0, 40
+	xvpickve.d	$xr18, $xr11, 2
+	xvpermi.d	$xr17, $xr17, 78
+	xvrepl128vei.d	$xr19, $xr17, 0
+	vextrins.d	$vr19, $vr18, 16
+	vst	$vr19, $t0, 168
+	xvpickve.d	$xr18, $xr11, 3
+	xvrepl128vei.d	$xr17, $xr17, 1
+	vextrins.d	$vr17, $vr18, 16
+	vst	$vr17, $t0, 296
+	xvfsub.d	$xr8, $xr8, $xr16
 	xvfadd.d	$xr9, $xr9, $xr15
 	xvbitrevi.d	$xr15, $xr9, 63
 	xvfmul.d	$xr15, $xr7, $xr15
@@ -1969,205 +2152,46 @@ cft1st:                                 # @cft1st
 	xvpermi.d	$xr8, $xr15, 68
 	xvrepl128vei.d	$xr9, $xr8, 1
 	vextrins.d	$vr9, $vr7, 16
-	vst	$vr9, $t0, -48
+	vst	$vr9, $t0, 16
 	xvpickve.d	$xr7, $xr6, 2
 	xvpermi.d	$xr9, $xr15, 78
 	xvrepl128vei.d	$xr15, $xr9, 0
 	vextrins.d	$vr15, $vr7, 16
-	vst	$vr15, $t0, 80
-	xvpickve.d	$xr7, $xr6, 3
-	xvrepl128vei.d	$xr9, $xr9, 1
-	vextrins.d	$vr9, $vr7, 16
-	vst	$vr9, $t0, 208
-	xvpermi.d	$xr7, $xr11, 68
-	xvpackev.d	$xr7, $xr7, $xr12
-	xvpermi.d	$xr7, $xr7, 68
-	xvori.b	$xr9, $xr1, 0
-	xvshuf.d	$xr9, $xr8, $xr7
-	xvpickve.d	$xr6, $xr6, 0
-	xvinsve0.d	$xr9, $xr6, 3
-	xvst	$xr9, $t0, -192
-	xvfmul.d	$xr5, $xr5, $xr16
-	xvfmadd.d	$xr4, $xr4, $xr17, $xr5
-	xvpermi.d	$xr5, $xr10, 68
-	xvpackev.d	$xr5, $xr13, $xr5
-	xvpermi.d	$xr5, $xr5, 68
-	xvpermi.d	$xr6, $xr14, 68
-	xvori.b	$xr7, $xr1, 0
-	xvshuf.d	$xr7, $xr6, $xr5
-	xvpickve.d	$xr5, $xr4, 0
-	xvinsve0.d	$xr7, $xr5, 3
-	xvst	$xr7, $t0, -160
-	xvstelm.d	$xr4, $t0, -8, 1
-	xvstelm.d	$xr4, $t0, 120, 2
-	fld.d	$fa6, $t2, 16
-	fld.d	$fa5, $t3, 16
-	fld.d	$fa7, $t4, 16
-	xvstelm.d	$xr4, $t0, 248, 3
-	fld.d	$fa4, $t5, 16
-	xvinsve0.d	$xr6, $xr5, 1
-	xvinsve0.d	$xr6, $xr7, 2
-	fld.d	$fa7, $t2, 24
-	fld.d	$fa5, $t3, 24
-	fld.d	$ft0, $t4, 24
-	fld.d	$ft1, $t5, 24
-	xvinsve0.d	$xr6, $xr4, 3
-	xvinsve0.d	$xr7, $xr5, 1
-	xvinsve0.d	$xr7, $xr8, 2
-	xvinsve0.d	$xr7, $xr9, 3
-	xvfadd.d	$xr5, $xr2, $xr2
-	xvbitrevi.d	$xr4, $xr5, 63
-	xvfmadd.d	$xr4, $xr4, $xr7, $xr6
-	fld.d	$ft0, $t0, -128
-	fld.d	$ft1, $t0, 0
-	fld.d	$ft2, $t0, 128
-	xvfmsub.d	$xr5, $xr5, $xr6, $xr7
-	fld.d	$ft3, $t0, 256
-	xvinsve0.d	$xr8, $xr9, 1
-	xvinsve0.d	$xr8, $xr10, 2
-	fld.d	$ft1, $t0, -112
-	fld.d	$ft2, $t0, 16
-	fld.d	$ft4, $t0, 144
-	fld.d	$ft5, $t0, 272
-	xvinsve0.d	$xr8, $xr11, 3
-	xvinsve0.d	$xr9, $xr10, 1
-	xvinsve0.d	$xr9, $xr12, 2
-	xvinsve0.d	$xr9, $xr13, 3
-	fld.d	$ft3, $t0, -120
-	fld.d	$ft4, $t0, 8
-	fld.d	$ft5, $t0, 136
-	xvfadd.d	$xr10, $xr8, $xr9
-	fld.d	$ft6, $t0, 264
-	xvinsve0.d	$xr11, $xr12, 1
-	xvinsve0.d	$xr11, $xr13, 2
-	fld.d	$ft4, $t0, -104
-	fld.d	$ft5, $t0, 24
-	fld.d	$ft7, $t0, 152
-	fld.d	$ft8, $t0, 280
-	xvinsve0.d	$xr11, $xr14, 3
-	xvinsve0.d	$xr12, $xr13, 1
-	xvinsve0.d	$xr12, $xr15, 2
-	xvinsve0.d	$xr12, $xr16, 3
-	xvfadd.d	$xr13, $xr11, $xr12
-	xvfsub.d	$xr8, $xr8, $xr9
-	fld.d	$ft6, $t0, -96
-	fld.d	$ft7, $t0, 32
-	fld.d	$ft8, $t0, 160
-	xvfsub.d	$xr9, $xr11, $xr12
-	fld.d	$ft3, $t0, 288
-	xvinsve0.d	$xr14, $xr15, 1
-	xvinsve0.d	$xr14, $xr16, 2
-	fld.d	$ft4, $t0, -80
-	fld.d	$ft7, $t0, 48
-	fld.d	$ft8, $t0, 176
-	fld.d	$ft9, $t0, 304
-	xvinsve0.d	$xr14, $xr11, 3
-	xvinsve0.d	$xr12, $xr15, 1
-	xvinsve0.d	$xr12, $xr16, 2
-	xvinsve0.d	$xr12, $xr17, 3
-	fld.d	$ft3, $t0, -88
-	fld.d	$ft7, $t0, 40
-	fld.d	$ft8, $t0, 168
-	xvfadd.d	$xr17, $xr14, $xr12
-	fld.d	$ft10, $t0, 296
-	xvinsve0.d	$xr11, $xr15, 1
-	xvinsve0.d	$xr11, $xr16, 2
-	fld.d	$ft7, $t0, -72
-	fld.d	$ft8, $t0, 56
-	fld.d	$ft11, $t0, 184
-	fld.d	$ft12, $t0, 312
-	xvinsve0.d	$xr11, $xr18, 3
-	xvinsve0.d	$xr15, $xr16, 1
-	xvinsve0.d	$xr15, $xr19, 2
-	xvinsve0.d	$xr15, $xr20, 3
-	xvfadd.d	$xr16, $xr11, $xr15
-	xvfsub.d	$xr14, $xr14, $xr12
-	xvfsub.d	$xr15, $xr11, $xr15
-	xvfadd.d	$xr18, $xr10, $xr17
-	xvfadd.d	$xr11, $xr13, $xr16
-	xvpickve.d	$xr19, $xr11, 1
-	xvpermi.d	$xr12, $xr18, 68
-	xvrepl128vei.d	$xr20, $xr12, 1
-	vextrins.d	$vr20, $vr19, 16
-	vst	$vr20, $t0, 0
-	xvpickve.d	$xr19, $xr11, 2
-	xvpermi.d	$xr18, $xr18, 78
-	xvrepl128vei.d	$xr20, $xr18, 0
-	vextrins.d	$vr20, $vr19, 16
-	vst	$vr20, $t0, 128
-	xvpickve.d	$xr19, $xr11, 3
-	xvrepl128vei.d	$xr18, $xr18, 1
-	vextrins.d	$vr18, $vr19, 16
-	vst	$vr18, $t0, 256
-	xvfsub.d	$xr10, $xr10, $xr17
-	xvfsub.d	$xr13, $xr13, $xr16
-	xvbitrevi.d	$xr16, $xr3, 63
-	xvbitrevi.d	$xr3, $xr13, 63
-	xvfmul.d	$xr3, $xr2, $xr3
-	xvfmadd.d	$xr3, $xr16, $xr10, $xr3
-	xvstelm.d	$xr3, $t0, 32, 1
-	xvstelm.d	$xr3, $t0, 160, 2
-	xvstelm.d	$xr3, $t0, 288, 3
-	xvfmul.d	$xr2, $xr2, $xr10
-	xvfmadd.d	$xr17, $xr16, $xr13, $xr2
-	xvfadd.d	$xr2, $xr8, $xr15
-	xvfsub.d	$xr10, $xr9, $xr14
-	xvbitrevi.d	$xr13, $xr10, 63
-	xvfmul.d	$xr13, $xr5, $xr13
-	xvfmadd.d	$xr13, $xr4, $xr2, $xr13
-	xvpickve.d	$xr18, $xr13, 1
-	xvpermi.d	$xr16, $xr17, 68
-	xvrepl128vei.d	$xr19, $xr16, 1
-	vextrins.d	$vr19, $vr18, 16
-	vst	$vr19, $t0, 40
-	xvpickve.d	$xr18, $xr13, 2
-	xvpermi.d	$xr17, $xr17, 78
-	xvrepl128vei.d	$xr19, $xr17, 0
-	vextrins.d	$vr19, $vr18, 16
-	vst	$vr19, $t0, 168
-	xvpickve.d	$xr18, $xr13, 3
-	xvrepl128vei.d	$xr17, $xr17, 1
-	vextrins.d	$vr17, $vr18, 16
-	vst	$vr17, $t0, 296
-	xvfsub.d	$xr8, $xr8, $xr15
-	xvfadd.d	$xr9, $xr9, $xr14
-	xvbitrevi.d	$xr14, $xr9, 63
-	xvfmul.d	$xr14, $xr7, $xr14
-	xvfmadd.d	$xr14, $xr6, $xr8, $xr14
-	xvfmul.d	$xr7, $xr7, $xr8
-	xvfmadd.d	$xr6, $xr6, $xr9, $xr7
-	xvpickve.d	$xr7, $xr6, 1
-	xvpermi.d	$xr8, $xr14, 68
-	xvrepl128vei.d	$xr9, $xr8, 1
-	vextrins.d	$vr9, $vr7, 16
-	vst	$vr9, $t0, 16
-	xvpickve.d	$xr7, $xr6, 2
-	xvpermi.d	$xr9, $xr14, 78
-	xvrepl128vei.d	$xr14, $xr9, 0
-	vextrins.d	$vr14, $vr7, 16
-	vst	$vr14, $t0, 144
+	vst	$vr15, $t0, 144
 	xvpickve.d	$xr7, $xr6, 3
 	xvrepl128vei.d	$xr9, $xr9, 1
 	vextrins.d	$vr9, $vr7, 16
 	vst	$vr9, $t0, 272
-	xvpermi.d	$xr7, $xr11, 68
-	xvpackev.d	$xr7, $xr7, $xr12
+	xvpermi.d	$xr7, $xr12, 68
+	xvpackev.d	$xr7, $xr7, $xr13
 	xvpermi.d	$xr7, $xr7, 68
 	xvori.b	$xr9, $xr1, 0
 	xvshuf.d	$xr9, $xr8, $xr7
+	xvpickve.d	$xr7, $xr9, 1
+	xvpermi.d	$xr8, $xr9, 78
+                                        # kill: def $vr9 killed $vr9 killed $xr9 def $xr9
+	vextrins.d	$vr9, $vr7, 16
+	xvrepl128vei.d	$xr7, $xr8, 0
 	xvpickve.d	$xr6, $xr6, 0
-	xvinsve0.d	$xr9, $xr6, 3
+	vextrins.d	$vr7, $vr6, 16
+	xvpermi.q	$xr9, $xr7, 2
 	xvst	$xr9, $t0, -128
 	xvfmul.d	$xr2, $xr5, $xr2
 	xvfmadd.d	$xr2, $xr4, $xr10, $xr2
 	xvpermi.d	$xr3, $xr3, 68
-	xvpackev.d	$xr3, $xr16, $xr3
-	xvpermi.d	$xr4, $xr13, 68
+	xvpackev.d	$xr3, $xr14, $xr3
+	xvpermi.d	$xr4, $xr11, 68
 	xvpermi.d	$xr3, $xr3, 68
 	xvori.b	$xr5, $xr1, 0
 	xvshuf.d	$xr5, $xr4, $xr3
-	xvpickve.d	$xr3, $xr2, 0
-	xvinsve0.d	$xr5, $xr3, 3
+	xvpickve.d	$xr3, $xr5, 1
+	xvpermi.d	$xr4, $xr5, 78
+                                        # kill: def $vr5 killed $vr5 killed $xr5 def $xr5
+	vextrins.d	$vr5, $vr3, 16
+	xvrepl128vei.d	$xr3, $xr4, 0
+	xvpickve.d	$xr4, $xr2, 0
+	vextrins.d	$vr3, $vr4, 16
+	xvpermi.q	$xr5, $xr3, 2
 	xvst	$xr5, $t0, -96
 	xvstelm.d	$xr2, $t0, 56, 1
 	xvstelm.d	$xr2, $t0, 184, 2
@@ -2558,19 +2582,19 @@ cftmdl:                                 # @cftmdl
 	blt	$a7, $a0, .LBB9_14
 .LBB9_15:                               # %for.end292
                                         #   in Loop: Header=BB9_11 Depth=1
-	addi.d	$fp, $t1, 2
+	addi.d	$t3, $t1, 2
 	nor	$a5, $t1, $zero
 	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
-	slt	$a1, $fp, $a0
+	slt	$a1, $t3, $a0
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $fp, $a1
+	masknez	$a1, $t3, $a1
 	or	$a0, $a0, $a1
 	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
 	fld.d	$fa3, $a1, 16
 	fld.d	$fa4, $a1, 24
-	add.d	$s0, $a0, $a5
+	add.d	$fp, $a0, $a5
 	fadd.d	$fa6, $fa1, $fa1
 	fneg.d	$fa5, $fa6
 	fmadd.d	$fa5, $fa5, $fa4, $fa3
@@ -2578,7 +2602,7 @@ cftmdl:                                 # @cftmdl
 	fneg.d	$fa2, $fa2
 	move	$a7, $t1
 	ori	$a0, $zero, 14
-	bgeu	$s0, $a0, .LBB9_55
+	bgeu	$fp, $a0, .LBB9_55
 .LBB9_16:                               # %for.body310.preheader
                                         #   in Loop: Header=BB9_11 Depth=1
 	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
@@ -2653,24 +2677,24 @@ cftmdl:                                 # @cftmdl
 	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
 	mul.d	$s7, $a1, $t0
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	add.d	$t3, $a1, $s7
+	alsl.d	$a1, $a5, $t3, 4
+	move	$a7, $s1
+	bltu	$a1, $t3, .LBB9_13
+# %bb.19:                               # %vector.scevcheck
+                                        #   in Loop: Header=BB9_11 Depth=1
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	add.d	$fp, $a1, $s7
 	alsl.d	$a1, $a5, $fp, 4
 	move	$a7, $s1
 	bltu	$a1, $fp, .LBB9_13
-# %bb.19:                               # %vector.scevcheck
+# %bb.20:                               # %vector.scevcheck
                                         #   in Loop: Header=BB9_11 Depth=1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	add.d	$s3, $a1, $s7
 	alsl.d	$a1, $a5, $s3, 4
 	move	$a7, $s1
 	bltu	$a1, $s3, .LBB9_13
-# %bb.20:                               # %vector.scevcheck
-                                        #   in Loop: Header=BB9_11 Depth=1
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	add.d	$ra, $a1, $s7
-	alsl.d	$a1, $a5, $ra, 4
-	move	$a7, $s1
-	bltu	$a1, $ra, .LBB9_13
 # %bb.21:                               # %vector.scevcheck
                                         #   in Loop: Header=BB9_11 Depth=1
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
@@ -2696,11 +2720,11 @@ cftmdl:                                 # @cftmdl
 	add.d	$t5, $a1, $s7
 	slli.d	$a0, $a0, 3
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
-	and	$s8, $a0, $a1
-	add.d	$t6, $s0, $s8
+	and	$ra, $a0, $a1
+	add.d	$t6, $s0, $ra
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $s7
-	add.d	$s6, $a0, $s8
+	add.d	$s6, $a0, $ra
 	sltu	$a0, $t5, $s6
 	sltu	$a1, $s0, $t6
 	and	$a0, $a0, $a1
@@ -2711,8 +2735,8 @@ cftmdl:                                 # @cftmdl
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $s7
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	add.d	$t7, $a1, $s7
-	add.d	$a6, $t7, $s8
+	add.d	$s8, $a1, $s7
+	add.d	$a6, $s8, $ra
 	sltu	$a1, $t5, $a6
 	sltu	$a3, $a0, $t6
 	and	$a1, $a1, $a3
@@ -2722,19 +2746,19 @@ cftmdl:                                 # @cftmdl
                                         #   in Loop: Header=BB9_11 Depth=1
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	add.d	$a1, $a1, $s7
-	add.d	$t8, $a1, $s8
+	add.d	$t8, $a1, $ra
 	sltu	$a1, $t5, $t8
-	sltu	$a3, $t7, $t6
+	sltu	$a3, $s8, $t6
 	and	$a1, $a1, $a3
 	move	$a7, $s1
 	bnez	$a1, .LBB9_13
 # %bb.27:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	add.d	$t3, $a1, $s7
-	add.d	$t4, $ra, $s8
-	sltu	$a1, $t5, $t4
-	sltu	$a3, $t3, $t6
+	add.d	$t4, $a1, $s7
+	add.d	$t7, $s3, $ra
+	sltu	$a1, $t5, $t7
+	sltu	$a3, $t4, $t6
 	and	$a1, $a1, $a3
 	move	$a7, $s1
 	bnez	$a1, .LBB9_13
@@ -2742,17 +2766,17 @@ cftmdl:                                 # @cftmdl
                                         #   in Loop: Header=BB9_11 Depth=1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	add.d	$a1, $a1, $s7
-	add.d	$a1, $a1, $s8
+	add.d	$a1, $a1, $ra
 	sltu	$a3, $t5, $a1
-	sltu	$a7, $ra, $t6
+	sltu	$a7, $s3, $t6
 	and	$a3, $a3, $a7
 	move	$a7, $s1
 	bnez	$a3, .LBB9_13
 # %bb.29:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	add.d	$a3, $fp, $s8
+	add.d	$a3, $t3, $ra
 	sltu	$a7, $t5, $a3
-	sltu	$s4, $s3, $t6
+	sltu	$s4, $fp, $t6
 	and	$s4, $a7, $s4
 	move	$a7, $s1
 	bnez	$s4, .LBB9_13
@@ -2760,9 +2784,9 @@ cftmdl:                                 # @cftmdl
                                         #   in Loop: Header=BB9_11 Depth=1
 	ld.d	$a7, $sp, 24                    # 8-byte Folded Reload
 	add.d	$a7, $a7, $s7
-	add.d	$s8, $a7, $s8
-	sltu	$a7, $t5, $s8
-	sltu	$t5, $fp, $t6
+	add.d	$ra, $a7, $ra
+	sltu	$a7, $t5, $ra
+	sltu	$t5, $t3, $t6
 	and	$t5, $a7, $t5
 	move	$a7, $s1
 	bnez	$t5, .LBB9_13
@@ -2776,140 +2800,140 @@ cftmdl:                                 # @cftmdl
 # %bb.32:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
 	sltu	$a7, $s0, $t8
-	sltu	$t5, $t7, $s6
+	sltu	$t5, $s8, $s6
 	and	$t5, $a7, $t5
 	move	$a7, $s1
 	bnez	$t5, .LBB9_13
 # %bb.33:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a7, $s0, $t4
-	sltu	$t5, $t3, $s6
+	sltu	$a7, $s0, $t7
+	sltu	$t5, $t4, $s6
 	and	$t5, $a7, $t5
 	move	$a7, $s1
 	bnez	$t5, .LBB9_13
 # %bb.34:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
 	sltu	$a7, $s0, $a1
-	sltu	$t5, $ra, $s6
+	sltu	$t5, $s3, $s6
 	and	$t5, $a7, $t5
 	move	$a7, $s1
 	bnez	$t5, .LBB9_13
 # %bb.35:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
 	sltu	$a7, $s0, $a3
-	sltu	$t5, $s3, $s6
+	sltu	$t5, $fp, $s6
 	and	$t5, $a7, $t5
 	move	$a7, $s1
 	bnez	$t5, .LBB9_13
 # %bb.36:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a7, $s0, $s8
-	sltu	$t5, $fp, $s6
+	sltu	$a7, $s0, $ra
+	sltu	$t5, $t3, $s6
 	and	$t5, $a7, $t5
 	move	$a7, $s1
 	bnez	$t5, .LBB9_13
 # %bb.37:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
 	sltu	$a7, $a0, $t8
-	sltu	$t5, $t7, $a6
+	sltu	$t5, $s8, $a6
 	and	$t5, $a7, $t5
 	move	$a7, $s1
 	bnez	$t5, .LBB9_13
 # %bb.38:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a7, $a0, $t4
-	sltu	$t5, $t3, $a6
+	sltu	$a7, $a0, $t7
+	sltu	$t5, $t4, $a6
 	and	$t5, $a7, $t5
 	move	$a7, $s1
 	bnez	$t5, .LBB9_13
 # %bb.39:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
 	sltu	$a7, $a0, $a1
-	sltu	$t5, $ra, $a6
+	sltu	$t5, $s3, $a6
 	and	$t5, $a7, $t5
 	move	$a7, $s1
 	bnez	$t5, .LBB9_13
 # %bb.40:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
 	sltu	$a7, $a0, $a3
-	sltu	$t5, $s3, $a6
+	sltu	$t5, $fp, $a6
 	and	$t5, $a7, $t5
 	move	$a7, $s1
 	bnez	$t5, .LBB9_13
 # %bb.41:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $a0, $s8
-	sltu	$a6, $fp, $a6
+	sltu	$a0, $a0, $ra
+	sltu	$a6, $t3, $a6
 	and	$a0, $a0, $a6
 	move	$a7, $s1
 	bnez	$a0, .LBB9_13
 # %bb.42:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $t7, $t4
-	sltu	$a6, $t3, $t8
+	sltu	$a0, $s8, $t7
+	sltu	$a6, $t4, $t8
 	and	$a0, $a0, $a6
 	move	$a7, $s1
 	bnez	$a0, .LBB9_13
 # %bb.43:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $t7, $a1
-	sltu	$a6, $ra, $t8
+	sltu	$a0, $s8, $a1
+	sltu	$a6, $s3, $t8
 	and	$a0, $a0, $a6
 	move	$a7, $s1
 	bnez	$a0, .LBB9_13
 # %bb.44:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $t7, $a3
-	sltu	$a6, $s3, $t8
+	sltu	$a0, $s8, $a3
+	sltu	$a6, $fp, $t8
 	and	$a0, $a0, $a6
 	move	$a7, $s1
 	bnez	$a0, .LBB9_13
 # %bb.45:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $t7, $s8
-	sltu	$a6, $fp, $t8
+	sltu	$a0, $s8, $ra
+	sltu	$a6, $t3, $t8
 	and	$a0, $a0, $a6
 	move	$a7, $s1
 	bnez	$a0, .LBB9_13
 # %bb.46:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $t3, $a1
-	sltu	$a6, $ra, $t4
+	sltu	$a0, $t4, $a1
+	sltu	$a6, $s3, $t7
 	and	$a0, $a0, $a6
 	move	$a7, $s1
 	bnez	$a0, .LBB9_13
 # %bb.47:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $t3, $a3
-	sltu	$a6, $s3, $t4
+	sltu	$a0, $t4, $a3
+	sltu	$a6, $fp, $t7
 	and	$a0, $a0, $a6
 	move	$a7, $s1
 	bnez	$a0, .LBB9_13
 # %bb.48:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $t3, $s8
-	sltu	$a6, $fp, $t4
+	sltu	$a0, $t4, $ra
+	sltu	$a6, $t3, $t7
 	and	$a0, $a0, $a6
 	move	$a7, $s1
 	bnez	$a0, .LBB9_13
 # %bb.49:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $ra, $a3
-	sltu	$a6, $s3, $a1
+	sltu	$a0, $s3, $a3
+	sltu	$a6, $fp, $a1
 	and	$a0, $a0, $a6
 	move	$a7, $s1
 	bnez	$a0, .LBB9_13
 # %bb.50:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $ra, $s8
-	sltu	$a1, $fp, $a1
+	sltu	$a0, $s3, $ra
+	sltu	$a1, $t3, $a1
 	and	$a0, $a0, $a1
 	move	$a7, $s1
 	bnez	$a0, .LBB9_13
 # %bb.51:                               # %vector.memcheck732
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $s3, $s8
-	sltu	$a1, $fp, $a3
+	sltu	$a0, $fp, $ra
+	sltu	$a1, $t3, $a3
 	and	$a0, $a0, $a1
 	move	$a7, $s1
 	bnez	$a0, .LBB9_13
@@ -2948,52 +2972,52 @@ cftmdl:                                 # @cftmdl
 .LBB9_53:                               # %vector.body888
                                         #   Parent Loop BB9_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvadd.d	$xr15, $xr13, $xr0
 	fld.d	$ft6, $a5, -32
-	fld.d	$ft8, $a5, -16
-	fld.d	$ft9, $a5, 0
-	fld.d	$ft11, $a5, 16
-	xvadd.d	$xr18, $xr15, $xr0
-	xvinsve0.d	$xr14, $xr16, 1
-	xvinsve0.d	$xr14, $xr17, 2
-	xvinsve0.d	$xr14, $xr19, 3
-	xvpickve2gr.d	$a0, $xr15, 0
+	fld.d	$ft7, $a5, 0
+	fld.d	$ft8, $a5, 16
+	fld.d	$ft9, $a5, -16
+	xvadd.d	$xr19, $xr13, $xr0
+	xvadd.d	$xr18, $xr19, $xr0
+	vextrins.d	$vr15, $vr16, 16
+	vextrins.d	$vr14, $vr17, 16
+	xvpermi.q	$xr14, $xr15, 2
+	xvpickve2gr.d	$a0, $xr19, 0
 	alsl.d	$a1, $a0, $a2, 3
 	slli.d	$s3, $a0, 3
-	xvpickve2gr.d	$a0, $xr15, 1
+	xvpickve2gr.d	$a0, $xr19, 1
 	alsl.d	$a3, $a0, $a2, 3
 	slli.d	$s8, $a0, 3
-	xvpickve2gr.d	$a0, $xr15, 2
-	alsl.d	$a6, $a0, $a2, 3
+	xvpickve2gr.d	$a0, $xr19, 2
 	slli.d	$t3, $a0, 3
-	xvpickve2gr.d	$a0, $xr15, 3
-	slli.d	$ra, $a0, 3
+	xvpickve2gr.d	$a6, $xr19, 3
+	slli.d	$ra, $a6, 3
 	fldx.d	$ft7, $a2, $s3
-	fldx.d	$ft8, $a2, $s8
-	fldx.d	$ft9, $a2, $t3
-	fldx.d	$ft11, $a2, $ra
+	fldx.d	$ft8, $a2, $t3
+	fldx.d	$ft9, $a2, $ra
+	fldx.d	$ft11, $a2, $s8
 	alsl.d	$a0, $a0, $a2, 3
-	xvinsve0.d	$xr15, $xr16, 1
-	xvinsve0.d	$xr15, $xr17, 2
-	xvinsve0.d	$xr15, $xr19, 3
-	fld.d	$ft11, $a5, -24
-	fld.d	$ft9, $a5, -8
-	fld.d	$ft12, $a5, 8
+	alsl.d	$a6, $a6, $a2, 3
+	vextrins.d	$vr16, $vr17, 16
+	vextrins.d	$vr15, $vr19, 16
+	xvpermi.q	$xr15, $xr16, 2
+	fld.d	$ft9, $a5, 8
+	fld.d	$ft11, $a5, 24
 	xvfadd.d	$xr16, $xr14, $xr15
-	fld.d	$ft13, $a5, 24
-	xvinsve0.d	$xr19, $xr17, 1
-	xvinsve0.d	$xr19, $xr20, 2
-	fld.d	$ft12, $a1, 8
-	fld.d	$ft9, $a3, 8
-	fld.d	$ft14, $a6, 8
-	fld.d	$ft15, $a0, 8
-	xvinsve0.d	$xr19, $xr21, 3
-	xvinsve0.d	$xr20, $xr17, 1
-	xvinsve0.d	$xr20, $xr22, 2
-	xvinsve0.d	$xr20, $xr23, 3
-	xvfadd.d	$xr17, $xr19, $xr20
+	fld.d	$ft12, $a5, -24
+	fld.d	$ft13, $a5, -8
+	vextrins.d	$vr17, $vr19, 16
+	fld.d	$ft11, $a1, 8
+	fld.d	$ft14, $a0, 8
+	fld.d	$ft15, $a6, 8
+	fld.d	$fs0, $a3, 8
+	vextrins.d	$vr20, $vr21, 16
+	xvpermi.q	$xr20, $xr17, 2
+	vextrins.d	$vr22, $vr23, 16
+	vextrins.d	$vr19, $vr24, 16
+	xvpermi.q	$xr19, $xr22, 2
+	xvfadd.d	$xr17, $xr20, $xr19
 	xvfsub.d	$xr14, $xr14, $xr15
-	xvfsub.d	$xr15, $xr19, $xr20
+	xvfsub.d	$xr15, $xr20, $xr19
 	xvpickve2gr.d	$a0, $xr18, 0
 	alsl.d	$a6, $a0, $a2, 3
 	slli.d	$a1, $a0, 3
@@ -3001,62 +3025,62 @@ cftmdl:                                 # @cftmdl
 	alsl.d	$t6, $t5, $a2, 3
 	slli.d	$t4, $t5, 3
 	xvpickve2gr.d	$t8, $xr18, 2
-	alsl.d	$s0, $t8, $a2, 3
 	slli.d	$a3, $t8, 3
-	xvpickve2gr.d	$s4, $xr18, 3
-	slli.d	$t7, $s4, 3
+	xvpickve2gr.d	$s0, $xr18, 3
+	slli.d	$t7, $s0, 3
 	fldx.d	$ft10, $a2, $a1
-	fldx.d	$ft11, $a2, $t4
-	fldx.d	$ft12, $a2, $a3
-	fldx.d	$ft13, $a2, $t7
-	alsl.d	$s6, $s4, $a2, 3
-	xvinsve0.d	$xr18, $xr19, 1
-	xvinsve0.d	$xr18, $xr20, 2
-	xvinsve0.d	$xr18, $xr21, 3
+	fldx.d	$ft11, $a2, $a3
+	fldx.d	$ft12, $a2, $t7
+	fldx.d	$ft13, $a2, $t4
+	alsl.d	$s4, $t8, $a2, 3
+	alsl.d	$s6, $s0, $a2, 3
+	vextrins.d	$vr19, $vr20, 16
+	vextrins.d	$vr18, $vr21, 16
+	xvpermi.q	$xr18, $xr19, 2
 	alsl.d	$a0, $a0, $t2, 3
 	alsl.d	$t5, $t5, $t2, 3
 	alsl.d	$t8, $t8, $t2, 3
-	fldx.d	$ft11, $t2, $a1
-	fldx.d	$ft12, $t2, $t4
-	fldx.d	$ft13, $t2, $a3
-	fldx.d	$ft14, $t2, $t7
-	alsl.d	$s4, $s4, $t2, 3
-	xvinsve0.d	$xr19, $xr20, 1
-	xvinsve0.d	$xr19, $xr21, 2
-	xvinsve0.d	$xr19, $xr22, 3
+	fldx.d	$ft11, $t2, $a3
+	fldx.d	$ft12, $t2, $t7
+	alsl.d	$s0, $s0, $t2, 3
+	fldx.d	$ft13, $t2, $a1
+	fldx.d	$ft14, $t2, $t4
+	vextrins.d	$vr19, $vr20, 16
 	fld.d	$ft12, $a6, 8
-	fld.d	$ft13, $t6, 8
-	fld.d	$ft14, $s0, 8
-	xvfadd.d	$xr23, $xr18, $xr19
+	fld.d	$ft15, $s4, 8
 	fld.d	$fs0, $s6, 8
-	xvinsve0.d	$xr20, $xr21, 1
-	xvinsve0.d	$xr20, $xr22, 2
-	fld.d	$ft13, $a0, 8
-	fld.d	$ft14, $t5, 8
-	fld.d	$fs1, $t8, 8
-	fld.d	$fs2, $s4, 8
-	xvinsve0.d	$xr20, $xr24, 3
-	xvinsve0.d	$xr21, $xr22, 1
-	xvinsve0.d	$xr21, $xr25, 2
-	xvinsve0.d	$xr21, $xr26, 3
-	xvfadd.d	$xr22, $xr20, $xr21
-	xvfsub.d	$xr18, $xr18, $xr19
-	xvfsub.d	$xr19, $xr20, $xr21
-	xvfadd.d	$xr20, $xr16, $xr23
+	fld.d	$fs1, $t6, 8
+	vextrins.d	$vr21, $vr22, 16
+	xvpermi.q	$xr21, $xr19, 2
+	vextrins.d	$vr23, $vr24, 16
+	vextrins.d	$vr20, $vr25, 16
+	fld.d	$ft11, $a0, 8
+	fld.d	$ft14, $t8, 8
+	fld.d	$fs0, $s0, 8
+	fld.d	$fs1, $t5, 8
+	xvfadd.d	$xr26, $xr18, $xr21
+	xvpermi.q	$xr20, $xr23, 2
+	vextrins.d	$vr22, $vr24, 16
+	vextrins.d	$vr19, $vr25, 16
+	xvpermi.q	$xr19, $xr22, 2
+	xvfadd.d	$xr22, $xr20, $xr19
+	xvfsub.d	$xr18, $xr18, $xr21
+	xvfsub.d	$xr19, $xr20, $xr19
+	xvfadd.d	$xr20, $xr16, $xr26
 	xvfadd.d	$xr21, $xr17, $xr22
-	xvpickve.d	$xr24, $xr21, 1
-	xvpermi.d	$xr25, $xr20, 68
-	xvrepl128vei.d	$xr25, $xr25, 1
-	vextrins.d	$vr25, $vr24, 16
-	xvld	$xr24, $s7, %pc_lo12(.LCPI9_1)
-	vst	$vr25, $a5, -16
-	xvpermi.d	$xr25, $xr20, 238
-	xvpermi.d	$xr26, $xr21, 238
-	xvshuf.d	$xr24, $xr26, $xr25
-	xvst	$xr24, $a5, 0
+	xvpickve.d	$xr23, $xr21, 1
+	xvpermi.d	$xr24, $xr20, 68
+	xvrepl128vei.d	$xr24, $xr24, 1
+	vextrins.d	$vr24, $vr23, 16
+	xvld	$xr23, $s7, %pc_lo12(.LCPI9_1)
+	vst	$vr24, $a5, -16
+	xvpermi.d	$xr24, $xr20, 238
+	xvpermi.d	$xr25, $xr21, 238
+	xvshuf.d	$xr23, $xr25, $xr24
+	xvst	$xr23, $a5, 0
 	vpackev.d	$vr20, $vr21, $vr20
 	vst	$vr20, $a5, -32
-	xvfsub.d	$xr16, $xr16, $xr23
+	xvfsub.d	$xr16, $xr16, $xr26
 	xvfsub.d	$xr17, $xr17, $xr22
 	xvbitrevi.d	$xr20, $xr17, 63
 	xvfmul.d	$xr20, $xr7, $xr20
@@ -3139,7 +3163,7 @@ cftmdl:                                 # @cftmdl
 .LBB9_55:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
 	alsl.d	$t5, $t1, $a2, 3
-	slli.d	$a0, $s0, 3
+	slli.d	$a0, $fp, 3
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	and	$a1, $a0, $a1
 	alsl.d	$s8, $t1, $a1, 3
@@ -3179,12 +3203,12 @@ cftmdl:                                 # @cftmdl
                                         #   in Loop: Header=BB9_11 Depth=1
 	ld.d	$a3, $sp, 352                   # 8-byte Folded Reload
 	add.d	$a3, $a3, $t1
-	alsl.d	$t7, $a3, $a2, 3
-	alsl.d	$t3, $a3, $a1, 3
+	alsl.d	$s0, $a3, $a2, 3
+	alsl.d	$t4, $a3, $a1, 3
 	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
-	add.d	$s3, $a1, $t3
+	add.d	$s3, $a1, $t4
 	sltu	$a1, $t5, $s3
-	sltu	$a7, $t7, $t6
+	sltu	$a7, $s0, $t6
 	and	$a1, $a1, $a7
 	move	$a7, $t1
 	bnez	$a1, .LBB9_16
@@ -3193,20 +3217,20 @@ cftmdl:                                 # @cftmdl
 	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
 	alsl.d	$a1, $a3, $a1, 3
 	ld.d	$a3, $sp, 224                   # 8-byte Folded Reload
-	add.d	$a3, $a3, $t3
+	add.d	$a3, $a3, $t4
 	sltu	$a7, $t5, $a3
-	sltu	$t3, $a1, $t6
-	and	$t3, $a7, $t3
+	sltu	$t4, $a1, $t6
+	and	$t4, $a7, $t4
 	move	$a7, $t1
-	bnez	$t3, .LBB9_16
+	bnez	$t4, .LBB9_16
 # %bb.60:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
 	ld.d	$a7, $sp, 152                   # 8-byte Folded Reload
-	alsl.d	$t3, $t1, $a7, 3
+	alsl.d	$t4, $t1, $a7, 3
 	ld.d	$a7, $sp, 192                   # 8-byte Folded Reload
-	add.d	$t4, $a7, $s8
-	sltu	$a7, $t5, $t4
-	sltu	$s4, $t3, $t6
+	add.d	$t7, $a7, $s8
+	sltu	$a7, $t5, $t7
+	sltu	$s4, $t4, $t6
 	and	$s4, $a7, $s4
 	move	$a7, $t1
 	bnez	$s4, .LBB9_16
@@ -3238,7 +3262,7 @@ cftmdl:                                 # @cftmdl
 # %bb.64:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
 	sltu	$a7, $s7, $s3
-	sltu	$t5, $t7, $s6
+	sltu	$t5, $s0, $s6
 	and	$t5, $a7, $t5
 	move	$a7, $t1
 	bnez	$t5, .LBB9_16
@@ -3251,8 +3275,8 @@ cftmdl:                                 # @cftmdl
 	bnez	$t5, .LBB9_16
 # %bb.66:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a7, $s7, $t4
-	sltu	$t5, $t3, $s6
+	sltu	$a7, $s7, $t7
+	sltu	$t5, $t4, $s6
 	and	$t5, $a7, $t5
 	move	$a7, $t1
 	bnez	$t5, .LBB9_16
@@ -3273,7 +3297,7 @@ cftmdl:                                 # @cftmdl
 # %bb.69:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
 	sltu	$a7, $a6, $s3
-	sltu	$t5, $t7, $a0
+	sltu	$t5, $s0, $a0
 	and	$t5, $a7, $t5
 	move	$a7, $t1
 	bnez	$t5, .LBB9_16
@@ -3286,8 +3310,8 @@ cftmdl:                                 # @cftmdl
 	bnez	$t5, .LBB9_16
 # %bb.71:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a7, $a6, $t4
-	sltu	$t5, $t3, $a0
+	sltu	$a7, $a6, $t7
+	sltu	$t5, $t4, $a0
 	and	$t5, $a7, $t5
 	move	$a7, $t1
 	bnez	$t5, .LBB9_16
@@ -3301,7 +3325,7 @@ cftmdl:                                 # @cftmdl
 # %bb.73:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
 	sltu	$a0, $ra, $s3
-	sltu	$a6, $t7, $t8
+	sltu	$a6, $s0, $t8
 	and	$a0, $a0, $a6
 	move	$a7, $t1
 	bnez	$a0, .LBB9_16
@@ -3314,8 +3338,8 @@ cftmdl:                                 # @cftmdl
 	bnez	$a0, .LBB9_16
 # %bb.75:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $ra, $t4
-	sltu	$a6, $t3, $t8
+	sltu	$a0, $ra, $t7
+	sltu	$a6, $t4, $t8
 	and	$a0, $a0, $a6
 	move	$a7, $t1
 	bnez	$a0, .LBB9_16
@@ -3328,29 +3352,29 @@ cftmdl:                                 # @cftmdl
 	bnez	$a0, .LBB9_16
 # %bb.77:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $t7, $a3
+	sltu	$a0, $s0, $a3
 	sltu	$a6, $a1, $s3
 	and	$a0, $a0, $a6
 	move	$a7, $t1
 	bnez	$a0, .LBB9_16
 # %bb.78:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $t7, $t4
-	sltu	$a6, $t3, $s3
+	sltu	$a0, $s0, $t7
+	sltu	$a6, $t4, $s3
 	and	$a0, $a0, $a6
 	move	$a7, $t1
 	bnez	$a0, .LBB9_16
 # %bb.79:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $t7, $s8
+	sltu	$a0, $s0, $s8
 	sltu	$a6, $s4, $s3
 	and	$a0, $a0, $a6
 	move	$a7, $t1
 	bnez	$a0, .LBB9_16
 # %bb.80:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $a1, $t4
-	sltu	$a6, $t3, $a3
+	sltu	$a0, $a1, $t7
+	sltu	$a6, $t4, $a3
 	and	$a0, $a0, $a6
 	move	$a7, $t1
 	bnez	$a0, .LBB9_16
@@ -3363,16 +3387,16 @@ cftmdl:                                 # @cftmdl
 	bnez	$a0, .LBB9_16
 # %bb.82:                               # %vector.memcheck539
                                         #   in Loop: Header=BB9_11 Depth=1
-	sltu	$a0, $t3, $s8
-	sltu	$a1, $s4, $t4
+	sltu	$a0, $t4, $s8
+	sltu	$a1, $s4, $t7
 	and	$a0, $a0, $a1
 	move	$a7, $t1
 	bnez	$a0, .LBB9_16
 # %bb.83:                               # %vector.ph684
                                         #   in Loop: Header=BB9_11 Depth=1
 	ld.d	$a3, $sp, 344                   # 8-byte Folded Reload
-	slt	$a0, $fp, $a3
-	masknez	$a1, $fp, $a0
+	slt	$a0, $t3, $a3
+	masknez	$a1, $t3, $a0
 	maskeqz	$a0, $a3, $a0
 	or	$a0, $a0, $a1
 	add.d	$a0, $a5, $a0
@@ -3380,7 +3404,7 @@ cftmdl:                                 # @cftmdl
 	addi.d	$a0, $a0, 1
 	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 	and	$t3, $a0, $a1
-	srli.d	$a0, $s0, 1
+	srli.d	$a0, $fp, 1
 	addi.d	$a1, $a0, 1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	alsl.d	$fp, $t1, $a0, 3
@@ -3403,52 +3427,52 @@ cftmdl:                                 # @cftmdl
 .LBB9_84:                               # %vector.body704
                                         #   Parent Loop BB9_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvadd.d	$xr15, $xr13, $xr0
 	fld.d	$ft6, $fp, -32
-	fld.d	$ft8, $fp, -16
-	fld.d	$ft9, $fp, 0
-	fld.d	$ft11, $fp, 16
-	xvadd.d	$xr18, $xr15, $xr0
-	xvinsve0.d	$xr14, $xr16, 1
-	xvinsve0.d	$xr14, $xr17, 2
-	xvinsve0.d	$xr14, $xr19, 3
-	xvpickve2gr.d	$a0, $xr15, 0
+	fld.d	$ft7, $fp, 0
+	fld.d	$ft8, $fp, 16
+	fld.d	$ft9, $fp, -16
+	xvadd.d	$xr19, $xr13, $xr0
+	xvadd.d	$xr18, $xr19, $xr0
+	vextrins.d	$vr15, $vr16, 16
+	vextrins.d	$vr14, $vr17, 16
+	xvpermi.q	$xr14, $xr15, 2
+	xvpickve2gr.d	$a0, $xr19, 0
 	alsl.d	$a1, $a0, $a2, 3
 	slli.d	$s8, $a0, 3
-	xvpickve2gr.d	$a0, $xr15, 1
+	xvpickve2gr.d	$a0, $xr19, 1
 	alsl.d	$a3, $a0, $a2, 3
 	slli.d	$s4, $a0, 3
-	xvpickve2gr.d	$a0, $xr15, 2
-	alsl.d	$a6, $a0, $a2, 3
+	xvpickve2gr.d	$a0, $xr19, 2
 	slli.d	$s3, $a0, 3
-	xvpickve2gr.d	$a0, $xr15, 3
-	slli.d	$a5, $a0, 3
+	xvpickve2gr.d	$a6, $xr19, 3
+	slli.d	$a5, $a6, 3
 	fldx.d	$ft7, $a2, $s8
-	fldx.d	$ft8, $a2, $s4
-	fldx.d	$ft9, $a2, $s3
-	fldx.d	$ft11, $a2, $a5
+	fldx.d	$ft8, $a2, $s3
+	fldx.d	$ft9, $a2, $a5
+	fldx.d	$ft11, $a2, $s4
 	alsl.d	$a0, $a0, $a2, 3
-	xvinsve0.d	$xr15, $xr16, 1
-	xvinsve0.d	$xr15, $xr17, 2
-	xvinsve0.d	$xr15, $xr19, 3
-	fld.d	$ft11, $fp, -24
-	fld.d	$ft9, $fp, -8
-	fld.d	$ft12, $fp, 8
+	alsl.d	$a6, $a6, $a2, 3
+	vextrins.d	$vr16, $vr17, 16
+	vextrins.d	$vr15, $vr19, 16
+	xvpermi.q	$xr15, $xr16, 2
+	fld.d	$ft9, $fp, 8
+	fld.d	$ft11, $fp, 24
 	xvfadd.d	$xr16, $xr14, $xr15
-	fld.d	$ft13, $fp, 24
-	xvinsve0.d	$xr19, $xr17, 1
-	xvinsve0.d	$xr19, $xr20, 2
-	fld.d	$ft12, $a1, 8
-	fld.d	$ft9, $a3, 8
-	fld.d	$ft14, $a6, 8
-	fld.d	$ft15, $a0, 8
-	xvinsve0.d	$xr19, $xr21, 3
-	xvinsve0.d	$xr20, $xr17, 1
-	xvinsve0.d	$xr20, $xr22, 2
-	xvinsve0.d	$xr20, $xr23, 3
-	xvfadd.d	$xr17, $xr19, $xr20
+	fld.d	$ft12, $fp, -24
+	fld.d	$ft13, $fp, -8
+	vextrins.d	$vr17, $vr19, 16
+	fld.d	$ft11, $a1, 8
+	fld.d	$ft14, $a0, 8
+	fld.d	$ft15, $a6, 8
+	fld.d	$fs0, $a3, 8
+	vextrins.d	$vr20, $vr21, 16
+	xvpermi.q	$xr20, $xr17, 2
+	vextrins.d	$vr22, $vr23, 16
+	vextrins.d	$vr19, $vr24, 16
+	xvpermi.q	$xr19, $xr22, 2
+	xvfadd.d	$xr17, $xr20, $xr19
 	xvfsub.d	$xr14, $xr14, $xr15
-	xvfsub.d	$xr15, $xr19, $xr20
+	xvfsub.d	$xr15, $xr20, $xr19
 	xvpickve2gr.d	$a0, $xr18, 0
 	alsl.d	$a6, $a0, $a2, 3
 	slli.d	$a1, $a0, 3
@@ -3456,62 +3480,62 @@ cftmdl:                                 # @cftmdl
 	alsl.d	$t6, $t5, $a2, 3
 	slli.d	$t4, $t5, 3
 	xvpickve2gr.d	$t8, $xr18, 2
-	alsl.d	$s6, $t8, $a2, 3
 	slli.d	$ra, $t8, 3
-	xvpickve2gr.d	$s7, $xr18, 3
-	slli.d	$a3, $s7, 3
+	xvpickve2gr.d	$s6, $xr18, 3
+	slli.d	$a3, $s6, 3
 	fldx.d	$ft10, $a2, $a1
-	fldx.d	$ft11, $a2, $t4
-	fldx.d	$ft12, $a2, $ra
-	fldx.d	$ft13, $a2, $a3
-	alsl.d	$t7, $s7, $a2, 3
-	xvinsve0.d	$xr18, $xr19, 1
-	xvinsve0.d	$xr18, $xr20, 2
-	xvinsve0.d	$xr18, $xr21, 3
+	fldx.d	$ft11, $a2, $ra
+	fldx.d	$ft12, $a2, $a3
+	fldx.d	$ft13, $a2, $t4
+	alsl.d	$s7, $t8, $a2, 3
+	alsl.d	$t7, $s6, $a2, 3
+	vextrins.d	$vr19, $vr20, 16
+	vextrins.d	$vr18, $vr21, 16
+	xvpermi.q	$xr18, $xr19, 2
 	alsl.d	$a0, $a0, $t2, 3
 	alsl.d	$t5, $t5, $t2, 3
 	alsl.d	$t8, $t8, $t2, 3
-	fldx.d	$ft11, $t2, $a1
-	fldx.d	$ft12, $t2, $t4
-	fldx.d	$ft13, $t2, $ra
-	fldx.d	$ft14, $t2, $a3
-	alsl.d	$s7, $s7, $t2, 3
-	xvinsve0.d	$xr19, $xr20, 1
-	xvinsve0.d	$xr19, $xr21, 2
-	xvinsve0.d	$xr19, $xr22, 3
+	fldx.d	$ft11, $t2, $ra
+	fldx.d	$ft12, $t2, $a3
+	alsl.d	$s6, $s6, $t2, 3
+	fldx.d	$ft13, $t2, $a1
+	fldx.d	$ft14, $t2, $t4
+	vextrins.d	$vr19, $vr20, 16
 	fld.d	$ft12, $a6, 8
-	fld.d	$ft13, $t6, 8
-	fld.d	$ft14, $s6, 8
-	xvfadd.d	$xr23, $xr18, $xr19
+	fld.d	$ft15, $s7, 8
 	fld.d	$fs0, $t7, 8
-	xvinsve0.d	$xr20, $xr21, 1
-	xvinsve0.d	$xr20, $xr22, 2
-	fld.d	$ft13, $a0, 8
-	fld.d	$ft14, $t5, 8
-	fld.d	$fs1, $t8, 8
-	fld.d	$fs2, $s7, 8
-	xvinsve0.d	$xr20, $xr24, 3
-	xvinsve0.d	$xr21, $xr22, 1
-	xvinsve0.d	$xr21, $xr25, 2
-	xvinsve0.d	$xr21, $xr26, 3
-	xvfadd.d	$xr22, $xr20, $xr21
-	xvfsub.d	$xr18, $xr18, $xr19
-	xvfsub.d	$xr19, $xr20, $xr21
-	xvfadd.d	$xr20, $xr16, $xr23
+	fld.d	$fs1, $t6, 8
+	vextrins.d	$vr21, $vr22, 16
+	xvpermi.q	$xr21, $xr19, 2
+	vextrins.d	$vr23, $vr24, 16
+	vextrins.d	$vr20, $vr25, 16
+	fld.d	$ft11, $a0, 8
+	fld.d	$ft14, $t8, 8
+	fld.d	$fs0, $s6, 8
+	fld.d	$fs1, $t5, 8
+	xvfadd.d	$xr26, $xr18, $xr21
+	xvpermi.q	$xr20, $xr23, 2
+	vextrins.d	$vr22, $vr24, 16
+	vextrins.d	$vr19, $vr25, 16
+	xvpermi.q	$xr19, $xr22, 2
+	xvfadd.d	$xr22, $xr20, $xr19
+	xvfsub.d	$xr18, $xr18, $xr21
+	xvfsub.d	$xr19, $xr20, $xr19
+	xvfadd.d	$xr20, $xr16, $xr26
 	xvfadd.d	$xr21, $xr17, $xr22
-	xvpickve.d	$xr24, $xr21, 1
-	xvpermi.d	$xr25, $xr20, 68
-	xvrepl128vei.d	$xr25, $xr25, 1
-	vextrins.d	$vr25, $vr24, 16
-	xvld	$xr24, $s0, %pc_lo12(.LCPI9_1)
-	vst	$vr25, $fp, -16
-	xvpermi.d	$xr25, $xr20, 238
-	xvpermi.d	$xr26, $xr21, 238
-	xvshuf.d	$xr24, $xr26, $xr25
-	xvst	$xr24, $fp, 0
+	xvpickve.d	$xr23, $xr21, 1
+	xvpermi.d	$xr24, $xr20, 68
+	xvrepl128vei.d	$xr24, $xr24, 1
+	vextrins.d	$vr24, $vr23, 16
+	xvld	$xr23, $s0, %pc_lo12(.LCPI9_1)
+	vst	$vr24, $fp, -16
+	xvpermi.d	$xr24, $xr20, 238
+	xvpermi.d	$xr25, $xr21, 238
+	xvshuf.d	$xr23, $xr25, $xr24
+	xvst	$xr23, $fp, 0
 	vpackev.d	$vr20, $vr21, $vr20
 	vst	$vr20, $fp, -32
-	xvfsub.d	$xr16, $xr16, $xr23
+	xvfsub.d	$xr16, $xr16, $xr26
 	xvfsub.d	$xr17, $xr17, $xr22
 	xvbitrevi.d	$xr20, $xr17, 63
 	xvfmul.d	$xr20, $xr8, $xr20
@@ -3796,52 +3820,52 @@ cftmdl:                                 # @cftmdl
 	.p2align	4, , 16
 .LBB9_116:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvadd.d	$xr6, $xr4, $xr1
 	fld.d	$fa5, $t5, -32
-	fld.d	$fa7, $t5, -16
-	fld.d	$ft0, $t5, 0
-	fld.d	$ft2, $t5, 16
-	xvadd.d	$xr9, $xr6, $xr1
-	xvinsve0.d	$xr5, $xr7, 1
-	xvinsve0.d	$xr5, $xr8, 2
-	xvinsve0.d	$xr5, $xr10, 3
-	xvpickve2gr.d	$a1, $xr6, 0
+	fld.d	$fa6, $t5, 0
+	fld.d	$fa7, $t5, 16
+	fld.d	$ft0, $t5, -16
+	xvadd.d	$xr10, $xr4, $xr1
+	xvadd.d	$xr9, $xr10, $xr1
+	vextrins.d	$vr6, $vr7, 16
+	vextrins.d	$vr5, $vr8, 16
+	xvpermi.q	$xr5, $xr6, 2
+	xvpickve2gr.d	$a1, $xr10, 0
+	alsl.d	$a3, $a1, $a2, 3
+	slli.d	$s0, $a1, 3
+	xvpickve2gr.d	$a1, $xr10, 1
 	alsl.d	$a6, $a1, $a2, 3
-	slli.d	$a3, $a1, 3
-	xvpickve2gr.d	$a1, $xr6, 1
-	alsl.d	$s0, $a1, $a2, 3
 	slli.d	$fp, $a1, 3
-	xvpickve2gr.d	$a1, $xr6, 2
-	alsl.d	$s1, $a1, $a2, 3
+	xvpickve2gr.d	$a1, $xr10, 2
 	slli.d	$t8, $a1, 3
-	xvpickve2gr.d	$a1, $xr6, 3
-	slli.d	$t7, $a1, 3
-	fldx.d	$fa6, $a2, $a3
-	fldx.d	$fa7, $a2, $fp
-	fldx.d	$ft0, $a2, $t8
-	fldx.d	$ft2, $a2, $t7
+	xvpickve2gr.d	$s1, $xr10, 3
+	slli.d	$t7, $s1, 3
+	fldx.d	$fa6, $a2, $s0
+	fldx.d	$fa7, $a2, $t8
+	fldx.d	$ft0, $a2, $t7
+	fldx.d	$ft2, $a2, $fp
 	alsl.d	$a1, $a1, $a2, 3
-	xvinsve0.d	$xr6, $xr7, 1
-	xvinsve0.d	$xr6, $xr8, 2
-	xvinsve0.d	$xr6, $xr10, 3
-	fld.d	$ft2, $t5, -24
-	fld.d	$ft0, $t5, -8
-	fld.d	$ft3, $t5, 8
+	alsl.d	$s1, $s1, $a2, 3
+	vextrins.d	$vr7, $vr8, 16
+	vextrins.d	$vr6, $vr10, 16
+	xvpermi.q	$xr6, $xr7, 2
+	fld.d	$ft0, $t5, 8
+	fld.d	$ft2, $t5, 24
 	xvfadd.d	$xr7, $xr5, $xr6
-	fld.d	$ft4, $t5, 24
-	xvinsve0.d	$xr10, $xr8, 1
-	xvinsve0.d	$xr10, $xr11, 2
-	fld.d	$ft3, $a6, 8
-	fld.d	$ft0, $s0, 8
-	fld.d	$ft5, $s1, 8
-	fld.d	$ft6, $a1, 8
-	xvinsve0.d	$xr10, $xr12, 3
-	xvinsve0.d	$xr11, $xr8, 1
-	xvinsve0.d	$xr11, $xr13, 2
-	xvinsve0.d	$xr11, $xr14, 3
-	xvfadd.d	$xr8, $xr10, $xr11
+	fld.d	$ft3, $t5, -24
+	fld.d	$ft4, $t5, -8
+	vextrins.d	$vr8, $vr10, 16
+	fld.d	$ft2, $a3, 8
+	fld.d	$ft5, $a1, 8
+	fld.d	$ft6, $s1, 8
+	fld.d	$ft7, $a6, 8
+	vextrins.d	$vr11, $vr12, 16
+	xvpermi.q	$xr11, $xr8, 2
+	vextrins.d	$vr13, $vr14, 16
+	vextrins.d	$vr10, $vr15, 16
+	xvpermi.q	$xr10, $xr13, 2
+	xvfadd.d	$xr8, $xr11, $xr10
 	xvfsub.d	$xr5, $xr5, $xr6
-	xvfsub.d	$xr6, $xr10, $xr11
+	xvfsub.d	$xr6, $xr11, $xr10
 	xvpickve2gr.d	$a6, $xr9, 0
 	alsl.d	$s3, $a6, $a2, 3
 	slli.d	$s2, $a6, 3
@@ -3849,63 +3873,63 @@ cftmdl:                                 # @cftmdl
 	alsl.d	$s5, $s4, $a2, 3
 	slli.d	$s1, $s4, 3
 	xvpickve2gr.d	$s6, $xr9, 2
-	alsl.d	$s7, $s6, $a2, 3
 	slli.d	$a1, $s6, 3
-	xvpickve2gr.d	$s8, $xr9, 3
-	slli.d	$s0, $s8, 3
+	xvpickve2gr.d	$s7, $xr9, 3
+	slli.d	$a3, $s7, 3
 	fldx.d	$ft1, $a2, $s2
-	fldx.d	$ft2, $a2, $s1
-	fldx.d	$ft3, $a2, $a1
-	fldx.d	$ft4, $a2, $s0
-	alsl.d	$ra, $s8, $a2, 3
-	xvinsve0.d	$xr9, $xr10, 1
-	xvinsve0.d	$xr9, $xr11, 2
-	xvinsve0.d	$xr9, $xr12, 3
+	fldx.d	$ft2, $a2, $a1
+	fldx.d	$ft3, $a2, $a3
+	fldx.d	$ft4, $a2, $s1
+	alsl.d	$s8, $s6, $a2, 3
+	alsl.d	$ra, $s7, $a2, 3
+	vextrins.d	$vr10, $vr11, 16
+	vextrins.d	$vr9, $vr12, 16
+	xvpermi.q	$xr9, $xr10, 2
 	alsl.d	$a6, $a6, $t4, 3
 	alsl.d	$s4, $s4, $t4, 3
 	alsl.d	$s6, $s6, $t4, 3
-	fldx.d	$ft2, $t4, $s2
-	fldx.d	$ft3, $t4, $s1
-	fldx.d	$ft4, $t4, $a1
-	fldx.d	$ft5, $t4, $s0
-	alsl.d	$s8, $s8, $t4, 3
-	xvinsve0.d	$xr10, $xr11, 1
-	xvinsve0.d	$xr10, $xr12, 2
-	xvinsve0.d	$xr10, $xr13, 3
+	fldx.d	$ft2, $t4, $a1
+	fldx.d	$ft3, $t4, $a3
+	alsl.d	$s7, $s7, $t4, 3
+	fldx.d	$ft4, $t4, $s2
+	fldx.d	$ft5, $t4, $s1
+	vextrins.d	$vr10, $vr11, 16
 	fld.d	$ft3, $s3, 8
-	fld.d	$ft4, $s5, 8
-	fld.d	$ft5, $s7, 8
-	xvfadd.d	$xr14, $xr9, $xr10
+	fld.d	$ft6, $s8, 8
 	fld.d	$ft7, $ra, 8
-	xvinsve0.d	$xr11, $xr12, 1
-	xvinsve0.d	$xr11, $xr13, 2
-	fld.d	$ft4, $a6, 8
-	fld.d	$ft5, $s4, 8
-	fld.d	$ft8, $s6, 8
-	fld.d	$ft9, $s8, 8
-	xvinsve0.d	$xr11, $xr15, 3
-	xvinsve0.d	$xr12, $xr13, 1
-	xvinsve0.d	$xr12, $xr16, 2
-	xvinsve0.d	$xr12, $xr17, 3
-	xvfadd.d	$xr13, $xr11, $xr12
-	xvfsub.d	$xr9, $xr9, $xr10
-	xvfsub.d	$xr10, $xr11, $xr12
-	xvfadd.d	$xr11, $xr7, $xr14
+	fld.d	$ft8, $s5, 8
+	vextrins.d	$vr12, $vr13, 16
+	xvpermi.q	$xr12, $xr10, 2
+	vextrins.d	$vr14, $vr15, 16
+	vextrins.d	$vr11, $vr16, 16
+	fld.d	$ft2, $a6, 8
+	fld.d	$ft5, $s6, 8
+	fld.d	$ft7, $s7, 8
+	fld.d	$ft8, $s4, 8
+	xvfadd.d	$xr17, $xr9, $xr12
+	xvpermi.q	$xr11, $xr14, 2
+	vextrins.d	$vr13, $vr15, 16
+	vextrins.d	$vr10, $vr16, 16
+	xvpermi.q	$xr10, $xr13, 2
+	xvfadd.d	$xr13, $xr11, $xr10
+	xvfsub.d	$xr9, $xr9, $xr12
+	xvfsub.d	$xr10, $xr11, $xr10
+	xvfadd.d	$xr11, $xr7, $xr17
 	xvfadd.d	$xr12, $xr8, $xr13
-	xvpickve.d	$xr15, $xr12, 1
-	xvpermi.d	$xr16, $xr11, 68
-	xvrepl128vei.d	$xr16, $xr16, 1
-	vextrins.d	$vr16, $vr15, 16
-	vst	$vr16, $t5, -16
-	xvpermi.d	$xr15, $xr11, 238
-	xvpermi.d	$xr16, $xr12, 238
-	xvori.b	$xr17, $xr3, 0
-	xvshuf.d	$xr17, $xr16, $xr15
-	xvst	$xr17, $t5, 0
+	xvpickve.d	$xr14, $xr12, 1
+	xvpermi.d	$xr15, $xr11, 68
+	xvrepl128vei.d	$xr15, $xr15, 1
+	vextrins.d	$vr15, $vr14, 16
+	vst	$vr15, $t5, -16
+	xvpermi.d	$xr14, $xr11, 238
+	xvpermi.d	$xr15, $xr12, 238
+	xvori.b	$xr16, $xr3, 0
+	xvshuf.d	$xr16, $xr15, $xr14
+	xvst	$xr16, $t5, 0
 	vpackev.d	$vr11, $vr12, $vr11
 	vst	$vr11, $t5, -32
 	xvfsub.d	$xr8, $xr13, $xr8
-	xvfsub.d	$xr7, $xr7, $xr14
+	xvfsub.d	$xr7, $xr7, $xr17
 	vpackev.d	$vr11, $vr7, $vr8
 	vstx	$vr11, $a2, $s2
 	xvpickve.d	$xr11, $xr7, 1
@@ -3921,7 +3945,7 @@ cftmdl:                                 # @cftmdl
 	xvpickve.d	$xr7, $xr7, 3
 	xvrepl128vei.d	$xr8, $xr8, 1
 	vextrins.d	$vr8, $vr7, 16
-	vstx	$vr8, $a2, $s0
+	vstx	$vr8, $a2, $a3
 	xvfsub.d	$xr7, $xr5, $xr10
 	xvfadd.d	$xr8, $xr6, $xr9
 	xvfsub.d	$xr11, $xr7, $xr8
@@ -3929,7 +3953,7 @@ cftmdl:                                 # @cftmdl
 	xvfadd.d	$xr7, $xr8, $xr7
 	xvfmul.d	$xr7, $xr2, $xr7
 	vpackev.d	$vr8, $vr7, $vr11
-	vstx	$vr8, $a2, $a3
+	vstx	$vr8, $a2, $s0
 	xvpickve.d	$xr8, $xr7, 1
 	xvpermi.d	$xr12, $xr11, 68
 	xvrepl128vei.d	$xr12, $xr12, 1
@@ -3965,7 +3989,7 @@ cftmdl:                                 # @cftmdl
 	xvpickve.d	$xr5, $xr5, 3
 	xvrepl128vei.d	$xr6, $xr7, 1
 	vextrins.d	$vr6, $vr5, 16
-	vstx	$vr6, $t4, $s0
+	vstx	$vr6, $t4, $a3
 	xvaddi.du	$xr4, $xr4, 8
 	addi.d	$t6, $t6, -4
 	addi.d	$t5, $t5, 64

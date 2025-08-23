@@ -8146,23 +8146,24 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	vor.v	$vr27, $vr19, $vr27
 	vxor.v	$vr27, $vr27, $vr4
 	vand.v	$vr27, $vr23, $vr27
-	vpickve2gr.h	$t0, $vr27, 0
-	xvinsgr2vr.w	$xr28, $t0, 0
-	vpickve2gr.h	$t0, $vr27, 1
-	xvinsgr2vr.w	$xr28, $t0, 1
-	vpickve2gr.h	$t0, $vr27, 2
-	xvinsgr2vr.w	$xr28, $t0, 2
-	vpickve2gr.h	$t0, $vr27, 3
-	xvinsgr2vr.w	$xr28, $t0, 3
 	vpickve2gr.h	$t0, $vr27, 4
-	xvinsgr2vr.w	$xr28, $t0, 4
+	vinsgr2vr.w	$vr28, $t0, 0
 	vpickve2gr.h	$t0, $vr27, 5
-	xvinsgr2vr.w	$xr28, $t0, 5
+	vinsgr2vr.w	$vr28, $t0, 1
 	vpickve2gr.h	$t0, $vr27, 6
-	xvinsgr2vr.w	$xr28, $t0, 6
+	vinsgr2vr.w	$vr28, $t0, 2
 	vpickve2gr.h	$t0, $vr27, 7
-	xvinsgr2vr.w	$xr28, $t0, 7
-	xvand.v	$xr27, $xr28, $xr15
+	vinsgr2vr.w	$vr28, $t0, 3
+	vpickve2gr.h	$t0, $vr27, 0
+	vinsgr2vr.w	$vr30, $t0, 0
+	vpickve2gr.h	$t0, $vr27, 1
+	vinsgr2vr.w	$vr30, $t0, 1
+	vpickve2gr.h	$t0, $vr27, 2
+	vinsgr2vr.w	$vr30, $t0, 2
+	vpickve2gr.h	$t0, $vr27, 3
+	vinsgr2vr.w	$vr30, $t0, 3
+	xvpermi.q	$xr30, $xr28, 2
+	xvand.v	$xr27, $xr30, $xr15
 	xvadd.w	$xr5, $xr5, $xr27
 	vxor.v	$vr27, $vr29, $vr31
 	vslli.h	$vr27, $vr27, 8
@@ -8170,23 +8171,24 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	vor.v	$vr27, $vr17, $vr27
 	vxor.v	$vr27, $vr27, $vr4
 	vand.v	$vr27, $vr18, $vr27
-	vpickve2gr.h	$t0, $vr27, 0
-	xvinsgr2vr.w	$xr28, $t0, 0
-	vpickve2gr.h	$t0, $vr27, 1
-	xvinsgr2vr.w	$xr28, $t0, 1
-	vpickve2gr.h	$t0, $vr27, 2
-	xvinsgr2vr.w	$xr28, $t0, 2
-	vpickve2gr.h	$t0, $vr27, 3
-	xvinsgr2vr.w	$xr28, $t0, 3
 	vpickve2gr.h	$t0, $vr27, 4
-	xvinsgr2vr.w	$xr28, $t0, 4
+	vinsgr2vr.w	$vr28, $t0, 0
 	vpickve2gr.h	$t0, $vr27, 5
-	xvinsgr2vr.w	$xr28, $t0, 5
+	vinsgr2vr.w	$vr28, $t0, 1
 	vpickve2gr.h	$t0, $vr27, 6
-	xvinsgr2vr.w	$xr28, $t0, 6
+	vinsgr2vr.w	$vr28, $t0, 2
 	vpickve2gr.h	$t0, $vr27, 7
-	xvinsgr2vr.w	$xr28, $t0, 7
-	xvand.v	$xr27, $xr28, $xr15
+	vinsgr2vr.w	$vr28, $t0, 3
+	vpickve2gr.h	$t0, $vr27, 0
+	vinsgr2vr.w	$vr29, $t0, 0
+	vpickve2gr.h	$t0, $vr27, 1
+	vinsgr2vr.w	$vr29, $t0, 1
+	vpickve2gr.h	$t0, $vr27, 2
+	vinsgr2vr.w	$vr29, $t0, 2
+	vpickve2gr.h	$t0, $vr27, 3
+	vinsgr2vr.w	$vr29, $t0, 3
+	xvpermi.q	$xr29, $xr28, 2
+	xvand.v	$xr27, $xr29, $xr15
 	xvadd.w	$xr6, $xr6, $xr27
 	xvpermi.d	$xr26, $xr26, 68
 	xvshuf.b	$xr26, $xr0, $xr26, $xr13
@@ -8213,42 +8215,44 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	xvand.v	$xr20, $xr20, $xr15
 	xvadd.w	$xr12, $xr12, $xr20
 	vnor.v	$vr19, $vr23, $vr19
-	vpickve2gr.h	$t0, $vr19, 0
-	xvinsgr2vr.w	$xr20, $t0, 0
-	vpickve2gr.h	$t0, $vr19, 1
-	xvinsgr2vr.w	$xr20, $t0, 1
-	vpickve2gr.h	$t0, $vr19, 2
-	xvinsgr2vr.w	$xr20, $t0, 2
-	vpickve2gr.h	$t0, $vr19, 3
-	xvinsgr2vr.w	$xr20, $t0, 3
 	vpickve2gr.h	$t0, $vr19, 4
-	xvinsgr2vr.w	$xr20, $t0, 4
+	vinsgr2vr.w	$vr20, $t0, 0
 	vpickve2gr.h	$t0, $vr19, 5
-	xvinsgr2vr.w	$xr20, $t0, 5
+	vinsgr2vr.w	$vr20, $t0, 1
 	vpickve2gr.h	$t0, $vr19, 6
-	xvinsgr2vr.w	$xr20, $t0, 6
+	vinsgr2vr.w	$vr20, $t0, 2
 	vpickve2gr.h	$t0, $vr19, 7
-	xvinsgr2vr.w	$xr20, $t0, 7
-	xvand.v	$xr19, $xr20, $xr15
+	vinsgr2vr.w	$vr20, $t0, 3
+	vpickve2gr.h	$t0, $vr19, 0
+	vinsgr2vr.w	$vr21, $t0, 0
+	vpickve2gr.h	$t0, $vr19, 1
+	vinsgr2vr.w	$vr21, $t0, 1
+	vpickve2gr.h	$t0, $vr19, 2
+	vinsgr2vr.w	$vr21, $t0, 2
+	vpickve2gr.h	$t0, $vr19, 3
+	vinsgr2vr.w	$vr21, $t0, 3
+	xvpermi.q	$xr21, $xr20, 2
+	xvand.v	$xr19, $xr21, $xr15
 	xvadd.w	$xr14, $xr14, $xr19
 	vnor.v	$vr17, $vr18, $vr17
-	vpickve2gr.h	$t0, $vr17, 0
-	xvinsgr2vr.w	$xr18, $t0, 0
-	vpickve2gr.h	$t0, $vr17, 1
-	xvinsgr2vr.w	$xr18, $t0, 1
-	vpickve2gr.h	$t0, $vr17, 2
-	xvinsgr2vr.w	$xr18, $t0, 2
-	vpickve2gr.h	$t0, $vr17, 3
-	xvinsgr2vr.w	$xr18, $t0, 3
 	vpickve2gr.h	$t0, $vr17, 4
-	xvinsgr2vr.w	$xr18, $t0, 4
+	vinsgr2vr.w	$vr18, $t0, 0
 	vpickve2gr.h	$t0, $vr17, 5
-	xvinsgr2vr.w	$xr18, $t0, 5
+	vinsgr2vr.w	$vr18, $t0, 1
 	vpickve2gr.h	$t0, $vr17, 6
-	xvinsgr2vr.w	$xr18, $t0, 6
+	vinsgr2vr.w	$vr18, $t0, 2
 	vpickve2gr.h	$t0, $vr17, 7
-	xvinsgr2vr.w	$xr18, $t0, 7
-	xvand.v	$xr17, $xr18, $xr15
+	vinsgr2vr.w	$vr18, $t0, 3
+	vpickve2gr.h	$t0, $vr17, 0
+	vinsgr2vr.w	$vr19, $t0, 0
+	vpickve2gr.h	$t0, $vr17, 1
+	vinsgr2vr.w	$vr19, $t0, 1
+	vpickve2gr.h	$t0, $vr17, 2
+	vinsgr2vr.w	$vr19, $t0, 2
+	vpickve2gr.h	$t0, $vr17, 3
+	vinsgr2vr.w	$vr19, $t0, 3
+	xvpermi.q	$xr19, $xr18, 2
+	xvand.v	$xr17, $xr19, $xr15
 	xvadd.w	$xr16, $xr16, $xr17
 	addi.d	$a7, $a7, -16
 	addi.d	$a6, $a6, 16

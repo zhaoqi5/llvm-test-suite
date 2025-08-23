@@ -9955,15 +9955,16 @@ IntraChromaRDDecision:                  # @IntraChromaRDDecision
 	ld.w	$t0, $a1, 24
 	ld.w	$t1, $a1, 48
 	ld.w	$t2, $a1, 72
-	xvinsgr2vr.w	$xr0, $a3, 0
-	xvinsgr2vr.w	$xr0, $a4, 1
-	xvinsgr2vr.w	$xr0, $a5, 2
-	xvinsgr2vr.w	$xr0, $a6, 3
-	xvinsgr2vr.w	$xr0, $a7, 4
-	xvinsgr2vr.w	$xr0, $t0, 5
-	xvinsgr2vr.w	$xr0, $t1, 6
-	xvinsgr2vr.w	$xr0, $t2, 7
-	xvsrai.w	$xr0, $xr0, 1
+	vinsgr2vr.w	$vr0, $a7, 0
+	vinsgr2vr.w	$vr0, $t0, 1
+	vinsgr2vr.w	$vr0, $t1, 2
+	vinsgr2vr.w	$vr0, $t2, 3
+	vinsgr2vr.w	$vr1, $a3, 0
+	vinsgr2vr.w	$vr1, $a4, 1
+	vinsgr2vr.w	$vr1, $a5, 2
+	vinsgr2vr.w	$vr1, $a6, 3
+	xvpermi.q	$xr1, $xr0, 2
+	xvsrai.w	$xr0, $xr1, 1
 	xvstelm.w	$xr0, $a1, -96, 0
 	xvstelm.w	$xr0, $a1, -72, 1
 	xvstelm.w	$xr0, $a1, -48, 2

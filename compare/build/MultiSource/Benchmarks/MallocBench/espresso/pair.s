@@ -2171,16 +2171,14 @@ pair_best_cost:                         # @pair_best_cost
 	.type	find_best_cost,@function
 find_best_cost:                         # @find_best_cost
 # %bb.0:                                # %entry
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$s4, $a0, 0
 	ori	$a0, $zero, 1
@@ -2212,60 +2210,96 @@ find_best_cost:                         # @find_best_cost
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a5, -16
 	vld	$vr3, $a5, 0
+	vpickve2gr.w	$a7, $vr2, 2
+	vinsgr2vr.d	$vr4, $a7, 0
 	vpickve2gr.w	$a7, $vr2, 3
-	vpickve2gr.w	$t0, $vr2, 2
-	vpickve2gr.w	$t1, $vr2, 1
-	vpickve2gr.w	$t2, $vr2, 0
-	vpickve2gr.w	$t3, $vr3, 3
-	vpickve2gr.w	$t4, $vr3, 2
-	vpickve2gr.w	$t5, $vr3, 1
-	vpickve2gr.w	$t6, $vr3, 0
-	alsl.d	$t2, $t2, $a0, 3
-	alsl.d	$t1, $t1, $a0, 3
-	alsl.d	$t0, $t0, $a0, 3
+	vinsgr2vr.d	$vr4, $a7, 1
+	xvpermi.q	$xr4, $xr4, 2
+	vpickve2gr.w	$a7, $vr2, 0
+	vinsgr2vr.d	$vr5, $a7, 0
+	vpickve2gr.w	$a7, $vr2, 1
+	vinsgr2vr.d	$vr5, $a7, 1
+	vpickve2gr.w	$a7, $vr3, 2
+	vinsgr2vr.d	$vr2, $a7, 0
+	vpickve2gr.w	$a7, $vr3, 3
+	vinsgr2vr.d	$vr2, $a7, 1
+	xvpermi.q	$xr2, $xr2, 2
+	vpickve2gr.w	$a7, $vr3, 0
+	vinsgr2vr.d	$vr6, $a7, 0
+	vpickve2gr.w	$a7, $vr3, 1
+	vinsgr2vr.d	$vr6, $a7, 1
+	xvpickve2gr.d	$a7, $xr5, 0
 	alsl.d	$a7, $a7, $a0, 3
-	alsl.d	$t6, $t6, $a0, 3
-	alsl.d	$t5, $t5, $a0, 3
-	alsl.d	$t4, $t4, $a0, 3
+	xvpickve2gr.d	$t0, $xr5, 1
+	alsl.d	$t0, $t0, $a0, 3
+	xvpickve2gr.d	$t1, $xr4, 2
+	alsl.d	$t1, $t1, $a0, 3
+	xvpickve2gr.d	$t2, $xr4, 3
+	alsl.d	$t2, $t2, $a0, 3
+	xvpickve2gr.d	$t3, $xr6, 0
 	alsl.d	$t3, $t3, $a0, 3
-	ld.d	$t2, $t2, -8
-	ld.d	$t1, $t1, -8
-	ld.d	$t0, $t0, -8
+	xvpickve2gr.d	$t4, $xr6, 1
+	alsl.d	$t4, $t4, $a0, 3
+	xvpickve2gr.d	$t5, $xr2, 2
+	alsl.d	$t5, $t5, $a0, 3
+	xvpickve2gr.d	$t6, $xr2, 3
+	alsl.d	$t6, $t6, $a0, 3
 	ld.d	$a7, $a7, -8
-	ld.d	$t6, $t6, -8
-	ld.d	$t5, $t5, -8
-	vld	$vr2, $a4, -16
-	ld.d	$t4, $t4, -8
+	ld.d	$t0, $t0, -8
+	ld.d	$t1, $t1, -8
+	ld.d	$t2, $t2, -8
 	ld.d	$t3, $t3, -8
+	ld.d	$t4, $t4, -8
+	vld	$vr2, $a4, -16
+	ld.d	$t5, $t5, -8
+	ld.d	$t6, $t6, -8
 	vld	$vr3, $a4, 0
+	vpickve2gr.w	$t7, $vr2, 2
+	vinsgr2vr.d	$vr4, $t7, 0
 	vpickve2gr.w	$t7, $vr2, 3
-	vpickve2gr.w	$t8, $vr2, 2
-	vpickve2gr.w	$s0, $vr2, 1
-	vpickve2gr.w	$s1, $vr2, 0
-	vpickve2gr.w	$s2, $vr3, 3
-	vpickve2gr.w	$s3, $vr3, 2
-	vpickve2gr.w	$s5, $vr3, 1
-	vpickve2gr.w	$s6, $vr3, 0
-	alsl.d	$t2, $s1, $t2, 2
-	alsl.d	$t1, $s0, $t1, 2
-	alsl.d	$t0, $t8, $t0, 2
+	vinsgr2vr.d	$vr4, $t7, 1
+	xvpermi.q	$xr4, $xr4, 2
+	vpickve2gr.w	$t7, $vr2, 0
+	vinsgr2vr.d	$vr5, $t7, 0
+	vpickve2gr.w	$t7, $vr2, 1
+	vinsgr2vr.d	$vr5, $t7, 1
+	vpickve2gr.w	$t7, $vr3, 2
+	vinsgr2vr.d	$vr2, $t7, 0
+	vpickve2gr.w	$t7, $vr3, 3
+	vinsgr2vr.d	$vr2, $t7, 1
+	xvpermi.q	$xr2, $xr2, 2
+	vpickve2gr.w	$t7, $vr3, 0
+	vinsgr2vr.d	$vr6, $t7, 0
+	vpickve2gr.w	$t7, $vr3, 1
+	vinsgr2vr.d	$vr6, $t7, 1
+	xvpickve2gr.d	$t7, $xr5, 0
 	alsl.d	$a7, $t7, $a7, 2
-	alsl.d	$t6, $s6, $t6, 2
-	alsl.d	$t5, $s5, $t5, 2
-	alsl.d	$t4, $s3, $t4, 2
-	alsl.d	$t3, $s2, $t3, 2
-	ld.w	$t2, $t2, -4
-	ld.w	$t1, $t1, -4
-	ld.w	$t0, $t0, -4
+	xvpickve2gr.d	$t7, $xr5, 1
+	alsl.d	$t0, $t7, $t0, 2
+	xvpickve2gr.d	$t7, $xr4, 2
+	alsl.d	$t1, $t7, $t1, 2
+	xvpickve2gr.d	$t7, $xr4, 3
+	alsl.d	$t2, $t7, $t2, 2
+	xvpickve2gr.d	$t7, $xr6, 0
+	alsl.d	$t3, $t7, $t3, 2
+	xvpickve2gr.d	$t7, $xr6, 1
+	alsl.d	$t4, $t7, $t4, 2
+	xvpickve2gr.d	$t7, $xr2, 2
+	alsl.d	$t5, $t7, $t5, 2
+	xvpickve2gr.d	$t7, $xr2, 3
+	alsl.d	$t6, $t7, $t6, 2
 	ld.w	$a7, $a7, -4
-	vinsgr2vr.w	$vr2, $t2, 0
-	vinsgr2vr.w	$vr2, $t1, 1
-	vinsgr2vr.w	$vr2, $t0, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a7, $t6, -4
-	ld.w	$t0, $t5, -4
-	ld.w	$t1, $t4, -4
-	ld.w	$t2, $t3, -4
+	ld.w	$t0, $t0, -4
+	ld.w	$t1, $t1, -4
+	ld.w	$t2, $t2, -4
+	vinsgr2vr.w	$vr2, $a7, 0
+	vinsgr2vr.w	$vr2, $t0, 1
+	vinsgr2vr.w	$vr2, $t1, 2
+	vinsgr2vr.w	$vr2, $t2, 3
+	ld.w	$a7, $t3, -4
+	ld.w	$t0, $t4, -4
+	ld.w	$t1, $t5, -4
+	ld.w	$t2, $t6, -4
 	vinsgr2vr.w	$vr3, $a7, 0
 	vinsgr2vr.w	$vr3, $t0, 1
 	vinsgr2vr.w	$vr3, $t1, 2
@@ -2403,16 +2437,14 @@ find_best_cost:                         # @find_best_cost
 	jirl	$ra, $ra, 0
 .LBB9_22:                               # %if.end14
 	move	$a0, $zero
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .LBB9_23:                               # %vector.memcheck
 	sub.d	$a5, $a0, $s2

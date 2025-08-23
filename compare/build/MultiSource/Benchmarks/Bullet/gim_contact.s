@@ -184,52 +184,52 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	fld.s	$fa5, $a5, -192
 	fld.s	$fa6, $a5, -144
 	fld.s	$fa7, $a5, -96
-	fld.s	$ft0, $a5, -48
-	fld.s	$ft1, $a5, 0
-	fld.s	$ft2, $a5, 48
-	fld.s	$ft3, $a5, 96
-	fld.s	$ft4, $a5, 144
-	xvinsve0.w	$xr5, $xr6, 1
-	xvinsve0.w	$xr5, $xr7, 2
-	xvinsve0.w	$xr5, $xr8, 3
-	xvinsve0.w	$xr5, $xr9, 4
-	xvinsve0.w	$xr5, $xr10, 5
-	xvinsve0.w	$xr5, $xr11, 6
-	xvinsve0.w	$xr5, $xr12, 7
+	fld.s	$ft0, $a5, 0
+	fld.s	$ft1, $a5, 48
+	fld.s	$ft2, $a5, 96
+	fld.s	$ft3, $a5, 144
+	fld.s	$ft4, $a5, -48
+	vextrins.w	$vr8, $vr9, 16
+	vextrins.w	$vr8, $vr10, 32
+	vextrins.w	$vr8, $vr11, 48
+	vextrins.w	$vr5, $vr6, 16
+	vextrins.w	$vr5, $vr7, 32
+	vextrins.w	$vr5, $vr12, 48
+	xvpermi.q	$xr5, $xr8, 2
 	xvfmadd.s	$xr5, $xr5, $xr1, $xr0
 	xvftintrz.w.s	$xr5, $xr5
 	fld.s	$fa6, $a5, -188
 	fld.s	$fa7, $a5, -140
 	fld.s	$ft0, $a5, -92
-	fld.s	$ft1, $a5, -44
-	fld.s	$ft2, $a5, 4
-	fld.s	$ft3, $a5, 52
-	fld.s	$ft4, $a5, 100
-	fld.s	$ft5, $a5, 148
-	xvinsve0.w	$xr6, $xr7, 1
-	xvinsve0.w	$xr6, $xr8, 2
-	xvinsve0.w	$xr6, $xr9, 3
-	xvinsve0.w	$xr6, $xr10, 4
-	xvinsve0.w	$xr6, $xr11, 5
-	xvinsve0.w	$xr6, $xr12, 6
-	xvinsve0.w	$xr6, $xr13, 7
+	fld.s	$ft1, $a5, 4
+	fld.s	$ft2, $a5, 52
+	fld.s	$ft3, $a5, 100
+	fld.s	$ft4, $a5, 148
+	fld.s	$ft5, $a5, -44
+	vextrins.w	$vr9, $vr10, 16
+	vextrins.w	$vr9, $vr11, 32
+	vextrins.w	$vr9, $vr12, 48
+	vextrins.w	$vr6, $vr7, 16
+	vextrins.w	$vr6, $vr8, 32
+	vextrins.w	$vr6, $vr13, 48
+	xvpermi.q	$xr6, $xr9, 2
 	xvfmul.s	$xr6, $xr6, $xr2
 	xvftintrz.w.s	$xr6, $xr6
 	fld.s	$fa7, $a5, -184
 	fld.s	$ft0, $a5, -136
 	fld.s	$ft1, $a5, -88
-	fld.s	$ft2, $a5, -40
-	fld.s	$ft3, $a5, 8
-	fld.s	$ft4, $a5, 56
-	fld.s	$ft5, $a5, 104
-	fld.s	$ft6, $a5, 152
-	xvinsve0.w	$xr7, $xr8, 1
-	xvinsve0.w	$xr7, $xr9, 2
-	xvinsve0.w	$xr7, $xr10, 3
-	xvinsve0.w	$xr7, $xr11, 4
-	xvinsve0.w	$xr7, $xr12, 5
-	xvinsve0.w	$xr7, $xr13, 6
-	xvinsve0.w	$xr7, $xr14, 7
+	fld.s	$ft2, $a5, 8
+	fld.s	$ft3, $a5, 56
+	fld.s	$ft4, $a5, 104
+	fld.s	$ft5, $a5, 152
+	fld.s	$ft6, $a5, -40
+	vextrins.w	$vr10, $vr11, 16
+	vextrins.w	$vr10, $vr12, 32
+	vextrins.w	$vr10, $vr13, 48
+	vextrins.w	$vr7, $vr8, 16
+	vextrins.w	$vr7, $vr9, 32
+	vextrins.w	$vr7, $vr14, 48
+	xvpermi.q	$xr7, $xr10, 2
 	xvfmadd.s	$xr7, $xr7, $xr4, $xr3
 	xvftintrz.w.s	$xr7, $xr7
 	xvslli.w	$xr6, $xr6, 4

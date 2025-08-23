@@ -3054,12 +3054,11 @@ quant_compare:                          # @quant_compare
 	.type	amp_scalefac_bands,@function
 amp_scalefac_bands:                     # @amp_scalefac_bands
 # %bb.0:                                # %entry
-	addi.d	$sp, $sp, -48
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
 	ld.w	$a5, $a1, 68
 	ld.w	$a4, $a1, 80
 	sltui	$a6, $a5, 1
@@ -3263,21 +3262,21 @@ amp_scalefac_bands:                     # @amp_scalefac_bands
 	xvpickve2gr.d	$fp, $xr6, 1
 	add.d	$s0, $a0, $fp
 	xvpickve2gr.d	$s1, $xr6, 2
-	add.d	$s2, $a0, $s1
-	xvpickve2gr.d	$s3, $xr6, 3
+	xvpickve2gr.d	$s2, $xr6, 3
 	fldx.d	$fa6, $a0, $t7
-	fldx.d	$fa7, $a0, $fp
-	fldx.d	$ft0, $a0, $s1
-	fldx.d	$ft1, $a0, $s3
-	add.d	$t7, $a0, $s3
-	xvinsve0.d	$xr6, $xr7, 1
-	xvinsve0.d	$xr6, $xr8, 2
-	xvinsve0.d	$xr6, $xr9, 3
+	fldx.d	$fa7, $a0, $s1
+	fldx.d	$ft0, $a0, $s2
+	fldx.d	$ft1, $a0, $fp
+	add.d	$t7, $a0, $s1
+	add.d	$fp, $a0, $s2
+	vextrins.d	$vr7, $vr8, 16
+	vextrins.d	$vr6, $vr9, 16
+	xvpermi.q	$xr6, $xr7, 2
 	xvfmul.d	$xr6, $xr4, $xr6
 	xvstelm.d	$xr6, $t8, 0, 0
 	xvstelm.d	$xr6, $s0, 0, 1
-	xvstelm.d	$xr6, $s2, 0, 2
-	xvstelm.d	$xr6, $t7, 0, 3
+	xvstelm.d	$xr6, $t7, 0, 2
+	xvstelm.d	$xr6, $fp, 0, 3
 	addi.d	$t6, $t6, -4
 	xvaddi.du	$xr5, $xr5, 4
 	bnez	$t6, .LBB8_29
@@ -3400,12 +3399,12 @@ amp_scalefac_bands:                     # @amp_scalefac_bands
 	xvpickve2gr.d	$s2, $xr6, 3
 	add.d	$s2, $a0, $s2
 	fld.d	$fa6, $fp, 8
-	fld.d	$fa7, $s0, 8
-	fld.d	$ft0, $s1, 8
-	fld.d	$ft1, $s2, 8
-	xvinsve0.d	$xr6, $xr7, 1
-	xvinsve0.d	$xr6, $xr8, 2
-	xvinsve0.d	$xr6, $xr9, 3
+	fld.d	$fa7, $s1, 8
+	fld.d	$ft0, $s2, 8
+	fld.d	$ft1, $s0, 8
+	vextrins.d	$vr7, $vr8, 16
+	vextrins.d	$vr6, $vr9, 16
+	xvpermi.q	$xr6, $xr7, 2
 	xvfmul.d	$xr6, $xr4, $xr6
 	xvstelm.d	$xr6, $fp, 8, 0
 	xvstelm.d	$xr6, $s0, 8, 1
@@ -3517,12 +3516,12 @@ amp_scalefac_bands:                     # @amp_scalefac_bands
 	xvpickve2gr.d	$fp, $xr6, 3
 	add.d	$fp, $a0, $fp
 	fld.d	$fa6, $t6, 16
-	fld.d	$fa7, $t7, 16
-	fld.d	$ft0, $t8, 16
-	fld.d	$ft1, $fp, 16
-	xvinsve0.d	$xr6, $xr7, 1
-	xvinsve0.d	$xr6, $xr8, 2
-	xvinsve0.d	$xr6, $xr9, 3
+	fld.d	$fa7, $t8, 16
+	fld.d	$ft0, $fp, 16
+	fld.d	$ft1, $t7, 16
+	vextrins.d	$vr7, $vr8, 16
+	vextrins.d	$vr6, $vr9, 16
+	xvpermi.q	$xr6, $xr7, 2
 	xvfmul.d	$xr6, $xr4, $xr6
 	xvstelm.d	$xr6, $t6, 16, 0
 	xvstelm.d	$xr6, $t7, 16, 1
@@ -3536,12 +3535,11 @@ amp_scalefac_bands:                     # @amp_scalefac_bands
 	beq	$t2, $t4, .LBB8_51
 	b	.LBB8_56
 .LBB8_63:                               # %for.end111
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end8:
 	.size	amp_scalefac_bands, .Lfunc_end8-amp_scalefac_bands

@@ -8,43 +8,44 @@ main:                                   # @main
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(array)
-	addi.d	$a2, $a0, %pc_lo12(array)
-	ld.w	$a0, $a2, 0
+	addi.d	$a4, $a0, %pc_lo12(array)
+	ld.w	$a0, $a4, 0
 	beqz	$a0, .LBB0_11
 # %bb.1:                                # %for.cond1
-	ld.w	$a1, $a2, 4
+	ld.w	$a1, $a4, 4
 	beqz	$a1, .LBB0_11
 # %bb.2:                                # %for.cond1.1
-	ld.w	$a3, $a2, 8
-	beqz	$a3, .LBB0_11
+	ld.w	$a2, $a4, 8
+	beqz	$a2, .LBB0_11
 # %bb.3:                                # %for.cond1.2
-	ld.w	$a4, $a2, 12
-	beqz	$a4, .LBB0_11
+	ld.w	$a3, $a4, 12
+	beqz	$a3, .LBB0_11
 # %bb.4:                                # %for.cond1.3
-	ld.w	$a5, $a2, 16
+	ld.w	$a5, $a4, 16
 	beqz	$a5, .LBB0_11
 # %bb.5:                                # %for.cond1.4
-	ld.w	$a6, $a2, 20
+	ld.w	$a6, $a4, 20
 	beqz	$a6, .LBB0_11
 # %bb.6:                                # %for.cond1.5
-	ld.w	$a7, $a2, 24
+	ld.w	$a7, $a4, 24
 	beqz	$a7, .LBB0_11
 # %bb.7:                                # %for.cond1.6
-	ld.w	$t0, $a2, 28
+	ld.w	$t0, $a4, 28
 	beqz	$t0, .LBB0_11
 # %bb.8:                                # %for.cond1.7
-	ld.w	$a2, $a2, 32
-	beqz	$a2, .LBB0_11
+	ld.w	$a4, $a4, 32
+	beqz	$a4, .LBB0_11
 # %bb.9:                                # %for.cond1.8
-	xvinsgr2vr.w	$xr0, $a0, 0
-	xvinsgr2vr.w	$xr0, $a1, 1
-	xvinsgr2vr.w	$xr0, $a3, 2
-	xvinsgr2vr.w	$xr0, $a4, 3
-	xvinsgr2vr.w	$xr0, $a5, 4
-	xvinsgr2vr.w	$xr0, $a6, 5
-	xvinsgr2vr.w	$xr0, $a7, 6
-	xvinsgr2vr.w	$xr0, $t0, 7
-	xvseqi.w	$xr0, $xr0, 1
+	vinsgr2vr.w	$vr0, $a5, 0
+	vinsgr2vr.w	$vr0, $a6, 1
+	vinsgr2vr.w	$vr0, $a7, 2
+	vinsgr2vr.w	$vr0, $t0, 3
+	vinsgr2vr.w	$vr1, $a0, 0
+	vinsgr2vr.w	$vr1, $a1, 1
+	vinsgr2vr.w	$vr1, $a2, 2
+	vinsgr2vr.w	$vr1, $a3, 3
+	xvpermi.q	$xr1, $xr0, 2
+	xvseqi.w	$xr0, $xr1, 1
 	xvmskltz.w	$xr0, $xr0
 	xvpickve2gr.wu	$a0, $xr0, 0
 	xvpickve2gr.wu	$a1, $xr0, 4
@@ -52,7 +53,7 @@ main:                                   # @main
 	bnez	$a0, .LBB0_12
 # %bb.10:                               # %for.cond1.8
 	ori	$a0, $zero, 1
-	beq	$a2, $a0, .LBB0_12
+	beq	$a4, $a0, .LBB0_12
 .LBB0_11:                               # %if.then8
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0

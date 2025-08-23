@@ -68,31 +68,33 @@ main:                                   # @main
 	move	$a2, $a3
 	xvldx	$xr3, $a0, $a3
 	xvpermi.q	$xr4, $xr3, 1
-	vpickve2gr.w	$a3, $vr4, 0
-	bstrpick.d	$a3, $a3, 31, 0
-	xvinsgr2vr.d	$xr5, $a3, 0
-	vpickve2gr.w	$a3, $vr4, 1
-	bstrpick.d	$a3, $a3, 31, 0
-	xvinsgr2vr.d	$xr5, $a3, 1
 	vpickve2gr.w	$a3, $vr4, 2
 	bstrpick.d	$a3, $a3, 31, 0
-	xvinsgr2vr.d	$xr5, $a3, 2
+	vinsgr2vr.d	$vr5, $a3, 0
 	vpickve2gr.w	$a3, $vr4, 3
 	bstrpick.d	$a3, $a3, 31, 0
-	xvinsgr2vr.d	$xr5, $a3, 3
-	vpickve2gr.w	$a3, $vr3, 0
+	vinsgr2vr.d	$vr5, $a3, 1
+	vpickve2gr.w	$a3, $vr4, 0
 	bstrpick.d	$a3, $a3, 31, 0
-	xvinsgr2vr.d	$xr4, $a3, 0
-	vpickve2gr.w	$a3, $vr3, 1
+	vinsgr2vr.d	$vr6, $a3, 0
+	vpickve2gr.w	$a3, $vr4, 1
 	bstrpick.d	$a3, $a3, 31, 0
-	xvinsgr2vr.d	$xr4, $a3, 1
+	vinsgr2vr.d	$vr6, $a3, 1
+	xvpermi.q	$xr6, $xr5, 2
 	vpickve2gr.w	$a3, $vr3, 2
 	bstrpick.d	$a3, $a3, 31, 0
-	xvinsgr2vr.d	$xr4, $a3, 2
+	vinsgr2vr.d	$vr4, $a3, 0
 	vpickve2gr.w	$a3, $vr3, 3
 	bstrpick.d	$a3, $a3, 31, 0
-	xvinsgr2vr.d	$xr4, $a3, 3
-	xvseq.d	$xr3, $xr1, $xr4
+	vinsgr2vr.d	$vr4, $a3, 1
+	vpickve2gr.w	$a3, $vr3, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	vinsgr2vr.d	$vr5, $a3, 0
+	vpickve2gr.w	$a3, $vr3, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	vinsgr2vr.d	$vr5, $a3, 1
+	xvpermi.q	$xr5, $xr4, 2
+	xvseq.d	$xr3, $xr1, $xr5
 	xvxor.v	$xr3, $xr3, $xr2
 	xvpickve2gr.d	$a3, $xr3, 0
 	xvpickve2gr.d	$a4, $xr3, 1
@@ -103,7 +105,7 @@ main:                                   # @main
 	bstrins.d	$a3, $a4, 2, 2
 	xvpickve2gr.d	$a4, $xr3, 3
 	bstrins.d	$a3, $a4, 3, 3
-	xvseq.d	$xr3, $xr0, $xr5
+	xvseq.d	$xr3, $xr0, $xr6
 	xvxor.v	$xr3, $xr3, $xr2
 	xvpickve2gr.d	$a4, $xr3, 0
 	bstrins.d	$a3, $a4, 4, 4

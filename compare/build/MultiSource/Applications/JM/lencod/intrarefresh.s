@@ -178,38 +178,57 @@ RandomIntraNewPicture:                  # @RandomIntraNewPicture
                                         # =>This Inner Loop Header: Depth=1
 	xvmod.w	$xr2, $xr1, $xr0
 	xvpermi.q	$xr3, $xr2, 1
+	vpickve2gr.w	$t0, $vr3, 2
+	vinsgr2vr.d	$vr4, $t0, 0
 	vpickve2gr.w	$t0, $vr3, 3
-	vpickve2gr.w	$t1, $vr3, 2
-	vpickve2gr.w	$t2, $vr3, 1
-	vpickve2gr.w	$t3, $vr3, 0
-	vpickve2gr.w	$t4, $vr2, 3
-	vpickve2gr.w	$t5, $vr2, 2
-	vpickve2gr.w	$t6, $vr2, 1
-	vpickve2gr.w	$t7, $vr2, 0
-	slli.d	$t7, $t7, 2
-	slli.d	$t6, $t6, 2
-	slli.d	$t5, $t5, 2
-	slli.d	$t4, $t4, 2
-	slli.d	$t3, $t3, 2
-	slli.d	$t2, $t2, 2
-	slli.d	$t1, $t1, 2
+	vinsgr2vr.d	$vr4, $t0, 1
+	xvpermi.q	$xr4, $xr4, 2
+	vpickve2gr.w	$t0, $vr3, 0
+	vinsgr2vr.d	$vr5, $t0, 0
+	vpickve2gr.w	$t0, $vr3, 1
+	vinsgr2vr.d	$vr5, $t0, 1
+	vpickve2gr.w	$t0, $vr2, 2
+	vinsgr2vr.d	$vr3, $t0, 0
+	vpickve2gr.w	$t0, $vr2, 3
+	vinsgr2vr.d	$vr3, $t0, 1
+	xvpermi.q	$xr3, $xr3, 2
+	vpickve2gr.w	$t0, $vr2, 0
+	vinsgr2vr.d	$vr6, $t0, 0
+	vpickve2gr.w	$t0, $vr2, 1
+	vinsgr2vr.d	$vr6, $t0, 1
+	xvpickve2gr.d	$t0, $xr6, 0
 	slli.d	$t0, $t0, 2
-	ldx.w	$t7, $a0, $t7
-	ldx.w	$t6, $a0, $t6
-	ldx.w	$t5, $a0, $t5
-	ldx.w	$t4, $a0, $t4
-	ldx.w	$t3, $a0, $t3
-	ldx.w	$t2, $a0, $t2
-	ldx.w	$t1, $a0, $t1
+	xvpickve2gr.d	$t1, $xr6, 1
+	slli.d	$t1, $t1, 2
+	xvpickve2gr.d	$t2, $xr3, 2
+	slli.d	$t2, $t2, 2
+	xvpickve2gr.d	$t3, $xr3, 3
+	slli.d	$t3, $t3, 2
+	xvpickve2gr.d	$t4, $xr5, 0
+	slli.d	$t4, $t4, 2
+	xvpickve2gr.d	$t5, $xr5, 1
+	slli.d	$t5, $t5, 2
+	xvpickve2gr.d	$t6, $xr4, 2
+	slli.d	$t6, $t6, 2
+	xvpickve2gr.d	$t7, $xr4, 3
+	slli.d	$t7, $t7, 2
 	ldx.w	$t0, $a0, $t0
-	xvinsgr2vr.w	$xr2, $t7, 0
-	xvinsgr2vr.w	$xr2, $t6, 1
-	xvinsgr2vr.w	$xr2, $t5, 2
-	xvinsgr2vr.w	$xr2, $t4, 3
-	xvinsgr2vr.w	$xr2, $t3, 4
-	xvinsgr2vr.w	$xr2, $t2, 5
-	xvinsgr2vr.w	$xr2, $t1, 6
-	xvinsgr2vr.w	$xr2, $t0, 7
+	ldx.w	$t1, $a0, $t1
+	ldx.w	$t2, $a0, $t2
+	ldx.w	$t3, $a0, $t3
+	ldx.w	$t4, $a0, $t4
+	ldx.w	$t5, $a0, $t5
+	ldx.w	$t6, $a0, $t6
+	ldx.w	$t7, $a0, $t7
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr3, $t4, 0
+	vinsgr2vr.w	$vr3, $t5, 1
+	vinsgr2vr.w	$vr3, $t6, 2
+	vinsgr2vr.w	$vr3, $t7, 3
+	xvpermi.q	$xr2, $xr3, 2
 	xvst	$xr2, $a6, 0
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a7, $a7, -8

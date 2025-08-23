@@ -2660,7 +2660,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
 	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
 	lu12i.w	$a2, 4
-	ori	$a2, $a2, 2736
+	ori	$a2, $a2, 2768
 	sub.d	$sp, $sp, $a2
 	move	$s5, $a1
 	move	$s3, $a0
@@ -2825,29 +2825,34 @@ DoAssignIteration:                      # @DoAssignIteration
 	addi.d	$a6, $a0, 1185
 	lu12i.w	$t6, 1
 	ori	$a0, $t6, 146
-	addi.d	$a3, $sp, 240
+	addi.d	$a3, $sp, 272
 	add.d	$a0, $a3, $a0
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI10_0)
 	xvld	$xr14, $a0, %pc_lo12(.LCPI10_0)
 	lu12i.w	$a0, 18
 	ori	$a0, $a0, 3840
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
 	ori	$t3, $zero, 101
 	lu12i.w	$a0, 4
 	ori	$a0, $a0, 4018
-	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
+	ori	$fp, $zero, 202
 	ori	$s4, $zero, 1
 	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
+	xvst	$xr0, $sp, 112                  # 32-byte Folded Spill
 	lu12i.w	$a0, -5
 	ori	$a0, $a0, 1088
-	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
 	lu12i.w	$s7, 5
 	xvrepli.b	$xr0, -1
-	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
+	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
+	vrepli.b	$vr0, -1
+	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	lu12i.w	$t5, 19
-	xvst	$xr14, $sp, 128                 # 32-byte Folded Spill
+	xvst	$xr14, $sp, 144                 # 32-byte Folded Spill
 	b	.LBB10_18
 	.p2align	4, , 16
 .LBB10_17:                              # %Assignment.exit
@@ -3089,8 +3094,9 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #       Child Loop BB10_26 Depth 3
 	alsl.d	$a3, $a0, $t4, 3
 	addi.w	$a4, $zero, -1
-	lu52i.d	$t2, $a4, 2047
-	xvreplgr2vr.d	$xr0, $t2
+	lu52i.d	$a4, $a4, 2047
+	st.d	$a4, $sp, 192                   # 8-byte Folded Spill
+	xvreplgr2vr.d	$xr0, $a4
 	ori	$a4, $zero, 96
 	move	$a5, $a2
 	xvori.b	$xr1, $xr0, 0
@@ -3099,27 +3105,29 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #   Parent Loop BB10_18 Depth=1
                                         #     Parent Loop BB10_22 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ldptr.d	$a6, $a5, -3232
-	ldptr.d	$a7, $a5, -2424
-	ld.d	$t0, $a5, -1616
-	ld.d	$t1, $a5, -808
-	xvinsgr2vr.d	$xr2, $a6, 0
-	xvinsgr2vr.d	$xr2, $a7, 1
-	xvinsgr2vr.d	$xr2, $t0, 2
-	xvinsgr2vr.d	$xr2, $t1, 3
-	ld.d	$a6, $a5, 0
-	ld.d	$a7, $a5, 808
-	ld.d	$t0, $a5, 1616
-	ldptr.d	$t1, $a5, 2424
-	xvinsgr2vr.d	$xr3, $a6, 0
-	xvinsgr2vr.d	$xr3, $a7, 1
-	xvinsgr2vr.d	$xr3, $t0, 2
-	xvinsgr2vr.d	$xr3, $t1, 3
-	xvmin.d	$xr0, $xr2, $xr0
-	xvmin.d	$xr1, $xr3, $xr1
+	ld.d	$a6, $a5, -1616
+	ld.d	$a7, $a5, -808
+	ldptr.d	$t0, $a5, -3232
+	ldptr.d	$t1, $a5, -2424
+	vinsgr2vr.d	$vr2, $a6, 0
+	vinsgr2vr.d	$vr2, $a7, 1
+	vinsgr2vr.d	$vr3, $t0, 0
+	vinsgr2vr.d	$vr3, $t1, 1
+	xvpermi.q	$xr3, $xr2, 2
+	ld.d	$a6, $a5, 1616
+	ldptr.d	$a7, $a5, 2424
+	ld.d	$t0, $a5, 0
+	ld.d	$t1, $a5, 808
+	vinsgr2vr.d	$vr2, $a6, 0
+	vinsgr2vr.d	$vr2, $a7, 1
+	vinsgr2vr.d	$vr4, $t0, 0
+	vinsgr2vr.d	$vr4, $t1, 1
+	xvpermi.q	$xr4, $xr2, 2
+	xvmin.d	$xr0, $xr3, $xr0
+	xvmin.d	$xr1, $xr4, $xr1
 	addi.d	$a4, $a4, -8
-	ori	$fp, $t6, 2368
-	add.d	$a5, $a5, $fp
+	ori	$s0, $t6, 2368
+	add.d	$a5, $a5, $s0
 	bnez	$a4, .LBB10_23
 # %bb.24:                               # %for.body39.i.i
                                         #   in Loop: Header=BB10_22 Depth=2
@@ -3129,7 +3137,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	xvshuf.d	$xr2, $xr0, $xr1
 	xvmin.d	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
 	ldx.d	$a4, $a3, $a4
 	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmin.d	$xr0, $xr0, $xr1
@@ -3190,8 +3198,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	.p2align	4, , 16
 .LBB10_28:                              # %while.cond.i.preheader
                                         #   in Loop: Header=BB10_18 Depth=1
-	st.d	$t2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$t4, $sp, 184                   # 8-byte Folded Spill
+	st.d	$t4, $sp, 216                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB10_29:                              # %while.cond.i
                                         #   Parent Loop BB10_18 Depth=1
@@ -3218,22 +3225,21 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #         Child Loop BB10_207 Depth 4
                                         #       Child Loop BB10_211 Depth 3
                                         #         Child Loop BB10_214 Depth 4
-	addi.d	$a0, $sp, 240
+	addi.d	$a0, $sp, 272
 	move	$a1, $zero
-	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 240                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	move	$a3, $zero
 	move	$a1, $zero
 	move	$a0, $zero
 	move	$a2, $zero
-	ld.d	$t4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 216                   # 8-byte Folded Reload
 	lu12i.w	$t5, 19
 	lu12i.w	$t6, 1
-	xvld	$xr14, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr14, $sp, 144                 # 32-byte Folded Reload
 	ori	$t3, $zero, 101
-	ori	$t7, $zero, 202
-	ori	$t8, $zero, 2
+	ori	$t7, $zero, 2
 	b	.LBB10_31
 	.p2align	4, , 16
 .LBB10_30:                              # %do.cond.i.i
@@ -3254,8 +3260,8 @@ DoAssignIteration:                      # @DoAssignIteration
 	move	$a5, $zero
 	move	$a6, $zero
 	move	$a7, $zero
-	mul.d	$a4, $a3, $t7
-	addi.d	$t0, $sp, 240
+	mul.d	$a4, $a3, $fp
+	addi.d	$t0, $sp, 272
 	add.d	$a4, $t0, $a4
 	ori	$t0, $zero, 808
 	mul.d	$t0, $a3, $t0
@@ -3266,7 +3272,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	addi.w	$a6, $a6, 1
 	addi.d	$a5, $a5, 2
 	addi.d	$t0, $t0, 8
-	beq	$a5, $t7, .LBB10_36
+	beq	$a5, $fp, .LBB10_36
 .LBB10_33:                              # %for.body21.i.i
                                         #   Parent Loop BB10_18 Depth=1
                                         #     Parent Loop BB10_29 Depth=2
@@ -3293,7 +3299,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	move	$a5, $zero
 	slli.d	$a6, $a1, 1
 	stx.h	$s4, $a4, $a6
-	addi.d	$a4, $sp, 240
+	addi.d	$a4, $sp, 272
 	alsl.d	$a4, $a1, $a4, 1
 	slli.d	$a6, $a1, 3
 	b	.LBB10_39
@@ -3316,7 +3322,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	bnez	$a7, .LBB10_38
 # %bb.41:                               # %if.then67.i.i
                                         #   in Loop: Header=BB10_39 Depth=4
-	st.h	$t8, $a4, 0
+	st.h	$t7, $a4, 0
 	b	.LBB10_38
 	.p2align	4, , 16
 .LBB10_42:                              # %for.inc77.loopexit.i.i
@@ -3330,7 +3336,7 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.44:                               # %for.cond85.preheader.i.i.preheader
                                         #   in Loop: Header=BB10_31 Depth=3
 	move	$a3, $zero
-	addi.d	$a4, $sp, 240
+	addi.d	$a4, $sp, 272
 	move	$a5, $t4
 	b	.LBB10_46
 	.p2align	4, , 16
@@ -3388,8 +3394,8 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.52:                               # %if.then115.i.i
                                         #   in Loop: Header=BB10_46 Depth=4
 	move	$a6, $zero
-	mul.d	$a7, $a1, $t7
-	addi.d	$t0, $sp, 240
+	mul.d	$a7, $a1, $fp
+	addi.d	$t0, $sp, 272
 	add.d	$a7, $t0, $a7
 	slli.d	$t0, $a3, 1
 	stx.h	$s4, $a7, $t0
@@ -3417,7 +3423,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	bnez	$t1, .LBB10_53
 # %bb.56:                               # %if.then138.i.i
                                         #   in Loop: Header=BB10_54 Depth=5
-	st.h	$t8, $a7, 0
+	st.h	$t7, $a7, 0
 	b	.LBB10_53
 	.p2align	4, , 16
 .LBB10_57:                              #   in Loop: Header=BB10_46 Depth=4
@@ -3435,8 +3441,8 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.59:                               # %for.cond165.preheader.i.i.preheader
                                         #   in Loop: Header=BB10_29 Depth=2
 	move	$a1, $zero
-	addi.d	$a2, $sp, 240
-	addi.d	$a3, $sp, 240
+	addi.d	$a2, $sp, 272
+	addi.d	$a3, $sp, 272
 	move	$a4, $t4
 	b	.LBB10_62
 	.p2align	4, , 16
@@ -3460,9 +3466,9 @@ DoAssignIteration:                      # @DoAssignIteration
 	ori	$a5, $zero, 808
 	mul.d	$a5, $a1, $a5
 	add.d	$t1, $t4, $a5
-	mul.d	$a5, $a1, $t7
+	mul.d	$a5, $a1, $fp
 	add.d	$t0, $a2, $a5
-	addi.d	$a5, $sp, 240
+	addi.d	$a5, $sp, 272
 	move	$a6, $t4
 	b	.LBB10_64
 	.p2align	4, , 16
@@ -3514,7 +3520,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	bnez	$t3, .LBB10_67
 # %bb.70:                               # %if.then213.i.i
                                         #   in Loop: Header=BB10_68 Depth=4
-	st.h	$t8, $t0, 0
+	st.h	$t7, $t0, 0
 	b	.LBB10_67
 	.p2align	4, , 16
 .LBB10_71:                              # %for.cond222.preheader.i.i
@@ -3540,7 +3546,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	bnez	$t0, .LBB10_72
 # %bb.75:                               # %if.then238.i.i
                                         #   in Loop: Header=BB10_73 Depth=4
-	st.h	$t8, $a5, 0
+	st.h	$t7, $a5, 0
 	b	.LBB10_72
 	.p2align	4, , 16
 .LBB10_76:                              # %first_assignments.exit.i
@@ -3550,35 +3556,36 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.77:                               # %while.body.i
                                         #   in Loop: Header=BB10_29 Depth=2
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 376
+	ori	$a0, $a0, 408
 	add.d	$a0, $sp, $a0
 	ori	$a2, $zero, 202
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 168
+	ori	$a0, $a0, 200
 	add.d	$a0, $sp, $a0
 	ori	$a2, $zero, 202
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$t1, $zero, 202
 	ori	$t0, $zero, 101
 	move	$a0, $zero
-	addi.d	$a1, $sp, 240
+	addi.d	$a1, $sp, 272
 	lu12i.w	$a2, 5
-	ori	$a2, $a2, 168
-	add.d	$t2, $sp, $a2
-	xvld	$xr8, $sp, 80                   # 32-byte Folded Reload
-	xvld	$xr9, $sp, 48                   # 32-byte Folded Reload
+	ori	$a2, $a2, 200
+	add.d	$t1, $sp, $a2
+	xvld	$xr8, $sp, 112                  # 32-byte Folded Reload
+	xvld	$xr9, $sp, 80                   # 32-byte Folded Reload
+	vld	$vr10, $sp, 64                  # 16-byte Folded Reload
+	vld	$vr11, $sp, 48                  # 16-byte Folded Reload
 	b	.LBB10_80
 	.p2align	4, , 16
 .LBB10_78:                              # %if.then36.i.i
                                         #   in Loop: Header=BB10_80 Depth=3
 	slli.d	$a2, $a0, 1
 	lu12i.w	$a3, 5
-	ori	$a3, $a3, 376
+	ori	$a3, $a3, 408
 	add.d	$a3, $sp, $a3
 	stx.h	$s4, $a2, $a3
 .LBB10_79:                              # %for.inc40.i.i
@@ -3603,13 +3610,13 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.82:                               # %for.cond17.i.i
                                         #   in Loop: Header=BB10_81 Depth=4
 	addi.d	$a2, $a2, 2
-	bne	$a2, $t1, .LBB10_81
+	bne	$a2, $fp, .LBB10_81
 	b	.LBB10_78
 	.p2align	4, , 16
 .LBB10_83:                              # %for.body47.i.i.preheader
                                         #   in Loop: Header=BB10_29 Depth=2
 	move	$a0, $zero
-	ld.d	$a7, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 216                   # 8-byte Folded Reload
 	b	.LBB10_85
 	.p2align	4, , 16
 .LBB10_84:                              # %do.cond.i17.i
@@ -3626,7 +3633,7 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #           Child Loop BB10_115 Depth 5
 	slli.d	$a1, $a0, 1
 	lu12i.w	$a2, 5
-	ori	$a2, $a2, 376
+	ori	$a2, $a2, 408
 	add.d	$a2, $sp, $a2
 	ldx.hu	$a1, $a1, $a2
 	bne	$a1, $s4, .LBB10_109
@@ -3637,7 +3644,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	add.d	$a1, $a7, $a1
 	ori	$a2, $zero, 32
 	lu12i.w	$a3, 5
-	ori	$a3, $a3, 176
+	ori	$a3, $a3, 208
 	add.d	$a3, $sp, $a3
 	b	.LBB10_88
 	.p2align	4, , 16
@@ -3771,21 +3778,21 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #   in Loop: Header=BB10_85 Depth=3
 	move	$a2, $zero
 	move	$a0, $zero
-	addi.d	$a1, $sp, 240
-	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
+	addi.d	$a1, $sp, 272
+	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 256                   # 8-byte Folded Spill
 	b	.LBB10_112
 	.p2align	4, , 16
 .LBB10_111:                             # %for.inc113.i.i
                                         #   in Loop: Header=BB10_112 Depth=4
 	addi.d	$a2, $a2, 1
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 2
-	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 2
-	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 256                   # 8-byte Folded Spill
 	beq	$a2, $t0, .LBB10_84
 .LBB10_112:                             # %for.body80.i.i
                                         #   Parent Loop BB10_18 Depth=1
@@ -3794,22 +3801,22 @@ DoAssignIteration:                      # @DoAssignIteration
                                         # =>      This Loop Header: Depth=4
                                         #           Child Loop BB10_115 Depth 5
 	slli.d	$a1, $a2, 1
-	ldx.hu	$a1, $a1, $t2
+	ldx.hu	$a1, $a1, $t1
 	bne	$a1, $s4, .LBB10_111
 # %bb.113:                              # %iter.check
                                         #   in Loop: Header=BB10_112 Depth=4
-	addi.d	$a1, $sp, 240
-	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
+	addi.d	$a1, $sp, 272
+	st.d	$a2, $sp, 232                   # 8-byte Folded Spill
 	alsl.d	$a1, $a2, $a1, 1
-	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
 	xvreplgr2vr.h	$xr1, $a0
 	xvpermi.q	$xr1, $xr8, 18
 	xvori.b	$xr0, $xr8, 0
 	xvextrins.h	$xr0, $xr1, 0
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 408
+	ori	$a0, $a0, 440
 	add.d	$a5, $sp, $a0
-	ld.d	$a6, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
 	xvori.b	$xr1, $xr8, 0
 	b	.LBB10_115
 	.p2align	4, , 16
@@ -3819,7 +3826,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	xvsub.h	$xr0, $xr0, $xr2
 	xvand.v	$xr2, $xr5, $xr4
 	xvsub.h	$xr1, $xr1, $xr2
-	add.d	$a6, $a6, $fp
+	add.d	$a6, $a6, $s0
 	addi.d	$a5, $a5, 64
 	beqz	$a6, .LBB10_179
 .LBB10_115:                             # %vector.body28
@@ -3828,92 +3835,63 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #       Parent Loop BB10_85 Depth=3
                                         #         Parent Loop BB10_112 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
 	add.d	$t3, $a0, $a6
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	add.d	$t4, $a0, $a6
-	lu12i.w	$t8, 4
-	ori	$a7, $t8, 3008
-	ldx.h	$a0, $t3, $a7
-	ori	$t0, $t8, 3210
-	ldx.h	$a1, $t3, $t0
-	ori	$t1, $t8, 3412
+	lu12i.w	$fp, 4
+	ori	$a7, $fp, 3008
+	ldx.h	$t8, $t3, $a7
+	ori	$t0, $fp, 3210
+	ldx.h	$t7, $t3, $t0
+	ori	$t1, $fp, 3412
 	ldx.h	$a3, $t3, $t1
-	ori	$t2, $t8, 3614
-	ldx.h	$t6, $t3, $t2
-	ori	$a2, $t8, 3816
-	st.d	$a2, $sp, 216                   # 8-byte Folded Spill
-	ldx.h	$t7, $t3, $a2
-	vinsgr2vr.h	$vr2, $a0, 0
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
-	ldx.h	$a0, $t3, $a0
-	xvreplgr2vr.h	$xr3, $a1
-	ori	$t5, $s7, 124
-	xvreplgr2vr.h	$xr4, $a3
-	ldx.h	$a1, $t3, $t5
-	xvpermi.q	$xr3, $xr2, 18
-	xvextrins.h	$xr2, $xr3, 17
-	xvreplgr2vr.h	$xr3, $t6
-	ori	$a3, $s7, 326
-	ldx.h	$a3, $t3, $a3
-	xvpermi.q	$xr4, $xr2, 18
-	xvextrins.h	$xr2, $xr4, 34
-	xvreplgr2vr.h	$xr4, $t7
-	ori	$t6, $s7, 528
-	xvpermi.q	$xr3, $xr2, 18
-	xvextrins.h	$xr2, $xr3, 51
-	xvreplgr2vr.h	$xr3, $a0
-	ldx.h	$a0, $t3, $t6
-	xvpermi.q	$xr4, $xr2, 18
-	xvextrins.h	$xr2, $xr4, 68
-	xvreplgr2vr.h	$xr4, $a1
+	ori	$t5, $s7, 528
+	ldx.h	$a0, $t3, $t5
 	ori	$a1, $s7, 730
 	ldx.h	$a1, $t3, $a1
-	xvpermi.q	$xr3, $xr2, 18
-	xvextrins.h	$xr2, $xr3, 85
-	xvreplgr2vr.h	$xr3, $a3
-	ori	$t7, $s7, 932
-	xvpermi.q	$xr4, $xr2, 18
-	xvextrins.h	$xr2, $xr4, 102
-	xvreplgr2vr.h	$xr4, $a0
-	ldx.h	$a0, $t3, $t7
-	xvpermi.q	$xr3, $xr2, 18
-	xvextrins.h	$xr2, $xr3, 119
-	xvreplgr2vr.h	$xr3, $a1
-	ori	$a1, $t8, 988
-	ldx.h	$a1, $t4, $a1
-	xvpermi.q	$xr4, $xr2, 48
-	xvextrins.h	$xr2, $xr4, 0
-	xvreplgr2vr.h	$xr4, $a0
-	ori	$a0, $s7, 1336
-	ldx.h	$a0, $t3, $a0
-	xvpermi.q	$xr3, $xr2, 48
-	xvextrins.h	$xr2, $xr3, 17
-	xvreplgr2vr.h	$xr3, $a1
-	ori	$a1, $s7, 1538
+	ori	$t6, $s7, 932
+	ldx.h	$a4, $t3, $t6
+	vinsgr2vr.h	$vr2, $a0, 0
+	ori	$a0, $fp, 988
+	ldx.h	$a0, $t4, $a0
+	vinsgr2vr.h	$vr2, $a1, 1
+	ori	$a1, $s7, 1336
 	ldx.h	$a1, $t3, $a1
-	xvpermi.q	$xr4, $xr2, 48
-	xvextrins.h	$xr2, $xr4, 34
-	xvreplgr2vr.h	$xr4, $a0
+	vinsgr2vr.h	$vr2, $a4, 2
+	ori	$a4, $s7, 1538
+	ldx.h	$a4, $t3, $a4
+	vinsgr2vr.h	$vr2, $a0, 3
 	ori	$a0, $s7, 1740
 	ldx.h	$a0, $t3, $a0
-	xvpermi.q	$xr3, $xr2, 48
-	xvextrins.h	$xr2, $xr3, 51
-	xvreplgr2vr.h	$xr3, $a1
+	vinsgr2vr.h	$vr2, $a1, 4
 	ori	$a1, $s7, 1942
 	ldx.h	$a1, $t3, $a1
-	xvpermi.q	$xr4, $xr2, 48
-	xvextrins.h	$xr2, $xr4, 68
-	xvpermi.q	$xr3, $xr2, 48
-	xvextrins.h	$xr2, $xr3, 85
-	xvreplgr2vr.h	$xr3, $a0
-	xvpermi.q	$xr3, $xr2, 48
-	xvextrins.h	$xr2, $xr3, 102
-	xvreplgr2vr.h	$xr3, $a1
+	vinsgr2vr.h	$vr2, $a4, 5
+	ori	$t2, $fp, 3614
+	vinsgr2vr.h	$vr2, $a0, 6
+	ldx.h	$a0, $t3, $t2
+	vinsgr2vr.h	$vr2, $a1, 7
+	ori	$a1, $fp, 3816
+	vinsgr2vr.h	$vr3, $t8, 0
+	st.d	$a1, $sp, 248                   # 8-byte Folded Spill
+	ldx.h	$a1, $t3, $a1
+	vinsgr2vr.h	$vr3, $t7, 1
+	ld.d	$t7, $sp, 240                   # 8-byte Folded Reload
+	ldx.h	$t8, $t3, $t7
+	vinsgr2vr.h	$vr3, $a3, 2
+	ori	$t7, $s7, 124
+	vinsgr2vr.h	$vr3, $a0, 3
+	ldx.h	$a0, $t3, $t7
+	vinsgr2vr.h	$vr3, $a1, 4
+	ori	$a1, $s7, 326
+	ldx.h	$a1, $t3, $a1
+	vinsgr2vr.h	$vr3, $t8, 5
+	vinsgr2vr.h	$vr3, $a0, 6
 	xvld	$xr4, $a5, -32
-	xvpermi.q	$xr3, $xr2, 48
-	xvextrins.h	$xr2, $xr3, 119
-	xvseqi.h	$xr2, $xr2, 1
+	vinsgr2vr.h	$vr3, $a1, 7
+	xvpermi.q	$xr3, $xr2, 2
+	xvseqi.h	$xr2, $xr3, 1
 	xvseqi.h	$xr3, $xr4, 1
 	xvxor.v	$xr3, $xr3, $xr9
 	xvand.v	$xr5, $xr2, $xr3
@@ -3997,7 +3975,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	bnez	$a0, .LBB10_157
 .LBB10_125:                             # %pred.store.continue48
                                         #   in Loop: Header=BB10_115 Depth=5
-	move	$a4, $fp
+	move	$a4, $s0
 	vpickve2gr.b	$a0, $vr4, 9
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB10_127
@@ -4007,34 +3985,34 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_127:                             # %pred.store.continue50
                                         #   in Loop: Header=BB10_115 Depth=5
 	ori	$a0, $s7, 2144
-	ldx.h	$s5, $t3, $a0
+	ldx.h	$s3, $t3, $a0
 	ori	$a0, $s7, 2346
-	ldx.h	$a1, $t3, $a0
+	ldx.h	$a3, $t3, $a0
 	ori	$a0, $s7, 2548
-	ldx.h	$fp, $t3, $a0
+	ldx.h	$s0, $t3, $a0
 	ori	$a0, $s7, 2750
-	ldx.h	$a0, $t3, $a0
-	ori	$a3, $s7, 2952
-	ldx.h	$s8, $t3, $a3
-	ldx.h	$s2, $t4, $a7
-	ori	$a3, $s7, 3356
-	ldx.h	$s6, $t3, $a3
-	ori	$a3, $s7, 3558
-	ldx.h	$s0, $t3, $a3
-	ori	$a3, $s7, 3760
-	ldx.h	$a3, $t3, $a3
-	ori	$t8, $s7, 3962
-	ldx.h	$s3, $t3, $t8
+	ldx.h	$s6, $t3, $a0
+	ori	$a0, $s7, 2952
+	ldx.h	$s2, $t3, $a0
+	ldx.h	$t8, $t4, $a7
+	ori	$a0, $s7, 3356
+	ldx.h	$ra, $t3, $a0
+	ori	$a0, $s7, 3558
+	ldx.h	$s1, $t3, $a0
+	ori	$a0, $s7, 3760
+	ldx.h	$fp, $t3, $a0
+	ori	$a0, $s7, 3962
+	ldx.h	$s5, $t3, $a0
 	lu12i.w	$a2, 6
-	ori	$t8, $a2, 68
-	ldx.h	$s1, $t3, $t8
-	ldx.h	$ra, $t4, $t5
-	ori	$t5, $a2, 472
-	ldx.h	$t8, $t3, $t5
-	ldx.h	$t6, $t4, $t6
-	ori	$t5, $a2, 876
-	ldx.h	$t5, $t3, $t5
-	ldx.h	$t3, $t4, $t7
+	ori	$a0, $a2, 68
+	ldx.h	$a1, $t3, $a0
+	ldx.h	$s8, $t4, $t7
+	ori	$a0, $a2, 472
+	ldx.h	$a0, $t3, $a0
+	ldx.h	$t5, $t4, $t5
+	ori	$t7, $a2, 876
+	ldx.h	$t7, $t3, $t7
+	ldx.h	$t3, $t4, $t6
 	xvld	$xr5, $a5, 0
 	vpickve2gr.b	$t4, $vr4, 10
 	andi	$t4, $t4, 1
@@ -4069,53 +4047,24 @@ DoAssignIteration:                      # @DoAssignIteration
 	st.h	$s4, $a5, -2
 .LBB10_134:                             # %pred.store.continue62
                                         #   in Loop: Header=BB10_115 Depth=5
-	vinsgr2vr.h	$vr4, $s5, 0
-	xvreplgr2vr.h	$xr6, $a1
-	xvpermi.q	$xr6, $xr4, 18
-	xvextrins.h	$xr4, $xr6, 17
-	xvreplgr2vr.h	$xr6, $fp
-	xvpermi.q	$xr6, $xr4, 18
-	xvextrins.h	$xr4, $xr6, 34
-	xvreplgr2vr.h	$xr6, $a0
-	xvpermi.q	$xr6, $xr4, 18
-	xvextrins.h	$xr4, $xr6, 51
-	xvreplgr2vr.h	$xr6, $s8
-	xvpermi.q	$xr6, $xr4, 18
-	xvextrins.h	$xr4, $xr6, 68
-	xvreplgr2vr.h	$xr6, $s2
-	xvpermi.q	$xr6, $xr4, 18
-	xvextrins.h	$xr4, $xr6, 85
-	xvreplgr2vr.h	$xr6, $s6
-	xvpermi.q	$xr6, $xr4, 18
-	xvextrins.h	$xr4, $xr6, 102
-	xvreplgr2vr.h	$xr6, $s0
-	xvpermi.q	$xr6, $xr4, 18
-	xvextrins.h	$xr4, $xr6, 119
-	xvreplgr2vr.h	$xr6, $a3
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 0
-	xvreplgr2vr.h	$xr6, $s3
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 17
-	xvreplgr2vr.h	$xr6, $s1
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 34
-	xvreplgr2vr.h	$xr6, $ra
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 51
-	xvreplgr2vr.h	$xr6, $t8
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 68
-	xvreplgr2vr.h	$xr6, $t6
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 85
-	xvreplgr2vr.h	$xr6, $t5
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 102
-	xvreplgr2vr.h	$xr6, $t3
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 119
-	xvseqi.h	$xr4, $xr4, 1
+	vinsgr2vr.h	$vr4, $fp, 0
+	vinsgr2vr.h	$vr4, $s5, 1
+	vinsgr2vr.h	$vr4, $a1, 2
+	vinsgr2vr.h	$vr4, $s8, 3
+	vinsgr2vr.h	$vr4, $a0, 4
+	vinsgr2vr.h	$vr4, $t5, 5
+	vinsgr2vr.h	$vr4, $t7, 6
+	vinsgr2vr.h	$vr4, $t3, 7
+	vinsgr2vr.h	$vr6, $s3, 0
+	vinsgr2vr.h	$vr6, $a3, 1
+	vinsgr2vr.h	$vr6, $s0, 2
+	vinsgr2vr.h	$vr6, $s6, 3
+	vinsgr2vr.h	$vr6, $s2, 4
+	vinsgr2vr.h	$vr6, $t8, 5
+	vinsgr2vr.h	$vr6, $ra, 6
+	vinsgr2vr.h	$vr6, $s1, 7
+	xvpermi.q	$xr6, $xr4, 2
+	xvseqi.h	$xr4, $xr6, 1
 	xvseqi.h	$xr5, $xr5, 1
 	xvxor.v	$xr5, $xr5, $xr9
 	xvand.v	$xr7, $xr4, $xr5
@@ -4159,7 +4108,7 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #   in Loop: Header=BB10_115 Depth=5
 	vpickve2gr.b	$a0, $vr6, 1
 	andi	$a0, $a0, 1
-	move	$fp, $a4
+	move	$s0, $a4
 	bnez	$a0, .LBB10_164
 .LBB10_136:                             # %pred.store.continue66
                                         #   in Loop: Header=BB10_115 Depth=5
@@ -4278,7 +4227,7 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_157:                             # %pred.store.if47
                                         #   in Loop: Header=BB10_115 Depth=5
 	st.h	$s4, $a5, -16
-	move	$a4, $fp
+	move	$a4, $s0
 	vpickve2gr.b	$a0, $vr4, 9
 	andi	$a0, $a0, 1
 	bnez	$a0, .LBB10_126
@@ -4321,7 +4270,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	st.h	$s4, $a5, 0
 	vpickve2gr.b	$a0, $vr6, 1
 	andi	$a0, $a0, 1
-	move	$fp, $a4
+	move	$s0, $a4
 	beqz	$a0, .LBB10_136
 .LBB10_164:                             # %pred.store.if65
                                         #   in Loop: Header=BB10_115 Depth=5
@@ -4414,7 +4363,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	.p2align	4, , 16
 .LBB10_179:                             # %vec.epilog.iter.check
                                         #   in Loop: Header=BB10_112 Depth=4
-	ld.d	$a4, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 224                   # 8-byte Folded Reload
 	ldx.h	$a0, $a4, $a7
 	ldx.h	$a1, $a4, $t0
 	ldx.h	$a3, $a4, $t1
@@ -4422,7 +4371,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	vinsgr2vr.h	$vr2, $a0, 0
 	vinsgr2vr.h	$vr2, $a1, 1
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 568
+	ori	$a0, $a0, 600
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	vinsgr2vr.h	$vr2, $a3, 2
@@ -4430,8 +4379,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	vseqi.h	$vr2, $vr2, 1
 	vinsgr2vr.d	$vr3, $a0, 0
 	vseqi.h	$vr3, $vr3, 1
-	vrepli.b	$vr4, -1
-	vxor.v	$vr3, $vr3, $vr4
+	vxor.v	$vr3, $vr3, $vr11
 	vand.v	$vr2, $vr2, $vr3
 	vilvl.h	$vr2, $vr2, $vr2
 	vslli.w	$vr3, $vr2, 16
@@ -4442,7 +4390,7 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.180:                              # %pred.store.if103
                                         #   in Loop: Header=BB10_112 Depth=4
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 568
+	ori	$a0, $a0, 600
 	add.d	$a0, $sp, $a0
 	st.h	$s4, $a0, 0
 .LBB10_181:                             # %pred.store.continue104
@@ -4453,7 +4401,7 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.182:                              # %pred.store.if105
                                         #   in Loop: Header=BB10_112 Depth=4
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 570
+	ori	$a0, $a0, 602
 	add.d	$a0, $sp, $a0
 	st.h	$s4, $a0, 0
 .LBB10_183:                             # %pred.store.continue106
@@ -4461,28 +4409,28 @@ DoAssignIteration:                      # @DoAssignIteration
 	vpickve2gr.w	$a0, $vr3, 2
 	andi	$a0, $a0, 1
 	ori	$t0, $zero, 101
-	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 232                   # 8-byte Folded Reload
 	beqz	$a0, .LBB10_185
 # %bb.184:                              # %pred.store.if107
                                         #   in Loop: Header=BB10_112 Depth=4
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 572
+	ori	$a0, $a0, 604
 	add.d	$a0, $sp, $a0
 	st.h	$s4, $a0, 0
 .LBB10_185:                             # %pred.store.continue108
                                         #   in Loop: Header=BB10_112 Depth=4
 	vpickve2gr.w	$a0, $vr3, 3
 	andi	$a0, $a0, 1
-	ld.d	$a7, $sp, 184                   # 8-byte Folded Reload
-	ori	$t1, $zero, 202
+	ld.d	$a7, $sp, 216                   # 8-byte Folded Reload
+	ori	$fp, $zero, 202
 	lu12i.w	$a1, 5
-	ori	$a1, $a1, 168
-	add.d	$t2, $sp, $a1
+	ori	$a1, $a1, 200
+	add.d	$t1, $sp, $a1
 	beqz	$a0, .LBB10_187
 # %bb.186:                              # %pred.store.if109
                                         #   in Loop: Header=BB10_112 Depth=4
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 574
+	ori	$a0, $a0, 606
 	add.d	$a0, $sp, $a0
 	st.h	$s4, $a0, 0
 .LBB10_187:                             # %pred.store.continue110
@@ -4501,7 +4449,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	xvrepl128vei.h	$xr1, $xr1, 1
 	xvadd.h	$xr0, $xr0, $xr1
 	vpickve2gr.h	$a0, $vr0, 0
-	vrepli.b	$vr0, 0
+	vori.b	$vr0, $vr10, 0
 	vinsgr2vr.h	$vr0, $a0, 0
 	vrepli.w	$vr1, 1
 	vand.v	$vr1, $vr2, $vr1
@@ -4515,7 +4463,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	vinsgr2vr.h	$vr2, $a0, 3
 	vadd.h	$vr0, $vr0, $vr2
 	vshuf4i.h	$vr1, $vr0, 14
-	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	ldx.hu	$a1, $a4, $a0
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
@@ -4525,14 +4473,14 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.188:                              # %pred.store.continue110
                                         #   in Loop: Header=BB10_112 Depth=4
 	lu12i.w	$a1, 5
-	ori	$a1, $a1, 576
+	ori	$a1, $a1, 608
 	add.d	$a1, $sp, $a1
 	ld.hu	$a1, $a1, 0
 	beq	$a1, $s4, .LBB10_111
 # %bb.189:                              # %if.then104.i26.i
                                         #   in Loop: Header=BB10_112 Depth=4
 	lu12i.w	$a1, 5
-	ori	$a1, $a1, 576
+	ori	$a1, $a1, 608
 	add.d	$a1, $sp, $a1
 	st.h	$s4, $a1, 0
 	addi.d	$a0, $a0, 1
@@ -4540,7 +4488,7 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_190:                             # %if.then65.i.i
                                         #   in Loop: Header=BB10_85 Depth=3
 	lu12i.w	$a2, 5
-	ori	$a2, $a2, 360
+	ori	$a2, $a2, 392
 	add.d	$a2, $sp, $a2
 	st.h	$s4, $a2, 0
 	ld.d	$a2, $a1, 776
@@ -4548,7 +4496,7 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_191:                             # %if.then65.i.i.1
                                         #   in Loop: Header=BB10_85 Depth=3
 	lu12i.w	$a2, 5
-	ori	$a2, $a2, 362
+	ori	$a2, $a2, 394
 	add.d	$a2, $sp, $a2
 	st.h	$s4, $a2, 0
 	ld.d	$a2, $a1, 784
@@ -4556,7 +4504,7 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_192:                             # %if.then65.i.i.2
                                         #   in Loop: Header=BB10_85 Depth=3
 	lu12i.w	$a2, 5
-	ori	$a2, $a2, 364
+	ori	$a2, $a2, 396
 	add.d	$a2, $sp, $a2
 	st.h	$s4, $a2, 0
 	ld.d	$a2, $a1, 792
@@ -4564,7 +4512,7 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_193:                             # %if.then65.i.i.3
                                         #   in Loop: Header=BB10_85 Depth=3
 	lu12i.w	$a2, 5
-	ori	$a2, $a2, 366
+	ori	$a2, $a2, 398
 	add.d	$a2, $sp, $a2
 	st.h	$s4, $a2, 0
 	ld.d	$a1, $a1, 800
@@ -4572,7 +4520,7 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_194:                             # %if.then65.i.i.4
                                         #   in Loop: Header=BB10_85 Depth=3
 	lu12i.w	$a1, 5
-	ori	$a1, $a1, 368
+	ori	$a1, $a1, 400
 	add.d	$a1, $sp, $a1
 	st.h	$s4, $a1, 0
 	addi.d	$a0, $a0, 1
@@ -4583,7 +4531,7 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #   in Loop: Header=BB10_29 Depth=2
 	move	$a1, $zero
 	move	$a2, $a7
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	b	.LBB10_197
 	.p2align	4, , 16
 .LBB10_196:                             # %for.inc158.i.i
@@ -4598,7 +4546,7 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #         Child Loop BB10_200 Depth 4
 	slli.d	$a3, $a1, 1
 	lu12i.w	$a4, 5
-	ori	$a4, $a4, 376
+	ori	$a4, $a4, 408
 	add.d	$a4, $sp, $a4
 	ldx.hu	$a3, $a3, $a4
 	beqz	$a3, .LBB10_196
@@ -4612,13 +4560,13 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #   in Loop: Header=BB10_200 Depth=4
 	addi.d	$a3, $a3, 2
 	addi.d	$a4, $a4, 8
-	beq	$a3, $t1, .LBB10_196
+	beq	$a3, $fp, .LBB10_196
 .LBB10_200:                             # %for.body134.i.i
                                         #   Parent Loop BB10_18 Depth=1
                                         #     Parent Loop BB10_29 Depth=2
                                         #       Parent Loop BB10_197 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ldx.hu	$a5, $a3, $t2
+	ldx.hu	$a5, $a3, $t1
 	beq	$a5, $s4, .LBB10_199
 # %bb.201:                              # %if.then140.i.i
                                         #   in Loop: Header=BB10_200 Depth=4
@@ -4647,7 +4595,7 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #         Child Loop BB10_207 Depth 4
 	slli.d	$a3, $a1, 1
 	lu12i.w	$a4, 5
-	ori	$a4, $a4, 376
+	ori	$a4, $a4, 408
 	add.d	$a4, $sp, $a4
 	ldx.hu	$a3, $a3, $a4
 	beqz	$a3, .LBB10_203
@@ -4661,13 +4609,13 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #   in Loop: Header=BB10_207 Depth=4
 	addi.d	$a3, $a3, 2
 	addi.d	$a4, $a4, 8
-	beq	$a3, $t1, .LBB10_203
+	beq	$a3, $fp, .LBB10_203
 .LBB10_207:                             # %for.body176.i.i
                                         #   Parent Loop BB10_18 Depth=1
                                         #     Parent Loop BB10_29 Depth=2
                                         #       Parent Loop BB10_204 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ldx.hu	$a5, $a3, $t2
+	ldx.hu	$a5, $a3, $t1
 	beq	$a5, $s4, .LBB10_206
 # %bb.208:                              # %if.then182.i.i
                                         #   in Loop: Header=BB10_207 Depth=4
@@ -4694,7 +4642,7 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #         Child Loop BB10_214 Depth 4
 	slli.d	$a3, $a1, 1
 	lu12i.w	$a4, 5
-	ori	$a4, $a4, 376
+	ori	$a4, $a4, 408
 	add.d	$a4, $sp, $a4
 	ldx.hu	$a3, $a3, $a4
 	bnez	$a3, .LBB10_210
@@ -4708,13 +4656,13 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #   in Loop: Header=BB10_214 Depth=4
 	addi.d	$a3, $a3, 2
 	addi.d	$a4, $a4, 8
-	beq	$a3, $t1, .LBB10_210
+	beq	$a3, $fp, .LBB10_210
 .LBB10_214:                             # %for.body210.i.i
                                         #   Parent Loop BB10_18 Depth=1
                                         #     Parent Loop BB10_29 Depth=2
                                         #       Parent Loop BB10_211 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ldx.hu	$a5, $a3, $t2
+	ldx.hu	$a5, $a3, $t1
 	bne	$a5, $s4, .LBB10_213
 # %bb.215:                              # %if.then216.i.i
                                         #   in Loop: Header=BB10_214 Depth=4
@@ -4726,7 +4674,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 .LBB10_217:                             # %for.end
 	lu12i.w	$a1, 4
-	ori	$a1, $a1, 2736
+	ori	$a1, $a1, 2768
 	add.d	$sp, $sp, $a1
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
@@ -6644,7 +6592,7 @@ DoHuffIteration:                        # @DoHuffIteration
 	ori	$ra, $a0, 1044
 	ori	$s7, $a0, 1064
 	ori	$s0, $a0, 1084
-	xvrepli.b	$xr9, 0
+	xvrepli.b	$xr10, 0
 	lu12i.w	$a0, -3
 	ori	$a0, $a0, 2048
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
@@ -6670,7 +6618,7 @@ DoHuffIteration:                        # @DoHuffIteration
 	st.d	$t0, $sp, 104                   # 8-byte Folded Spill
 	st.d	$t8, $sp, 96                    # 8-byte Folded Spill
 	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	xvst	$xr9, $sp, 48                   # 32-byte Folded Spill
+	xvst	$xr10, $sp, 48                  # 32-byte Folded Spill
 	b	.LBB13_3
 	.p2align	4, , 16
 .LBB13_2:                               # %do.end
@@ -6746,56 +6694,57 @@ DoHuffIteration:                        # @DoHuffIteration
 	fldx.s	$ft0, $a1, $a6
 	fldx.s	$fa7, $a1, $a7
 	fldx.s	$fa6, $a1, $t0
-	fldx.s	$fa4, $a1, $t8
 	fldx.s	$fa3, $a1, $s6
 	fldx.s	$fa2, $a1, $ra
 	fldx.s	$fa1, $a1, $s7
 	fldx.s	$fa0, $a1, $s0
-	xvori.b	$xr5, $xr8, 0
-	xvinsve0.w	$xr5, $xr7, 1
-	xvinsve0.w	$xr5, $xr6, 2
-	xvinsve0.w	$xr5, $xr4, 3
-	xvinsve0.w	$xr5, $xr3, 4
-	xvinsve0.w	$xr5, $xr2, 5
-	xvinsve0.w	$xr5, $xr1, 6
-	xvinsve0.w	$xr5, $xr0, 7
-	xvfcmp.cune.s	$xr5, $xr5, $xr9
-	xvpickve2gr.w	$a2, $xr5, 0
+	fldx.s	$fa5, $a1, $t8
+	vori.b	$vr4, $vr3, 0
+	vextrins.w	$vr4, $vr2, 16
+	vextrins.w	$vr4, $vr1, 32
+	vextrins.w	$vr4, $vr0, 48
+	vori.b	$vr9, $vr8, 0
+	vextrins.w	$vr9, $vr7, 16
+	vextrins.w	$vr9, $vr6, 32
+	vextrins.w	$vr9, $vr5, 48
+	xvpermi.q	$xr9, $xr4, 2
+	xvfcmp.cune.s	$xr4, $xr9, $xr10
+	xvpickve2gr.w	$a2, $xr4, 0
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB13_17
 # %bb.10:                               # %pred.store.continue
                                         #   in Loop: Header=BB13_9 Depth=2
-	xvpickve2gr.w	$a2, $xr5, 1
+	xvpickve2gr.w	$a2, $xr4, 1
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB13_18
 .LBB13_11:                              # %pred.store.continue180
                                         #   in Loop: Header=BB13_9 Depth=2
-	xvpickve2gr.w	$a2, $xr5, 2
+	xvpickve2gr.w	$a2, $xr4, 2
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB13_19
 .LBB13_12:                              # %pred.store.continue182
                                         #   in Loop: Header=BB13_9 Depth=2
-	xvpickve2gr.w	$a2, $xr5, 3
+	xvpickve2gr.w	$a2, $xr4, 3
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB13_20
 .LBB13_13:                              # %pred.store.continue184
                                         #   in Loop: Header=BB13_9 Depth=2
-	xvpickve2gr.w	$a2, $xr5, 4
+	xvpickve2gr.w	$a2, $xr4, 4
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB13_21
 .LBB13_14:                              # %pred.store.continue186
                                         #   in Loop: Header=BB13_9 Depth=2
-	xvpickve2gr.w	$a2, $xr5, 5
+	xvpickve2gr.w	$a2, $xr4, 5
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB13_22
 .LBB13_15:                              # %pred.store.continue188
                                         #   in Loop: Header=BB13_9 Depth=2
-	xvpickve2gr.w	$a2, $xr5, 6
+	xvpickve2gr.w	$a2, $xr4, 6
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB13_23
 .LBB13_16:                              # %pred.store.continue190
                                         #   in Loop: Header=BB13_9 Depth=2
-	xvpickve2gr.w	$a2, $xr5, 7
+	xvpickve2gr.w	$a2, $xr4, 7
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB13_8
 	b	.LBB13_24
@@ -6804,49 +6753,49 @@ DoHuffIteration:                        # @DoHuffIteration
                                         #   in Loop: Header=BB13_9 Depth=2
 	fdiv.s	$ft0, $ft0, $fs0
 	fstx.s	$ft0, $a1, $a6
-	xvpickve2gr.w	$a2, $xr5, 1
+	xvpickve2gr.w	$a2, $xr4, 1
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB13_11
 .LBB13_18:                              # %pred.store.if179
                                         #   in Loop: Header=BB13_9 Depth=2
 	fdiv.s	$fa7, $fa7, $fs0
 	fstx.s	$fa7, $a1, $a7
-	xvpickve2gr.w	$a2, $xr5, 2
+	xvpickve2gr.w	$a2, $xr4, 2
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB13_12
 .LBB13_19:                              # %pred.store.if181
                                         #   in Loop: Header=BB13_9 Depth=2
 	fdiv.s	$fa6, $fa6, $fs0
 	fstx.s	$fa6, $a1, $t0
-	xvpickve2gr.w	$a2, $xr5, 3
+	xvpickve2gr.w	$a2, $xr4, 3
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB13_13
 .LBB13_20:                              # %pred.store.if183
                                         #   in Loop: Header=BB13_9 Depth=2
-	fdiv.s	$fa4, $fa4, $fs0
-	fstx.s	$fa4, $a1, $t8
-	xvpickve2gr.w	$a2, $xr5, 4
+	fdiv.s	$fa5, $fa5, $fs0
+	fstx.s	$fa5, $a1, $t8
+	xvpickve2gr.w	$a2, $xr4, 4
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB13_14
 .LBB13_21:                              # %pred.store.if185
                                         #   in Loop: Header=BB13_9 Depth=2
 	fdiv.s	$fa3, $fa3, $fs0
 	fstx.s	$fa3, $a1, $s6
-	xvpickve2gr.w	$a2, $xr5, 5
+	xvpickve2gr.w	$a2, $xr4, 5
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB13_15
 .LBB13_22:                              # %pred.store.if187
                                         #   in Loop: Header=BB13_9 Depth=2
 	fdiv.s	$fa2, $fa2, $fs0
 	fstx.s	$fa2, $a1, $ra
-	xvpickve2gr.w	$a2, $xr5, 6
+	xvpickve2gr.w	$a2, $xr4, 6
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB13_16
 .LBB13_23:                              # %pred.store.if189
                                         #   in Loop: Header=BB13_9 Depth=2
 	fdiv.s	$fa1, $fa1, $fs0
 	fstx.s	$fa1, $a1, $s7
-	xvpickve2gr.w	$a2, $xr5, 7
+	xvpickve2gr.w	$a2, $xr4, 7
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB13_8
 .LBB13_24:                              # %pred.store.if191
@@ -6897,7 +6846,7 @@ DoHuffIteration:                        # @DoHuffIteration
 	ld.d	$t6, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$t8, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	xvld	$xr9, $sp, 48                   # 32-byte Folded Reload
+	xvld	$xr10, $sp, 48                  # 32-byte Folded Reload
 	.p2align	4, , 16
 .LBB13_30:                              # %while.cond56
                                         #   Parent Loop BB13_3 Depth=1
@@ -9124,15 +9073,15 @@ DoNNetIteration:                        # @DoNNetIteration
 	fnmadd.d	$fa0, $fa1, $fa2, $fa0
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
 	ori	$a0, $zero, 2528
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0                    # 32-byte Folded Spill
+	vst	$vr0, $a0, 0                    # 16-byte Folded Spill
 	fld.d	$fa0, $s8, 128
 	fld.d	$fa3, $s8, 136
 	fld.d	$fa2, $s8, 144
 	fld.d	$fa1, $s8, 152
-	fst.d	$fa0, $sp, 1504                 # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 1536                 # 8-byte Folded Spill
 	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	xvld	$xr4, $a0, 0                    # 32-byte Folded Reload
@@ -9181,12 +9130,12 @@ DoNNetIteration:                        # @DoNNetIteration
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 1536                 # 32-byte Folded Spill
+	xvst	$xr0, $sp, 1504                 # 32-byte Folded Spill
 	fld.d	$fa0, $s8, 192
 	fld.d	$fa3, $s8, 200
 	fld.d	$fa2, $s8, 208
 	fld.d	$fa1, $s8, 216
-	fst.d	$fa0, $sp, 1312                 # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 1344                 # 8-byte Folded Spill
 	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	xvld	$xr4, $a0, 0                    # 32-byte Folded Reload
@@ -9232,17 +9181,17 @@ DoNNetIteration:                        # @DoNNetIteration
 	fnmadd.d	$fa0, $fa1, $fa2, $fa0
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
 	ori	$a0, $zero, 2560
 	add.d	$a0, $sp, $a0
 	xvld	$xr1, $a0, 0                    # 32-byte Folded Reload
 	ori	$a0, $zero, 2528
 	add.d	$a0, $sp, $a0
-	xvld	$xr2, $a0, 0                    # 32-byte Folded Reload
-	xvinsve0.d	$xr1, $xr2, 1
-	xvld	$xr2, $sp, 1536                 # 32-byte Folded Reload
-	xvinsve0.d	$xr1, $xr2, 2
-	xvinsve0.d	$xr1, $xr0, 3
+	vld	$vr2, $a0, 0                    # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr2, 16
+	xvld	$xr2, $sp, 1504                 # 32-byte Folded Reload
+	vextrins.d	$vr2, $vr0, 16
+	xvpermi.q	$xr1, $xr2, 2
 	lu52i.d	$a0, $zero, 1023
 	xvreplgr2vr.d	$xr0, $a0
 	ori	$a0, $zero, 2560
@@ -9299,7 +9248,7 @@ DoNNetIteration:                        # @DoNNetIteration
 	add.d	$a0, $sp, $a0
 	xvld	$xr3, $a0, 0                    # 32-byte Folded Reload
 	fmadd.d	$fa0, $fa2, $fa3, $fa0
-	fst.d	$fa1, $sp, 1536                 # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 1504                 # 8-byte Folded Spill
 	ori	$a0, $zero, 2816
 	add.d	$a0, $sp, $a0
 	xvld	$xr2, $a0, 0                    # 32-byte Folded Reload
@@ -9351,15 +9300,15 @@ DoNNetIteration:                        # @DoNNetIteration
 	add.d	$a0, $sp, $a0
 	xvld	$xr3, $a0, 0                    # 32-byte Folded Reload
 	fmadd.d	$fa0, $fa2, $fa3, $fa0
-	fst.d	$fa1, $sp, 1344                 # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 1312                 # 8-byte Folded Spill
 	ori	$a0, $zero, 2816
 	add.d	$a0, $sp, $a0
 	xvld	$xr2, $a0, 0                    # 32-byte Folded Reload
 	fnmadd.d	$fa0, $fa1, $fa2, $fa0
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 608                  # 32-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 608                  # 16-byte Folded Spill
 	fld.d	$fs7, $s8, 384
 	fld.d	$fs4, $s8, 392
 	fld.d	$fa2, $s8, 400
@@ -9411,8 +9360,8 @@ DoNNetIteration:                        # @DoNNetIteration
                                         # kill: def $f0_64 killed $f0_64 def $xr0
 	xvst	$xr0, $sp, 576                  # 32-byte Folded Spill
 	fld.d	$fs2, $s8, 448
-	fld.d	$fs0, $s8, 456
-	fld.d	$fs1, $s8, 464
+	fld.d	$fs1, $s8, 456
+	fld.d	$fs0, $s8, 464
 	fld.d	$fs6, $s8, 472
 	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
@@ -9421,11 +9370,11 @@ DoNNetIteration:                        # @DoNNetIteration
 	ori	$a0, $zero, 2624
 	add.d	$a0, $sp, $a0
 	xvld	$xr1, $a0, 0                    # 32-byte Folded Reload
-	fmadd.d	$fa0, $fs0, $fa1, $fa0
+	fmadd.d	$fa0, $fs1, $fa1, $fa0
 	ori	$a0, $zero, 2656
 	add.d	$a0, $sp, $a0
 	xvld	$xr1, $a0, 0                    # 32-byte Folded Reload
-	fmadd.d	$fa0, $fs1, $fa1, $fa0
+	fmadd.d	$fa0, $fs0, $fa1, $fa0
 	ori	$a0, $zero, 2688
 	add.d	$a0, $sp, $a0
 	xvld	$xr1, $a0, 0                    # 32-byte Folded Reload
@@ -9458,13 +9407,13 @@ DoNNetIteration:                        # @DoNNetIteration
 	ori	$a0, $zero, 2528
 	add.d	$a0, $sp, $a0
 	xvld	$xr9, $a0, 0                    # 32-byte Folded Reload
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
 	xvld	$xr1, $sp, 640                  # 32-byte Folded Reload
-	xvld	$xr2, $sp, 608                  # 32-byte Folded Reload
-	xvinsve0.d	$xr1, $xr2, 1
+	vld	$vr2, $sp, 608                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr2, 16
 	xvld	$xr2, $sp, 576                  # 32-byte Folded Reload
-	xvinsve0.d	$xr1, $xr2, 2
-	xvinsve0.d	$xr1, $xr0, 3
+	vextrins.d	$vr2, $vr0, 16
+	xvpermi.q	$xr1, $xr2, 2
 	ori	$a0, $zero, 2560
 	add.d	$a0, $sp, $a0
 	xvld	$xr0, $a0, 0                    # 32-byte Folded Reload
@@ -9727,9 +9676,9 @@ DoNNetIteration:                        # @DoNNetIteration
 	fmadd.d	$ft1, $ft1, $fa1, $ft13
 	fld.d	$ft2, $sp, 1768                 # 8-byte Folded Reload
 	fmadd.d	$ft1, $ft2, $fa2, $ft1
-	fld.d	$ft2, $sp, 1504                 # 8-byte Folded Reload
+	fld.d	$ft2, $sp, 1536                 # 8-byte Folded Reload
 	fmadd.d	$ft1, $ft2, $fa3, $ft1
-	fld.d	$ft2, $sp, 1312                 # 8-byte Folded Reload
+	fld.d	$ft2, $sp, 1344                 # 8-byte Folded Reload
 	fmadd.d	$ft1, $ft2, $fa4, $ft1
 	fld.d	$ft2, $sp, 976                  # 8-byte Folded Reload
 	fmadd.d	$ft1, $ft2, $fa6, $ft1
@@ -9759,7 +9708,7 @@ DoNNetIteration:                        # @DoNNetIteration
 	fld.d	$ft2, $sp, 816                  # 8-byte Folded Reload
 	fmadd.d	$ft1, $ft2, $fa7, $ft1
 	fmadd.d	$ft1, $fs4, $ft0, $ft1
-	fmadd.d	$ft1, $fs0, $fa5, $ft1
+	fmadd.d	$ft1, $fs1, $fa5, $ft1
 	ori	$a1, $zero, 2624
 	add.d	$a1, $sp, $a1
 	xvld	$xr12, $a1, 0                   # 32-byte Folded Reload
@@ -9783,7 +9732,7 @@ DoNNetIteration:                        # @DoNNetIteration
 	fmadd.d	$ft1, $ft2, $fa7, $ft1
 	fld.d	$ft2, $sp, 680                  # 8-byte Folded Reload
 	fmadd.d	$ft1, $ft2, $ft0, $ft1
-	fmadd.d	$ft1, $fs1, $fa5, $ft1
+	fmadd.d	$ft1, $fs0, $fa5, $ft1
 	ori	$a1, $zero, 2656
 	add.d	$a1, $sp, $a1
 	xvld	$xr12, $a1, 0                   # 32-byte Folded Reload
@@ -9866,8 +9815,8 @@ DoNNetIteration:                        # @DoNNetIteration
 	xvld	$xr12, $a1, 0                   # 32-byte Folded Reload
 	fsub.d	$ft2, $fa0, $ft4
 	fmul.d	$ft2, $ft4, $ft2
-	fmul.d	$ft10, $ft2, $ft1
-	fst.d	$ft10, $sp, 168                 # 8-byte Folded Spill
+	fmul.d	$ft9, $ft2, $ft1
+	fst.d	$ft9, $sp, 168                  # 8-byte Folded Spill
 	ori	$a1, $zero, 2464
 	add.d	$a1, $sp, $a1
 	fld.d	$ft1, $a1, 0                    # 8-byte Folded Reload
@@ -9896,21 +9845,21 @@ DoNNetIteration:                        # @DoNNetIteration
 	fmul.d	$fs4, $ft2, $ft1
 	ori	$a1, $zero, 2496
 	add.d	$a1, $sp, $a1
-	fld.d	$ft2, $a1, 0                    # 8-byte Folded Reload
-	fmadd.d	$fa1, $ft2, $fa1, $ft13
+	fld.d	$ft1, $a1, 0                    # 8-byte Folded Reload
+	fmadd.d	$fa1, $ft1, $fa1, $ft13
 	ori	$a1, $zero, 2336
 	add.d	$a1, $sp, $a1
-	fld.d	$ft2, $a1, 0                    # 8-byte Folded Reload
-	fmadd.d	$fa1, $ft2, $fa2, $fa1
+	fld.d	$ft1, $a1, 0                    # 8-byte Folded Reload
+	fmadd.d	$fa1, $ft1, $fa2, $fa1
 	ori	$a1, $zero, 2080
 	add.d	$a1, $sp, $a1
 	fld.d	$fa2, $a1, 0                    # 8-byte Folded Reload
 	fmadd.d	$fa1, $fa2, $fa3, $fa1
 	fld.d	$fa2, $sp, 1872                 # 8-byte Folded Reload
 	fmadd.d	$fa1, $fa2, $fa4, $fa1
-	fld.d	$fa2, $sp, 1536                 # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 1504                 # 8-byte Folded Reload
 	fmadd.d	$fa1, $fa2, $fa6, $fa1
-	fld.d	$fa2, $sp, 1344                 # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 1312                 # 8-byte Folded Reload
 	fmadd.d	$fa1, $fa2, $fa7, $fa1
 	fld.d	$fa2, $sp, 1104                 # 8-byte Folded Reload
 	fmadd.d	$fa1, $fa2, $ft0, $fa1
@@ -10234,8 +10183,8 @@ DoNNetIteration:                        # @DoNNetIteration
 	xvfmul.d	$xr1, $xr1, $xr5
 	xvfmadd.d	$xr1, $xr6, $xr24, $xr1
 	xvst	$xr1, $sp, 1248                 # 32-byte Folded Spill
-	fmul.d	$ft9, $ft8, $ft4
-	xvreplve0.d	$xr1, $xr17
+	fmul.d	$ft8, $ft8, $ft4
+	xvreplve0.d	$xr1, $xr16
 	xvld	$xr2, $fp, 0
 	xvld	$xr3, $s2, 1120
 	xvld	$xr5, $fp, 32
@@ -10276,8 +10225,8 @@ DoNNetIteration:                        # @DoNNetIteration
 	xvfmul.d	$xr1, $xr1, $xr5
 	xvfmadd.d	$xr1, $xr6, $xr24, $xr1
 	xvst	$xr1, $sp, 976                  # 32-byte Folded Spill
-	fmul.d	$ft0, $ft10, $ft4
-	xvreplve0.d	$xr1, $xr8
+	fmul.d	$ft1, $ft9, $ft4
+	xvreplve0.d	$xr1, $xr9
 	xvld	$xr2, $fp, 0
 	xvld	$xr3, $s2, 1400
 	xvld	$xr5, $fp, 32
@@ -10318,8 +10267,8 @@ DoNNetIteration:                        # @DoNNetIteration
 	xvfmul.d	$xr1, $xr1, $xr5
 	xvfmadd.d	$xr1, $xr6, $xr24, $xr1
 	xvst	$xr1, $sp, 720                  # 32-byte Folded Spill
-	fmul.d	$ft8, $fs4, $ft4
-	xvreplve0.d	$xr1, $xr16
+	fmul.d	$fs5, $fs4, $ft4
+	xvreplve0.d	$xr1, $xr29
 	xvld	$xr2, $fp, 0
 	xvld	$xr3, $s2, 1680
 	xvld	$xr5, $fp, 32
@@ -10417,25 +10366,25 @@ DoNNetIteration:                        # @DoNNetIteration
 	fld.d	$fa5, $fp, 272
 	fld.d	$fa6, $s2, 272
 	fld.d	$fa7, $fp, 256
-	fld.d	$ft1, $s2, 536
+	fld.d	$ft0, $s2, 536
 	fmul.d	$fa4, $fa4, $fa5
 	fmadd.d	$fa4, $fa6, $ft4, $fa4
 	fmul.d	$fa5, $fs2, $fa7
-	fmadd.d	$fa6, $ft1, $ft4, $fa5
+	fmadd.d	$fa6, $ft0, $ft4, $fa5
 	fld.d	$fa5, $fp, 264
 	fld.d	$fa7, $s2, 544
-	fld.d	$ft1, $fp, 272
+	fld.d	$ft0, $fp, 272
 	fld.d	$ft2, $s2, 552
 	fmul.d	$fa5, $fs2, $fa5
 	fmadd.d	$fa5, $fa7, $ft4, $fa5
-	fmul.d	$fa7, $fs2, $ft1
+	fmul.d	$fa7, $fs2, $ft0
 	fmadd.d	$fa7, $ft2, $ft4, $fa7
-	fld.d	$ft1, $fp, 256
+	fld.d	$ft0, $fp, 256
 	fld.d	$ft2, $s2, 816
 	fld.d	$ft3, $fp, 264
 	fld.d	$ft5, $s2, 824
-	fmul.d	$ft1, $fs7, $ft1
-	fmadd.d	$ft1, $ft2, $ft4, $ft1
+	fmul.d	$ft0, $fs7, $ft0
+	fmadd.d	$ft0, $ft2, $ft4, $ft0
 	fmul.d	$ft2, $fs7, $ft3
 	fmadd.d	$ft3, $ft5, $ft4, $ft2
 	fld.d	$ft2, $fp, 272
@@ -10448,53 +10397,53 @@ DoNNetIteration:                        # @DoNNetIteration
 	fmadd.d	$ft6, $ft7, $ft4, $ft5
 	fld.d	$ft5, $fp, 264
 	fld.d	$ft7, $s2, 1104
-	fld.d	$ft10, $fp, 272
-	fld.d	$ft11, $s2, 1112
+	fld.d	$ft9, $fp, 272
+	fld.d	$ft10, $s2, 1112
 	fmul.d	$ft5, $fs6, $ft5
 	fmadd.d	$ft5, $ft7, $ft4, $ft5
-	fmul.d	$ft7, $fs6, $ft10
-	fmadd.d	$ft7, $ft11, $ft4, $ft7
-	fld.d	$ft10, $fp, 256
-	fld.d	$ft11, $s2, 1376
-	fld.d	$ft12, $fp, 264
-	fld.d	$fs1, $s2, 1384
-	fmul.d	$ft10, $ft9, $ft10
-	fmadd.d	$ft10, $ft11, $ft4, $ft10
-	fmul.d	$ft11, $ft9, $ft12
-	fmadd.d	$ft11, $fs1, $ft4, $ft11
-	fld.d	$ft12, $fp, 272
-	fld.d	$fs1, $s2, 1392
-	fld.d	$fs2, $fp, 256
-	fld.d	$fs5, $s2, 1656
-	fmul.d	$ft9, $ft9, $ft12
-	fmadd.d	$ft9, $fs1, $ft4, $ft9
-	fmul.d	$ft12, $ft0, $fs2
-	fmadd.d	$fs5, $fs5, $ft4, $ft12
+	fmul.d	$ft7, $fs6, $ft9
+	fmadd.d	$ft7, $ft10, $ft4, $ft7
+	fld.d	$ft9, $fp, 256
+	fld.d	$ft10, $s2, 1376
+	fld.d	$ft11, $fp, 264
+	fld.d	$ft12, $s2, 1384
+	fmul.d	$ft9, $ft8, $ft9
+	fmadd.d	$ft9, $ft10, $ft4, $ft9
+	fmul.d	$ft10, $ft8, $ft11
+	fmadd.d	$ft10, $ft12, $ft4, $ft10
+	fld.d	$ft11, $fp, 272
+	fld.d	$ft12, $s2, 1392
+	fld.d	$fs1, $fp, 256
+	fld.d	$fs2, $s2, 1656
+	fmul.d	$ft8, $ft8, $ft11
+	fmadd.d	$ft8, $ft12, $ft4, $ft8
+	fmul.d	$ft11, $ft1, $fs1
+	fmadd.d	$ft11, $fs2, $ft4, $ft11
 	fld.d	$ft12, $fp, 264
 	fld.d	$fs1, $s2, 1664
 	fld.d	$fs2, $fp, 272
 	fld.d	$fs6, $s2, 1672
-	fmul.d	$ft12, $ft0, $ft12
+	fmul.d	$ft12, $ft1, $ft12
 	fmadd.d	$ft12, $fs1, $ft4, $ft12
-	fmul.d	$ft0, $ft0, $fs2
-	fmadd.d	$fs1, $fs6, $ft4, $ft0
-	fld.d	$ft0, $fp, 256
+	fmul.d	$ft1, $ft1, $fs2
+	fmadd.d	$fs1, $fs6, $ft4, $ft1
+	fld.d	$ft1, $fp, 256
 	fld.d	$fs2, $s2, 1936
 	fld.d	$fs6, $fp, 264
 	fld.d	$fa0, $s2, 1944
-	fmul.d	$ft0, $ft8, $ft0
-	fmadd.d	$fs7, $fs2, $ft4, $ft0
-	fmul.d	$ft0, $ft8, $fs6
-	fmadd.d	$fs6, $fa0, $ft4, $ft0
+	fmul.d	$ft1, $fs5, $ft1
+	fmadd.d	$fs7, $fs2, $ft4, $ft1
+	fmul.d	$ft1, $fs5, $fs6
+	fmadd.d	$fs6, $fa0, $ft4, $ft1
 	fld.d	$fa0, $fp, 272
-	fld.d	$ft0, $s2, 1952
+	fld.d	$ft1, $s2, 1952
 	fld.d	$fs2, $fp, 256
 	ori	$t0, $zero, 2216
 	fldx.d	$ft15, $s2, $t0
-	fmul.d	$fa0, $ft8, $fa0
-	fmadd.d	$ft0, $ft0, $ft4, $fa0
+	fmul.d	$fa0, $fs5, $fa0
+	fmadd.d	$fs5, $ft1, $ft4, $fa0
 	fmul.d	$fa0, $fa1, $fs2
-	fmadd.d	$ft8, $ft15, $ft4, $fa0
+	fmadd.d	$ft1, $ft15, $ft4, $fa0
 	fld.d	$fa0, $fp, 264
 	ori	$t2, $zero, 2224
 	fldx.d	$ft15, $s2, $t2
@@ -10900,10 +10849,10 @@ DoNNetIteration:                        # @DoNNetIteration
 	xvfadd.d	$xr2, $xr3, $xr2
 	xvst	$xr2, $s3, 784
 	fld.d	$fa2, $s3, 816
-	fadd.d	$fa1, $fa1, $ft1
+	fadd.d	$fa1, $fa1, $ft0
 	fst.d	$fa1, $s6, 816
 	fld.d	$fa1, $s6, 824
-	fadd.d	$fa2, $ft1, $fa2
+	fadd.d	$fa2, $ft0, $fa2
 	fst.d	$fa2, $s3, 816
 	fld.d	$fa2, $s3, 824
 	fadd.d	$fa1, $fa1, $ft3
@@ -11048,22 +10997,22 @@ DoNNetIteration:                        # @DoNNetIteration
 	xvfadd.d	$xr2, $xr3, $xr2
 	xvst	$xr2, $s3, 1344
 	fld.d	$fa2, $s3, 1376
-	fadd.d	$fa1, $fa1, $ft10
+	fadd.d	$fa1, $fa1, $ft9
 	fst.d	$fa1, $s6, 1376
 	fld.d	$fa1, $s6, 1384
-	fadd.d	$fa2, $ft10, $fa2
+	fadd.d	$fa2, $ft9, $fa2
 	fst.d	$fa2, $s3, 1376
 	fld.d	$fa2, $s3, 1384
-	fadd.d	$fa1, $fa1, $ft11
+	fadd.d	$fa1, $fa1, $ft10
 	fst.d	$fa1, $s6, 1384
 	fld.d	$fa1, $s6, 1392
-	fadd.d	$fa2, $ft11, $fa2
+	fadd.d	$fa2, $ft10, $fa2
 	fst.d	$fa2, $s3, 1384
 	fld.d	$fa2, $s3, 1392
-	fadd.d	$fa1, $fa1, $ft9
+	fadd.d	$fa1, $fa1, $ft8
 	fst.d	$fa1, $s6, 1392
 	xvld	$xr1, $s6, 1400
-	fadd.d	$fa2, $ft9, $fa2
+	fadd.d	$fa2, $ft8, $fa2
 	fst.d	$fa2, $s3, 1392
 	xvld	$xr2, $s3, 1400
 	xvld	$xr3, $sp, 880                  # 32-byte Folded Reload
@@ -11122,10 +11071,10 @@ DoNNetIteration:                        # @DoNNetIteration
 	xvfadd.d	$xr2, $xr3, $xr2
 	xvst	$xr2, $s3, 1624
 	fld.d	$fa2, $s3, 1656
-	fadd.d	$fa1, $fa1, $fs5
+	fadd.d	$fa1, $fa1, $ft11
 	fst.d	$fa1, $s6, 1656
 	fld.d	$fa1, $s6, 1664
-	fadd.d	$fa2, $fs5, $fa2
+	fadd.d	$fa2, $ft11, $fa2
 	fst.d	$fa2, $s3, 1656
 	fld.d	$fa2, $s3, 1664
 	fadd.d	$fa1, $fa1, $ft12
@@ -11208,10 +11157,10 @@ DoNNetIteration:                        # @DoNNetIteration
 	fadd.d	$fa2, $fs6, $fa2
 	fst.d	$fa2, $s3, 1944
 	fld.d	$fa2, $s3, 1952
-	fadd.d	$fa1, $fa1, $ft0
+	fadd.d	$fa1, $fa1, $fs5
 	fst.d	$fa1, $s6, 1952
 	xvld	$xr1, $s6, 1960
-	fadd.d	$fa2, $ft0, $fa2
+	fadd.d	$fa2, $fs5, $fa2
 	fst.d	$fa2, $s3, 1952
 	xvld	$xr2, $s3, 1960
 	xvld	$xr3, $sp, 352                  # 32-byte Folded Reload
@@ -11269,10 +11218,10 @@ DoNNetIteration:                        # @DoNNetIteration
 	xvfadd.d	$xr2, $xr24, $xr2
 	xvstx	$xr2, $s3, $a7
 	fldx.d	$fa2, $s3, $t0
-	fadd.d	$fa1, $fa1, $ft8
+	fadd.d	$fa1, $fa1, $ft1
 	fstx.d	$fa1, $s6, $t0
 	fldx.d	$fa1, $s6, $t2
-	fadd.d	$fa2, $ft8, $fa2
+	fadd.d	$fa2, $ft1, $fa2
 	fstx.d	$fa2, $s3, $t0
 	fldx.d	$fa2, $s3, $t2
 	fadd.d	$fa1, $fa1, $fa0
@@ -12707,12 +12656,12 @@ DoLUIteration:                          # @DoLUIteration
                                         #     Parent Loop BB17_24 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	fld.d	$fa3, $a7, -808
-	fld.d	$fa4, $a7, 0
-	fld.d	$fa5, $a7, 808
-	fld.d	$fa6, $a7, 1616
-	xvinsve0.d	$xr3, $xr4, 1
-	xvinsve0.d	$xr3, $xr5, 2
-	xvinsve0.d	$xr3, $xr6, 3
+	fld.d	$fa4, $a7, 808
+	fld.d	$fa5, $a7, 1616
+	fld.d	$fa6, $a7, 0
+	vextrins.d	$vr4, $vr5, 16
+	vextrins.d	$vr3, $vr6, 16
+	xvpermi.q	$xr3, $xr4, 2
 	xvfmul.d	$xr3, $xr2, $xr3
 	xvstelm.d	$xr3, $a7, -808, 0
 	xvstelm.d	$xr3, $a7, 0, 1

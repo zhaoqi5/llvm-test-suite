@@ -753,25 +753,25 @@ generate_polar_angles:                  # @generate_polar_angles
 	fcvt.s.d	$fa7, $fa7
 	xvpickve.d	$xr8, $xr6, 0
 	fcvt.s.d	$ft0, $ft0
-	xvinsve0.w	$xr8, $xr7, 1
+	vextrins.w	$vr8, $vr7, 16
 	xvpickve.d	$xr7, $xr6, 2
 	fcvt.s.d	$fa7, $fa7
-	xvinsve0.w	$xr8, $xr7, 2
+	vextrins.w	$vr8, $vr7, 32
 	xvpickve.d	$xr6, $xr6, 3
 	fcvt.s.d	$fa6, $fa6
-	xvinsve0.w	$xr8, $xr6, 3
-	xvpickve.d	$xr6, $xr5, 0
-	fcvt.s.d	$fa6, $fa6
-	xvinsve0.w	$xr8, $xr6, 4
+	vextrins.w	$vr8, $vr6, 48
 	xvpickve.d	$xr6, $xr5, 1
 	fcvt.s.d	$fa6, $fa6
-	xvinsve0.w	$xr8, $xr6, 5
+	xvpickve.d	$xr7, $xr5, 0
+	fcvt.s.d	$fa7, $fa7
+	vextrins.w	$vr7, $vr6, 16
 	xvpickve.d	$xr6, $xr5, 2
 	fcvt.s.d	$fa6, $fa6
-	xvinsve0.w	$xr8, $xr6, 6
+	vextrins.w	$vr7, $vr6, 32
 	xvpickve.d	$xr5, $xr5, 3
 	fcvt.s.d	$fa5, $fa5
-	xvinsve0.w	$xr8, $xr5, 7
+	vextrins.w	$vr7, $vr5, 48
+	xvpermi.q	$xr8, $xr7, 2
 	xvst	$xr8, $a2, 0
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a3, $a3, -8
@@ -955,24 +955,26 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a2, -16
 	vld	$vr3, $a2, 0
-	vpickve2gr.w	$a4, $vr2, 0
-	xvinsgr2vr.d	$xr4, $a4, 0
-	vpickve2gr.w	$a4, $vr2, 1
-	xvinsgr2vr.d	$xr4, $a4, 1
 	vpickve2gr.w	$a4, $vr2, 2
-	xvinsgr2vr.d	$xr4, $a4, 2
+	vinsgr2vr.d	$vr4, $a4, 0
 	vpickve2gr.w	$a4, $vr2, 3
-	xvinsgr2vr.d	$xr4, $a4, 3
-	vpickve2gr.w	$a4, $vr3, 0
-	xvinsgr2vr.d	$xr2, $a4, 0
-	vpickve2gr.w	$a4, $vr3, 1
-	xvinsgr2vr.d	$xr2, $a4, 1
+	vinsgr2vr.d	$vr4, $a4, 1
+	vpickve2gr.w	$a4, $vr2, 0
+	vinsgr2vr.d	$vr5, $a4, 0
+	vpickve2gr.w	$a4, $vr2, 1
+	vinsgr2vr.d	$vr5, $a4, 1
+	xvpermi.q	$xr5, $xr4, 2
 	vpickve2gr.w	$a4, $vr3, 2
-	xvinsgr2vr.d	$xr2, $a4, 2
+	vinsgr2vr.d	$vr2, $a4, 0
 	vpickve2gr.w	$a4, $vr3, 3
-	xvinsgr2vr.d	$xr2, $a4, 3
-	xvadd.d	$xr0, $xr0, $xr4
-	xvadd.d	$xr1, $xr1, $xr2
+	vinsgr2vr.d	$vr2, $a4, 1
+	vpickve2gr.w	$a4, $vr3, 0
+	vinsgr2vr.d	$vr4, $a4, 0
+	vpickve2gr.w	$a4, $vr3, 1
+	vinsgr2vr.d	$vr4, $a4, 1
+	xvpermi.q	$xr4, $xr2, 2
+	xvadd.d	$xr0, $xr0, $xr5
+	xvadd.d	$xr1, $xr1, $xr4
 	addi.d	$a3, $a3, -8
 	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB7_5

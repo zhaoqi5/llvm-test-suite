@@ -52,14 +52,15 @@ buster:                                 # @buster
 	ld.w	$t4, $a3, -16
 	ld.w	$t5, $a3, -8
 	ld.w	$t6, $a3, 0
-	xvinsgr2vr.w	$xr2, $a7, 0
-	xvinsgr2vr.w	$xr2, $t0, 1
-	xvinsgr2vr.w	$xr2, $t1, 2
-	xvinsgr2vr.w	$xr2, $t2, 3
-	xvinsgr2vr.w	$xr2, $t3, 4
-	xvinsgr2vr.w	$xr2, $t4, 5
-	xvinsgr2vr.w	$xr2, $t5, 6
-	xvinsgr2vr.w	$xr2, $t6, 7
+	vinsgr2vr.w	$vr2, $t3, 0
+	vinsgr2vr.w	$vr2, $t4, 1
+	vinsgr2vr.w	$vr2, $t5, 2
+	vinsgr2vr.w	$vr2, $t6, 3
+	vinsgr2vr.w	$vr3, $a7, 0
+	vinsgr2vr.w	$vr3, $t0, 1
+	vinsgr2vr.w	$vr3, $t1, 2
+	vinsgr2vr.w	$vr3, $t2, 3
+	xvpermi.q	$xr3, $xr2, 2
 	ld.w	$a7, $a3, 8
 	ld.w	$t0, $a3, 16
 	ld.w	$t1, $a3, 24
@@ -68,16 +69,17 @@ buster:                                 # @buster
 	ld.w	$t4, $a3, 48
 	ld.w	$t5, $a3, 56
 	ld.w	$t6, $a3, 64
-	xvinsgr2vr.w	$xr3, $a7, 0
-	xvinsgr2vr.w	$xr3, $t0, 1
-	xvinsgr2vr.w	$xr3, $t1, 2
-	xvinsgr2vr.w	$xr3, $t2, 3
-	xvinsgr2vr.w	$xr3, $t3, 4
-	xvinsgr2vr.w	$xr3, $t4, 5
-	xvinsgr2vr.w	$xr3, $t5, 6
-	xvinsgr2vr.w	$xr3, $t6, 7
-	xvmin.w	$xr0, $xr2, $xr0
-	xvmin.w	$xr1, $xr3, $xr1
+	vinsgr2vr.w	$vr2, $t3, 0
+	vinsgr2vr.w	$vr2, $t4, 1
+	vinsgr2vr.w	$vr2, $t5, 2
+	vinsgr2vr.w	$vr2, $t6, 3
+	vinsgr2vr.w	$vr4, $a7, 0
+	vinsgr2vr.w	$vr4, $t0, 1
+	vinsgr2vr.w	$vr4, $t1, 2
+	vinsgr2vr.w	$vr4, $t2, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvmin.w	$xr0, $xr3, $xr0
+	xvmin.w	$xr1, $xr4, $xr1
 	addi.d	$a6, $a6, -16
 	addi.d	$a3, $a3, 128
 	bnez	$a6, .LBB0_7

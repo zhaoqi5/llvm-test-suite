@@ -185,71 +185,42 @@ routenet:                               # @routenet
 	.p2align	4, , 16
 .LBB0_18:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvadd.w	$xr5, $xr0, $xr1
-	xvadd.w	$xr6, $xr0, $xr2
-	xvpickve2gr.w	$t1, $xr6, 0
-	vinsgr2vr.h	$vr4, $t1, 0
-	xvpickve2gr.w	$t1, $xr6, 1
-	xvreplgr2vr.h	$xr7, $t1
-	xvpermi.q	$xr7, $xr4, 18
-	xvextrins.h	$xr4, $xr7, 17
-	xvpickve2gr.w	$t1, $xr6, 2
-	xvreplgr2vr.h	$xr7, $t1
-	xvpermi.q	$xr7, $xr4, 18
-	xvextrins.h	$xr4, $xr7, 34
-	xvpickve2gr.w	$t1, $xr6, 3
-	xvreplgr2vr.h	$xr7, $t1
-	xvpermi.q	$xr7, $xr4, 18
-	xvextrins.h	$xr4, $xr7, 51
-	xvpickve2gr.w	$t1, $xr6, 4
-	xvreplgr2vr.h	$xr7, $t1
-	xvpermi.q	$xr7, $xr4, 18
-	xvextrins.h	$xr4, $xr7, 68
-	xvpickve2gr.w	$t1, $xr6, 5
-	xvreplgr2vr.h	$xr7, $t1
-	xvpermi.q	$xr7, $xr4, 18
-	xvextrins.h	$xr4, $xr7, 85
-	xvpickve2gr.w	$t1, $xr6, 6
-	xvreplgr2vr.h	$xr7, $t1
-	xvpermi.q	$xr7, $xr4, 18
-	xvextrins.h	$xr4, $xr7, 102
-	xvpickve2gr.w	$t1, $xr6, 7
-	xvreplgr2vr.h	$xr6, $t1
-	xvpermi.q	$xr6, $xr4, 18
-	xvextrins.h	$xr4, $xr6, 119
+	xvadd.w	$xr4, $xr0, $xr1
+	xvadd.w	$xr5, $xr0, $xr2
 	xvpickve2gr.w	$t1, $xr5, 0
-	xvreplgr2vr.h	$xr6, $t1
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 0
+	vinsgr2vr.h	$vr6, $t1, 0
 	xvpickve2gr.w	$t1, $xr5, 1
-	xvreplgr2vr.h	$xr6, $t1
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 17
+	vinsgr2vr.h	$vr6, $t1, 1
 	xvpickve2gr.w	$t1, $xr5, 2
-	xvreplgr2vr.h	$xr6, $t1
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 34
+	vinsgr2vr.h	$vr6, $t1, 2
 	xvpickve2gr.w	$t1, $xr5, 3
-	xvreplgr2vr.h	$xr6, $t1
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 51
+	vinsgr2vr.h	$vr6, $t1, 3
 	xvpickve2gr.w	$t1, $xr5, 4
-	xvreplgr2vr.h	$xr6, $t1
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 68
+	vinsgr2vr.h	$vr6, $t1, 4
 	xvpickve2gr.w	$t1, $xr5, 5
-	xvreplgr2vr.h	$xr6, $t1
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 85
+	vinsgr2vr.h	$vr6, $t1, 5
 	xvpickve2gr.w	$t1, $xr5, 6
-	xvreplgr2vr.h	$xr6, $t1
-	xvpermi.q	$xr6, $xr4, 48
-	xvextrins.h	$xr4, $xr6, 102
+	vinsgr2vr.h	$vr6, $t1, 6
 	xvpickve2gr.w	$t1, $xr5, 7
-	xvreplgr2vr.h	$xr5, $t1
-	xvpermi.q	$xr5, $xr4, 48
-	xvextrins.h	$xr4, $xr5, 119
-	xvst	$xr4, $a6, 0
+	vinsgr2vr.h	$vr6, $t1, 7
+	xvpickve2gr.w	$t1, $xr4, 0
+	vinsgr2vr.h	$vr5, $t1, 0
+	xvpickve2gr.w	$t1, $xr4, 1
+	vinsgr2vr.h	$vr5, $t1, 1
+	xvpickve2gr.w	$t1, $xr4, 2
+	vinsgr2vr.h	$vr5, $t1, 2
+	xvpickve2gr.w	$t1, $xr4, 3
+	vinsgr2vr.h	$vr5, $t1, 3
+	xvpickve2gr.w	$t1, $xr4, 4
+	vinsgr2vr.h	$vr5, $t1, 4
+	xvpickve2gr.w	$t1, $xr4, 5
+	vinsgr2vr.h	$vr5, $t1, 5
+	xvpickve2gr.w	$t1, $xr4, 6
+	vinsgr2vr.h	$vr5, $t1, 6
+	xvpickve2gr.w	$t1, $xr4, 7
+	vinsgr2vr.h	$vr5, $t1, 7
+	xvpermi.q	$xr6, $xr5, 2
+	xvst	$xr6, $a6, 0
 	xvst	$xr3, $a7, 0
 	xvaddi.wu	$xr2, $xr2, 16
 	xvaddi.wu	$xr1, $xr1, 16

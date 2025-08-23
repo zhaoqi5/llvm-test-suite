@@ -2225,31 +2225,32 @@ mshortest:                              # @mshortest
                                         #   Parent Loop BB0_224 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a6, 0
-	vpickve2gr.h	$t1, $vr0, 0
-	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr1, $t1, 0
-	vpickve2gr.h	$t1, $vr0, 1
-	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr1, $t1, 1
-	vpickve2gr.h	$t1, $vr0, 2
-	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr1, $t1, 2
-	vpickve2gr.h	$t1, $vr0, 3
-	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr1, $t1, 3
 	vpickve2gr.h	$t1, $vr0, 4
 	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr1, $t1, 4
+	vinsgr2vr.w	$vr1, $t1, 0
 	vpickve2gr.h	$t1, $vr0, 5
 	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr1, $t1, 5
+	vinsgr2vr.w	$vr1, $t1, 1
 	vpickve2gr.h	$t1, $vr0, 6
 	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr1, $t1, 6
+	vinsgr2vr.w	$vr1, $t1, 2
 	vpickve2gr.h	$t1, $vr0, 7
 	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr1, $t1, 7
-	xvst	$xr1, $a7, 0
+	vinsgr2vr.w	$vr1, $t1, 3
+	vpickve2gr.h	$t1, $vr0, 0
+	ext.w.h	$t1, $t1
+	vinsgr2vr.w	$vr2, $t1, 0
+	vpickve2gr.h	$t1, $vr0, 1
+	ext.w.h	$t1, $t1
+	vinsgr2vr.w	$vr2, $t1, 1
+	vpickve2gr.h	$t1, $vr0, 2
+	ext.w.h	$t1, $t1
+	vinsgr2vr.w	$vr2, $t1, 2
+	vpickve2gr.h	$t1, $vr0, 3
+	ext.w.h	$t1, $t1
+	vinsgr2vr.w	$vr2, $t1, 3
+	xvpermi.q	$xr2, $xr1, 2
+	xvst	$xr2, $a7, 0
 	addi.d	$a6, $a6, 16
 	addi.d	$t0, $t0, -8
 	addi.d	$a7, $a7, 32

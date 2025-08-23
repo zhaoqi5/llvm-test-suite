@@ -1973,46 +1973,64 @@ chunk:                                  # @chunk
                                         #   Parent Loop BB2_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a7, 0
+	vpickve2gr.h	$t1, $vr0, 6
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr1, $t1, 0
 	vpickve2gr.h	$t1, $vr0, 7
 	bstrpick.d	$t1, $t1, 15, 0
 	bstrpick.d	$t1, $t1, 15, 0
-	vpickve2gr.h	$t2, $vr0, 6
-	bstrpick.d	$t2, $t2, 15, 0
-	bstrpick.d	$t2, $t2, 15, 0
-	vpickve2gr.h	$t3, $vr0, 5
-	bstrpick.d	$t3, $t3, 15, 0
-	bstrpick.d	$t3, $t3, 15, 0
-	vpickve2gr.h	$t4, $vr0, 4
-	bstrpick.d	$t4, $t4, 15, 0
-	bstrpick.d	$t4, $t4, 15, 0
-	vpickve2gr.h	$t5, $vr0, 3
-	bstrpick.d	$t5, $t5, 15, 0
-	bstrpick.d	$t5, $t5, 15, 0
-	vpickve2gr.h	$t6, $vr0, 2
-	bstrpick.d	$t6, $t6, 15, 0
-	bstrpick.d	$t6, $t6, 15, 0
-	vpickve2gr.h	$t7, $vr0, 1
-	bstrpick.d	$t7, $t7, 15, 0
-	bstrpick.d	$t7, $t7, 15, 0
-	vpickve2gr.h	$t8, $vr0, 0
-	bstrpick.d	$t8, $t8, 15, 0
-	bstrpick.d	$t8, $t8, 15, 0
-	alsl.d	$t8, $t8, $a1, 4
-	alsl.d	$t7, $t7, $a1, 4
-	alsl.d	$t6, $t6, $a1, 4
-	alsl.d	$t5, $t5, $a1, 4
-	alsl.d	$t4, $t4, $a1, 4
-	alsl.d	$t3, $t3, $a1, 4
-	alsl.d	$t2, $t2, $a1, 4
+	vinsgr2vr.d	$vr1, $t1, 1
+	xvpermi.q	$xr1, $xr1, 2
+	vpickve2gr.h	$t1, $vr0, 4
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr2, $t1, 0
+	vpickve2gr.h	$t1, $vr0, 5
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr2, $t1, 1
+	vpickve2gr.h	$t1, $vr0, 2
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr3, $t1, 0
+	vpickve2gr.h	$t1, $vr0, 3
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr3, $t1, 1
+	xvpermi.q	$xr3, $xr3, 2
+	vpickve2gr.h	$t1, $vr0, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr4, $t1, 0
+	vpickve2gr.h	$t1, $vr0, 1
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr4, $t1, 1
+	xvpickve2gr.d	$t1, $xr4, 0
 	alsl.d	$t1, $t1, $a1, 4
-	st.w	$a0, $t8, 8
-	st.w	$a0, $t7, 8
-	st.w	$a0, $t6, 8
-	st.w	$a0, $t5, 8
-	st.w	$a0, $t4, 8
-	st.w	$a0, $t3, 8
-	st.w	$a0, $t2, 8
+	xvpickve2gr.d	$t2, $xr4, 1
+	alsl.d	$t2, $t2, $a1, 4
+	xvpickve2gr.d	$t3, $xr3, 2
+	alsl.d	$t3, $t3, $a1, 4
+	xvpickve2gr.d	$t4, $xr3, 3
+	alsl.d	$t4, $t4, $a1, 4
+	xvpickve2gr.d	$t5, $xr2, 0
+	alsl.d	$t5, $t5, $a1, 4
+	xvpickve2gr.d	$t6, $xr2, 1
+	alsl.d	$t6, $t6, $a1, 4
+	xvpickve2gr.d	$t7, $xr1, 2
+	alsl.d	$t7, $t7, $a1, 4
+	xvpickve2gr.d	$t8, $xr1, 3
+	alsl.d	$t8, $t8, $a1, 4
 	st.w	$a0, $t1, 8
+	st.w	$a0, $t2, 8
+	st.w	$a0, $t3, 8
+	st.w	$a0, $t4, 8
+	st.w	$a0, $t5, 8
+	st.w	$a0, $t6, 8
+	st.w	$a0, $t7, 8
+	st.w	$a0, $t8, 8
 	addi.d	$t0, $t0, -8
 	addi.d	$a7, $a7, 16
 	bnez	$t0, .LBB2_160
@@ -4356,46 +4374,64 @@ parlist:                                # @parlist
 .LBB12_13:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a7, 0
+	vpickve2gr.h	$t1, $vr0, 6
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr1, $t1, 0
 	vpickve2gr.h	$t1, $vr0, 7
 	bstrpick.d	$t1, $t1, 15, 0
 	bstrpick.d	$t1, $t1, 15, 0
-	vpickve2gr.h	$t2, $vr0, 6
-	bstrpick.d	$t2, $t2, 15, 0
-	bstrpick.d	$t2, $t2, 15, 0
-	vpickve2gr.h	$t3, $vr0, 5
-	bstrpick.d	$t3, $t3, 15, 0
-	bstrpick.d	$t3, $t3, 15, 0
-	vpickve2gr.h	$t4, $vr0, 4
-	bstrpick.d	$t4, $t4, 15, 0
-	bstrpick.d	$t4, $t4, 15, 0
-	vpickve2gr.h	$t5, $vr0, 3
-	bstrpick.d	$t5, $t5, 15, 0
-	bstrpick.d	$t5, $t5, 15, 0
-	vpickve2gr.h	$t6, $vr0, 2
-	bstrpick.d	$t6, $t6, 15, 0
-	bstrpick.d	$t6, $t6, 15, 0
-	vpickve2gr.h	$t7, $vr0, 1
-	bstrpick.d	$t7, $t7, 15, 0
-	bstrpick.d	$t7, $t7, 15, 0
-	vpickve2gr.h	$t8, $vr0, 0
-	bstrpick.d	$t8, $t8, 15, 0
-	bstrpick.d	$t8, $t8, 15, 0
-	alsl.d	$t8, $t8, $a2, 4
-	alsl.d	$t7, $t7, $a2, 4
-	alsl.d	$t6, $t6, $a2, 4
-	alsl.d	$t5, $t5, $a2, 4
-	alsl.d	$t4, $t4, $a2, 4
-	alsl.d	$t3, $t3, $a2, 4
-	alsl.d	$t2, $t2, $a2, 4
+	vinsgr2vr.d	$vr1, $t1, 1
+	xvpermi.q	$xr1, $xr1, 2
+	vpickve2gr.h	$t1, $vr0, 4
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr2, $t1, 0
+	vpickve2gr.h	$t1, $vr0, 5
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr2, $t1, 1
+	vpickve2gr.h	$t1, $vr0, 2
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr3, $t1, 0
+	vpickve2gr.h	$t1, $vr0, 3
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr3, $t1, 1
+	xvpermi.q	$xr3, $xr3, 2
+	vpickve2gr.h	$t1, $vr0, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr4, $t1, 0
+	vpickve2gr.h	$t1, $vr0, 1
+	bstrpick.d	$t1, $t1, 15, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	vinsgr2vr.d	$vr4, $t1, 1
+	xvpickve2gr.d	$t1, $xr4, 0
 	alsl.d	$t1, $t1, $a2, 4
-	st.w	$a1, $t8, 8
-	st.w	$a1, $t7, 8
-	st.w	$a1, $t6, 8
-	st.w	$a1, $t5, 8
-	st.w	$a1, $t4, 8
-	st.w	$a1, $t3, 8
-	st.w	$a1, $t2, 8
+	xvpickve2gr.d	$t2, $xr4, 1
+	alsl.d	$t2, $t2, $a2, 4
+	xvpickve2gr.d	$t3, $xr3, 2
+	alsl.d	$t3, $t3, $a2, 4
+	xvpickve2gr.d	$t4, $xr3, 3
+	alsl.d	$t4, $t4, $a2, 4
+	xvpickve2gr.d	$t5, $xr2, 0
+	alsl.d	$t5, $t5, $a2, 4
+	xvpickve2gr.d	$t6, $xr2, 1
+	alsl.d	$t6, $t6, $a2, 4
+	xvpickve2gr.d	$t7, $xr1, 2
+	alsl.d	$t7, $t7, $a2, 4
+	xvpickve2gr.d	$t8, $xr1, 3
+	alsl.d	$t8, $t8, $a2, 4
 	st.w	$a1, $t1, 8
+	st.w	$a1, $t2, 8
+	st.w	$a1, $t3, 8
+	st.w	$a1, $t4, 8
+	st.w	$a1, $t5, 8
+	st.w	$a1, $t6, 8
+	st.w	$a1, $t7, 8
+	st.w	$a1, $t8, 8
 	addi.d	$t0, $t0, -8
 	addi.d	$a7, $a7, 16
 	bnez	$t0, .LBB12_13
@@ -5183,46 +5219,64 @@ forbody:                                # @forbody
 .LBB18_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a6, 0
+	vpickve2gr.h	$t0, $vr0, 6
+	bstrpick.d	$t0, $t0, 15, 0
+	bstrpick.d	$t0, $t0, 15, 0
+	vinsgr2vr.d	$vr1, $t0, 0
 	vpickve2gr.h	$t0, $vr0, 7
 	bstrpick.d	$t0, $t0, 15, 0
 	bstrpick.d	$t0, $t0, 15, 0
-	vpickve2gr.h	$t1, $vr0, 6
-	bstrpick.d	$t1, $t1, 15, 0
-	bstrpick.d	$t1, $t1, 15, 0
-	vpickve2gr.h	$t2, $vr0, 5
-	bstrpick.d	$t2, $t2, 15, 0
-	bstrpick.d	$t2, $t2, 15, 0
-	vpickve2gr.h	$t3, $vr0, 4
-	bstrpick.d	$t3, $t3, 15, 0
-	bstrpick.d	$t3, $t3, 15, 0
-	vpickve2gr.h	$t4, $vr0, 3
-	bstrpick.d	$t4, $t4, 15, 0
-	bstrpick.d	$t4, $t4, 15, 0
-	vpickve2gr.h	$t5, $vr0, 2
-	bstrpick.d	$t5, $t5, 15, 0
-	bstrpick.d	$t5, $t5, 15, 0
-	vpickve2gr.h	$t6, $vr0, 1
-	bstrpick.d	$t6, $t6, 15, 0
-	bstrpick.d	$t6, $t6, 15, 0
-	vpickve2gr.h	$t7, $vr0, 0
-	bstrpick.d	$t7, $t7, 15, 0
-	bstrpick.d	$t7, $t7, 15, 0
-	alsl.d	$t7, $t7, $a2, 4
-	alsl.d	$t6, $t6, $a2, 4
-	alsl.d	$t5, $t5, $a2, 4
-	alsl.d	$t4, $t4, $a2, 4
-	alsl.d	$t3, $t3, $a2, 4
-	alsl.d	$t2, $t2, $a2, 4
-	alsl.d	$t1, $t1, $a2, 4
+	vinsgr2vr.d	$vr1, $t0, 1
+	xvpermi.q	$xr1, $xr1, 2
+	vpickve2gr.h	$t0, $vr0, 4
+	bstrpick.d	$t0, $t0, 15, 0
+	bstrpick.d	$t0, $t0, 15, 0
+	vinsgr2vr.d	$vr2, $t0, 0
+	vpickve2gr.h	$t0, $vr0, 5
+	bstrpick.d	$t0, $t0, 15, 0
+	bstrpick.d	$t0, $t0, 15, 0
+	vinsgr2vr.d	$vr2, $t0, 1
+	vpickve2gr.h	$t0, $vr0, 2
+	bstrpick.d	$t0, $t0, 15, 0
+	bstrpick.d	$t0, $t0, 15, 0
+	vinsgr2vr.d	$vr3, $t0, 0
+	vpickve2gr.h	$t0, $vr0, 3
+	bstrpick.d	$t0, $t0, 15, 0
+	bstrpick.d	$t0, $t0, 15, 0
+	vinsgr2vr.d	$vr3, $t0, 1
+	xvpermi.q	$xr3, $xr3, 2
+	vpickve2gr.h	$t0, $vr0, 0
+	bstrpick.d	$t0, $t0, 15, 0
+	bstrpick.d	$t0, $t0, 15, 0
+	vinsgr2vr.d	$vr4, $t0, 0
+	vpickve2gr.h	$t0, $vr0, 1
+	bstrpick.d	$t0, $t0, 15, 0
+	bstrpick.d	$t0, $t0, 15, 0
+	vinsgr2vr.d	$vr4, $t0, 1
+	xvpickve2gr.d	$t0, $xr4, 0
 	alsl.d	$t0, $t0, $a2, 4
-	st.w	$a0, $t7, 8
-	st.w	$a0, $t6, 8
-	st.w	$a0, $t5, 8
-	st.w	$a0, $t4, 8
-	st.w	$a0, $t3, 8
-	st.w	$a0, $t2, 8
-	st.w	$a0, $t1, 8
+	xvpickve2gr.d	$t1, $xr4, 1
+	alsl.d	$t1, $t1, $a2, 4
+	xvpickve2gr.d	$t2, $xr3, 2
+	alsl.d	$t2, $t2, $a2, 4
+	xvpickve2gr.d	$t3, $xr3, 3
+	alsl.d	$t3, $t3, $a2, 4
+	xvpickve2gr.d	$t4, $xr2, 0
+	alsl.d	$t4, $t4, $a2, 4
+	xvpickve2gr.d	$t5, $xr2, 1
+	alsl.d	$t5, $t5, $a2, 4
+	xvpickve2gr.d	$t6, $xr1, 2
+	alsl.d	$t6, $t6, $a2, 4
+	xvpickve2gr.d	$t7, $xr1, 3
+	alsl.d	$t7, $t7, $a2, 4
 	st.w	$a0, $t0, 8
+	st.w	$a0, $t1, 8
+	st.w	$a0, $t2, 8
+	st.w	$a0, $t3, 8
+	st.w	$a0, $t4, 8
+	st.w	$a0, $t5, 8
+	st.w	$a0, $t6, 8
+	st.w	$a0, $t7, 8
 	addi.d	$a7, $a7, -8
 	addi.d	$a6, $a6, 16
 	bnez	$a7, .LBB18_9

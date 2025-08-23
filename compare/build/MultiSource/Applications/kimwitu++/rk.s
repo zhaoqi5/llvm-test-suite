@@ -388,10 +388,11 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration7rewriteERNS_11rview_classE: # @
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 32
-	xvinsgr2vr.d	$xr1, $s3, 0
-	xvinsgr2vr.d	$xr1, $s0, 1
-	xvinsgr2vr.d	$xr1, $s1, 2
-	xvinsgr2vr.d	$xr1, $a0, 3
+	vinsgr2vr.d	$vr1, $s3, 0
+	vinsgr2vr.d	$vr1, $s0, 1
+	vinsgr2vr.d	$vr2, $s1, 0
+	vinsgr2vr.d	$vr2, $a0, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -4728,10 +4729,11 @@ _ZN2kc38impl_fndeclaration_AcMemberDeclaration7rewriteERNS_11rview_classE: # @_Z
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 40
-	xvinsgr2vr.d	$xr1, $s3, 0
-	xvinsgr2vr.d	$xr1, $s0, 1
-	xvinsgr2vr.d	$xr1, $s1, 2
-	xvinsgr2vr.d	$xr1, $a0, 3
+	vinsgr2vr.d	$vr1, $s3, 0
+	vinsgr2vr.d	$vr1, $s0, 1
+	vinsgr2vr.d	$vr2, $s1, 0
+	vinsgr2vr.d	$vr2, $a0, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -4842,10 +4844,11 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration7rewriteERNS_11rview_classE: # @_ZN2kc
 	move	$a1, $s4
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 40
-	xvinsgr2vr.d	$xr1, $s0, 0
-	xvinsgr2vr.d	$xr1, $s1, 1
-	xvinsgr2vr.d	$xr1, $s2, 2
-	xvinsgr2vr.d	$xr1, $s3, 3
+	vinsgr2vr.d	$vr1, $s0, 0
+	vinsgr2vr.d	$vr1, $s1, 1
+	vinsgr2vr.d	$vr2, $s2, 0
+	vinsgr2vr.d	$vr2, $s3, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -5177,10 +5180,11 @@ _ZN2kc38impl_Ctext_elem_CTextForeachexpression7rewriteERNS_11rview_classE: # @_Z
 	move	$a1, $s4
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 24
-	xvinsgr2vr.d	$xr1, $s0, 0
-	xvinsgr2vr.d	$xr1, $s1, 1
-	xvinsgr2vr.d	$xr1, $s2, 2
-	xvinsgr2vr.d	$xr1, $s3, 3
+	vinsgr2vr.d	$vr1, $s0, 0
+	vinsgr2vr.d	$vr1, $s1, 1
+	vinsgr2vr.d	$vr2, $s2, 0
+	vinsgr2vr.d	$vr2, $s3, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -5521,10 +5525,11 @@ _ZN2kc31impl_foreach_after_ForeachAfter7rewriteERNS_11rview_classE: # @_ZN2kc31i
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 24
-	xvinsgr2vr.d	$xr1, $s3, 0
-	xvinsgr2vr.d	$xr1, $s0, 1
-	xvinsgr2vr.d	$xr1, $s1, 2
-	xvinsgr2vr.d	$xr1, $a0, 3
+	vinsgr2vr.d	$vr1, $s3, 0
+	vinsgr2vr.d	$vr1, $s0, 1
+	vinsgr2vr.d	$vr2, $s1, 0
+	vinsgr2vr.d	$vr2, $a0, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -7230,10 +7235,11 @@ _ZN2kc40impl_scopetypefileline_ScopeTypeFileLine7rewriteERNS_11rview_classE: # @
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 8
-	xvinsgr2vr.d	$xr1, $s3, 0
-	xvinsgr2vr.d	$xr1, $s0, 1
-	xvinsgr2vr.d	$xr1, $s1, 2
-	xvinsgr2vr.d	$xr1, $a0, 3
+	vinsgr2vr.d	$vr1, $s3, 0
+	vinsgr2vr.d	$vr1, $s0, 1
+	vinsgr2vr.d	$vr2, $s1, 0
+	vinsgr2vr.d	$vr2, $a0, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -10251,10 +10257,11 @@ _ZN2kc46impl_ac_direct_declarator_AcQualifiedDeclProto7rewriteERNS_11rview_class
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 8
-	xvinsgr2vr.d	$xr1, $s3, 0
-	xvinsgr2vr.d	$xr1, $s0, 1
-	xvinsgr2vr.d	$xr1, $s1, 2
-	xvinsgr2vr.d	$xr1, $a0, 3
+	vinsgr2vr.d	$vr1, $s3, 0
+	vinsgr2vr.d	$vr1, $s0, 1
+	vinsgr2vr.d	$vr2, $s1, 0
+	vinsgr2vr.d	$vr2, $a0, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -12318,10 +12325,11 @@ _ZN2kc21impl_problem_Problem67rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	move	$a1, $s5
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 8
-	xvinsgr2vr.d	$xr1, $s0, 0
-	xvinsgr2vr.d	$xr1, $s1, 1
-	xvinsgr2vr.d	$xr1, $s2, 2
-	xvinsgr2vr.d	$xr1, $s3, 3
+	vinsgr2vr.d	$vr1, $s0, 0
+	vinsgr2vr.d	$vr1, $s1, 1
+	vinsgr2vr.d	$vr2, $s2, 0
+	vinsgr2vr.d	$vr2, $s3, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -12424,10 +12432,11 @@ _ZN2kc21impl_problem_Problem57rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	move	$a1, $s4
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 8
-	xvinsgr2vr.d	$xr1, $s0, 0
-	xvinsgr2vr.d	$xr1, $s1, 1
-	xvinsgr2vr.d	$xr1, $s2, 2
-	xvinsgr2vr.d	$xr1, $s3, 3
+	vinsgr2vr.d	$vr1, $s0, 0
+	vinsgr2vr.d	$vr1, $s1, 1
+	vinsgr2vr.d	$vr2, $s2, 0
+	vinsgr2vr.d	$vr2, $s3, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -12516,10 +12525,11 @@ _ZN2kc21impl_problem_Problem47rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 8
-	xvinsgr2vr.d	$xr1, $s3, 0
-	xvinsgr2vr.d	$xr1, $s0, 1
-	xvinsgr2vr.d	$xr1, $s1, 2
-	xvinsgr2vr.d	$xr1, $a0, 3
+	vinsgr2vr.d	$vr1, $s3, 0
+	vinsgr2vr.d	$vr1, $s0, 1
+	vinsgr2vr.d	$vr2, $s1, 0
+	vinsgr2vr.d	$vr2, $a0, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -12612,10 +12622,11 @@ _ZN2kc25impl_problem_Problem3int17rewriteERNS_11rview_classE: # @_ZN2kc25impl_pr
 	move	$a1, $s4
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 8
-	xvinsgr2vr.d	$xr1, $s0, 0
-	xvinsgr2vr.d	$xr1, $s1, 1
-	xvinsgr2vr.d	$xr1, $s2, 2
-	xvinsgr2vr.d	$xr1, $s3, 3
+	vinsgr2vr.d	$vr1, $s0, 0
+	vinsgr2vr.d	$vr1, $s1, 1
+	vinsgr2vr.d	$vr2, $s2, 0
+	vinsgr2vr.d	$vr2, $s3, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -12834,10 +12845,11 @@ _ZN2kc37impl_problem_Problem1storageoption1ID7rewriteERNS_11rview_classE: # @_ZN
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 8
-	xvinsgr2vr.d	$xr1, $s3, 0
-	xvinsgr2vr.d	$xr1, $s0, 1
-	xvinsgr2vr.d	$xr1, $s1, 2
-	xvinsgr2vr.d	$xr1, $a0, 3
+	vinsgr2vr.d	$vr1, $s3, 0
+	vinsgr2vr.d	$vr1, $s0, 1
+	vinsgr2vr.d	$vr2, $s1, 0
+	vinsgr2vr.d	$vr2, $a0, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -12939,10 +12951,11 @@ _ZN2kc30impl_problem_Problem1INT1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc30im
 	move	$a1, $s5
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 8
-	xvinsgr2vr.d	$xr1, $s0, 0
-	xvinsgr2vr.d	$xr1, $s1, 1
-	xvinsgr2vr.d	$xr1, $s2, 2
-	xvinsgr2vr.d	$xr1, $s3, 3
+	vinsgr2vr.d	$vr1, $s0, 0
+	vinsgr2vr.d	$vr1, $s1, 1
+	vinsgr2vr.d	$vr2, $s2, 0
+	vinsgr2vr.d	$vr2, $s3, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -13054,10 +13067,11 @@ _ZN2kc29impl_problem_Problem1ID1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc29imp
 	move	$a1, $s5
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 8
-	xvinsgr2vr.d	$xr1, $s0, 0
-	xvinsgr2vr.d	$xr1, $s1, 1
-	xvinsgr2vr.d	$xr1, $s2, 2
-	xvinsgr2vr.d	$xr1, $s3, 3
+	vinsgr2vr.d	$vr1, $s0, 0
+	vinsgr2vr.d	$vr1, $s1, 1
+	vinsgr2vr.d	$vr2, $s2, 0
+	vinsgr2vr.d	$vr2, $s3, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -13151,10 +13165,11 @@ _ZN2kc27impl_problem_Problem1INT1ID7rewriteERNS_11rview_classE: # @_ZN2kc27impl_
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 8
-	xvinsgr2vr.d	$xr1, $s3, 0
-	xvinsgr2vr.d	$xr1, $s0, 1
-	xvinsgr2vr.d	$xr1, $s1, 2
-	xvinsgr2vr.d	$xr1, $a0, 3
+	vinsgr2vr.d	$vr1, $s3, 0
+	vinsgr2vr.d	$vr1, $s0, 1
+	vinsgr2vr.d	$vr2, $s1, 0
+	vinsgr2vr.d	$vr2, $a0, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -13368,10 +13383,11 @@ _ZN2kc25impl_problem_Problem1t1ID7rewriteERNS_11rview_classE: # @_ZN2kc25impl_pr
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 8
-	xvinsgr2vr.d	$xr1, $s3, 0
-	xvinsgr2vr.d	$xr1, $s0, 1
-	xvinsgr2vr.d	$xr1, $s1, 2
-	xvinsgr2vr.d	$xr1, $a0, 3
+	vinsgr2vr.d	$vr1, $s3, 0
+	vinsgr2vr.d	$vr1, $s0, 1
+	vinsgr2vr.d	$vr2, $s1, 0
+	vinsgr2vr.d	$vr2, $a0, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0
@@ -13455,10 +13471,11 @@ _ZN2kc26impl_problem_Problem1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc26impl_p
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	xvld	$xr0, $fp, 8
-	xvinsgr2vr.d	$xr1, $s3, 0
-	xvinsgr2vr.d	$xr1, $s0, 1
-	xvinsgr2vr.d	$xr1, $s1, 2
-	xvinsgr2vr.d	$xr1, $a0, 3
+	vinsgr2vr.d	$vr1, $s3, 0
+	vinsgr2vr.d	$vr1, $s0, 1
+	vinsgr2vr.d	$vr2, $s1, 0
+	vinsgr2vr.d	$vr2, $a0, 1
+	xvpermi.q	$xr1, $xr2, 2
 	xvseq.d	$xr0, $xr1, $xr0
 	xvmskltz.d	$xr0, $xr0
 	xvpickve2gr.wu	$a1, $xr0, 0

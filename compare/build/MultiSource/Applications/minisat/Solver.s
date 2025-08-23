@@ -2493,73 +2493,111 @@ _ZN6Solver7analyzeEP6ClauseR3vecI3LitERi: # @_ZN6Solver7analyzeEP6ClauseR3vecI3L
 	xvsrai.w	$xr2, $xr2, 1
 	xvsrai.w	$xr3, $xr3, 1
 	xvpermi.q	$xr4, $xr2, 1
+	vpickve2gr.w	$a7, $vr4, 2
+	vinsgr2vr.d	$vr5, $a7, 0
 	vpickve2gr.w	$a7, $vr4, 3
-	vpickve2gr.w	$t0, $vr4, 2
-	vpickve2gr.w	$t1, $vr4, 1
-	vpickve2gr.w	$t2, $vr4, 0
-	vpickve2gr.w	$t3, $vr2, 3
-	vpickve2gr.w	$t4, $vr2, 2
-	vpickve2gr.w	$t5, $vr2, 1
-	vpickve2gr.w	$t6, $vr2, 0
+	vinsgr2vr.d	$vr5, $a7, 1
+	xvpermi.q	$xr5, $xr5, 2
+	vpickve2gr.w	$a7, $vr4, 0
+	vinsgr2vr.d	$vr6, $a7, 0
+	vpickve2gr.w	$a7, $vr4, 1
+	vinsgr2vr.d	$vr6, $a7, 1
+	vpickve2gr.w	$a7, $vr2, 2
+	vinsgr2vr.d	$vr4, $a7, 0
+	vpickve2gr.w	$a7, $vr2, 3
+	vinsgr2vr.d	$vr4, $a7, 1
+	xvpermi.q	$xr4, $xr4, 2
+	vpickve2gr.w	$a7, $vr2, 0
+	vinsgr2vr.d	$vr7, $a7, 0
+	vpickve2gr.w	$a7, $vr2, 1
+	vinsgr2vr.d	$vr7, $a7, 1
 	xvpermi.q	$xr2, $xr3, 1
-	vpickve2gr.w	$t7, $vr2, 3
-	vpickve2gr.w	$t8, $vr2, 2
-	vpickve2gr.w	$s0, $vr2, 1
-	vpickve2gr.w	$s2, $vr2, 0
-	vpickve2gr.w	$s4, $vr3, 3
-	vpickve2gr.w	$s5, $vr3, 2
-	vpickve2gr.w	$s6, $vr3, 1
-	vpickve2gr.w	$s7, $vr3, 0
-	slli.d	$t6, $t6, 2
-	slli.d	$t5, $t5, 2
-	slli.d	$t4, $t4, 2
-	slli.d	$t3, $t3, 2
-	slli.d	$t2, $t2, 2
-	slli.d	$t1, $t1, 2
-	slli.d	$t0, $t0, 2
+	vpickve2gr.w	$a7, $vr2, 2
+	vinsgr2vr.d	$vr8, $a7, 0
+	vpickve2gr.w	$a7, $vr2, 3
+	vinsgr2vr.d	$vr8, $a7, 1
+	xvpermi.q	$xr8, $xr8, 2
+	vpickve2gr.w	$a7, $vr2, 0
+	vinsgr2vr.d	$vr9, $a7, 0
+	vpickve2gr.w	$a7, $vr2, 1
+	vinsgr2vr.d	$vr9, $a7, 1
+	vpickve2gr.w	$a7, $vr3, 2
+	vinsgr2vr.d	$vr2, $a7, 0
+	vpickve2gr.w	$a7, $vr3, 3
+	vinsgr2vr.d	$vr2, $a7, 1
+	xvpermi.q	$xr2, $xr2, 2
+	vpickve2gr.w	$a7, $vr3, 0
+	vinsgr2vr.d	$vr10, $a7, 0
+	vpickve2gr.w	$a7, $vr3, 1
+	vinsgr2vr.d	$vr10, $a7, 1
+	xvpickve2gr.d	$a7, $xr7, 0
 	slli.d	$a7, $a7, 2
-	slli.d	$s7, $s7, 2
-	slli.d	$s6, $s6, 2
-	slli.d	$s5, $s5, 2
-	slli.d	$s4, $s4, 2
-	slli.d	$s2, $s2, 2
-	slli.d	$s0, $s0, 2
-	slli.d	$t8, $t8, 2
+	xvpickve2gr.d	$t0, $xr7, 1
+	slli.d	$t0, $t0, 2
+	xvpickve2gr.d	$t1, $xr4, 2
+	slli.d	$t1, $t1, 2
+	xvpickve2gr.d	$t2, $xr4, 3
+	slli.d	$t2, $t2, 2
+	xvpickve2gr.d	$t3, $xr6, 0
+	slli.d	$t3, $t3, 2
+	xvpickve2gr.d	$t4, $xr6, 1
+	slli.d	$t4, $t4, 2
+	xvpickve2gr.d	$t5, $xr5, 2
+	slli.d	$t5, $t5, 2
+	xvpickve2gr.d	$t6, $xr5, 3
+	slli.d	$t6, $t6, 2
+	xvpickve2gr.d	$t7, $xr10, 0
 	slli.d	$t7, $t7, 2
-	ldx.w	$t6, $a0, $t6
-	ldx.w	$t5, $a0, $t5
-	ldx.w	$t4, $a0, $t4
-	ldx.w	$t3, $a0, $t3
-	ldx.w	$t2, $a0, $t2
-	ldx.w	$t1, $a0, $t1
-	ldx.w	$t0, $a0, $t0
+	xvpickve2gr.d	$t8, $xr10, 1
+	slli.d	$t8, $t8, 2
+	xvpickve2gr.d	$s0, $xr2, 2
+	slli.d	$s0, $s0, 2
+	xvpickve2gr.d	$s2, $xr2, 3
+	slli.d	$s2, $s2, 2
+	xvpickve2gr.d	$s4, $xr9, 0
+	slli.d	$s4, $s4, 2
+	xvpickve2gr.d	$s5, $xr9, 1
+	slli.d	$s5, $s5, 2
+	xvpickve2gr.d	$s6, $xr8, 2
+	slli.d	$s6, $s6, 2
+	xvpickve2gr.d	$s7, $xr8, 3
+	slli.d	$s7, $s7, 2
 	ldx.w	$a7, $a0, $a7
-	xvinsgr2vr.w	$xr2, $t6, 0
-	xvinsgr2vr.w	$xr2, $t5, 1
-	xvinsgr2vr.w	$xr2, $t4, 2
-	xvinsgr2vr.w	$xr2, $t3, 3
-	xvinsgr2vr.w	$xr2, $t2, 4
-	xvinsgr2vr.w	$xr2, $t1, 5
-	xvinsgr2vr.w	$xr2, $t0, 6
-	xvinsgr2vr.w	$xr2, $a7, 7
-	ldx.w	$a7, $a0, $s7
-	ldx.w	$t0, $a0, $s6
-	ldx.w	$t1, $a0, $s5
-	ldx.w	$t2, $a0, $s4
-	ldx.w	$t3, $a0, $s2
-	ldx.w	$t4, $a0, $s0
-	ldx.w	$t5, $a0, $t8
-	ldx.w	$t6, $a0, $t7
-	xvinsgr2vr.w	$xr3, $a7, 0
-	xvinsgr2vr.w	$xr3, $t0, 1
-	xvinsgr2vr.w	$xr3, $t1, 2
-	xvinsgr2vr.w	$xr3, $t2, 3
-	xvinsgr2vr.w	$xr3, $t3, 4
-	xvinsgr2vr.w	$xr3, $t4, 5
-	xvinsgr2vr.w	$xr3, $t5, 6
-	xvinsgr2vr.w	$xr3, $t6, 7
-	xvbitset.w	$xr0, $xr0, $xr2
-	xvbitset.w	$xr1, $xr1, $xr3
+	ldx.w	$t0, $a0, $t0
+	ldx.w	$t1, $a0, $t1
+	ldx.w	$t2, $a0, $t2
+	ldx.w	$t3, $a0, $t3
+	ldx.w	$t4, $a0, $t4
+	ldx.w	$t5, $a0, $t5
+	ldx.w	$t6, $a0, $t6
+	vinsgr2vr.w	$vr2, $t3, 0
+	vinsgr2vr.w	$vr2, $t4, 1
+	vinsgr2vr.w	$vr2, $t5, 2
+	vinsgr2vr.w	$vr2, $t6, 3
+	vinsgr2vr.w	$vr3, $a7, 0
+	vinsgr2vr.w	$vr3, $t0, 1
+	vinsgr2vr.w	$vr3, $t1, 2
+	vinsgr2vr.w	$vr3, $t2, 3
+	xvpermi.q	$xr3, $xr2, 2
+	ldx.w	$a7, $a0, $t7
+	ldx.w	$t0, $a0, $t8
+	ldx.w	$t1, $a0, $s0
+	ldx.w	$t2, $a0, $s2
+	ldx.w	$t3, $a0, $s4
+	ldx.w	$t4, $a0, $s5
+	ldx.w	$t5, $a0, $s6
+	ldx.w	$t6, $a0, $s7
+	vinsgr2vr.w	$vr2, $t3, 0
+	vinsgr2vr.w	$vr2, $t4, 1
+	vinsgr2vr.w	$vr2, $t5, 2
+	vinsgr2vr.w	$vr2, $t6, 3
+	vinsgr2vr.w	$vr4, $a7, 0
+	vinsgr2vr.w	$vr4, $t0, 1
+	vinsgr2vr.w	$vr4, $t1, 2
+	vinsgr2vr.w	$vr4, $t2, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvbitset.w	$xr0, $xr0, $xr3
+	xvbitset.w	$xr1, $xr1, $xr4
 	addi.d	$a6, $a6, -16
 	addi.d	$a5, $a5, 64
 	bnez	$a6, .LBB13_60
@@ -2595,22 +2633,31 @@ _ZN6Solver7analyzeEP6ClauseR3vecI3LitERi: # @_ZN6Solver7analyzeEP6ClauseR3vecI3L
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a7, 0
 	vsrai.w	$vr1, $vr1, 1
+	vpickve2gr.w	$t0, $vr1, 2
+	vinsgr2vr.d	$vr2, $t0, 0
 	vpickve2gr.w	$t0, $vr1, 3
-	vpickve2gr.w	$t1, $vr1, 2
-	vpickve2gr.w	$t2, $vr1, 1
-	vpickve2gr.w	$t3, $vr1, 0
-	slli.d	$t3, $t3, 2
-	slli.d	$t2, $t2, 2
-	slli.d	$t1, $t1, 2
+	vinsgr2vr.d	$vr2, $t0, 1
+	xvpermi.q	$xr2, $xr2, 2
+	vpickve2gr.w	$t0, $vr1, 0
+	vinsgr2vr.d	$vr3, $t0, 0
+	vpickve2gr.w	$t0, $vr1, 1
+	vinsgr2vr.d	$vr3, $t0, 1
+	xvpickve2gr.d	$t0, $xr3, 0
 	slli.d	$t0, $t0, 2
-	ldx.w	$t3, $a0, $t3
-	ldx.w	$t2, $a0, $t2
-	ldx.w	$t1, $a0, $t1
+	xvpickve2gr.d	$t1, $xr3, 1
+	slli.d	$t1, $t1, 2
+	xvpickve2gr.d	$t2, $xr2, 2
+	slli.d	$t2, $t2, 2
+	xvpickve2gr.d	$t3, $xr2, 3
+	slli.d	$t3, $t3, 2
 	ldx.w	$t0, $a0, $t0
-	vinsgr2vr.w	$vr1, $t3, 0
-	vinsgr2vr.w	$vr1, $t2, 1
-	vinsgr2vr.w	$vr1, $t1, 2
-	vinsgr2vr.w	$vr1, $t0, 3
+	ldx.w	$t1, $a0, $t1
+	ldx.w	$t2, $a0, $t2
+	ldx.w	$t3, $a0, $t3
+	vinsgr2vr.w	$vr1, $t0, 0
+	vinsgr2vr.w	$vr1, $t1, 1
+	vinsgr2vr.w	$vr1, $t2, 2
+	vinsgr2vr.w	$vr1, $t3, 3
 	vbitset.w	$vr0, $vr0, $vr1
 	addi.d	$a4, $a4, 4
 	addi.d	$a7, $a7, 16

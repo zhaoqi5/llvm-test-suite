@@ -51,15 +51,16 @@ DeblockFrame:                           # @DeblockFrame
 	ld.w	$t4, $a3, 600
 	ld.w	$t5, $a3, 1136
 	ld.w	$t6, $a3, 1672
-	xvinsgr2vr.w	$xr0, $a7, 0
-	xvinsgr2vr.w	$xr0, $t0, 1
-	xvinsgr2vr.w	$xr0, $t1, 2
-	xvinsgr2vr.w	$xr0, $t2, 3
-	xvinsgr2vr.w	$xr0, $t3, 4
-	xvinsgr2vr.w	$xr0, $t4, 5
-	xvinsgr2vr.w	$xr0, $t5, 6
-	xvinsgr2vr.w	$xr0, $t6, 7
-	xvseqi.w	$xr0, $xr0, 14
+	vinsgr2vr.w	$vr0, $t3, 0
+	vinsgr2vr.w	$vr0, $t4, 1
+	vinsgr2vr.w	$vr0, $t5, 2
+	vinsgr2vr.w	$vr0, $t6, 3
+	vinsgr2vr.w	$vr1, $a7, 0
+	vinsgr2vr.w	$vr1, $t0, 1
+	vinsgr2vr.w	$vr1, $t1, 2
+	vinsgr2vr.w	$vr1, $t2, 3
+	xvpermi.q	$xr1, $xr0, 2
+	xvseqi.w	$xr0, $xr1, 14
 	xvpickve2gr.w	$a7, $xr0, 0
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB0_13

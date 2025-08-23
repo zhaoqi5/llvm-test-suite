@@ -1467,21 +1467,21 @@ pdf_nextlinestart:                      # @pdf_nextlinestart
 	.type	ascii85decode,@function
 ascii85decode:                          # @ascii85decode
 # %bb.0:                                # %entry
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a3, %pc_hi20(.L.str.53)
 	addi.d	$a3, $a3, %pc_lo12(.L.str.53)
-	move	$s8, $a2
+	move	$s0, $a2
 	move	$s2, $a1
 	move	$s3, $a0
 	beq	$a0, $a3, .LBB4_9
@@ -1507,7 +1507,7 @@ ascii85decode:                          # @ascii85decode
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB4_2
 # %bb.5:                                # %while.body.i.preheader
-	ori	$s0, $zero, 2
+	ori	$s5, $zero, 2
 	move	$s1, $s2
 	move	$fp, $s3
 	.p2align	4, , 16
@@ -1515,7 +1515,7 @@ ascii85decode:                          # @ascii85decode
                                         # =>This Inner Loop Header: Depth=1
 	sub.d	$a1, $fp, $a0
 	add.d	$a1, $a1, $s1
-	bltu	$a1, $s0, .LBB4_2
+	bltu	$a1, $s5, .LBB4_2
 # %bb.7:                                # %if.end13.i
                                         #   in Loop: Header=BB4_6 Depth=1
 	ld.hu	$a2, $a0, 0
@@ -1542,9 +1542,9 @@ ascii85decode:                          # @ascii85decode
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$fp, $zero
-	ori	$s5, $zero, 1
-	blt	$s2, $s5, .LBB4_27
+	move	$a7, $zero
+	ori	$a2, $zero, 1
+	blt	$s2, $a2, .LBB4_58
 # %bb.10:                               # %while.body.preheader
 	move	$s1, $zero
 	move	$s4, $zero
@@ -1554,8 +1554,7 @@ ascii85decode:                          # @ascii85decode
 	ori	$s7, $zero, 84
 	ori	$a3, $zero, 5
 	ori	$a4, $zero, 122
-	move	$a2, $s8
-	addi.w	$s0, $zero, -1
+	addi.w	$s8, $zero, -1
 	b	.LBB4_13
 	.p2align	4, , 16
 .LBB4_11:                               # %if.then14
@@ -1569,41 +1568,44 @@ ascii85decode:                          # @ascii85decode
                                         #   in Loop: Header=BB4_13 Depth=1
 	addi.d	$s2, $s2, -1
 	addi.d	$s3, $s3, 1
-	bgeu	$s5, $s2, .LBB4_27
+	bgeu	$a2, $s2, .LBB4_58
 .LBB4_13:                               # %while.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$s8, $s3, -1
-	bne	$s8, $s6, .LBB4_15
+	ld.b	$fp, $s3, -1
+	bne	$fp, $s6, .LBB4_15
 # %bb.14:                               # %land.lhs.true
                                         #   in Loop: Header=BB4_13 Depth=1
 	ld.bu	$a0, $s3, 0
 	addi.d	$a0, $a0, -62
 	sltui	$a0, $a0, 1
 	sub.d	$a0, $zero, $a0
-	ori	$s8, $a0, 126
+	ori	$fp, $a0, 126
 .LBB4_15:                               # %if.end8
                                         #   in Loop: Header=BB4_13 Depth=1
-	addi.d	$a0, $s8, -33
+	addi.d	$a0, $fp, -33
 	bgeu	$s7, $a0, .LBB4_11
 # %bb.16:                               # %if.else
                                         #   in Loop: Header=BB4_13 Depth=1
-	beq	$s8, $a4, .LBB4_19
+	beq	$fp, $a4, .LBB4_19
 # %bb.17:                               # %if.else
                                         #   in Loop: Header=BB4_13 Depth=1
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
-	beq	$s8, $s0, .LBB4_22
+	move	$s5, $s0
+	move	$s0, $a7
+	beq	$fp, $s8, .LBB4_22
 # %bb.18:                               # %if.else81
                                         #   in Loop: Header=BB4_13 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	ori	$a4, $zero, 122
 	ori	$a3, $zero, 5
+	ori	$a2, $zero, 1
 	ld.d	$a0, $a0, 0
-	slli.d	$a1, $s8, 1
+	slli.d	$a1, $fp, 1
 	ldx.hu	$a0, $a0, $a1
 	lu12i.w	$a1, 2
 	and	$a0, $a0, $a1
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	move	$a7, $s0
+	move	$s0, $s5
 	bnez	$a0, .LBB4_12
 	b	.LBB4_25
 	.p2align	4, , 16
@@ -1613,17 +1615,17 @@ ascii85decode:                          # @ascii85decode
 # %bb.20:                               # %if.end37
                                         #   in Loop: Header=BB4_13 Depth=1
 	move	$s1, $zero
-	st.w	$zero, $a2, 0
-	addi.d	$a2, $a2, 4
-	addi.w	$fp, $fp, 4
+	st.w	$zero, $s0, 0
+	addi.d	$s0, $s0, 4
+	addi.w	$a7, $a7, 4
 	b	.LBB4_12
 .LBB4_21:                               # %if.then17
                                         #   in Loop: Header=BB4_13 Depth=1
 	move	$s1, $zero
 	revb.2w	$a0, $s4
-	st.w	$a0, $a2, 0
-	addi.d	$a2, $a2, 4
-	addi.w	$fp, $fp, 4
+	st.w	$a0, $s0, 0
+	addi.d	$s0, $s0, 4
+	addi.w	$a7, $a7, 4
 	move	$s4, $zero
 	b	.LBB4_12
 .LBB4_22:                               # %if.then46
@@ -1641,40 +1643,30 @@ ascii85decode:                          # @ascii85decode
 	addi.d	$a0, $a0, %pc_lo12(.L.str.58)
 	pcaddu18i	$ra, %call36(cli_warnmsg)
 	jirl	$ra, $ra, 0
-	move	$fp, $s0
-	b	.LBB4_27
+	move	$a7, $s8
+	b	.LBB4_58
 .LBB4_25:                               # %if.then86
-	andi	$a1, $s8, 255
+	andi	$a1, $fp, 255
 	addi.d	$a2, $s2, -2
 	pcalau12i	$a0, %pc_hi20(.L.str.59)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.59)
 	pcaddu18i	$ra, %call36(cli_warnmsg)
 	jirl	$ra, $ra, 0
-	move	$fp, $s0
-	b	.LBB4_27
+	move	$a7, $s8
+	b	.LBB4_58
 .LBB4_26:                               # %if.then36
 	pcalau12i	$a0, %pc_hi20(.L.str.56)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.56)
 	pcaddu18i	$ra, %call36(cli_warnmsg)
 	jirl	$ra, $ra, 0
-	addi.w	$fp, $zero, -1
-.LBB4_27:                               # %cleanup95
-	move	$a0, $fp
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
-	ret
+	addi.w	$a7, $zero, -1
+	b	.LBB4_58
+.LBB4_27:
+	move	$a7, $s0
+	b	.LBB4_58
 .LBB4_28:                               # %for.cond.preheader
 	ori	$a0, $zero, 4
+	move	$a7, $s0
 	blt	$a0, $s1, .LBB4_43
 # %bb.29:                               # %iter.check
 	ori	$a0, $zero, 5
@@ -1758,8 +1750,8 @@ ascii85decode:                          # @ascii85decode
 	beqz	$a3, .LBB4_42
 .LBB4_43:                               # %for.end
 	ori	$a0, $zero, 2
-	add.w	$fp, $fp, $s1
-	blt	$s1, $a0, .LBB4_27
+	add.w	$a7, $a7, $s1
+	blt	$s1, $a0, .LBB4_58
 # %bb.44:                               # %iter.check175
 	ori	$a0, $zero, 1
 	slt	$a0, $a0, $s1
@@ -1776,7 +1768,7 @@ ascii85decode:                          # @ascii85decode
 	bgeu	$s1, $a1, .LBB4_46
 # %bb.45:
 	move	$a4, $zero
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	move	$a2, $s5
 	b	.LBB4_56
 .LBB4_46:                               # %vector.main.loop.iter.check177
 	addi.d	$a1, $s1, -1
@@ -1800,7 +1792,7 @@ ascii85decode:                          # @ascii85decode
 	bstrpick.d	$a3, $a1, 31, 5
 	slli.d	$a3, $a3, 5
 	xvrepli.w	$xr6, 32
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	move	$a4, $s5
 	move	$a5, $a3
 .LBB4_49:                               # %vector.body181
                                         # =>This Inner Loop Header: Depth=1
@@ -1808,140 +1800,79 @@ ascii85decode:                          # @ascii85decode
 	xvslli.w	$xr8, $xr3, 3
 	xvslli.w	$xr9, $xr4, 3
 	xvslli.w	$xr10, $xr5, 3
-	xvsub.w	$xr11, $xr1, $xr10
-	xvsub.w	$xr10, $xr1, $xr9
+	xvsub.w	$xr10, $xr1, $xr10
+	xvsub.w	$xr11, $xr1, $xr9
 	xvsub.w	$xr9, $xr1, $xr8
 	xvsub.w	$xr7, $xr1, $xr7
 	xvsrl.w	$xr8, $xr0, $xr7
 	xvsrl.w	$xr9, $xr0, $xr9
-	xvsrl.w	$xr10, $xr0, $xr10
 	xvsrl.w	$xr11, $xr0, $xr11
-	xvpickve2gr.w	$a6, $xr11, 0
-	vinsgr2vr.b	$vr7, $a6, 0
-	xvpickve2gr.w	$a6, $xr11, 1
-	xvreplgr2vr.b	$xr12, $a6
-	xvpermi.q	$xr12, $xr7, 18
-	xvextrins.b	$xr7, $xr12, 17
-	xvpickve2gr.w	$a6, $xr11, 2
-	xvreplgr2vr.b	$xr12, $a6
-	xvpermi.q	$xr12, $xr7, 18
-	xvextrins.b	$xr7, $xr12, 34
-	xvpickve2gr.w	$a6, $xr11, 3
-	xvreplgr2vr.b	$xr12, $a6
-	xvpermi.q	$xr12, $xr7, 18
-	xvextrins.b	$xr7, $xr12, 51
-	xvpickve2gr.w	$a6, $xr11, 4
-	xvreplgr2vr.b	$xr12, $a6
-	xvpermi.q	$xr12, $xr7, 18
-	xvextrins.b	$xr7, $xr12, 68
-	xvpickve2gr.w	$a6, $xr11, 5
-	xvreplgr2vr.b	$xr12, $a6
-	xvpermi.q	$xr12, $xr7, 18
-	xvextrins.b	$xr7, $xr12, 85
-	xvpickve2gr.w	$a6, $xr11, 6
-	xvreplgr2vr.b	$xr12, $a6
-	xvpermi.q	$xr12, $xr7, 18
-	xvextrins.b	$xr7, $xr12, 102
-	xvpickve2gr.w	$a6, $xr11, 7
-	xvreplgr2vr.b	$xr11, $a6
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.b	$xr7, $xr11, 119
+	xvsrl.w	$xr10, $xr0, $xr10
 	xvpickve2gr.w	$a6, $xr10, 0
-	xvreplgr2vr.b	$xr11, $a6
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.b	$xr7, $xr11, 136
+	vinsgr2vr.b	$vr7, $a6, 0
 	xvpickve2gr.w	$a6, $xr10, 1
-	xvreplgr2vr.b	$xr11, $a6
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.b	$xr7, $xr11, 153
+	vinsgr2vr.b	$vr7, $a6, 1
 	xvpickve2gr.w	$a6, $xr10, 2
-	xvreplgr2vr.b	$xr11, $a6
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.b	$xr7, $xr11, 170
+	vinsgr2vr.b	$vr7, $a6, 2
 	xvpickve2gr.w	$a6, $xr10, 3
-	xvreplgr2vr.b	$xr11, $a6
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.b	$xr7, $xr11, 187
+	vinsgr2vr.b	$vr7, $a6, 3
 	xvpickve2gr.w	$a6, $xr10, 4
-	xvreplgr2vr.b	$xr11, $a6
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.b	$xr7, $xr11, 204
+	vinsgr2vr.b	$vr7, $a6, 4
 	xvpickve2gr.w	$a6, $xr10, 5
-	xvreplgr2vr.b	$xr11, $a6
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.b	$xr7, $xr11, 221
+	vinsgr2vr.b	$vr7, $a6, 5
 	xvpickve2gr.w	$a6, $xr10, 6
-	xvreplgr2vr.b	$xr11, $a6
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.b	$xr7, $xr11, 238
+	vinsgr2vr.b	$vr7, $a6, 6
 	xvpickve2gr.w	$a6, $xr10, 7
-	xvreplgr2vr.b	$xr10, $a6
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.b	$xr7, $xr10, 255
+	vinsgr2vr.b	$vr7, $a6, 7
+	xvpickve2gr.w	$a6, $xr11, 0
+	vinsgr2vr.b	$vr7, $a6, 8
+	xvpickve2gr.w	$a6, $xr11, 1
+	vinsgr2vr.b	$vr7, $a6, 9
+	xvpickve2gr.w	$a6, $xr11, 2
+	vinsgr2vr.b	$vr7, $a6, 10
+	xvpickve2gr.w	$a6, $xr11, 3
+	vinsgr2vr.b	$vr7, $a6, 11
+	xvpickve2gr.w	$a6, $xr11, 4
+	vinsgr2vr.b	$vr7, $a6, 12
+	xvpickve2gr.w	$a6, $xr11, 5
+	vinsgr2vr.b	$vr7, $a6, 13
+	xvpickve2gr.w	$a6, $xr11, 6
+	vinsgr2vr.b	$vr7, $a6, 14
+	xvpickve2gr.w	$a6, $xr11, 7
+	vinsgr2vr.b	$vr7, $a6, 15
 	xvpickve2gr.w	$a6, $xr9, 0
-	xvreplgr2vr.b	$xr10, $a6
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.b	$xr7, $xr10, 0
+	vinsgr2vr.b	$vr10, $a6, 0
 	xvpickve2gr.w	$a6, $xr9, 1
-	xvreplgr2vr.b	$xr10, $a6
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.b	$xr7, $xr10, 17
+	vinsgr2vr.b	$vr10, $a6, 1
 	xvpickve2gr.w	$a6, $xr9, 2
-	xvreplgr2vr.b	$xr10, $a6
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.b	$xr7, $xr10, 34
+	vinsgr2vr.b	$vr10, $a6, 2
 	xvpickve2gr.w	$a6, $xr9, 3
-	xvreplgr2vr.b	$xr10, $a6
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.b	$xr7, $xr10, 51
+	vinsgr2vr.b	$vr10, $a6, 3
 	xvpickve2gr.w	$a6, $xr9, 4
-	xvreplgr2vr.b	$xr10, $a6
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.b	$xr7, $xr10, 68
+	vinsgr2vr.b	$vr10, $a6, 4
 	xvpickve2gr.w	$a6, $xr9, 5
-	xvreplgr2vr.b	$xr10, $a6
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.b	$xr7, $xr10, 85
+	vinsgr2vr.b	$vr10, $a6, 5
 	xvpickve2gr.w	$a6, $xr9, 6
-	xvreplgr2vr.b	$xr10, $a6
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.b	$xr7, $xr10, 102
+	vinsgr2vr.b	$vr10, $a6, 6
 	xvpickve2gr.w	$a6, $xr9, 7
-	xvreplgr2vr.b	$xr9, $a6
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.b	$xr7, $xr9, 119
+	vinsgr2vr.b	$vr10, $a6, 7
 	xvpickve2gr.w	$a6, $xr8, 0
-	xvreplgr2vr.b	$xr9, $a6
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.b	$xr7, $xr9, 136
+	vinsgr2vr.b	$vr10, $a6, 8
 	xvpickve2gr.w	$a6, $xr8, 1
-	xvreplgr2vr.b	$xr9, $a6
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.b	$xr7, $xr9, 153
+	vinsgr2vr.b	$vr10, $a6, 9
 	xvpickve2gr.w	$a6, $xr8, 2
-	xvreplgr2vr.b	$xr9, $a6
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.b	$xr7, $xr9, 170
+	vinsgr2vr.b	$vr10, $a6, 10
 	xvpickve2gr.w	$a6, $xr8, 3
-	xvreplgr2vr.b	$xr9, $a6
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.b	$xr7, $xr9, 187
+	vinsgr2vr.b	$vr10, $a6, 11
 	xvpickve2gr.w	$a6, $xr8, 4
-	xvreplgr2vr.b	$xr9, $a6
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.b	$xr7, $xr9, 204
+	vinsgr2vr.b	$vr10, $a6, 12
 	xvpickve2gr.w	$a6, $xr8, 5
-	xvreplgr2vr.b	$xr9, $a6
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.b	$xr7, $xr9, 221
+	vinsgr2vr.b	$vr10, $a6, 13
 	xvpickve2gr.w	$a6, $xr8, 6
-	xvreplgr2vr.b	$xr9, $a6
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.b	$xr7, $xr9, 238
+	vinsgr2vr.b	$vr10, $a6, 14
 	xvpickve2gr.w	$a6, $xr8, 7
-	xvreplgr2vr.b	$xr8, $a6
-	xvpermi.q	$xr8, $xr7, 48
-	xvextrins.b	$xr7, $xr8, 255
+	vinsgr2vr.b	$vr10, $a6, 15
+	xvpermi.q	$xr7, $xr10, 2
 	xvst	$xr7, $a4, 0
 	xvadd.w	$xr5, $xr5, $xr6
 	xvadd.w	$xr4, $xr4, $xr6
@@ -1951,7 +1882,7 @@ ascii85decode:                          # @ascii85decode
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB4_49
 # %bb.50:                               # %middle.block184
-	beq	$a3, $a1, .LBB4_27
+	beq	$a3, $a1, .LBB4_58
 # %bb.51:                               # %vec.epilog.iter.check190
 	andi	$a4, $a1, 24
 	beqz	$a4, .LBB4_55
@@ -1959,12 +1890,11 @@ ascii85decode:                          # @ascii85decode
 	bstrpick.d	$a5, $a1, 31, 3
 	xvld	$xr2, $a2, %pc_lo12(.LCPI4_3)
 	slli.d	$a4, $a5, 3
-	ld.d	$a6, $sp, 16                    # 8-byte Folded Reload
-	alsl.d	$a2, $a5, $a6, 3
+	alsl.d	$a2, $a5, $s5, 3
 	xvreplgr2vr.w	$xr3, $a3
 	xvadd.w	$xr2, $xr3, $xr2
 	sub.d	$a5, $a3, $a4
-	add.d	$a3, $a6, $a3
+	add.d	$a3, $s5, $a3
 .LBB4_53:                               # %vec.epilog.vector.body199
                                         # =>This Inner Loop Header: Depth=1
 	xvslli.w	$xr3, $xr2, 3
@@ -1992,11 +1922,10 @@ ascii85decode:                          # @ascii85decode
 	addi.d	$a3, $a3, 8
 	bnez	$a5, .LBB4_53
 # %bb.54:                               # %vec.epilog.middle.block205
-	beq	$a4, $a1, .LBB4_27
-	b	.LBB4_56
+	bne	$a4, $a1, .LBB4_56
+	b	.LBB4_58
 .LBB4_55:
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	add.d	$a2, $a1, $a3
+	add.d	$a2, $s5, $a3
 	move	$a4, $a3
 .LBB4_56:                               # %for.body70.preheader
 	nor	$a1, $a4, $zero
@@ -2013,7 +1942,21 @@ ascii85decode:                          # @ascii85decode
 	addi.w	$a1, $a1, -1
 	addi.d	$a3, $a3, -8
 	bnez	$a1, .LBB4_57
-	b	.LBB4_27
+.LBB4_58:                               # %cleanup95
+	move	$a0, $a7
+	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
+	ret
 .Lfunc_end4:
 	.size	ascii85decode, .Lfunc_end4-ascii85decode
                                         # -- End function

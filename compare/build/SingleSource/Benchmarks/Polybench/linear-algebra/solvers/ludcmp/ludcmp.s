@@ -979,11 +979,11 @@ init_array:                             # @init_array
 	fldx.d	$fa2, $t4, $a4
 	fld.d	$fa3, $t4, 0
 	fldx.d	$fa4, $t4, $s4
-	xvinsve0.d	$xr1, $xr2, 1
+	vextrins.d	$vr1, $vr2, 16
 	add.d	$t6, $t3, $t5
 	xvldx	$xr2, $t6, $s4
-	xvinsve0.d	$xr1, $xr3, 2
-	xvinsve0.d	$xr1, $xr4, 3
+	vextrins.d	$vr3, $vr4, 16
+	xvpermi.q	$xr1, $xr3, 2
 	xvfmul.d	$xr1, $xr0, $xr1
 	xvfadd.d	$xr1, $xr2, $xr1
 	xvstx	$xr1, $t6, $s4

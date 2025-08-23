@@ -618,66 +618,68 @@ unpc_block:                             # @unpc_block
 .LBB0_61:                               # %vector.body
                                         #   Parent Loop BB0_54 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr6, $s8, -16
-	vld	$vr7, $s8, 0
-	vpickve2gr.h	$a4, $vr6, 0
+	vld	$vr5, $s8, -16
+	vld	$vr6, $s8, 0
+	vpickve2gr.h	$a4, $vr5, 4
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr5, $a4, 0
-	vpickve2gr.h	$a4, $vr6, 1
+	vinsgr2vr.w	$vr7, $a4, 0
+	vpickve2gr.h	$a4, $vr5, 5
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr5, $a4, 1
-	vpickve2gr.h	$a4, $vr6, 2
+	vinsgr2vr.w	$vr7, $a4, 1
+	vpickve2gr.h	$a4, $vr5, 6
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr5, $a4, 2
-	vpickve2gr.h	$a4, $vr6, 3
+	vinsgr2vr.w	$vr7, $a4, 2
+	vpickve2gr.h	$a4, $vr5, 7
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr5, $a4, 3
+	vinsgr2vr.w	$vr7, $a4, 3
+	vpickve2gr.h	$a4, $vr5, 0
+	ext.w.h	$a4, $a4
+	vinsgr2vr.w	$vr8, $a4, 0
+	vpickve2gr.h	$a4, $vr5, 1
+	ext.w.h	$a4, $a4
+	vinsgr2vr.w	$vr8, $a4, 1
+	vpickve2gr.h	$a4, $vr5, 2
+	ext.w.h	$a4, $a4
+	vinsgr2vr.w	$vr8, $a4, 2
+	vpickve2gr.h	$a4, $vr5, 3
+	ext.w.h	$a4, $a4
+	vinsgr2vr.w	$vr8, $a4, 3
+	xvpermi.q	$xr8, $xr7, 2
 	vpickve2gr.h	$a4, $vr6, 4
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr5, $a4, 4
+	vinsgr2vr.w	$vr5, $a4, 0
 	vpickve2gr.h	$a4, $vr6, 5
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr5, $a4, 5
+	vinsgr2vr.w	$vr5, $a4, 1
 	vpickve2gr.h	$a4, $vr6, 6
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr5, $a4, 6
+	vinsgr2vr.w	$vr5, $a4, 2
 	vpickve2gr.h	$a4, $vr6, 7
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr5, $a4, 7
-	vpickve2gr.h	$a4, $vr7, 0
+	vinsgr2vr.w	$vr5, $a4, 3
+	vpickve2gr.h	$a4, $vr6, 0
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr6, $a4, 0
-	vpickve2gr.h	$a4, $vr7, 1
+	vinsgr2vr.w	$vr7, $a4, 0
+	vpickve2gr.h	$a4, $vr6, 1
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr6, $a4, 1
-	vpickve2gr.h	$a4, $vr7, 2
+	vinsgr2vr.w	$vr7, $a4, 1
+	vpickve2gr.h	$a4, $vr6, 2
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr6, $a4, 2
-	vpickve2gr.h	$a4, $vr7, 3
+	vinsgr2vr.w	$vr7, $a4, 2
+	vpickve2gr.h	$a4, $vr6, 3
 	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr6, $a4, 3
-	vpickve2gr.h	$a4, $vr7, 4
-	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr6, $a4, 4
-	vpickve2gr.h	$a4, $vr7, 5
-	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr6, $a4, 5
-	vpickve2gr.h	$a4, $vr7, 6
-	ext.w.h	$a4, $a4
-	xvinsgr2vr.w	$xr6, $a4, 6
-	vpickve2gr.h	$a4, $vr7, 7
-	xvld	$xr7, $s7, 0
-	ext.w.h	$a4, $a4
-	xvld	$xr8, $s7, -32
-	xvinsgr2vr.w	$xr6, $a4, 7
-	xvpermi.d	$xr7, $xr7, 78
-	xvshuf4i.w	$xr7, $xr7, 27
-	xvpermi.d	$xr8, $xr8, 78
-	xvshuf4i.w	$xr8, $xr8, 27
-	xvsub.w	$xr7, $xr7, $xr2
-	xvsub.w	$xr8, $xr8, $xr2
-	xvmadd.w	$xr3, $xr7, $xr5
-	xvmadd.w	$xr4, $xr8, $xr6
+	xvld	$xr6, $s7, 0
+	vinsgr2vr.w	$vr7, $a4, 3
+	xvld	$xr9, $s7, -32
+	xvpermi.q	$xr7, $xr5, 2
+	xvpermi.d	$xr5, $xr6, 78
+	xvshuf4i.w	$xr5, $xr5, 27
+	xvpermi.d	$xr6, $xr9, 78
+	xvshuf4i.w	$xr6, $xr6, 27
+	xvsub.w	$xr5, $xr5, $xr2
+	xvsub.w	$xr6, $xr6, $xr2
+	xvmadd.w	$xr3, $xr5, $xr8
+	xvmadd.w	$xr4, $xr6, $xr7
 	addi.d	$ra, $ra, -16
 	addi.d	$s8, $s8, 32
 	addi.d	$s7, $s7, -64

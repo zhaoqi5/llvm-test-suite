@@ -317,21 +317,22 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	vabsd.hu	$vr4, $vr4, $vr5
 	vilvl.h	$vr1, $vr1, $vr4
 	vadd.w	$vr1, $vr3, $vr1
-	vadd.w	$vr2, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr2, 0
+	vadd.w	$vr1, $vr2, $vr1
+	vpickve2gr.w	$a1, $vr1, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr3, $a1, 0
-	vpickve2gr.w	$a1, $vr2, 1
+	vinsgr2vr.d	$vr2, $a1, 0
+	vpickve2gr.w	$a1, $vr1, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr3, $a1, 1
-	vpickve2gr.w	$a1, $vr2, 2
+	vinsgr2vr.d	$vr2, $a1, 1
+	vpickve2gr.w	$a1, $vr1, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr3, $a1, 2
-	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI1_1)
-	vpickve2gr.w	$a1, $vr2, 3
+	vinsgr2vr.d	$vr3, $a1, 0
+	vpickve2gr.w	$a1, $vr1, 1
+	pcalau12i	$a2, %pc_hi20(.LCPI1_1)
+	xvld	$xr1, $a2, %pc_lo12(.LCPI1_1)
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr3, $a1, 3
+	vinsgr2vr.d	$vr3, $a1, 1
+	xvpermi.q	$xr3, $xr2, 2
 	xvpermi.d	$xr2, $xr3, 78
 	xvori.b	$xr4, $xr1, 0
 	xvshuf.d	$xr4, $xr0, $xr2

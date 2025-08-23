@@ -6545,9 +6545,9 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	vinsgr2vr.b	$vr1, $a3, 0
 	vinsgr2vr.b	$vr2, $s5, 0
 	vinsgr2vr.b	$vr3, $s3, 0
-	xvand.v	$xr0, $xr0, $xr1
-	xvand.v	$xr0, $xr0, $xr2
-	xvand.v	$xr0, $xr0, $xr3
+	vand.v	$vr0, $vr0, $vr1
+	vand.v	$vr0, $vr0, $vr2
+	vand.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.b	$xr4, $xr0, 0
 	andi	$a0, $s0, 48
@@ -7177,9 +7177,9 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	vinsgr2vr.b	$vr1, $a3, 0
 	vinsgr2vr.b	$vr2, $s5, 0
 	vinsgr2vr.b	$vr3, $s3, 0
-	xvor.v	$xr0, $xr0, $xr1
-	xvor.v	$xr0, $xr0, $xr2
-	xvor.v	$xr0, $xr0, $xr3
+	vor.v	$vr0, $vr0, $vr1
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.b	$xr4, $xr0, 0
 	andi	$a0, $s0, 48
@@ -7778,7 +7778,7 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
 	move	$s2, $a5
 	move	$s4, $a4
 	move	$s3, $a3
@@ -7790,7 +7790,7 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$s8, %pc_hi20(iterations)
 	ld.w	$a1, $s8, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
@@ -7809,13 +7809,17 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	vinsgr2vr.b	$vr1, $a3, 0
 	vinsgr2vr.b	$vr2, $s5, 0
 	vinsgr2vr.b	$vr3, $s3, 0
-	xvxor.v	$xr0, $xr0, $xr1
-	xvxor.v	$xr0, $xr0, $xr2
+	xvrepli.b	$xr4, 0
+	vxor.v	$vr0, $vr0, $vr1
+	xvst	$xr4, $sp, 48                   # 32-byte Folded Spill
+	xvori.b	$xr1, $xr4, 0
+	xvpermi.q	$xr1, $xr0, 48
+	xvxor.v	$xr0, $xr1, $xr2
 	xvxor.v	$xr0, $xr0, $xr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.b	$xr4, $xr0, 0
 	andi	$a0, $s0, 48
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 4
 	move	$a2, $s3
 	slli.d	$s3, $a0, 4
@@ -7824,15 +7828,13 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xor	$s4, $a2, $a0
 	vreplgr2vr.b	$vr5, $s4
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	sub.d	$a0, $zero, $s3
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ori	$a5, $zero, 15
 	pcalau12i	$s5, %pc_hi20(init_value)
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
 	xvst	$xr4, $sp, 128                  # 32-byte Folded Spill
 	vst	$vr5, $sp, 112                  # 16-byte Folded Spill
 	b	.LBB23_4
@@ -7863,9 +7865,9 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.p2align	4, , 16
 .LBB23_8:                               # %vector.body.preheader
                                         #   in Loop: Header=BB23_4 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$a2, $s2
-	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
+	xvld	$xr1, $sp, 48                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
 	.p2align	4, , 16
 .LBB23_9:                               # %vector.body
@@ -7904,7 +7906,7 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB23_4 Depth=1
 	move	$a3, $s2
 	move	$a2, $s2
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	beqz	$a4, .LBB23_15
 .LBB23_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB23_4 Depth=1
@@ -8003,7 +8005,7 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 .LBB23_23:                              # %for.end8
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$fp, $a1, %pc_lo12(start_time)
 	pcalau12i	$s2, %pc_hi20(results)
 	ld.d	$a2, $s2, %pc_lo12(results)
@@ -8029,7 +8031,7 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$a2, $a0
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB23_27:                              # %_Z13record_resultdPKc.exit
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI23_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI23_0)
 	sub.d	$a1, $s0, $fp
@@ -12204,9 +12206,9 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	vinsgr2vr.b	$vr1, $a3, 0
 	vinsgr2vr.b	$vr2, $s5, 0
 	vinsgr2vr.b	$vr3, $s3, 0
-	xvand.v	$xr0, $xr0, $xr1
-	xvand.v	$xr0, $xr0, $xr2
-	xvand.v	$xr0, $xr0, $xr3
+	vand.v	$vr0, $vr0, $vr1
+	vand.v	$vr0, $vr0, $vr2
+	vand.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.b	$xr4, $xr0, 0
 	andi	$a0, $s0, 48
@@ -12836,9 +12838,9 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	vinsgr2vr.b	$vr1, $a3, 0
 	vinsgr2vr.b	$vr2, $s5, 0
 	vinsgr2vr.b	$vr3, $s3, 0
-	xvor.v	$xr0, $xr0, $xr1
-	xvor.v	$xr0, $xr0, $xr2
-	xvor.v	$xr0, $xr0, $xr3
+	vor.v	$vr0, $vr0, $vr1
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.b	$xr4, $xr0, 0
 	andi	$a0, $s0, 48
@@ -13437,7 +13439,7 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
 	move	$s2, $a5
 	move	$s4, $a4
 	move	$s3, $a3
@@ -13449,7 +13451,7 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$s8, %pc_hi20(iterations)
 	ld.w	$a1, $s8, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
@@ -13468,13 +13470,17 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	vinsgr2vr.b	$vr1, $a3, 0
 	vinsgr2vr.b	$vr2, $s5, 0
 	vinsgr2vr.b	$vr3, $s3, 0
-	xvxor.v	$xr0, $xr0, $xr1
-	xvxor.v	$xr0, $xr0, $xr2
+	xvrepli.b	$xr4, 0
+	vxor.v	$vr0, $vr0, $vr1
+	xvst	$xr4, $sp, 48                   # 32-byte Folded Spill
+	xvori.b	$xr1, $xr4, 0
+	xvpermi.q	$xr1, $xr0, 48
+	xvxor.v	$xr0, $xr1, $xr2
 	xvxor.v	$xr0, $xr0, $xr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.b	$xr4, $xr0, 0
 	andi	$a0, $s0, 48
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 4
 	move	$a2, $s3
 	slli.d	$s3, $a0, 4
@@ -13483,15 +13489,13 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xor	$s4, $a2, $a0
 	vreplgr2vr.b	$vr5, $s4
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	sub.d	$a0, $zero, $s3
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ori	$a5, $zero, 15
 	pcalau12i	$s5, %pc_hi20(init_value)
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
 	xvst	$xr4, $sp, 128                  # 32-byte Folded Spill
 	vst	$vr5, $sp, 112                  # 16-byte Folded Spill
 	b	.LBB41_4
@@ -13522,9 +13526,9 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.p2align	4, , 16
 .LBB41_8:                               # %vector.body.preheader
                                         #   in Loop: Header=BB41_4 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$a2, $s2
-	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
+	xvld	$xr1, $sp, 48                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
 	.p2align	4, , 16
 .LBB41_9:                               # %vector.body
@@ -13563,7 +13567,7 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB41_4 Depth=1
 	move	$a3, $s2
 	move	$a2, $s2
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	beqz	$a4, .LBB41_15
 .LBB41_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB41_4 Depth=1
@@ -13662,7 +13666,7 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 .LBB41_23:                              # %for.end8
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$fp, $a1, %pc_lo12(start_time)
 	pcalau12i	$s2, %pc_hi20(results)
 	ld.d	$a2, $s2, %pc_lo12(results)
@@ -13688,7 +13692,7 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$a2, $a0
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB41_27:                              # %_Z13record_resultdPKc.exit
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI41_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI41_0)
 	sub.d	$a1, $s0, $fp
@@ -17775,9 +17779,9 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	vinsgr2vr.h	$vr1, $s3, 0
 	vinsgr2vr.h	$vr2, $s5, 0
 	vinsgr2vr.h	$vr3, $s6, 0
-	xvand.v	$xr0, $xr0, $xr1
-	xvand.v	$xr0, $xr0, $xr2
-	xvand.v	$xr0, $xr0, $xr3
+	vand.v	$vr0, $vr0, $vr1
+	vand.v	$vr0, $vr0, $vr2
+	vand.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.h	$xr4, $xr0, 0
 	andi	$a0, $s0, 24
@@ -18415,9 +18419,9 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	vinsgr2vr.h	$vr1, $s3, 0
 	vinsgr2vr.h	$vr2, $s5, 0
 	vinsgr2vr.h	$vr3, $s6, 0
-	xvor.v	$xr0, $xr0, $xr1
-	xvor.v	$xr0, $xr0, $xr2
-	xvor.v	$xr0, $xr0, $xr3
+	vor.v	$vr0, $vr0, $vr1
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.h	$xr4, $xr0, 0
 	andi	$a0, $s0, 24
@@ -19024,7 +19028,7 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
 	move	$s3, $a5
 	move	$s4, $a4
 	move	$s6, $a3
@@ -19036,7 +19040,7 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$s8, %pc_hi20(iterations)
 	ld.w	$a1, $s8, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
 	pcalau12i	$a2, %pc_hi20(current_test)
@@ -19055,13 +19059,17 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	vinsgr2vr.h	$vr1, $s3, 0
 	vinsgr2vr.h	$vr2, $s5, 0
 	vinsgr2vr.h	$vr3, $s6, 0
-	xvxor.v	$xr0, $xr0, $xr1
-	xvxor.v	$xr0, $xr0, $xr2
+	xvrepli.b	$xr4, 0
+	vxor.v	$vr0, $vr0, $vr1
+	xvst	$xr4, $sp, 48                   # 32-byte Folded Spill
+	xvori.b	$xr1, $xr4, 0
+	xvpermi.q	$xr1, $xr0, 48
+	xvxor.v	$xr0, $xr1, $xr2
 	xvxor.v	$xr0, $xr0, $xr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.h	$xr4, $xr0, 0
 	andi	$a0, $s0, 24
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 3
 	move	$a2, $s3
 	slli.d	$s3, $a0, 3
@@ -19070,7 +19078,7 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xor	$s4, $s6, $a0
 	vreplgr2vr.h	$vr5, $s4
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	sub.d	$a0, $zero, $s3
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ori	$a5, $zero, 7
@@ -19079,8 +19087,6 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ori	$s6, $a0, 3904
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
 	xvst	$xr4, $sp, 128                  # 32-byte Folded Spill
 	vst	$vr5, $sp, 112                  # 16-byte Folded Spill
 	b	.LBB59_4
@@ -19111,9 +19117,9 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.p2align	4, , 16
 .LBB59_8:                               # %vector.body.preheader
                                         #   in Loop: Header=BB59_4 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$a2, $s2
-	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
+	xvld	$xr1, $sp, 48                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
 	.p2align	4, , 16
 .LBB59_9:                               # %vector.body
@@ -19149,7 +19155,7 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB59_4 Depth=1
 	move	$a3, $s2
 	move	$a2, $s2
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	beqz	$a4, .LBB59_15
 .LBB59_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB59_4 Depth=1
@@ -19253,7 +19259,7 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 .LBB59_23:                              # %for.end8
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$fp, $a1, %pc_lo12(start_time)
 	pcalau12i	$s2, %pc_hi20(results)
 	ld.d	$a2, $s2, %pc_lo12(results)
@@ -19280,7 +19286,7 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB59_27:                              # %_Z13record_resultdPKc.exit
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI59_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI59_0)
 	sub.d	$a1, $s0, $fp
@@ -23486,9 +23492,9 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	vinsgr2vr.h	$vr1, $s3, 0
 	vinsgr2vr.h	$vr2, $s5, 0
 	vinsgr2vr.h	$vr3, $s6, 0
-	xvand.v	$xr0, $xr0, $xr1
-	xvand.v	$xr0, $xr0, $xr2
-	xvand.v	$xr0, $xr0, $xr3
+	vand.v	$vr0, $vr0, $vr1
+	vand.v	$vr0, $vr0, $vr2
+	vand.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.h	$xr4, $xr0, 0
 	andi	$a0, $s0, 24
@@ -24126,9 +24132,9 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	vinsgr2vr.h	$vr1, $s3, 0
 	vinsgr2vr.h	$vr2, $s5, 0
 	vinsgr2vr.h	$vr3, $s6, 0
-	xvor.v	$xr0, $xr0, $xr1
-	xvor.v	$xr0, $xr0, $xr2
-	xvor.v	$xr0, $xr0, $xr3
+	vor.v	$vr0, $vr0, $vr1
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.h	$xr4, $xr0, 0
 	andi	$a0, $s0, 24
@@ -24735,7 +24741,7 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
 	move	$s3, $a5
 	move	$s4, $a4
 	move	$s6, $a3
@@ -24747,7 +24753,7 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$s8, %pc_hi20(iterations)
 	ld.w	$a1, $s8, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
 	pcalau12i	$a2, %pc_hi20(current_test)
@@ -24766,13 +24772,17 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	vinsgr2vr.h	$vr1, $s3, 0
 	vinsgr2vr.h	$vr2, $s5, 0
 	vinsgr2vr.h	$vr3, $s6, 0
-	xvxor.v	$xr0, $xr0, $xr1
-	xvxor.v	$xr0, $xr0, $xr2
+	xvrepli.b	$xr4, 0
+	vxor.v	$vr0, $vr0, $vr1
+	xvst	$xr4, $sp, 48                   # 32-byte Folded Spill
+	xvori.b	$xr1, $xr4, 0
+	xvpermi.q	$xr1, $xr0, 48
+	xvxor.v	$xr0, $xr1, $xr2
 	xvxor.v	$xr0, $xr0, $xr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.h	$xr4, $xr0, 0
 	andi	$a0, $s0, 24
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 3
 	move	$a2, $s3
 	slli.d	$s3, $a0, 3
@@ -24781,7 +24791,7 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xor	$s4, $s6, $a0
 	vreplgr2vr.h	$vr5, $s4
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	sub.d	$a0, $zero, $s3
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ori	$a5, $zero, 7
@@ -24790,8 +24800,6 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ori	$s6, $a0, 3904
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
 	xvst	$xr4, $sp, 128                  # 32-byte Folded Spill
 	vst	$vr5, $sp, 112                  # 16-byte Folded Spill
 	b	.LBB77_4
@@ -24822,9 +24830,9 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.p2align	4, , 16
 .LBB77_8:                               # %vector.body.preheader
                                         #   in Loop: Header=BB77_4 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$a2, $s2
-	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
+	xvld	$xr1, $sp, 48                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
 	.p2align	4, , 16
 .LBB77_9:                               # %vector.body
@@ -24860,7 +24868,7 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB77_4 Depth=1
 	move	$a3, $s2
 	move	$a2, $s2
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	beqz	$a4, .LBB77_15
 .LBB77_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB77_4 Depth=1
@@ -24964,7 +24972,7 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 .LBB77_23:                              # %for.end8
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$fp, $a1, %pc_lo12(start_time)
 	pcalau12i	$s2, %pc_hi20(results)
 	ld.d	$a2, $s2, %pc_lo12(results)
@@ -24991,7 +24999,7 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB77_27:                              # %_Z13record_resultdPKc.exit
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI77_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI77_0)
 	sub.d	$a1, $s0, $fp
@@ -29051,13 +29059,13 @@ _Z14test_variable4Ii28custom_multiple_variable_andIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s7, $zero
 	bstrpick.d	$a0, $s0, 30, 4
 	slli.d	$s2, $a0, 4
-	xvinsgr2vr.w	$xr0, $s4, 0
-	xvinsgr2vr.w	$xr1, $s3, 0
-	xvinsgr2vr.w	$xr2, $s5, 0
-	xvinsgr2vr.w	$xr3, $s6, 0
-	xvand.v	$xr0, $xr0, $xr1
-	xvand.v	$xr0, $xr0, $xr2
-	xvand.v	$xr0, $xr0, $xr3
+	vinsgr2vr.w	$vr0, $s4, 0
+	vinsgr2vr.w	$vr1, $s3, 0
+	vinsgr2vr.w	$vr2, $s5, 0
+	vinsgr2vr.w	$vr3, $s6, 0
+	vand.v	$vr0, $vr0, $vr1
+	vand.v	$vr0, $vr0, $vr2
+	vand.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.w	$xr4, $xr0, 0
 	andi	$a0, $s0, 12
@@ -29665,13 +29673,13 @@ _Z14test_variable4Ii27custom_multiple_variable_orIiEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	move	$s7, $zero
 	bstrpick.d	$a0, $s0, 30, 4
 	slli.d	$s2, $a0, 4
-	xvinsgr2vr.w	$xr0, $s4, 0
-	xvinsgr2vr.w	$xr1, $s3, 0
-	xvinsgr2vr.w	$xr2, $s5, 0
-	xvinsgr2vr.w	$xr3, $s6, 0
-	xvor.v	$xr0, $xr0, $xr1
-	xvor.v	$xr0, $xr0, $xr2
-	xvor.v	$xr0, $xr0, $xr3
+	vinsgr2vr.w	$vr0, $s4, 0
+	vinsgr2vr.w	$vr1, $s3, 0
+	vinsgr2vr.w	$vr2, $s5, 0
+	vinsgr2vr.w	$vr3, $s6, 0
+	vor.v	$vr0, $vr0, $vr1
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.w	$xr4, $xr0, 0
 	andi	$a0, $s0, 12
@@ -30251,7 +30259,7 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
 	move	$s3, $a5
 	move	$s4, $a4
 	move	$s6, $a3
@@ -30263,7 +30271,7 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$s8, %pc_hi20(iterations)
 	ld.w	$a1, $s8, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
 	pcalau12i	$a2, %pc_hi20(current_test)
@@ -30278,17 +30286,21 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s7, $zero
 	bstrpick.d	$a0, $s0, 30, 4
 	slli.d	$s2, $a0, 4
-	xvinsgr2vr.w	$xr0, $s4, 0
-	xvinsgr2vr.w	$xr1, $s3, 0
-	xvinsgr2vr.w	$xr2, $s5, 0
-	xvinsgr2vr.w	$xr3, $s6, 0
-	xvxor.v	$xr0, $xr0, $xr1
-	xvxor.v	$xr0, $xr0, $xr2
+	vinsgr2vr.w	$vr0, $s4, 0
+	vinsgr2vr.w	$vr1, $s3, 0
+	vinsgr2vr.w	$vr2, $s5, 0
+	vinsgr2vr.w	$vr3, $s6, 0
+	xvrepli.b	$xr4, 0
+	vxor.v	$vr0, $vr0, $vr1
+	xvst	$xr4, $sp, 48                   # 32-byte Folded Spill
+	xvori.b	$xr1, $xr4, 0
+	xvpermi.q	$xr1, $xr0, 48
+	xvxor.v	$xr0, $xr1, $xr2
 	xvxor.v	$xr0, $xr0, $xr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.w	$xr4, $xr0, 0
 	andi	$a0, $s0, 12
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 2
 	move	$a2, $s3
 	slli.d	$s3, $a0, 2
@@ -30297,7 +30309,7 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xor	$s4, $s6, $a0
 	vreplgr2vr.w	$vr5, $s4
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	sub.d	$a0, $zero, $s3
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ori	$a5, $zero, 3
@@ -30306,8 +30318,6 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ori	$s6, $a0, 3904
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
 	xvst	$xr4, $sp, 128                  # 32-byte Folded Spill
 	vst	$vr5, $sp, 112                  # 16-byte Folded Spill
 	b	.LBB95_4
@@ -30338,9 +30348,9 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.p2align	4, , 16
 .LBB95_8:                               # %vector.body.preheader
                                         #   in Loop: Header=BB95_4 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$a2, $s2
-	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
+	xvld	$xr1, $sp, 48                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
 	.p2align	4, , 16
 .LBB95_9:                               # %vector.body
@@ -30373,7 +30383,7 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB95_4 Depth=1
 	move	$a3, $s2
 	move	$a2, $s2
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	beqz	$a4, .LBB95_15
 .LBB95_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB95_4 Depth=1
@@ -30466,7 +30476,7 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 .LBB95_23:                              # %for.end6
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$fp, $a1, %pc_lo12(start_time)
 	pcalau12i	$s2, %pc_hi20(results)
 	ld.d	$a2, $s2, %pc_lo12(results)
@@ -30493,7 +30503,7 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB95_27:                              # %_Z13record_resultdPKc.exit
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI95_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI95_0)
 	sub.d	$a1, $s0, $fp
@@ -34588,13 +34598,13 @@ _Z14test_variable4Ij28custom_multiple_variable_andIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s7, $zero
 	bstrpick.d	$a0, $s0, 30, 4
 	slli.d	$s2, $a0, 4
-	xvinsgr2vr.w	$xr0, $s4, 0
-	xvinsgr2vr.w	$xr1, $s3, 0
-	xvinsgr2vr.w	$xr2, $s5, 0
-	xvinsgr2vr.w	$xr3, $s6, 0
-	xvand.v	$xr0, $xr0, $xr1
-	xvand.v	$xr0, $xr0, $xr2
-	xvand.v	$xr0, $xr0, $xr3
+	vinsgr2vr.w	$vr0, $s4, 0
+	vinsgr2vr.w	$vr1, $s3, 0
+	vinsgr2vr.w	$vr2, $s5, 0
+	vinsgr2vr.w	$vr3, $s6, 0
+	vand.v	$vr0, $vr0, $vr1
+	vand.v	$vr0, $vr0, $vr2
+	vand.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.w	$xr4, $xr0, 0
 	andi	$a0, $s0, 12
@@ -35208,13 +35218,13 @@ _Z14test_variable4Ij27custom_multiple_variable_orIjEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	move	$s7, $zero
 	bstrpick.d	$a0, $s0, 30, 4
 	slli.d	$s2, $a0, 4
-	xvinsgr2vr.w	$xr0, $s4, 0
-	xvinsgr2vr.w	$xr1, $s3, 0
-	xvinsgr2vr.w	$xr2, $s5, 0
-	xvinsgr2vr.w	$xr3, $s6, 0
-	xvor.v	$xr0, $xr0, $xr1
-	xvor.v	$xr0, $xr0, $xr2
-	xvor.v	$xr0, $xr0, $xr3
+	vinsgr2vr.w	$vr0, $s4, 0
+	vinsgr2vr.w	$vr1, $s3, 0
+	vinsgr2vr.w	$vr2, $s5, 0
+	vinsgr2vr.w	$vr3, $s6, 0
+	vor.v	$vr0, $vr0, $vr1
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.w	$xr4, $xr0, 0
 	andi	$a0, $s0, 12
@@ -35801,7 +35811,7 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
 	move	$s3, $a5
 	move	$s4, $a4
 	move	$s6, $a3
@@ -35813,7 +35823,7 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$s8, %pc_hi20(iterations)
 	ld.w	$a1, $s8, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
 	pcalau12i	$a2, %pc_hi20(current_test)
@@ -35828,17 +35838,21 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s7, $zero
 	bstrpick.d	$a0, $s0, 30, 4
 	slli.d	$s2, $a0, 4
-	xvinsgr2vr.w	$xr0, $s4, 0
-	xvinsgr2vr.w	$xr1, $s3, 0
-	xvinsgr2vr.w	$xr2, $s5, 0
-	xvinsgr2vr.w	$xr3, $s6, 0
-	xvxor.v	$xr0, $xr0, $xr1
-	xvxor.v	$xr0, $xr0, $xr2
+	vinsgr2vr.w	$vr0, $s4, 0
+	vinsgr2vr.w	$vr1, $s3, 0
+	vinsgr2vr.w	$vr2, $s5, 0
+	vinsgr2vr.w	$vr3, $s6, 0
+	xvrepli.b	$xr4, 0
+	vxor.v	$vr0, $vr0, $vr1
+	xvst	$xr4, $sp, 48                   # 32-byte Folded Spill
+	xvori.b	$xr1, $xr4, 0
+	xvpermi.q	$xr1, $xr0, 48
+	xvxor.v	$xr0, $xr1, $xr2
 	xvxor.v	$xr0, $xr0, $xr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.w	$xr4, $xr0, 0
 	andi	$a0, $s0, 12
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 2
 	move	$a2, $s3
 	slli.d	$s3, $a0, 2
@@ -35847,7 +35861,7 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xor	$s4, $s6, $a0
 	vreplgr2vr.w	$vr5, $s4
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	sub.d	$a0, $zero, $s3
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ori	$a5, $zero, 3
@@ -35856,8 +35870,6 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ori	$s6, $a0, 3904
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
 	xvst	$xr4, $sp, 128                  # 32-byte Folded Spill
 	vst	$vr5, $sp, 112                  # 16-byte Folded Spill
 	b	.LBB113_4
@@ -35888,9 +35900,9 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.p2align	4, , 16
 .LBB113_8:                              # %vector.body.preheader
                                         #   in Loop: Header=BB113_4 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$a2, $s2
-	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
+	xvld	$xr1, $sp, 48                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
 	.p2align	4, , 16
 .LBB113_9:                              # %vector.body
@@ -35923,7 +35935,7 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB113_4 Depth=1
 	move	$a3, $s2
 	move	$a2, $s2
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	beqz	$a4, .LBB113_15
 .LBB113_12:                             # %vec.epilog.ph
                                         #   in Loop: Header=BB113_4 Depth=1
@@ -36020,7 +36032,7 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 .LBB113_23:                             # %for.end6
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$fp, $a1, %pc_lo12(start_time)
 	pcalau12i	$s2, %pc_hi20(results)
 	ld.d	$a2, $s2, %pc_lo12(results)
@@ -36047,7 +36059,7 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB113_27:                             # %_Z13record_resultdPKc.exit
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI113_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI113_0)
 	sub.d	$a1, $s0, $fp
@@ -39518,13 +39530,13 @@ _Z14test_variable4Il28custom_multiple_variable_andIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s7, $zero
 	bstrpick.d	$a2, $s0, 30, 3
 	slli.d	$s4, $a2, 3
-	xvinsgr2vr.d	$xr0, $s5, 0
-	xvinsgr2vr.d	$xr1, $s6, 0
-	xvinsgr2vr.d	$xr2, $s3, 0
-	xvinsgr2vr.d	$xr3, $s2, 0
-	xvand.v	$xr0, $xr0, $xr1
-	xvand.v	$xr0, $xr0, $xr2
-	xvand.v	$xr0, $xr0, $xr3
+	vinsgr2vr.d	$vr0, $s5, 0
+	vinsgr2vr.d	$vr1, $s6, 0
+	vinsgr2vr.d	$vr2, $s3, 0
+	vinsgr2vr.d	$vr3, $s2, 0
+	vand.v	$vr0, $vr0, $vr1
+	vand.v	$vr0, $vr0, $vr2
+	vand.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.d	$xr4, $xr0, 0
 	and	$a0, $a0, $s3
@@ -40042,13 +40054,13 @@ _Z14test_variable4Il27custom_multiple_variable_orIlEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	move	$s7, $zero
 	bstrpick.d	$a2, $s0, 30, 3
 	slli.d	$s4, $a2, 3
-	xvinsgr2vr.d	$xr0, $s5, 0
-	xvinsgr2vr.d	$xr1, $s6, 0
-	xvinsgr2vr.d	$xr2, $s3, 0
-	xvinsgr2vr.d	$xr3, $s2, 0
-	xvor.v	$xr0, $xr0, $xr1
-	xvor.v	$xr0, $xr0, $xr2
-	xvor.v	$xr0, $xr0, $xr3
+	vinsgr2vr.d	$vr0, $s5, 0
+	vinsgr2vr.d	$vr1, $s6, 0
+	vinsgr2vr.d	$vr2, $s3, 0
+	vinsgr2vr.d	$vr3, $s2, 0
+	vor.v	$vr0, $vr0, $vr1
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.d	$xr4, $xr0, 0
 	or	$a0, $a0, $s3
@@ -40547,8 +40559,9 @@ _Z14test_variable4Il28custom_multiple_variable_xorIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	pcalau12i	$s8, %pc_hi20(iterations)
-	ld.w	$a1, $s8, %pc_lo12(iterations)
+	pcalau12i	$a1, %pc_hi20(iterations)
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	ld.w	$a1, $a1, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
@@ -40565,31 +40578,32 @@ _Z14test_variable4Il28custom_multiple_variable_xorIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s7, $zero
 	bstrpick.d	$a2, $s0, 30, 3
 	slli.d	$s4, $a2, 3
-	xvinsgr2vr.d	$xr0, $s5, 0
-	xvinsgr2vr.d	$xr1, $s6, 0
-	xvinsgr2vr.d	$xr2, $s3, 0
-	xvinsgr2vr.d	$xr3, $s2, 0
-	xvxor.v	$xr0, $xr0, $xr1
-	xvxor.v	$xr0, $xr0, $xr2
+	vinsgr2vr.d	$vr0, $s5, 0
+	vinsgr2vr.d	$vr1, $s6, 0
+	vinsgr2vr.d	$vr2, $s3, 0
+	vinsgr2vr.d	$vr3, $s2, 0
+	xvrepli.b	$xr4, 0
+	vxor.v	$vr0, $vr0, $vr1
+	xvst	$xr4, $sp, 96                   # 32-byte Folded Spill
+	xvori.b	$xr1, $xr4, 0
+	xvpermi.q	$xr1, $xr0, 48
+	xvxor.v	$xr0, $xr1, $xr2
 	xvxor.v	$xr0, $xr0, $xr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.d	$xr4, $xr0, 0
 	xor	$a0, $a0, $s3
 	xor	$s3, $a0, $s2
-	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$s5, $s1, 32
 	ori	$a5, $zero, 8
 	pcalau12i	$s6, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
-	ori	$s5, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI131_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI131_0)
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(.LCPI131_0)
+	xvld	$xr0, $a2, %pc_lo12(.LCPI131_0)
+	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
+	ori	$s8, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
-	xvst	$xr4, $sp, 112                  # 32-byte Folded Spill
+	xvst	$xr4, $sp, 64                   # 32-byte Folded Spill
 	b	.LBB131_4
 	.p2align	4, , 16
 .LBB131_3:                              # %_Z26check_shifted_variable_sumIl28custom_multiple_variable_xorIlEEvT_S2_S2_S2_S2_.exit.us
@@ -40608,9 +40622,9 @@ _Z14test_variable4Il28custom_multiple_variable_xorIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.p2align	4, , 16
 .LBB131_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB131_4 Depth=1
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	move	$a0, $s5
 	move	$a2, $s4
-	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
+	xvld	$xr1, $sp, 96                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
 	.p2align	4, , 16
 .LBB131_7:                              # %vector.body
@@ -40629,7 +40643,7 @@ _Z14test_variable4Il28custom_multiple_variable_xorIlEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB131_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 64                   # 32-byte Folded Reload
+	xvld	$xr2, $sp, 32                   # 32-byte Folded Reload
 	xvshuf.d	$xr2, $xr0, $xr1
 	xvadd.d	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
@@ -40658,7 +40672,7 @@ _Z14test_variable4Il28custom_multiple_variable_xorIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	xor	$a2, $fp, $a2
-	mul.d	$a2, $a2, $s5
+	mul.d	$a2, $a2, $s8
 	beq	$a0, $a2, .LBB131_3
 # %bb.12:                               # %if.then.i.us
                                         #   in Loop: Header=BB131_4 Depth=1
@@ -40668,8 +40682,9 @@ _Z14test_variable4Il28custom_multiple_variable_xorIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ori	$a5, $zero, 8
-	xvld	$xr4, $sp, 112                  # 32-byte Folded Reload
-	ld.w	$a1, $s8, %pc_lo12(iterations)
+	xvld	$xr4, $sp, 64                   # 32-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(iterations)
 	b	.LBB131_3
 .LBB131_13:                             # %for.cond1.preheader.preheader
 	pcalau12i	$s1, %pc_hi20(init_value)
@@ -40696,7 +40711,8 @@ _Z14test_variable4Il28custom_multiple_variable_xorIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
-	ld.w	$a1, $s8, %pc_lo12(iterations)
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(iterations)
 	b	.LBB131_14
 .LBB131_17:                             # %for.end6
 	pcaddu18i	$ra, %call36(clock)
@@ -44586,13 +44602,13 @@ _Z14test_variable4Im28custom_multiple_variable_andImEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s7, $zero
 	bstrpick.d	$a2, $s0, 30, 3
 	slli.d	$s4, $a2, 3
-	xvinsgr2vr.d	$xr0, $s5, 0
-	xvinsgr2vr.d	$xr1, $s6, 0
-	xvinsgr2vr.d	$xr2, $s3, 0
-	xvinsgr2vr.d	$xr3, $s2, 0
-	xvand.v	$xr0, $xr0, $xr1
-	xvand.v	$xr0, $xr0, $xr2
-	xvand.v	$xr0, $xr0, $xr3
+	vinsgr2vr.d	$vr0, $s5, 0
+	vinsgr2vr.d	$vr1, $s6, 0
+	vinsgr2vr.d	$vr2, $s3, 0
+	vinsgr2vr.d	$vr3, $s2, 0
+	vand.v	$vr0, $vr0, $vr1
+	vand.v	$vr0, $vr0, $vr2
+	vand.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.d	$xr4, $xr0, 0
 	and	$a0, $a0, $s3
@@ -45166,13 +45182,13 @@ _Z14test_variable4Im27custom_multiple_variable_orImEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	move	$s7, $zero
 	bstrpick.d	$a2, $s0, 30, 3
 	slli.d	$s4, $a2, 3
-	xvinsgr2vr.d	$xr0, $s5, 0
-	xvinsgr2vr.d	$xr1, $s6, 0
-	xvinsgr2vr.d	$xr2, $s3, 0
-	xvinsgr2vr.d	$xr3, $s2, 0
-	xvor.v	$xr0, $xr0, $xr1
-	xvor.v	$xr0, $xr0, $xr2
-	xvor.v	$xr0, $xr0, $xr3
+	vinsgr2vr.d	$vr0, $s5, 0
+	vinsgr2vr.d	$vr1, $s6, 0
+	vinsgr2vr.d	$vr2, $s3, 0
+	vinsgr2vr.d	$vr3, $s2, 0
+	vor.v	$vr0, $vr0, $vr1
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr0, $vr0, $vr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.d	$xr4, $xr0, 0
 	or	$a0, $a0, $s3
@@ -45746,33 +45762,35 @@ _Z14test_variable4Im28custom_multiple_variable_xorImEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s7, $zero
 	bstrpick.d	$a2, $s0, 30, 3
 	slli.d	$s4, $a2, 3
-	xvinsgr2vr.d	$xr0, $s5, 0
-	xvinsgr2vr.d	$xr1, $s6, 0
-	xvinsgr2vr.d	$xr2, $s3, 0
-	xvinsgr2vr.d	$xr3, $s2, 0
-	xvxor.v	$xr0, $xr0, $xr1
-	xvxor.v	$xr0, $xr0, $xr2
+	vinsgr2vr.d	$vr0, $s5, 0
+	vinsgr2vr.d	$vr1, $s6, 0
+	vinsgr2vr.d	$vr2, $s3, 0
+	vinsgr2vr.d	$vr3, $s2, 0
+	xvrepli.b	$xr4, 0
+	vxor.v	$vr0, $vr0, $vr1
+	xvst	$xr4, $sp, 112                  # 32-byte Folded Spill
+	xvori.b	$xr1, $xr4, 0
+	xvpermi.q	$xr1, $xr0, 48
+	xvxor.v	$xr0, $xr1, $xr2
 	xvxor.v	$xr0, $xr0, $xr3
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.d	$xr4, $xr0, 0
 	xor	$a0, $a0, $s3
 	xor	$s3, $a0, $s2
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s6, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI149_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI149_0)
 	lu12i.w	$a0, 1
+	pcalau12i	$a2, %pc_hi20(.LCPI149_1)
+	xvld	$xr0, $a2, %pc_lo12(.LCPI149_1)
+	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
 	ori	$s5, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI149_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI149_1)
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
-	xvst	$xr4, $sp, 112                  # 32-byte Folded Spill
+	xvst	$xr4, $sp, 80                   # 32-byte Folded Spill
 	b	.LBB149_4
 	.p2align	4, , 16
 .LBB149_3:                              # %_Z26check_shifted_variable_sumIm28custom_multiple_variable_xorImEEvT_S2_S2_S2_S2_.exit.us
@@ -45791,9 +45809,9 @@ _Z14test_variable4Im28custom_multiple_variable_xorImEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.p2align	4, , 16
 .LBB149_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB149_4 Depth=1
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	move	$a2, $s4
-	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
+	xvld	$xr1, $sp, 112                  # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
 	.p2align	4, , 16
 .LBB149_7:                              # %vector.body
@@ -45812,7 +45830,7 @@ _Z14test_variable4Im28custom_multiple_variable_xorImEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB149_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 64                   # 32-byte Folded Reload
+	xvld	$xr2, $sp, 32                   # 32-byte Folded Reload
 	xvshuf.d	$xr2, $xr0, $xr1
 	xvadd.d	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
@@ -45859,7 +45877,7 @@ _Z14test_variable4Im28custom_multiple_variable_xorImEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ori	$a5, $zero, 8
-	xvld	$xr4, $sp, 112                  # 32-byte Folded Reload
+	xvld	$xr4, $sp, 80                   # 32-byte Folded Reload
 	ld.w	$a1, $s8, %pc_lo12(iterations)
 	b	.LBB149_3
 .LBB149_13:                             # %for.cond1.preheader.preheader

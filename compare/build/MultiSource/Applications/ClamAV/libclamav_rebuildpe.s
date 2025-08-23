@@ -94,14 +94,15 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	ld.w	$t6, $a2, -108
 	ld.w	$t7, $a2, -72
 	ld.w	$t8, $a2, -36
-	xvinsgr2vr.w	$xr6, $t1, 0
-	xvinsgr2vr.w	$xr6, $t2, 1
-	xvinsgr2vr.w	$xr6, $t3, 2
-	xvinsgr2vr.w	$xr6, $t4, 3
-	xvinsgr2vr.w	$xr6, $t5, 4
-	xvinsgr2vr.w	$xr6, $t6, 5
-	xvinsgr2vr.w	$xr6, $t7, 6
-	xvinsgr2vr.w	$xr6, $t8, 7
+	vinsgr2vr.w	$vr6, $t5, 0
+	vinsgr2vr.w	$vr6, $t6, 1
+	vinsgr2vr.w	$vr6, $t7, 2
+	vinsgr2vr.w	$vr6, $t8, 3
+	vinsgr2vr.w	$vr7, $t1, 0
+	vinsgr2vr.w	$vr7, $t2, 1
+	vinsgr2vr.w	$vr7, $t3, 2
+	vinsgr2vr.w	$vr7, $t4, 3
+	xvpermi.q	$xr7, $xr6, 2
 	ld.w	$t1, $a2, 0
 	ld.w	$t2, $a2, 36
 	ld.w	$t3, $a2, 72
@@ -110,24 +111,25 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	ld.w	$t6, $a2, 180
 	ld.w	$t7, $a2, 216
 	ld.w	$t8, $a2, 252
-	xvinsgr2vr.w	$xr7, $t1, 0
-	xvinsgr2vr.w	$xr7, $t2, 1
-	xvinsgr2vr.w	$xr7, $t3, 2
-	xvinsgr2vr.w	$xr7, $t4, 3
-	xvinsgr2vr.w	$xr7, $t5, 4
-	xvinsgr2vr.w	$xr7, $t6, 5
-	xvinsgr2vr.w	$xr7, $t7, 6
-	xvinsgr2vr.w	$xr7, $t8, 7
-	xvand.v	$xr8, $xr6, $xr1
-	xvand.v	$xr9, $xr7, $xr1
-	xvseqi.w	$xr8, $xr8, 0
-	xvxor.v	$xr8, $xr8, $xr2
-	xvand.v	$xr8, $xr8, $xr3
+	vinsgr2vr.w	$vr6, $t5, 0
+	vinsgr2vr.w	$vr6, $t6, 1
+	vinsgr2vr.w	$vr6, $t7, 2
+	vinsgr2vr.w	$vr6, $t8, 3
+	vinsgr2vr.w	$vr8, $t1, 0
+	vinsgr2vr.w	$vr8, $t2, 1
+	vinsgr2vr.w	$vr8, $t3, 2
+	vinsgr2vr.w	$vr8, $t4, 3
+	xvpermi.q	$xr8, $xr6, 2
+	xvand.v	$xr6, $xr7, $xr1
+	xvand.v	$xr9, $xr8, $xr1
+	xvseqi.w	$xr6, $xr6, 0
+	xvxor.v	$xr6, $xr6, $xr2
+	xvand.v	$xr6, $xr6, $xr3
 	xvseqi.w	$xr9, $xr9, 0
 	xvxor.v	$xr9, $xr9, $xr2
 	xvand.v	$xr9, $xr9, $xr3
-	xvadd.w	$xr6, $xr8, $xr6
-	xvadd.w	$xr7, $xr9, $xr7
+	xvadd.w	$xr6, $xr6, $xr7
+	xvadd.w	$xr7, $xr9, $xr8
 	xvand.v	$xr6, $xr6, $xr4
 	xvand.v	$xr7, $xr7, $xr4
 	xvadd.w	$xr0, $xr6, $xr0

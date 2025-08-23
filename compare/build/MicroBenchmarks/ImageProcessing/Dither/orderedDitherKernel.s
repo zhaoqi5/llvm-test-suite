@@ -409,46 +409,65 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	xvmsub.w	$xr6, $xr5, $xr2
 	xvld	$xr5, $t5, 0
 	xvpermi.q	$xr7, $xr6, 1
+	vpickve2gr.w	$t7, $vr7, 2
+	bstrpick.d	$t7, $t7, 31, 0
+	vinsgr2vr.d	$vr8, $t7, 0
 	vpickve2gr.w	$t7, $vr7, 3
 	bstrpick.d	$t7, $t7, 31, 0
-	vpickve2gr.w	$t8, $vr7, 2
-	bstrpick.d	$t8, $t8, 31, 0
-	vpickve2gr.w	$fp, $vr7, 1
-	bstrpick.d	$fp, $fp, 31, 0
-	vpickve2gr.w	$s0, $vr7, 0
-	bstrpick.d	$s0, $s0, 31, 0
-	vpickve2gr.w	$s1, $vr6, 3
-	bstrpick.d	$s1, $s1, 31, 0
-	vpickve2gr.w	$s2, $vr6, 2
-	bstrpick.d	$s2, $s2, 31, 0
-	vpickve2gr.w	$s3, $vr6, 1
-	bstrpick.d	$s3, $s3, 31, 0
-	vpickve2gr.w	$s4, $vr6, 0
-	bstrpick.d	$s4, $s4, 31, 0
-	mul.d	$s4, $s4, $t3
-	mul.d	$s3, $s3, $t3
-	mul.d	$s2, $s2, $t3
-	mul.d	$s1, $s1, $t3
-	mul.d	$s0, $s0, $t3
-	mul.d	$fp, $fp, $t3
-	mul.d	$t8, $t8, $t3
+	vinsgr2vr.d	$vr8, $t7, 1
+	xvpermi.q	$xr8, $xr8, 2
+	vpickve2gr.w	$t7, $vr7, 0
+	bstrpick.d	$t7, $t7, 31, 0
+	vinsgr2vr.d	$vr9, $t7, 0
+	vpickve2gr.w	$t7, $vr7, 1
+	bstrpick.d	$t7, $t7, 31, 0
+	vinsgr2vr.d	$vr9, $t7, 1
+	vpickve2gr.w	$t7, $vr6, 2
+	bstrpick.d	$t7, $t7, 31, 0
+	vinsgr2vr.d	$vr7, $t7, 0
+	vpickve2gr.w	$t7, $vr6, 3
+	bstrpick.d	$t7, $t7, 31, 0
+	vinsgr2vr.d	$vr7, $t7, 1
+	xvpermi.q	$xr7, $xr7, 2
+	vpickve2gr.w	$t7, $vr6, 0
+	bstrpick.d	$t7, $t7, 31, 0
+	vinsgr2vr.d	$vr10, $t7, 0
+	vpickve2gr.w	$t7, $vr6, 1
+	bstrpick.d	$t7, $t7, 31, 0
+	vinsgr2vr.d	$vr10, $t7, 1
+	xvpickve2gr.d	$t7, $xr10, 0
 	mul.d	$t7, $t7, $t3
-	ldx.w	$s4, $t4, $s4
-	ldx.w	$s3, $t4, $s3
-	ldx.w	$s2, $t4, $s2
-	ldx.w	$s1, $t4, $s1
-	ldx.w	$s0, $t4, $s0
-	ldx.w	$fp, $t4, $fp
-	ldx.w	$t8, $t4, $t8
+	xvpickve2gr.d	$t8, $xr10, 1
+	mul.d	$t8, $t8, $t3
+	xvpickve2gr.d	$fp, $xr7, 2
+	mul.d	$fp, $fp, $t3
+	xvpickve2gr.d	$s0, $xr7, 3
+	mul.d	$s0, $s0, $t3
+	xvpickve2gr.d	$s1, $xr9, 0
+	mul.d	$s1, $s1, $t3
+	xvpickve2gr.d	$s2, $xr9, 1
+	mul.d	$s2, $s2, $t3
+	xvpickve2gr.d	$s3, $xr8, 2
+	mul.d	$s3, $s3, $t3
+	xvpickve2gr.d	$s4, $xr8, 3
+	mul.d	$s4, $s4, $t3
 	ldx.w	$t7, $t4, $t7
-	xvinsgr2vr.w	$xr6, $s4, 0
-	xvinsgr2vr.w	$xr6, $s3, 1
-	xvinsgr2vr.w	$xr6, $s2, 2
-	xvinsgr2vr.w	$xr6, $s1, 3
-	xvinsgr2vr.w	$xr6, $s0, 4
-	xvinsgr2vr.w	$xr6, $fp, 5
-	xvinsgr2vr.w	$xr6, $t8, 6
-	xvinsgr2vr.w	$xr6, $t7, 7
+	ldx.w	$t8, $t4, $t8
+	ldx.w	$fp, $t4, $fp
+	ldx.w	$s0, $t4, $s0
+	ldx.w	$s1, $t4, $s1
+	ldx.w	$s2, $t4, $s2
+	ldx.w	$s3, $t4, $s3
+	ldx.w	$s4, $t4, $s4
+	vinsgr2vr.w	$vr6, $t7, 0
+	vinsgr2vr.w	$vr6, $t8, 1
+	vinsgr2vr.w	$vr6, $fp, 2
+	vinsgr2vr.w	$vr6, $s0, 3
+	vinsgr2vr.w	$vr7, $s1, 0
+	vinsgr2vr.w	$vr7, $s2, 1
+	vinsgr2vr.w	$vr7, $s3, 2
+	vinsgr2vr.w	$vr7, $s4, 3
+	xvpermi.q	$xr6, $xr7, 2
 	xvslt.w	$xr5, $xr6, $xr5
 	xvand.v	$xr5, $xr5, $xr3
 	xvst	$xr5, $t5, 0
@@ -562,14 +581,15 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	ldx.w	$fp, $t1, $fp
 	ldx.w	$s0, $t1, $s0
 	ldx.w	$s1, $t1, $s1
-	xvinsgr2vr.w	$xr6, $t4, 0
-	xvinsgr2vr.w	$xr6, $t5, 1
-	xvinsgr2vr.w	$xr6, $t6, 2
-	xvinsgr2vr.w	$xr6, $t7, 3
-	xvinsgr2vr.w	$xr6, $t8, 4
-	xvinsgr2vr.w	$xr6, $fp, 5
-	xvinsgr2vr.w	$xr6, $s0, 6
-	xvinsgr2vr.w	$xr6, $s1, 7
+	vinsgr2vr.w	$vr6, $t4, 0
+	vinsgr2vr.w	$vr6, $t5, 1
+	vinsgr2vr.w	$vr6, $t6, 2
+	vinsgr2vr.w	$vr6, $t7, 3
+	vinsgr2vr.w	$vr7, $t8, 0
+	vinsgr2vr.w	$vr7, $fp, 1
+	vinsgr2vr.w	$vr7, $s0, 2
+	vinsgr2vr.w	$vr7, $s1, 3
+	xvpermi.q	$xr6, $xr7, 2
 	xvslt.w	$xr6, $xr6, $xr8
 	xvand.v	$xr6, $xr6, $xr3
 	xvst	$xr6, $t2, 0
@@ -646,14 +666,15 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	ldx.w	$a7, $a1, $a7
 	ldx.w	$t0, $a1, $t0
 	ldx.w	$t1, $a1, $t1
-	xvinsgr2vr.w	$xr4, $a0, 0
-	xvinsgr2vr.w	$xr4, $a2, 1
-	xvinsgr2vr.w	$xr4, $a4, 2
-	xvinsgr2vr.w	$xr4, $a5, 3
-	xvinsgr2vr.w	$xr4, $a6, 4
-	xvinsgr2vr.w	$xr4, $a7, 5
-	xvinsgr2vr.w	$xr4, $t0, 6
-	xvinsgr2vr.w	$xr4, $t1, 7
+	vinsgr2vr.w	$vr4, $a0, 0
+	vinsgr2vr.w	$vr4, $a2, 1
+	vinsgr2vr.w	$vr4, $a4, 2
+	vinsgr2vr.w	$vr4, $a5, 3
+	vinsgr2vr.w	$vr5, $a6, 0
+	vinsgr2vr.w	$vr5, $a7, 1
+	vinsgr2vr.w	$vr5, $t0, 2
+	vinsgr2vr.w	$vr5, $t1, 3
+	xvpermi.q	$xr4, $xr5, 2
 	xvslt.w	$xr4, $xr4, $xr6
 	xvand.v	$xr4, $xr4, $xr3
 	xvst	$xr4, $a3, 0

@@ -260,11 +260,12 @@ main:                                   # @main
 # %bb.1:                                # %for.body9.preheader
 	addi.d	$s0, $sp, 172
 	xvld	$xr1, $sp, 88
+	vinsgr2vr.d	$vr2, $s0, 0
 	xvld	$xr0, $sp, 56
-	xvinsgr2vr.d	$xr2, $s0, 0
-	xvinsgr2vr.d	$xr2, $s0, 1
-	xvinsgr2vr.d	$xr2, $s0, 2
-	xvinsgr2vr.d	$xr2, $s1, 3
+	vori.b	$vr3, $vr2, 0
+	vinsgr2vr.d	$vr3, $s1, 1
+	vinsgr2vr.d	$vr2, $s0, 1
+	xvpermi.q	$xr2, $xr3, 2
 	xvreplgr2vr.d	$xr3, $s0
 	xvst	$xr3, $sp, 16                   # 32-byte Folded Spill
 	xvseq.d	$xr3, $xr0, $xr3
@@ -288,8 +289,8 @@ main:                                   # @main
 	xvld	$xr1, $sp, 120
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
 	xvld	$xr2, $a3, %pc_lo12(.LCPI1_0)
-	xvinsgr2vr.d	$xr3, $s1, 0
-	xvinsgr2vr.d	$xr3, $s0, 1
+	vinsgr2vr.d	$vr3, $s1, 0
+	vinsgr2vr.d	$vr3, $s0, 1
 	xvpermi.d	$xr3, $xr3, 68
 	xvshuf.d	$xr2, $xr0, $xr3
 	xvseq.d	$xr1, $xr1, $xr2

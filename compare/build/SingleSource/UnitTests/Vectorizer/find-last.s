@@ -6392,7 +6392,8 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 # %bb.1:                                # %vector.ph
 	ld.d	$a1, $a0, 0
 	move	$a4, $zero
-	xvinsgr2vr.d	$xr0, $a1, 3
+	vinsgr2vr.d	$vr0, $a1, 1
+	xvpermi.q	$xr0, $xr0, 2
 	lu12i.w	$a2, -524288
 	xvreplgr2vr.d	$xr1, $a2
 	lu12i.w	$a1, 524287
@@ -6412,13 +6413,15 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	xvori.b	$xr6, $xr0, 0
 	add.d	$a7, $a0, $a4
 	xvld	$xr0, $a7, 8
-	xvpickve.d	$xr6, $xr6, 3
-	xvinsve0.d	$xr6, $xr6, 0
-	xvinsve0.d	$xr6, $xr0, 1
-	xvpickve.d	$xr7, $xr0, 1
-	xvinsve0.d	$xr6, $xr7, 2
-	xvpickve.d	$xr7, $xr0, 2
-	xvinsve0.d	$xr6, $xr7, 3
+	xvpickve2gr.d	$t0, $xr6, 3
+	vinsgr2vr.d	$vr6, $t0, 0
+	xvpickve2gr.d	$t0, $xr0, 0
+	vinsgr2vr.d	$vr6, $t0, 1
+	xvpickve2gr.d	$t0, $xr0, 1
+	vinsgr2vr.d	$vr7, $t0, 0
+	xvpickve2gr.d	$t0, $xr0, 2
+	vinsgr2vr.d	$vr7, $t0, 1
+	xvpermi.q	$xr6, $xr7, 2
 	xvand.v	$xr6, $xr6, $xr1
 	xvldx	$xr7, $a7, $a5
 	xvand.v	$xr8, $xr0, $xr2
@@ -6931,7 +6934,8 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
                                         #   in Loop: Header=BB11_3 Depth=2
 	ld.d	$a2, $s2, 0
 	move	$a1, $zero
-	xvinsgr2vr.d	$xr2, $a2, 3
+	vinsgr2vr.d	$vr2, $a2, 1
+	xvpermi.q	$xr2, $xr2, 2
 	.p2align	4, , 16
 .LBB11_5:                               # %vector.body4
                                         #   Parent Loop BB11_1 Depth=1
@@ -6940,13 +6944,15 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 	xvori.b	$xr3, $xr2, 0
 	add.d	$a2, $s2, $a1
 	xvld	$xr2, $a2, 8
-	xvpickve.d	$xr3, $xr3, 3
-	xvinsve0.d	$xr3, $xr3, 0
-	xvinsve0.d	$xr3, $xr2, 1
-	xvpickve.d	$xr4, $xr2, 1
-	xvinsve0.d	$xr3, $xr4, 2
-	xvpickve.d	$xr4, $xr2, 2
-	xvinsve0.d	$xr3, $xr4, 3
+	xvpickve2gr.d	$a3, $xr3, 3
+	vinsgr2vr.d	$vr3, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 0
+	vinsgr2vr.d	$vr3, $a3, 1
+	xvpickve2gr.d	$a3, $xr2, 1
+	vinsgr2vr.d	$vr4, $a3, 0
+	xvpickve2gr.d	$a3, $xr2, 2
+	vinsgr2vr.d	$vr4, $a3, 1
+	xvpermi.q	$xr3, $xr4, 2
 	xvand.v	$xr3, $xr3, $xr6
 	xvldx	$xr4, $a2, $s5
 	xvand.v	$xr5, $xr2, $xr7

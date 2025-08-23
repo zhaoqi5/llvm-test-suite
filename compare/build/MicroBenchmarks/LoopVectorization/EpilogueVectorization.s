@@ -2205,7 +2205,8 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 # %bb.1:                                # %vector.ph
 	ld.d	$a1, $a0, 0
 	move	$a4, $zero
-	xvinsgr2vr.d	$xr0, $a1, 3
+	vinsgr2vr.d	$vr0, $a1, 1
+	xvpermi.q	$xr0, $xr0, 2
 	lu12i.w	$a2, -524288
 	xvreplgr2vr.d	$xr1, $a2
 	lu12i.w	$a1, 524287
@@ -2225,13 +2226,15 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	xvori.b	$xr6, $xr0, 0
 	add.d	$a7, $a0, $a4
 	xvld	$xr0, $a7, 8
-	xvpickve.d	$xr6, $xr6, 3
-	xvinsve0.d	$xr6, $xr6, 0
-	xvinsve0.d	$xr6, $xr0, 1
-	xvpickve.d	$xr7, $xr0, 1
-	xvinsve0.d	$xr6, $xr7, 2
-	xvpickve.d	$xr7, $xr0, 2
-	xvinsve0.d	$xr6, $xr7, 3
+	xvpickve2gr.d	$t0, $xr6, 3
+	vinsgr2vr.d	$vr6, $t0, 0
+	xvpickve2gr.d	$t0, $xr0, 0
+	vinsgr2vr.d	$vr6, $t0, 1
+	xvpickve2gr.d	$t0, $xr0, 1
+	vinsgr2vr.d	$vr7, $t0, 0
+	xvpickve2gr.d	$t0, $xr0, 2
+	vinsgr2vr.d	$vr7, $t0, 1
+	xvpermi.q	$xr6, $xr7, 2
 	xvand.v	$xr6, $xr6, $xr1
 	xvldx	$xr7, $a7, $a5
 	xvand.v	$xr8, $xr0, $xr2
@@ -3070,32 +3073,34 @@ _ZL24loopWithReductionAutoVecIjEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIjE
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a1, -16
 	vld	$vr3, $a1, 0
-	vpickve2gr.w	$a5, $vr2, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	xvinsgr2vr.d	$xr4, $a5, 0
-	vpickve2gr.w	$a5, $vr2, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	xvinsgr2vr.d	$xr4, $a5, 1
 	vpickve2gr.w	$a5, $vr2, 2
 	bstrpick.d	$a5, $a5, 31, 0
-	xvinsgr2vr.d	$xr4, $a5, 2
+	vinsgr2vr.d	$vr4, $a5, 0
 	vpickve2gr.w	$a5, $vr2, 3
 	bstrpick.d	$a5, $a5, 31, 0
-	xvinsgr2vr.d	$xr4, $a5, 3
-	vpickve2gr.w	$a5, $vr3, 0
+	vinsgr2vr.d	$vr4, $a5, 1
+	vpickve2gr.w	$a5, $vr2, 0
 	bstrpick.d	$a5, $a5, 31, 0
-	xvinsgr2vr.d	$xr2, $a5, 0
-	vpickve2gr.w	$a5, $vr3, 1
+	vinsgr2vr.d	$vr5, $a5, 0
+	vpickve2gr.w	$a5, $vr2, 1
 	bstrpick.d	$a5, $a5, 31, 0
-	xvinsgr2vr.d	$xr2, $a5, 1
+	vinsgr2vr.d	$vr5, $a5, 1
+	xvpermi.q	$xr5, $xr4, 2
 	vpickve2gr.w	$a5, $vr3, 2
 	bstrpick.d	$a5, $a5, 31, 0
-	xvinsgr2vr.d	$xr2, $a5, 2
+	vinsgr2vr.d	$vr2, $a5, 0
 	vpickve2gr.w	$a5, $vr3, 3
 	bstrpick.d	$a5, $a5, 31, 0
-	xvinsgr2vr.d	$xr2, $a5, 3
-	xvadd.d	$xr0, $xr0, $xr4
-	xvadd.d	$xr1, $xr1, $xr2
+	vinsgr2vr.d	$vr2, $a5, 1
+	vpickve2gr.w	$a5, $vr3, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	vinsgr2vr.d	$vr4, $a5, 0
+	vpickve2gr.w	$a5, $vr3, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	vinsgr2vr.d	$vr4, $a5, 1
+	xvpermi.q	$xr4, $xr2, 2
+	xvadd.d	$xr0, $xr0, $xr5
+	xvadd.d	$xr1, $xr1, $xr4
 	addi.d	$a4, $a4, -8
 	addi.d	$a1, $a1, 32
 	bnez	$a4, .LBB18_5

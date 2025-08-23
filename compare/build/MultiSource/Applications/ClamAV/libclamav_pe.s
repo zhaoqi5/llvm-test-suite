@@ -4140,14 +4140,15 @@ cli_scanpe:                             # @cli_scanpe
 	ld.w	$t0, $a1, -108
 	ld.w	$t1, $a1, -72
 	ld.w	$t2, $a1, -36
-	xvinsgr2vr.w	$xr2, $a3, 0
-	xvinsgr2vr.w	$xr2, $a4, 1
-	xvinsgr2vr.w	$xr2, $a5, 2
-	xvinsgr2vr.w	$xr2, $a6, 3
-	xvinsgr2vr.w	$xr2, $a7, 4
-	xvinsgr2vr.w	$xr2, $t0, 5
-	xvinsgr2vr.w	$xr2, $t1, 6
-	xvinsgr2vr.w	$xr2, $t2, 7
+	vinsgr2vr.w	$vr3, $a7, 0
+	vinsgr2vr.w	$vr3, $t0, 1
+	vinsgr2vr.w	$vr3, $t1, 2
+	vinsgr2vr.w	$vr3, $t2, 3
+	vinsgr2vr.w	$vr2, $a3, 0
+	vinsgr2vr.w	$vr2, $a4, 1
+	vinsgr2vr.w	$vr2, $a5, 2
+	vinsgr2vr.w	$vr2, $a6, 3
+	xvpermi.q	$xr2, $xr3, 2
 	ld.w	$a3, $a1, 0
 	ld.w	$a4, $a1, 36
 	ld.w	$a5, $a1, 72
@@ -4156,14 +4157,15 @@ cli_scanpe:                             # @cli_scanpe
 	ld.w	$t0, $a1, 180
 	ld.w	$t1, $a1, 216
 	ld.w	$t2, $a1, 252
-	xvinsgr2vr.w	$xr3, $a3, 0
-	xvinsgr2vr.w	$xr3, $a4, 1
-	xvinsgr2vr.w	$xr3, $a5, 2
-	xvinsgr2vr.w	$xr3, $a6, 3
-	xvinsgr2vr.w	$xr3, $a7, 4
-	xvinsgr2vr.w	$xr3, $t0, 5
-	xvinsgr2vr.w	$xr3, $t1, 6
-	xvinsgr2vr.w	$xr3, $t2, 7
+	vinsgr2vr.w	$vr3, $a7, 0
+	vinsgr2vr.w	$vr3, $t0, 1
+	vinsgr2vr.w	$vr3, $t1, 2
+	vinsgr2vr.w	$vr3, $t2, 3
+	vinsgr2vr.w	$vr4, $a3, 0
+	vinsgr2vr.w	$vr4, $a4, 1
+	vinsgr2vr.w	$vr4, $a5, 2
+	vinsgr2vr.w	$vr4, $a6, 3
+	xvpermi.q	$xr4, $xr3, 2
 	ld.w	$a3, $a1, -284
 	ld.w	$a4, $a1, -248
 	ld.w	$a5, $a1, -212
@@ -4172,14 +4174,15 @@ cli_scanpe:                             # @cli_scanpe
 	ld.w	$t0, $a1, -104
 	ld.w	$t1, $a1, -68
 	ld.w	$t2, $a1, -32
-	xvinsgr2vr.w	$xr4, $a3, 0
-	xvinsgr2vr.w	$xr4, $a4, 1
-	xvinsgr2vr.w	$xr4, $a5, 2
-	xvinsgr2vr.w	$xr4, $a6, 3
-	xvinsgr2vr.w	$xr4, $a7, 4
-	xvinsgr2vr.w	$xr4, $t0, 5
-	xvinsgr2vr.w	$xr4, $t1, 6
-	xvinsgr2vr.w	$xr4, $t2, 7
+	vinsgr2vr.w	$vr3, $a7, 0
+	vinsgr2vr.w	$vr3, $t0, 1
+	vinsgr2vr.w	$vr3, $t1, 2
+	vinsgr2vr.w	$vr3, $t2, 3
+	vinsgr2vr.w	$vr5, $a3, 0
+	vinsgr2vr.w	$vr5, $a4, 1
+	vinsgr2vr.w	$vr5, $a5, 2
+	vinsgr2vr.w	$vr5, $a6, 3
+	xvpermi.q	$xr5, $xr3, 2
 	ld.w	$a3, $a1, 4
 	ld.w	$a4, $a1, 40
 	ld.w	$a5, $a1, 76
@@ -4188,16 +4191,17 @@ cli_scanpe:                             # @cli_scanpe
 	ld.w	$t0, $a1, 184
 	ld.w	$t1, $a1, 220
 	ld.w	$t2, $a1, 256
-	xvinsgr2vr.w	$xr5, $a3, 0
-	xvinsgr2vr.w	$xr5, $a4, 1
-	xvinsgr2vr.w	$xr5, $a5, 2
-	xvinsgr2vr.w	$xr5, $a6, 3
-	xvinsgr2vr.w	$xr5, $a7, 4
-	xvinsgr2vr.w	$xr5, $t0, 5
-	xvinsgr2vr.w	$xr5, $t1, 6
-	xvinsgr2vr.w	$xr5, $t2, 7
-	xvadd.w	$xr2, $xr4, $xr2
-	xvadd.w	$xr3, $xr5, $xr3
+	vinsgr2vr.w	$vr3, $a7, 0
+	vinsgr2vr.w	$vr3, $t0, 1
+	vinsgr2vr.w	$vr3, $t1, 2
+	vinsgr2vr.w	$vr3, $t2, 3
+	vinsgr2vr.w	$vr6, $a3, 0
+	vinsgr2vr.w	$vr6, $a4, 1
+	vinsgr2vr.w	$vr6, $a5, 2
+	vinsgr2vr.w	$vr6, $a6, 3
+	xvpermi.q	$xr6, $xr3, 2
+	xvadd.w	$xr2, $xr5, $xr2
+	xvadd.w	$xr3, $xr6, $xr4
 	xvmax.wu	$xr0, $xr0, $xr2
 	xvmax.wu	$xr1, $xr1, $xr3
 	addi.d	$a2, $a2, -16
@@ -5327,14 +5331,15 @@ cli_scanpe:                             # @cli_scanpe
 	ld.w	$t0, $a1, -108
 	ld.w	$t1, $a1, -72
 	ld.w	$t2, $a1, -36
-	xvinsgr2vr.w	$xr2, $a3, 0
-	xvinsgr2vr.w	$xr2, $a4, 1
-	xvinsgr2vr.w	$xr2, $a5, 2
-	xvinsgr2vr.w	$xr2, $a6, 3
-	xvinsgr2vr.w	$xr2, $a7, 4
-	xvinsgr2vr.w	$xr2, $t0, 5
-	xvinsgr2vr.w	$xr2, $t1, 6
-	xvinsgr2vr.w	$xr2, $t2, 7
+	vinsgr2vr.w	$vr2, $a7, 0
+	vinsgr2vr.w	$vr2, $t0, 1
+	vinsgr2vr.w	$vr2, $t1, 2
+	vinsgr2vr.w	$vr2, $t2, 3
+	vinsgr2vr.w	$vr3, $a3, 0
+	vinsgr2vr.w	$vr3, $a4, 1
+	vinsgr2vr.w	$vr3, $a5, 2
+	vinsgr2vr.w	$vr3, $a6, 3
+	xvpermi.q	$xr3, $xr2, 2
 	ld.w	$a3, $a1, 0
 	ld.w	$a4, $a1, 36
 	ld.w	$a5, $a1, 72
@@ -5343,16 +5348,17 @@ cli_scanpe:                             # @cli_scanpe
 	ld.w	$t0, $a1, 180
 	ld.w	$t1, $a1, 216
 	ld.w	$t2, $a1, 252
-	xvinsgr2vr.w	$xr3, $a3, 0
-	xvinsgr2vr.w	$xr3, $a4, 1
-	xvinsgr2vr.w	$xr3, $a5, 2
-	xvinsgr2vr.w	$xr3, $a6, 3
-	xvinsgr2vr.w	$xr3, $a7, 4
-	xvinsgr2vr.w	$xr3, $t0, 5
-	xvinsgr2vr.w	$xr3, $t1, 6
-	xvinsgr2vr.w	$xr3, $t2, 7
-	xvmin.wu	$xr0, $xr2, $xr0
-	xvmin.wu	$xr1, $xr3, $xr1
+	vinsgr2vr.w	$vr2, $a7, 0
+	vinsgr2vr.w	$vr2, $t0, 1
+	vinsgr2vr.w	$vr2, $t1, 2
+	vinsgr2vr.w	$vr2, $t2, 3
+	vinsgr2vr.w	$vr4, $a3, 0
+	vinsgr2vr.w	$vr4, $a4, 1
+	vinsgr2vr.w	$vr4, $a5, 2
+	vinsgr2vr.w	$vr4, $a6, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvmin.wu	$xr0, $xr3, $xr0
+	xvmin.wu	$xr1, $xr4, $xr1
 	addi.d	$a2, $a2, -16
 	addi.d	$a1, $a1, 576
 	bnez	$a2, .LBB0_772

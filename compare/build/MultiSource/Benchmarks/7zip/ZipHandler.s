@@ -5871,24 +5871,26 @@ _ZN8NArchive4NZip8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArch
 	ld.d	$t2, $a1, 8
 	ld.d	$t3, $a1, 16
 	ld.d	$t4, $a1, 24
-	ld.d	$a5, $a5, 24
-	ld.d	$a6, $a6, 24
 	ld.d	$a7, $a7, 24
 	ld.d	$t0, $t0, 24
-	xvinsgr2vr.d	$xr2, $a5, 0
-	xvinsgr2vr.d	$xr2, $a6, 1
-	xvinsgr2vr.d	$xr2, $a7, 2
-	xvinsgr2vr.d	$xr2, $t0, 3
-	ld.d	$a5, $t1, 24
-	ld.d	$a6, $t2, 24
-	ld.d	$a7, $t3, 24
-	ld.d	$t0, $t4, 24
-	xvinsgr2vr.d	$xr3, $a5, 0
-	xvinsgr2vr.d	$xr3, $a6, 1
-	xvinsgr2vr.d	$xr3, $a7, 2
-	xvinsgr2vr.d	$xr3, $t0, 3
-	xvadd.d	$xr0, $xr2, $xr0
-	xvadd.d	$xr1, $xr3, $xr1
+	ld.d	$a5, $a5, 24
+	ld.d	$a6, $a6, 24
+	vinsgr2vr.d	$vr2, $a7, 0
+	vinsgr2vr.d	$vr2, $t0, 1
+	vinsgr2vr.d	$vr3, $a5, 0
+	vinsgr2vr.d	$vr3, $a6, 1
+	xvpermi.q	$xr3, $xr2, 2
+	ld.d	$a5, $t3, 24
+	ld.d	$a6, $t4, 24
+	ld.d	$a7, $t1, 24
+	ld.d	$t0, $t2, 24
+	vinsgr2vr.d	$vr2, $a5, 0
+	vinsgr2vr.d	$vr2, $a6, 1
+	vinsgr2vr.d	$vr4, $a7, 0
+	vinsgr2vr.d	$vr4, $t0, 1
+	xvpermi.q	$xr4, $xr2, 2
+	xvadd.d	$xr0, $xr3, $xr0
+	xvadd.d	$xr1, $xr4, $xr1
 	addi.w	$a4, $a4, -8
 	addi.d	$a1, $a1, 64
 	bnez	$a4, .LBB26_13

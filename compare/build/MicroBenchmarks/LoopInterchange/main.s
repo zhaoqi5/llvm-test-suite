@@ -47,21 +47,22 @@ _Z4initv:                               # @_Z4initv
 	xvadd.d	$xr6, $xr3, $xr2
 	add.d	$a6, $a1, $a5
 	xvpickve2gr.d	$a7, $xr6, 0
-	xvinsgr2vr.w	$xr7, $a7, 0
+	vinsgr2vr.w	$vr7, $a7, 0
 	xvpickve2gr.d	$a7, $xr6, 1
-	xvinsgr2vr.w	$xr7, $a7, 1
+	vinsgr2vr.w	$vr7, $a7, 1
 	xvpickve2gr.d	$a7, $xr6, 2
-	xvinsgr2vr.w	$xr7, $a7, 2
+	vinsgr2vr.w	$vr7, $a7, 2
 	xvpickve2gr.d	$a7, $xr6, 3
-	xvinsgr2vr.w	$xr7, $a7, 3
+	vinsgr2vr.w	$vr7, $a7, 3
 	xvpickve2gr.d	$a7, $xr5, 0
-	xvinsgr2vr.w	$xr7, $a7, 4
+	vinsgr2vr.w	$vr6, $a7, 0
 	xvpickve2gr.d	$a7, $xr5, 1
-	xvinsgr2vr.w	$xr7, $a7, 5
+	vinsgr2vr.w	$vr6, $a7, 1
 	xvpickve2gr.d	$a7, $xr5, 2
-	xvinsgr2vr.w	$xr7, $a7, 6
+	vinsgr2vr.w	$vr6, $a7, 2
 	xvpickve2gr.d	$a7, $xr5, 3
-	xvinsgr2vr.w	$xr7, $a7, 7
+	vinsgr2vr.w	$vr6, $a7, 3
+	xvpermi.q	$xr7, $xr6, 2
 	xvstx	$xr7, $a6, $a3
 	xvaddi.du	$xr3, $xr3, 8
 	addi.d	$a5, $a5, 32
@@ -139,21 +140,22 @@ main:                                   # @main
 	xvadd.d	$xr6, $xr3, $xr2
 	add.d	$a5, $a1, $a4
 	xvpickve2gr.d	$a6, $xr6, 0
-	xvinsgr2vr.w	$xr7, $a6, 0
+	vinsgr2vr.w	$vr7, $a6, 0
 	xvpickve2gr.d	$a6, $xr6, 1
-	xvinsgr2vr.w	$xr7, $a6, 1
+	vinsgr2vr.w	$vr7, $a6, 1
 	xvpickve2gr.d	$a6, $xr6, 2
-	xvinsgr2vr.w	$xr7, $a6, 2
+	vinsgr2vr.w	$vr7, $a6, 2
 	xvpickve2gr.d	$a6, $xr6, 3
-	xvinsgr2vr.w	$xr7, $a6, 3
+	vinsgr2vr.w	$vr7, $a6, 3
 	xvpickve2gr.d	$a6, $xr5, 0
-	xvinsgr2vr.w	$xr7, $a6, 4
+	vinsgr2vr.w	$vr6, $a6, 0
 	xvpickve2gr.d	$a6, $xr5, 1
-	xvinsgr2vr.w	$xr7, $a6, 5
+	vinsgr2vr.w	$vr6, $a6, 1
 	xvpickve2gr.d	$a6, $xr5, 2
-	xvinsgr2vr.w	$xr7, $a6, 6
+	vinsgr2vr.w	$vr6, $a6, 2
 	xvpickve2gr.d	$a6, $xr5, 3
-	xvinsgr2vr.w	$xr7, $a6, 7
+	vinsgr2vr.w	$vr6, $a6, 3
+	xvpermi.q	$xr7, $xr6, 2
 	xvstx	$xr7, $a5, $s0
 	xvaddi.du	$xr3, $xr3, 8
 	addi.d	$a4, $a4, 32

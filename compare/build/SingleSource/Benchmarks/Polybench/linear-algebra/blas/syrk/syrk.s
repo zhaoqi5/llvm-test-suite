@@ -476,9 +476,9 @@ main:                                   # @main
 	fld.d	$fa5, $ra, 0
 	fldx.d	$fa6, $ra, $a0
 	xvld	$xr7, $s0, 0
-	xvinsve0.d	$xr3, $xr4, 1
-	xvinsve0.d	$xr3, $xr5, 2
-	xvinsve0.d	$xr3, $xr6, 3
+	vextrins.d	$vr3, $vr4, 16
+	vextrins.d	$vr5, $vr6, 16
+	xvpermi.q	$xr3, $xr5, 2
 	xvfmadd.d	$xr3, $xr2, $xr3, $xr7
 	xvst	$xr3, $s0, 0
 	add.d	$ra, $ra, $a4
@@ -642,10 +642,10 @@ main:                                   # @main
 	fldx.d	$fa4, $s8, $a3
 	fld.d	$fa5, $s8, 0
 	fldx.d	$fa6, $s8, $a0
-	xvinsve0.d	$xr3, $xr4, 1
+	vextrins.d	$vr3, $vr4, 16
 	xvld	$xr4, $t6, 0
-	xvinsve0.d	$xr3, $xr5, 2
-	xvinsve0.d	$xr3, $xr6, 3
+	vextrins.d	$vr5, $vr6, 16
+	xvpermi.q	$xr3, $xr5, 2
 	xvfmul.d	$xr3, $xr2, $xr3
 	xvfadd.d	$xr3, $xr4, $xr3
 	xvst	$xr3, $t6, 0

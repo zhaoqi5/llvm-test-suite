@@ -243,26 +243,27 @@ main:                                   # @main
                                         #   Parent Loop BB7_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvori.b	$xr8, $xr3, 0
-	xvmadd.d	$xr8, $xr5, $xr2
+	xvmadd.d	$xr8, $xr4, $xr2
 	xvori.b	$xr9, $xr3, 0
-	xvmadd.d	$xr9, $xr4, $xr2
+	xvmadd.d	$xr9, $xr5, $xr2
 	xvpickve2gr.d	$t0, $xr9, 0
-	xvinsgr2vr.w	$xr10, $t0, 0
+	vinsgr2vr.w	$vr10, $t0, 0
 	xvpickve2gr.d	$t0, $xr9, 1
-	xvinsgr2vr.w	$xr10, $t0, 1
+	vinsgr2vr.w	$vr10, $t0, 1
 	xvpickve2gr.d	$t0, $xr9, 2
-	xvinsgr2vr.w	$xr10, $t0, 2
+	vinsgr2vr.w	$vr10, $t0, 2
 	xvpickve2gr.d	$t0, $xr9, 3
-	xvinsgr2vr.w	$xr10, $t0, 3
+	vinsgr2vr.w	$vr10, $t0, 3
 	xvpickve2gr.d	$t0, $xr8, 0
-	xvinsgr2vr.w	$xr10, $t0, 4
+	vinsgr2vr.w	$vr9, $t0, 0
 	xvpickve2gr.d	$t0, $xr8, 1
-	xvinsgr2vr.w	$xr10, $t0, 5
+	vinsgr2vr.w	$vr9, $t0, 1
 	xvpickve2gr.d	$t0, $xr8, 2
-	xvinsgr2vr.w	$xr10, $t0, 6
+	vinsgr2vr.w	$vr9, $t0, 2
 	xvpickve2gr.d	$t0, $xr8, 3
-	xvinsgr2vr.w	$xr10, $t0, 7
-	xvand.v	$xr8, $xr10, $xr6
+	vinsgr2vr.w	$vr9, $t0, 3
+	xvpermi.q	$xr9, $xr10, 2
+	xvand.v	$xr8, $xr9, $xr6
 	xvffint.s.wu	$xr8, $xr8
 	xvfdiv.s	$xr8, $xr8, $xr7
 	add.d	$t0, $a6, $a7
@@ -576,26 +577,27 @@ main:                                   # @main
                                         #   Parent Loop BB7_41 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvori.b	$xr14, $xr11, 0
-	xvmadd.d	$xr14, $xr13, $xr10
+	xvmadd.d	$xr14, $xr12, $xr10
 	xvori.b	$xr15, $xr11, 0
-	xvmadd.d	$xr15, $xr12, $xr10
+	xvmadd.d	$xr15, $xr13, $xr10
 	xvpickve2gr.d	$t3, $xr15, 0
-	xvinsgr2vr.w	$xr16, $t3, 0
+	vinsgr2vr.w	$vr16, $t3, 0
 	xvpickve2gr.d	$t3, $xr15, 1
-	xvinsgr2vr.w	$xr16, $t3, 1
+	vinsgr2vr.w	$vr16, $t3, 1
 	xvpickve2gr.d	$t3, $xr15, 2
-	xvinsgr2vr.w	$xr16, $t3, 2
+	vinsgr2vr.w	$vr16, $t3, 2
 	xvpickve2gr.d	$t3, $xr15, 3
-	xvinsgr2vr.w	$xr16, $t3, 3
+	vinsgr2vr.w	$vr16, $t3, 3
 	xvpickve2gr.d	$t3, $xr14, 0
-	xvinsgr2vr.w	$xr16, $t3, 4
+	vinsgr2vr.w	$vr15, $t3, 0
 	xvpickve2gr.d	$t3, $xr14, 1
-	xvinsgr2vr.w	$xr16, $t3, 5
+	vinsgr2vr.w	$vr15, $t3, 1
 	xvpickve2gr.d	$t3, $xr14, 2
-	xvinsgr2vr.w	$xr16, $t3, 6
+	vinsgr2vr.w	$vr15, $t3, 2
 	xvpickve2gr.d	$t3, $xr14, 3
-	xvinsgr2vr.w	$xr16, $t3, 7
-	xvand.v	$xr14, $xr16, $xr6
+	vinsgr2vr.w	$vr15, $t3, 3
+	xvpermi.q	$xr15, $xr16, 2
+	xvand.v	$xr14, $xr15, $xr6
 	xvffint.s.wu	$xr14, $xr14
 	xvfdiv.s	$xr14, $xr14, $xr7
 	add.d	$t3, $a5, $t2

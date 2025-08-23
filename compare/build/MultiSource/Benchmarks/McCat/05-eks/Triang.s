@@ -413,16 +413,16 @@ Trianglelise:                           # @Trianglelise
                                         #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a6, $a4, -8
-	ld.d	$a7, $a4, 0
-	ld.d	$t0, $a4, 8
-	ld.d	$t1, $a4, 16
+	ld.d	$a7, $a4, 8
+	ld.d	$t0, $a4, 16
+	ld.d	$t1, $a4, 0
 	fldx.d	$fa2, $a6, $s6
 	fldx.d	$fa3, $a7, $s6
 	fldx.d	$fa4, $t0, $s6
 	fldx.d	$fa5, $t1, $s6
-	xvinsve0.d	$xr2, $xr3, 1
-	xvinsve0.d	$xr2, $xr4, 2
-	xvinsve0.d	$xr2, $xr5, 3
+	vextrins.d	$vr3, $vr4, 16
+	vextrins.d	$vr2, $vr5, 16
+	xvpermi.q	$xr2, $xr3, 2
 	xvfmul.d	$xr2, $xr1, $xr2
 	xvst	$xr2, $a5, 0
 	addi.d	$a3, $a3, -4

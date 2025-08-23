@@ -102,11 +102,11 @@ begin_StrictFP:                         # @begin_StrictFP
 	fst.d	$fs6, $sp, 1888                 # 8-byte Folded Spill
 	fst.d	$fs7, $sp, 1880                 # 8-byte Folded Spill
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 1696
+	ori	$a0, $a0, 1744
 	sub.d	$sp, $sp, $a0
 	move	$s0, $zero
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$a0, $sp, $a0
 	addu16i.d	$a1, $a0, 1
 	addi.d	$s7, $a1, 4
@@ -114,12 +114,12 @@ begin_StrictFP:                         # @begin_StrictFP
 	ori	$a1, $a1, 4
 	add.d	$s8, $a0, $a1
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 3192
+	ori	$a0, $a0, 3240
 	add.d	$s2, $sp, $a0
 	ori	$s3, $zero, 64
 	lu12i.w	$s1, 260096
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 2808
+	ori	$a0, $a0, 2856
 	add.d	$s4, $sp, $a0
 	ori	$s5, $zero, 384
 	.p2align	4, , 16
@@ -180,11 +180,11 @@ begin_StrictFP:                         # @begin_StrictFP
 # %bb.2:                                # %for.body5.preheader
 	ori	$s2, $zero, 512
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$a0, $sp, $a0
 	st.d	$s2, $a0, 0
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 2688
+	ori	$a0, $a0, 2736
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 	lu12i.w	$fp, 1
@@ -193,14 +193,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	lu12i.w	$a1, 206
-	ori	$a1, $a1, 2696
+	ori	$a1, $a1, 2744
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a1, 206
-	ori	$a1, $a1, 2704
+	ori	$a1, $a1, 2752
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	st.w	$s1, $s0, 0
@@ -217,17 +217,17 @@ begin_StrictFP:                         # @begin_StrictFP
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 14
-	ori	$a0, $a0, 2296
+	ori	$a0, $a0, 2344
 	add.d	$a1, $sp, $a0
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(BeamFormWeights_StrictFP)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 2712
+	ori	$a0, $a0, 2760
 	add.d	$a0, $sp, $a0
 	st.d	$s2, $a0, 0
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 2720
+	ori	$a0, $a0, 2768
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 	move	$a0, $fp
@@ -235,14 +235,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	lu12i.w	$a1, 206
-	ori	$a1, $a1, 2728
+	ori	$a1, $a1, 2776
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a1, 206
-	ori	$a1, $a1, 2736
+	ori	$a1, $a1, 2784
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	st.w	$s1, $s0, 0
@@ -259,17 +259,17 @@ begin_StrictFP:                         # @begin_StrictFP
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 14
-	ori	$a0, $a0, 2392
+	ori	$a0, $a0, 2440
 	add.d	$a1, $sp, $a0
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(BeamFormWeights_StrictFP)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 2744
+	ori	$a0, $a0, 2792
 	add.d	$a0, $sp, $a0
 	st.d	$s2, $a0, 0
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 2752
+	ori	$a0, $a0, 2800
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 	move	$a0, $fp
@@ -277,14 +277,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	lu12i.w	$a1, 206
-	ori	$a1, $a1, 2760
+	ori	$a1, $a1, 2808
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a1, 206
-	ori	$a1, $a1, 2768
+	ori	$a1, $a1, 2816
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	st.w	$s1, $s0, 0
@@ -301,17 +301,17 @@ begin_StrictFP:                         # @begin_StrictFP
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 14
-	ori	$a0, $a0, 2488
+	ori	$a0, $a0, 2536
 	add.d	$a1, $sp, $a0
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(BeamFormWeights_StrictFP)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 2776
+	ori	$a0, $a0, 2824
 	add.d	$a0, $sp, $a0
 	st.d	$s2, $a0, 0
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 2784
+	ori	$a0, $a0, 2832
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 	move	$a0, $fp
@@ -319,14 +319,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	lu12i.w	$a1, 206
-	ori	$a1, $a1, 2792
+	ori	$a1, $a1, 2840
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a1, 206
-	ori	$a1, $a1, 2800
+	ori	$a1, $a1, 2848
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	st.w	$s1, $s0, 0
@@ -343,7 +343,7 @@ begin_StrictFP:                         # @begin_StrictFP
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 14
-	ori	$a0, $a0, 2584
+	ori	$a0, $a0, 2632
 	add.d	$a1, $sp, $a0
 	ori	$a0, $zero, 3
 	pcaddu18i	$ra, %call36(BeamFormWeights_StrictFP)
@@ -354,16 +354,16 @@ begin_StrictFP:                         # @begin_StrictFP
 	lu12i.w	$s1, 6
 	ori	$s3, $s1, 4
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	add.d	$a0, $t0, $s3
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	lu12i.w	$s4, 2
 	add.d	$a0, $s8, $s4
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	lu12i.w	$s5, 4
 	add.d	$a0, $s8, $s5
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	add.d	$a0, $s8, $s1
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	add.d	$a0, $s7, $s4
@@ -384,12 +384,12 @@ begin_StrictFP:                         # @begin_StrictFP
 	lu52i.d	$a0, $a0, 1048
 	vldi	$vr8, -1168
 	lu12i.w	$a4, 158
-	ori	$a4, $a4, 2680
+	ori	$a4, $a4, 2728
 	add.d	$t1, $sp, $a4
 	ori	$t2, $zero, 1024
 	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 152                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 144                   # 8-byte Folded Spill
 	st.d	$s3, $sp, 136                   # 8-byte Folded Spill
@@ -399,7 +399,7 @@ begin_StrictFP:                         # @begin_StrictFP
                                         #   in Loop: Header=BB1_4 Depth=1
 	st.w	$a1, $s3, 8
 	st.w	$a0, $s3, 4
-	ld.d	$s2, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 256                   # 8-byte Folded Reload
 	addi.d	$s2, $s2, 1
 	addi.d	$s6, $s6, 1
 	ld.d	$s7, $sp, 152                   # 8-byte Folded Reload
@@ -409,9 +409,9 @@ begin_StrictFP:                         # @begin_StrictFP
 	lu12i.w	$s4, 2
 	lu12i.w	$s5, 4
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a4, $zero, 12
 	beq	$s2, $a4, .LBB1_143
 .LBB1_4:                                # %for.cond16.preheader
@@ -450,14 +450,14 @@ begin_StrictFP:                         # @begin_StrictFP
                                         #   in Loop: Header=BB1_4 Depth=1
 	ori	$s0, $zero, 1024
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2684
+	ori	$a1, $a1, 2732
 	add.d	$s1, $sp, $a1
 	b	.LBB1_7
 	.p2align	4, , 16
 .LBB1_6:                                # %if.then.i.us
                                         #   in Loop: Header=BB1_7 Depth=2
 	lu12i.w	$a1, 183
-	ori	$a1, $a1, 632
+	ori	$a1, $a1, 680
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	addi.w	$fp, $fp, 1
@@ -495,13 +495,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$t0, $sp, $a1
 	ori	$a7, $zero, 1
 	b	.LBB1_9
@@ -540,13 +540,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	lu12i.w	$a3, -2
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	b	.LBB1_13
@@ -561,7 +561,7 @@ begin_StrictFP:                         # @begin_StrictFP
 .LBB1_16:                               # %if.then.i.us.1
                                         #   in Loop: Header=BB1_17 Depth=2
 	lu12i.w	$a1, 185
-	ori	$a1, $a1, 632
+	ori	$a1, $a1, 680
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	addi.w	$fp, $fp, 1
@@ -599,13 +599,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$t0, $sp, $a1
 	ori	$a7, $zero, 1
 	b	.LBB1_19
@@ -644,12 +644,12 @@ begin_StrictFP:                         # @begin_StrictFP
 	lu12i.w	$a3, -2
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	b	.LBB1_23
@@ -664,7 +664,7 @@ begin_StrictFP:                         # @begin_StrictFP
 .LBB1_26:                               # %if.then.i.us.2
                                         #   in Loop: Header=BB1_27 Depth=2
 	lu12i.w	$a1, 187
-	ori	$a1, $a1, 632
+	ori	$a1, $a1, 680
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	addi.w	$fp, $fp, 1
@@ -702,13 +702,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$t0, $sp, $a1
 	ori	$a7, $zero, 1
 	b	.LBB1_29
@@ -746,11 +746,11 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	b	.LBB1_33
@@ -759,13 +759,13 @@ begin_StrictFP:                         # @begin_StrictFP
                                         #   in Loop: Header=BB1_4 Depth=1
 	move	$fp, $zero
 	ori	$s0, $zero, 1024
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB1_37
 	.p2align	4, , 16
 .LBB1_36:                               # %if.then.i.us.3
                                         #   in Loop: Header=BB1_37 Depth=2
 	lu12i.w	$a1, 189
-	ori	$a1, $a1, 632
+	ori	$a1, $a1, 680
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	addi.w	$fp, $fp, 1
@@ -803,13 +803,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$t0, $sp, $a1
 	ori	$a7, $zero, 1
 	b	.LBB1_39
@@ -818,7 +818,7 @@ begin_StrictFP:                         # @begin_StrictFP
                                         #   in Loop: Header=BB1_4 Depth=1
 	move	$fp, $zero
 	ori	$s0, $zero, 1024
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_42:                               # %for.body.us.i.3
                                         #   Parent Loop BB1_4 Depth=1
@@ -848,11 +848,11 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	b	.LBB1_43
@@ -902,13 +902,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$t0, $sp, $a1
 	ori	$a7, $zero, 1
 	b	.LBB1_49
@@ -947,11 +947,11 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	b	.LBB1_53
@@ -960,7 +960,7 @@ begin_StrictFP:                         # @begin_StrictFP
                                         #   in Loop: Header=BB1_4 Depth=1
 	move	$fp, $zero
 	ori	$s0, $zero, 1024
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
 	b	.LBB1_57
 	.p2align	4, , 16
 .LBB1_56:                               # %if.then.i.us.5
@@ -1001,13 +1001,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$t0, $sp, $a1
 	ori	$a7, $zero, 1
 	b	.LBB1_59
@@ -1016,7 +1016,7 @@ begin_StrictFP:                         # @begin_StrictFP
                                         #   in Loop: Header=BB1_4 Depth=1
 	move	$fp, $zero
 	ori	$s0, $zero, 1024
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_62:                               # %for.body.us.i.5
                                         #   Parent Loop BB1_4 Depth=1
@@ -1046,11 +1046,11 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	b	.LBB1_63
@@ -1059,7 +1059,7 @@ begin_StrictFP:                         # @begin_StrictFP
                                         #   in Loop: Header=BB1_4 Depth=1
 	move	$fp, $zero
 	ori	$s0, $zero, 1024
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB1_67
 	.p2align	4, , 16
 .LBB1_66:                               # %if.then.i.us.6
@@ -1100,13 +1100,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$t0, $sp, $a1
 	ori	$a7, $zero, 1
 	b	.LBB1_69
@@ -1115,7 +1115,7 @@ begin_StrictFP:                         # @begin_StrictFP
                                         #   in Loop: Header=BB1_4 Depth=1
 	move	$fp, $zero
 	ori	$s0, $zero, 1024
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_72:                               # %for.body.us.i.6
                                         #   Parent Loop BB1_4 Depth=1
@@ -1145,11 +1145,11 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	b	.LBB1_73
@@ -1199,13 +1199,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$t0, $sp, $a1
 	ori	$a7, $zero, 1
 	b	.LBB1_79
@@ -1244,11 +1244,11 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	b	.LBB1_83
@@ -1298,13 +1298,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$t0, $sp, $a1
 	ori	$a7, $zero, 1
 	b	.LBB1_89
@@ -1343,11 +1343,11 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	b	.LBB1_93
@@ -1397,13 +1397,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$t0, $sp, $a1
 	ori	$a7, $zero, 1
 	b	.LBB1_99
@@ -1442,11 +1442,11 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	b	.LBB1_103
@@ -1496,13 +1496,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$t0, $sp, $a1
 	ori	$a7, $zero, 1
 	b	.LBB1_109
@@ -1541,11 +1541,11 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	b	.LBB1_113
@@ -1595,13 +1595,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ori	$a3, $zero, 768
 	lu12i.w	$a1, 182
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$t0, $sp, $a1
 	ori	$a7, $zero, 1
 	b	.LBB1_119
@@ -1640,21 +1640,21 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	b	.LBB1_123
 	.p2align	4, , 16
 .LBB1_125:                              # %for.cond24.preheader
                                         #   in Loop: Header=BB1_4 Depth=1
-	st.d	$s2, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 256                   # 8-byte Folded Spill
 	slli.d	$s7, $s2, 5
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 3192
+	ori	$a0, $a0, 3240
 	add.d	$a0, $sp, $a0
 	ldx.w	$s3, $s7, $a0
 	move	$s1, $zero
@@ -1753,11 +1753,11 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	move	$a0, $zero
@@ -1770,15 +1770,15 @@ begin_StrictFP:                         # @begin_StrictFP
 	st.w	$a1, $s4, 8
 	st.w	$a0, $s4, 4
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 2808
+	ori	$a0, $a0, 2856
 	add.d	$a0, $sp, $a0
 	add.d	$s3, $a0, $s7
 	ldx.w	$s4, $s7, $a0
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a0, 1
 	slli.d	$a0, $a0, 14
 	lu12i.w	$a1, 14
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$a1, $sp, $a1
 	add.d	$s5, $a1, $a0
 	addi.d	$s8, $s4, -1
@@ -1872,11 +1872,11 @@ begin_StrictFP:                         # @begin_StrictFP
 	jirl	$ra, $ra, 0
 	ori	$t2, $zero, 1024
 	lu12i.w	$a0, 158
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t1, $sp, $a0
 	vldi	$vr8, -1168
 	lu12i.w	$a0, 182
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	move	$a0, $zero
@@ -1884,18 +1884,18 @@ begin_StrictFP:                         # @begin_StrictFP
 	b	.LBB1_135
 .LBB1_143:                              # %vector.body.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	xvld	$xr1, $a0, %pc_lo12(.LCPI1_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	xvld	$xr2, $a0, %pc_lo12(.LCPI1_1)
 	ori	$a0, $zero, 512
 	lu12i.w	$a1, 14
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$a1, $sp, $a1
 	xvrepli.d	$xr0, 24
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	.p2align	4, , 16
 .LBB1_144:                              # %vector.body
@@ -2011,16 +2011,16 @@ begin_StrictFP:                         # @begin_StrictFP
 # %bb.145:                              # %for.inc95
 	lu12i.w	$a0, 12
 	lu12i.w	$a1, 14
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$a1, $sp, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr1, $a1, %pc_lo12(.LCPI1_0)
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr2, $a1, %pc_lo12(.LCPI1_1)
 	ori	$a1, $zero, 512
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	xvrepli.d	$xr3, 3
 	.p2align	4, , 16
@@ -2139,16 +2139,16 @@ begin_StrictFP:                         # @begin_StrictFP
 # %bb.147:                              # %for.inc95.1
 	lu12i.w	$a0, 24
 	lu12i.w	$a1, 14
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$a1, $sp, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr1, $a1, %pc_lo12(.LCPI1_0)
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr2, $a1, %pc_lo12(.LCPI1_1)
 	ori	$a1, $zero, 512
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	xvrepli.d	$xr3, 5
 	.p2align	4, , 16
@@ -2267,17 +2267,17 @@ begin_StrictFP:                         # @begin_StrictFP
 # %bb.149:                              # %for.inc95.2
 	lu12i.w	$a0, 36
 	lu12i.w	$a1, 14
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$a1, $sp, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr1, $a1, %pc_lo12(.LCPI1_0)
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr2, $a1, %pc_lo12(.LCPI1_1)
 	ori	$a1, $zero, 512
 	xvrepli.d	$xr3, 6
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	xvrepli.d	$xr4, 7
 	.p2align	4, , 16
@@ -2394,17 +2394,17 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvaddi.du	$xr1, $xr1, 8
 	bnez	$a1, .LBB1_150
 # %bb.151:                              # %for.inc95.3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr1, $a0, %pc_lo12(.LCPI1_0)
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr2, $a0, %pc_lo12(.LCPI1_1)
 	lu12i.w	$a0, 14
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$a0, $sp, $a0
 	addu16i.d	$a0, $a0, 3
 	ori	$a1, $zero, 512
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	.p2align	4, , 16
 .LBB1_152:                              # %vector.body305
@@ -2522,16 +2522,16 @@ begin_StrictFP:                         # @begin_StrictFP
 # %bb.153:                              # %for.inc95.4
 	lu12i.w	$a0, 60
 	lu12i.w	$a1, 14
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$a1, $sp, $a1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr1, $a2, %pc_lo12(.LCPI1_0)
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr2, $a2, %pc_lo12(.LCPI1_1)
 	add.d	$a0, $a1, $a0
 	ori	$a1, $zero, 512
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	.p2align	4, , 16
 .LBB1_154:                              # %vector.body313
@@ -2649,16 +2649,16 @@ begin_StrictFP:                         # @begin_StrictFP
 # %bb.155:                              # %for.inc95.5
 	lu12i.w	$a0, 72
 	lu12i.w	$a1, 14
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$a1, $sp, $a1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr1, $a2, %pc_lo12(.LCPI1_0)
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr2, $a2, %pc_lo12(.LCPI1_1)
 	add.d	$a0, $a1, $a0
 	ori	$a1, $zero, 512
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	.p2align	4, , 16
 .LBB1_156:                              # %vector.body321
@@ -2776,16 +2776,16 @@ begin_StrictFP:                         # @begin_StrictFP
 # %bb.157:                              # %for.inc95.6
 	lu12i.w	$a0, 84
 	lu12i.w	$a1, 14
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$a1, $sp, $a1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr1, $a2, %pc_lo12(.LCPI1_0)
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr2, $a2, %pc_lo12(.LCPI1_1)
 	add.d	$a0, $a1, $a0
 	ori	$a1, $zero, 512
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	.p2align	4, , 16
 .LBB1_158:                              # %vector.body329
@@ -2901,17 +2901,17 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvaddi.du	$xr1, $xr1, 8
 	bnez	$a1, .LBB1_158
 # %bb.159:                              # %for.inc95.7
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr1, $a0, %pc_lo12(.LCPI1_0)
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr2, $a0, %pc_lo12(.LCPI1_1)
 	lu12i.w	$a0, 14
-	ori	$a0, $a0, 2680
+	ori	$a0, $a0, 2728
 	add.d	$a0, $sp, $a0
 	addu16i.d	$a0, $a0, 6
 	ori	$a1, $zero, 512
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	.p2align	4, , 16
 .LBB1_160:                              # %vector.body337
@@ -3029,16 +3029,16 @@ begin_StrictFP:                         # @begin_StrictFP
 # %bb.161:                              # %for.inc95.8
 	lu12i.w	$a0, 108
 	lu12i.w	$a1, 14
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$a1, $sp, $a1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr1, $a2, %pc_lo12(.LCPI1_0)
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr2, $a2, %pc_lo12(.LCPI1_1)
 	add.d	$a0, $a1, $a0
 	ori	$a1, $zero, 512
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	.p2align	4, , 16
 .LBB1_162:                              # %vector.body345
@@ -3156,16 +3156,16 @@ begin_StrictFP:                         # @begin_StrictFP
 # %bb.163:                              # %for.inc95.9
 	lu12i.w	$a0, 120
 	lu12i.w	$a1, 14
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$a1, $sp, $a1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr1, $a2, %pc_lo12(.LCPI1_0)
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr2, $a2, %pc_lo12(.LCPI1_1)
 	add.d	$a0, $a1, $a0
 	ori	$a1, $zero, 512
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	.p2align	4, , 16
 .LBB1_164:                              # %vector.body353
@@ -3283,16 +3283,16 @@ begin_StrictFP:                         # @begin_StrictFP
 # %bb.165:                              # %for.inc95.10
 	lu12i.w	$a0, 132
 	lu12i.w	$a1, 14
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$a1, $sp, $a1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr1, $a2, %pc_lo12(.LCPI1_0)
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr2, $a2, %pc_lo12(.LCPI1_1)
 	add.d	$a0, $a1, $a0
 	ori	$a1, $zero, 512
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	.p2align	4, , 16
 .LBB1_166:                              # %vector.body361
@@ -3411,20 +3411,20 @@ begin_StrictFP:                         # @begin_StrictFP
 	move	$a1, $zero
 	pcalau12i	$a0, %pc_hi20(detector_out_StrictFP)
 	addi.d	$a0, $a0, %pc_lo12(detector_out_StrictFP)
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr0, $a0, %pc_lo12(.LCPI1_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr0, $a0, %pc_lo12(.LCPI1_1)
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
+	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2296
+	ori	$a0, $a0, 2344
 	add.d	$s7, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 2296
+	ori	$a0, $a0, 2344
 	add.d	$ra, $sp, $a0
-	ori	$a0, $zero, 2296
+	ori	$a0, $zero, 2344
 	add.d	$s4, $sp, $a0
 	.p2align	4, , 16
 .LBB1_168:                              # %for.cond101.preheader
@@ -3436,15 +3436,17 @@ begin_StrictFP:                         # @begin_StrictFP
 	alsl.d	$a0, $a1, $a1, 1
 	slli.d	$a0, $a0, 5
 	lu12i.w	$a2, 14
-	ori	$a2, $a2, 2296
+	ori	$a2, $a2, 2344
 	add.d	$a2, $sp, $a2
 	add.d	$a0, $a2, $a0
 	xvldrepl.w	$xr0, $a0, 0
-	xvst	$xr0, $sp, 208                  # 32-byte Folded Spill
+	xvst	$xr0, $sp, 256                  # 32-byte Folded Spill
 	xvldrepl.w	$xr0, $a0, 4
-	xvst	$xr0, $sp, 176                  # 32-byte Folded Spill
-	xvldrepl.w	$xr2, $a0, 8
-	xvldrepl.w	$xr3, $a0, 12
+	xvst	$xr0, $sp, 224                  # 32-byte Folded Spill
+	xvldrepl.w	$xr0, $a0, 8
+	xvst	$xr0, $sp, 192                  # 32-byte Folded Spill
+	xvldrepl.w	$xr0, $a0, 12
+	xvst	$xr0, $sp, 160                  # 32-byte Folded Spill
 	xvldrepl.w	$xr4, $a0, 16
 	xvldrepl.w	$xr5, $a0, 20
 	xvldrepl.w	$xr6, $a0, 24
@@ -3465,14 +3467,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvldrepl.w	$xr21, $a0, 84
 	xvldrepl.w	$xr22, $a0, 88
 	xvldrepl.w	$xr23, $a0, 92
-	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
 	slli.d	$a0, $a1, 11
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	ori	$a0, $zero, 512
-	xvld	$xr24, $sp, 64                  # 32-byte Folded Reload
-	xvld	$xr25, $sp, 96                  # 32-byte Folded Reload
+	xvld	$xr24, $sp, 48                  # 32-byte Folded Reload
+	xvld	$xr25, $sp, 80                  # 32-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_169:                              # %vector.body423
                                         #   Parent Loop BB1_168 Depth=1
@@ -3481,19 +3483,19 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvmul.d	$xr27, $xr25, $xr26
 	xvmul.d	$xr26, $xr24, $xr26
 	xvpickve2gr.d	$fp, $xr26, 0
-	add.d	$t5, $s7, $fp
+	add.d	$t2, $s7, $fp
 	xvpickve2gr.d	$s0, $xr26, 1
-	add.d	$t6, $s7, $s0
+	add.d	$t4, $s7, $s0
 	xvpickve2gr.d	$s1, $xr26, 2
-	add.d	$t7, $s7, $s1
+	add.d	$t5, $s7, $s1
 	xvpickve2gr.d	$s2, $xr26, 3
-	add.d	$t8, $s7, $s2
+	add.d	$t6, $s7, $s2
 	xvpickve2gr.d	$s3, $xr27, 0
-	add.d	$t4, $s7, $s3
+	add.d	$t7, $s7, $s3
 	xvpickve2gr.d	$s5, $xr27, 1
-	add.d	$t3, $s7, $s5
+	add.d	$t8, $s7, $s5
 	xvpickve2gr.d	$s6, $xr27, 2
-	add.d	$t2, $s7, $s6
+	add.d	$t3, $s7, $s6
 	xvpickve2gr.d	$s8, $xr27, 3
 	add.d	$t1, $s7, $s8
 	xvslli.d	$xr26, $xr25, 3
@@ -3513,457 +3515,459 @@ begin_StrictFP:                         # @begin_StrictFP
 	fldx.s	$fs6, $s3, $s7
 	fldx.s	$fs7, $s5, $s7
 	fldx.s	$fa0, $s6, $s7
-	xvinsve0.w	$xr27, $xr26, 1
-	fldx.s	$fs2, $s8, $s7
-	xvinsve0.w	$xr27, $xr28, 2
-	xvinsve0.w	$xr27, $xr29, 3
-	xvinsve0.w	$xr27, $xr30, 4
-	xvinsve0.w	$xr27, $xr31, 5
-	xvinsve0.w	$xr27, $xr0, 6
-	xvinsve0.w	$xr27, $xr26, 7
-	xvld	$xr1, $sp, 208                  # 32-byte Folded Reload
-	xvfmul.s	$xr0, $xr1, $xr27
+	fldx.s	$fa1, $s8, $s7
+	vextrins.w	$vr27, $vr26, 16
+	vextrins.w	$vr27, $vr28, 32
+	vextrins.w	$vr27, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr0, 32
+	vextrins.w	$vr30, $vr1, 48
+	xvpermi.q	$xr27, $xr30, 2
+	xvld	$xr3, $sp, 256                  # 32-byte Folded Reload
+	xvfmul.s	$xr0, $xr3, $xr27
+	fld.s	$fa1, $t2, 4
+	fld.s	$fs2, $t4, 4
 	fld.s	$fs4, $t5, 4
-	fld.s	$fs2, $t6, 4
-	fld.s	$fs5, $t7, 4
-	fld.s	$fs6, $t8, 4
-	fld.s	$fs7, $t4, 4
-	xvinsve0.w	$xr28, $xr26, 1
-	fld.s	$fs2, $t3, 4
-	xvinsve0.w	$xr28, $xr29, 2
-	fld.s	$fs5, $t2, 4
-	xvinsve0.w	$xr28, $xr30, 3
-	fld.s	$fs6, $t1, 4
-	xvinsve0.w	$xr28, $xr31, 4
-	xvinsve0.w	$xr28, $xr26, 5
-	xvinsve0.w	$xr28, $xr29, 6
-	xvinsve0.w	$xr28, $xr30, 7
-	xvld	$xr30, $sp, 176                 # 32-byte Folded Reload
-	xvfmul.s	$xr26, $xr30, $xr28
-	xvfsub.s	$xr0, $xr0, $xr26
-	xvrepli.b	$xr29, 0
-	xvfadd.s	$xr26, $xr0, $xr29
-	xvfmul.s	$xr0, $xr1, $xr28
-	xvfmul.s	$xr27, $xr27, $xr30
-	xvfadd.s	$xr0, $xr27, $xr0
-	xvfadd.s	$xr27, $xr0, $xr29
-	fld.s	$fs4, $t5, 8
-	fld.s	$fa0, $t6, 8
+	fld.s	$fs5, $t6, 4
+	fld.s	$fs6, $t7, 4
+	fld.s	$fs7, $t8, 4
+	fld.s	$fa2, $t3, 4
+	vextrins.w	$vr1, $vr26, 16
+	fld.s	$fs2, $t1, 4
+	vextrins.w	$vr1, $vr28, 32
+	vextrins.w	$vr1, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr2, 32
+	vextrins.w	$vr30, $vr26, 48
+	xvpermi.q	$xr1, $xr30, 2
+	xvld	$xr28, $sp, 224                 # 32-byte Folded Reload
+	xvfmul.s	$xr2, $xr28, $xr1
+	xvfsub.s	$xr0, $xr0, $xr2
+	xvrepli.b	$xr2, 0
+	xvfadd.s	$xr26, $xr0, $xr2
+	xvfmul.s	$xr0, $xr3, $xr1
+	xvfmul.s	$xr1, $xr27, $xr28
+	xvfadd.s	$xr0, $xr1, $xr0
+	xvfadd.s	$xr27, $xr0, $xr2
+	fld.s	$fs4, $t2, 8
+	fld.s	$fa0, $t4, 8
+	fld.s	$fa1, $t5, 8
+	fld.s	$fa2, $t6, 8
 	fld.s	$fs5, $t7, 8
 	fld.s	$fs6, $t8, 8
-	fld.s	$fs7, $t4, 8
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t3, 8
-	xvinsve0.w	$xr28, $xr29, 2
-	fld.s	$fs5, $t2, 8
-	xvinsve0.w	$xr28, $xr30, 3
-	fld.s	$fs6, $t1, 8
-	xvinsve0.w	$xr28, $xr31, 4
-	xvinsve0.w	$xr28, $xr0, 5
-	xvinsve0.w	$xr28, $xr29, 6
-	fld.s	$fa0, $t5, 12
+	fld.s	$fs7, $t3, 8
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 8
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 12
+	fld.s	$fa1, $t4, 12
+	fld.s	$fa2, $t5, 12
 	fld.s	$fs5, $t6, 12
-	xvinsve0.w	$xr28, $xr30, 7
 	fld.s	$fs6, $t7, 12
 	fld.s	$fs7, $t8, 12
-	xvinsve0.w	$xr0, $xr29, 1
-	fld.s	$fs5, $t4, 12
-	xvinsve0.w	$xr0, $xr30, 2
-	fld.s	$fs6, $t3, 12
-	xvinsve0.w	$xr0, $xr31, 3
-	fld.s	$fs7, $t2, 12
-	xvinsve0.w	$xr0, $xr29, 4
-	fld.s	$fs5, $t1, 12
-	xvinsve0.w	$xr0, $xr30, 5
-	xvfmul.s	$xr30, $xr2, $xr28
-	xvinsve0.w	$xr0, $xr31, 6
-	xvinsve0.w	$xr0, $xr29, 7
-	xvfmul.s	$xr29, $xr3, $xr0
-	xvfsub.s	$xr29, $xr30, $xr29
-	xvfadd.s	$xr26, $xr26, $xr29
-	xvfmul.s	$xr0, $xr2, $xr0
-	xvfmul.s	$xr28, $xr28, $xr3
-	xvfadd.s	$xr0, $xr28, $xr0
+	vextrins.w	$vr0, $vr1, 16
+	fld.s	$fa1, $t3, 12
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 12
+	vextrins.w	$vr0, $vr29, 48
+	xvld	$xr3, $sp, 192                  # 32-byte Folded Reload
+	xvfmul.s	$xr29, $xr3, $xr28
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
+	xvld	$xr2, $sp, 160                  # 32-byte Folded Reload
+	xvfmul.s	$xr1, $xr2, $xr0
+	xvfsub.s	$xr1, $xr29, $xr1
+	xvfadd.s	$xr26, $xr26, $xr1
+	xvfmul.s	$xr0, $xr3, $xr0
+	xvfmul.s	$xr1, $xr28, $xr2
+	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t5, 16
-	fld.s	$fa0, $t6, 16
+	fld.s	$fs4, $t2, 16
+	fld.s	$fa0, $t4, 16
+	fld.s	$fa1, $t5, 16
+	fld.s	$fa2, $t6, 16
 	fld.s	$fs5, $t7, 16
 	fld.s	$fs6, $t8, 16
-	fld.s	$fs7, $t4, 16
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t3, 16
-	xvinsve0.w	$xr28, $xr29, 2
-	fld.s	$fs5, $t2, 16
-	xvinsve0.w	$xr28, $xr30, 3
-	fld.s	$fs6, $t1, 16
-	xvinsve0.w	$xr28, $xr31, 4
-	xvinsve0.w	$xr28, $xr0, 5
-	xvinsve0.w	$xr28, $xr29, 6
-	fld.s	$fa0, $t5, 20
+	fld.s	$fs7, $t3, 16
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 16
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 20
+	fld.s	$fa1, $t4, 20
+	fld.s	$fa2, $t5, 20
 	fld.s	$fs5, $t6, 20
-	xvinsve0.w	$xr28, $xr30, 7
 	fld.s	$fs6, $t7, 20
 	fld.s	$fs7, $t8, 20
-	xvinsve0.w	$xr0, $xr29, 1
-	fld.s	$fs5, $t4, 20
-	xvinsve0.w	$xr0, $xr30, 2
-	fld.s	$fs6, $t3, 20
-	xvinsve0.w	$xr0, $xr31, 3
-	fld.s	$fs7, $t2, 20
-	xvinsve0.w	$xr0, $xr29, 4
-	fld.s	$fs5, $t1, 20
-	xvinsve0.w	$xr0, $xr30, 5
-	xvfmul.s	$xr30, $xr4, $xr28
-	xvinsve0.w	$xr0, $xr31, 6
-	xvinsve0.w	$xr0, $xr29, 7
-	xvfmul.s	$xr29, $xr5, $xr0
-	xvfsub.s	$xr29, $xr30, $xr29
-	xvfadd.s	$xr26, $xr26, $xr29
+	vextrins.w	$vr0, $vr1, 16
+	fld.s	$fa1, $t3, 20
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 20
+	vextrins.w	$vr0, $vr29, 48
+	xvfmul.s	$xr29, $xr4, $xr28
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
+	xvfmul.s	$xr1, $xr5, $xr0
+	xvfsub.s	$xr1, $xr29, $xr1
+	xvfadd.s	$xr26, $xr26, $xr1
 	xvfmul.s	$xr0, $xr4, $xr0
-	xvfmul.s	$xr28, $xr28, $xr5
-	xvfadd.s	$xr0, $xr28, $xr0
+	xvfmul.s	$xr1, $xr28, $xr5
+	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t5, 24
-	fld.s	$fa0, $t6, 24
+	fld.s	$fs4, $t2, 24
+	fld.s	$fa0, $t4, 24
+	fld.s	$fa1, $t5, 24
+	fld.s	$fa2, $t6, 24
 	fld.s	$fs5, $t7, 24
 	fld.s	$fs6, $t8, 24
-	fld.s	$fs7, $t4, 24
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t3, 24
-	xvinsve0.w	$xr28, $xr29, 2
-	fld.s	$fs5, $t2, 24
-	xvinsve0.w	$xr28, $xr30, 3
-	fld.s	$fs6, $t1, 24
-	xvinsve0.w	$xr28, $xr31, 4
-	xvinsve0.w	$xr28, $xr0, 5
-	xvinsve0.w	$xr28, $xr29, 6
-	fld.s	$fa0, $t5, 28
+	fld.s	$fs7, $t3, 24
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 24
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 28
+	fld.s	$fa1, $t4, 28
+	fld.s	$fa2, $t5, 28
 	fld.s	$fs5, $t6, 28
-	xvinsve0.w	$xr28, $xr30, 7
 	fld.s	$fs6, $t7, 28
 	fld.s	$fs7, $t8, 28
-	xvinsve0.w	$xr0, $xr29, 1
-	fld.s	$fs5, $t4, 28
-	xvinsve0.w	$xr0, $xr30, 2
-	fld.s	$fs6, $t3, 28
-	xvinsve0.w	$xr0, $xr31, 3
-	fld.s	$fs7, $t2, 28
-	xvinsve0.w	$xr0, $xr29, 4
-	fld.s	$fs5, $t1, 28
-	xvinsve0.w	$xr0, $xr30, 5
-	xvfmul.s	$xr30, $xr6, $xr28
-	xvinsve0.w	$xr0, $xr31, 6
-	xvinsve0.w	$xr0, $xr29, 7
-	xvfmul.s	$xr29, $xr7, $xr0
-	xvfsub.s	$xr29, $xr30, $xr29
-	xvfadd.s	$xr26, $xr26, $xr29
+	vextrins.w	$vr0, $vr1, 16
+	fld.s	$fa1, $t3, 28
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 28
+	vextrins.w	$vr0, $vr29, 48
+	xvfmul.s	$xr29, $xr6, $xr28
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
+	xvfmul.s	$xr1, $xr7, $xr0
+	xvfsub.s	$xr1, $xr29, $xr1
+	xvfadd.s	$xr26, $xr26, $xr1
 	xvfmul.s	$xr0, $xr6, $xr0
-	xvfmul.s	$xr28, $xr28, $xr7
-	xvfadd.s	$xr0, $xr28, $xr0
+	xvfmul.s	$xr1, $xr28, $xr7
+	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t5, 32
-	fld.s	$fa0, $t6, 32
+	fld.s	$fs4, $t2, 32
+	fld.s	$fa0, $t4, 32
+	fld.s	$fa1, $t5, 32
+	fld.s	$fa2, $t6, 32
 	fld.s	$fs5, $t7, 32
 	fld.s	$fs6, $t8, 32
-	fld.s	$fs7, $t4, 32
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t3, 32
-	xvinsve0.w	$xr28, $xr29, 2
-	fld.s	$fs5, $t2, 32
-	xvinsve0.w	$xr28, $xr30, 3
-	fld.s	$fs6, $t1, 32
-	xvinsve0.w	$xr28, $xr31, 4
-	xvinsve0.w	$xr28, $xr0, 5
-	xvinsve0.w	$xr28, $xr29, 6
-	fld.s	$fa0, $t5, 36
+	fld.s	$fs7, $t3, 32
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 32
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 36
+	fld.s	$fa1, $t4, 36
+	fld.s	$fa2, $t5, 36
 	fld.s	$fs5, $t6, 36
-	xvinsve0.w	$xr28, $xr30, 7
 	fld.s	$fs6, $t7, 36
 	fld.s	$fs7, $t8, 36
-	xvinsve0.w	$xr0, $xr29, 1
-	fld.s	$fs5, $t4, 36
-	xvinsve0.w	$xr0, $xr30, 2
-	fld.s	$fs6, $t3, 36
-	xvinsve0.w	$xr0, $xr31, 3
-	fld.s	$fs7, $t2, 36
-	xvinsve0.w	$xr0, $xr29, 4
-	fld.s	$fs5, $t1, 36
-	xvinsve0.w	$xr0, $xr30, 5
-	xvfmul.s	$xr30, $xr8, $xr28
-	xvinsve0.w	$xr0, $xr31, 6
-	xvinsve0.w	$xr0, $xr29, 7
-	xvfmul.s	$xr29, $xr9, $xr0
-	xvfsub.s	$xr29, $xr30, $xr29
-	xvfadd.s	$xr26, $xr26, $xr29
+	vextrins.w	$vr0, $vr1, 16
+	fld.s	$fa1, $t3, 36
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 36
+	vextrins.w	$vr0, $vr29, 48
+	xvfmul.s	$xr29, $xr8, $xr28
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
+	xvfmul.s	$xr1, $xr9, $xr0
+	xvfsub.s	$xr1, $xr29, $xr1
+	xvfadd.s	$xr26, $xr26, $xr1
 	xvfmul.s	$xr0, $xr8, $xr0
-	xvfmul.s	$xr28, $xr28, $xr9
-	xvfadd.s	$xr0, $xr28, $xr0
+	xvfmul.s	$xr1, $xr28, $xr9
+	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t5, 40
-	fld.s	$fa0, $t6, 40
+	fld.s	$fs4, $t2, 40
+	fld.s	$fa0, $t4, 40
+	fld.s	$fa1, $t5, 40
+	fld.s	$fa2, $t6, 40
 	fld.s	$fs5, $t7, 40
 	fld.s	$fs6, $t8, 40
-	fld.s	$fs7, $t4, 40
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t3, 40
-	xvinsve0.w	$xr28, $xr29, 2
-	fld.s	$fs5, $t2, 40
-	xvinsve0.w	$xr28, $xr30, 3
-	fld.s	$fs6, $t1, 40
-	xvinsve0.w	$xr28, $xr31, 4
-	xvinsve0.w	$xr28, $xr0, 5
-	xvinsve0.w	$xr28, $xr29, 6
-	fld.s	$fa0, $t5, 44
+	fld.s	$fs7, $t3, 40
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 40
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 44
+	fld.s	$fa1, $t4, 44
+	fld.s	$fa2, $t5, 44
 	fld.s	$fs5, $t6, 44
-	xvinsve0.w	$xr28, $xr30, 7
 	fld.s	$fs6, $t7, 44
 	fld.s	$fs7, $t8, 44
-	xvinsve0.w	$xr0, $xr29, 1
-	fld.s	$fs5, $t4, 44
-	xvinsve0.w	$xr0, $xr30, 2
-	fld.s	$fs6, $t3, 44
-	xvinsve0.w	$xr0, $xr31, 3
-	fld.s	$fs7, $t2, 44
-	xvinsve0.w	$xr0, $xr29, 4
-	fld.s	$fs5, $t1, 44
-	xvinsve0.w	$xr0, $xr30, 5
-	xvfmul.s	$xr30, $xr10, $xr28
-	xvinsve0.w	$xr0, $xr31, 6
-	xvinsve0.w	$xr0, $xr29, 7
-	xvfmul.s	$xr29, $xr11, $xr0
-	xvfsub.s	$xr29, $xr30, $xr29
-	xvfadd.s	$xr26, $xr26, $xr29
+	vextrins.w	$vr0, $vr1, 16
+	fld.s	$fa1, $t3, 44
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 44
+	vextrins.w	$vr0, $vr29, 48
+	xvfmul.s	$xr29, $xr10, $xr28
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
+	xvfmul.s	$xr1, $xr11, $xr0
+	xvfsub.s	$xr1, $xr29, $xr1
+	xvfadd.s	$xr26, $xr26, $xr1
 	xvfmul.s	$xr0, $xr10, $xr0
-	xvfmul.s	$xr28, $xr28, $xr11
-	xvfadd.s	$xr0, $xr28, $xr0
+	xvfmul.s	$xr1, $xr28, $xr11
+	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t5, 48
-	fld.s	$fa0, $t6, 48
+	fld.s	$fs4, $t2, 48
+	fld.s	$fa0, $t4, 48
+	fld.s	$fa1, $t5, 48
+	fld.s	$fa2, $t6, 48
 	fld.s	$fs5, $t7, 48
 	fld.s	$fs6, $t8, 48
-	fld.s	$fs7, $t4, 48
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t3, 48
-	xvinsve0.w	$xr28, $xr29, 2
-	fld.s	$fs5, $t2, 48
-	xvinsve0.w	$xr28, $xr30, 3
-	fld.s	$fs6, $t1, 48
-	xvinsve0.w	$xr28, $xr31, 4
-	xvinsve0.w	$xr28, $xr0, 5
-	xvinsve0.w	$xr28, $xr29, 6
-	fld.s	$fa0, $t5, 52
+	fld.s	$fs7, $t3, 48
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 48
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 52
+	fld.s	$fa1, $t4, 52
+	fld.s	$fa2, $t5, 52
 	fld.s	$fs5, $t6, 52
-	xvinsve0.w	$xr28, $xr30, 7
 	fld.s	$fs6, $t7, 52
 	fld.s	$fs7, $t8, 52
-	xvinsve0.w	$xr0, $xr29, 1
-	fld.s	$fs5, $t4, 52
-	xvinsve0.w	$xr0, $xr30, 2
-	fld.s	$fs6, $t3, 52
-	xvinsve0.w	$xr0, $xr31, 3
-	fld.s	$fs7, $t2, 52
-	xvinsve0.w	$xr0, $xr29, 4
-	fld.s	$fs5, $t1, 52
-	xvinsve0.w	$xr0, $xr30, 5
-	xvfmul.s	$xr30, $xr12, $xr28
-	xvinsve0.w	$xr0, $xr31, 6
-	xvinsve0.w	$xr0, $xr29, 7
-	xvfmul.s	$xr29, $xr13, $xr0
-	xvfsub.s	$xr29, $xr30, $xr29
-	xvfadd.s	$xr26, $xr26, $xr29
+	vextrins.w	$vr0, $vr1, 16
+	fld.s	$fa1, $t3, 52
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 52
+	vextrins.w	$vr0, $vr29, 48
+	xvfmul.s	$xr29, $xr12, $xr28
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
+	xvfmul.s	$xr1, $xr13, $xr0
+	xvfsub.s	$xr1, $xr29, $xr1
+	xvfadd.s	$xr26, $xr26, $xr1
 	xvfmul.s	$xr0, $xr12, $xr0
-	xvfmul.s	$xr28, $xr28, $xr13
-	xvfadd.s	$xr0, $xr28, $xr0
+	xvfmul.s	$xr1, $xr28, $xr13
+	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t5, 56
-	fld.s	$fa0, $t6, 56
+	fld.s	$fs4, $t2, 56
+	fld.s	$fa0, $t4, 56
+	fld.s	$fa1, $t5, 56
+	fld.s	$fa2, $t6, 56
 	fld.s	$fs5, $t7, 56
 	fld.s	$fs6, $t8, 56
-	fld.s	$fs7, $t4, 56
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t3, 56
-	xvinsve0.w	$xr28, $xr29, 2
-	fld.s	$fs5, $t2, 56
-	xvinsve0.w	$xr28, $xr30, 3
-	fld.s	$fs6, $t1, 56
-	xvinsve0.w	$xr28, $xr31, 4
-	xvinsve0.w	$xr28, $xr0, 5
-	xvinsve0.w	$xr28, $xr29, 6
-	fld.s	$fa0, $t5, 60
+	fld.s	$fs7, $t3, 56
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 56
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 60
+	fld.s	$fa1, $t4, 60
+	fld.s	$fa2, $t5, 60
 	fld.s	$fs5, $t6, 60
-	xvinsve0.w	$xr28, $xr30, 7
 	fld.s	$fs6, $t7, 60
 	fld.s	$fs7, $t8, 60
-	xvinsve0.w	$xr0, $xr29, 1
-	fld.s	$fs5, $t4, 60
-	xvinsve0.w	$xr0, $xr30, 2
-	fld.s	$fs6, $t3, 60
-	xvinsve0.w	$xr0, $xr31, 3
-	fld.s	$fs7, $t2, 60
-	xvinsve0.w	$xr0, $xr29, 4
-	fld.s	$fs5, $t1, 60
-	xvinsve0.w	$xr0, $xr30, 5
-	xvfmul.s	$xr30, $xr14, $xr28
-	xvinsve0.w	$xr0, $xr31, 6
-	xvinsve0.w	$xr0, $xr29, 7
-	xvfmul.s	$xr29, $xr15, $xr0
-	xvfsub.s	$xr29, $xr30, $xr29
-	xvfadd.s	$xr26, $xr26, $xr29
+	vextrins.w	$vr0, $vr1, 16
+	fld.s	$fa1, $t3, 60
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 60
+	vextrins.w	$vr0, $vr29, 48
+	xvfmul.s	$xr29, $xr14, $xr28
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
+	xvfmul.s	$xr1, $xr15, $xr0
+	xvfsub.s	$xr1, $xr29, $xr1
+	xvfadd.s	$xr26, $xr26, $xr1
 	xvfmul.s	$xr0, $xr14, $xr0
-	xvfmul.s	$xr28, $xr28, $xr15
-	xvfadd.s	$xr0, $xr28, $xr0
+	xvfmul.s	$xr1, $xr28, $xr15
+	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t5, 64
-	fld.s	$fa0, $t6, 64
+	fld.s	$fs4, $t2, 64
+	fld.s	$fa0, $t4, 64
+	fld.s	$fa1, $t5, 64
+	fld.s	$fa2, $t6, 64
 	fld.s	$fs5, $t7, 64
 	fld.s	$fs6, $t8, 64
-	fld.s	$fs7, $t4, 64
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t3, 64
-	xvinsve0.w	$xr28, $xr29, 2
-	fld.s	$fs5, $t2, 64
-	xvinsve0.w	$xr28, $xr30, 3
-	fld.s	$fs6, $t1, 64
-	xvinsve0.w	$xr28, $xr31, 4
-	xvinsve0.w	$xr28, $xr0, 5
-	xvinsve0.w	$xr28, $xr29, 6
-	fld.s	$fa0, $t5, 68
+	fld.s	$fs7, $t3, 64
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 64
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 68
+	fld.s	$fa1, $t4, 68
+	fld.s	$fa2, $t5, 68
 	fld.s	$fs5, $t6, 68
-	xvinsve0.w	$xr28, $xr30, 7
 	fld.s	$fs6, $t7, 68
 	fld.s	$fs7, $t8, 68
-	xvinsve0.w	$xr0, $xr29, 1
-	fld.s	$fs5, $t4, 68
-	xvinsve0.w	$xr0, $xr30, 2
-	fld.s	$fs6, $t3, 68
-	xvinsve0.w	$xr0, $xr31, 3
-	fld.s	$fs7, $t2, 68
-	xvinsve0.w	$xr0, $xr29, 4
-	fld.s	$fs5, $t1, 68
-	xvinsve0.w	$xr0, $xr30, 5
-	xvfmul.s	$xr30, $xr16, $xr28
-	xvinsve0.w	$xr0, $xr31, 6
-	xvinsve0.w	$xr0, $xr29, 7
-	xvfmul.s	$xr29, $xr17, $xr0
-	xvfsub.s	$xr29, $xr30, $xr29
-	xvfadd.s	$xr26, $xr26, $xr29
+	vextrins.w	$vr0, $vr1, 16
+	fld.s	$fa1, $t3, 68
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 68
+	vextrins.w	$vr0, $vr29, 48
+	xvfmul.s	$xr29, $xr16, $xr28
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
+	xvfmul.s	$xr1, $xr17, $xr0
+	xvfsub.s	$xr1, $xr29, $xr1
+	xvfadd.s	$xr26, $xr26, $xr1
 	xvfmul.s	$xr0, $xr16, $xr0
-	xvfmul.s	$xr28, $xr28, $xr17
-	xvfadd.s	$xr0, $xr28, $xr0
+	xvfmul.s	$xr1, $xr28, $xr17
+	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t5, 72
-	fld.s	$fa0, $t6, 72
+	fld.s	$fs4, $t2, 72
+	fld.s	$fa0, $t4, 72
+	fld.s	$fa1, $t5, 72
+	fld.s	$fa2, $t6, 72
 	fld.s	$fs5, $t7, 72
 	fld.s	$fs6, $t8, 72
-	fld.s	$fs7, $t4, 72
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t3, 72
-	xvinsve0.w	$xr28, $xr29, 2
-	fld.s	$fs5, $t2, 72
-	xvinsve0.w	$xr28, $xr30, 3
-	fld.s	$fs6, $t1, 72
-	xvinsve0.w	$xr28, $xr31, 4
-	xvinsve0.w	$xr28, $xr0, 5
-	xvinsve0.w	$xr28, $xr29, 6
-	fld.s	$fa0, $t5, 76
+	fld.s	$fs7, $t3, 72
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 72
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 76
+	fld.s	$fa1, $t4, 76
+	fld.s	$fa2, $t5, 76
 	fld.s	$fs5, $t6, 76
-	xvinsve0.w	$xr28, $xr30, 7
 	fld.s	$fs6, $t7, 76
 	fld.s	$fs7, $t8, 76
-	xvinsve0.w	$xr0, $xr29, 1
-	fld.s	$fs5, $t4, 76
-	xvinsve0.w	$xr0, $xr30, 2
-	fld.s	$fs6, $t3, 76
-	xvinsve0.w	$xr0, $xr31, 3
-	fld.s	$fs7, $t2, 76
-	xvinsve0.w	$xr0, $xr29, 4
-	fld.s	$fs5, $t1, 76
-	xvinsve0.w	$xr0, $xr30, 5
-	xvfmul.s	$xr30, $xr18, $xr28
-	xvinsve0.w	$xr0, $xr31, 6
-	xvinsve0.w	$xr0, $xr29, 7
-	xvfmul.s	$xr29, $xr19, $xr0
-	xvfsub.s	$xr29, $xr30, $xr29
-	xvfadd.s	$xr26, $xr26, $xr29
+	vextrins.w	$vr0, $vr1, 16
+	fld.s	$fa1, $t3, 76
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 76
+	vextrins.w	$vr0, $vr29, 48
+	xvfmul.s	$xr29, $xr18, $xr28
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
+	xvfmul.s	$xr1, $xr19, $xr0
+	xvfsub.s	$xr1, $xr29, $xr1
+	xvfadd.s	$xr26, $xr26, $xr1
 	xvfmul.s	$xr0, $xr18, $xr0
-	xvfmul.s	$xr28, $xr28, $xr19
-	xvfadd.s	$xr0, $xr28, $xr0
+	xvfmul.s	$xr1, $xr28, $xr19
+	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t5, 80
-	fld.s	$fa0, $t6, 80
+	fld.s	$fs4, $t2, 80
+	fld.s	$fa0, $t4, 80
+	fld.s	$fa1, $t5, 80
+	fld.s	$fa2, $t6, 80
 	fld.s	$fs5, $t7, 80
 	fld.s	$fs6, $t8, 80
-	fld.s	$fs7, $t4, 80
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t3, 80
-	xvinsve0.w	$xr28, $xr29, 2
-	fld.s	$fs5, $t2, 80
-	xvinsve0.w	$xr28, $xr30, 3
-	fld.s	$fs6, $t1, 80
-	xvinsve0.w	$xr28, $xr31, 4
-	xvinsve0.w	$xr28, $xr0, 5
-	xvinsve0.w	$xr28, $xr29, 6
-	fld.s	$fa0, $t5, 84
+	fld.s	$fs7, $t3, 80
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 80
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 84
+	fld.s	$fa1, $t4, 84
+	fld.s	$fa2, $t5, 84
 	fld.s	$fs5, $t6, 84
-	xvinsve0.w	$xr28, $xr30, 7
 	fld.s	$fs6, $t7, 84
 	fld.s	$fs7, $t8, 84
-	xvinsve0.w	$xr0, $xr29, 1
-	fld.s	$fs5, $t4, 84
-	xvinsve0.w	$xr0, $xr30, 2
-	fld.s	$fs6, $t3, 84
-	xvinsve0.w	$xr0, $xr31, 3
-	fld.s	$fs7, $t2, 84
-	xvinsve0.w	$xr0, $xr29, 4
-	fld.s	$fs5, $t1, 84
-	xvinsve0.w	$xr0, $xr30, 5
-	xvfmul.s	$xr30, $xr20, $xr28
-	xvinsve0.w	$xr0, $xr31, 6
-	xvinsve0.w	$xr0, $xr29, 7
-	xvfmul.s	$xr29, $xr21, $xr0
-	xvfsub.s	$xr29, $xr30, $xr29
-	xvfadd.s	$xr26, $xr26, $xr29
+	vextrins.w	$vr0, $vr1, 16
+	fld.s	$fa1, $t3, 84
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 84
+	vextrins.w	$vr0, $vr29, 48
+	xvfmul.s	$xr29, $xr20, $xr28
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
+	xvfmul.s	$xr1, $xr21, $xr0
+	xvfsub.s	$xr1, $xr29, $xr1
+	xvfadd.s	$xr26, $xr26, $xr1
 	xvfmul.s	$xr0, $xr20, $xr0
-	xvfmul.s	$xr28, $xr28, $xr21
-	xvfadd.s	$xr0, $xr28, $xr0
+	xvfmul.s	$xr1, $xr28, $xr21
+	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t5, 88
-	fld.s	$fa0, $t6, 88
+	fld.s	$fs4, $t2, 88
+	fld.s	$fa0, $t4, 88
+	fld.s	$fa1, $t5, 88
+	fld.s	$fa2, $t6, 88
 	fld.s	$fs5, $t7, 88
 	fld.s	$fs6, $t8, 88
-	fld.s	$fs7, $t4, 88
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t3, 88
-	xvinsve0.w	$xr28, $xr29, 2
-	fld.s	$fs5, $t2, 88
-	xvinsve0.w	$xr28, $xr30, 3
-	fld.s	$fs6, $t1, 88
-	xvinsve0.w	$xr28, $xr31, 4
-	xvinsve0.w	$xr28, $xr0, 5
-	xvinsve0.w	$xr28, $xr29, 6
-	fld.s	$fa0, $t5, 92
+	fld.s	$fs7, $t3, 88
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 88
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 92
+	fld.s	$fa1, $t4, 92
+	fld.s	$fa2, $t5, 92
 	fld.s	$fs5, $t6, 92
-	xvinsve0.w	$xr28, $xr30, 7
 	fld.s	$fs6, $t7, 92
 	fld.s	$fs7, $t8, 92
-	xvinsve0.w	$xr0, $xr29, 1
-	fld.s	$fs5, $t4, 92
-	xvinsve0.w	$xr0, $xr30, 2
-	fld.s	$fs6, $t3, 92
-	xvinsve0.w	$xr0, $xr31, 3
-	fld.s	$fs7, $t2, 92
-	xvinsve0.w	$xr0, $xr29, 4
-	fld.s	$fs5, $t1, 92
-	xvinsve0.w	$xr0, $xr30, 5
-	xvinsve0.w	$xr0, $xr31, 6
-	xvfmul.s	$xr30, $xr22, $xr28
-	xvinsve0.w	$xr0, $xr29, 7
-	xvfmul.s	$xr29, $xr23, $xr0
-	xvfsub.s	$xr29, $xr30, $xr29
-	xvfadd.s	$xr26, $xr26, $xr29
+	vextrins.w	$vr0, $vr1, 16
+	fld.s	$fa1, $t3, 92
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 92
+	vextrins.w	$vr0, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvfmul.s	$xr1, $xr22, $xr28
+	xvpermi.q	$xr0, $xr30, 2
+	xvfmul.s	$xr2, $xr23, $xr0
+	xvfsub.s	$xr1, $xr1, $xr2
+	xvfadd.s	$xr1, $xr26, $xr1
 	xvfmul.s	$xr0, $xr22, $xr0
-	xvfmul.s	$xr28, $xr28, $xr23
-	xvfadd.s	$xr0, $xr28, $xr0
+	xvfmul.s	$xr2, $xr28, $xr23
+	xvfadd.s	$xr0, $xr2, $xr0
 	xvfadd.s	$xr0, $xr27, $xr0
 	add.d	$a1, $ra, $a1
 	add.d	$a2, $ra, $a2
@@ -3973,14 +3977,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	add.d	$a6, $ra, $a6
 	add.d	$a7, $ra, $a7
 	add.d	$t0, $ra, $t0
-	xvstelm.w	$xr26, $a1, 0, 0
-	xvstelm.w	$xr26, $a2, 0, 1
-	xvstelm.w	$xr26, $a3, 0, 2
-	xvstelm.w	$xr26, $a4, 0, 3
-	xvstelm.w	$xr26, $a5, 0, 4
-	xvstelm.w	$xr26, $a6, 0, 5
-	xvstelm.w	$xr26, $a7, 0, 6
-	xvstelm.w	$xr26, $t0, 0, 7
+	xvstelm.w	$xr1, $a1, 0, 0
+	xvstelm.w	$xr1, $a2, 0, 1
+	xvstelm.w	$xr1, $a3, 0, 2
+	xvstelm.w	$xr1, $a4, 0, 3
+	xvstelm.w	$xr1, $a5, 0, 4
+	xvstelm.w	$xr1, $a6, 0, 5
+	xvstelm.w	$xr1, $a7, 0, 6
+	xvstelm.w	$xr1, $t0, 0, 7
 	xvstelm.w	$xr0, $a1, 4, 0
 	xvstelm.w	$xr0, $a2, 4, 1
 	xvstelm.w	$xr0, $a3, 4, 2
@@ -3995,10 +3999,10 @@ begin_StrictFP:                         # @begin_StrictFP
 	bnez	$a0, .LBB1_169
 # %bb.170:                              # %for.cond119.preheader
                                         #   in Loop: Header=BB1_168 Depth=1
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	slli.d	$a0, $a0, 5
 	lu12i.w	$a1, 206
-	ori	$a1, $a1, 2680
+	ori	$a1, $a1, 2728
 	add.d	$a1, $sp, $a1
 	ldx.w	$s2, $a0, $a1
 	move	$fp, $zero
@@ -4096,7 +4100,7 @@ begin_StrictFP:                         # @begin_StrictFP
 	ori	$t0, $zero, 512
 	ori	$a7, $zero, 1
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 2296
+	ori	$a0, $a0, 2344
 	add.d	$ra, $sp, $a0
 	move	$a0, $zero
 	move	$a1, $zero
@@ -4104,14 +4108,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	.p2align	4, , 16
 .LBB1_179:                              # %for.body.i180.preheader
                                         #   in Loop: Header=BB1_168 Depth=1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	xvld	$xr0, $a2, %pc_lo12(.LCPI1_0)
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	xvld	$xr1, $a2, %pc_lo12(.LCPI1_1)
 	move	$a2, $zero
 	st.w	$a1, $s5, 8
 	st.w	$a0, $s5, 4
-	addi.d	$fp, $sp, 248
+	addi.d	$fp, $sp, 296
 	ori	$s0, $zero, 2048
 	.p2align	4, , 16
 .LBB1_180:                              # %vector.body369
@@ -4143,13 +4147,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	fldx.s	$fa7, $t3, $s4
 	fldx.s	$ft0, $t5, $s4
 	fldx.s	$ft1, $t7, $s4
-	xvinsve0.w	$xr2, $xr3, 1
-	xvinsve0.w	$xr2, $xr4, 2
-	xvinsve0.w	$xr2, $xr5, 3
-	xvinsve0.w	$xr2, $xr6, 4
-	xvinsve0.w	$xr2, $xr7, 5
-	xvinsve0.w	$xr2, $xr8, 6
-	xvinsve0.w	$xr2, $xr9, 7
+	vextrins.w	$vr2, $vr3, 16
+	vextrins.w	$vr2, $vr4, 32
+	vextrins.w	$vr2, $vr5, 48
+	vextrins.w	$vr6, $vr7, 16
+	vextrins.w	$vr6, $vr8, 32
+	vextrins.w	$vr6, $vr9, 48
+	xvpermi.q	$xr2, $xr6, 2
 	xvfmul.s	$xr2, $xr2, $xr2
 	fld.s	$fa3, $a1, 4
 	fld.s	$fa4, $a4, 4
@@ -4159,13 +4163,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	fld.s	$ft0, $t4, 4
 	fld.s	$ft1, $t6, 4
 	fld.s	$ft2, $t8, 4
-	xvinsve0.w	$xr3, $xr4, 1
-	xvinsve0.w	$xr3, $xr5, 2
-	xvinsve0.w	$xr3, $xr6, 3
-	xvinsve0.w	$xr3, $xr7, 4
-	xvinsve0.w	$xr3, $xr8, 5
-	xvinsve0.w	$xr3, $xr9, 6
-	xvinsve0.w	$xr3, $xr10, 7
+	vextrins.w	$vr3, $vr4, 16
+	vextrins.w	$vr3, $vr5, 32
+	vextrins.w	$vr3, $vr6, 48
+	vextrins.w	$vr7, $vr8, 16
+	vextrins.w	$vr7, $vr9, 32
+	vextrins.w	$vr7, $vr10, 48
+	xvpermi.q	$xr3, $xr7, 2
 	xvfmul.s	$xr3, $xr3, $xr3
 	xvfadd.s	$xr2, $xr2, $xr3
 	xvfsqrt.s	$xr2, $xr2
@@ -4176,21 +4180,21 @@ begin_StrictFP:                         # @begin_StrictFP
 	bne	$a2, $s0, .LBB1_180
 # %bb.181:                              # %Magnitude_StrictFP.exit
                                         #   in Loop: Header=BB1_168 Depth=1
-	addi.d	$a1, $sp, 248
+	addi.d	$a1, $sp, 296
 	ori	$a2, $zero, 2048
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 1
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 2296
+	ori	$a0, $a0, 2344
 	add.d	$ra, $sp, $a0
 	ori	$a0, $zero, 4
 	bne	$a1, $a0, .LBB1_168
 # %bb.182:                              # %for.end143
 	lu12i.w	$a0, 206
-	ori	$a0, $a0, 1696
+	ori	$a0, $a0, 1744
 	add.d	$sp, $sp, $a0
 	fld.d	$fs7, $sp, 1880                 # 8-byte Folded Reload
 	fld.d	$fs6, $sp, 1888                 # 8-byte Folded Reload
@@ -4259,11 +4263,11 @@ begin:                                  # @begin
 	fst.d	$fs6, $sp, 1888                 # 8-byte Folded Spill
 	fst.d	$fs7, $sp, 1880                 # 8-byte Folded Spill
 	lu12i.w	$a0, 208
-	ori	$a0, $a0, 1776
+	ori	$a0, $a0, 1808
 	sub.d	$sp, $sp, $a0
 	move	$s0, $zero
 	lu12i.w	$a0, 184
-	ori	$a0, $a0, 2760
+	ori	$a0, $a0, 2792
 	add.d	$a0, $sp, $a0
 	addu16i.d	$a1, $a0, 1
 	addi.d	$s8, $a1, 4
@@ -4272,12 +4276,12 @@ begin:                                  # @begin
 	add.d	$a0, $a0, $a1
 	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
 	lu12i.w	$a0, 208
-	ori	$a0, $a0, 3272
+	ori	$a0, $a0, 3304
 	add.d	$s2, $sp, $a0
 	ori	$s3, $zero, 64
 	lu12i.w	$s1, 260096
 	lu12i.w	$a0, 208
-	ori	$a0, $a0, 2888
+	ori	$a0, $a0, 2920
 	add.d	$s4, $sp, $a0
 	ori	$s5, $zero, 384
 	.p2align	4, , 16
@@ -4338,49 +4342,6 @@ begin:                                  # @begin
 # %bb.2:                                # %for.body5.preheader
 	ori	$fp, $zero, 512
 	lu12i.w	$a0, 208
-	ori	$a0, $a0, 2760
-	add.d	$a0, $sp, $a0
-	st.d	$fp, $a0, 0
-	lu12i.w	$a0, 208
-	ori	$a0, $a0, 2768
-	add.d	$a0, $sp, $a0
-	st.w	$zero, $a0, 0
-	lu12i.w	$s2, 1
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(malloc)
-	jirl	$ra, $ra, 0
-	move	$s0, $a0
-	lu12i.w	$a1, 208
-	ori	$a1, $a1, 2776
-	add.d	$a1, $sp, $a1
-	st.d	$a0, $a1, 0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(malloc)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a1, 208
-	ori	$a1, $a1, 2784
-	add.d	$a1, $sp, $a1
-	st.d	$a0, $a1, 0
-	st.w	$s1, $s0, 0
-	addi.d	$a1, $s0, 4
-	addi.d	$s0, $a0, 4
-	ori	$a2, $zero, 4092
-	move	$a0, $a1
-	move	$a1, $zero
-	pcaddu18i	$ra, %call36(memset)
-	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 4092
-	move	$a0, $s0
-	move	$a1, $zero
-	pcaddu18i	$ra, %call36(memset)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 16
-	ori	$a0, $a0, 2376
-	add.d	$a1, $sp, $a0
-	move	$a0, $zero
-	pcaddu18i	$ra, %call36(BeamFormWeights)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 208
 	ori	$a0, $a0, 2792
 	add.d	$a0, $sp, $a0
 	st.d	$fp, $a0, 0
@@ -4388,6 +4349,7 @@ begin:                                  # @begin
 	ori	$a0, $a0, 2800
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
+	lu12i.w	$s2, 1
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -4417,9 +4379,9 @@ begin:                                  # @begin
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 16
-	ori	$a0, $a0, 2472
+	ori	$a0, $a0, 2408
 	add.d	$a1, $sp, $a0
-	ori	$a0, $zero, 1
+	move	$a0, $zero
 	pcaddu18i	$ra, %call36(BeamFormWeights)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 208
@@ -4459,9 +4421,9 @@ begin:                                  # @begin
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 16
-	ori	$a0, $a0, 2568
+	ori	$a0, $a0, 2504
 	add.d	$a1, $sp, $a0
-	ori	$a0, $zero, 2
+	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(BeamFormWeights)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 208
@@ -4501,14 +4463,56 @@ begin:                                  # @begin
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 16
-	ori	$a0, $a0, 2664
+	ori	$a0, $a0, 2600
+	add.d	$a1, $sp, $a0
+	ori	$a0, $zero, 2
+	pcaddu18i	$ra, %call36(BeamFormWeights)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 208
+	ori	$a0, $a0, 2888
+	add.d	$a0, $sp, $a0
+	st.d	$fp, $a0, 0
+	lu12i.w	$a0, 208
+	ori	$a0, $a0, 2896
+	add.d	$a0, $sp, $a0
+	st.w	$zero, $a0, 0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	move	$s0, $a0
+	lu12i.w	$a1, 208
+	ori	$a1, $a1, 2904
+	add.d	$a1, $sp, $a1
+	st.d	$a0, $a1, 0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a1, 208
+	ori	$a1, $a1, 2912
+	add.d	$a1, $sp, $a1
+	st.d	$a0, $a1, 0
+	st.w	$s1, $s0, 0
+	addi.d	$a1, $s0, 4
+	addi.d	$s0, $a0, 4
+	ori	$a2, $zero, 4092
+	move	$a0, $a1
+	move	$a1, $zero
+	pcaddu18i	$ra, %call36(memset)
+	jirl	$ra, $ra, 0
+	ori	$a2, $zero, 4092
+	move	$a0, $s0
+	move	$a1, $zero
+	pcaddu18i	$ra, %call36(memset)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 16
+	ori	$a0, $a0, 2696
 	add.d	$a1, $sp, $a0
 	ori	$a0, $zero, 3
 	pcaddu18i	$ra, %call36(BeamFormWeights)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 12
 	lu12i.w	$a1, 16
-	ori	$a1, $a1, 2760
+	ori	$a1, $a1, 2792
 	add.d	$a1, $sp, $a1
 	add.d	$a0, $a1, $a0
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
@@ -4543,7 +4547,7 @@ begin:                                  # @begin
 	lu12i.w	$a1, 6
 	ori	$a0, $a1, 4
 	lu12i.w	$a2, 184
-	ori	$a2, $a2, 2760
+	ori	$a2, $a2, 2792
 	add.d	$s3, $sp, $a2
 	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	add.d	$a0, $s3, $a0
@@ -4649,12 +4653,12 @@ begin:                                  # @begin
                                         #   in Loop: Header=BB2_7 Depth=2
 	st.w	$a1, $s7, 8
 	st.w	$a0, $s7, 4
-	ld.d	$s5, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
 	addi.d	$s5, $s5, 1
 	addi.d	$s2, $s2, 1
 	ld.d	$s8, $sp, 184                   # 8-byte Folded Reload
 	lu12i.w	$a0, 184
-	ori	$a0, $a0, 2760
+	ori	$a0, $a0, 2792
 	add.d	$s3, $sp, $a0
 	lu12i.w	$s4, 2
 	ori	$a0, $zero, 12
@@ -4698,7 +4702,7 @@ begin:                                  # @begin
                                         #   in Loop: Header=BB2_7 Depth=2
 	ori	$s0, $zero, 1024
 	lu12i.w	$a0, 184
-	ori	$a0, $a0, 2764
+	ori	$a0, $a0, 2796
 	add.d	$s1, $sp, $a0
 	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
@@ -4708,7 +4712,7 @@ begin:                                  # @begin
 .LBB2_9:                                # %if.then.i.us
                                         #   in Loop: Header=BB2_10 Depth=3
 	lu12i.w	$a2, 185
-	ori	$a2, $a2, 712
+	ori	$a2, $a2, 744
 	add.d	$a2, $sp, $a2
 	stptr.d	$s4, $a2, 0
 	addi.w	$fp, $fp, 1
@@ -4801,7 +4805,7 @@ begin:                                  # @begin
 .LBB2_19:                               # %if.then.i.us.1
                                         #   in Loop: Header=BB2_20 Depth=3
 	lu12i.w	$a2, 187
-	ori	$a2, $a2, 712
+	ori	$a2, $a2, 744
 	add.d	$a2, $sp, $a2
 	stptr.d	$s4, $a2, 0
 	addi.w	$fp, $fp, 1
@@ -4896,7 +4900,7 @@ begin:                                  # @begin
 .LBB2_29:                               # %if.then.i.us.2
                                         #   in Loop: Header=BB2_30 Depth=3
 	lu12i.w	$a2, 189
-	ori	$a2, $a2, 712
+	ori	$a2, $a2, 744
 	add.d	$a2, $sp, $a2
 	stptr.d	$s4, $a2, 0
 	addi.w	$fp, $fp, 1
@@ -4988,7 +4992,7 @@ begin:                                  # @begin
 .LBB2_39:                               # %if.then.i.us.3
                                         #   in Loop: Header=BB2_40 Depth=3
 	lu12i.w	$a2, 191
-	ori	$a2, $a2, 712
+	ori	$a2, $a2, 744
 	add.d	$a2, $sp, $a2
 	stptr.d	$s4, $a2, 0
 	addi.w	$fp, $fp, 1
@@ -5782,14 +5786,14 @@ begin:                                  # @begin
 	.p2align	4, , 16
 .LBB2_128:                              # %for.cond26.preheader
                                         #   in Loop: Header=BB2_7 Depth=2
-	st.d	$s5, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
 	slli.d	$a1, $s5, 5
 	lu12i.w	$a0, 208
-	ori	$a0, $a0, 3272
+	ori	$a0, $a0, 3304
 	add.d	$a0, $sp, $a0
 	ldx.w	$s8, $a1, $a0
 	move	$fp, $zero
-	st.d	$a1, $sp, 256                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 288                   # 8-byte Folded Spill
 	add.d	$s7, $a0, $a1
 	addi.d	$s6, $s8, -1
 	slli.w	$s5, $s8, 1
@@ -5863,7 +5867,7 @@ begin:                                  # @begin
 .LBB2_134:                              # %for.end.i
                                         #   in Loop: Header=BB2_130 Depth=3
 	lu12i.w	$a2, 160
-	ori	$a2, $a2, 2760
+	ori	$a2, $a2, 2792
 	add.d	$a2, $sp, $a2
 	alsl.d	$a2, $fp, $a2, 3
 	addi.d	$a1, $a1, 1
@@ -5899,16 +5903,16 @@ begin:                                  # @begin
 	st.w	$a1, $s7, 8
 	st.w	$a0, $s7, 4
 	lu12i.w	$a0, 208
-	ori	$a0, $a0, 2888
+	ori	$a0, $a0, 2920
 	add.d	$a0, $sp, $a0
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
 	add.d	$s7, $a0, $a1
 	ldx.w	$fp, $a1, $a0
-	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 320                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a0, 1
 	slli.d	$a0, $a0, 14
 	lu12i.w	$a1, 16
-	ori	$a1, $a1, 2760
+	ori	$a1, $a1, 2792
 	add.d	$a1, $sp, $a1
 	add.d	$s5, $a1, $a0
 	addi.d	$s6, $fp, -1
@@ -5937,7 +5941,7 @@ begin:                                  # @begin
                                         #         Child Loop BB2_141 Depth 4
 	slli.d	$a2, $s8, 4
 	lu12i.w	$a3, 160
-	ori	$a3, $a3, 2760
+	ori	$a3, $a3, 2792
 	add.d	$a3, $sp, $a3
 	ldx.d	$a3, $a2, $a3
 	sub.d	$a2, $s6, $a1
@@ -6018,11 +6022,11 @@ begin:                                  # @begin
 	xvld	$xr2, $s4, %pc_lo12(.LCPI2_1)
 	ori	$a0, $zero, 512
 	lu12i.w	$a1, 16
-	ori	$a1, $a1, 2760
+	ori	$a1, $a1, 2792
 	add.d	$t1, $sp, $a1
 	ld.d	$t2, $sp, 88                    # 8-byte Folded Reload
 	lu12i.w	$a1, 4
-	ori	$a1, $a1, 2376
+	ori	$a1, $a1, 2408
 	add.d	$s0, $sp, $a1
 	.p2align	4, , 16
 .LBB2_147:                              # %vector.body441
@@ -7476,14 +7480,15 @@ begin:                                  # @begin
 	alsl.d	$a0, $a2, $a2, 1
 	slli.d	$a0, $a0, 5
 	lu12i.w	$a1, 16
-	ori	$a1, $a1, 2376
+	ori	$a1, $a1, 2408
 	add.d	$a1, $sp, $a1
 	add.d	$a0, $a1, $a0
 	xvldrepl.w	$xr0, $a0, 0
-	xvst	$xr0, $sp, 288                  # 32-byte Folded Spill
+	xvst	$xr0, $sp, 320                  # 32-byte Folded Spill
 	xvldrepl.w	$xr0, $a0, 4
+	xvst	$xr0, $sp, 288                  # 32-byte Folded Spill
+	xvldrepl.w	$xr0, $a0, 8
 	xvst	$xr0, $sp, 256                  # 32-byte Folded Spill
-	xvldrepl.w	$xr2, $a0, 8
 	xvldrepl.w	$xr3, $a0, 12
 	xvldrepl.w	$xr4, $a0, 16
 	xvldrepl.w	$xr5, $a0, 20
@@ -7509,15 +7514,15 @@ begin:                                  # @begin
 	xvld	$xr25, $s4, %pc_lo12(.LCPI2_1)
 	st.d	$a2, $sp, 240                   # 8-byte Folded Spill
 	slli.d	$a0, $a2, 11
-	addi.d	$a1, $sp, 328
+	addi.d	$a1, $sp, 360
 	add.d	$a0, $a1, $a0
 	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	ori	$a0, $zero, 512
 	lu12i.w	$a1, 4
-	ori	$a1, $a1, 2376
+	ori	$a1, $a1, 2408
 	add.d	$ra, $sp, $a1
 	lu12i.w	$a1, 3
-	ori	$a1, $a1, 2376
+	ori	$a1, $a1, 2408
 	add.d	$s0, $sp, $a1
 	.p2align	4, , 16
 .LBB2_172:                              # %vector.body345
@@ -7528,19 +7533,19 @@ begin:                                  # @begin
 	xvmul.d	$xr27, $xr24, $xr26
 	xvmul.d	$xr26, $xr25, $xr26
 	xvpickve2gr.d	$fp, $xr26, 0
-	add.d	$t4, $ra, $fp
+	add.d	$t2, $ra, $fp
 	xvpickve2gr.d	$s1, $xr26, 1
-	add.d	$t5, $ra, $s1
+	add.d	$t4, $ra, $s1
 	xvpickve2gr.d	$s2, $xr26, 2
-	add.d	$t6, $ra, $s2
+	add.d	$t5, $ra, $s2
 	xvpickve2gr.d	$s3, $xr26, 3
-	add.d	$t7, $ra, $s3
+	add.d	$t6, $ra, $s3
 	xvpickve2gr.d	$s4, $xr27, 0
-	add.d	$t8, $ra, $s4
+	add.d	$t7, $ra, $s4
 	xvpickve2gr.d	$s5, $xr27, 1
-	add.d	$t3, $ra, $s5
+	add.d	$t8, $ra, $s5
 	xvpickve2gr.d	$s6, $xr27, 2
-	add.d	$t2, $ra, $s6
+	add.d	$t3, $ra, $s6
 	xvpickve2gr.d	$s7, $xr27, 3
 	add.d	$t1, $ra, $s7
 	xvslli.d	$xr26, $xr24, 3
@@ -7561,105 +7566,106 @@ begin:                                  # @begin
 	fldx.s	$fs7, $s5, $ra
 	fldx.s	$fa0, $s6, $ra
 	fldx.s	$fa1, $s7, $ra
-	xvinsve0.w	$xr27, $xr26, 1
-	xvinsve0.w	$xr27, $xr28, 2
-	xvinsve0.w	$xr27, $xr29, 3
-	xvinsve0.w	$xr27, $xr30, 4
-	xvinsve0.w	$xr27, $xr31, 5
-	xvinsve0.w	$xr27, $xr0, 6
-	xvinsve0.w	$xr27, $xr1, 7
-	fld.s	$fa0, $t4, 4
-	fld.s	$fa1, $t5, 4
-	fld.s	$fs2, $t6, 4
-	fld.s	$fs4, $t7, 4
-	fld.s	$fs5, $t8, 4
-	fld.s	$fs6, $t3, 4
-	fld.s	$fs7, $t2, 4
-	xvinsve0.w	$xr0, $xr1, 1
-	fld.s	$fa1, $t1, 4
-	xvinsve0.w	$xr0, $xr26, 2
-	xvinsve0.w	$xr0, $xr28, 3
-	xvinsve0.w	$xr0, $xr29, 4
-	xvinsve0.w	$xr0, $xr30, 5
-	xvinsve0.w	$xr0, $xr31, 6
-	xvinsve0.w	$xr0, $xr1, 7
+	vextrins.w	$vr27, $vr26, 16
+	vextrins.w	$vr27, $vr28, 32
+	vextrins.w	$vr27, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr0, 32
+	vextrins.w	$vr30, $vr1, 48
+	xvpermi.q	$xr27, $xr30, 2
+	fld.s	$fa0, $t2, 4
+	fld.s	$fa1, $t4, 4
+	fld.s	$fs2, $t5, 4
+	fld.s	$fs4, $t6, 4
+	fld.s	$fs5, $t7, 4
+	fld.s	$fs6, $t8, 4
+	fld.s	$fs7, $t3, 4
+	fld.s	$fa2, $t1, 4
+	vextrins.w	$vr0, $vr1, 16
+	vextrins.w	$vr0, $vr26, 32
+	vextrins.w	$vr0, $vr28, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr2, 48
+	xvpermi.q	$xr0, $xr29, 2
 	xvbitrevi.w	$xr1, $xr0, 31
-	xvld	$xr30, $sp, 256                 # 32-byte Folded Reload
-	xvfmul.s	$xr1, $xr30, $xr1
 	xvld	$xr29, $sp, 288                 # 32-byte Folded Reload
-	xvfmadd.s	$xr1, $xr29, $xr27, $xr1
-	xvrepli.b	$xr28, 0
-	xvfadd.s	$xr26, $xr1, $xr28
-	xvfmul.s	$xr1, $xr27, $xr30
-	xvfmadd.s	$xr0, $xr29, $xr0, $xr1
-	xvfadd.s	$xr27, $xr0, $xr28
-	fld.s	$fs4, $t4, 8
-	fld.s	$fa0, $t5, 8
-	fld.s	$fa1, $t6, 8
+	xvfmul.s	$xr1, $xr29, $xr1
+	xvld	$xr28, $sp, 320                 # 32-byte Folded Reload
+	xvfmadd.s	$xr1, $xr28, $xr27, $xr1
+	xvrepli.b	$xr2, 0
+	xvfadd.s	$xr26, $xr1, $xr2
+	xvfmul.s	$xr1, $xr27, $xr29
+	xvfmadd.s	$xr0, $xr28, $xr0, $xr1
+	xvfadd.s	$xr27, $xr0, $xr2
+	fld.s	$fs4, $t2, 8
+	fld.s	$fa0, $t4, 8
+	fld.s	$fa1, $t5, 8
+	fld.s	$fa2, $t6, 8
 	fld.s	$fs5, $t7, 8
 	fld.s	$fs6, $t8, 8
 	fld.s	$fs7, $t3, 8
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t2, 8
-	xvinsve0.w	$xr28, $xr1, 2
-	fld.s	$fa1, $t1, 8
-	xvinsve0.w	$xr28, $xr29, 3
-	xvinsve0.w	$xr28, $xr30, 4
-	xvinsve0.w	$xr28, $xr31, 5
-	xvinsve0.w	$xr28, $xr0, 6
-	xvinsve0.w	$xr28, $xr1, 7
-	fld.s	$fa0, $t4, 12
-	fld.s	$fa1, $t5, 12
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 8
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 12
+	fld.s	$fa1, $t4, 12
+	fld.s	$fa2, $t5, 12
 	fld.s	$fs5, $t6, 12
 	fld.s	$fs6, $t7, 12
 	fld.s	$fs7, $t8, 12
-	xvinsve0.w	$xr0, $xr1, 1
+	vextrins.w	$vr0, $vr1, 16
 	fld.s	$fa1, $t3, 12
-	xvinsve0.w	$xr0, $xr29, 2
-	fld.s	$fs5, $t2, 12
-	xvinsve0.w	$xr0, $xr30, 3
-	fld.s	$fs6, $t1, 12
-	xvinsve0.w	$xr0, $xr31, 4
-	xvinsve0.w	$xr0, $xr1, 5
-	xvinsve0.w	$xr0, $xr29, 6
-	xvinsve0.w	$xr0, $xr30, 7
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 12
+	vextrins.w	$vr0, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
 	xvbitrevi.w	$xr1, $xr0, 31
 	xvfmul.s	$xr1, $xr3, $xr1
+	xvld	$xr2, $sp, 256                  # 32-byte Folded Reload
 	xvfmadd.s	$xr1, $xr2, $xr28, $xr1
 	xvfadd.s	$xr26, $xr26, $xr1
 	xvfmul.s	$xr1, $xr28, $xr3
 	xvfmadd.s	$xr0, $xr2, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t4, 16
-	fld.s	$fa0, $t5, 16
-	fld.s	$fa1, $t6, 16
+	fld.s	$fs4, $t2, 16
+	fld.s	$fa0, $t4, 16
+	fld.s	$fa1, $t5, 16
+	fld.s	$fa2, $t6, 16
 	fld.s	$fs5, $t7, 16
 	fld.s	$fs6, $t8, 16
 	fld.s	$fs7, $t3, 16
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t2, 16
-	xvinsve0.w	$xr28, $xr1, 2
-	fld.s	$fa1, $t1, 16
-	xvinsve0.w	$xr28, $xr29, 3
-	xvinsve0.w	$xr28, $xr30, 4
-	xvinsve0.w	$xr28, $xr31, 5
-	xvinsve0.w	$xr28, $xr0, 6
-	xvinsve0.w	$xr28, $xr1, 7
-	fld.s	$fa0, $t4, 20
-	fld.s	$fa1, $t5, 20
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 16
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 20
+	fld.s	$fa1, $t4, 20
+	fld.s	$fa2, $t5, 20
 	fld.s	$fs5, $t6, 20
 	fld.s	$fs6, $t7, 20
 	fld.s	$fs7, $t8, 20
-	xvinsve0.w	$xr0, $xr1, 1
+	vextrins.w	$vr0, $vr1, 16
 	fld.s	$fa1, $t3, 20
-	xvinsve0.w	$xr0, $xr29, 2
-	fld.s	$fs5, $t2, 20
-	xvinsve0.w	$xr0, $xr30, 3
-	fld.s	$fs6, $t1, 20
-	xvinsve0.w	$xr0, $xr31, 4
-	xvinsve0.w	$xr0, $xr1, 5
-	xvinsve0.w	$xr0, $xr29, 6
-	xvinsve0.w	$xr0, $xr30, 7
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 20
+	vextrins.w	$vr0, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
 	xvbitrevi.w	$xr1, $xr0, 31
 	xvfmul.s	$xr1, $xr5, $xr1
 	xvfmadd.s	$xr1, $xr4, $xr28, $xr1
@@ -7667,36 +7673,36 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr5
 	xvfmadd.s	$xr0, $xr4, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t4, 24
-	fld.s	$fa0, $t5, 24
-	fld.s	$fa1, $t6, 24
+	fld.s	$fs4, $t2, 24
+	fld.s	$fa0, $t4, 24
+	fld.s	$fa1, $t5, 24
+	fld.s	$fa2, $t6, 24
 	fld.s	$fs5, $t7, 24
 	fld.s	$fs6, $t8, 24
 	fld.s	$fs7, $t3, 24
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t2, 24
-	xvinsve0.w	$xr28, $xr1, 2
-	fld.s	$fa1, $t1, 24
-	xvinsve0.w	$xr28, $xr29, 3
-	xvinsve0.w	$xr28, $xr30, 4
-	xvinsve0.w	$xr28, $xr31, 5
-	xvinsve0.w	$xr28, $xr0, 6
-	xvinsve0.w	$xr28, $xr1, 7
-	fld.s	$fa0, $t4, 28
-	fld.s	$fa1, $t5, 28
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 24
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 28
+	fld.s	$fa1, $t4, 28
+	fld.s	$fa2, $t5, 28
 	fld.s	$fs5, $t6, 28
 	fld.s	$fs6, $t7, 28
 	fld.s	$fs7, $t8, 28
-	xvinsve0.w	$xr0, $xr1, 1
+	vextrins.w	$vr0, $vr1, 16
 	fld.s	$fa1, $t3, 28
-	xvinsve0.w	$xr0, $xr29, 2
-	fld.s	$fs5, $t2, 28
-	xvinsve0.w	$xr0, $xr30, 3
-	fld.s	$fs6, $t1, 28
-	xvinsve0.w	$xr0, $xr31, 4
-	xvinsve0.w	$xr0, $xr1, 5
-	xvinsve0.w	$xr0, $xr29, 6
-	xvinsve0.w	$xr0, $xr30, 7
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 28
+	vextrins.w	$vr0, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
 	xvbitrevi.w	$xr1, $xr0, 31
 	xvfmul.s	$xr1, $xr7, $xr1
 	xvfmadd.s	$xr1, $xr6, $xr28, $xr1
@@ -7704,36 +7710,36 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr7
 	xvfmadd.s	$xr0, $xr6, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t4, 32
-	fld.s	$fa0, $t5, 32
-	fld.s	$fa1, $t6, 32
+	fld.s	$fs4, $t2, 32
+	fld.s	$fa0, $t4, 32
+	fld.s	$fa1, $t5, 32
+	fld.s	$fa2, $t6, 32
 	fld.s	$fs5, $t7, 32
 	fld.s	$fs6, $t8, 32
 	fld.s	$fs7, $t3, 32
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t2, 32
-	xvinsve0.w	$xr28, $xr1, 2
-	fld.s	$fa1, $t1, 32
-	xvinsve0.w	$xr28, $xr29, 3
-	xvinsve0.w	$xr28, $xr30, 4
-	xvinsve0.w	$xr28, $xr31, 5
-	xvinsve0.w	$xr28, $xr0, 6
-	xvinsve0.w	$xr28, $xr1, 7
-	fld.s	$fa0, $t4, 36
-	fld.s	$fa1, $t5, 36
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 32
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 36
+	fld.s	$fa1, $t4, 36
+	fld.s	$fa2, $t5, 36
 	fld.s	$fs5, $t6, 36
 	fld.s	$fs6, $t7, 36
 	fld.s	$fs7, $t8, 36
-	xvinsve0.w	$xr0, $xr1, 1
+	vextrins.w	$vr0, $vr1, 16
 	fld.s	$fa1, $t3, 36
-	xvinsve0.w	$xr0, $xr29, 2
-	fld.s	$fs5, $t2, 36
-	xvinsve0.w	$xr0, $xr30, 3
-	fld.s	$fs6, $t1, 36
-	xvinsve0.w	$xr0, $xr31, 4
-	xvinsve0.w	$xr0, $xr1, 5
-	xvinsve0.w	$xr0, $xr29, 6
-	xvinsve0.w	$xr0, $xr30, 7
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 36
+	vextrins.w	$vr0, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
 	xvbitrevi.w	$xr1, $xr0, 31
 	xvfmul.s	$xr1, $xr9, $xr1
 	xvfmadd.s	$xr1, $xr8, $xr28, $xr1
@@ -7741,36 +7747,36 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr9
 	xvfmadd.s	$xr0, $xr8, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t4, 40
-	fld.s	$fa0, $t5, 40
-	fld.s	$fa1, $t6, 40
+	fld.s	$fs4, $t2, 40
+	fld.s	$fa0, $t4, 40
+	fld.s	$fa1, $t5, 40
+	fld.s	$fa2, $t6, 40
 	fld.s	$fs5, $t7, 40
 	fld.s	$fs6, $t8, 40
 	fld.s	$fs7, $t3, 40
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t2, 40
-	xvinsve0.w	$xr28, $xr1, 2
-	fld.s	$fa1, $t1, 40
-	xvinsve0.w	$xr28, $xr29, 3
-	xvinsve0.w	$xr28, $xr30, 4
-	xvinsve0.w	$xr28, $xr31, 5
-	xvinsve0.w	$xr28, $xr0, 6
-	xvinsve0.w	$xr28, $xr1, 7
-	fld.s	$fa0, $t4, 44
-	fld.s	$fa1, $t5, 44
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 40
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 44
+	fld.s	$fa1, $t4, 44
+	fld.s	$fa2, $t5, 44
 	fld.s	$fs5, $t6, 44
 	fld.s	$fs6, $t7, 44
 	fld.s	$fs7, $t8, 44
-	xvinsve0.w	$xr0, $xr1, 1
+	vextrins.w	$vr0, $vr1, 16
 	fld.s	$fa1, $t3, 44
-	xvinsve0.w	$xr0, $xr29, 2
-	fld.s	$fs5, $t2, 44
-	xvinsve0.w	$xr0, $xr30, 3
-	fld.s	$fs6, $t1, 44
-	xvinsve0.w	$xr0, $xr31, 4
-	xvinsve0.w	$xr0, $xr1, 5
-	xvinsve0.w	$xr0, $xr29, 6
-	xvinsve0.w	$xr0, $xr30, 7
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 44
+	vextrins.w	$vr0, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
 	xvbitrevi.w	$xr1, $xr0, 31
 	xvfmul.s	$xr1, $xr11, $xr1
 	xvfmadd.s	$xr1, $xr10, $xr28, $xr1
@@ -7778,36 +7784,36 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr11
 	xvfmadd.s	$xr0, $xr10, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t4, 48
-	fld.s	$fa0, $t5, 48
-	fld.s	$fa1, $t6, 48
+	fld.s	$fs4, $t2, 48
+	fld.s	$fa0, $t4, 48
+	fld.s	$fa1, $t5, 48
+	fld.s	$fa2, $t6, 48
 	fld.s	$fs5, $t7, 48
 	fld.s	$fs6, $t8, 48
 	fld.s	$fs7, $t3, 48
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t2, 48
-	xvinsve0.w	$xr28, $xr1, 2
-	fld.s	$fa1, $t1, 48
-	xvinsve0.w	$xr28, $xr29, 3
-	xvinsve0.w	$xr28, $xr30, 4
-	xvinsve0.w	$xr28, $xr31, 5
-	xvinsve0.w	$xr28, $xr0, 6
-	xvinsve0.w	$xr28, $xr1, 7
-	fld.s	$fa0, $t4, 52
-	fld.s	$fa1, $t5, 52
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 48
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 52
+	fld.s	$fa1, $t4, 52
+	fld.s	$fa2, $t5, 52
 	fld.s	$fs5, $t6, 52
 	fld.s	$fs6, $t7, 52
 	fld.s	$fs7, $t8, 52
-	xvinsve0.w	$xr0, $xr1, 1
+	vextrins.w	$vr0, $vr1, 16
 	fld.s	$fa1, $t3, 52
-	xvinsve0.w	$xr0, $xr29, 2
-	fld.s	$fs5, $t2, 52
-	xvinsve0.w	$xr0, $xr30, 3
-	fld.s	$fs6, $t1, 52
-	xvinsve0.w	$xr0, $xr31, 4
-	xvinsve0.w	$xr0, $xr1, 5
-	xvinsve0.w	$xr0, $xr29, 6
-	xvinsve0.w	$xr0, $xr30, 7
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 52
+	vextrins.w	$vr0, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
 	xvbitrevi.w	$xr1, $xr0, 31
 	xvfmul.s	$xr1, $xr13, $xr1
 	xvfmadd.s	$xr1, $xr12, $xr28, $xr1
@@ -7815,36 +7821,36 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr13
 	xvfmadd.s	$xr0, $xr12, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t4, 56
-	fld.s	$fa0, $t5, 56
-	fld.s	$fa1, $t6, 56
+	fld.s	$fs4, $t2, 56
+	fld.s	$fa0, $t4, 56
+	fld.s	$fa1, $t5, 56
+	fld.s	$fa2, $t6, 56
 	fld.s	$fs5, $t7, 56
 	fld.s	$fs6, $t8, 56
 	fld.s	$fs7, $t3, 56
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t2, 56
-	xvinsve0.w	$xr28, $xr1, 2
-	fld.s	$fa1, $t1, 56
-	xvinsve0.w	$xr28, $xr29, 3
-	xvinsve0.w	$xr28, $xr30, 4
-	xvinsve0.w	$xr28, $xr31, 5
-	xvinsve0.w	$xr28, $xr0, 6
-	xvinsve0.w	$xr28, $xr1, 7
-	fld.s	$fa0, $t4, 60
-	fld.s	$fa1, $t5, 60
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 56
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 60
+	fld.s	$fa1, $t4, 60
+	fld.s	$fa2, $t5, 60
 	fld.s	$fs5, $t6, 60
 	fld.s	$fs6, $t7, 60
 	fld.s	$fs7, $t8, 60
-	xvinsve0.w	$xr0, $xr1, 1
+	vextrins.w	$vr0, $vr1, 16
 	fld.s	$fa1, $t3, 60
-	xvinsve0.w	$xr0, $xr29, 2
-	fld.s	$fs5, $t2, 60
-	xvinsve0.w	$xr0, $xr30, 3
-	fld.s	$fs6, $t1, 60
-	xvinsve0.w	$xr0, $xr31, 4
-	xvinsve0.w	$xr0, $xr1, 5
-	xvinsve0.w	$xr0, $xr29, 6
-	xvinsve0.w	$xr0, $xr30, 7
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 60
+	vextrins.w	$vr0, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
 	xvbitrevi.w	$xr1, $xr0, 31
 	xvfmul.s	$xr1, $xr15, $xr1
 	xvfmadd.s	$xr1, $xr14, $xr28, $xr1
@@ -7852,36 +7858,36 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr15
 	xvfmadd.s	$xr0, $xr14, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t4, 64
-	fld.s	$fa0, $t5, 64
-	fld.s	$fa1, $t6, 64
+	fld.s	$fs4, $t2, 64
+	fld.s	$fa0, $t4, 64
+	fld.s	$fa1, $t5, 64
+	fld.s	$fa2, $t6, 64
 	fld.s	$fs5, $t7, 64
 	fld.s	$fs6, $t8, 64
 	fld.s	$fs7, $t3, 64
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t2, 64
-	xvinsve0.w	$xr28, $xr1, 2
-	fld.s	$fa1, $t1, 64
-	xvinsve0.w	$xr28, $xr29, 3
-	xvinsve0.w	$xr28, $xr30, 4
-	xvinsve0.w	$xr28, $xr31, 5
-	xvinsve0.w	$xr28, $xr0, 6
-	xvinsve0.w	$xr28, $xr1, 7
-	fld.s	$fa0, $t4, 68
-	fld.s	$fa1, $t5, 68
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 64
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 68
+	fld.s	$fa1, $t4, 68
+	fld.s	$fa2, $t5, 68
 	fld.s	$fs5, $t6, 68
 	fld.s	$fs6, $t7, 68
 	fld.s	$fs7, $t8, 68
-	xvinsve0.w	$xr0, $xr1, 1
+	vextrins.w	$vr0, $vr1, 16
 	fld.s	$fa1, $t3, 68
-	xvinsve0.w	$xr0, $xr29, 2
-	fld.s	$fs5, $t2, 68
-	xvinsve0.w	$xr0, $xr30, 3
-	fld.s	$fs6, $t1, 68
-	xvinsve0.w	$xr0, $xr31, 4
-	xvinsve0.w	$xr0, $xr1, 5
-	xvinsve0.w	$xr0, $xr29, 6
-	xvinsve0.w	$xr0, $xr30, 7
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 68
+	vextrins.w	$vr0, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
 	xvbitrevi.w	$xr1, $xr0, 31
 	xvfmul.s	$xr1, $xr17, $xr1
 	xvfmadd.s	$xr1, $xr16, $xr28, $xr1
@@ -7889,36 +7895,36 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr17
 	xvfmadd.s	$xr0, $xr16, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t4, 72
-	fld.s	$fa0, $t5, 72
-	fld.s	$fa1, $t6, 72
+	fld.s	$fs4, $t2, 72
+	fld.s	$fa0, $t4, 72
+	fld.s	$fa1, $t5, 72
+	fld.s	$fa2, $t6, 72
 	fld.s	$fs5, $t7, 72
 	fld.s	$fs6, $t8, 72
 	fld.s	$fs7, $t3, 72
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t2, 72
-	xvinsve0.w	$xr28, $xr1, 2
-	fld.s	$fa1, $t1, 72
-	xvinsve0.w	$xr28, $xr29, 3
-	xvinsve0.w	$xr28, $xr30, 4
-	xvinsve0.w	$xr28, $xr31, 5
-	xvinsve0.w	$xr28, $xr0, 6
-	xvinsve0.w	$xr28, $xr1, 7
-	fld.s	$fa0, $t4, 76
-	fld.s	$fa1, $t5, 76
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 72
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 76
+	fld.s	$fa1, $t4, 76
+	fld.s	$fa2, $t5, 76
 	fld.s	$fs5, $t6, 76
 	fld.s	$fs6, $t7, 76
 	fld.s	$fs7, $t8, 76
-	xvinsve0.w	$xr0, $xr1, 1
+	vextrins.w	$vr0, $vr1, 16
 	fld.s	$fa1, $t3, 76
-	xvinsve0.w	$xr0, $xr29, 2
-	fld.s	$fs5, $t2, 76
-	xvinsve0.w	$xr0, $xr30, 3
-	fld.s	$fs6, $t1, 76
-	xvinsve0.w	$xr0, $xr31, 4
-	xvinsve0.w	$xr0, $xr1, 5
-	xvinsve0.w	$xr0, $xr29, 6
-	xvinsve0.w	$xr0, $xr30, 7
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 76
+	vextrins.w	$vr0, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
 	xvbitrevi.w	$xr1, $xr0, 31
 	xvfmul.s	$xr1, $xr19, $xr1
 	xvfmadd.s	$xr1, $xr18, $xr28, $xr1
@@ -7926,36 +7932,36 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr19
 	xvfmadd.s	$xr0, $xr18, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t4, 80
-	fld.s	$fa0, $t5, 80
-	fld.s	$fa1, $t6, 80
+	fld.s	$fs4, $t2, 80
+	fld.s	$fa0, $t4, 80
+	fld.s	$fa1, $t5, 80
+	fld.s	$fa2, $t6, 80
 	fld.s	$fs5, $t7, 80
 	fld.s	$fs6, $t8, 80
 	fld.s	$fs7, $t3, 80
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t2, 80
-	xvinsve0.w	$xr28, $xr1, 2
-	fld.s	$fa1, $t1, 80
-	xvinsve0.w	$xr28, $xr29, 3
-	xvinsve0.w	$xr28, $xr30, 4
-	xvinsve0.w	$xr28, $xr31, 5
-	xvinsve0.w	$xr28, $xr0, 6
-	xvinsve0.w	$xr28, $xr1, 7
-	fld.s	$fa0, $t4, 84
-	fld.s	$fa1, $t5, 84
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 80
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 84
+	fld.s	$fa1, $t4, 84
+	fld.s	$fa2, $t5, 84
 	fld.s	$fs5, $t6, 84
 	fld.s	$fs6, $t7, 84
 	fld.s	$fs7, $t8, 84
-	xvinsve0.w	$xr0, $xr1, 1
+	vextrins.w	$vr0, $vr1, 16
 	fld.s	$fa1, $t3, 84
-	xvinsve0.w	$xr0, $xr29, 2
-	fld.s	$fs5, $t2, 84
-	xvinsve0.w	$xr0, $xr30, 3
-	fld.s	$fs6, $t1, 84
-	xvinsve0.w	$xr0, $xr31, 4
-	xvinsve0.w	$xr0, $xr1, 5
-	xvinsve0.w	$xr0, $xr29, 6
-	xvinsve0.w	$xr0, $xr30, 7
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 84
+	vextrins.w	$vr0, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
 	xvbitrevi.w	$xr1, $xr0, 31
 	xvfmul.s	$xr1, $xr21, $xr1
 	xvfmadd.s	$xr1, $xr20, $xr28, $xr1
@@ -7963,42 +7969,42 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr21
 	xvfmadd.s	$xr0, $xr20, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t4, 88
-	fld.s	$fa0, $t5, 88
-	fld.s	$fa1, $t6, 88
+	fld.s	$fs4, $t2, 88
+	fld.s	$fa0, $t4, 88
+	fld.s	$fa1, $t5, 88
+	fld.s	$fa2, $t6, 88
 	fld.s	$fs5, $t7, 88
 	fld.s	$fs6, $t8, 88
 	fld.s	$fs7, $t3, 88
-	xvinsve0.w	$xr28, $xr0, 1
-	fld.s	$fa0, $t2, 88
-	xvinsve0.w	$xr28, $xr1, 2
-	fld.s	$fa1, $t1, 88
-	xvinsve0.w	$xr28, $xr29, 3
-	xvinsve0.w	$xr28, $xr30, 4
-	xvinsve0.w	$xr28, $xr31, 5
-	xvinsve0.w	$xr28, $xr0, 6
-	xvinsve0.w	$xr28, $xr1, 7
-	fld.s	$fa0, $t4, 92
-	fld.s	$fa1, $t5, 92
+	vextrins.w	$vr28, $vr0, 16
+	fld.s	$fa0, $t1, 88
+	vextrins.w	$vr28, $vr1, 32
+	vextrins.w	$vr28, $vr2, 48
+	vextrins.w	$vr29, $vr30, 16
+	vextrins.w	$vr29, $vr31, 32
+	vextrins.w	$vr29, $vr0, 48
+	xvpermi.q	$xr28, $xr29, 2
+	fld.s	$fa0, $t2, 92
+	fld.s	$fa1, $t4, 92
+	fld.s	$fa2, $t5, 92
 	fld.s	$fs5, $t6, 92
 	fld.s	$fs6, $t7, 92
 	fld.s	$fs7, $t8, 92
-	xvinsve0.w	$xr0, $xr1, 1
+	vextrins.w	$vr0, $vr1, 16
 	fld.s	$fa1, $t3, 92
-	xvinsve0.w	$xr0, $xr29, 2
-	fld.s	$fs5, $t2, 92
-	xvinsve0.w	$xr0, $xr30, 3
-	fld.s	$fs6, $t1, 92
-	xvinsve0.w	$xr0, $xr31, 4
-	xvinsve0.w	$xr0, $xr1, 5
-	xvinsve0.w	$xr0, $xr29, 6
-	xvinsve0.w	$xr0, $xr30, 7
+	vextrins.w	$vr0, $vr2, 32
+	fld.s	$fa2, $t1, 92
+	vextrins.w	$vr0, $vr29, 48
+	vextrins.w	$vr30, $vr31, 16
+	vextrins.w	$vr30, $vr1, 32
+	vextrins.w	$vr30, $vr2, 48
+	xvpermi.q	$xr0, $xr30, 2
 	xvbitrevi.w	$xr1, $xr0, 31
 	xvfmul.s	$xr1, $xr23, $xr1
 	xvfmadd.s	$xr1, $xr22, $xr28, $xr1
 	xvfadd.s	$xr1, $xr26, $xr1
-	xvfmul.s	$xr26, $xr28, $xr23
-	xvfmadd.s	$xr0, $xr22, $xr0, $xr26
+	xvfmul.s	$xr2, $xr28, $xr23
+	xvfmadd.s	$xr0, $xr22, $xr0, $xr2
 	xvfadd.s	$xr0, $xr27, $xr0
 	add.d	$a1, $s0, $a1
 	add.d	$a2, $s0, $a2
@@ -8033,7 +8039,7 @@ begin:                                  # @begin
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	slli.d	$a0, $a0, 5
 	lu12i.w	$a1, 208
-	ori	$a1, $a1, 2760
+	ori	$a1, $a1, 2792
 	add.d	$a1, $sp, $a1
 	ldx.w	$s6, $a0, $a1
 	move	$fp, $zero
@@ -8052,10 +8058,10 @@ begin:                                  # @begin
 	alsl.w	$s3, $s6, $a3, 1
 	slli.d	$s2, $a2, 2
 	lu12i.w	$a2, 3
-	ori	$a2, $a2, 2376
+	ori	$a2, $a2, 2408
 	add.d	$t0, $sp, $a2
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2376
+	ori	$a2, $a2, 2408
 	add.d	$s0, $sp, $a2
 	b	.LBB2_175
 	.p2align	4, , 16
@@ -8136,7 +8142,7 @@ begin:                                  # @begin
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 3
-	ori	$a0, $a0, 2376
+	ori	$a0, $a0, 2408
 	add.d	$t0, $sp, $a0
 	ori	$a7, $zero, 1
 	move	$a0, $zero
@@ -8154,10 +8160,10 @@ begin:                                  # @begin
 	st.w	$a0, $s7, 4
 	lu12i.w	$s2, 1
 	lu12i.w	$a0, 184
-	ori	$a0, $a0, 2760
+	ori	$a0, $a0, 2792
 	add.d	$s3, $sp, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 328
+	ori	$a0, $a0, 360
 	add.d	$fp, $sp, $a0
 	ori	$s5, $zero, 2048
 	.p2align	4, , 16
@@ -8191,13 +8197,13 @@ begin:                                  # @begin
 	fldx.s	$fa7, $t3, $s0
 	fldx.s	$ft0, $t5, $s0
 	fldx.s	$ft1, $t7, $s0
-	xvinsve0.w	$xr2, $xr3, 1
-	xvinsve0.w	$xr2, $xr4, 2
-	xvinsve0.w	$xr2, $xr5, 3
-	xvinsve0.w	$xr2, $xr6, 4
-	xvinsve0.w	$xr2, $xr7, 5
-	xvinsve0.w	$xr2, $xr8, 6
-	xvinsve0.w	$xr2, $xr9, 7
+	vextrins.w	$vr2, $vr3, 16
+	vextrins.w	$vr2, $vr4, 32
+	vextrins.w	$vr2, $vr5, 48
+	vextrins.w	$vr6, $vr7, 16
+	vextrins.w	$vr6, $vr8, 32
+	vextrins.w	$vr6, $vr9, 48
+	xvpermi.q	$xr2, $xr6, 2
 	fld.s	$fa3, $a1, 4
 	fld.s	$fa4, $a4, 4
 	fld.s	$fa5, $a6, 4
@@ -8206,13 +8212,13 @@ begin:                                  # @begin
 	fld.s	$ft0, $t4, 4
 	fld.s	$ft1, $t6, 4
 	fld.s	$ft2, $t8, 4
-	xvinsve0.w	$xr3, $xr4, 1
-	xvinsve0.w	$xr3, $xr5, 2
-	xvinsve0.w	$xr3, $xr6, 3
-	xvinsve0.w	$xr3, $xr7, 4
-	xvinsve0.w	$xr3, $xr8, 5
-	xvinsve0.w	$xr3, $xr9, 6
-	xvinsve0.w	$xr3, $xr10, 7
+	vextrins.w	$vr3, $vr4, 16
+	vextrins.w	$vr3, $vr5, 32
+	vextrins.w	$vr3, $vr6, 48
+	vextrins.w	$vr7, $vr8, 16
+	vextrins.w	$vr7, $vr9, 32
+	vextrins.w	$vr7, $vr10, 48
+	xvpermi.q	$xr3, $xr7, 2
 	xvfmul.s	$xr3, $xr3, $xr3
 	xvfmadd.s	$xr2, $xr2, $xr2, $xr3
 	xvfsqrt.s	$xr2, $xr2
@@ -8224,7 +8230,7 @@ begin:                                  # @begin
 # %bb.184:                              # %Magnitude.exit
                                         #   in Loop: Header=BB2_171 Depth=2
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 328
+	ori	$a0, $a0, 360
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 2048
 	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
@@ -8242,7 +8248,7 @@ begin:                                  # @begin
 .LBB2_186:                              # %for.cond149.preheader
                                         #   Parent Loop BB2_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a0, $sp, 328
+	addi.d	$a0, $sp, 360
 	add.d	$s0, $a0, $fp
 	pcalau12i	$a0, %pc_hi20(detector_out_StrictFP)
 	addi.d	$a0, $a0, %pc_lo12(detector_out_StrictFP)
@@ -8316,7 +8322,7 @@ begin:                                  # @begin
 	b	.LBB2_3
 .LBB2_191:                              # %while.end
 	lu12i.w	$a0, 208
-	ori	$a0, $a0, 1776
+	ori	$a0, $a0, 1808
 	add.d	$sp, $sp, $a0
 	fld.d	$fs7, $sp, 1880                 # 8-byte Folded Reload
 	fld.d	$fs6, $sp, 1888                 # 8-byte Folded Reload
@@ -8999,13 +9005,13 @@ Magnitude:                              # @Magnitude
 	fldx.s	$fa7, $a0, $t8
 	fldx.s	$ft0, $a0, $s0
 	fldx.s	$ft1, $a0, $s2
-	xvinsve0.w	$xr2, $xr3, 1
-	xvinsve0.w	$xr2, $xr4, 2
-	xvinsve0.w	$xr2, $xr5, 3
-	xvinsve0.w	$xr2, $xr6, 4
-	xvinsve0.w	$xr2, $xr7, 5
-	xvinsve0.w	$xr2, $xr8, 6
-	xvinsve0.w	$xr2, $xr9, 7
+	vextrins.w	$vr2, $vr3, 16
+	vextrins.w	$vr2, $vr4, 32
+	vextrins.w	$vr2, $vr5, 48
+	vextrins.w	$vr6, $vr7, 16
+	vextrins.w	$vr6, $vr8, 32
+	vextrins.w	$vr6, $vr9, 48
+	xvpermi.q	$xr2, $xr6, 2
 	fld.s	$fa3, $a7, 4
 	fld.s	$fa4, $t1, 4
 	fld.s	$fa5, $t3, 4
@@ -9014,13 +9020,13 @@ Magnitude:                              # @Magnitude
 	fld.s	$ft0, $fp, 4
 	fld.s	$ft1, $s1, 4
 	fld.s	$ft2, $s3, 4
-	xvinsve0.w	$xr3, $xr4, 1
-	xvinsve0.w	$xr3, $xr5, 2
-	xvinsve0.w	$xr3, $xr6, 3
-	xvinsve0.w	$xr3, $xr7, 4
-	xvinsve0.w	$xr3, $xr8, 5
-	xvinsve0.w	$xr3, $xr9, 6
-	xvinsve0.w	$xr3, $xr10, 7
+	vextrins.w	$vr3, $vr4, 16
+	vextrins.w	$vr3, $vr5, 32
+	vextrins.w	$vr3, $vr6, 48
+	vextrins.w	$vr7, $vr8, 16
+	vextrins.w	$vr7, $vr9, 32
+	vextrins.w	$vr7, $vr10, 48
+	xvpermi.q	$xr3, $xr7, 2
 	xvfmul.s	$xr3, $xr3, $xr3
 	xvfmadd.s	$xr2, $xr2, $xr2, $xr3
 	xvfsqrt.s	$xr2, $xr2
@@ -9842,13 +9848,13 @@ Magnitude_StrictFP:                     # @Magnitude_StrictFP
 	fldx.s	$fa7, $a0, $t8
 	fldx.s	$ft0, $a0, $s0
 	fldx.s	$ft1, $a0, $s2
-	xvinsve0.w	$xr2, $xr3, 1
-	xvinsve0.w	$xr2, $xr4, 2
-	xvinsve0.w	$xr2, $xr5, 3
-	xvinsve0.w	$xr2, $xr6, 4
-	xvinsve0.w	$xr2, $xr7, 5
-	xvinsve0.w	$xr2, $xr8, 6
-	xvinsve0.w	$xr2, $xr9, 7
+	vextrins.w	$vr2, $vr3, 16
+	vextrins.w	$vr2, $vr4, 32
+	vextrins.w	$vr2, $vr5, 48
+	vextrins.w	$vr6, $vr7, 16
+	vextrins.w	$vr6, $vr8, 32
+	vextrins.w	$vr6, $vr9, 48
+	xvpermi.q	$xr2, $xr6, 2
 	xvfmul.s	$xr2, $xr2, $xr2
 	fld.s	$fa3, $a7, 4
 	fld.s	$fa4, $t1, 4
@@ -9858,13 +9864,13 @@ Magnitude_StrictFP:                     # @Magnitude_StrictFP
 	fld.s	$ft0, $fp, 4
 	fld.s	$ft1, $s1, 4
 	fld.s	$ft2, $s3, 4
-	xvinsve0.w	$xr3, $xr4, 1
-	xvinsve0.w	$xr3, $xr5, 2
-	xvinsve0.w	$xr3, $xr6, 3
-	xvinsve0.w	$xr3, $xr7, 4
-	xvinsve0.w	$xr3, $xr8, 5
-	xvinsve0.w	$xr3, $xr9, 6
-	xvinsve0.w	$xr3, $xr10, 7
+	vextrins.w	$vr3, $vr4, 16
+	vextrins.w	$vr3, $vr5, 32
+	vextrins.w	$vr3, $vr6, 48
+	vextrins.w	$vr7, $vr8, 16
+	vextrins.w	$vr7, $vr9, 32
+	vextrins.w	$vr7, $vr10, 48
+	xvpermi.q	$xr3, $xr7, 2
 	xvfmul.s	$xr3, $xr3, $xr3
 	xvfadd.s	$xr2, $xr2, $xr3
 	xvfsqrt.s	$xr2, $xr2

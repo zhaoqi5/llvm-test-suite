@@ -1673,31 +1673,32 @@ _ZN11ALACEncoder10EncodeMonoEP9BitBufferPvjjj: # @_ZN11ALACEncoder10EncodeMonoEP
 .LBB6_8:                                # %vector.body261
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a5, 0
-	vpickve2gr.h	$a6, $vr0, 0
-	ext.w.h	$a6, $a6
-	xvinsgr2vr.w	$xr1, $a6, 0
-	vpickve2gr.h	$a6, $vr0, 1
-	ext.w.h	$a6, $a6
-	xvinsgr2vr.w	$xr1, $a6, 1
-	vpickve2gr.h	$a6, $vr0, 2
-	ext.w.h	$a6, $a6
-	xvinsgr2vr.w	$xr1, $a6, 2
-	vpickve2gr.h	$a6, $vr0, 3
-	ext.w.h	$a6, $a6
-	xvinsgr2vr.w	$xr1, $a6, 3
 	vpickve2gr.h	$a6, $vr0, 4
 	ext.w.h	$a6, $a6
-	xvinsgr2vr.w	$xr1, $a6, 4
+	vinsgr2vr.w	$vr1, $a6, 0
 	vpickve2gr.h	$a6, $vr0, 5
 	ext.w.h	$a6, $a6
-	xvinsgr2vr.w	$xr1, $a6, 5
+	vinsgr2vr.w	$vr1, $a6, 1
 	vpickve2gr.h	$a6, $vr0, 6
 	ext.w.h	$a6, $a6
-	xvinsgr2vr.w	$xr1, $a6, 6
+	vinsgr2vr.w	$vr1, $a6, 2
 	vpickve2gr.h	$a6, $vr0, 7
 	ext.w.h	$a6, $a6
-	xvinsgr2vr.w	$xr1, $a6, 7
-	xvst	$xr1, $a3, 0
+	vinsgr2vr.w	$vr1, $a6, 3
+	vpickve2gr.h	$a6, $vr0, 0
+	ext.w.h	$a6, $a6
+	vinsgr2vr.w	$vr2, $a6, 0
+	vpickve2gr.h	$a6, $vr0, 1
+	ext.w.h	$a6, $a6
+	vinsgr2vr.w	$vr2, $a6, 1
+	vpickve2gr.h	$a6, $vr0, 2
+	ext.w.h	$a6, $a6
+	vinsgr2vr.w	$vr2, $a6, 2
+	vpickve2gr.h	$a6, $vr0, 3
+	ext.w.h	$a6, $a6
+	vinsgr2vr.w	$vr2, $a6, 3
+	xvpermi.q	$xr2, $xr1, 2
+	xvst	$xr2, $a3, 0
 	addi.d	$a5, $a5, 16
 	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, 32

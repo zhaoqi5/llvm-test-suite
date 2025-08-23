@@ -30,49 +30,51 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 .LBB0_3:                                # %vector.body
 	xvld	$xr1, $fp, 0
 	xvpermi.q	$xr2, $xr1, 1
-	vpickve2gr.w	$a1, $vr2, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr3, $a1, 0
-	vpickve2gr.w	$a1, $vr2, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr3, $a1, 1
 	vpickve2gr.w	$a1, $vr2, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr3, $a1, 2
+	vinsgr2vr.d	$vr3, $a1, 0
 	vpickve2gr.w	$a1, $vr2, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr3, $a1, 3
-	vpickve2gr.w	$a1, $vr1, 0
+	vinsgr2vr.d	$vr3, $a1, 1
+	vpickve2gr.w	$a1, $vr2, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr2, $a1, 0
-	vpickve2gr.w	$a1, $vr1, 1
+	vinsgr2vr.d	$vr4, $a1, 0
+	vpickve2gr.w	$a1, $vr2, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr2, $a1, 1
+	vinsgr2vr.d	$vr4, $a1, 1
+	xvpermi.q	$xr4, $xr3, 2
 	vpickve2gr.w	$a1, $vr1, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr2, $a1, 2
+	vinsgr2vr.d	$vr2, $a1, 0
 	vpickve2gr.w	$a1, $vr1, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr2, $a1, 3
-	xvmul.d	$xr5, $xr0, $xr3
+	vinsgr2vr.d	$vr2, $a1, 1
+	vpickve2gr.w	$a1, $vr1, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vpickve2gr.w	$a1, $vr1, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr3, $a1, 1
+	xvpermi.q	$xr3, $xr2, 2
+	xvmul.d	$xr5, $xr0, $xr4
 	xvrepli.d	$xr1, 50
-	xvmul.d	$xr6, $xr0, $xr2
+	xvmul.d	$xr6, $xr0, $xr3
+	xvori.b	$xr2, $xr1, 0
+	xvmadd.d	$xr2, $xr0, $xr4
 	xvori.b	$xr4, $xr1, 0
 	xvmadd.d	$xr4, $xr0, $xr3
-	xvori.b	$xr7, $xr1, 0
-	xvmadd.d	$xr7, $xr0, $xr2
 	lu12i.w	$a1, 461373
 	ori	$a1, $a1, 1803
 	lu32i.d	$a1, 461373
 	lu52i.d	$a1, $a1, -1475
 	xvreplgr2vr.d	$xr3, $a1
-	xvmuh.d	$xr2, $xr4, $xr3
-	xvadd.d	$xr2, $xr2, $xr4
-	xvsrli.d	$xr4, $xr2, 63
+	xvmuh.d	$xr7, $xr2, $xr3
+	xvadd.d	$xr2, $xr7, $xr2
+	xvsrli.d	$xr7, $xr2, 63
 	xvsrai.d	$xr2, $xr2, 6
-	xvadd.d	$xr2, $xr2, $xr4
-	xvmuh.d	$xr4, $xr7, $xr3
-	xvadd.d	$xr4, $xr4, $xr7
+	xvadd.d	$xr2, $xr2, $xr7
+	xvmuh.d	$xr7, $xr4, $xr3
+	xvadd.d	$xr4, $xr7, $xr4
 	xvsrli.d	$xr7, $xr4, 63
 	xvsrai.d	$xr4, $xr4, 6
 	xvadd.d	$xr4, $xr4, $xr7
@@ -125,140 +127,60 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	vbitsel.v	$vr6, $vr6, $vr5, $vr9
 	vst	$vr6, $a0, 0
 	xvpermi.q	$xr6, $xr7, 1
-	vpickve2gr.w	$a1, $vr6, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 0
-	vpickve2gr.w	$a1, $vr6, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 1
 	vpickve2gr.w	$a1, $vr6, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 2
+	vinsgr2vr.d	$vr8, $a1, 0
 	vpickve2gr.w	$a1, $vr6, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 3
-	vpickve2gr.w	$a1, $vr7, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	vpickve2gr.w	$a1, $vr6, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 0
-	vpickve2gr.w	$a1, $vr7, 1
+	vinsgr2vr.d	$vr9, $a1, 0
+	vpickve2gr.w	$a1, $vr6, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 1
+	vinsgr2vr.d	$vr9, $a1, 1
+	xvpermi.q	$xr9, $xr8, 2
 	vpickve2gr.w	$a1, $vr7, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 2
+	vinsgr2vr.d	$vr6, $a1, 0
 	vpickve2gr.w	$a1, $vr7, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 3
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr7, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 0
+	vpickve2gr.w	$a1, $vr7, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	xvpermi.q	$xr8, $xr6, 2
+	xvmul.d	$xr6, $xr0, $xr9
 	xvmul.d	$xr7, $xr0, $xr8
-	xvmul.d	$xr9, $xr0, $xr6
 	xvori.b	$xr10, $xr1, 0
-	xvmadd.d	$xr10, $xr0, $xr8
-	xvori.b	$xr8, $xr1, 0
-	xvmadd.d	$xr8, $xr0, $xr6
-	xvmuh.d	$xr6, $xr10, $xr3
-	xvadd.d	$xr6, $xr6, $xr10
-	xvsrli.d	$xr10, $xr6, 63
-	xvsrai.d	$xr6, $xr6, 6
-	xvadd.d	$xr6, $xr6, $xr10
-	xvmuh.d	$xr10, $xr8, $xr3
-	xvadd.d	$xr8, $xr10, $xr8
+	xvmadd.d	$xr10, $xr0, $xr9
+	xvori.b	$xr9, $xr1, 0
+	xvmadd.d	$xr9, $xr0, $xr8
+	xvmuh.d	$xr8, $xr10, $xr3
+	xvadd.d	$xr8, $xr8, $xr10
 	xvsrli.d	$xr10, $xr8, 63
 	xvsrai.d	$xr8, $xr8, 6
 	xvadd.d	$xr8, $xr8, $xr10
-	xvmaxi.d	$xr6, $xr6, 1
+	xvmuh.d	$xr10, $xr9, $xr3
+	xvadd.d	$xr9, $xr10, $xr9
+	xvsrli.d	$xr10, $xr9, 63
+	xvsrai.d	$xr9, $xr9, 6
+	xvadd.d	$xr9, $xr9, $xr10
 	xvmaxi.d	$xr8, $xr8, 1
-	xvmin.d	$xr6, $xr6, $xr4
+	xvmaxi.d	$xr9, $xr9, 1
 	xvmin.d	$xr8, $xr8, $xr4
-	xvslt.d	$xr9, $xr2, $xr9
-	xvpickve2gr.d	$a1, $xr9, 0
-	vinsgr2vr.h	$vr10, $a1, 0
-	xvpickve2gr.d	$a1, $xr9, 1
-	vinsgr2vr.h	$vr10, $a1, 1
-	xvpickve2gr.d	$a1, $xr9, 2
-	vinsgr2vr.h	$vr10, $a1, 2
-	xvpickve2gr.d	$a1, $xr9, 3
-	vinsgr2vr.h	$vr10, $a1, 3
+	xvmin.d	$xr9, $xr9, $xr4
 	xvslt.d	$xr7, $xr2, $xr7
 	xvpickve2gr.d	$a1, $xr7, 0
-	vinsgr2vr.h	$vr10, $a1, 4
-	xvpickve2gr.d	$a1, $xr7, 1
-	vinsgr2vr.h	$vr10, $a1, 5
-	xvpickve2gr.d	$a1, $xr7, 2
-	vinsgr2vr.h	$vr10, $a1, 6
-	xvpickve2gr.d	$a1, $xr7, 3
-	vinsgr2vr.h	$vr10, $a1, 7
-	xvpickve2gr.d	$a1, $xr8, 0
-	vinsgr2vr.h	$vr7, $a1, 0
-	xvpickve2gr.d	$a1, $xr8, 1
-	vinsgr2vr.h	$vr7, $a1, 1
-	xvpickve2gr.d	$a1, $xr8, 2
-	vinsgr2vr.h	$vr7, $a1, 2
-	xvpickve2gr.d	$a1, $xr8, 3
-	vinsgr2vr.h	$vr7, $a1, 3
-	xvpickve2gr.d	$a1, $xr6, 0
-	vinsgr2vr.h	$vr7, $a1, 4
-	xvpickve2gr.d	$a1, $xr6, 1
-	vinsgr2vr.h	$vr7, $a1, 5
-	xvpickve2gr.d	$a1, $xr6, 2
-	vinsgr2vr.h	$vr7, $a1, 6
-	xvpickve2gr.d	$a1, $xr6, 3
-	xvld	$xr6, $fp, 64
-	vinsgr2vr.h	$vr7, $a1, 7
-	vbitsel.v	$vr7, $vr7, $vr5, $vr10
-	vst	$vr7, $a0, 16
-	xvpermi.q	$xr7, $xr6, 1
-	vpickve2gr.w	$a1, $vr7, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 0
-	vpickve2gr.w	$a1, $vr7, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 1
-	vpickve2gr.w	$a1, $vr7, 2
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 2
-	vpickve2gr.w	$a1, $vr7, 3
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 3
-	vpickve2gr.w	$a1, $vr6, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr7, $a1, 0
-	vpickve2gr.w	$a1, $vr6, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr7, $a1, 1
-	vpickve2gr.w	$a1, $vr6, 2
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr7, $a1, 2
-	vpickve2gr.w	$a1, $vr6, 3
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr7, $a1, 3
-	xvmul.d	$xr6, $xr0, $xr8
-	xvmul.d	$xr9, $xr0, $xr7
-	xvori.b	$xr10, $xr1, 0
-	xvmadd.d	$xr10, $xr0, $xr8
-	xvori.b	$xr8, $xr1, 0
-	xvmadd.d	$xr8, $xr0, $xr7
-	xvmuh.d	$xr7, $xr10, $xr3
-	xvadd.d	$xr7, $xr7, $xr10
-	xvsrli.d	$xr10, $xr7, 63
-	xvsrai.d	$xr7, $xr7, 6
-	xvadd.d	$xr7, $xr7, $xr10
-	xvmuh.d	$xr10, $xr8, $xr3
-	xvadd.d	$xr8, $xr10, $xr8
-	xvsrli.d	$xr10, $xr8, 63
-	xvsrai.d	$xr8, $xr8, 6
-	xvadd.d	$xr8, $xr8, $xr10
-	xvmaxi.d	$xr7, $xr7, 1
-	xvmaxi.d	$xr8, $xr8, 1
-	xvmin.d	$xr7, $xr7, $xr4
-	xvmin.d	$xr8, $xr8, $xr4
-	xvslt.d	$xr9, $xr2, $xr9
-	xvpickve2gr.d	$a1, $xr9, 0
 	vinsgr2vr.h	$vr10, $a1, 0
-	xvpickve2gr.d	$a1, $xr9, 1
+	xvpickve2gr.d	$a1, $xr7, 1
 	vinsgr2vr.h	$vr10, $a1, 1
-	xvpickve2gr.d	$a1, $xr9, 2
+	xvpickve2gr.d	$a1, $xr7, 2
 	vinsgr2vr.h	$vr10, $a1, 2
-	xvpickve2gr.d	$a1, $xr9, 3
+	xvpickve2gr.d	$a1, $xr7, 3
 	vinsgr2vr.h	$vr10, $a1, 3
 	xvslt.d	$xr6, $xr2, $xr6
 	xvpickve2gr.d	$a1, $xr6, 0
@@ -269,160 +191,164 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	vinsgr2vr.h	$vr10, $a1, 6
 	xvpickve2gr.d	$a1, $xr6, 3
 	vinsgr2vr.h	$vr10, $a1, 7
-	xvpickve2gr.d	$a1, $xr8, 0
+	xvpickve2gr.d	$a1, $xr9, 0
 	vinsgr2vr.h	$vr6, $a1, 0
-	xvpickve2gr.d	$a1, $xr8, 1
+	xvpickve2gr.d	$a1, $xr9, 1
 	vinsgr2vr.h	$vr6, $a1, 1
-	xvpickve2gr.d	$a1, $xr8, 2
+	xvpickve2gr.d	$a1, $xr9, 2
 	vinsgr2vr.h	$vr6, $a1, 2
-	xvpickve2gr.d	$a1, $xr8, 3
+	xvpickve2gr.d	$a1, $xr9, 3
 	vinsgr2vr.h	$vr6, $a1, 3
-	xvpickve2gr.d	$a1, $xr7, 0
+	xvpickve2gr.d	$a1, $xr8, 0
 	vinsgr2vr.h	$vr6, $a1, 4
-	xvpickve2gr.d	$a1, $xr7, 1
+	xvpickve2gr.d	$a1, $xr8, 1
 	vinsgr2vr.h	$vr6, $a1, 5
-	xvpickve2gr.d	$a1, $xr7, 2
+	xvpickve2gr.d	$a1, $xr8, 2
 	vinsgr2vr.h	$vr6, $a1, 6
+	xvpickve2gr.d	$a1, $xr8, 3
+	xvld	$xr7, $fp, 64
+	vinsgr2vr.h	$vr6, $a1, 7
+	vbitsel.v	$vr6, $vr6, $vr5, $vr10
+	vst	$vr6, $a0, 16
+	xvpermi.q	$xr6, $xr7, 1
+	vpickve2gr.w	$a1, $vr6, 2
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 0
+	vpickve2gr.w	$a1, $vr6, 3
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	vpickve2gr.w	$a1, $vr6, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr9, $a1, 0
+	vpickve2gr.w	$a1, $vr6, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr9, $a1, 1
+	xvpermi.q	$xr9, $xr8, 2
+	vpickve2gr.w	$a1, $vr7, 2
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 0
+	vpickve2gr.w	$a1, $vr7, 3
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr7, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 0
+	vpickve2gr.w	$a1, $vr7, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	xvpermi.q	$xr8, $xr6, 2
+	xvmul.d	$xr6, $xr0, $xr9
+	xvmul.d	$xr7, $xr0, $xr8
+	xvori.b	$xr10, $xr1, 0
+	xvmadd.d	$xr10, $xr0, $xr9
+	xvori.b	$xr9, $xr1, 0
+	xvmadd.d	$xr9, $xr0, $xr8
+	xvmuh.d	$xr8, $xr10, $xr3
+	xvadd.d	$xr8, $xr8, $xr10
+	xvsrli.d	$xr10, $xr8, 63
+	xvsrai.d	$xr8, $xr8, 6
+	xvadd.d	$xr8, $xr8, $xr10
+	xvmuh.d	$xr10, $xr9, $xr3
+	xvadd.d	$xr9, $xr10, $xr9
+	xvsrli.d	$xr10, $xr9, 63
+	xvsrai.d	$xr9, $xr9, 6
+	xvadd.d	$xr9, $xr9, $xr10
+	xvmaxi.d	$xr8, $xr8, 1
+	xvmaxi.d	$xr9, $xr9, 1
+	xvmin.d	$xr8, $xr8, $xr4
+	xvmin.d	$xr9, $xr9, $xr4
+	xvslt.d	$xr7, $xr2, $xr7
+	xvpickve2gr.d	$a1, $xr7, 0
+	vinsgr2vr.h	$vr10, $a1, 0
+	xvpickve2gr.d	$a1, $xr7, 1
+	vinsgr2vr.h	$vr10, $a1, 1
+	xvpickve2gr.d	$a1, $xr7, 2
+	vinsgr2vr.h	$vr10, $a1, 2
 	xvpickve2gr.d	$a1, $xr7, 3
+	vinsgr2vr.h	$vr10, $a1, 3
+	xvslt.d	$xr6, $xr2, $xr6
+	xvpickve2gr.d	$a1, $xr6, 0
+	vinsgr2vr.h	$vr10, $a1, 4
+	xvpickve2gr.d	$a1, $xr6, 1
+	vinsgr2vr.h	$vr10, $a1, 5
+	xvpickve2gr.d	$a1, $xr6, 2
+	vinsgr2vr.h	$vr10, $a1, 6
+	xvpickve2gr.d	$a1, $xr6, 3
+	vinsgr2vr.h	$vr10, $a1, 7
+	xvpickve2gr.d	$a1, $xr9, 0
+	vinsgr2vr.h	$vr6, $a1, 0
+	xvpickve2gr.d	$a1, $xr9, 1
+	vinsgr2vr.h	$vr6, $a1, 1
+	xvpickve2gr.d	$a1, $xr9, 2
+	vinsgr2vr.h	$vr6, $a1, 2
+	xvpickve2gr.d	$a1, $xr9, 3
+	vinsgr2vr.h	$vr6, $a1, 3
+	xvpickve2gr.d	$a1, $xr8, 0
+	vinsgr2vr.h	$vr6, $a1, 4
+	xvpickve2gr.d	$a1, $xr8, 1
+	vinsgr2vr.h	$vr6, $a1, 5
+	xvpickve2gr.d	$a1, $xr8, 2
+	vinsgr2vr.h	$vr6, $a1, 6
+	xvpickve2gr.d	$a1, $xr8, 3
 	xvld	$xr7, $fp, 96
 	vinsgr2vr.h	$vr6, $a1, 7
 	vbitsel.v	$vr6, $vr6, $vr5, $vr10
 	vst	$vr6, $a0, 32
 	xvpermi.q	$xr6, $xr7, 1
-	vpickve2gr.w	$a1, $vr6, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 0
-	vpickve2gr.w	$a1, $vr6, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 1
 	vpickve2gr.w	$a1, $vr6, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 2
+	vinsgr2vr.d	$vr8, $a1, 0
 	vpickve2gr.w	$a1, $vr6, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 3
-	vpickve2gr.w	$a1, $vr7, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	vpickve2gr.w	$a1, $vr6, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 0
-	vpickve2gr.w	$a1, $vr7, 1
+	vinsgr2vr.d	$vr9, $a1, 0
+	vpickve2gr.w	$a1, $vr6, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 1
+	vinsgr2vr.d	$vr9, $a1, 1
+	xvpermi.q	$xr9, $xr8, 2
 	vpickve2gr.w	$a1, $vr7, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 2
+	vinsgr2vr.d	$vr6, $a1, 0
 	vpickve2gr.w	$a1, $vr7, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 3
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr7, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 0
+	vpickve2gr.w	$a1, $vr7, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	xvpermi.q	$xr8, $xr6, 2
+	xvmul.d	$xr6, $xr0, $xr9
 	xvmul.d	$xr7, $xr0, $xr8
-	xvmul.d	$xr9, $xr0, $xr6
 	xvori.b	$xr10, $xr1, 0
-	xvmadd.d	$xr10, $xr0, $xr8
-	xvori.b	$xr8, $xr1, 0
-	xvmadd.d	$xr8, $xr0, $xr6
-	xvmuh.d	$xr6, $xr10, $xr3
-	xvadd.d	$xr6, $xr6, $xr10
-	xvsrli.d	$xr10, $xr6, 63
-	xvsrai.d	$xr6, $xr6, 6
-	xvadd.d	$xr6, $xr6, $xr10
-	xvmuh.d	$xr10, $xr8, $xr3
-	xvadd.d	$xr8, $xr10, $xr8
+	xvmadd.d	$xr10, $xr0, $xr9
+	xvori.b	$xr9, $xr1, 0
+	xvmadd.d	$xr9, $xr0, $xr8
+	xvmuh.d	$xr8, $xr10, $xr3
+	xvadd.d	$xr8, $xr8, $xr10
 	xvsrli.d	$xr10, $xr8, 63
 	xvsrai.d	$xr8, $xr8, 6
 	xvadd.d	$xr8, $xr8, $xr10
-	xvmaxi.d	$xr6, $xr6, 1
+	xvmuh.d	$xr10, $xr9, $xr3
+	xvadd.d	$xr9, $xr10, $xr9
+	xvsrli.d	$xr10, $xr9, 63
+	xvsrai.d	$xr9, $xr9, 6
+	xvadd.d	$xr9, $xr9, $xr10
 	xvmaxi.d	$xr8, $xr8, 1
-	xvmin.d	$xr6, $xr6, $xr4
+	xvmaxi.d	$xr9, $xr9, 1
 	xvmin.d	$xr8, $xr8, $xr4
-	xvslt.d	$xr9, $xr2, $xr9
-	xvpickve2gr.d	$a1, $xr9, 0
-	vinsgr2vr.h	$vr10, $a1, 0
-	xvpickve2gr.d	$a1, $xr9, 1
-	vinsgr2vr.h	$vr10, $a1, 1
-	xvpickve2gr.d	$a1, $xr9, 2
-	vinsgr2vr.h	$vr10, $a1, 2
-	xvpickve2gr.d	$a1, $xr9, 3
-	vinsgr2vr.h	$vr10, $a1, 3
+	xvmin.d	$xr9, $xr9, $xr4
 	xvslt.d	$xr7, $xr2, $xr7
 	xvpickve2gr.d	$a1, $xr7, 0
-	vinsgr2vr.h	$vr10, $a1, 4
-	xvpickve2gr.d	$a1, $xr7, 1
-	vinsgr2vr.h	$vr10, $a1, 5
-	xvpickve2gr.d	$a1, $xr7, 2
-	vinsgr2vr.h	$vr10, $a1, 6
-	xvpickve2gr.d	$a1, $xr7, 3
-	vinsgr2vr.h	$vr10, $a1, 7
-	xvpickve2gr.d	$a1, $xr8, 0
-	vinsgr2vr.h	$vr7, $a1, 0
-	xvpickve2gr.d	$a1, $xr8, 1
-	vinsgr2vr.h	$vr7, $a1, 1
-	xvpickve2gr.d	$a1, $xr8, 2
-	vinsgr2vr.h	$vr7, $a1, 2
-	xvpickve2gr.d	$a1, $xr8, 3
-	vinsgr2vr.h	$vr7, $a1, 3
-	xvpickve2gr.d	$a1, $xr6, 0
-	vinsgr2vr.h	$vr7, $a1, 4
-	xvpickve2gr.d	$a1, $xr6, 1
-	vinsgr2vr.h	$vr7, $a1, 5
-	xvpickve2gr.d	$a1, $xr6, 2
-	vinsgr2vr.h	$vr7, $a1, 6
-	xvpickve2gr.d	$a1, $xr6, 3
-	xvld	$xr6, $fp, 128
-	vinsgr2vr.h	$vr7, $a1, 7
-	vbitsel.v	$vr7, $vr7, $vr5, $vr10
-	vst	$vr7, $a0, 48
-	xvpermi.q	$xr7, $xr6, 1
-	vpickve2gr.w	$a1, $vr7, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 0
-	vpickve2gr.w	$a1, $vr7, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 1
-	vpickve2gr.w	$a1, $vr7, 2
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 2
-	vpickve2gr.w	$a1, $vr7, 3
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 3
-	vpickve2gr.w	$a1, $vr6, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr7, $a1, 0
-	vpickve2gr.w	$a1, $vr6, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr7, $a1, 1
-	vpickve2gr.w	$a1, $vr6, 2
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr7, $a1, 2
-	vpickve2gr.w	$a1, $vr6, 3
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr7, $a1, 3
-	xvmul.d	$xr6, $xr0, $xr8
-	xvmul.d	$xr9, $xr0, $xr7
-	xvori.b	$xr10, $xr1, 0
-	xvmadd.d	$xr10, $xr0, $xr8
-	xvori.b	$xr8, $xr1, 0
-	xvmadd.d	$xr8, $xr0, $xr7
-	xvmuh.d	$xr7, $xr10, $xr3
-	xvadd.d	$xr7, $xr7, $xr10
-	xvsrli.d	$xr10, $xr7, 63
-	xvsrai.d	$xr7, $xr7, 6
-	xvadd.d	$xr7, $xr7, $xr10
-	xvmuh.d	$xr10, $xr8, $xr3
-	xvadd.d	$xr8, $xr10, $xr8
-	xvsrli.d	$xr10, $xr8, 63
-	xvsrai.d	$xr8, $xr8, 6
-	xvadd.d	$xr8, $xr8, $xr10
-	xvmaxi.d	$xr7, $xr7, 1
-	xvmaxi.d	$xr8, $xr8, 1
-	xvmin.d	$xr7, $xr7, $xr4
-	xvmin.d	$xr8, $xr8, $xr4
-	xvslt.d	$xr9, $xr2, $xr9
-	xvpickve2gr.d	$a1, $xr9, 0
 	vinsgr2vr.h	$vr10, $a1, 0
-	xvpickve2gr.d	$a1, $xr9, 1
+	xvpickve2gr.d	$a1, $xr7, 1
 	vinsgr2vr.h	$vr10, $a1, 1
-	xvpickve2gr.d	$a1, $xr9, 2
+	xvpickve2gr.d	$a1, $xr7, 2
 	vinsgr2vr.h	$vr10, $a1, 2
-	xvpickve2gr.d	$a1, $xr9, 3
+	xvpickve2gr.d	$a1, $xr7, 3
 	vinsgr2vr.h	$vr10, $a1, 3
 	xvslt.d	$xr6, $xr2, $xr6
 	xvpickve2gr.d	$a1, $xr6, 0
@@ -433,160 +359,164 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	vinsgr2vr.h	$vr10, $a1, 6
 	xvpickve2gr.d	$a1, $xr6, 3
 	vinsgr2vr.h	$vr10, $a1, 7
-	xvpickve2gr.d	$a1, $xr8, 0
+	xvpickve2gr.d	$a1, $xr9, 0
 	vinsgr2vr.h	$vr6, $a1, 0
-	xvpickve2gr.d	$a1, $xr8, 1
+	xvpickve2gr.d	$a1, $xr9, 1
 	vinsgr2vr.h	$vr6, $a1, 1
-	xvpickve2gr.d	$a1, $xr8, 2
+	xvpickve2gr.d	$a1, $xr9, 2
 	vinsgr2vr.h	$vr6, $a1, 2
-	xvpickve2gr.d	$a1, $xr8, 3
+	xvpickve2gr.d	$a1, $xr9, 3
 	vinsgr2vr.h	$vr6, $a1, 3
-	xvpickve2gr.d	$a1, $xr7, 0
+	xvpickve2gr.d	$a1, $xr8, 0
 	vinsgr2vr.h	$vr6, $a1, 4
-	xvpickve2gr.d	$a1, $xr7, 1
+	xvpickve2gr.d	$a1, $xr8, 1
 	vinsgr2vr.h	$vr6, $a1, 5
-	xvpickve2gr.d	$a1, $xr7, 2
+	xvpickve2gr.d	$a1, $xr8, 2
 	vinsgr2vr.h	$vr6, $a1, 6
+	xvpickve2gr.d	$a1, $xr8, 3
+	xvld	$xr7, $fp, 128
+	vinsgr2vr.h	$vr6, $a1, 7
+	vbitsel.v	$vr6, $vr6, $vr5, $vr10
+	vst	$vr6, $a0, 48
+	xvpermi.q	$xr6, $xr7, 1
+	vpickve2gr.w	$a1, $vr6, 2
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 0
+	vpickve2gr.w	$a1, $vr6, 3
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	vpickve2gr.w	$a1, $vr6, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr9, $a1, 0
+	vpickve2gr.w	$a1, $vr6, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr9, $a1, 1
+	xvpermi.q	$xr9, $xr8, 2
+	vpickve2gr.w	$a1, $vr7, 2
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 0
+	vpickve2gr.w	$a1, $vr7, 3
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr7, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 0
+	vpickve2gr.w	$a1, $vr7, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	xvpermi.q	$xr8, $xr6, 2
+	xvmul.d	$xr6, $xr0, $xr9
+	xvmul.d	$xr7, $xr0, $xr8
+	xvori.b	$xr10, $xr1, 0
+	xvmadd.d	$xr10, $xr0, $xr9
+	xvori.b	$xr9, $xr1, 0
+	xvmadd.d	$xr9, $xr0, $xr8
+	xvmuh.d	$xr8, $xr10, $xr3
+	xvadd.d	$xr8, $xr8, $xr10
+	xvsrli.d	$xr10, $xr8, 63
+	xvsrai.d	$xr8, $xr8, 6
+	xvadd.d	$xr8, $xr8, $xr10
+	xvmuh.d	$xr10, $xr9, $xr3
+	xvadd.d	$xr9, $xr10, $xr9
+	xvsrli.d	$xr10, $xr9, 63
+	xvsrai.d	$xr9, $xr9, 6
+	xvadd.d	$xr9, $xr9, $xr10
+	xvmaxi.d	$xr8, $xr8, 1
+	xvmaxi.d	$xr9, $xr9, 1
+	xvmin.d	$xr8, $xr8, $xr4
+	xvmin.d	$xr9, $xr9, $xr4
+	xvslt.d	$xr7, $xr2, $xr7
+	xvpickve2gr.d	$a1, $xr7, 0
+	vinsgr2vr.h	$vr10, $a1, 0
+	xvpickve2gr.d	$a1, $xr7, 1
+	vinsgr2vr.h	$vr10, $a1, 1
+	xvpickve2gr.d	$a1, $xr7, 2
+	vinsgr2vr.h	$vr10, $a1, 2
 	xvpickve2gr.d	$a1, $xr7, 3
+	vinsgr2vr.h	$vr10, $a1, 3
+	xvslt.d	$xr6, $xr2, $xr6
+	xvpickve2gr.d	$a1, $xr6, 0
+	vinsgr2vr.h	$vr10, $a1, 4
+	xvpickve2gr.d	$a1, $xr6, 1
+	vinsgr2vr.h	$vr10, $a1, 5
+	xvpickve2gr.d	$a1, $xr6, 2
+	vinsgr2vr.h	$vr10, $a1, 6
+	xvpickve2gr.d	$a1, $xr6, 3
+	vinsgr2vr.h	$vr10, $a1, 7
+	xvpickve2gr.d	$a1, $xr9, 0
+	vinsgr2vr.h	$vr6, $a1, 0
+	xvpickve2gr.d	$a1, $xr9, 1
+	vinsgr2vr.h	$vr6, $a1, 1
+	xvpickve2gr.d	$a1, $xr9, 2
+	vinsgr2vr.h	$vr6, $a1, 2
+	xvpickve2gr.d	$a1, $xr9, 3
+	vinsgr2vr.h	$vr6, $a1, 3
+	xvpickve2gr.d	$a1, $xr8, 0
+	vinsgr2vr.h	$vr6, $a1, 4
+	xvpickve2gr.d	$a1, $xr8, 1
+	vinsgr2vr.h	$vr6, $a1, 5
+	xvpickve2gr.d	$a1, $xr8, 2
+	vinsgr2vr.h	$vr6, $a1, 6
+	xvpickve2gr.d	$a1, $xr8, 3
 	xvld	$xr7, $fp, 160
 	vinsgr2vr.h	$vr6, $a1, 7
 	vbitsel.v	$vr6, $vr6, $vr5, $vr10
 	vst	$vr6, $a0, 64
 	xvpermi.q	$xr6, $xr7, 1
-	vpickve2gr.w	$a1, $vr6, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 0
-	vpickve2gr.w	$a1, $vr6, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 1
 	vpickve2gr.w	$a1, $vr6, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 2
+	vinsgr2vr.d	$vr8, $a1, 0
 	vpickve2gr.w	$a1, $vr6, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 3
-	vpickve2gr.w	$a1, $vr7, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	vpickve2gr.w	$a1, $vr6, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 0
-	vpickve2gr.w	$a1, $vr7, 1
+	vinsgr2vr.d	$vr9, $a1, 0
+	vpickve2gr.w	$a1, $vr6, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 1
+	vinsgr2vr.d	$vr9, $a1, 1
+	xvpermi.q	$xr9, $xr8, 2
 	vpickve2gr.w	$a1, $vr7, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 2
+	vinsgr2vr.d	$vr6, $a1, 0
 	vpickve2gr.w	$a1, $vr7, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 3
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr7, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 0
+	vpickve2gr.w	$a1, $vr7, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	xvpermi.q	$xr8, $xr6, 2
+	xvmul.d	$xr6, $xr0, $xr9
 	xvmul.d	$xr7, $xr0, $xr8
-	xvmul.d	$xr9, $xr0, $xr6
 	xvori.b	$xr10, $xr1, 0
-	xvmadd.d	$xr10, $xr0, $xr8
-	xvori.b	$xr8, $xr1, 0
-	xvmadd.d	$xr8, $xr0, $xr6
-	xvmuh.d	$xr6, $xr10, $xr3
-	xvadd.d	$xr6, $xr6, $xr10
-	xvsrli.d	$xr10, $xr6, 63
-	xvsrai.d	$xr6, $xr6, 6
-	xvadd.d	$xr6, $xr6, $xr10
-	xvmuh.d	$xr10, $xr8, $xr3
-	xvadd.d	$xr8, $xr10, $xr8
+	xvmadd.d	$xr10, $xr0, $xr9
+	xvori.b	$xr9, $xr1, 0
+	xvmadd.d	$xr9, $xr0, $xr8
+	xvmuh.d	$xr8, $xr10, $xr3
+	xvadd.d	$xr8, $xr8, $xr10
 	xvsrli.d	$xr10, $xr8, 63
 	xvsrai.d	$xr8, $xr8, 6
 	xvadd.d	$xr8, $xr8, $xr10
-	xvmaxi.d	$xr6, $xr6, 1
+	xvmuh.d	$xr10, $xr9, $xr3
+	xvadd.d	$xr9, $xr10, $xr9
+	xvsrli.d	$xr10, $xr9, 63
+	xvsrai.d	$xr9, $xr9, 6
+	xvadd.d	$xr9, $xr9, $xr10
 	xvmaxi.d	$xr8, $xr8, 1
-	xvmin.d	$xr6, $xr6, $xr4
+	xvmaxi.d	$xr9, $xr9, 1
 	xvmin.d	$xr8, $xr8, $xr4
-	xvslt.d	$xr9, $xr2, $xr9
-	xvpickve2gr.d	$a1, $xr9, 0
-	vinsgr2vr.h	$vr10, $a1, 0
-	xvpickve2gr.d	$a1, $xr9, 1
-	vinsgr2vr.h	$vr10, $a1, 1
-	xvpickve2gr.d	$a1, $xr9, 2
-	vinsgr2vr.h	$vr10, $a1, 2
-	xvpickve2gr.d	$a1, $xr9, 3
-	vinsgr2vr.h	$vr10, $a1, 3
+	xvmin.d	$xr9, $xr9, $xr4
 	xvslt.d	$xr7, $xr2, $xr7
 	xvpickve2gr.d	$a1, $xr7, 0
-	vinsgr2vr.h	$vr10, $a1, 4
-	xvpickve2gr.d	$a1, $xr7, 1
-	vinsgr2vr.h	$vr10, $a1, 5
-	xvpickve2gr.d	$a1, $xr7, 2
-	vinsgr2vr.h	$vr10, $a1, 6
-	xvpickve2gr.d	$a1, $xr7, 3
-	vinsgr2vr.h	$vr10, $a1, 7
-	xvpickve2gr.d	$a1, $xr8, 0
-	vinsgr2vr.h	$vr7, $a1, 0
-	xvpickve2gr.d	$a1, $xr8, 1
-	vinsgr2vr.h	$vr7, $a1, 1
-	xvpickve2gr.d	$a1, $xr8, 2
-	vinsgr2vr.h	$vr7, $a1, 2
-	xvpickve2gr.d	$a1, $xr8, 3
-	vinsgr2vr.h	$vr7, $a1, 3
-	xvpickve2gr.d	$a1, $xr6, 0
-	vinsgr2vr.h	$vr7, $a1, 4
-	xvpickve2gr.d	$a1, $xr6, 1
-	vinsgr2vr.h	$vr7, $a1, 5
-	xvpickve2gr.d	$a1, $xr6, 2
-	vinsgr2vr.h	$vr7, $a1, 6
-	xvpickve2gr.d	$a1, $xr6, 3
-	xvld	$xr6, $fp, 192
-	vinsgr2vr.h	$vr7, $a1, 7
-	vbitsel.v	$vr7, $vr7, $vr5, $vr10
-	vst	$vr7, $a0, 80
-	xvpermi.q	$xr7, $xr6, 1
-	vpickve2gr.w	$a1, $vr7, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 0
-	vpickve2gr.w	$a1, $vr7, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 1
-	vpickve2gr.w	$a1, $vr7, 2
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 2
-	vpickve2gr.w	$a1, $vr7, 3
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 3
-	vpickve2gr.w	$a1, $vr6, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr7, $a1, 0
-	vpickve2gr.w	$a1, $vr6, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr7, $a1, 1
-	vpickve2gr.w	$a1, $vr6, 2
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr7, $a1, 2
-	vpickve2gr.w	$a1, $vr6, 3
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr7, $a1, 3
-	xvmul.d	$xr6, $xr0, $xr8
-	xvmul.d	$xr9, $xr0, $xr7
-	xvori.b	$xr10, $xr1, 0
-	xvmadd.d	$xr10, $xr0, $xr8
-	xvori.b	$xr8, $xr1, 0
-	xvmadd.d	$xr8, $xr0, $xr7
-	xvmuh.d	$xr7, $xr10, $xr3
-	xvadd.d	$xr7, $xr7, $xr10
-	xvsrli.d	$xr10, $xr7, 63
-	xvsrai.d	$xr7, $xr7, 6
-	xvadd.d	$xr7, $xr7, $xr10
-	xvmuh.d	$xr10, $xr8, $xr3
-	xvadd.d	$xr8, $xr10, $xr8
-	xvsrli.d	$xr10, $xr8, 63
-	xvsrai.d	$xr8, $xr8, 6
-	xvadd.d	$xr8, $xr8, $xr10
-	xvmaxi.d	$xr7, $xr7, 1
-	xvmaxi.d	$xr8, $xr8, 1
-	xvmin.d	$xr7, $xr7, $xr4
-	xvmin.d	$xr8, $xr8, $xr4
-	xvslt.d	$xr9, $xr2, $xr9
-	xvpickve2gr.d	$a1, $xr9, 0
 	vinsgr2vr.h	$vr10, $a1, 0
-	xvpickve2gr.d	$a1, $xr9, 1
+	xvpickve2gr.d	$a1, $xr7, 1
 	vinsgr2vr.h	$vr10, $a1, 1
-	xvpickve2gr.d	$a1, $xr9, 2
+	xvpickve2gr.d	$a1, $xr7, 2
 	vinsgr2vr.h	$vr10, $a1, 2
-	xvpickve2gr.d	$a1, $xr9, 3
+	xvpickve2gr.d	$a1, $xr7, 3
 	vinsgr2vr.h	$vr10, $a1, 3
 	xvslt.d	$xr6, $xr2, $xr6
 	xvpickve2gr.d	$a1, $xr6, 0
@@ -597,60 +527,146 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	vinsgr2vr.h	$vr10, $a1, 6
 	xvpickve2gr.d	$a1, $xr6, 3
 	vinsgr2vr.h	$vr10, $a1, 7
-	xvpickve2gr.d	$a1, $xr8, 0
+	xvpickve2gr.d	$a1, $xr9, 0
 	vinsgr2vr.h	$vr6, $a1, 0
-	xvpickve2gr.d	$a1, $xr8, 1
+	xvpickve2gr.d	$a1, $xr9, 1
 	vinsgr2vr.h	$vr6, $a1, 1
-	xvpickve2gr.d	$a1, $xr8, 2
+	xvpickve2gr.d	$a1, $xr9, 2
 	vinsgr2vr.h	$vr6, $a1, 2
-	xvpickve2gr.d	$a1, $xr8, 3
+	xvpickve2gr.d	$a1, $xr9, 3
 	vinsgr2vr.h	$vr6, $a1, 3
-	xvpickve2gr.d	$a1, $xr7, 0
+	xvpickve2gr.d	$a1, $xr8, 0
 	vinsgr2vr.h	$vr6, $a1, 4
-	xvpickve2gr.d	$a1, $xr7, 1
+	xvpickve2gr.d	$a1, $xr8, 1
 	vinsgr2vr.h	$vr6, $a1, 5
-	xvpickve2gr.d	$a1, $xr7, 2
+	xvpickve2gr.d	$a1, $xr8, 2
 	vinsgr2vr.h	$vr6, $a1, 6
+	xvpickve2gr.d	$a1, $xr8, 3
+	xvld	$xr7, $fp, 192
+	vinsgr2vr.h	$vr6, $a1, 7
+	vbitsel.v	$vr6, $vr6, $vr5, $vr10
+	vst	$vr6, $a0, 80
+	xvpermi.q	$xr6, $xr7, 1
+	vpickve2gr.w	$a1, $vr6, 2
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 0
+	vpickve2gr.w	$a1, $vr6, 3
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	vpickve2gr.w	$a1, $vr6, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr9, $a1, 0
+	vpickve2gr.w	$a1, $vr6, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr9, $a1, 1
+	xvpermi.q	$xr9, $xr8, 2
+	vpickve2gr.w	$a1, $vr7, 2
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 0
+	vpickve2gr.w	$a1, $vr7, 3
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr7, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 0
+	vpickve2gr.w	$a1, $vr7, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	xvpermi.q	$xr8, $xr6, 2
+	xvmul.d	$xr6, $xr0, $xr9
+	xvmul.d	$xr7, $xr0, $xr8
+	xvori.b	$xr10, $xr1, 0
+	xvmadd.d	$xr10, $xr0, $xr9
+	xvori.b	$xr9, $xr1, 0
+	xvmadd.d	$xr9, $xr0, $xr8
+	xvmuh.d	$xr8, $xr10, $xr3
+	xvadd.d	$xr8, $xr8, $xr10
+	xvsrli.d	$xr10, $xr8, 63
+	xvsrai.d	$xr8, $xr8, 6
+	xvadd.d	$xr8, $xr8, $xr10
+	xvmuh.d	$xr10, $xr9, $xr3
+	xvadd.d	$xr9, $xr10, $xr9
+	xvsrli.d	$xr10, $xr9, 63
+	xvsrai.d	$xr9, $xr9, 6
+	xvadd.d	$xr9, $xr9, $xr10
+	xvmaxi.d	$xr8, $xr8, 1
+	xvmaxi.d	$xr9, $xr9, 1
+	xvmin.d	$xr8, $xr8, $xr4
+	xvmin.d	$xr9, $xr9, $xr4
+	xvslt.d	$xr7, $xr2, $xr7
+	xvpickve2gr.d	$a1, $xr7, 0
+	vinsgr2vr.h	$vr10, $a1, 0
+	xvpickve2gr.d	$a1, $xr7, 1
+	vinsgr2vr.h	$vr10, $a1, 1
+	xvpickve2gr.d	$a1, $xr7, 2
+	vinsgr2vr.h	$vr10, $a1, 2
 	xvpickve2gr.d	$a1, $xr7, 3
+	vinsgr2vr.h	$vr10, $a1, 3
+	xvslt.d	$xr6, $xr2, $xr6
+	xvpickve2gr.d	$a1, $xr6, 0
+	vinsgr2vr.h	$vr10, $a1, 4
+	xvpickve2gr.d	$a1, $xr6, 1
+	vinsgr2vr.h	$vr10, $a1, 5
+	xvpickve2gr.d	$a1, $xr6, 2
+	vinsgr2vr.h	$vr10, $a1, 6
+	xvpickve2gr.d	$a1, $xr6, 3
+	vinsgr2vr.h	$vr10, $a1, 7
+	xvpickve2gr.d	$a1, $xr9, 0
+	vinsgr2vr.h	$vr6, $a1, 0
+	xvpickve2gr.d	$a1, $xr9, 1
+	vinsgr2vr.h	$vr6, $a1, 1
+	xvpickve2gr.d	$a1, $xr9, 2
+	vinsgr2vr.h	$vr6, $a1, 2
+	xvpickve2gr.d	$a1, $xr9, 3
+	vinsgr2vr.h	$vr6, $a1, 3
+	xvpickve2gr.d	$a1, $xr8, 0
+	vinsgr2vr.h	$vr6, $a1, 4
+	xvpickve2gr.d	$a1, $xr8, 1
+	vinsgr2vr.h	$vr6, $a1, 5
+	xvpickve2gr.d	$a1, $xr8, 2
+	vinsgr2vr.h	$vr6, $a1, 6
+	xvpickve2gr.d	$a1, $xr8, 3
 	xvld	$xr7, $fp, 224
 	vinsgr2vr.h	$vr6, $a1, 7
 	vbitsel.v	$vr6, $vr6, $vr5, $vr10
 	vst	$vr6, $a0, 96
 	xvpermi.q	$xr6, $xr7, 1
-	vpickve2gr.w	$a1, $vr6, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 0
-	vpickve2gr.w	$a1, $vr6, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 1
 	vpickve2gr.w	$a1, $vr6, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 2
+	vinsgr2vr.d	$vr8, $a1, 0
 	vpickve2gr.w	$a1, $vr6, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr8, $a1, 3
-	vpickve2gr.w	$a1, $vr7, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	vpickve2gr.w	$a1, $vr6, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 0
-	vpickve2gr.w	$a1, $vr7, 1
+	vinsgr2vr.d	$vr9, $a1, 0
+	vpickve2gr.w	$a1, $vr6, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 1
+	vinsgr2vr.d	$vr9, $a1, 1
+	xvpermi.q	$xr9, $xr8, 2
 	vpickve2gr.w	$a1, $vr7, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 2
+	vinsgr2vr.d	$vr6, $a1, 0
 	vpickve2gr.w	$a1, $vr7, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 3
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr7, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 0
+	vpickve2gr.w	$a1, $vr7, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr8, $a1, 1
+	xvpermi.q	$xr8, $xr6, 2
+	xvmul.d	$xr6, $xr0, $xr9
 	xvmul.d	$xr7, $xr0, $xr8
-	xvmul.d	$xr9, $xr0, $xr6
 	xvori.b	$xr10, $xr1, 0
-	xvmadd.d	$xr10, $xr0, $xr8
-	xvmadd.d	$xr1, $xr0, $xr6
+	xvmadd.d	$xr10, $xr0, $xr9
+	xvmadd.d	$xr1, $xr0, $xr8
 	xvmuh.d	$xr0, $xr10, $xr3
 	xvadd.d	$xr0, $xr0, $xr10
-	xvsrli.d	$xr6, $xr0, 63
+	xvsrli.d	$xr8, $xr0, 63
 	xvsrai.d	$xr0, $xr0, 6
-	xvadd.d	$xr0, $xr0, $xr6
+	xvadd.d	$xr0, $xr0, $xr8
 	xvmuh.d	$xr3, $xr1, $xr3
 	xvadd.d	$xr1, $xr3, $xr1
 	xvsrli.d	$xr3, $xr1, 63
@@ -660,7 +676,7 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	xvmaxi.d	$xr1, $xr1, 1
 	xvmin.d	$xr0, $xr0, $xr4
 	xvmin.d	$xr1, $xr1, $xr4
-	xvslt.d	$xr3, $xr2, $xr9
+	xvslt.d	$xr3, $xr2, $xr7
 	xvpickve2gr.d	$a1, $xr3, 0
 	vinsgr2vr.h	$vr4, $a1, 0
 	xvpickve2gr.d	$a1, $xr3, 1
@@ -669,7 +685,7 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	vinsgr2vr.h	$vr4, $a1, 2
 	xvpickve2gr.d	$a1, $xr3, 3
 	vinsgr2vr.h	$vr4, $a1, 3
-	xvslt.d	$xr2, $xr2, $xr7
+	xvslt.d	$xr2, $xr2, $xr6
 	xvpickve2gr.d	$a1, $xr2, 0
 	vinsgr2vr.h	$vr4, $a1, 4
 	xvpickve2gr.d	$a1, $xr2, 1
@@ -718,111 +734,115 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 .LBB0_6:                                # %vector.body31
 	xvld	$xr1, $fp, 0
 	xvpermi.q	$xr2, $xr1, 1
-	vpickve2gr.w	$a1, $vr2, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr3, $a1, 0
-	vpickve2gr.w	$a1, $vr2, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr3, $a1, 1
 	vpickve2gr.w	$a1, $vr2, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr3, $a1, 2
+	vinsgr2vr.d	$vr3, $a1, 0
 	vpickve2gr.w	$a1, $vr2, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr3, $a1, 3
-	vpickve2gr.w	$a1, $vr1, 0
+	vinsgr2vr.d	$vr3, $a1, 1
+	vpickve2gr.w	$a1, $vr2, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr2, $a1, 0
-	vpickve2gr.w	$a1, $vr1, 1
+	vinsgr2vr.d	$vr4, $a1, 0
+	vpickve2gr.w	$a1, $vr2, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr2, $a1, 1
+	vinsgr2vr.d	$vr4, $a1, 1
+	xvpermi.q	$xr4, $xr3, 2
 	vpickve2gr.w	$a1, $vr1, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr2, $a1, 2
+	vinsgr2vr.d	$vr2, $a1, 0
 	vpickve2gr.w	$a1, $vr1, 3
 	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr2, $a1, 1
+	vpickve2gr.w	$a1, $vr1, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vpickve2gr.w	$a1, $vr1, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr3, $a1, 1
 	xvrepli.d	$xr1, 50
-	xvinsgr2vr.d	$xr2, $a1, 3
+	xvpermi.q	$xr3, $xr2, 2
+	xvori.b	$xr5, $xr1, 0
+	xvmadd.d	$xr5, $xr0, $xr4
 	xvori.b	$xr4, $xr1, 0
 	xvmadd.d	$xr4, $xr0, $xr3
-	xvori.b	$xr3, $xr1, 0
-	xvmadd.d	$xr3, $xr0, $xr2
 	lu12i.w	$a1, 461373
 	ori	$a1, $a1, 1803
 	lu32i.d	$a1, 461373
 	lu52i.d	$a1, $a1, -1475
 	xvreplgr2vr.d	$xr2, $a1
+	xvmuh.d	$xr3, $xr5, $xr2
+	xvadd.d	$xr3, $xr3, $xr5
+	xvsrli.d	$xr5, $xr3, 63
+	xvsrai.d	$xr3, $xr3, 6
+	xvadd.d	$xr3, $xr3, $xr5
 	xvmuh.d	$xr5, $xr4, $xr2
 	xvadd.d	$xr4, $xr5, $xr4
 	xvsrli.d	$xr5, $xr4, 63
 	xvsrai.d	$xr4, $xr4, 6
 	xvadd.d	$xr4, $xr4, $xr5
-	xvmuh.d	$xr5, $xr3, $xr2
-	xvadd.d	$xr3, $xr5, $xr3
-	xvsrli.d	$xr5, $xr3, 63
-	xvsrai.d	$xr3, $xr3, 6
-	xvadd.d	$xr3, $xr3, $xr5
-	xvmaxi.d	$xr4, $xr4, 1
 	xvmaxi.d	$xr5, $xr3, 1
+	xvmaxi.d	$xr4, $xr4, 1
 	lu12i.w	$a1, 7
 	ori	$a1, $a1, 4095
 	xvreplgr2vr.d	$xr3, $a1
-	xvmin.d	$xr4, $xr4, $xr3
 	xvmin.d	$xr5, $xr5, $xr3
-	xvpickve2gr.d	$a1, $xr5, 0
-	vinsgr2vr.h	$vr6, $a1, 0
-	xvpickve2gr.d	$a1, $xr5, 1
-	vinsgr2vr.h	$vr6, $a1, 1
-	xvpickve2gr.d	$a1, $xr5, 2
-	vinsgr2vr.h	$vr6, $a1, 2
-	xvpickve2gr.d	$a1, $xr5, 3
-	vinsgr2vr.h	$vr6, $a1, 3
+	xvmin.d	$xr4, $xr4, $xr3
 	xvpickve2gr.d	$a1, $xr4, 0
-	vinsgr2vr.h	$vr6, $a1, 4
+	vinsgr2vr.h	$vr6, $a1, 0
 	xvpickve2gr.d	$a1, $xr4, 1
-	vinsgr2vr.h	$vr6, $a1, 5
+	vinsgr2vr.h	$vr6, $a1, 1
 	xvpickve2gr.d	$a1, $xr4, 2
-	vinsgr2vr.h	$vr6, $a1, 6
-	xvld	$xr5, $fp, 32
+	vinsgr2vr.h	$vr6, $a1, 2
 	xvpickve2gr.d	$a1, $xr4, 3
+	vinsgr2vr.h	$vr6, $a1, 3
+	xvpickve2gr.d	$a1, $xr5, 0
+	vinsgr2vr.h	$vr6, $a1, 4
+	xvpickve2gr.d	$a1, $xr5, 1
+	vinsgr2vr.h	$vr6, $a1, 5
+	xvpickve2gr.d	$a1, $xr5, 2
+	vinsgr2vr.h	$vr6, $a1, 6
+	xvld	$xr4, $fp, 32
+	xvpickve2gr.d	$a1, $xr5, 3
 	vinsgr2vr.h	$vr6, $a1, 7
 	vst	$vr6, $a0, 0
-	xvpermi.q	$xr4, $xr5, 1
-	vpickve2gr.w	$a1, $vr4, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 0
-	vpickve2gr.w	$a1, $vr4, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 1
-	vpickve2gr.w	$a1, $vr4, 2
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 2
-	vpickve2gr.w	$a1, $vr4, 3
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 3
-	vpickve2gr.w	$a1, $vr5, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 0
-	vpickve2gr.w	$a1, $vr5, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 1
+	xvpermi.q	$xr5, $xr4, 1
 	vpickve2gr.w	$a1, $vr5, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 2
+	vinsgr2vr.d	$vr6, $a1, 0
 	vpickve2gr.w	$a1, $vr5, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 3
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr5, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr7, $a1, 0
+	vpickve2gr.w	$a1, $vr5, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr7, $a1, 1
+	xvpermi.q	$xr7, $xr6, 2
+	vpickve2gr.w	$a1, $vr4, 2
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr5, $a1, 0
+	vpickve2gr.w	$a1, $vr4, 3
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr5, $a1, 1
+	vpickve2gr.w	$a1, $vr4, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 0
+	vpickve2gr.w	$a1, $vr4, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	xvpermi.q	$xr6, $xr5, 2
+	xvori.b	$xr4, $xr1, 0
+	xvmadd.d	$xr4, $xr0, $xr7
 	xvori.b	$xr5, $xr1, 0
 	xvmadd.d	$xr5, $xr0, $xr6
-	xvori.b	$xr6, $xr1, 0
-	xvmadd.d	$xr6, $xr0, $xr4
-	xvmuh.d	$xr4, $xr5, $xr2
-	xvadd.d	$xr4, $xr4, $xr5
-	xvsrli.d	$xr5, $xr4, 63
+	xvmuh.d	$xr6, $xr4, $xr2
+	xvadd.d	$xr4, $xr6, $xr4
+	xvsrli.d	$xr6, $xr4, 63
 	xvsrai.d	$xr4, $xr4, 6
-	xvadd.d	$xr4, $xr4, $xr5
-	xvmuh.d	$xr5, $xr6, $xr2
-	xvadd.d	$xr5, $xr5, $xr6
+	xvadd.d	$xr4, $xr4, $xr6
+	xvmuh.d	$xr6, $xr5, $xr2
+	xvadd.d	$xr5, $xr6, $xr5
 	xvsrli.d	$xr6, $xr5, 63
 	xvsrai.d	$xr5, $xr5, 6
 	xvadd.d	$xr5, $xr5, $xr6
@@ -849,41 +869,43 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	vinsgr2vr.h	$vr6, $a1, 7
 	vst	$vr6, $a0, 16
 	xvpermi.q	$xr4, $xr5, 1
-	vpickve2gr.w	$a1, $vr4, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 0
-	vpickve2gr.w	$a1, $vr4, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 1
 	vpickve2gr.w	$a1, $vr4, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 2
+	vinsgr2vr.d	$vr6, $a1, 0
 	vpickve2gr.w	$a1, $vr4, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 3
-	vpickve2gr.w	$a1, $vr5, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr4, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 0
-	vpickve2gr.w	$a1, $vr5, 1
+	vinsgr2vr.d	$vr7, $a1, 0
+	vpickve2gr.w	$a1, $vr4, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 1
+	vinsgr2vr.d	$vr7, $a1, 1
+	xvpermi.q	$xr7, $xr6, 2
 	vpickve2gr.w	$a1, $vr5, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 2
+	vinsgr2vr.d	$vr4, $a1, 0
 	vpickve2gr.w	$a1, $vr5, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 3
+	vinsgr2vr.d	$vr4, $a1, 1
+	vpickve2gr.w	$a1, $vr5, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 0
+	vpickve2gr.w	$a1, $vr5, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	xvpermi.q	$xr6, $xr4, 2
+	xvori.b	$xr4, $xr1, 0
+	xvmadd.d	$xr4, $xr0, $xr7
 	xvori.b	$xr5, $xr1, 0
 	xvmadd.d	$xr5, $xr0, $xr6
-	xvori.b	$xr6, $xr1, 0
-	xvmadd.d	$xr6, $xr0, $xr4
-	xvmuh.d	$xr4, $xr5, $xr2
-	xvadd.d	$xr4, $xr4, $xr5
-	xvsrli.d	$xr5, $xr4, 63
+	xvmuh.d	$xr6, $xr4, $xr2
+	xvadd.d	$xr4, $xr6, $xr4
+	xvsrli.d	$xr6, $xr4, 63
 	xvsrai.d	$xr4, $xr4, 6
-	xvadd.d	$xr4, $xr4, $xr5
-	xvmuh.d	$xr5, $xr6, $xr2
-	xvadd.d	$xr5, $xr5, $xr6
+	xvadd.d	$xr4, $xr4, $xr6
+	xvmuh.d	$xr6, $xr5, $xr2
+	xvadd.d	$xr5, $xr6, $xr5
 	xvsrli.d	$xr6, $xr5, 63
 	xvsrai.d	$xr5, $xr5, 6
 	xvadd.d	$xr5, $xr5, $xr6
@@ -910,41 +932,43 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	vinsgr2vr.h	$vr6, $a1, 7
 	vst	$vr6, $a0, 32
 	xvpermi.q	$xr4, $xr5, 1
-	vpickve2gr.w	$a1, $vr4, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 0
-	vpickve2gr.w	$a1, $vr4, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 1
 	vpickve2gr.w	$a1, $vr4, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 2
+	vinsgr2vr.d	$vr6, $a1, 0
 	vpickve2gr.w	$a1, $vr4, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 3
-	vpickve2gr.w	$a1, $vr5, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr4, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 0
-	vpickve2gr.w	$a1, $vr5, 1
+	vinsgr2vr.d	$vr7, $a1, 0
+	vpickve2gr.w	$a1, $vr4, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 1
+	vinsgr2vr.d	$vr7, $a1, 1
+	xvpermi.q	$xr7, $xr6, 2
 	vpickve2gr.w	$a1, $vr5, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 2
+	vinsgr2vr.d	$vr4, $a1, 0
 	vpickve2gr.w	$a1, $vr5, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 3
+	vinsgr2vr.d	$vr4, $a1, 1
+	vpickve2gr.w	$a1, $vr5, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 0
+	vpickve2gr.w	$a1, $vr5, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	xvpermi.q	$xr6, $xr4, 2
+	xvori.b	$xr4, $xr1, 0
+	xvmadd.d	$xr4, $xr0, $xr7
 	xvori.b	$xr5, $xr1, 0
 	xvmadd.d	$xr5, $xr0, $xr6
-	xvori.b	$xr6, $xr1, 0
-	xvmadd.d	$xr6, $xr0, $xr4
-	xvmuh.d	$xr4, $xr5, $xr2
-	xvadd.d	$xr4, $xr4, $xr5
-	xvsrli.d	$xr5, $xr4, 63
+	xvmuh.d	$xr6, $xr4, $xr2
+	xvadd.d	$xr4, $xr6, $xr4
+	xvsrli.d	$xr6, $xr4, 63
 	xvsrai.d	$xr4, $xr4, 6
-	xvadd.d	$xr4, $xr4, $xr5
-	xvmuh.d	$xr5, $xr6, $xr2
-	xvadd.d	$xr5, $xr5, $xr6
+	xvadd.d	$xr4, $xr4, $xr6
+	xvmuh.d	$xr6, $xr5, $xr2
+	xvadd.d	$xr5, $xr6, $xr5
 	xvsrli.d	$xr6, $xr5, 63
 	xvsrai.d	$xr5, $xr5, 6
 	xvadd.d	$xr5, $xr5, $xr6
@@ -971,41 +995,43 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	vinsgr2vr.h	$vr6, $a1, 7
 	vst	$vr6, $a0, 48
 	xvpermi.q	$xr4, $xr5, 1
-	vpickve2gr.w	$a1, $vr4, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 0
-	vpickve2gr.w	$a1, $vr4, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 1
 	vpickve2gr.w	$a1, $vr4, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 2
+	vinsgr2vr.d	$vr6, $a1, 0
 	vpickve2gr.w	$a1, $vr4, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 3
-	vpickve2gr.w	$a1, $vr5, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr4, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 0
-	vpickve2gr.w	$a1, $vr5, 1
+	vinsgr2vr.d	$vr7, $a1, 0
+	vpickve2gr.w	$a1, $vr4, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 1
+	vinsgr2vr.d	$vr7, $a1, 1
+	xvpermi.q	$xr7, $xr6, 2
 	vpickve2gr.w	$a1, $vr5, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 2
+	vinsgr2vr.d	$vr4, $a1, 0
 	vpickve2gr.w	$a1, $vr5, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 3
+	vinsgr2vr.d	$vr4, $a1, 1
+	vpickve2gr.w	$a1, $vr5, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 0
+	vpickve2gr.w	$a1, $vr5, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	xvpermi.q	$xr6, $xr4, 2
+	xvori.b	$xr4, $xr1, 0
+	xvmadd.d	$xr4, $xr0, $xr7
 	xvori.b	$xr5, $xr1, 0
 	xvmadd.d	$xr5, $xr0, $xr6
-	xvori.b	$xr6, $xr1, 0
-	xvmadd.d	$xr6, $xr0, $xr4
-	xvmuh.d	$xr4, $xr5, $xr2
-	xvadd.d	$xr4, $xr4, $xr5
-	xvsrli.d	$xr5, $xr4, 63
+	xvmuh.d	$xr6, $xr4, $xr2
+	xvadd.d	$xr4, $xr6, $xr4
+	xvsrli.d	$xr6, $xr4, 63
 	xvsrai.d	$xr4, $xr4, 6
-	xvadd.d	$xr4, $xr4, $xr5
-	xvmuh.d	$xr5, $xr6, $xr2
-	xvadd.d	$xr5, $xr5, $xr6
+	xvadd.d	$xr4, $xr4, $xr6
+	xvmuh.d	$xr6, $xr5, $xr2
+	xvadd.d	$xr5, $xr6, $xr5
 	xvsrli.d	$xr6, $xr5, 63
 	xvsrai.d	$xr5, $xr5, 6
 	xvadd.d	$xr5, $xr5, $xr6
@@ -1032,41 +1058,43 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	vinsgr2vr.h	$vr6, $a1, 7
 	vst	$vr6, $a0, 64
 	xvpermi.q	$xr4, $xr5, 1
-	vpickve2gr.w	$a1, $vr4, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 0
-	vpickve2gr.w	$a1, $vr4, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 1
 	vpickve2gr.w	$a1, $vr4, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 2
+	vinsgr2vr.d	$vr6, $a1, 0
 	vpickve2gr.w	$a1, $vr4, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 3
-	vpickve2gr.w	$a1, $vr5, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr4, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 0
-	vpickve2gr.w	$a1, $vr5, 1
+	vinsgr2vr.d	$vr7, $a1, 0
+	vpickve2gr.w	$a1, $vr4, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 1
+	vinsgr2vr.d	$vr7, $a1, 1
+	xvpermi.q	$xr7, $xr6, 2
 	vpickve2gr.w	$a1, $vr5, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 2
+	vinsgr2vr.d	$vr4, $a1, 0
 	vpickve2gr.w	$a1, $vr5, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 3
+	vinsgr2vr.d	$vr4, $a1, 1
+	vpickve2gr.w	$a1, $vr5, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 0
+	vpickve2gr.w	$a1, $vr5, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	xvpermi.q	$xr6, $xr4, 2
+	xvori.b	$xr4, $xr1, 0
+	xvmadd.d	$xr4, $xr0, $xr7
 	xvori.b	$xr5, $xr1, 0
 	xvmadd.d	$xr5, $xr0, $xr6
-	xvori.b	$xr6, $xr1, 0
-	xvmadd.d	$xr6, $xr0, $xr4
-	xvmuh.d	$xr4, $xr5, $xr2
-	xvadd.d	$xr4, $xr4, $xr5
-	xvsrli.d	$xr5, $xr4, 63
+	xvmuh.d	$xr6, $xr4, $xr2
+	xvadd.d	$xr4, $xr6, $xr4
+	xvsrli.d	$xr6, $xr4, 63
 	xvsrai.d	$xr4, $xr4, 6
-	xvadd.d	$xr4, $xr4, $xr5
-	xvmuh.d	$xr5, $xr6, $xr2
-	xvadd.d	$xr5, $xr5, $xr6
+	xvadd.d	$xr4, $xr4, $xr6
+	xvmuh.d	$xr6, $xr5, $xr2
+	xvadd.d	$xr5, $xr6, $xr5
 	xvsrli.d	$xr6, $xr5, 63
 	xvsrai.d	$xr5, $xr5, 6
 	xvadd.d	$xr5, $xr5, $xr6
@@ -1093,41 +1121,43 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	vinsgr2vr.h	$vr6, $a1, 7
 	vst	$vr6, $a0, 80
 	xvpermi.q	$xr4, $xr5, 1
-	vpickve2gr.w	$a1, $vr4, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 0
-	vpickve2gr.w	$a1, $vr4, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 1
 	vpickve2gr.w	$a1, $vr4, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 2
+	vinsgr2vr.d	$vr6, $a1, 0
 	vpickve2gr.w	$a1, $vr4, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 3
-	vpickve2gr.w	$a1, $vr5, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr4, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 0
-	vpickve2gr.w	$a1, $vr5, 1
+	vinsgr2vr.d	$vr7, $a1, 0
+	vpickve2gr.w	$a1, $vr4, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 1
+	vinsgr2vr.d	$vr7, $a1, 1
+	xvpermi.q	$xr7, $xr6, 2
 	vpickve2gr.w	$a1, $vr5, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 2
+	vinsgr2vr.d	$vr4, $a1, 0
 	vpickve2gr.w	$a1, $vr5, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 3
+	vinsgr2vr.d	$vr4, $a1, 1
+	vpickve2gr.w	$a1, $vr5, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 0
+	vpickve2gr.w	$a1, $vr5, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	xvpermi.q	$xr6, $xr4, 2
+	xvori.b	$xr4, $xr1, 0
+	xvmadd.d	$xr4, $xr0, $xr7
 	xvori.b	$xr5, $xr1, 0
 	xvmadd.d	$xr5, $xr0, $xr6
-	xvori.b	$xr6, $xr1, 0
-	xvmadd.d	$xr6, $xr0, $xr4
-	xvmuh.d	$xr4, $xr5, $xr2
-	xvadd.d	$xr4, $xr4, $xr5
-	xvsrli.d	$xr5, $xr4, 63
+	xvmuh.d	$xr6, $xr4, $xr2
+	xvadd.d	$xr4, $xr6, $xr4
+	xvsrli.d	$xr6, $xr4, 63
 	xvsrai.d	$xr4, $xr4, 6
-	xvadd.d	$xr4, $xr4, $xr5
-	xvmuh.d	$xr5, $xr6, $xr2
-	xvadd.d	$xr5, $xr5, $xr6
+	xvadd.d	$xr4, $xr4, $xr6
+	xvmuh.d	$xr6, $xr5, $xr2
+	xvadd.d	$xr5, $xr6, $xr5
 	xvsrli.d	$xr6, $xr5, 63
 	xvsrai.d	$xr5, $xr5, 6
 	xvadd.d	$xr5, $xr5, $xr6
@@ -1154,35 +1184,37 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	vinsgr2vr.h	$vr6, $a1, 7
 	vst	$vr6, $a0, 96
 	xvpermi.q	$xr4, $xr5, 1
-	vpickve2gr.w	$a1, $vr4, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 0
-	vpickve2gr.w	$a1, $vr4, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 1
 	vpickve2gr.w	$a1, $vr4, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 2
+	vinsgr2vr.d	$vr6, $a1, 0
 	vpickve2gr.w	$a1, $vr4, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr6, $a1, 3
-	vpickve2gr.w	$a1, $vr5, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	vpickve2gr.w	$a1, $vr4, 0
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 0
-	vpickve2gr.w	$a1, $vr5, 1
+	vinsgr2vr.d	$vr7, $a1, 0
+	vpickve2gr.w	$a1, $vr4, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 1
+	vinsgr2vr.d	$vr7, $a1, 1
+	xvpermi.q	$xr7, $xr6, 2
 	vpickve2gr.w	$a1, $vr5, 2
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 2
+	vinsgr2vr.d	$vr4, $a1, 0
 	vpickve2gr.w	$a1, $vr5, 3
 	bstrpick.d	$a1, $a1, 31, 0
-	xvinsgr2vr.d	$xr4, $a1, 3
-	xvori.b	$xr5, $xr1, 0
-	xvmadd.d	$xr5, $xr0, $xr6
-	xvmadd.d	$xr1, $xr0, $xr4
-	xvmuh.d	$xr0, $xr5, $xr2
-	xvadd.d	$xr0, $xr0, $xr5
+	vinsgr2vr.d	$vr4, $a1, 1
+	vpickve2gr.w	$a1, $vr5, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 0
+	vpickve2gr.w	$a1, $vr5, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	vinsgr2vr.d	$vr6, $a1, 1
+	xvpermi.q	$xr6, $xr4, 2
+	xvori.b	$xr4, $xr1, 0
+	xvmadd.d	$xr4, $xr0, $xr7
+	xvmadd.d	$xr1, $xr0, $xr6
+	xvmuh.d	$xr0, $xr4, $xr2
+	xvadd.d	$xr0, $xr0, $xr4
 	xvsrli.d	$xr4, $xr0, 63
 	xvsrai.d	$xr0, $xr0, 6
 	xvadd.d	$xr0, $xr0, $xr4

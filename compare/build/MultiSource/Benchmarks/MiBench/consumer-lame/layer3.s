@@ -2283,31 +2283,32 @@ init_layer3:                            # @init_layer3
 	pcalau12i	$a7, %pc_hi20(shortLimit)
 	addi.d	$t0, $a7, %pc_lo12(shortLimit)
 	add.d	$a7, $t0, $a1
-	vpickve2gr.h	$t1, $vr6, 0
-	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr7, $t1, 0
-	vpickve2gr.h	$t1, $vr6, 1
-	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr7, $t1, 1
-	vpickve2gr.h	$t1, $vr6, 2
-	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr7, $t1, 2
-	vpickve2gr.h	$t1, $vr6, 3
-	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr7, $t1, 3
 	vpickve2gr.h	$t1, $vr6, 4
 	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr7, $t1, 4
+	vinsgr2vr.w	$vr7, $t1, 0
 	vpickve2gr.h	$t1, $vr6, 5
 	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr7, $t1, 5
+	vinsgr2vr.w	$vr7, $t1, 1
 	vpickve2gr.h	$t1, $vr6, 6
 	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr7, $t1, 6
+	vinsgr2vr.w	$vr7, $t1, 2
 	vpickve2gr.h	$t1, $vr6, 7
 	ext.w.h	$t1, $t1
-	xvinsgr2vr.w	$xr7, $t1, 7
-	xvadd.w	$xr6, $xr7, $xr3
+	vinsgr2vr.w	$vr7, $t1, 3
+	vpickve2gr.h	$t1, $vr6, 0
+	ext.w.h	$t1, $t1
+	vinsgr2vr.w	$vr8, $t1, 0
+	vpickve2gr.h	$t1, $vr6, 1
+	ext.w.h	$t1, $t1
+	vinsgr2vr.w	$vr8, $t1, 1
+	vpickve2gr.h	$t1, $vr6, 2
+	ext.w.h	$t1, $t1
+	vinsgr2vr.w	$vr8, $t1, 2
+	vpickve2gr.h	$t1, $vr6, 3
+	ext.w.h	$t1, $t1
+	vinsgr2vr.w	$vr8, $t1, 3
+	xvpermi.q	$xr8, $xr7, 2
+	xvadd.w	$xr6, $xr8, $xr3
 	xvmuh.w	$xr6, $xr6, $xr4
 	xvsrai.w	$xr6, $xr6, 2
 	xvsrli.w	$xr7, $xr6, 31
@@ -3020,12 +3021,12 @@ do_layer3:                              # @do_layer3
                                         #     Parent Loop BB1_34 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	fld.d	$fa4, $t5, 0
-	fld.d	$fa5, $t5, 24
-	fld.d	$fa6, $t5, 48
-	fld.d	$fa7, $t5, 72
-	xvinsve0.d	$xr4, $xr5, 1
-	xvinsve0.d	$xr4, $xr6, 2
-	xvinsve0.d	$xr4, $xr7, 3
+	fld.d	$fa5, $t5, 48
+	fld.d	$fa6, $t5, 72
+	fld.d	$fa7, $t5, 24
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr4, $vr7, 16
+	xvpermi.q	$xr4, $xr5, 2
 	xvfmul.d	$xr5, $xr2, $xr4
 	xvstelm.d	$xr5, $t5, 0, 0
 	xvstelm.d	$xr5, $t5, 24, 1
@@ -3237,12 +3238,12 @@ do_layer3:                              # @do_layer3
                                         #   Parent Loop BB1_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	fld.d	$fa4, $t4, 0
-	fld.d	$fa5, $t4, 24
-	fld.d	$fa6, $t4, 48
-	fld.d	$fa7, $t4, 72
-	xvinsve0.d	$xr4, $xr5, 1
-	xvinsve0.d	$xr4, $xr6, 2
-	xvinsve0.d	$xr4, $xr7, 3
+	fld.d	$fa5, $t4, 48
+	fld.d	$fa6, $t4, 72
+	fld.d	$fa7, $t4, 24
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr4, $vr7, 16
+	xvpermi.q	$xr4, $xr5, 2
 	xvfmul.d	$xr5, $xr2, $xr4
 	xvstelm.d	$xr5, $t4, 0, 0
 	xvstelm.d	$xr5, $t4, 24, 1
@@ -3352,12 +3353,12 @@ do_layer3:                              # @do_layer3
                                         #     Parent Loop BB1_72 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	fld.d	$fa4, $t6, 8
-	fld.d	$fa5, $t6, 32
-	fld.d	$fa6, $t6, 56
-	fld.d	$fa7, $t6, 80
-	xvinsve0.d	$xr4, $xr5, 1
-	xvinsve0.d	$xr4, $xr6, 2
-	xvinsve0.d	$xr4, $xr7, 3
+	fld.d	$fa5, $t6, 56
+	fld.d	$fa6, $t6, 80
+	fld.d	$fa7, $t6, 32
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr4, $vr7, 16
+	xvpermi.q	$xr4, $xr5, 2
 	xvfmul.d	$xr5, $xr2, $xr4
 	xvstelm.d	$xr5, $t6, 8, 0
 	xvstelm.d	$xr5, $t6, 32, 1
@@ -3446,12 +3447,12 @@ do_layer3:                              # @do_layer3
                                         #   Parent Loop BB1_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	fld.d	$fa4, $t5, 8
-	fld.d	$fa5, $t5, 32
-	fld.d	$fa6, $t5, 56
-	fld.d	$fa7, $t5, 80
-	xvinsve0.d	$xr4, $xr5, 1
-	xvinsve0.d	$xr4, $xr6, 2
-	xvinsve0.d	$xr4, $xr7, 3
+	fld.d	$fa5, $t5, 56
+	fld.d	$fa6, $t5, 80
+	fld.d	$fa7, $t5, 32
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr4, $vr7, 16
+	xvpermi.q	$xr4, $xr5, 2
 	xvfmul.d	$xr5, $xr2, $xr4
 	xvstelm.d	$xr5, $t5, 8, 0
 	xvstelm.d	$xr5, $t5, 32, 1
@@ -3563,12 +3564,12 @@ do_layer3:                              # @do_layer3
                                         #     Parent Loop BB1_91 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	fld.d	$fa4, $t8, 16
-	fld.d	$fa5, $t8, 40
-	fld.d	$fa6, $t8, 64
-	fld.d	$fa7, $t8, 88
-	xvinsve0.d	$xr4, $xr5, 1
-	xvinsve0.d	$xr4, $xr6, 2
-	xvinsve0.d	$xr4, $xr7, 3
+	fld.d	$fa5, $t8, 64
+	fld.d	$fa6, $t8, 88
+	fld.d	$fa7, $t8, 40
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr4, $vr7, 16
+	xvpermi.q	$xr4, $xr5, 2
 	xvfmul.d	$xr5, $xr2, $xr4
 	xvstelm.d	$xr5, $t8, 16, 0
 	xvstelm.d	$xr5, $t8, 40, 1
@@ -3658,12 +3659,12 @@ do_layer3:                              # @do_layer3
                                         #   Parent Loop BB1_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	fld.d	$fa4, $t7, 16
-	fld.d	$fa5, $t7, 40
-	fld.d	$fa6, $t7, 64
-	fld.d	$fa7, $t7, 88
-	xvinsve0.d	$xr4, $xr5, 1
-	xvinsve0.d	$xr4, $xr6, 2
-	xvinsve0.d	$xr4, $xr7, 3
+	fld.d	$fa5, $t7, 64
+	fld.d	$fa6, $t7, 88
+	fld.d	$fa7, $t7, 40
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr4, $vr7, 16
+	xvpermi.q	$xr4, $xr5, 2
 	xvfmul.d	$xr5, $xr2, $xr4
 	xvstelm.d	$xr5, $t7, 16, 0
 	xvstelm.d	$xr5, $t7, 40, 1

@@ -84,15 +84,16 @@ j:                                      # @j
 	vrepli.b	$vr0, -1
 	vxor.v	$vr0, $vr1, $vr0
 	vand.v	$vr0, $vr2, $vr0
-	vpickve2gr.w	$t0, $vr0, 0
-	xvinsgr2vr.d	$xr1, $t0, 0
-	vpickve2gr.w	$t0, $vr0, 1
-	xvinsgr2vr.d	$xr1, $t0, 1
 	vpickve2gr.w	$t0, $vr0, 2
-	xvinsgr2vr.d	$xr1, $t0, 2
+	vinsgr2vr.d	$vr1, $t0, 0
 	vpickve2gr.w	$t0, $vr0, 3
-	xvinsgr2vr.d	$xr1, $t0, 3
-	xvand.v	$xr0, $xr1, $xr3
+	vinsgr2vr.d	$vr1, $t0, 1
+	vpickve2gr.w	$t0, $vr0, 0
+	vinsgr2vr.d	$vr2, $t0, 0
+	vpickve2gr.w	$t0, $vr0, 1
+	vinsgr2vr.d	$vr2, $t0, 1
+	xvpermi.q	$xr2, $xr1, 2
+	xvand.v	$xr0, $xr2, $xr3
 	xvstelm.d	$xr0, $a3, 0, 3
 	move	$t0, $a7
 	.p2align	4, , 16

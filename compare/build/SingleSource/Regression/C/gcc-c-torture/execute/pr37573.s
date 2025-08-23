@@ -236,7 +236,8 @@ foo:                                    # @foo
 	ld.w	$a2, $a0, 12
 	move	$a4, $zero
 	addi.d	$a1, $a0, 12
-	xvinsgr2vr.w	$xr0, $a2, 7
+	vinsgr2vr.w	$vr0, $a2, 3
+	xvpermi.q	$xr0, $xr0, 2
 	lu12i.w	$a2, 524287
 	ori	$a2, $a2, 4094
 	xvreplgr2vr.w	$xr1, $a2
@@ -254,21 +255,23 @@ foo:                                    # @foo
 	xvori.b	$xr6, $xr0, 0
 	add.d	$a6, $a0, $a4
 	xvld	$xr0, $a6, 16
-	xvpickve.w	$xr6, $xr6, 7
-	xvinsve0.w	$xr6, $xr6, 0
-	xvinsve0.w	$xr6, $xr0, 1
-	xvpickve.w	$xr7, $xr0, 1
-	xvinsve0.w	$xr6, $xr7, 2
-	xvpickve.w	$xr7, $xr0, 2
-	xvinsve0.w	$xr6, $xr7, 3
-	xvpickve.w	$xr7, $xr0, 3
-	xvinsve0.w	$xr6, $xr7, 4
-	xvpickve.w	$xr7, $xr0, 4
-	xvinsve0.w	$xr6, $xr7, 5
-	xvpickve.w	$xr7, $xr0, 5
-	xvinsve0.w	$xr6, $xr7, 6
-	xvpickve.w	$xr7, $xr0, 6
-	xvinsve0.w	$xr6, $xr7, 7
+	xvpickve2gr.w	$a7, $xr6, 7
+	vinsgr2vr.w	$vr6, $a7, 0
+	xvpickve2gr.w	$a7, $xr0, 0
+	vinsgr2vr.w	$vr6, $a7, 1
+	xvpickve2gr.w	$a7, $xr0, 1
+	vinsgr2vr.w	$vr6, $a7, 2
+	xvpickve2gr.w	$a7, $xr0, 2
+	vinsgr2vr.w	$vr6, $a7, 3
+	xvpickve2gr.w	$a7, $xr0, 3
+	vinsgr2vr.w	$vr7, $a7, 0
+	xvpickve2gr.w	$a7, $xr0, 4
+	vinsgr2vr.w	$vr7, $a7, 1
+	xvpickve2gr.w	$a7, $xr0, 5
+	vinsgr2vr.w	$vr7, $a7, 2
+	xvpickve2gr.w	$a7, $xr0, 6
+	vinsgr2vr.w	$vr7, $a7, 3
+	xvpermi.q	$xr6, $xr7, 2
 	xvand.v	$xr7, $xr0, $xr1
 	xvand.v	$xr6, $xr6, $xr2
 	xvor.v	$xr6, $xr7, $xr6

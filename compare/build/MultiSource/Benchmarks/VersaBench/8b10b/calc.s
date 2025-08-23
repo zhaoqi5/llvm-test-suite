@@ -162,46 +162,65 @@ bigTableSetup:                          # @bigTableSetup
 	slli.d	$a7, $a7, 2
 	ldx.wu	$a7, $a2, $a7
 	xvpermi.q	$xr7, $xr6, 1
+	vpickve2gr.w	$t0, $vr7, 2
+	andi	$t0, $t0, 15
+	vinsgr2vr.d	$vr8, $t0, 0
 	vpickve2gr.w	$t0, $vr7, 3
 	andi	$t0, $t0, 15
-	vpickve2gr.w	$t1, $vr7, 2
-	andi	$t1, $t1, 15
-	vpickve2gr.w	$t2, $vr7, 1
-	andi	$t2, $t2, 15
-	vpickve2gr.w	$t3, $vr7, 0
-	andi	$t3, $t3, 15
-	vpickve2gr.w	$t4, $vr6, 3
-	andi	$t4, $t4, 15
-	vpickve2gr.w	$t5, $vr6, 2
-	andi	$t5, $t5, 15
-	vpickve2gr.w	$t6, $vr6, 1
-	andi	$t6, $t6, 15
-	vpickve2gr.w	$t7, $vr6, 0
-	andi	$t7, $t7, 15
-	slli.d	$t7, $t7, 2
-	slli.d	$t6, $t6, 2
-	slli.d	$t5, $t5, 2
-	slli.d	$t4, $t4, 2
-	slli.d	$t3, $t3, 2
-	slli.d	$t2, $t2, 2
-	slli.d	$t1, $t1, 2
+	vinsgr2vr.d	$vr8, $t0, 1
+	xvpermi.q	$xr8, $xr8, 2
+	vpickve2gr.w	$t0, $vr7, 0
+	andi	$t0, $t0, 15
+	vinsgr2vr.d	$vr9, $t0, 0
+	vpickve2gr.w	$t0, $vr7, 1
+	andi	$t0, $t0, 15
+	vinsgr2vr.d	$vr9, $t0, 1
+	vpickve2gr.w	$t0, $vr6, 2
+	andi	$t0, $t0, 15
+	vinsgr2vr.d	$vr7, $t0, 0
+	vpickve2gr.w	$t0, $vr6, 3
+	andi	$t0, $t0, 15
+	vinsgr2vr.d	$vr7, $t0, 1
+	xvpermi.q	$xr7, $xr7, 2
+	vpickve2gr.w	$t0, $vr6, 0
+	andi	$t0, $t0, 15
+	vinsgr2vr.d	$vr10, $t0, 0
+	vpickve2gr.w	$t0, $vr6, 1
+	andi	$t0, $t0, 15
+	vinsgr2vr.d	$vr10, $t0, 1
+	xvpickve2gr.d	$t0, $xr10, 0
 	slli.d	$t0, $t0, 2
-	ldx.w	$t7, $a3, $t7
-	ldx.w	$t6, $a3, $t6
-	ldx.w	$t5, $a3, $t5
-	ldx.w	$t4, $a3, $t4
-	ldx.w	$t3, $a3, $t3
-	ldx.w	$t2, $a3, $t2
-	ldx.w	$t1, $a3, $t1
+	xvpickve2gr.d	$t1, $xr10, 1
+	slli.d	$t1, $t1, 2
+	xvpickve2gr.d	$t2, $xr7, 2
+	slli.d	$t2, $t2, 2
+	xvpickve2gr.d	$t3, $xr7, 3
+	slli.d	$t3, $t3, 2
+	xvpickve2gr.d	$t4, $xr9, 0
+	slli.d	$t4, $t4, 2
+	xvpickve2gr.d	$t5, $xr9, 1
+	slli.d	$t5, $t5, 2
+	xvpickve2gr.d	$t6, $xr8, 2
+	slli.d	$t6, $t6, 2
+	xvpickve2gr.d	$t7, $xr8, 3
+	slli.d	$t7, $t7, 2
 	ldx.w	$t0, $a3, $t0
-	xvinsgr2vr.w	$xr6, $t7, 0
-	xvinsgr2vr.w	$xr6, $t6, 1
-	xvinsgr2vr.w	$xr6, $t5, 2
-	xvinsgr2vr.w	$xr6, $t4, 3
-	xvinsgr2vr.w	$xr6, $t3, 4
-	xvinsgr2vr.w	$xr6, $t2, 5
-	xvinsgr2vr.w	$xr6, $t1, 6
-	xvinsgr2vr.w	$xr6, $t0, 7
+	ldx.w	$t1, $a3, $t1
+	ldx.w	$t2, $a3, $t2
+	ldx.w	$t3, $a3, $t3
+	ldx.w	$t4, $a3, $t4
+	ldx.w	$t5, $a3, $t5
+	ldx.w	$t6, $a3, $t6
+	ldx.w	$t7, $a3, $t7
+	vinsgr2vr.w	$vr6, $t0, 0
+	vinsgr2vr.w	$vr6, $t1, 1
+	vinsgr2vr.w	$vr6, $t2, 2
+	vinsgr2vr.w	$vr6, $t3, 3
+	vinsgr2vr.w	$vr7, $t4, 0
+	vinsgr2vr.w	$vr7, $t5, 1
+	vinsgr2vr.w	$vr7, $t6, 2
+	vinsgr2vr.w	$vr7, $t7, 3
+	xvpermi.q	$xr6, $xr7, 2
 	and	$t0, $a7, $a4
 	sltui	$t0, $t0, 1
 	xvreplgr2vr.w	$xr7, $t0

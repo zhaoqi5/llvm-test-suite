@@ -929,21 +929,21 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	.p2align	4, , 16
 .LBB1_83:                               # %vector.body208
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $a4, -64
-	fld.d	$fa1, $a4, -48
-	fld.d	$fa2, $a4, -32
-	fld.d	$fa3, $a4, -16
-	xvinsve0.d	$xr0, $xr1, 1
-	xvinsve0.d	$xr0, $xr2, 2
+	fld.d	$fa0, $a4, -32
+	fld.d	$fa1, $a4, -16
+	fld.d	$fa2, $a4, -64
+	fld.d	$fa3, $a4, -48
+	vextrins.d	$vr0, $vr1, 16
 	fld.d	$fa1, $a4, 0
-	fld.d	$fa2, $a4, 16
 	fld.d	$fa4, $a4, 32
 	fld.d	$fa5, $a4, 48
-	xvinsve0.d	$xr0, $xr3, 3
-	xvinsve0.d	$xr1, $xr2, 1
-	xvinsve0.d	$xr1, $xr4, 2
-	xvinsve0.d	$xr1, $xr5, 3
-	xvst	$xr0, $a3, -32
+	fld.d	$fa6, $a4, 16
+	vextrins.d	$vr2, $vr3, 16
+	xvpermi.q	$xr2, $xr0, 2
+	vextrins.d	$vr4, $vr5, 16
+	vextrins.d	$vr1, $vr6, 16
+	xvpermi.q	$xr1, $xr4, 2
+	xvst	$xr2, $a3, -32
 	xvst	$xr1, $a3, 0
 	addi.d	$a5, $a5, -8
 	addi.d	$a3, $a3, 64

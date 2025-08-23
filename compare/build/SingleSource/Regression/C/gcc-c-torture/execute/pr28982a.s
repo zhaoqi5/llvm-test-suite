@@ -137,34 +137,34 @@ foo:                                    # @foo
 	fld.s	$fa3, $s2, 0
 	fld.s	$fa4, $s1, 0
 	fld.s	$fa5, $s0, 0
-	fld.s	$fa6, $fp, 0
-	fld.s	$fa7, $t8, 0
-	fld.s	$ft0, $t7, 0
-	fld.s	$ft1, $t6, 0
-	fld.s	$ft2, $t5, 0
-	xvinsve0.w	$xr3, $xr4, 1
-	xvinsve0.w	$xr3, $xr5, 2
-	xvinsve0.w	$xr3, $xr6, 3
-	xvinsve0.w	$xr3, $xr7, 4
-	xvinsve0.w	$xr3, $xr8, 5
-	xvinsve0.w	$xr3, $xr9, 6
-	xvinsve0.w	$xr3, $xr10, 7
+	fld.s	$fa6, $t8, 0
+	fld.s	$fa7, $t7, 0
+	fld.s	$ft0, $t6, 0
+	fld.s	$ft1, $t5, 0
+	fld.s	$ft2, $fp, 0
+	vextrins.w	$vr6, $vr7, 16
+	vextrins.w	$vr6, $vr8, 32
+	vextrins.w	$vr6, $vr9, 48
+	vextrins.w	$vr3, $vr4, 16
+	vextrins.w	$vr3, $vr5, 32
+	vextrins.w	$vr3, $vr10, 48
+	xvpermi.q	$xr3, $xr6, 2
 	xvfadd.s	$xr0, $xr0, $xr3
 	fld.s	$fa3, $t4, 0
 	fld.s	$fa4, $t3, 0
 	fld.s	$fa5, $t2, 0
-	fld.s	$fa6, $t1, 0
-	fld.s	$fa7, $t0, 0
-	fld.s	$ft0, $a7, 0
-	fld.s	$ft1, $a6, 0
-	fld.s	$ft2, $a5, 0
-	xvinsve0.w	$xr3, $xr4, 1
-	xvinsve0.w	$xr3, $xr5, 2
-	xvinsve0.w	$xr3, $xr6, 3
-	xvinsve0.w	$xr3, $xr7, 4
-	xvinsve0.w	$xr3, $xr8, 5
-	xvinsve0.w	$xr3, $xr9, 6
-	xvinsve0.w	$xr3, $xr10, 7
+	fld.s	$fa6, $t0, 0
+	fld.s	$fa7, $a7, 0
+	fld.s	$ft0, $a6, 0
+	fld.s	$ft1, $a5, 0
+	fld.s	$ft2, $t1, 0
+	vextrins.w	$vr6, $vr7, 16
+	vextrins.w	$vr6, $vr8, 32
+	vextrins.w	$vr6, $vr9, 48
+	vextrins.w	$vr3, $vr4, 16
+	vextrins.w	$vr3, $vr5, 32
+	vextrins.w	$vr3, $vr10, 48
+	xvpermi.q	$xr3, $xr6, 2
 	fld.s	$fa4, $a4, 0
 	fld.s	$fa5, $a3, 0
 	fld.s	$fa6, $a2, 0

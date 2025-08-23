@@ -1071,24 +1071,26 @@ _ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE: # @_ZN8NAr
 	ld.d	$t3, $a4, 8
 	ld.d	$t4, $a4, 16
 	ld.d	$t5, $a4, 24
-	ld.d	$a6, $a6, 16
-	ld.d	$a7, $a7, 16
 	ld.d	$t0, $t0, 16
 	ld.d	$t1, $t1, 16
-	xvinsgr2vr.d	$xr2, $a6, 0
-	xvinsgr2vr.d	$xr2, $a7, 1
-	xvinsgr2vr.d	$xr2, $t0, 2
-	xvinsgr2vr.d	$xr2, $t1, 3
-	ld.d	$a6, $t2, 16
-	ld.d	$a7, $t3, 16
-	ld.d	$t0, $t4, 16
-	ld.d	$t1, $t5, 16
-	xvinsgr2vr.d	$xr3, $a6, 0
-	xvinsgr2vr.d	$xr3, $a7, 1
-	xvinsgr2vr.d	$xr3, $t0, 2
-	xvinsgr2vr.d	$xr3, $t1, 3
-	xvadd.d	$xr0, $xr0, $xr2
-	xvadd.d	$xr1, $xr1, $xr3
+	ld.d	$a6, $a6, 16
+	ld.d	$a7, $a7, 16
+	vinsgr2vr.d	$vr2, $t0, 0
+	vinsgr2vr.d	$vr2, $t1, 1
+	vinsgr2vr.d	$vr3, $a6, 0
+	vinsgr2vr.d	$vr3, $a7, 1
+	xvpermi.q	$xr3, $xr2, 2
+	ld.d	$a6, $t4, 16
+	ld.d	$a7, $t5, 16
+	ld.d	$t0, $t2, 16
+	ld.d	$t1, $t3, 16
+	vinsgr2vr.d	$vr2, $a6, 0
+	vinsgr2vr.d	$vr2, $a7, 1
+	vinsgr2vr.d	$vr4, $t0, 0
+	vinsgr2vr.d	$vr4, $t1, 1
+	xvpermi.q	$xr4, $xr2, 2
+	xvadd.d	$xr0, $xr0, $xr3
+	xvadd.d	$xr1, $xr1, $xr4
 	xvaddi.du	$xr0, $xr0, 4
 	xvaddi.du	$xr1, $xr1, 4
 	addi.d	$a5, $a5, -8
@@ -1314,24 +1316,26 @@ _ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE: # @_ZN8NAr
 	ld.d	$t2, $a3, 8
 	ld.d	$t3, $a3, 16
 	ld.d	$t4, $a3, 24
-	ld.d	$a5, $a5, 16
-	ld.d	$a6, $a6, 16
 	ld.d	$a7, $a7, 16
 	ld.d	$t0, $t0, 16
-	xvinsgr2vr.d	$xr2, $a5, 0
-	xvinsgr2vr.d	$xr2, $a6, 1
-	xvinsgr2vr.d	$xr2, $a7, 2
-	xvinsgr2vr.d	$xr2, $t0, 3
-	ld.d	$a5, $t1, 16
-	ld.d	$a6, $t2, 16
-	ld.d	$a7, $t3, 16
-	ld.d	$t0, $t4, 16
-	xvinsgr2vr.d	$xr3, $a5, 0
-	xvinsgr2vr.d	$xr3, $a6, 1
-	xvinsgr2vr.d	$xr3, $a7, 2
-	xvinsgr2vr.d	$xr3, $t0, 3
-	xvadd.d	$xr0, $xr0, $xr2
-	xvadd.d	$xr1, $xr1, $xr3
+	ld.d	$a5, $a5, 16
+	ld.d	$a6, $a6, 16
+	vinsgr2vr.d	$vr2, $a7, 0
+	vinsgr2vr.d	$vr2, $t0, 1
+	vinsgr2vr.d	$vr3, $a5, 0
+	vinsgr2vr.d	$vr3, $a6, 1
+	xvpermi.q	$xr3, $xr2, 2
+	ld.d	$a5, $t3, 16
+	ld.d	$a6, $t4, 16
+	ld.d	$a7, $t1, 16
+	ld.d	$t0, $t2, 16
+	vinsgr2vr.d	$vr2, $a5, 0
+	vinsgr2vr.d	$vr2, $a6, 1
+	vinsgr2vr.d	$vr4, $a7, 0
+	vinsgr2vr.d	$vr4, $t0, 1
+	xvpermi.q	$xr4, $xr2, 2
+	xvadd.d	$xr0, $xr0, $xr3
+	xvadd.d	$xr1, $xr1, $xr4
 	xvaddi.du	$xr0, $xr0, 4
 	xvaddi.du	$xr1, $xr1, 4
 	addi.d	$a4, $a4, -8
@@ -1754,24 +1758,26 @@ _ZN8NArchive4NZip11COutArchive18WriteCentralHeaderERKNS0_5CItemE: # @_ZN8NArchiv
 	ld.d	$t3, $a4, 8
 	ld.d	$t4, $a4, 16
 	ld.d	$t5, $a4, 24
-	ld.d	$a6, $a6, 16
-	ld.d	$a7, $a7, 16
 	ld.d	$t0, $t0, 16
 	ld.d	$t1, $t1, 16
-	xvinsgr2vr.d	$xr2, $a6, 0
-	xvinsgr2vr.d	$xr2, $a7, 1
-	xvinsgr2vr.d	$xr2, $t0, 2
-	xvinsgr2vr.d	$xr2, $t1, 3
-	ld.d	$a6, $t2, 16
-	ld.d	$a7, $t3, 16
-	ld.d	$t0, $t4, 16
-	ld.d	$t1, $t5, 16
-	xvinsgr2vr.d	$xr3, $a6, 0
-	xvinsgr2vr.d	$xr3, $a7, 1
-	xvinsgr2vr.d	$xr3, $t0, 2
-	xvinsgr2vr.d	$xr3, $t1, 3
-	xvadd.d	$xr0, $xr0, $xr2
-	xvadd.d	$xr1, $xr1, $xr3
+	ld.d	$a6, $a6, 16
+	ld.d	$a7, $a7, 16
+	vinsgr2vr.d	$vr2, $t0, 0
+	vinsgr2vr.d	$vr2, $t1, 1
+	vinsgr2vr.d	$vr3, $a6, 0
+	vinsgr2vr.d	$vr3, $a7, 1
+	xvpermi.q	$xr3, $xr2, 2
+	ld.d	$a6, $t4, 16
+	ld.d	$a7, $t5, 16
+	ld.d	$t0, $t2, 16
+	ld.d	$t1, $t3, 16
+	vinsgr2vr.d	$vr2, $a6, 0
+	vinsgr2vr.d	$vr2, $a7, 1
+	vinsgr2vr.d	$vr4, $t0, 0
+	vinsgr2vr.d	$vr4, $t1, 1
+	xvpermi.q	$xr4, $xr2, 2
+	xvadd.d	$xr0, $xr0, $xr3
+	xvadd.d	$xr1, $xr1, $xr4
 	xvaddi.du	$xr0, $xr0, 4
 	xvaddi.du	$xr1, $xr1, 4
 	addi.d	$a5, $a5, -8

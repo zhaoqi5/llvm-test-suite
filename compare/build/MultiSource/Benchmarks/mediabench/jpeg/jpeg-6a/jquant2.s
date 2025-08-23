@@ -680,25 +680,26 @@ prescan_quantize:                       # @prescan_quantize
 	.type	finish_pass1,@function
 finish_pass1:                           # @finish_pass1
 # %bb.0:                                # %entry
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 56                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 80                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 64                   # 8-byte Folded Spill
 	move	$s0, $a0
 	ld.d	$a2, $a0, 608
 	ld.d	$a0, $a0, 8
 	ld.d	$a1, $a2, 32
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$s3, $a2, 40
 	ld.d	$a3, $a0, 0
 	st.d	$a1, $s0, 152
@@ -872,27 +873,27 @@ finish_pass1:                           # @finish_pass1
 	blt	$a0, $a1, .LBB5_38
 .LBB5_18:                               # %for.body.lr.ph.i
 	move	$t0, $zero
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	addi.w	$a0, $a2, 0
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.LCPI5_1)
 	vld	$vr0, $a1, %pc_lo12(.LCPI5_1)
 	ori	$a2, $zero, 7
 	xvrepli.b	$xr1, 0
 	vrepli.w	$vr2, 36
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB5_20
 	.p2align	4, , 16
 .LBB5_19:                               # %compute_color.exit.i
                                         #   in Loop: Header=BB5_20 Depth=1
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $s0, 152
 	ld.d	$a0, $a0, 0
 	srai.d	$a1, $s2, 1
 	add.d	$a3, $s1, $a1
 	div.d	$a3, $a3, $s2
-	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 56                    # 8-byte Folded Reload
 	stx.b	$a3, $a0, $t0
 	ld.d	$a0, $s0, 152
 	ld.d	$a0, $a0, 8
@@ -905,8 +906,8 @@ finish_pass1:                           # @finish_pass1
 	div.d	$a1, $a1, $s2
 	stx.b	$a1, $a0, $t0
 	addi.d	$t0, $t0, 1
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	beq	$t0, $a0, .LBB5_37
 .LBB5_20:                               # %for.body.i
                                         # =>This Loop Header: Depth=1
@@ -927,7 +928,7 @@ finish_pass1:                           # @finish_pass1
 	blt	$a1, $a4, .LBB5_36
 # %bb.22:                               # %for.cond9.preheader.preheader.i.i
                                         #   in Loop: Header=BB5_20 Depth=1
-	st.d	$t0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$t0, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$t0, $s0, 608
 	move	$s8, $zero
 	move	$ra, $zero
@@ -1079,24 +1080,26 @@ finish_pass1:                           # @finish_pass1
 	vslli.w	$vr23, $vr14, 3
 	vbitseti.w	$vr24, $vr23, 2
 	vadd.w	$vr23, $vr23, $vr2
-	vpickve2gr.w	$a1, $vr24, 0
-	xvinsgr2vr.d	$xr25, $a1, 0
-	vpickve2gr.w	$a1, $vr24, 1
-	xvinsgr2vr.d	$xr25, $a1, 1
 	vpickve2gr.w	$a1, $vr24, 2
-	xvinsgr2vr.d	$xr25, $a1, 2
+	vinsgr2vr.d	$vr25, $a1, 0
 	vpickve2gr.w	$a1, $vr24, 3
-	xvinsgr2vr.d	$xr25, $a1, 3
-	vpickve2gr.w	$a1, $vr23, 0
-	xvinsgr2vr.d	$xr24, $a1, 0
-	vpickve2gr.w	$a1, $vr23, 1
-	xvinsgr2vr.d	$xr24, $a1, 1
+	vinsgr2vr.d	$vr25, $a1, 1
+	vpickve2gr.w	$a1, $vr24, 0
+	vinsgr2vr.d	$vr26, $a1, 0
+	vpickve2gr.w	$a1, $vr24, 1
+	vinsgr2vr.d	$vr26, $a1, 1
+	xvpermi.q	$xr26, $xr25, 2
 	vpickve2gr.w	$a1, $vr23, 2
-	xvinsgr2vr.d	$xr24, $a1, 2
+	vinsgr2vr.d	$vr24, $a1, 0
 	vpickve2gr.w	$a1, $vr23, 3
-	xvinsgr2vr.d	$xr24, $a1, 3
-	xvmul.d	$xr17, $xr17, $xr25
-	xvmul.d	$xr20, $xr20, $xr24
+	vinsgr2vr.d	$vr24, $a1, 1
+	vpickve2gr.w	$a1, $vr23, 0
+	vinsgr2vr.d	$vr25, $a1, 0
+	vpickve2gr.w	$a1, $vr23, 1
+	vinsgr2vr.d	$vr25, $a1, 1
+	xvpermi.q	$xr25, $xr24, 2
+	xvmul.d	$xr17, $xr17, $xr26
+	xvmul.d	$xr20, $xr20, $xr25
 	xvbitsel.v	$xr18, $xr18, $xr1, $xr15
 	xvadd.d	$xr6, $xr6, $xr18
 	xvbitsel.v	$xr18, $xr19, $xr1, $xr16
@@ -1193,7 +1196,7 @@ finish_pass1:                           # @finish_pass1
                                         # =>This Inner Loop Header: Depth=1
 	b	.LBB5_36
 .LBB5_37:
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 .LBB5_38:                               # %select_colors.exit
 	ld.d	$a0, $s0, 0
 	st.w	$a2, $s0, 148
@@ -1206,22 +1209,23 @@ finish_pass1:                           # @finish_pass1
 	ori	$fp, $zero, 1
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	st.w	$fp, $a0, 56
-	fld.d	$fs1, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	fld.d	$fs2, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 72                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .Lfunc_end5:
 	.size	finish_pass1, .Lfunc_end5-finish_pass1

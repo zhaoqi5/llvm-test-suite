@@ -609,15 +609,16 @@ BuildWord:                              # @BuildWord
 	ld.bu	$a7, $sp, 54
 	ld.bu	$t0, $sp, 55
 	xvld	$xr0, $a3, 64
-	xvinsgr2vr.w	$xr1, $a0, 0
-	xvinsgr2vr.w	$xr1, $a1, 1
-	xvinsgr2vr.w	$xr1, $a2, 2
-	xvinsgr2vr.w	$xr1, $a4, 3
-	xvinsgr2vr.w	$xr1, $a5, 4
-	xvinsgr2vr.w	$xr1, $a6, 5
-	xvinsgr2vr.w	$xr1, $a7, 6
-	xvinsgr2vr.w	$xr1, $t0, 7
-	xvadd.w	$xr0, $xr0, $xr1
+	vinsgr2vr.w	$vr1, $a5, 0
+	vinsgr2vr.w	$vr1, $a6, 1
+	vinsgr2vr.w	$vr1, $a7, 2
+	vinsgr2vr.w	$vr1, $t0, 3
+	vinsgr2vr.w	$vr2, $a0, 0
+	vinsgr2vr.w	$vr2, $a1, 1
+	vinsgr2vr.w	$vr2, $a2, 2
+	vinsgr2vr.w	$vr2, $a4, 3
+	xvpermi.q	$xr2, $xr1, 2
+	xvadd.w	$xr0, $xr0, $xr2
 	xvst	$xr0, $a3, 64
 	ld.bu	$a0, $sp, 56
 	ld.w	$a4, $a3, 96

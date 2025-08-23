@@ -54,161 +54,233 @@ AesGenTables:                           # @AesGenTables
 	vpickve2gr.b	$a5, $vr0, 0
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a2, $a1, $a5
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 1
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpickve2gr.d	$a5, $xr1, 0
+	stx.b	$a2, $a1, $a5
+	xvpickve2gr.d	$a5, $xr1, 1
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 2
 	vpickve2gr.b	$a5, $vr0, 2
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 3
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 3
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpermi.q	$xr1, $xr1, 2
+	xvpickve2gr.d	$a5, $xr1, 2
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 3
+	xvpickve2gr.d	$a5, $xr1, 3
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 4
 	vpickve2gr.b	$a5, $vr0, 4
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 5
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 5
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpickve2gr.d	$a5, $xr1, 0
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 5
+	xvpickve2gr.d	$a5, $xr1, 1
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 6
 	vpickve2gr.b	$a5, $vr0, 6
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 7
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 7
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpermi.q	$xr1, $xr1, 2
+	xvpickve2gr.d	$a5, $xr1, 2
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 7
+	xvpickve2gr.d	$a5, $xr1, 3
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 8
 	vpickve2gr.b	$a5, $vr0, 8
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 9
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 9
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpickve2gr.d	$a5, $xr1, 0
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 9
+	xvpickve2gr.d	$a5, $xr1, 1
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 10
 	vpickve2gr.b	$a5, $vr0, 10
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 11
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 11
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpermi.q	$xr1, $xr1, 2
+	xvpickve2gr.d	$a5, $xr1, 2
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 11
+	xvpickve2gr.d	$a5, $xr1, 3
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 12
 	vpickve2gr.b	$a5, $vr0, 12
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 13
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 13
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpickve2gr.d	$a5, $xr1, 0
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 13
+	xvpickve2gr.d	$a5, $xr1, 1
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 14
 	vpickve2gr.b	$a5, $vr0, 14
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 15
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 15
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpermi.q	$xr1, $xr1, 2
+	xvpickve2gr.d	$a5, $xr1, 2
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 15
+	xvpickve2gr.d	$a5, $xr1, 3
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 16
 	xvpermi.q	$xr0, $xr0, 1
 	vpickve2gr.b	$a5, $vr0, 0
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 17
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 1
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpickve2gr.d	$a5, $xr1, 0
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 17
+	xvpickve2gr.d	$a5, $xr1, 1
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 18
 	vpickve2gr.b	$a5, $vr0, 2
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 19
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 3
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpermi.q	$xr1, $xr1, 2
+	xvpickve2gr.d	$a5, $xr1, 2
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 19
+	xvpickve2gr.d	$a5, $xr1, 3
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 20
 	vpickve2gr.b	$a5, $vr0, 4
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 21
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 5
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpickve2gr.d	$a5, $xr1, 0
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 21
+	xvpickve2gr.d	$a5, $xr1, 1
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 22
 	vpickve2gr.b	$a5, $vr0, 6
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 23
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 7
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpermi.q	$xr1, $xr1, 2
+	xvpickve2gr.d	$a5, $xr1, 2
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 23
+	xvpickve2gr.d	$a5, $xr1, 3
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 24
 	vpickve2gr.b	$a5, $vr0, 8
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 25
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 9
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpickve2gr.d	$a5, $xr1, 0
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 25
+	xvpickve2gr.d	$a5, $xr1, 1
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 26
 	vpickve2gr.b	$a5, $vr0, 10
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 27
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 11
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpermi.q	$xr1, $xr1, 2
+	xvpickve2gr.d	$a5, $xr1, 2
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 27
+	xvpickve2gr.d	$a5, $xr1, 3
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 28
 	vpickve2gr.b	$a5, $vr0, 12
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 29
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 13
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpickve2gr.d	$a5, $xr1, 0
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 29
+	xvpickve2gr.d	$a5, $xr1, 1
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 30
 	vpickve2gr.b	$a5, $vr0, 14
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
-	stx.b	$a4, $a1, $a5
-	ori	$a4, $a2, 31
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.b	$a5, $vr0, 15
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpermi.q	$xr0, $xr1, 2
+	xvpickve2gr.d	$a5, $xr0, 2
+	stx.b	$a4, $a1, $a5
+	ori	$a4, $a2, 31
+	xvpickve2gr.d	$a5, $xr0, 3
 	addi.d	$a2, $a2, 32
 	stx.b	$a4, $a1, $a5
 	bne	$a2, $a3, .LBB0_1

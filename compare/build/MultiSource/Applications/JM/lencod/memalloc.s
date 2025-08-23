@@ -152,24 +152,26 @@ init_top_bot_planes:                    # @init_top_bot_planes
 	add.d	$t4, $s0, $t3
 	xvpickve2gr.d	$t5, $xr1, 3
 	add.d	$t6, $s0, $t5
-	ldx.d	$a7, $s0, $a7
-	ldx.d	$t1, $s0, $t1
 	ldx.d	$t3, $s0, $t3
 	ldx.d	$t5, $s0, $t5
-	xvinsgr2vr.d	$xr1, $a7, 0
-	xvinsgr2vr.d	$xr1, $t1, 1
-	xvinsgr2vr.d	$xr1, $t3, 2
-	xvinsgr2vr.d	$xr1, $t5, 3
-	xvst	$xr1, $a4, 0
-	ld.d	$a7, $t0, 8
-	ld.d	$t0, $t2, 8
-	ld.d	$t1, $t4, 8
-	ld.d	$t2, $t6, 8
-	xvinsgr2vr.d	$xr1, $a7, 0
-	xvinsgr2vr.d	$xr1, $t0, 1
-	xvinsgr2vr.d	$xr1, $t1, 2
-	xvinsgr2vr.d	$xr1, $t2, 3
-	xvst	$xr1, $a5, 0
+	ldx.d	$a7, $s0, $a7
+	ldx.d	$t1, $s0, $t1
+	vinsgr2vr.d	$vr1, $t3, 0
+	vinsgr2vr.d	$vr1, $t5, 1
+	vinsgr2vr.d	$vr2, $a7, 0
+	vinsgr2vr.d	$vr2, $t1, 1
+	xvpermi.q	$xr2, $xr1, 2
+	xvst	$xr2, $a4, 0
+	ld.d	$a7, $t4, 8
+	ld.d	$t1, $t6, 8
+	ld.d	$t0, $t0, 8
+	ld.d	$t2, $t2, 8
+	vinsgr2vr.d	$vr1, $a7, 0
+	vinsgr2vr.d	$vr1, $t1, 1
+	vinsgr2vr.d	$vr2, $t0, 0
+	vinsgr2vr.d	$vr2, $t2, 1
+	xvpermi.q	$xr2, $xr1, 2
+	xvst	$xr2, $a5, 0
 	xvaddi.du	$xr0, $xr0, 4
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32

@@ -1153,7 +1153,7 @@ binate_split_select:                    # @binate_split_select
 	ori	$a3, $zero, 4
 	bgeu	$a2, $a3, .LBB3_3
 # %bb.2:
-	move	$a5, $zero
+	move	$a6, $zero
 	move	$a3, $a0
 	b	.LBB3_12
 .LBB3_3:                                # %vector.main.loop.iter.check
@@ -1161,7 +1161,7 @@ binate_split_select:                    # @binate_split_select
 	bgeu	$a2, $a3, .LBB3_5
 # %bb.4:
 	move	$a4, $zero
-	move	$a5, $zero
+	move	$a6, $zero
 	move	$a3, $a0
 	b	.LBB3_9
 .LBB3_5:                                # %vector.ph
@@ -1184,73 +1184,111 @@ binate_split_select:                    # @binate_split_select
 	xvsrai.w	$xr6, $xr1, 5
 	xvsrai.w	$xr7, $xr5, 5
 	xvpermi.q	$xr8, $xr6, 1
+	vpickve2gr.w	$a6, $vr8, 2
+	vinsgr2vr.d	$vr9, $a6, 0
 	vpickve2gr.w	$a6, $vr8, 3
-	vpickve2gr.w	$a7, $vr8, 2
-	vpickve2gr.w	$t0, $vr8, 1
-	vpickve2gr.w	$t1, $vr8, 0
-	vpickve2gr.w	$t2, $vr6, 3
-	vpickve2gr.w	$t3, $vr6, 2
-	vpickve2gr.w	$t4, $vr6, 1
-	vpickve2gr.w	$t5, $vr6, 0
+	vinsgr2vr.d	$vr9, $a6, 1
+	xvpermi.q	$xr9, $xr9, 2
+	vpickve2gr.w	$a6, $vr8, 0
+	vinsgr2vr.d	$vr10, $a6, 0
+	vpickve2gr.w	$a6, $vr8, 1
+	vinsgr2vr.d	$vr10, $a6, 1
+	vpickve2gr.w	$a6, $vr6, 2
+	vinsgr2vr.d	$vr8, $a6, 0
+	vpickve2gr.w	$a6, $vr6, 3
+	vinsgr2vr.d	$vr8, $a6, 1
+	xvpermi.q	$xr8, $xr8, 2
+	vpickve2gr.w	$a6, $vr6, 0
+	vinsgr2vr.d	$vr11, $a6, 0
+	vpickve2gr.w	$a6, $vr6, 1
+	vinsgr2vr.d	$vr11, $a6, 1
 	xvpermi.q	$xr6, $xr7, 1
-	vpickve2gr.w	$t6, $vr6, 3
-	vpickve2gr.w	$t7, $vr6, 2
-	vpickve2gr.w	$t8, $vr6, 1
-	vpickve2gr.w	$s5, $vr6, 0
-	vpickve2gr.w	$s6, $vr7, 3
-	vpickve2gr.w	$s7, $vr7, 2
-	vpickve2gr.w	$s8, $vr7, 1
-	vpickve2gr.w	$ra, $vr7, 0
-	alsl.d	$t5, $t5, $s3, 2
-	alsl.d	$t4, $t4, $s3, 2
-	alsl.d	$t3, $t3, $s3, 2
-	alsl.d	$t2, $t2, $s3, 2
-	alsl.d	$t1, $t1, $s3, 2
-	alsl.d	$t0, $t0, $s3, 2
-	alsl.d	$a7, $a7, $s3, 2
+	vpickve2gr.w	$a6, $vr6, 2
+	vinsgr2vr.d	$vr12, $a6, 0
+	vpickve2gr.w	$a6, $vr6, 3
+	vinsgr2vr.d	$vr12, $a6, 1
+	xvpermi.q	$xr12, $xr12, 2
+	vpickve2gr.w	$a6, $vr6, 0
+	vinsgr2vr.d	$vr13, $a6, 0
+	vpickve2gr.w	$a6, $vr6, 1
+	vinsgr2vr.d	$vr13, $a6, 1
+	vpickve2gr.w	$a6, $vr7, 2
+	vinsgr2vr.d	$vr6, $a6, 0
+	vpickve2gr.w	$a6, $vr7, 3
+	vinsgr2vr.d	$vr6, $a6, 1
+	xvpermi.q	$xr6, $xr6, 2
+	vpickve2gr.w	$a6, $vr7, 0
+	vinsgr2vr.d	$vr14, $a6, 0
+	vpickve2gr.w	$a6, $vr7, 1
+	vinsgr2vr.d	$vr14, $a6, 1
+	xvpickve2gr.d	$a6, $xr11, 0
 	alsl.d	$a6, $a6, $s3, 2
-	alsl.d	$ra, $ra, $s3, 2
-	alsl.d	$s8, $s8, $s3, 2
-	alsl.d	$s7, $s7, $s3, 2
-	alsl.d	$s6, $s6, $s3, 2
-	alsl.d	$s5, $s5, $s3, 2
-	alsl.d	$t8, $t8, $s3, 2
-	alsl.d	$t7, $t7, $s3, 2
+	xvpickve2gr.d	$a7, $xr11, 1
+	alsl.d	$a7, $a7, $s3, 2
+	xvpickve2gr.d	$t0, $xr8, 2
+	alsl.d	$t0, $t0, $s3, 2
+	xvpickve2gr.d	$t1, $xr8, 3
+	alsl.d	$t1, $t1, $s3, 2
+	xvpickve2gr.d	$t2, $xr10, 0
+	alsl.d	$t2, $t2, $s3, 2
+	xvpickve2gr.d	$t3, $xr10, 1
+	alsl.d	$t3, $t3, $s3, 2
+	xvpickve2gr.d	$t4, $xr9, 2
+	alsl.d	$t4, $t4, $s3, 2
+	xvpickve2gr.d	$t5, $xr9, 3
+	alsl.d	$t5, $t5, $s3, 2
+	xvpickve2gr.d	$t6, $xr14, 0
 	alsl.d	$t6, $t6, $s3, 2
-	ld.w	$t5, $t5, 4
-	ld.w	$t4, $t4, 4
-	ld.w	$t3, $t3, 4
-	ld.w	$t2, $t2, 4
-	ld.w	$t1, $t1, 4
-	ld.w	$t0, $t0, 4
-	ld.w	$a7, $a7, 4
+	xvpickve2gr.d	$t7, $xr14, 1
+	alsl.d	$t7, $t7, $s3, 2
+	xvpickve2gr.d	$t8, $xr6, 2
+	alsl.d	$t8, $t8, $s3, 2
+	xvpickve2gr.d	$s5, $xr6, 3
+	alsl.d	$s5, $s5, $s3, 2
+	xvpickve2gr.d	$s6, $xr13, 0
+	alsl.d	$s6, $s6, $s3, 2
+	xvpickve2gr.d	$s7, $xr13, 1
+	alsl.d	$s7, $s7, $s3, 2
+	xvpickve2gr.d	$s8, $xr12, 2
+	alsl.d	$s8, $s8, $s3, 2
+	xvpickve2gr.d	$ra, $xr12, 3
+	alsl.d	$ra, $ra, $s3, 2
 	ld.w	$a6, $a6, 4
-	xvinsgr2vr.w	$xr6, $t5, 0
-	xvinsgr2vr.w	$xr6, $t4, 1
-	xvinsgr2vr.w	$xr6, $t3, 2
-	xvinsgr2vr.w	$xr6, $t2, 3
-	xvinsgr2vr.w	$xr6, $t1, 4
-	xvinsgr2vr.w	$xr6, $t0, 5
-	xvinsgr2vr.w	$xr6, $a7, 6
-	xvinsgr2vr.w	$xr6, $a6, 7
-	ld.w	$a6, $ra, 4
-	ld.w	$a7, $s8, 4
-	ld.w	$t0, $s7, 4
-	ld.w	$t1, $s6, 4
-	ld.w	$t2, $s5, 4
-	ld.w	$t3, $t8, 4
-	ld.w	$t4, $t7, 4
-	ld.w	$t5, $t6, 4
-	xvinsgr2vr.w	$xr7, $a6, 0
-	xvinsgr2vr.w	$xr7, $a7, 1
-	xvinsgr2vr.w	$xr7, $t0, 2
-	xvinsgr2vr.w	$xr7, $t1, 3
-	xvinsgr2vr.w	$xr7, $t2, 4
-	xvinsgr2vr.w	$xr7, $t3, 5
-	xvinsgr2vr.w	$xr7, $t4, 6
-	xvinsgr2vr.w	$xr7, $t5, 7
-	xvxor.v	$xr6, $xr6, $xr2
-	xvxor.v	$xr7, $xr7, $xr2
+	ld.w	$a7, $a7, 4
+	ld.w	$t0, $t0, 4
+	ld.w	$t1, $t1, 4
+	ld.w	$t2, $t2, 4
+	ld.w	$t3, $t3, 4
+	ld.w	$t4, $t4, 4
+	ld.w	$t5, $t5, 4
+	vinsgr2vr.w	$vr6, $t2, 0
+	vinsgr2vr.w	$vr6, $t3, 1
+	vinsgr2vr.w	$vr6, $t4, 2
+	vinsgr2vr.w	$vr6, $t5, 3
+	vinsgr2vr.w	$vr7, $a6, 0
+	vinsgr2vr.w	$vr7, $a7, 1
+	vinsgr2vr.w	$vr7, $t0, 2
+	vinsgr2vr.w	$vr7, $t1, 3
+	xvpermi.q	$xr7, $xr6, 2
+	ld.w	$a6, $t6, 4
+	ld.w	$a7, $t7, 4
+	ld.w	$t0, $t8, 4
+	ld.w	$t1, $s5, 4
+	ld.w	$t2, $s6, 4
+	ld.w	$t3, $s7, 4
+	ld.w	$t4, $s8, 4
+	ld.w	$t5, $ra, 4
+	vinsgr2vr.w	$vr6, $t2, 0
+	vinsgr2vr.w	$vr6, $t3, 1
+	vinsgr2vr.w	$vr6, $t4, 2
+	vinsgr2vr.w	$vr6, $t5, 3
+	vinsgr2vr.w	$vr8, $a6, 0
+	vinsgr2vr.w	$vr8, $a7, 1
+	vinsgr2vr.w	$vr8, $t0, 2
+	vinsgr2vr.w	$vr8, $t1, 3
+	xvpermi.q	$xr8, $xr6, 2
+	xvxor.v	$xr6, $xr7, $xr2
+	xvxor.v	$xr7, $xr8, $xr2
 	xvsrl.w	$xr6, $xr6, $xr1
 	xvsrl.w	$xr5, $xr7, $xr5
 	xvand.v	$xr6, $xr6, $xr3
@@ -1271,44 +1309,53 @@ binate_split_select:                    # @binate_split_select
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a5, $xr0, 0
+	xvpickve2gr.w	$a6, $xr0, 0
 	beq	$a2, $a4, .LBB3_13
 # %bb.8:                                # %vec.epilog.iter.check
-	andi	$a6, $a2, 12
-	beqz	$a6, .LBB3_12
+	andi	$a5, $a2, 12
+	beqz	$a5, .LBB3_12
 .LBB3_9:                                # %vec.epilog.ph
-	move	$a6, $a2
-	bstrins.d	$a6, $zero, 1, 0
+	move	$a5, $a2
+	bstrins.d	$a5, $zero, 1, 0
 	vreplgr2vr.w	$vr1, $a3
 	pcalau12i	$a3, %pc_hi20(.LCPI3_1)
 	vld	$vr2, $a3, %pc_lo12(.LCPI3_1)
-	add.w	$a3, $a0, $a6
+	add.w	$a3, $a0, $a5
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a5, 0
+	vinsgr2vr.w	$vr0, $a6, 0
 	vadd.w	$vr1, $vr1, $vr2
-	sub.d	$a4, $a4, $a6
+	sub.d	$a4, $a4, $a5
 	vrepli.b	$vr2, -1
 	vrepli.w	$vr3, 1
 	.p2align	4, , 16
 .LBB3_10:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vsrai.w	$vr4, $vr1, 5
-	vpickve2gr.w	$a5, $vr4, 3
-	vpickve2gr.w	$a7, $vr4, 2
-	vpickve2gr.w	$t0, $vr4, 1
-	vpickve2gr.w	$t1, $vr4, 0
-	alsl.d	$t1, $t1, $s3, 2
-	alsl.d	$t0, $t0, $s3, 2
+	vpickve2gr.w	$a6, $vr4, 2
+	vinsgr2vr.d	$vr5, $a6, 0
+	vpickve2gr.w	$a6, $vr4, 3
+	vinsgr2vr.d	$vr5, $a6, 1
+	xvpermi.q	$xr5, $xr5, 2
+	vpickve2gr.w	$a6, $vr4, 0
+	vinsgr2vr.d	$vr6, $a6, 0
+	vpickve2gr.w	$a6, $vr4, 1
+	vinsgr2vr.d	$vr6, $a6, 1
+	xvpickve2gr.d	$a6, $xr6, 0
+	alsl.d	$a6, $a6, $s3, 2
+	xvpickve2gr.d	$a7, $xr6, 1
 	alsl.d	$a7, $a7, $s3, 2
-	alsl.d	$a5, $a5, $s3, 2
-	ld.w	$t1, $t1, 4
-	ld.w	$t0, $t0, 4
+	xvpickve2gr.d	$t0, $xr5, 2
+	alsl.d	$t0, $t0, $s3, 2
+	xvpickve2gr.d	$t1, $xr5, 3
+	alsl.d	$t1, $t1, $s3, 2
+	ld.w	$a6, $a6, 4
 	ld.w	$a7, $a7, 4
-	ld.w	$a5, $a5, 4
-	vinsgr2vr.w	$vr4, $t1, 0
-	vinsgr2vr.w	$vr4, $t0, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $a5, 3
+	ld.w	$t0, $t0, 4
+	ld.w	$t1, $t1, 4
+	vinsgr2vr.w	$vr4, $a6, 0
+	vinsgr2vr.w	$vr4, $a7, 1
+	vinsgr2vr.w	$vr4, $t0, 2
+	vinsgr2vr.w	$vr4, $t1, 3
 	vxor.v	$vr4, $vr4, $vr2
 	vsrl.w	$vr4, $vr4, $vr1
 	vand.v	$vr4, $vr4, $vr3
@@ -1321,8 +1368,8 @@ binate_split_select:                    # @binate_split_select
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a5, $vr0, 0
-	beq	$a2, $a6, .LBB3_13
+	vpickve2gr.w	$a6, $vr0, 0
+	beq	$a2, $a5, .LBB3_13
 	.p2align	4, , 16
 .LBB3_12:                               # %for.body
                                         # =>This Inner Loop Header: Depth=1
@@ -1333,11 +1380,11 @@ binate_split_select:                    # @binate_split_select
 	srl.w	$a2, $a2, $a3
 	andi	$a2, $a2, 1
 	addi.w	$a3, $a3, 1
-	add.w	$a5, $a2, $a5
+	add.w	$a6, $a2, $a6
 	bne	$a1, $a3, .LBB3_12
 .LBB3_13:                               # %for.end
 	ori	$a2, $zero, 2
-	bgeu	$a5, $a2, .LBB3_23
+	bgeu	$a6, $a2, .LBB3_23
 .LBB3_14:                               # %for.cond37.preheader
 	bge	$s4, $a0, .LBB3_19
 .LBB3_15:                               # %for.end59
@@ -1409,7 +1456,7 @@ binate_split_select:                    # @binate_split_select
 	stx.w	$a4, $s0, $a3
 	b	.LBB3_20
 .LBB3_23:                               # %for.body17.preheader
-	bstrpick.d	$a2, $a5, 31, 1
+	bstrpick.d	$a2, $a6, 31, 1
 	ori	$a3, $zero, 1
 	b	.LBB3_25
 	.p2align	4, , 16

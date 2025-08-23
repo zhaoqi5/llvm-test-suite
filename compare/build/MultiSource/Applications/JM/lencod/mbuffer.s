@@ -8433,27 +8433,29 @@ dpb_combine_field:                      # @dpb_combine_field
 	slli.d	$t4, $t4, 3
 	xvpickve2gr.d	$t5, $xr1, 3
 	slli.d	$t5, $t5, 3
-	ldx.d	$t6, $a6, $t2
-	ldx.d	$t7, $a6, $t3
-	ldx.d	$t8, $a6, $t4
-	ldx.d	$s0, $a6, $t5
-	xvinsgr2vr.d	$xr1, $t6, 0
-	xvinsgr2vr.d	$xr1, $t7, 1
-	xvinsgr2vr.d	$xr1, $t8, 2
-	xvinsgr2vr.d	$xr1, $s0, 3
-	xvsrli.d	$xr2, $xr1, 63
-	xvadd.d	$xr1, $xr1, $xr2
+	ldx.d	$t6, $a6, $t4
+	ldx.d	$t7, $a6, $t5
+	ldx.d	$t8, $a6, $t2
+	ldx.d	$s0, $a6, $t3
+	vinsgr2vr.d	$vr1, $t6, 0
+	vinsgr2vr.d	$vr1, $t7, 1
+	vinsgr2vr.d	$vr2, $t8, 0
+	vinsgr2vr.d	$vr2, $s0, 1
+	xvpermi.q	$xr2, $xr1, 2
+	xvsrli.d	$xr1, $xr2, 63
+	xvadd.d	$xr1, $xr2, $xr1
 	xvbitclri.d	$xr1, $xr1, 0
-	ldx.d	$t2, $t0, $t2
-	ldx.d	$t3, $t0, $t3
 	ldx.d	$t4, $t0, $t4
 	ldx.d	$t5, $t0, $t5
-	xvinsgr2vr.d	$xr2, $t2, 0
-	xvinsgr2vr.d	$xr2, $t3, 1
-	xvinsgr2vr.d	$xr2, $t4, 2
-	xvinsgr2vr.d	$xr2, $t5, 3
-	xvsrli.d	$xr3, $xr2, 63
-	xvadd.d	$xr2, $xr2, $xr3
+	ldx.d	$t2, $t0, $t2
+	ldx.d	$t3, $t0, $t3
+	vinsgr2vr.d	$vr2, $t4, 0
+	vinsgr2vr.d	$vr2, $t5, 1
+	vinsgr2vr.d	$vr3, $t2, 0
+	vinsgr2vr.d	$vr3, $t3, 1
+	xvpermi.q	$xr3, $xr2, 2
+	xvsrli.d	$xr2, $xr3, 63
+	xvadd.d	$xr2, $xr3, $xr2
 	xvbitclri.d	$xr2, $xr2, 0
 	xvmin.d	$xr1, $xr1, $xr2
 	xvst	$xr1, $a7, 0
@@ -8502,27 +8504,29 @@ dpb_combine_field:                      # @dpb_combine_field
 	slli.d	$t3, $t3, 3
 	xvpickve2gr.d	$t4, $xr1, 3
 	slli.d	$t4, $t4, 3
-	ldx.d	$t5, $a3, $t0
-	ldx.d	$t6, $a3, $t2
-	ldx.d	$t7, $a3, $t3
-	ldx.d	$t8, $a3, $t4
-	xvinsgr2vr.d	$xr1, $t5, 0
-	xvinsgr2vr.d	$xr1, $t6, 1
-	xvinsgr2vr.d	$xr1, $t7, 2
-	xvinsgr2vr.d	$xr1, $t8, 3
-	xvsrli.d	$xr2, $xr1, 63
-	xvadd.d	$xr1, $xr1, $xr2
+	ldx.d	$t5, $a3, $t3
+	ldx.d	$t6, $a3, $t4
+	ldx.d	$t7, $a3, $t0
+	ldx.d	$t8, $a3, $t2
+	vinsgr2vr.d	$vr1, $t5, 0
+	vinsgr2vr.d	$vr1, $t6, 1
+	vinsgr2vr.d	$vr2, $t7, 0
+	vinsgr2vr.d	$vr2, $t8, 1
+	xvpermi.q	$xr2, $xr1, 2
+	xvsrli.d	$xr1, $xr2, 63
+	xvadd.d	$xr1, $xr2, $xr1
 	xvbitclri.d	$xr1, $xr1, 0
-	ldx.d	$t0, $a6, $t0
-	ldx.d	$t2, $a6, $t2
 	ldx.d	$t3, $a6, $t3
 	ldx.d	$t4, $a6, $t4
-	xvinsgr2vr.d	$xr2, $t0, 0
-	xvinsgr2vr.d	$xr2, $t2, 1
-	xvinsgr2vr.d	$xr2, $t3, 2
-	xvinsgr2vr.d	$xr2, $t4, 3
-	xvsrli.d	$xr3, $xr2, 63
-	xvadd.d	$xr2, $xr2, $xr3
+	ldx.d	$t0, $a6, $t0
+	ldx.d	$t2, $a6, $t2
+	vinsgr2vr.d	$vr2, $t3, 0
+	vinsgr2vr.d	$vr2, $t4, 1
+	vinsgr2vr.d	$vr3, $t0, 0
+	vinsgr2vr.d	$vr3, $t2, 1
+	xvpermi.q	$xr3, $xr2, 2
+	xvsrli.d	$xr2, $xr3, 63
+	xvadd.d	$xr2, $xr3, $xr2
 	xvbitclri.d	$xr2, $xr2, 0
 	xvmin.d	$xr1, $xr1, $xr2
 	xvst	$xr1, $a4, 0

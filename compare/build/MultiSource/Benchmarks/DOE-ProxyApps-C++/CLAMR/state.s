@@ -1161,34 +1161,52 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	vld	$vr2, $t0, -16
 	vld	$vr3, $t0, 0
 	vld	$vr5, $a7, 0
+	vpickve2gr.w	$t2, $vr4, 2
+	vinsgr2vr.d	$vr6, $t2, 0
 	vpickve2gr.w	$t2, $vr4, 3
-	vpickve2gr.w	$t3, $vr4, 2
-	vpickve2gr.w	$t4, $vr4, 1
-	vpickve2gr.w	$t5, $vr4, 0
-	vpickve2gr.w	$s0, $vr5, 3
-	vpickve2gr.w	$ra, $vr5, 2
-	vpickve2gr.w	$s1, $vr5, 1
-	vpickve2gr.w	$s2, $vr5, 0
-	slli.d	$t6, $t5, 2
-	slli.d	$t7, $t4, 2
-	slli.d	$t8, $t3, 2
+	vinsgr2vr.d	$vr6, $t2, 1
+	xvpermi.q	$xr6, $xr6, 2
+	vpickve2gr.w	$t2, $vr4, 0
+	vinsgr2vr.d	$vr7, $t2, 0
+	vpickve2gr.w	$t2, $vr4, 1
+	vinsgr2vr.d	$vr7, $t2, 1
+	vpickve2gr.w	$t2, $vr5, 2
+	vinsgr2vr.d	$vr4, $t2, 0
+	vpickve2gr.w	$t2, $vr5, 3
+	vinsgr2vr.d	$vr4, $t2, 1
+	xvpermi.q	$xr4, $xr4, 2
+	vpickve2gr.w	$t2, $vr5, 0
+	vinsgr2vr.d	$vr8, $t2, 0
+	vpickve2gr.w	$t2, $vr5, 1
+	vinsgr2vr.d	$vr8, $t2, 1
+	xvpickve2gr.d	$t2, $xr7, 0
+	slli.d	$t5, $t2, 2
+	xvpickve2gr.d	$t2, $xr7, 1
+	slli.d	$t7, $t2, 2
+	xvpickve2gr.d	$t2, $xr6, 2
+	slli.d	$t8, $t2, 2
+	xvpickve2gr.d	$t2, $xr6, 3
 	slli.d	$fp, $t2, 2
-	slli.d	$t2, $s2, 2
-	slli.d	$t3, $s1, 2
-	slli.d	$t4, $ra, 2
-	slli.d	$t5, $s0, 2
-	ldx.w	$s0, $a1, $t6
-	ldx.w	$s1, $a1, $t7
-	ldx.w	$s2, $a1, $t8
-	ldx.w	$ra, $a1, $fp
+	xvpickve2gr.d	$t2, $xr8, 0
+	slli.d	$t2, $t2, 2
+	xvpickve2gr.d	$t3, $xr8, 1
+	slli.d	$t3, $t3, 2
+	xvpickve2gr.d	$t4, $xr4, 2
+	slli.d	$t4, $t4, 2
+	xvpickve2gr.d	$t6, $xr4, 3
+	slli.d	$t6, $t6, 2
+	ldx.w	$s0, $a1, $t5
+	ldx.w	$ra, $a1, $t7
+	ldx.w	$s1, $a1, $t8
+	ldx.w	$s2, $a1, $fp
 	vinsgr2vr.w	$vr4, $s0, 0
-	vinsgr2vr.w	$vr4, $s1, 1
-	vinsgr2vr.w	$vr4, $s2, 2
-	vinsgr2vr.w	$vr4, $ra, 3
+	vinsgr2vr.w	$vr4, $ra, 1
+	vinsgr2vr.w	$vr4, $s1, 2
+	vinsgr2vr.w	$vr4, $s2, 3
 	ldx.w	$s0, $a1, $t2
 	ldx.w	$s1, $a1, $t3
 	ldx.w	$s2, $a1, $t4
-	ldx.w	$ra, $a1, $t5
+	ldx.w	$ra, $a1, $t6
 	vinsgr2vr.w	$vr5, $s0, 0
 	vinsgr2vr.w	$vr5, $s1, 1
 	vinsgr2vr.w	$vr5, $s2, 2
@@ -1197,7 +1215,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	vseq.w	$vr5, $vr3, $vr5
 	vsub.w	$vr0, $vr0, $vr4
 	vsub.w	$vr1, $vr1, $vr5
-	ldx.w	$s0, $a2, $t6
+	ldx.w	$s0, $a2, $t5
 	ldx.w	$s1, $a2, $t7
 	ldx.w	$s2, $a2, $t8
 	ldx.w	$ra, $a2, $fp
@@ -1208,7 +1226,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	ldx.w	$s0, $a2, $t2
 	ldx.w	$s1, $a2, $t3
 	ldx.w	$s2, $a2, $t4
-	ldx.w	$ra, $a2, $t5
+	ldx.w	$ra, $a2, $t6
 	vinsgr2vr.w	$vr5, $s0, 0
 	vinsgr2vr.w	$vr5, $s1, 1
 	vinsgr2vr.w	$vr5, $s2, 2
@@ -1219,7 +1237,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	vsub.w	$vr1, $vr1, $vr3
 	vld	$vr2, $a6, -16
 	vld	$vr3, $a6, 0
-	ldx.w	$s0, $a3, $t6
+	ldx.w	$s0, $a3, $t5
 	ldx.w	$s1, $a3, $t7
 	ldx.w	$s2, $a3, $t8
 	ldx.w	$ra, $a3, $fp
@@ -1230,7 +1248,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	ldx.w	$s0, $a3, $t2
 	ldx.w	$s1, $a3, $t3
 	ldx.w	$s2, $a3, $t4
-	ldx.w	$ra, $a3, $t5
+	ldx.w	$ra, $a3, $t6
 	vinsgr2vr.w	$vr5, $s0, 0
 	vinsgr2vr.w	$vr5, $s1, 1
 	vinsgr2vr.w	$vr5, $s2, 2
@@ -1239,18 +1257,18 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	vseq.w	$vr5, $vr3, $vr5
 	vsub.w	$vr0, $vr0, $vr4
 	vsub.w	$vr1, $vr1, $vr5
-	ldx.w	$t6, $a4, $t6
+	ldx.w	$t5, $a4, $t5
 	ldx.w	$t7, $a4, $t7
 	ldx.w	$t8, $a4, $t8
 	ldx.w	$fp, $a4, $fp
-	vinsgr2vr.w	$vr4, $t6, 0
+	vinsgr2vr.w	$vr4, $t5, 0
 	vinsgr2vr.w	$vr4, $t7, 1
 	vinsgr2vr.w	$vr4, $t8, 2
 	vinsgr2vr.w	$vr4, $fp, 3
 	ldx.w	$t2, $a4, $t2
 	ldx.w	$t3, $a4, $t3
 	ldx.w	$t4, $a4, $t4
-	ldx.w	$t5, $a4, $t5
+	ldx.w	$t5, $a4, $t6
 	vinsgr2vr.w	$vr5, $t2, 0
 	vinsgr2vr.w	$vr5, $t3, 1
 	vinsgr2vr.w	$vr5, $t4, 2
@@ -2569,18 +2587,27 @@ _ZN5State11fill_circleEddd:             # @_ZN5State11fill_circleEddd
 .LBB12_26:                              # %vector.body123
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a3, 0
+	vpickve2gr.w	$a5, $vr0, 2
+	vinsgr2vr.d	$vr1, $a5, 0
 	vpickve2gr.w	$a5, $vr0, 3
-	vpickve2gr.w	$a6, $vr0, 2
-	vpickve2gr.w	$a7, $vr0, 1
-	vpickve2gr.w	$t0, $vr0, 0
-	slli.d	$t0, $t0, 3
-	slli.d	$a7, $a7, 3
-	slli.d	$a6, $a6, 3
+	vinsgr2vr.d	$vr1, $a5, 1
+	xvpermi.q	$xr1, $xr1, 2
+	vpickve2gr.w	$a5, $vr0, 0
+	vinsgr2vr.d	$vr2, $a5, 0
+	vpickve2gr.w	$a5, $vr0, 1
+	vinsgr2vr.d	$vr2, $a5, 1
+	xvpickve2gr.d	$a5, $xr2, 0
 	slli.d	$a5, $a5, 3
-	fstx.d	$fs0, $a0, $t0
-	fstx.d	$fs0, $a0, $a7
-	fstx.d	$fs0, $a0, $a6
+	xvpickve2gr.d	$a6, $xr2, 1
+	slli.d	$a6, $a6, 3
+	xvpickve2gr.d	$a7, $xr1, 2
+	slli.d	$a7, $a7, 3
+	xvpickve2gr.d	$t0, $xr1, 3
+	slli.d	$t0, $t0, 3
 	fstx.d	$fs0, $a0, $a5
+	fstx.d	$fs0, $a0, $a6
+	fstx.d	$fs0, $a0, $a7
+	fstx.d	$fs0, $a0, $t0
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB12_26

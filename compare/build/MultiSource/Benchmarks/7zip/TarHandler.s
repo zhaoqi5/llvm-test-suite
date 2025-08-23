@@ -2990,25 +2990,27 @@ _ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArch
 	xvshuf.b	$xr5, $xr0, $xr5, $xr1
 	xvslli.d	$xr5, $xr5, 56
 	xvsrai.d	$xr5, $xr5, 56
-	ld.d	$t5, $a5, 16
-	ld.d	$t6, $a6, 16
-	ld.d	$t7, $a7, 16
-	ld.d	$t8, $t0, 16
-	xvinsgr2vr.d	$xr6, $t5, 0
-	xvinsgr2vr.d	$xr6, $t6, 1
-	xvinsgr2vr.d	$xr6, $t7, 2
-	xvinsgr2vr.d	$xr6, $t8, 3
-	ld.d	$t5, $t1, 16
-	ld.d	$t6, $t2, 16
-	ld.d	$t7, $t3, 16
-	ld.d	$t8, $t4, 16
-	xvinsgr2vr.d	$xr7, $t5, 0
-	xvinsgr2vr.d	$xr7, $t6, 1
-	xvinsgr2vr.d	$xr7, $t7, 2
-	xvinsgr2vr.d	$xr7, $t8, 3
-	xvseqi.d	$xr8, $xr6, 0
-	xvseqi.d	$xr9, $xr7, 0
-	xvand.v	$xr4, $xr4, $xr8
+	ld.d	$t5, $a7, 16
+	ld.d	$t6, $t0, 16
+	ld.d	$t7, $a5, 16
+	ld.d	$t8, $a6, 16
+	vinsgr2vr.d	$vr6, $t5, 0
+	vinsgr2vr.d	$vr6, $t6, 1
+	vinsgr2vr.d	$vr7, $t7, 0
+	vinsgr2vr.d	$vr7, $t8, 1
+	xvpermi.q	$xr7, $xr6, 2
+	ld.d	$t5, $t3, 16
+	ld.d	$t6, $t4, 16
+	ld.d	$t7, $t1, 16
+	ld.d	$t8, $t2, 16
+	vinsgr2vr.d	$vr6, $t5, 0
+	vinsgr2vr.d	$vr6, $t6, 1
+	vinsgr2vr.d	$vr8, $t7, 0
+	vinsgr2vr.d	$vr8, $t8, 1
+	xvpermi.q	$xr8, $xr6, 2
+	xvseqi.d	$xr6, $xr7, 0
+	xvseqi.d	$xr9, $xr8, 0
+	xvand.v	$xr4, $xr4, $xr6
 	xvand.v	$xr5, $xr5, $xr9
 	ld.w	$a5, $a5, 56
 	ld.w	$a6, $a6, 56
@@ -3018,16 +3020,18 @@ _ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArch
 	ld.w	$t2, $t2, 56
 	ld.w	$t3, $t3, 56
 	ld.w	$t4, $t4, 56
-	xvinsgr2vr.d	$xr8, $a5, 0
-	xvinsgr2vr.d	$xr8, $a6, 1
-	xvinsgr2vr.d	$xr8, $a7, 2
-	xvinsgr2vr.d	$xr8, $t0, 3
-	xvinsgr2vr.d	$xr9, $t1, 0
-	xvinsgr2vr.d	$xr9, $t2, 1
-	xvinsgr2vr.d	$xr9, $t3, 2
-	xvinsgr2vr.d	$xr9, $t4, 3
-	xvbitsel.v	$xr4, $xr6, $xr8, $xr4
-	xvbitsel.v	$xr5, $xr7, $xr9, $xr5
+	vinsgr2vr.d	$vr6, $a7, 0
+	vinsgr2vr.d	$vr6, $t0, 1
+	vinsgr2vr.d	$vr9, $a5, 0
+	vinsgr2vr.d	$vr9, $a6, 1
+	xvpermi.q	$xr9, $xr6, 2
+	vinsgr2vr.d	$vr6, $t3, 0
+	vinsgr2vr.d	$vr6, $t4, 1
+	vinsgr2vr.d	$vr10, $t1, 0
+	vinsgr2vr.d	$vr10, $t2, 1
+	xvpermi.q	$xr10, $xr6, 2
+	xvbitsel.v	$xr4, $xr7, $xr9, $xr4
+	xvbitsel.v	$xr5, $xr8, $xr10, $xr5
 	xvadd.d	$xr0, $xr4, $xr0
 	xvadd.d	$xr2, $xr5, $xr2
 	addi.w	$a4, $a4, -8

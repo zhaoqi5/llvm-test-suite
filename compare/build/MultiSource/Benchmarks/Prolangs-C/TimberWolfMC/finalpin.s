@@ -423,7 +423,7 @@ finalpin:                               # @finalpin
 	beqz	$s1, .LBB0_41
 # %bb.32:                               # %if.else159
                                         #   in Loop: Header=BB0_16 Depth=2
-	xvld	$xr8, $sp, 144                  # 32-byte Folded Reload
+	xvld	$xr9, $sp, 144                  # 32-byte Folded Reload
 	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
 	blt	$s7, $s5, .LBB0_46
 # %bb.33:                               # %for.body181.lr.ph
@@ -474,28 +474,29 @@ finalpin:                               # @finalpin
 	st.w	$a2, $t1, 36
 	st.w	$a2, $t1, 52
 	st.w	$a2, $t1, 68
-	xvadd.w	$xr5, $xr2, $xr8
+	xvadd.w	$xr5, $xr2, $xr9
 	xvori.b	$xr6, $xr0, 0
 	xvmadd.w	$xr6, $xr5, $xr4
 	xvori.b	$xr5, $xr1, 0
 	xvmadd.w	$xr5, $xr4, $xr2
-	vpickve2gr.h	$t3, $vr3, 0
-	xvinsgr2vr.w	$xr7, $t3, 0
-	vpickve2gr.h	$t3, $vr3, 1
-	xvinsgr2vr.w	$xr7, $t3, 1
-	vpickve2gr.h	$t3, $vr3, 2
-	xvinsgr2vr.w	$xr7, $t3, 2
-	vpickve2gr.h	$t3, $vr3, 3
-	xvinsgr2vr.w	$xr7, $t3, 3
 	vpickve2gr.h	$t3, $vr3, 4
-	xvinsgr2vr.w	$xr7, $t3, 4
+	vinsgr2vr.w	$vr7, $t3, 0
 	vpickve2gr.h	$t3, $vr3, 5
-	xvinsgr2vr.w	$xr7, $t3, 5
+	vinsgr2vr.w	$vr7, $t3, 1
 	vpickve2gr.h	$t3, $vr3, 6
-	xvinsgr2vr.w	$xr7, $t3, 6
+	vinsgr2vr.w	$vr7, $t3, 2
 	vpickve2gr.h	$t3, $vr3, 7
-	xvinsgr2vr.w	$xr7, $t3, 7
-	xvslli.w	$xr7, $xr7, 31
+	vinsgr2vr.w	$vr7, $t3, 3
+	vpickve2gr.h	$t3, $vr3, 0
+	vinsgr2vr.w	$vr8, $t3, 0
+	vpickve2gr.h	$t3, $vr3, 1
+	vinsgr2vr.w	$vr8, $t3, 1
+	vpickve2gr.h	$t3, $vr3, 2
+	vinsgr2vr.w	$vr8, $t3, 2
+	vpickve2gr.h	$t3, $vr3, 3
+	vinsgr2vr.w	$vr8, $t3, 3
+	xvpermi.q	$xr8, $xr7, 2
+	xvslli.w	$xr7, $xr8, 31
 	xvsrai.w	$xr7, $xr7, 31
 	xvbitsel.v	$xr5, $xr6, $xr5, $xr7
 	xvstelm.w	$xr5, $t1, -48, 0
@@ -548,7 +549,7 @@ finalpin:                               # @finalpin
 	.p2align	4, , 16
 .LBB0_41:                               # %if.then102
                                         #   in Loop: Header=BB0_16 Depth=2
-	xvld	$xr8, $sp, 144                  # 32-byte Folded Reload
+	xvld	$xr9, $sp, 144                  # 32-byte Folded Reload
 	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
 	blt	$s7, $s5, .LBB0_46
 # %bb.42:                               # %for.body123.lr.ph
@@ -599,28 +600,29 @@ finalpin:                               # @finalpin
 	st.w	$a2, $t1, 32
 	st.w	$a2, $t1, 48
 	st.w	$a2, $t1, 64
-	xvadd.w	$xr5, $xr2, $xr8
+	xvadd.w	$xr5, $xr2, $xr9
 	xvori.b	$xr6, $xr0, 0
 	xvmadd.w	$xr6, $xr5, $xr4
 	xvori.b	$xr5, $xr1, 0
 	xvmadd.w	$xr5, $xr4, $xr2
-	vpickve2gr.h	$t3, $vr3, 0
-	xvinsgr2vr.w	$xr7, $t3, 0
-	vpickve2gr.h	$t3, $vr3, 1
-	xvinsgr2vr.w	$xr7, $t3, 1
-	vpickve2gr.h	$t3, $vr3, 2
-	xvinsgr2vr.w	$xr7, $t3, 2
-	vpickve2gr.h	$t3, $vr3, 3
-	xvinsgr2vr.w	$xr7, $t3, 3
 	vpickve2gr.h	$t3, $vr3, 4
-	xvinsgr2vr.w	$xr7, $t3, 4
+	vinsgr2vr.w	$vr7, $t3, 0
 	vpickve2gr.h	$t3, $vr3, 5
-	xvinsgr2vr.w	$xr7, $t3, 5
+	vinsgr2vr.w	$vr7, $t3, 1
 	vpickve2gr.h	$t3, $vr3, 6
-	xvinsgr2vr.w	$xr7, $t3, 6
+	vinsgr2vr.w	$vr7, $t3, 2
 	vpickve2gr.h	$t3, $vr3, 7
-	xvinsgr2vr.w	$xr7, $t3, 7
-	xvslli.w	$xr7, $xr7, 31
+	vinsgr2vr.w	$vr7, $t3, 3
+	vpickve2gr.h	$t3, $vr3, 0
+	vinsgr2vr.w	$vr8, $t3, 0
+	vpickve2gr.h	$t3, $vr3, 1
+	vinsgr2vr.w	$vr8, $t3, 1
+	vpickve2gr.h	$t3, $vr3, 2
+	vinsgr2vr.w	$vr8, $t3, 2
+	vpickve2gr.h	$t3, $vr3, 3
+	vinsgr2vr.w	$vr8, $t3, 3
+	xvpermi.q	$xr8, $xr7, 2
+	xvslli.w	$xr7, $xr8, 31
 	xvsrai.w	$xr7, $xr7, 31
 	xvbitsel.v	$xr5, $xr6, $xr5, $xr7
 	xvstelm.w	$xr5, $t1, -44, 0
@@ -1783,8 +1785,8 @@ finalpin:                               # @finalpin
 	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
 	ld.d	$a3, $a1, %pc_lo12(lArray)
 	ld.w	$a1, $a3, 20
-	xvld	$xr6, $sp, 144                  # 32-byte Folded Reload
-	vld	$vr7, $sp, 96                   # 16-byte Folded Reload
+	xvld	$xr7, $sp, 144                  # 32-byte Folded Reload
+	vld	$vr8, $sp, 96                   # 16-byte Folded Reload
 	bne	$a1, $s5, .LBB0_158
 # %bb.154:                              # %for.cond930.preheader1276
                                         #   in Loop: Header=BB0_16 Depth=2
@@ -1813,9 +1815,9 @@ finalpin:                               # @finalpin
                                         #   in Loop: Header=BB0_16 Depth=2
 	move	$a1, $zero
 	addi.d	$s8, $sp, 1088
-	xvld	$xr6, $sp, 144                  # 32-byte Folded Reload
+	xvld	$xr7, $sp, 144                  # 32-byte Folded Reload
 	ori	$ra, $zero, 404
-	vld	$vr7, $sp, 96                   # 16-byte Folded Reload
+	vld	$vr8, $sp, 96                   # 16-byte Folded Reload
 	b	.LBB0_166
 .LBB0_158:                              #   in Loop: Header=BB0_16 Depth=2
 	move	$a1, $zero
@@ -2388,14 +2390,15 @@ finalpin:                               # @finalpin
 	ld.w	$t2, $a2, -808
 	ld.w	$t3, $a2, -404
 	ld.w	$t4, $a2, 0
-	xvinsgr2vr.w	$xr2, $a5, 0
-	xvinsgr2vr.w	$xr2, $a6, 1
-	xvinsgr2vr.w	$xr2, $a7, 2
-	xvinsgr2vr.w	$xr2, $t0, 3
-	xvinsgr2vr.w	$xr2, $t1, 4
-	xvinsgr2vr.w	$xr2, $t2, 5
-	xvinsgr2vr.w	$xr2, $t3, 6
-	xvinsgr2vr.w	$xr2, $t4, 7
+	vinsgr2vr.w	$vr2, $a5, 0
+	vinsgr2vr.w	$vr2, $a6, 1
+	vinsgr2vr.w	$vr2, $a7, 2
+	vinsgr2vr.w	$vr2, $t0, 3
+	vinsgr2vr.w	$vr3, $t1, 0
+	vinsgr2vr.w	$vr3, $t2, 1
+	vinsgr2vr.w	$vr3, $t3, 2
+	vinsgr2vr.w	$vr3, $t4, 3
+	xvpermi.q	$xr2, $xr3, 2
 	ld.w	$a5, $a2, 404
 	ld.w	$a6, $a2, 808
 	ld.w	$a7, $a2, 1212
@@ -2404,14 +2407,15 @@ finalpin:                               # @finalpin
 	ldx.w	$t2, $a2, $t8
 	ldx.w	$t3, $a2, $fp
 	ldx.w	$t4, $a2, $s0
-	xvinsgr2vr.w	$xr3, $a5, 0
-	xvinsgr2vr.w	$xr3, $a6, 1
-	xvinsgr2vr.w	$xr3, $a7, 2
-	xvinsgr2vr.w	$xr3, $t0, 3
-	xvinsgr2vr.w	$xr3, $t1, 4
-	xvinsgr2vr.w	$xr3, $t2, 5
-	xvinsgr2vr.w	$xr3, $t3, 6
-	xvinsgr2vr.w	$xr3, $t4, 7
+	vinsgr2vr.w	$vr4, $t1, 0
+	vinsgr2vr.w	$vr4, $t2, 1
+	vinsgr2vr.w	$vr4, $t3, 2
+	vinsgr2vr.w	$vr4, $t4, 3
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr3, $a6, 1
+	vinsgr2vr.w	$vr3, $a7, 2
+	vinsgr2vr.w	$vr3, $t0, 3
+	xvpermi.q	$xr3, $xr4, 2
 	ori	$a5, $t6, 1264
 	ldx.w	$a5, $a2, $a5
 	ori	$a6, $t6, 1668
@@ -2422,14 +2426,15 @@ finalpin:                               # @finalpin
 	ld.w	$t2, $a2, -812
 	ld.w	$t3, $a2, -408
 	ld.w	$t4, $a2, -4
-	xvinsgr2vr.w	$xr4, $a5, 0
-	xvinsgr2vr.w	$xr4, $a6, 1
-	xvinsgr2vr.w	$xr4, $a7, 2
-	xvinsgr2vr.w	$xr4, $t0, 3
-	xvinsgr2vr.w	$xr4, $t1, 4
-	xvinsgr2vr.w	$xr4, $t2, 5
-	xvinsgr2vr.w	$xr4, $t3, 6
-	xvinsgr2vr.w	$xr4, $t4, 7
+	vinsgr2vr.w	$vr4, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 1
+	vinsgr2vr.w	$vr4, $a7, 2
+	vinsgr2vr.w	$vr4, $t0, 3
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	xvpermi.q	$xr4, $xr5, 2
 	ld.w	$a5, $a2, 400
 	ld.w	$a6, $a2, 804
 	ld.w	$a7, $a2, 1208
@@ -2438,21 +2443,22 @@ finalpin:                               # @finalpin
 	ldx.w	$t2, $a2, $s1
 	ldx.w	$t3, $a2, $s4
 	ldx.w	$t4, $a2, $a3
-	xvinsgr2vr.w	$xr5, $a5, 0
-	xvinsgr2vr.w	$xr5, $a6, 1
-	xvinsgr2vr.w	$xr5, $a7, 2
-	xvinsgr2vr.w	$xr5, $t0, 3
-	xvinsgr2vr.w	$xr5, $t1, 4
-	xvinsgr2vr.w	$xr5, $t2, 5
-	xvinsgr2vr.w	$xr5, $t3, 6
-	xvinsgr2vr.w	$xr5, $t4, 7
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	vinsgr2vr.w	$vr6, $a5, 0
+	vinsgr2vr.w	$vr6, $a6, 1
+	vinsgr2vr.w	$vr6, $a7, 2
+	vinsgr2vr.w	$vr6, $t0, 3
+	xvpermi.q	$xr6, $xr5, 2
 	xvseqi.w	$xr2, $xr2, 0
-	xvxor.v	$xr2, $xr2, $xr6
+	xvxor.v	$xr2, $xr2, $xr7
 	xvand.v	$xr2, $xr2, $xr4
 	xvadd.w	$xr0, $xr0, $xr2
 	xvseqi.w	$xr2, $xr3, 0
-	xvxor.v	$xr2, $xr2, $xr6
-	xvand.v	$xr2, $xr2, $xr5
+	xvxor.v	$xr2, $xr2, $xr7
+	xvand.v	$xr2, $xr2, $xr6
 	xvadd.w	$xr1, $xr1, $xr2
 	addi.d	$a4, $a4, -16
 	ori	$a5, $t5, 2368
@@ -2581,7 +2587,7 @@ finalpin:                               # @finalpin
 	vinsgr2vr.w	$vr2, $t0, 2
 	vinsgr2vr.w	$vr2, $t1, 3
 	vseqi.w	$vr1, $vr1, 0
-	vxor.v	$vr1, $vr1, $vr7
+	vxor.v	$vr1, $vr1, $vr8
 	vand.v	$vr1, $vr1, $vr2
 	vadd.w	$vr0, $vr0, $vr1
 	addi.d	$a2, $a2, 4

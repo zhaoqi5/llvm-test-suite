@@ -449,7 +449,7 @@ main:                                   # @main
 	ld.w	$a2, $s7, 4
 	addi.d	$a1, $a0, -1
 	sltui	$a1, $a1, 1
-	sub.d	$a5, $zero, $a1
+	sub.d	$a6, $zero, $a1
 	sub.d	$a2, $a2, $a1
 	st.w	$a2, $s7, 4
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
@@ -462,26 +462,27 @@ main:                                   # @main
 .LBB0_17:                               # %for.body.preheader.i
                                         #   in Loop: Header=BB0_15 Depth=1
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a5
+	add.d	$a2, $a2, $a6
 	bstrpick.d	$a2, $a2, 31, 0
 	addi.d	$a4, $a2, -2
-	ori	$t0, $zero, 2
+	ori	$t1, $zero, 2
 	slli.d	$a1, $a1, 2
 	ld.d	$s5, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 240                   # 8-byte Folded Reload
 	xvld	$xr4, $sp, 128                  # 32-byte Folded Reload
 	xvld	$xr5, $sp, 96                   # 32-byte Folded Reload
-	ori	$a6, $zero, 8
-	bltu	$a4, $a6, .LBB0_21
+	ori	$a5, $zero, 8
+	bltu	$a4, $a5, .LBB0_21
 # %bb.18:                               # %vector.ph
                                         #   in Loop: Header=BB0_15 Depth=1
-	move	$a6, $a4
-	bstrins.d	$a6, $zero, 2, 0
-	move	$t0, $a4
+	move	$a5, $a4
+	bstrins.d	$a5, $zero, 2, 0
+	move	$t1, $a4
 	ori	$a7, $zero, 2
-	bstrins.d	$t0, $a7, 2, 0
-	xvinsgr2vr.w	$xr0, $a5, 7
-	move	$a5, $a6
+	bstrins.d	$t1, $a7, 2, 0
+	vinsgr2vr.w	$vr0, $a6, 3
+	xvpermi.q	$xr0, $xr0, 2
+	move	$a6, $a5
 	ld.d	$a7, $sp, 88                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_19:                               # %vector.body
@@ -489,47 +490,49 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	xvldx	$xr1, $a7, $a1
 	xvand.v	$xr2, $xr1, $xr5
-	xvpickve.w	$xr3, $xr0, 7
+	xvpickve2gr.w	$t0, $xr0, 7
 	xvneg.w	$xr0, $xr2
-	xvinsve0.w	$xr2, $xr3, 0
-	xvinsve0.w	$xr2, $xr0, 1
-	xvpickve.w	$xr3, $xr0, 1
-	xvinsve0.w	$xr2, $xr3, 2
-	xvpickve.w	$xr3, $xr0, 2
-	xvinsve0.w	$xr2, $xr3, 3
-	xvpickve.w	$xr3, $xr0, 3
-	xvinsve0.w	$xr2, $xr3, 4
-	xvpickve.w	$xr3, $xr0, 4
-	xvinsve0.w	$xr2, $xr3, 5
-	xvpickve.w	$xr3, $xr0, 5
-	xvinsve0.w	$xr2, $xr3, 6
-	xvpickve.w	$xr3, $xr0, 6
-	xvinsve0.w	$xr2, $xr3, 7
+	vinsgr2vr.w	$vr2, $t0, 0
+	xvpickve2gr.w	$t0, $xr0, 0
+	vinsgr2vr.w	$vr2, $t0, 1
+	xvpickve2gr.w	$t0, $xr0, 1
+	vinsgr2vr.w	$vr2, $t0, 2
+	xvpickve2gr.w	$t0, $xr0, 2
+	vinsgr2vr.w	$vr2, $t0, 3
+	xvpickve2gr.w	$t0, $xr0, 3
+	vinsgr2vr.w	$vr3, $t0, 0
+	xvpickve2gr.w	$t0, $xr0, 4
+	vinsgr2vr.w	$vr3, $t0, 1
+	xvpickve2gr.w	$t0, $xr0, 5
+	vinsgr2vr.w	$vr3, $t0, 2
+	xvpickve2gr.w	$t0, $xr0, 6
+	vinsgr2vr.w	$vr3, $t0, 3
+	xvpermi.q	$xr2, $xr3, 2
 	xvand.v	$xr2, $xr2, $xr4
 	xvadd.w	$xr1, $xr1, $xr2
 	xvsrai.w	$xr1, $xr1, 1
 	xvst	$xr1, $a7, 0
-	addi.d	$a5, $a5, -8
+	addi.d	$a6, $a6, -8
 	addi.d	$a7, $a7, 32
-	bnez	$a5, .LBB0_19
+	bnez	$a6, .LBB0_19
 # %bb.20:                               # %middle.block
                                         #   in Loop: Header=BB0_15 Depth=1
-	xvpickve2gr.w	$a5, $xr0, 7
-	beq	$a4, $a6, .LBB0_23
+	xvpickve2gr.w	$a6, $xr0, 7
+	beq	$a4, $a5, .LBB0_23
 .LBB0_21:                               # %for.body.i.preheader
                                         #   in Loop: Header=BB0_15 Depth=1
-	sub.d	$a2, $a2, $t0
-	alsl.d	$a7, $t0, $s7, 2
+	sub.d	$a2, $a2, $t1
+	alsl.d	$a7, $t1, $s7, 2
 	.p2align	4, , 16
 .LBB0_22:                               # %for.body.i
                                         #   Parent Loop BB0_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.wu	$a4, $a7, $a1
-	and	$a5, $a5, $s0
-	add.w	$a6, $a4, $a5
+	and	$a5, $a6, $s0
+	add.w	$a5, $a4, $a5
 	andi	$a4, $a4, 1
-	sub.d	$a5, $zero, $a4
-	srli.d	$a4, $a6, 1
+	sub.d	$a6, $zero, $a4
+	srli.d	$a4, $a5, 1
 	st.w	$a4, $a7, 0
 	addi.d	$a2, $a2, -1
 	addi.d	$a7, $a7, 4
@@ -540,7 +543,7 @@ main:                                   # @main
 	bne	$a0, $a1, .LBB0_14
 # %bb.24:                               # %if.then16.i233
                                         #   in Loop: Header=BB0_15 Depth=1
-	and	$a0, $a5, $s0
+	and	$a0, $a6, $s0
 	bstrpick.d	$a0, $a0, 31, 1
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
@@ -551,78 +554,81 @@ main:                                   # @main
 	ld.w	$a0, $t0, 0
 	addi.d	$a1, $a0, -1
 	sltui	$a1, $a1, 1
-	sub.d	$a4, $zero, $a1
+	sub.d	$a5, $zero, $a1
 	sub.d	$a3, $s5, $a1
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
-	sub.w	$a5, $a2, $a1
+	sub.w	$a4, $a2, $a1
 	ori	$a2, $zero, 2
 	ld.d	$a6, $sp, 56                    # 8-byte Folded Reload
 	st.w	$a3, $a6, 0
-	blt	$a5, $a2, .LBB0_32
+	blt	$a4, $a2, .LBB0_32
 # %bb.26:                               # %for.body.preheader.i244
 	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
-	add.d	$a3, $a3, $a4
+	add.d	$a3, $a3, $a5
 	bstrpick.d	$a3, $a3, 31, 0
-	addi.d	$a5, $a3, -2
+	addi.d	$a4, $a3, -2
 	ori	$a6, $zero, 8
 	slli.d	$a1, $a1, 2
 	xvld	$xr4, $sp, 128                  # 32-byte Folded Reload
 	xvld	$xr5, $sp, 96                   # 32-byte Folded Reload
-	bltu	$a5, $a6, .LBB0_30
+	bltu	$a4, $a6, .LBB0_30
 # %bb.27:                               # %vector.ph316
-	move	$a6, $a5
+	move	$a6, $a4
 	bstrins.d	$a6, $zero, 2, 0
 	ori	$a7, $zero, 2
-	move	$a2, $a5
+	move	$a2, $a4
 	bstrins.d	$a2, $a7, 2, 0
-	xvinsgr2vr.w	$xr0, $a4, 7
-	move	$a4, $a6
+	vinsgr2vr.w	$vr0, $a5, 3
+	xvpermi.q	$xr0, $xr0, 2
+	move	$a5, $a6
 	move	$a7, $t0
 	.p2align	4, , 16
 .LBB0_28:                               # %vector.body321
                                         # =>This Inner Loop Header: Depth=1
 	xvldx	$xr1, $a7, $a1
 	xvand.v	$xr2, $xr1, $xr5
-	xvpickve.w	$xr3, $xr0, 7
+	xvpickve2gr.w	$t0, $xr0, 7
 	xvneg.w	$xr0, $xr2
-	xvinsve0.w	$xr2, $xr3, 0
-	xvinsve0.w	$xr2, $xr0, 1
-	xvpickve.w	$xr3, $xr0, 1
-	xvinsve0.w	$xr2, $xr3, 2
-	xvpickve.w	$xr3, $xr0, 2
-	xvinsve0.w	$xr2, $xr3, 3
-	xvpickve.w	$xr3, $xr0, 3
-	xvinsve0.w	$xr2, $xr3, 4
-	xvpickve.w	$xr3, $xr0, 4
-	xvinsve0.w	$xr2, $xr3, 5
-	xvpickve.w	$xr3, $xr0, 5
-	xvinsve0.w	$xr2, $xr3, 6
-	xvpickve.w	$xr3, $xr0, 6
-	xvinsve0.w	$xr2, $xr3, 7
+	vinsgr2vr.w	$vr2, $t0, 0
+	xvpickve2gr.w	$t0, $xr0, 0
+	vinsgr2vr.w	$vr2, $t0, 1
+	xvpickve2gr.w	$t0, $xr0, 1
+	vinsgr2vr.w	$vr2, $t0, 2
+	xvpickve2gr.w	$t0, $xr0, 2
+	vinsgr2vr.w	$vr2, $t0, 3
+	xvpickve2gr.w	$t0, $xr0, 3
+	vinsgr2vr.w	$vr3, $t0, 0
+	xvpickve2gr.w	$t0, $xr0, 4
+	vinsgr2vr.w	$vr3, $t0, 1
+	xvpickve2gr.w	$t0, $xr0, 5
+	vinsgr2vr.w	$vr3, $t0, 2
+	xvpickve2gr.w	$t0, $xr0, 6
+	vinsgr2vr.w	$vr3, $t0, 3
+	xvpermi.q	$xr2, $xr3, 2
 	xvand.v	$xr2, $xr2, $xr4
 	xvadd.w	$xr1, $xr1, $xr2
 	xvsrai.w	$xr1, $xr1, 1
 	xvst	$xr1, $a7, 0
-	addi.d	$a4, $a4, -8
+	addi.d	$a5, $a5, -8
 	addi.d	$a7, $a7, 32
-	bnez	$a4, .LBB0_28
+	bnez	$a5, .LBB0_28
 # %bb.29:                               # %middle.block328
-	xvpickve2gr.w	$a4, $xr0, 7
-	beq	$a5, $a6, .LBB0_32
+	xvpickve2gr.w	$a5, $xr0, 7
+	beq	$a4, $a6, .LBB0_32
 .LBB0_30:                               # %for.body.i247.preheader
 	sub.d	$a3, $a3, $a2
-	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
-	alsl.d	$a2, $a2, $a5, 2
+	ld.d	$a4, $sp, 264                   # 8-byte Folded Reload
+	alsl.d	$a2, $a2, $a4, 2
 	.p2align	4, , 16
 .LBB0_31:                               # %for.body.i247
                                         # =>This Inner Loop Header: Depth=1
-	ldx.wu	$a5, $a2, $a1
-	and	$a4, $a4, $s0
-	add.w	$a6, $a5, $a4
-	andi	$a4, $a5, 1
-	sub.d	$a4, $zero, $a4
-	srli.d	$a5, $a6, 1
-	st.w	$a5, $a2, 0
+	ldx.wu	$a4, $a2, $a1
+	and	$a5, $a5, $s0
+	add.w	$a6, $a4, $a5
+	andi	$a4, $a4, 1
+	sub.d	$a5, $zero, $a4
+	srli.d	$a4, $a6, 1
+	st.w	$a4, $a2, 0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB0_31
@@ -630,7 +636,7 @@ main:                                   # @main
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB0_34
 # %bb.33:                               # %if.then16.i261
-	and	$a0, $a4, $s0
+	and	$a0, $a5, $s0
 	bstrpick.d	$a0, $a0, 31, 1
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
@@ -720,13 +726,13 @@ main:                                   # @main
 	ld.w	$a2, $s4, 4
 	addi.d	$a1, $a0, -1
 	sltui	$a1, $a1, 1
-	sub.d	$a4, $zero, $a1
+	sub.d	$a5, $zero, $a1
 	sub.d	$a3, $a2, $a1
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
-	sub.w	$a5, $a2, $a1
+	sub.w	$a4, $a2, $a1
 	ori	$a2, $zero, 2
 	st.w	$a3, $s4, 4
-	bge	$a5, $a2, .LBB0_36
+	bge	$a4, $a2, .LBB0_36
 # %bb.35:
 	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
@@ -734,75 +740,78 @@ main:                                   # @main
 	b	.LBB0_43
 .LBB0_36:                               # %for.body.preheader.i277
 	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
-	add.d	$a3, $a3, $a4
+	add.d	$a3, $a3, $a5
 	bstrpick.d	$a3, $a3, 31, 0
-	addi.d	$a5, $a3, -2
+	addi.d	$a4, $a3, -2
 	ori	$a6, $zero, 8
 	slli.d	$a1, $a1, 2
 	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	bgeu	$a5, $a6, .LBB0_38
+	bgeu	$a4, $a6, .LBB0_38
 # %bb.37:
 	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 240                   # 8-byte Folded Reload
 	b	.LBB0_41
 .LBB0_38:                               # %vector.ph335
-	move	$a6, $a5
+	move	$a6, $a4
 	bstrins.d	$a6, $zero, 2, 0
 	ori	$a7, $zero, 2
-	move	$a2, $a5
+	move	$a2, $a4
 	bstrins.d	$a2, $a7, 2, 0
-	xvinsgr2vr.w	$xr0, $a4, 7
-	move	$a4, $a6
-	ld.d	$a7, $sp, 88                    # 8-byte Folded Reload
+	vinsgr2vr.w	$vr0, $a5, 3
+	xvpermi.q	$xr0, $xr0, 2
+	move	$a5, $a6
+	ld.d	$t0, $sp, 88                    # 8-byte Folded Reload
 	xvld	$xr4, $sp, 128                  # 32-byte Folded Reload
 	xvld	$xr5, $sp, 96                   # 32-byte Folded Reload
 	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_39:                               # %vector.body340
                                         # =>This Inner Loop Header: Depth=1
-	xvldx	$xr1, $a7, $a1
+	xvldx	$xr1, $t0, $a1
 	xvand.v	$xr2, $xr1, $xr5
-	xvpickve.w	$xr3, $xr0, 7
+	xvpickve2gr.w	$a7, $xr0, 7
 	xvneg.w	$xr0, $xr2
-	xvinsve0.w	$xr2, $xr3, 0
-	xvinsve0.w	$xr2, $xr0, 1
-	xvpickve.w	$xr3, $xr0, 1
-	xvinsve0.w	$xr2, $xr3, 2
-	xvpickve.w	$xr3, $xr0, 2
-	xvinsve0.w	$xr2, $xr3, 3
-	xvpickve.w	$xr3, $xr0, 3
-	xvinsve0.w	$xr2, $xr3, 4
-	xvpickve.w	$xr3, $xr0, 4
-	xvinsve0.w	$xr2, $xr3, 5
-	xvpickve.w	$xr3, $xr0, 5
-	xvinsve0.w	$xr2, $xr3, 6
-	xvpickve.w	$xr3, $xr0, 6
-	xvinsve0.w	$xr2, $xr3, 7
+	vinsgr2vr.w	$vr2, $a7, 0
+	xvpickve2gr.w	$a7, $xr0, 0
+	vinsgr2vr.w	$vr2, $a7, 1
+	xvpickve2gr.w	$a7, $xr0, 1
+	vinsgr2vr.w	$vr2, $a7, 2
+	xvpickve2gr.w	$a7, $xr0, 2
+	vinsgr2vr.w	$vr2, $a7, 3
+	xvpickve2gr.w	$a7, $xr0, 3
+	vinsgr2vr.w	$vr3, $a7, 0
+	xvpickve2gr.w	$a7, $xr0, 4
+	vinsgr2vr.w	$vr3, $a7, 1
+	xvpickve2gr.w	$a7, $xr0, 5
+	vinsgr2vr.w	$vr3, $a7, 2
+	xvpickve2gr.w	$a7, $xr0, 6
+	vinsgr2vr.w	$vr3, $a7, 3
+	xvpermi.q	$xr2, $xr3, 2
 	xvand.v	$xr2, $xr2, $xr4
 	xvadd.w	$xr1, $xr1, $xr2
 	xvsrai.w	$xr1, $xr1, 1
-	xvst	$xr1, $a7, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a7, $a7, 32
-	bnez	$a4, .LBB0_39
+	xvst	$xr1, $t0, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$t0, $t0, 32
+	bnez	$a5, .LBB0_39
 # %bb.40:                               # %middle.block347
-	xvpickve2gr.w	$a4, $xr0, 7
+	xvpickve2gr.w	$a5, $xr0, 7
 	ld.d	$s2, $sp, 240                   # 8-byte Folded Reload
-	beq	$a5, $a6, .LBB0_43
+	beq	$a4, $a6, .LBB0_43
 .LBB0_41:                               # %for.body.i280.preheader
 	sub.d	$a3, $a3, $a2
-	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
-	alsl.d	$a2, $a2, $a5, 2
+	ld.d	$a4, $sp, 264                   # 8-byte Folded Reload
+	alsl.d	$a2, $a2, $a4, 2
 	.p2align	4, , 16
 .LBB0_42:                               # %for.body.i280
                                         # =>This Inner Loop Header: Depth=1
-	ldx.wu	$a5, $a2, $a1
-	and	$a4, $a4, $s0
-	add.w	$a6, $a5, $a4
-	andi	$a4, $a5, 1
-	sub.d	$a4, $zero, $a4
-	srli.d	$a5, $a6, 1
-	st.w	$a5, $a2, 0
+	ldx.wu	$a4, $a2, $a1
+	and	$a5, $a5, $s0
+	add.w	$a6, $a4, $a5
+	andi	$a4, $a4, 1
+	sub.d	$a5, $zero, $a4
+	srli.d	$a4, $a6, 1
+	st.w	$a4, $a2, 0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB0_42
@@ -810,7 +819,7 @@ main:                                   # @main
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB0_45
 # %bb.44:                               # %if.then16.i294
-	and	$a0, $a4, $s0
+	and	$a0, $a5, $s0
 	bstrpick.d	$a0, $a0, 31, 1
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
@@ -1129,34 +1138,34 @@ mp_mul_radix_test:                      # @mp_mul_radix_test
 	.p2align	4, , 16
 .LBB1_12:                               # %vector.body40
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa1, $a3, -16
-	fld.d	$fa2, $a3, 0
-	fld.d	$fa3, $a3, 16
-	fld.d	$fa4, $a3, 32
-	xvinsve0.d	$xr1, $xr2, 1
-	xvinsve0.d	$xr1, $xr3, 2
+	fld.d	$fa1, $a3, 16
+	fld.d	$fa2, $a3, 32
+	fld.d	$fa3, $a3, -16
+	fld.d	$fa4, $a3, 0
+	vextrins.d	$vr1, $vr2, 16
 	fld.d	$fa2, $a3, -8
-	fld.d	$fa3, $a3, 8
 	fld.d	$fa5, $a3, 24
 	fld.d	$fa6, $a3, 40
-	xvinsve0.d	$xr1, $xr4, 3
-	xvinsve0.d	$xr2, $xr3, 1
-	xvinsve0.d	$xr2, $xr5, 2
-	xvinsve0.d	$xr2, $xr6, 3
-	xvbitrevi.d	$xr3, $xr2, 63
-	xvfmul.d	$xr3, $xr2, $xr3
-	xvfmadd.d	$xr3, $xr1, $xr1, $xr3
-	xvfadd.d	$xr1, $xr1, $xr1
-	xvfmul.d	$xr1, $xr1, $xr2
-	xvori.b	$xr2, $xr0, 0
-	xvshuf.d	$xr2, $xr1, $xr3
-	xvst	$xr2, $a3, 0
-	xvpickve.d	$xr2, $xr1, 3
-	xvpermi.d	$xr4, $xr3, 78
+	fld.d	$fa7, $a3, 8
+	vextrins.d	$vr3, $vr4, 16
+	xvpermi.q	$xr3, $xr1, 2
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr2, $vr7, 16
+	xvpermi.q	$xr2, $xr5, 2
+	xvbitrevi.d	$xr1, $xr2, 63
+	xvfmul.d	$xr1, $xr2, $xr1
+	xvfmadd.d	$xr1, $xr3, $xr3, $xr1
+	xvfadd.d	$xr3, $xr3, $xr3
+	xvfmul.d	$xr2, $xr3, $xr2
+	xvori.b	$xr3, $xr0, 0
+	xvshuf.d	$xr3, $xr2, $xr1
+	xvst	$xr3, $a3, 0
+	xvpickve.d	$xr3, $xr2, 3
+	xvpermi.d	$xr4, $xr1, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
-	vextrins.d	$vr4, $vr2, 16
+	vextrins.d	$vr4, $vr3, 16
 	vst	$vr4, $a3, 32
-	vpackev.d	$vr1, $vr1, $vr3
+	vpackev.d	$vr1, $vr2, $vr1
 	vst	$vr1, $a3, -16
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 64
@@ -2879,34 +2888,34 @@ mp_squh:                                # @mp_squh
 	.p2align	4, , 16
 .LBB9_14:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa1, $a3, -16
-	fld.d	$fa2, $a3, 0
-	fld.d	$fa3, $a3, 16
-	fld.d	$fa4, $a3, 32
-	xvinsve0.d	$xr1, $xr2, 1
-	xvinsve0.d	$xr1, $xr3, 2
+	fld.d	$fa1, $a3, 16
+	fld.d	$fa2, $a3, 32
+	fld.d	$fa3, $a3, -16
+	fld.d	$fa4, $a3, 0
+	vextrins.d	$vr1, $vr2, 16
 	fld.d	$fa2, $a3, -8
-	fld.d	$fa3, $a3, 8
 	fld.d	$fa5, $a3, 24
 	fld.d	$fa6, $a3, 40
-	xvinsve0.d	$xr1, $xr4, 3
-	xvinsve0.d	$xr2, $xr3, 1
-	xvinsve0.d	$xr2, $xr5, 2
-	xvinsve0.d	$xr2, $xr6, 3
-	xvbitrevi.d	$xr3, $xr2, 63
-	xvfmul.d	$xr3, $xr2, $xr3
-	xvfmadd.d	$xr3, $xr1, $xr1, $xr3
-	xvfadd.d	$xr1, $xr1, $xr1
-	xvfmul.d	$xr1, $xr1, $xr2
-	xvori.b	$xr2, $xr0, 0
-	xvshuf.d	$xr2, $xr1, $xr3
-	xvst	$xr2, $a3, 0
-	xvpickve.d	$xr2, $xr1, 3
-	xvpermi.d	$xr4, $xr3, 78
+	fld.d	$fa7, $a3, 8
+	vextrins.d	$vr3, $vr4, 16
+	xvpermi.q	$xr3, $xr1, 2
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr2, $vr7, 16
+	xvpermi.q	$xr2, $xr5, 2
+	xvbitrevi.d	$xr1, $xr2, 63
+	xvfmul.d	$xr1, $xr2, $xr1
+	xvfmadd.d	$xr1, $xr3, $xr3, $xr1
+	xvfadd.d	$xr3, $xr3, $xr3
+	xvfmul.d	$xr2, $xr3, $xr2
+	xvori.b	$xr3, $xr0, 0
+	xvshuf.d	$xr3, $xr2, $xr1
+	xvst	$xr3, $a3, 0
+	xvpickve.d	$xr3, $xr2, 3
+	xvpermi.d	$xr4, $xr1, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
-	vextrins.d	$vr4, $vr2, 16
+	vextrins.d	$vr4, $vr3, 16
 	vst	$vr4, $a3, 32
-	vpackev.d	$vr1, $vr1, $vr3
+	vpackev.d	$vr1, $vr2, $vr1
 	vst	$vr1, $a3, -16
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 64
@@ -3528,34 +3537,34 @@ mp_squ:                                 # @mp_squ
 	.p2align	4, , 16
 .LBB11_32:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa1, $a3, -16
-	fld.d	$fa2, $a3, 0
-	fld.d	$fa3, $a3, 16
-	fld.d	$fa4, $a3, 32
-	xvinsve0.d	$xr1, $xr2, 1
-	xvinsve0.d	$xr1, $xr3, 2
+	fld.d	$fa1, $a3, 16
+	fld.d	$fa2, $a3, 32
+	fld.d	$fa3, $a3, -16
+	fld.d	$fa4, $a3, 0
+	vextrins.d	$vr1, $vr2, 16
 	fld.d	$fa2, $a3, -8
-	fld.d	$fa3, $a3, 8
 	fld.d	$fa5, $a3, 24
 	fld.d	$fa6, $a3, 40
-	xvinsve0.d	$xr1, $xr4, 3
-	xvinsve0.d	$xr2, $xr3, 1
-	xvinsve0.d	$xr2, $xr5, 2
-	xvinsve0.d	$xr2, $xr6, 3
-	xvbitrevi.d	$xr3, $xr2, 63
-	xvfmul.d	$xr3, $xr2, $xr3
-	xvfmadd.d	$xr3, $xr1, $xr1, $xr3
-	xvfadd.d	$xr1, $xr1, $xr1
-	xvfmul.d	$xr1, $xr1, $xr2
-	xvori.b	$xr2, $xr0, 0
-	xvshuf.d	$xr2, $xr1, $xr3
-	xvst	$xr2, $a3, 0
-	xvpickve.d	$xr2, $xr1, 3
-	xvpermi.d	$xr4, $xr3, 78
+	fld.d	$fa7, $a3, 8
+	vextrins.d	$vr3, $vr4, 16
+	xvpermi.q	$xr3, $xr1, 2
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr2, $vr7, 16
+	xvpermi.q	$xr2, $xr5, 2
+	xvbitrevi.d	$xr1, $xr2, 63
+	xvfmul.d	$xr1, $xr2, $xr1
+	xvfmadd.d	$xr1, $xr3, $xr3, $xr1
+	xvfadd.d	$xr3, $xr3, $xr3
+	xvfmul.d	$xr2, $xr3, $xr2
+	xvori.b	$xr3, $xr0, 0
+	xvshuf.d	$xr3, $xr2, $xr1
+	xvst	$xr3, $a3, 0
+	xvpickve.d	$xr3, $xr2, 3
+	xvpermi.d	$xr4, $xr1, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
-	vextrins.d	$vr4, $vr2, 16
+	vextrins.d	$vr4, $vr3, 16
 	vst	$vr4, $a3, 32
-	vpackev.d	$vr1, $vr1, $vr3
+	vpackev.d	$vr1, $vr2, $vr1
 	vst	$vr1, $a3, -16
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 64
@@ -4761,34 +4770,34 @@ mp_mul_csqu:                            # @mp_mul_csqu
 	.p2align	4, , 16
 .LBB23_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa1, $a5, -16
-	fld.d	$fa2, $a5, 0
-	fld.d	$fa3, $a5, 16
-	fld.d	$fa4, $a5, 32
-	xvinsve0.d	$xr1, $xr2, 1
-	xvinsve0.d	$xr1, $xr3, 2
+	fld.d	$fa1, $a5, 16
+	fld.d	$fa2, $a5, 32
+	fld.d	$fa3, $a5, -16
+	fld.d	$fa4, $a5, 0
+	vextrins.d	$vr1, $vr2, 16
 	fld.d	$fa2, $a5, -8
-	fld.d	$fa3, $a5, 8
 	fld.d	$fa5, $a5, 24
 	fld.d	$fa6, $a5, 40
-	xvinsve0.d	$xr1, $xr4, 3
-	xvinsve0.d	$xr2, $xr3, 1
-	xvinsve0.d	$xr2, $xr5, 2
-	xvinsve0.d	$xr2, $xr6, 3
-	xvbitrevi.d	$xr3, $xr2, 63
-	xvfmul.d	$xr3, $xr2, $xr3
-	xvfmadd.d	$xr3, $xr1, $xr1, $xr3
-	xvfadd.d	$xr1, $xr1, $xr1
-	xvfmul.d	$xr1, $xr1, $xr2
-	xvori.b	$xr2, $xr0, 0
-	xvshuf.d	$xr2, $xr1, $xr3
-	xvst	$xr2, $a5, 0
-	xvpickve.d	$xr2, $xr1, 3
-	xvpermi.d	$xr4, $xr3, 78
+	fld.d	$fa7, $a5, 8
+	vextrins.d	$vr3, $vr4, 16
+	xvpermi.q	$xr3, $xr1, 2
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr2, $vr7, 16
+	xvpermi.q	$xr2, $xr5, 2
+	xvbitrevi.d	$xr1, $xr2, 63
+	xvfmul.d	$xr1, $xr2, $xr1
+	xvfmadd.d	$xr1, $xr3, $xr3, $xr1
+	xvfadd.d	$xr3, $xr3, $xr3
+	xvfmul.d	$xr2, $xr3, $xr2
+	xvori.b	$xr3, $xr0, 0
+	xvshuf.d	$xr3, $xr2, $xr1
+	xvst	$xr3, $a5, 0
+	xvpickve.d	$xr3, $xr2, 3
+	xvpermi.d	$xr4, $xr1, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
-	vextrins.d	$vr4, $vr2, 16
+	vextrins.d	$vr4, $vr3, 16
 	vst	$vr4, $a5, 32
-	vpackev.d	$vr1, $vr1, $vr3
+	vpackev.d	$vr1, $vr2, $vr1
 	vst	$vr1, $a5, -16
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 64
@@ -5986,34 +5995,34 @@ mp_squh_use_in1fft:                     # @mp_squh_use_in1fft
 	.p2align	4, , 16
 .LBB31_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa1, $a4, -16
-	fld.d	$fa2, $a4, 0
-	fld.d	$fa3, $a4, 16
-	fld.d	$fa4, $a4, 32
-	xvinsve0.d	$xr1, $xr2, 1
-	xvinsve0.d	$xr1, $xr3, 2
+	fld.d	$fa1, $a4, 16
+	fld.d	$fa2, $a4, 32
+	fld.d	$fa3, $a4, -16
+	fld.d	$fa4, $a4, 0
+	vextrins.d	$vr1, $vr2, 16
 	fld.d	$fa2, $a4, -8
-	fld.d	$fa3, $a4, 8
 	fld.d	$fa5, $a4, 24
 	fld.d	$fa6, $a4, 40
-	xvinsve0.d	$xr1, $xr4, 3
-	xvinsve0.d	$xr2, $xr3, 1
-	xvinsve0.d	$xr2, $xr5, 2
-	xvinsve0.d	$xr2, $xr6, 3
-	xvbitrevi.d	$xr3, $xr2, 63
-	xvfmul.d	$xr3, $xr2, $xr3
-	xvfmadd.d	$xr3, $xr1, $xr1, $xr3
-	xvfadd.d	$xr1, $xr1, $xr1
-	xvfmul.d	$xr1, $xr1, $xr2
-	xvori.b	$xr2, $xr0, 0
-	xvshuf.d	$xr2, $xr1, $xr3
-	xvst	$xr2, $a4, 0
-	xvpickve.d	$xr2, $xr1, 3
-	xvpermi.d	$xr4, $xr3, 78
+	fld.d	$fa7, $a4, 8
+	vextrins.d	$vr3, $vr4, 16
+	xvpermi.q	$xr3, $xr1, 2
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr2, $vr7, 16
+	xvpermi.q	$xr2, $xr5, 2
+	xvbitrevi.d	$xr1, $xr2, 63
+	xvfmul.d	$xr1, $xr2, $xr1
+	xvfmadd.d	$xr1, $xr3, $xr3, $xr1
+	xvfadd.d	$xr3, $xr3, $xr3
+	xvfmul.d	$xr2, $xr3, $xr2
+	xvori.b	$xr3, $xr0, 0
+	xvshuf.d	$xr3, $xr2, $xr1
+	xvst	$xr3, $a4, 0
+	xvpickve.d	$xr3, $xr2, 3
+	xvpermi.d	$xr4, $xr1, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
-	vextrins.d	$vr4, $vr2, 16
+	vextrins.d	$vr4, $vr3, 16
 	vst	$vr4, $a4, 32
-	vpackev.d	$vr1, $vr1, $vr3
+	vpackev.d	$vr1, $vr2, $vr1
 	vst	$vr1, $a4, -16
 	addi.d	$a7, $a7, -4
 	addi.d	$a4, $a4, 64
@@ -6539,40 +6548,40 @@ mp_sqrt_init:                           # @mp_sqrt_init
 	.type	mp_sqrt_newton,@function
 mp_sqrt_newton:                         # @mp_sqrt_newton
 # %bb.0:                                # %entry
-	addi.d	$sp, $sp, -224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
 	move	$s4, $a7
 	move	$s3, $a6
 	move	$fp, $a5
 	move	$s6, $a4
 	move	$s0, $a3
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	move	$s1, $a1
 	move	$s2, $a0
-	ld.d	$a3, $sp, 248
+	ld.d	$a3, $sp, 232
 	srai.d	$a2, $a6, 1
 	addi.d	$a4, $a2, 1
 	ori	$a0, $zero, 2
 	slt	$a1, $a0, $a2
 	masknez	$a0, $a0, $a1
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
 	maskeqz	$a1, $a2, $a1
 	or	$s8, $a1, $a0
 	bstrpick.d	$a0, $s2, 31, 31
 	add.w	$a0, $s2, $a0
 	srai.d	$a0, $a0, 1
 	addi.d	$a0, $a0, 1
-	st.d	$a4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 56                    # 8-byte Folded Spill
 	sub.w	$a1, $s2, $a4
 	slt	$a2, $a1, $a0
 	masknez	$a1, $a1, $a2
@@ -6581,7 +6590,7 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	srli.d	$a0, $s8, 1
 	addi.d	$a1, $a0, 1
 	addi.w	$a2, $s5, 1
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	bge	$a1, $s5, .LBB36_9
 # %bb.1:                                # %if.then.i
 	addi.w	$s7, $a0, 3
@@ -6592,12 +6601,12 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	addi.d	$a0, $a0, -2
 	bstrpick.d	$a0, $a0, 31, 0
 	slli.d	$a1, $a0, 2
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	sub.d	$a0, $a2, $a0
 	alsl.d	$a0, $a0, $s6, 2
 	addi.d	$a2, $a1, 4
 	move	$a1, $zero
-	st.d	$s5, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 104                   # 8-byte Folded Spill
 	move	$s5, $s0
 	move	$s0, $s2
 	move	$s2, $a3
@@ -6606,7 +6615,7 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	move	$a3, $s2
 	move	$s2, $s0
 	move	$s0, $s5
-	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
 .LBB36_3:                               # %for.end.i
 	slli.d	$a0, $s7, 2
 	ldx.w	$a1, $s6, $a0
@@ -6638,14 +6647,13 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 .LBB36_8:                               # %if.then19.i
 	st.w	$a2, $a1, 0
 .LBB36_9:                               # %mp_round.exit
-	ld.d	$a7, $sp, 240
-	st.d	$a3, $sp, 80                    # 8-byte Folded Spill
+	ld.d	$a7, $sp, 224
+	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
 	ld.w	$a0, $a3, 0
-	ld.d	$a6, $sp, 232
+	ld.d	$s7, $sp, 216
 	addi.d	$a2, $s4, 8
-	st.d	$a6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$a7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	bne	$a0, $s8, .LBB36_18
 # %bb.10:                               # %if.else
 	fld.d	$fa0, $s4, 0
@@ -6655,7 +6663,7 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	vfmul.d	$vr0, $vr1, $vr1
 	ori	$a0, $zero, 4
 	vst	$vr0, $s4, 8
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	blt	$a1, $a0, .LBB36_17
 # %bb.11:                               # %for.body.i.i.preheader
 	ori	$a0, $zero, 5
@@ -6681,34 +6689,34 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	.p2align	4, , 16
 .LBB36_13:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa1, $a3, -16
-	fld.d	$fa2, $a3, 0
-	fld.d	$fa3, $a3, 16
-	fld.d	$fa4, $a3, 32
-	xvinsve0.d	$xr1, $xr2, 1
-	xvinsve0.d	$xr1, $xr3, 2
+	fld.d	$fa1, $a3, 16
+	fld.d	$fa2, $a3, 32
+	fld.d	$fa3, $a3, -16
+	fld.d	$fa4, $a3, 0
+	vextrins.d	$vr1, $vr2, 16
 	fld.d	$fa2, $a3, -8
-	fld.d	$fa3, $a3, 8
 	fld.d	$fa5, $a3, 24
 	fld.d	$fa6, $a3, 40
-	xvinsve0.d	$xr1, $xr4, 3
-	xvinsve0.d	$xr2, $xr3, 1
-	xvinsve0.d	$xr2, $xr5, 2
-	xvinsve0.d	$xr2, $xr6, 3
-	xvbitrevi.d	$xr3, $xr2, 63
-	xvfmul.d	$xr3, $xr2, $xr3
-	xvfmadd.d	$xr3, $xr1, $xr1, $xr3
-	xvfadd.d	$xr1, $xr1, $xr1
-	xvfmul.d	$xr1, $xr1, $xr2
-	xvori.b	$xr2, $xr0, 0
-	xvshuf.d	$xr2, $xr1, $xr3
-	xvst	$xr2, $a3, 0
-	xvpickve.d	$xr2, $xr1, 3
-	xvpermi.d	$xr4, $xr3, 78
+	fld.d	$fa7, $a3, 8
+	vextrins.d	$vr3, $vr4, 16
+	xvpermi.q	$xr3, $xr1, 2
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr2, $vr7, 16
+	xvpermi.q	$xr2, $xr5, 2
+	xvbitrevi.d	$xr1, $xr2, 63
+	xvfmul.d	$xr1, $xr2, $xr1
+	xvfmadd.d	$xr1, $xr3, $xr3, $xr1
+	xvfadd.d	$xr3, $xr3, $xr3
+	xvfmul.d	$xr2, $xr3, $xr2
+	xvori.b	$xr3, $xr0, 0
+	xvshuf.d	$xr3, $xr2, $xr1
+	xvst	$xr3, $a3, 0
+	xvpickve.d	$xr3, $xr2, 3
+	xvpermi.d	$xr4, $xr1, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
-	vextrins.d	$vr4, $vr2, 16
+	vextrins.d	$vr4, $vr3, 16
 	vst	$vr4, $a3, 32
-	vpackev.d	$vr1, $vr1, $vr3
+	vpackev.d	$vr1, $vr2, $vr1
 	vst	$vr1, $a3, -16
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 64
@@ -6740,7 +6748,7 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	fst.d	$fa0, $a0, 8
 	addi.w	$a1, $zero, -1
 	move	$a0, $s8
-	move	$a3, $a6
+	move	$a3, $s7
 	move	$a4, $a7
 	pcaddu18i	$ra, %call36(rdft)
 	jirl	$ra, $ra, 0
@@ -6759,24 +6767,25 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	move	$a3, $fp
 	move	$a4, $s8
 	move	$a5, $s4
+	move	$a6, $s7
 	pcaddu18i	$ra, %call36(mp_squh)
 	jirl	$ra, $ra, 0
 .LBB36_19:                              # %if.end10
-	ld.d	$a0, $sp, 224
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	st.d	$s7, $sp, 104                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 208
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	nor	$a0, $a0, $zero
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	bge	$a0, $s2, .LBB36_29
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	bge	$s8, $s2, .LBB36_29
 # %bb.20:                               # %if.then.i86
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	addi.d	$s8, $a0, 3
-	blt	$s2, $s8, .LBB36_22
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	addi.d	$s7, $a0, 3
+	blt	$s2, $s7, .LBB36_22
 # %bb.21:                               # %for.body.preheader.i89
 	addi.w	$a0, $s2, 1
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	add.d	$a1, $s2, $a1
 	addi.d	$a1, $a1, -2
 	bstrpick.d	$a1, $a1, 31, 0
@@ -6788,29 +6797,29 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB36_22:                              # %for.end.i92
-	slli.d	$a0, $s8, 2
+	slli.d	$a0, $s7, 2
 	ldx.w	$a1, $s0, $a0
 	slli.w	$a1, $a1, 1
 	stx.w	$zero, $s0, $a0
 	blt	$a1, $s1, .LBB36_29
 # %bb.23:                               # %if.then10.i97
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	bltz	$a0, .LBB36_27
 # %bb.24:                               # %for.body14.preheader.i
 	ori	$a0, $zero, 2
 	.p2align	4, , 16
 .LBB36_25:                              # %for.body14.i103
                                         # =>This Inner Loop Header: Depth=1
-	addi.w	$s8, $s8, -1
-	slli.d	$a1, $s8, 2
+	addi.w	$s7, $s7, -1
+	slli.d	$a1, $s7, 2
 	ldx.w	$a1, $s0, $a1
 	addi.w	$a2, $a1, 1
-	alsl.d	$a1, $s8, $s0, 2
+	alsl.d	$a1, $s7, $s0, 2
 	blt	$a2, $s1, .LBB36_28
 # %bb.26:                               # %if.end.i109
                                         #   in Loop: Header=BB36_25 Depth=1
 	st.w	$zero, $a1, 0
-	blt	$a0, $s8, .LBB36_25
+	blt	$a0, $s7, .LBB36_25
 .LBB36_27:                              # %if.then28.i98
 	ld.w	$a0, $s0, 4
 	ori	$a1, $zero, 1
@@ -6821,9 +6830,9 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 .LBB36_28:                              # %if.then19.i112
 	st.w	$a2, $a1, 0
 .LBB36_29:                              # %mp_round.exit113
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 8
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
+	st.d	$s7, $sp, 8
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	st.d	$a0, $sp, 0
 	move	$a0, $s5
 	move	$a1, $s1
@@ -6832,7 +6841,7 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	move	$a4, $fp
 	move	$a5, $s3
 	move	$a6, $s4
-	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(mp_mulh)
 	jirl	$ra, $ra, 0
 	move	$a0, $s5
@@ -6865,7 +6874,7 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	or	$a1, $a2, $a1
 	addi.d	$a1, $a1, -4
 	ori	$a3, $zero, 6
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	bltu	$a1, $a3, .LBB36_34
 # %bb.31:                               # %vector.ph200
 	srli.d	$a0, $a1, 1
@@ -6881,34 +6890,34 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	.p2align	4, , 16
 .LBB36_32:                              # %vector.body203
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa1, $a3, -16
-	fld.d	$fa2, $a3, 0
-	fld.d	$fa3, $a3, 16
-	fld.d	$fa4, $a3, 32
-	xvinsve0.d	$xr1, $xr2, 1
-	xvinsve0.d	$xr1, $xr3, 2
+	fld.d	$fa1, $a3, 16
+	fld.d	$fa2, $a3, 32
+	fld.d	$fa3, $a3, -16
+	fld.d	$fa4, $a3, 0
+	vextrins.d	$vr1, $vr2, 16
 	fld.d	$fa2, $a3, -8
-	fld.d	$fa3, $a3, 8
 	fld.d	$fa5, $a3, 24
 	fld.d	$fa6, $a3, 40
-	xvinsve0.d	$xr1, $xr4, 3
-	xvinsve0.d	$xr2, $xr3, 1
-	xvinsve0.d	$xr2, $xr5, 2
-	xvinsve0.d	$xr2, $xr6, 3
-	xvbitrevi.d	$xr3, $xr2, 63
-	xvfmul.d	$xr3, $xr2, $xr3
-	xvfmadd.d	$xr3, $xr1, $xr1, $xr3
-	xvfadd.d	$xr1, $xr1, $xr1
-	xvfmul.d	$xr1, $xr1, $xr2
-	xvori.b	$xr2, $xr0, 0
-	xvshuf.d	$xr2, $xr1, $xr3
-	xvst	$xr2, $a3, 0
-	xvpickve.d	$xr2, $xr1, 3
-	xvpermi.d	$xr4, $xr3, 78
+	fld.d	$fa7, $a3, 8
+	vextrins.d	$vr3, $vr4, 16
+	xvpermi.q	$xr3, $xr1, 2
+	vextrins.d	$vr5, $vr6, 16
+	vextrins.d	$vr2, $vr7, 16
+	xvpermi.q	$xr2, $xr5, 2
+	xvbitrevi.d	$xr1, $xr2, 63
+	xvfmul.d	$xr1, $xr2, $xr1
+	xvfmadd.d	$xr1, $xr3, $xr3, $xr1
+	xvfadd.d	$xr3, $xr3, $xr3
+	xvfmul.d	$xr2, $xr3, $xr2
+	xvori.b	$xr3, $xr0, 0
+	xvshuf.d	$xr3, $xr2, $xr1
+	xvst	$xr3, $a3, 0
+	xvpickve.d	$xr3, $xr2, 3
+	xvpermi.d	$xr4, $xr1, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
-	vextrins.d	$vr4, $vr2, 16
+	vextrins.d	$vr4, $vr3, 16
 	vst	$vr4, $a3, 32
-	vpackev.d	$vr1, $vr1, $vr3
+	vpackev.d	$vr1, $vr2, $vr1
 	vst	$vr1, $a3, -16
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 64
@@ -6935,7 +6944,7 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	bltu	$a0, $s3, .LBB36_35
 	b	.LBB36_37
 .LBB36_36:                              # %entry.for.end_crit_edge.i.i120
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 .LBB36_37:                              # %mp_squh_use_in1fft.exit135
 	alsl.d	$a0, $s3, $s4, 3
 	fld.d	$fa0, $a0, 8
@@ -6943,8 +6952,8 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	fst.d	$fa0, $a0, 8
 	addi.w	$a1, $zero, -1
 	move	$a0, $s3
-	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	move	$a4, $s7
 	pcaddu18i	$ra, %call36(rdft)
 	jirl	$ra, $ra, 0
 	move	$a0, $s2
@@ -6956,35 +6965,34 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	jirl	$ra, $ra, 0
 	move	$a0, $s2
 	move	$a1, $s1
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	move	$a2, $s8
+	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	move	$a2, $s7
 	move	$a3, $fp
 	move	$a4, $fp
 	pcaddu18i	$ra, %call36(mp_sub)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s8, 4
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	ld.w	$a0, $fp, 4
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	ld.w	$a0, $s8, 8
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	ld.w	$a0, $fp, 8
+	ld.w	$a0, $s7, 4
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	ld.w	$a0, $fp, 0
+	ld.w	$a0, $fp, 4
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	bge	$a0, $s5, .LBB36_47
+	ld.w	$a0, $s7, 8
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	ld.w	$a0, $fp, 8
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	ld.w	$s7, $fp, 0
+	bge	$s8, $s5, .LBB36_47
 # %bb.38:                               # %if.then.i137
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	addi.d	$s8, $a0, 3
 	blt	$s5, $s8, .LBB36_40
 # %bb.39:                               # %for.body.preheader.i140
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	add.d	$a0, $s5, $a0
 	addi.d	$a0, $a0, -2
 	bstrpick.d	$a0, $a0, 31, 0
 	slli.d	$a1, $a0, 2
-	sub.d	$a0, $s7, $a0
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	sub.d	$a0, $a2, $a0
 	alsl.d	$a0, $a0, $s6, 2
 	addi.d	$a2, $a1, 4
 	move	$a1, $zero
@@ -6997,7 +7005,7 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	stx.w	$zero, $s6, $a0
 	blt	$a1, $s1, .LBB36_47
 # %bb.41:                               # %if.then10.i148
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	bltz	$a0, .LBB36_45
 # %bb.42:                               # %for.body14.preheader.i154
 	ori	$a0, $zero, 2
@@ -7024,9 +7032,9 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 .LBB36_46:                              # %if.then19.i165
 	st.w	$a2, $a1, 0
 .LBB36_47:                              # %mp_round.exit166
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	st.d	$a0, $sp, 8
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	st.d	$a0, $sp, 0
 	move	$a0, $s5
 	move	$a1, $s1
@@ -7035,10 +7043,10 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	move	$a4, $fp
 	move	$a5, $s3
 	move	$a6, $s4
-	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(mp_mulh)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	st.w	$s3, $a0, 0
 	ld.w	$a0, $fp, 8
 	ld.w	$a2, $fp, 4
@@ -7046,7 +7054,8 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	sltui	$a4, $a1, 1
 	sub.d	$a1, $zero, $a4
 	sub.d	$a2, $a2, $a4
-	sub.w	$a5, $s7, $a4
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	sub.w	$a5, $a3, $a4
 	ori	$a3, $zero, 2
 	st.w	$a2, $fp, 4
 	blt	$a5, $a3, .LBB36_50
@@ -7076,17 +7085,17 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 # %bb.51:                               # %if.then16.i
 	and	$a0, $a1, $s1
 	srli.d	$a0, $a0, 1
-	slli.d	$a1, $s7, 2
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	slli.d	$a1, $a1, 2
 	stx.w	$a0, $fp, $a1
 .LBB36_52:                              # %mp_idiv_2.exit
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	sltui	$a0, $a0, 1
+	sltui	$a0, $s7, 1
 	addi.w	$a1, $s3, 1
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	sub.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	slt	$a3, $a4, $a3
 	add.w	$a2, $a2, $a3
 	masknez	$a2, $a2, $a0
@@ -7100,18 +7109,18 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	pcaddu18i	$ra, %call36(mp_add)
 	jirl	$ra, $ra, 0
 	move	$a0, $s3
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .Lfunc_end36:
 	.size	mp_sqrt_newton, .Lfunc_end36-mp_sqrt_newton

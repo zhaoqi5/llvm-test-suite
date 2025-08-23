@@ -57,14 +57,15 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	ld.w	$t1, $a2, -36
 	ld.w	$t2, $a2, -24
 	ld.w	$t3, $a2, -12
-	xvinsgr2vr.w	$xr2, $a4, 0
-	xvinsgr2vr.w	$xr2, $a5, 1
-	xvinsgr2vr.w	$xr2, $a6, 2
-	xvinsgr2vr.w	$xr2, $a7, 3
-	xvinsgr2vr.w	$xr2, $t0, 4
-	xvinsgr2vr.w	$xr2, $t1, 5
-	xvinsgr2vr.w	$xr2, $t2, 6
-	xvinsgr2vr.w	$xr2, $t3, 7
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr3, $a4, 0
+	vinsgr2vr.w	$vr3, $a5, 1
+	vinsgr2vr.w	$vr3, $a6, 2
+	vinsgr2vr.w	$vr3, $a7, 3
+	xvpermi.q	$xr3, $xr2, 2
 	ld.w	$a4, $a2, 0
 	ld.w	$a5, $a2, 12
 	ld.w	$a6, $a2, 24
@@ -73,18 +74,19 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	ld.w	$t1, $a2, 60
 	ld.w	$t2, $a2, 72
 	ld.w	$t3, $a2, 84
-	xvinsgr2vr.w	$xr3, $a4, 0
-	xvinsgr2vr.w	$xr3, $a5, 1
-	xvinsgr2vr.w	$xr3, $a6, 2
-	xvinsgr2vr.w	$xr3, $a7, 3
-	xvinsgr2vr.w	$xr3, $t0, 4
-	xvinsgr2vr.w	$xr3, $t1, 5
-	xvinsgr2vr.w	$xr3, $t2, 6
-	xvinsgr2vr.w	$xr3, $t3, 7
-	xvneg.w	$xr4, $xr2
-	xvmax.w	$xr2, $xr2, $xr4
-	xvneg.w	$xr4, $xr3
-	xvmax.w	$xr3, $xr3, $xr4
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr4, $a4, 0
+	vinsgr2vr.w	$vr4, $a5, 1
+	vinsgr2vr.w	$vr4, $a6, 2
+	vinsgr2vr.w	$vr4, $a7, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvneg.w	$xr2, $xr3
+	xvmax.w	$xr2, $xr3, $xr2
+	xvneg.w	$xr3, $xr4
+	xvmax.w	$xr3, $xr4, $xr3
 	xvmax.wu	$xr0, $xr2, $xr0
 	xvmax.wu	$xr1, $xr3, $xr1
 	ld.w	$a4, $a2, -92
@@ -95,14 +97,15 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	ld.w	$t1, $a2, -32
 	ld.w	$t2, $a2, -20
 	ld.w	$t3, $a2, -8
-	xvinsgr2vr.w	$xr2, $a4, 0
-	xvinsgr2vr.w	$xr2, $a5, 1
-	xvinsgr2vr.w	$xr2, $a6, 2
-	xvinsgr2vr.w	$xr2, $a7, 3
-	xvinsgr2vr.w	$xr2, $t0, 4
-	xvinsgr2vr.w	$xr2, $t1, 5
-	xvinsgr2vr.w	$xr2, $t2, 6
-	xvinsgr2vr.w	$xr2, $t3, 7
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr3, $a4, 0
+	vinsgr2vr.w	$vr3, $a5, 1
+	vinsgr2vr.w	$vr3, $a6, 2
+	vinsgr2vr.w	$vr3, $a7, 3
+	xvpermi.q	$xr3, $xr2, 2
 	ld.w	$a4, $a2, 4
 	ld.w	$a5, $a2, 16
 	ld.w	$a6, $a2, 28
@@ -111,18 +114,19 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	ld.w	$t1, $a2, 64
 	ld.w	$t2, $a2, 76
 	ld.w	$t3, $a2, 88
-	xvinsgr2vr.w	$xr3, $a4, 0
-	xvinsgr2vr.w	$xr3, $a5, 1
-	xvinsgr2vr.w	$xr3, $a6, 2
-	xvinsgr2vr.w	$xr3, $a7, 3
-	xvinsgr2vr.w	$xr3, $t0, 4
-	xvinsgr2vr.w	$xr3, $t1, 5
-	xvinsgr2vr.w	$xr3, $t2, 6
-	xvinsgr2vr.w	$xr3, $t3, 7
-	xvneg.w	$xr4, $xr2
-	xvmax.w	$xr2, $xr2, $xr4
-	xvneg.w	$xr4, $xr3
-	xvmax.w	$xr3, $xr3, $xr4
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr4, $a4, 0
+	vinsgr2vr.w	$vr4, $a5, 1
+	vinsgr2vr.w	$vr4, $a6, 2
+	vinsgr2vr.w	$vr4, $a7, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvneg.w	$xr2, $xr3
+	xvmax.w	$xr2, $xr3, $xr2
+	xvneg.w	$xr3, $xr4
+	xvmax.w	$xr3, $xr4, $xr3
 	xvmax.wu	$xr0, $xr2, $xr0
 	xvmax.wu	$xr1, $xr3, $xr1
 	ld.w	$a4, $a2, -88
@@ -133,14 +137,15 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	ld.w	$t1, $a2, -28
 	ld.w	$t2, $a2, -16
 	ld.w	$t3, $a2, -4
-	xvinsgr2vr.w	$xr2, $a4, 0
-	xvinsgr2vr.w	$xr2, $a5, 1
-	xvinsgr2vr.w	$xr2, $a6, 2
-	xvinsgr2vr.w	$xr2, $a7, 3
-	xvinsgr2vr.w	$xr2, $t0, 4
-	xvinsgr2vr.w	$xr2, $t1, 5
-	xvinsgr2vr.w	$xr2, $t2, 6
-	xvinsgr2vr.w	$xr2, $t3, 7
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr3, $a4, 0
+	vinsgr2vr.w	$vr3, $a5, 1
+	vinsgr2vr.w	$vr3, $a6, 2
+	vinsgr2vr.w	$vr3, $a7, 3
+	xvpermi.q	$xr3, $xr2, 2
 	ld.w	$a4, $a2, 8
 	ld.w	$a5, $a2, 20
 	ld.w	$a6, $a2, 32
@@ -149,18 +154,19 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	ld.w	$t1, $a2, 68
 	ld.w	$t2, $a2, 80
 	ld.w	$t3, $a2, 92
-	xvinsgr2vr.w	$xr3, $a4, 0
-	xvinsgr2vr.w	$xr3, $a5, 1
-	xvinsgr2vr.w	$xr3, $a6, 2
-	xvinsgr2vr.w	$xr3, $a7, 3
-	xvinsgr2vr.w	$xr3, $t0, 4
-	xvinsgr2vr.w	$xr3, $t1, 5
-	xvinsgr2vr.w	$xr3, $t2, 6
-	xvinsgr2vr.w	$xr3, $t3, 7
-	xvneg.w	$xr4, $xr2
-	xvmax.w	$xr2, $xr2, $xr4
-	xvneg.w	$xr4, $xr3
-	xvmax.w	$xr3, $xr3, $xr4
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr4, $a4, 0
+	vinsgr2vr.w	$vr4, $a5, 1
+	vinsgr2vr.w	$vr4, $a6, 2
+	vinsgr2vr.w	$vr4, $a7, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvneg.w	$xr2, $xr3
+	xvmax.w	$xr2, $xr3, $xr2
+	xvneg.w	$xr3, $xr4
+	xvmax.w	$xr3, $xr4, $xr3
 	xvmax.wu	$xr0, $xr2, $xr0
 	xvmax.wu	$xr1, $xr3, $xr1
 	addi.d	$a3, $a3, -16
@@ -578,14 +584,15 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	ld.w	$t1, $a2, -36
 	ld.w	$t2, $a2, -24
 	ld.w	$t3, $a2, -12
-	xvinsgr2vr.w	$xr2, $a4, 0
-	xvinsgr2vr.w	$xr2, $a5, 1
-	xvinsgr2vr.w	$xr2, $a6, 2
-	xvinsgr2vr.w	$xr2, $a7, 3
-	xvinsgr2vr.w	$xr2, $t0, 4
-	xvinsgr2vr.w	$xr2, $t1, 5
-	xvinsgr2vr.w	$xr2, $t2, 6
-	xvinsgr2vr.w	$xr2, $t3, 7
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr3, $a4, 0
+	vinsgr2vr.w	$vr3, $a5, 1
+	vinsgr2vr.w	$vr3, $a6, 2
+	vinsgr2vr.w	$vr3, $a7, 3
+	xvpermi.q	$xr3, $xr2, 2
 	ld.w	$a4, $a2, 0
 	ld.w	$a5, $a2, 12
 	ld.w	$a6, $a2, 24
@@ -594,18 +601,19 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	ld.w	$t1, $a2, 60
 	ld.w	$t2, $a2, 72
 	ld.w	$t3, $a2, 84
-	xvinsgr2vr.w	$xr3, $a4, 0
-	xvinsgr2vr.w	$xr3, $a5, 1
-	xvinsgr2vr.w	$xr3, $a6, 2
-	xvinsgr2vr.w	$xr3, $a7, 3
-	xvinsgr2vr.w	$xr3, $t0, 4
-	xvinsgr2vr.w	$xr3, $t1, 5
-	xvinsgr2vr.w	$xr3, $t2, 6
-	xvinsgr2vr.w	$xr3, $t3, 7
-	xvneg.w	$xr4, $xr2
-	xvmax.w	$xr2, $xr2, $xr4
-	xvneg.w	$xr4, $xr3
-	xvmax.w	$xr3, $xr3, $xr4
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr4, $a4, 0
+	vinsgr2vr.w	$vr4, $a5, 1
+	vinsgr2vr.w	$vr4, $a6, 2
+	vinsgr2vr.w	$vr4, $a7, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvneg.w	$xr2, $xr3
+	xvmax.w	$xr2, $xr3, $xr2
+	xvneg.w	$xr3, $xr4
+	xvmax.w	$xr3, $xr4, $xr3
 	xvmax.wu	$xr0, $xr2, $xr0
 	xvmax.wu	$xr1, $xr3, $xr1
 	ld.w	$a4, $a2, -92
@@ -616,14 +624,15 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	ld.w	$t1, $a2, -32
 	ld.w	$t2, $a2, -20
 	ld.w	$t3, $a2, -8
-	xvinsgr2vr.w	$xr2, $a4, 0
-	xvinsgr2vr.w	$xr2, $a5, 1
-	xvinsgr2vr.w	$xr2, $a6, 2
-	xvinsgr2vr.w	$xr2, $a7, 3
-	xvinsgr2vr.w	$xr2, $t0, 4
-	xvinsgr2vr.w	$xr2, $t1, 5
-	xvinsgr2vr.w	$xr2, $t2, 6
-	xvinsgr2vr.w	$xr2, $t3, 7
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr3, $a4, 0
+	vinsgr2vr.w	$vr3, $a5, 1
+	vinsgr2vr.w	$vr3, $a6, 2
+	vinsgr2vr.w	$vr3, $a7, 3
+	xvpermi.q	$xr3, $xr2, 2
 	ld.w	$a4, $a2, 4
 	ld.w	$a5, $a2, 16
 	ld.w	$a6, $a2, 28
@@ -632,18 +641,19 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	ld.w	$t1, $a2, 64
 	ld.w	$t2, $a2, 76
 	ld.w	$t3, $a2, 88
-	xvinsgr2vr.w	$xr3, $a4, 0
-	xvinsgr2vr.w	$xr3, $a5, 1
-	xvinsgr2vr.w	$xr3, $a6, 2
-	xvinsgr2vr.w	$xr3, $a7, 3
-	xvinsgr2vr.w	$xr3, $t0, 4
-	xvinsgr2vr.w	$xr3, $t1, 5
-	xvinsgr2vr.w	$xr3, $t2, 6
-	xvinsgr2vr.w	$xr3, $t3, 7
-	xvneg.w	$xr4, $xr2
-	xvmax.w	$xr2, $xr2, $xr4
-	xvneg.w	$xr4, $xr3
-	xvmax.w	$xr3, $xr3, $xr4
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr4, $a4, 0
+	vinsgr2vr.w	$vr4, $a5, 1
+	vinsgr2vr.w	$vr4, $a6, 2
+	vinsgr2vr.w	$vr4, $a7, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvneg.w	$xr2, $xr3
+	xvmax.w	$xr2, $xr3, $xr2
+	xvneg.w	$xr3, $xr4
+	xvmax.w	$xr3, $xr4, $xr3
 	xvmax.wu	$xr0, $xr2, $xr0
 	xvmax.wu	$xr1, $xr3, $xr1
 	ld.w	$a4, $a2, -88
@@ -654,14 +664,15 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	ld.w	$t1, $a2, -28
 	ld.w	$t2, $a2, -16
 	ld.w	$t3, $a2, -4
-	xvinsgr2vr.w	$xr2, $a4, 0
-	xvinsgr2vr.w	$xr2, $a5, 1
-	xvinsgr2vr.w	$xr2, $a6, 2
-	xvinsgr2vr.w	$xr2, $a7, 3
-	xvinsgr2vr.w	$xr2, $t0, 4
-	xvinsgr2vr.w	$xr2, $t1, 5
-	xvinsgr2vr.w	$xr2, $t2, 6
-	xvinsgr2vr.w	$xr2, $t3, 7
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr3, $a4, 0
+	vinsgr2vr.w	$vr3, $a5, 1
+	vinsgr2vr.w	$vr3, $a6, 2
+	vinsgr2vr.w	$vr3, $a7, 3
+	xvpermi.q	$xr3, $xr2, 2
 	ld.w	$a4, $a2, 8
 	ld.w	$a5, $a2, 20
 	ld.w	$a6, $a2, 32
@@ -670,18 +681,19 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	ld.w	$t1, $a2, 68
 	ld.w	$t2, $a2, 80
 	ld.w	$t3, $a2, 92
-	xvinsgr2vr.w	$xr3, $a4, 0
-	xvinsgr2vr.w	$xr3, $a5, 1
-	xvinsgr2vr.w	$xr3, $a6, 2
-	xvinsgr2vr.w	$xr3, $a7, 3
-	xvinsgr2vr.w	$xr3, $t0, 4
-	xvinsgr2vr.w	$xr3, $t1, 5
-	xvinsgr2vr.w	$xr3, $t2, 6
-	xvinsgr2vr.w	$xr3, $t3, 7
-	xvneg.w	$xr4, $xr2
-	xvmax.w	$xr2, $xr2, $xr4
-	xvneg.w	$xr4, $xr3
-	xvmax.w	$xr3, $xr3, $xr4
+	vinsgr2vr.w	$vr2, $t0, 0
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vinsgr2vr.w	$vr4, $a4, 0
+	vinsgr2vr.w	$vr4, $a5, 1
+	vinsgr2vr.w	$vr4, $a6, 2
+	vinsgr2vr.w	$vr4, $a7, 3
+	xvpermi.q	$xr4, $xr2, 2
+	xvneg.w	$xr2, $xr3
+	xvmax.w	$xr2, $xr3, $xr2
+	xvneg.w	$xr3, $xr4
+	xvmax.w	$xr3, $xr4, $xr3
 	xvmax.wu	$xr0, $xr2, $xr0
 	xvmax.wu	$xr1, $xr3, $xr1
 	addi.d	$a3, $a3, -16

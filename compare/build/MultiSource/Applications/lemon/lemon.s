@@ -5434,25 +5434,27 @@ lemon_main:                             # @lemon_main
 	.p2align	4, , 16
 .LBB29_119:                             # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a5, -128
-	ld.d	$a7, $a5, -96
-	ld.d	$t0, $a5, -64
-	ld.d	$t1, $a5, -32
-	xvinsgr2vr.d	$xr0, $a6, 0
-	xvinsgr2vr.d	$xr0, $a7, 1
-	xvinsgr2vr.d	$xr0, $t0, 2
-	xvinsgr2vr.d	$xr0, $t1, 3
-	ld.d	$a6, $a5, 0
-	ld.d	$a7, $a5, 32
-	ld.d	$t0, $a5, 64
-	ld.d	$t1, $a5, 96
-	xvinsgr2vr.d	$xr1, $a6, 0
-	xvinsgr2vr.d	$xr1, $a7, 1
-	xvinsgr2vr.d	$xr1, $t0, 2
-	xvinsgr2vr.d	$xr1, $t1, 3
+	ld.d	$a6, $a5, -64
+	ld.d	$a7, $a5, -32
+	ld.d	$t0, $a5, -128
+	ld.d	$t1, $a5, -96
+	vinsgr2vr.d	$vr0, $a6, 0
+	vinsgr2vr.d	$vr0, $a7, 1
+	vinsgr2vr.d	$vr1, $t0, 0
+	vinsgr2vr.d	$vr1, $t1, 1
+	xvpermi.q	$xr1, $xr0, 2
+	ld.d	$a6, $a5, 64
+	ld.d	$a7, $a5, 96
+	ld.d	$t0, $a5, 0
+	ld.d	$t1, $a5, 32
+	vinsgr2vr.d	$vr0, $a6, 0
+	vinsgr2vr.d	$vr0, $a7, 1
+	vinsgr2vr.d	$vr2, $t0, 0
+	vinsgr2vr.d	$vr2, $t1, 1
+	xvpermi.q	$xr2, $xr0, 2
 	add.d	$a6, $a0, $a3
-	xvstx	$xr0, $a0, $a3
-	xvst	$xr1, $a6, 32
+	xvstx	$xr1, $a0, $a3
+	xvst	$xr2, $a6, 32
 	addi.d	$a3, $a3, 64
 	addi.d	$a5, $a5, 256
 	bne	$a4, $a3, .LBB29_119
@@ -5469,25 +5471,27 @@ lemon_main:                             # @lemon_main
 	.p2align	4, , 16
 .LBB29_122:                             # %vector.body158
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a5, -128
-	ld.d	$a7, $a5, -96
-	ld.d	$t0, $a5, -64
-	ld.d	$t1, $a5, -32
-	xvinsgr2vr.d	$xr0, $a6, 0
-	xvinsgr2vr.d	$xr0, $a7, 1
-	xvinsgr2vr.d	$xr0, $t0, 2
-	xvinsgr2vr.d	$xr0, $t1, 3
-	ld.d	$a6, $a5, 0
-	ld.d	$a7, $a5, 32
-	ld.d	$t0, $a5, 64
-	ld.d	$t1, $a5, 96
-	xvinsgr2vr.d	$xr1, $a6, 0
-	xvinsgr2vr.d	$xr1, $a7, 1
-	xvinsgr2vr.d	$xr1, $t0, 2
-	xvinsgr2vr.d	$xr1, $t1, 3
+	ld.d	$a6, $a5, -64
+	ld.d	$a7, $a5, -32
+	ld.d	$t0, $a5, -128
+	ld.d	$t1, $a5, -96
+	vinsgr2vr.d	$vr0, $a6, 0
+	vinsgr2vr.d	$vr0, $a7, 1
+	vinsgr2vr.d	$vr1, $t0, 0
+	vinsgr2vr.d	$vr1, $t1, 1
+	xvpermi.q	$xr1, $xr0, 2
+	ld.d	$a6, $a5, 64
+	ld.d	$a7, $a5, 96
+	ld.d	$t0, $a5, 0
+	ld.d	$t1, $a5, 32
+	vinsgr2vr.d	$vr0, $a6, 0
+	vinsgr2vr.d	$vr0, $a7, 1
+	vinsgr2vr.d	$vr2, $t0, 0
+	vinsgr2vr.d	$vr2, $t1, 1
+	xvpermi.q	$xr2, $xr0, 2
 	add.d	$a6, $a0, $a3
-	xvstx	$xr0, $a0, $a3
-	xvst	$xr1, $a6, 32
+	xvstx	$xr1, $a0, $a3
+	xvst	$xr2, $a6, 32
 	addi.d	$a3, $a3, 64
 	addi.d	$a5, $a5, 256
 	bne	$a4, $a3, .LBB29_122
@@ -16968,25 +16972,27 @@ Symbol_arrayof:                         # @Symbol_arrayof
 	.p2align	4, , 16
 .LBB84_7:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a5, -128
-	ld.d	$a7, $a5, -96
-	ld.d	$t0, $a5, -64
-	ld.d	$t1, $a5, -32
-	xvinsgr2vr.d	$xr0, $a6, 0
-	xvinsgr2vr.d	$xr0, $a7, 1
-	xvinsgr2vr.d	$xr0, $t0, 2
-	xvinsgr2vr.d	$xr0, $t1, 3
-	ld.d	$a6, $a5, 0
-	ld.d	$a7, $a5, 32
-	ld.d	$t0, $a5, 64
-	ld.d	$t1, $a5, 96
-	xvinsgr2vr.d	$xr1, $a6, 0
-	xvinsgr2vr.d	$xr1, $a7, 1
-	xvinsgr2vr.d	$xr1, $t0, 2
-	xvinsgr2vr.d	$xr1, $t1, 3
+	ld.d	$a6, $a5, -64
+	ld.d	$a7, $a5, -32
+	ld.d	$t0, $a5, -128
+	ld.d	$t1, $a5, -96
+	vinsgr2vr.d	$vr0, $a6, 0
+	vinsgr2vr.d	$vr0, $a7, 1
+	vinsgr2vr.d	$vr1, $t0, 0
+	vinsgr2vr.d	$vr1, $t1, 1
+	xvpermi.q	$xr1, $xr0, 2
+	ld.d	$a6, $a5, 64
+	ld.d	$a7, $a5, 96
+	ld.d	$t0, $a5, 0
+	ld.d	$t1, $a5, 32
+	vinsgr2vr.d	$vr0, $a6, 0
+	vinsgr2vr.d	$vr0, $a7, 1
+	vinsgr2vr.d	$vr2, $t0, 0
+	vinsgr2vr.d	$vr2, $t1, 1
+	xvpermi.q	$xr2, $xr0, 2
 	add.d	$a6, $a0, $a3
-	xvstx	$xr0, $a0, $a3
-	xvst	$xr1, $a6, 32
+	xvstx	$xr1, $a0, $a3
+	xvst	$xr2, $a6, 32
 	addi.d	$a3, $a3, 64
 	addi.d	$a5, $a5, 256
 	bne	$a4, $a3, .LBB84_7
@@ -17598,25 +17604,27 @@ State_arrayof:                          # @State_arrayof
 	.p2align	4, , 16
 .LBB92_7:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a5, -128
-	ld.d	$a7, $a5, -96
-	ld.d	$t0, $a5, -64
-	ld.d	$t1, $a5, -32
-	xvinsgr2vr.d	$xr0, $a6, 0
-	xvinsgr2vr.d	$xr0, $a7, 1
-	xvinsgr2vr.d	$xr0, $t0, 2
-	xvinsgr2vr.d	$xr0, $t1, 3
-	ld.d	$a6, $a5, 0
-	ld.d	$a7, $a5, 32
-	ld.d	$t0, $a5, 64
-	ld.d	$t1, $a5, 96
-	xvinsgr2vr.d	$xr1, $a6, 0
-	xvinsgr2vr.d	$xr1, $a7, 1
-	xvinsgr2vr.d	$xr1, $t0, 2
-	xvinsgr2vr.d	$xr1, $t1, 3
+	ld.d	$a6, $a5, -64
+	ld.d	$a7, $a5, -32
+	ld.d	$t0, $a5, -128
+	ld.d	$t1, $a5, -96
+	vinsgr2vr.d	$vr0, $a6, 0
+	vinsgr2vr.d	$vr0, $a7, 1
+	vinsgr2vr.d	$vr1, $t0, 0
+	vinsgr2vr.d	$vr1, $t1, 1
+	xvpermi.q	$xr1, $xr0, 2
+	ld.d	$a6, $a5, 64
+	ld.d	$a7, $a5, 96
+	ld.d	$t0, $a5, 0
+	ld.d	$t1, $a5, 32
+	vinsgr2vr.d	$vr0, $a6, 0
+	vinsgr2vr.d	$vr0, $a7, 1
+	vinsgr2vr.d	$vr2, $t0, 0
+	vinsgr2vr.d	$vr2, $t1, 1
+	xvpermi.q	$xr2, $xr0, 2
 	add.d	$a6, $a0, $a3
-	xvstx	$xr0, $a0, $a3
-	xvst	$xr1, $a6, 32
+	xvstx	$xr1, $a0, $a3
+	xvst	$xr2, $a6, 32
 	addi.d	$a3, $a3, 64
 	addi.d	$a5, $a5, 256
 	bne	$a4, $a3, .LBB92_7

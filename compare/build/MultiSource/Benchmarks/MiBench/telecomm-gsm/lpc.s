@@ -476,245 +476,235 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vreplgr2vr.w	$vr16, $a1
 	vinsgr2vr.d	$vr17, $a0, 0
 	vinsgr2vr.d	$vr18, $a2, 0
+	ld.d	$a0, $s0, 16
 	vilvl.h	$vr17, $vr17, $vr17
 	vilvl.h	$vr18, $vr18, $vr18
 	vsll.w	$vr17, $vr17, $vr16
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 24
 	vsll.w	$vr18, $vr18, $vr16
 	vpickev.h	$vr17, $vr17, $vr17
 	vpickev.h	$vr18, $vr18, $vr18
-	vpickve2gr.d	$a0, $vr17, 0
-	ld.d	$a1, $s0, 16
-	xvinsgr2vr.d	$xr17, $a0, 0
-	vpickve2gr.d	$a0, $vr18, 0
-	xvinsgr2vr.d	$xr17, $a0, 1
-	vinsgr2vr.d	$vr18, $a1, 0
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr18, $vr18, $vr16
-	ld.d	$a0, $s0, 24
-	vpickev.h	$vr18, $vr18, $vr18
-	vpickve2gr.d	$a1, $vr18, 0
-	xvinsgr2vr.d	$xr17, $a1, 2
-	vinsgr2vr.d	$vr18, $a0, 0
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr18, $vr18, $vr16
+	vinsgr2vr.d	$vr20, $a0, 0
+	vilvl.h	$vr19, $vr19, $vr19
+	vilvl.h	$vr20, $vr20, $vr20
+	vsll.w	$vr19, $vr19, $vr16
+	vsll.w	$vr20, $vr20, $vr16
 	ld.d	$a0, $s0, 32
-	vpickev.h	$vr18, $vr18, $vr18
-	vpickve2gr.d	$a1, $vr18, 0
-	xvinsgr2vr.d	$xr17, $a1, 3
-	vinsgr2vr.d	$vr18, $a0, 0
+	vpickev.h	$vr19, $vr19, $vr19
+	vpickev.h	$vr20, $vr20, $vr20
+	vextrins.d	$vr19, $vr20, 16
+	vinsgr2vr.d	$vr20, $a0, 0
 	ld.d	$a0, $s0, 40
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr18, $vr18, $vr18
-	vpickve2gr.d	$a1, $vr18, 0
-	vinsgr2vr.d	$vr18, $a0, 0
-	vilvl.h	$vr18, $vr18, $vr18
-	ld.d	$a0, $s0, 48
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr18, $vr18, $vr18
-	vpickve2gr.d	$a2, $vr18, 0
-	vinsgr2vr.d	$vr18, $a0, 0
-	vilvl.h	$vr18, $vr18, $vr18
-	ld.d	$a0, $s0, 56
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr18, $vr18, $vr18
-	vpickve2gr.d	$a3, $vr18, 0
-	vinsgr2vr.d	$vr18, $a0, 0
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr18, $vr18, $vr18
-	vpickve2gr.d	$a0, $vr18, 0
-	xvinsgr2vr.d	$xr18, $a1, 0
-	xvinsgr2vr.d	$xr18, $a2, 1
-	xvinsgr2vr.d	$xr18, $a3, 2
-	xvinsgr2vr.d	$xr18, $a0, 3
-	ld.d	$a0, $s0, 64
-	ld.d	$a1, $s0, 72
+	vextrins.d	$vr17, $vr18, 16
+	xvpermi.q	$xr17, $xr19, 2
 	xvst	$xr17, $s0, 0
+	vinsgr2vr.d	$vr17, $a0, 0
+	ld.d	$a0, $s0, 48
+	vilvl.h	$vr18, $vr20, $vr20
+	vilvl.h	$vr17, $vr17, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 56
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vpickev.h	$vr17, $vr17, $vr17
+	vinsgr2vr.d	$vr20, $a0, 0
+	vilvl.h	$vr19, $vr19, $vr19
+	vilvl.h	$vr20, $vr20, $vr20
+	vsll.w	$vr19, $vr19, $vr16
+	vsll.w	$vr20, $vr20, $vr16
+	ld.d	$a0, $s0, 64
+	vpickev.h	$vr19, $vr19, $vr19
+	vpickev.h	$vr20, $vr20, $vr20
+	vextrins.d	$vr19, $vr20, 16
+	vinsgr2vr.d	$vr20, $a0, 0
+	ld.d	$a0, $s0, 72
+	vextrins.d	$vr18, $vr17, 16
+	xvpermi.q	$xr18, $xr19, 2
 	xvst	$xr18, $s0, 32
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr20, $vr20
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 80
-	ld.d	$a1, $s0, 88
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 88
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 64
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 96
-	ld.d	$a1, $s0, 104
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 104
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 80
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 112
-	ld.d	$a1, $s0, 120
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 120
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 96
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 128
-	ld.d	$a1, $s0, 136
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 136
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 112
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 144
-	ld.d	$a1, $s0, 152
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 152
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 128
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 160
-	ld.d	$a1, $s0, 168
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 168
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 144
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 176
-	ld.d	$a1, $s0, 184
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 184
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 160
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 192
-	ld.d	$a1, $s0, 200
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 200
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 176
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 208
-	ld.d	$a1, $s0, 216
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 216
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 192
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 224
-	ld.d	$a1, $s0, 232
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 232
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 208
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 240
-	ld.d	$a1, $s0, 248
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 248
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 224
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 256
-	ld.d	$a1, $s0, 264
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 264
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 240
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 272
-	ld.d	$a1, $s0, 280
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 280
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 256
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
-	vpickev.h	$vr18, $vr18, $vr18
 	ld.d	$a0, $s0, 288
-	ld.d	$a1, $s0, 296
-	vpackev.d	$vr17, $vr18, $vr17
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
+	vpickev.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 296
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 272
 	vinsgr2vr.d	$vr17, $a0, 0
-	vinsgr2vr.d	$vr18, $a1, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
-	vilvl.h	$vr18, $vr18, $vr18
-	vsll.w	$vr17, $vr17, $vr16
-	vsll.w	$vr18, $vr18, $vr16
-	vpickev.h	$vr17, $vr17, $vr17
 	ld.d	$a0, $s0, 304
+	vsll.w	$vr18, $vr18, $vr16
+	vsll.w	$vr17, $vr17, $vr16
 	vpickev.h	$vr18, $vr18, $vr18
-	ld.d	$a1, $s0, 312
-	vpackev.d	$vr17, $vr18, $vr17
-	vinsgr2vr.d	$vr18, $a0, 0
+	vinsgr2vr.d	$vr19, $a0, 0
+	ld.d	$a0, $s0, 312
+	vpickev.h	$vr17, $vr17, $vr17
+	vpackev.d	$vr17, $vr17, $vr18
 	vst	$vr17, $s0, 288
-	vinsgr2vr.d	$vr17, $a1, 0
-	vilvl.h	$vr18, $vr18, $vr18
+	vinsgr2vr.d	$vr17, $a0, 0
+	vilvl.h	$vr18, $vr19, $vr19
 	vilvl.h	$vr17, $vr17, $vr17
 	vsll.w	$vr18, $vr18, $vr16
 	vsll.w	$vr16, $vr17, $vr16

@@ -129,14 +129,15 @@ Innerproduct:                           # @Innerproduct
 	ld.w	$t1, $a2, 984
 	ld.w	$t2, $a2, 1148
 	ld.w	$t3, $a2, 1312
-	xvinsgr2vr.w	$xr2, $a4, 0
-	xvinsgr2vr.w	$xr2, $a5, 1
-	xvinsgr2vr.w	$xr2, $a6, 2
-	xvinsgr2vr.w	$xr2, $a7, 3
-	xvinsgr2vr.w	$xr2, $t0, 4
-	xvinsgr2vr.w	$xr2, $t1, 5
-	xvinsgr2vr.w	$xr2, $t2, 6
-	xvinsgr2vr.w	$xr2, $t3, 7
+	vinsgr2vr.w	$vr3, $t0, 0
+	vinsgr2vr.w	$vr3, $t1, 1
+	vinsgr2vr.w	$vr3, $t2, 2
+	vinsgr2vr.w	$vr3, $t3, 3
+	vinsgr2vr.w	$vr2, $a4, 0
+	vinsgr2vr.w	$vr2, $a5, 1
+	vinsgr2vr.w	$vr2, $a6, 2
+	vinsgr2vr.w	$vr2, $a7, 3
+	xvpermi.q	$xr2, $xr3, 2
 	ld.w	$a4, $a2, 1476
 	ld.w	$a5, $a2, 1640
 	ld.w	$a6, $a2, 1804
@@ -149,14 +150,15 @@ Innerproduct:                           # @Innerproduct
 	ldx.w	$t2, $a2, $t2
 	ori	$t3, $zero, 2624
 	ldx.w	$t3, $a2, $t3
-	xvinsgr2vr.w	$xr3, $a4, 0
-	xvinsgr2vr.w	$xr3, $a5, 1
-	xvinsgr2vr.w	$xr3, $a6, 2
-	xvinsgr2vr.w	$xr3, $a7, 3
-	xvinsgr2vr.w	$xr3, $t0, 4
-	xvinsgr2vr.w	$xr3, $t1, 5
-	xvinsgr2vr.w	$xr3, $t2, 6
-	xvinsgr2vr.w	$xr3, $t3, 7
+	vinsgr2vr.w	$vr4, $t0, 0
+	vinsgr2vr.w	$vr4, $t1, 1
+	vinsgr2vr.w	$vr4, $t2, 2
+	vinsgr2vr.w	$vr4, $t3, 3
+	vinsgr2vr.w	$vr3, $a4, 0
+	vinsgr2vr.w	$vr3, $a5, 1
+	vinsgr2vr.w	$vr3, $a6, 2
+	vinsgr2vr.w	$vr3, $a7, 3
+	xvpermi.q	$xr3, $xr4, 2
 	xvld	$xr4, $a1, 68
 	xvld	$xr5, $a1, 100
 	ori	$a4, $zero, 2788
@@ -175,14 +177,15 @@ Innerproduct:                           # @Innerproduct
 	ldx.w	$t2, $a2, $t2
 	ori	$t3, $zero, 3936
 	ldx.w	$t3, $a2, $t3
-	xvinsgr2vr.w	$xr6, $a4, 0
-	xvinsgr2vr.w	$xr6, $a5, 1
-	xvinsgr2vr.w	$xr6, $a6, 2
-	xvinsgr2vr.w	$xr6, $a7, 3
-	xvinsgr2vr.w	$xr6, $t0, 4
-	xvinsgr2vr.w	$xr6, $t1, 5
-	xvinsgr2vr.w	$xr6, $t2, 6
-	xvinsgr2vr.w	$xr6, $t3, 7
+	vinsgr2vr.w	$vr6, $t0, 0
+	vinsgr2vr.w	$vr6, $t1, 1
+	vinsgr2vr.w	$vr6, $t2, 2
+	vinsgr2vr.w	$vr6, $t3, 3
+	vinsgr2vr.w	$vr7, $a4, 0
+	vinsgr2vr.w	$vr7, $a5, 1
+	vinsgr2vr.w	$vr7, $a6, 2
+	vinsgr2vr.w	$vr7, $a7, 3
+	xvpermi.q	$xr7, $xr6, 2
 	ori	$a4, $a3, 4
 	ldx.w	$a4, $a2, $a4
 	ori	$a5, $a3, 168
@@ -199,16 +202,17 @@ Innerproduct:                           # @Innerproduct
 	ldx.w	$t2, $a2, $t2
 	ori	$t3, $a3, 1152
 	ldx.w	$t3, $a2, $t3
-	xvinsgr2vr.w	$xr7, $a4, 0
-	xvinsgr2vr.w	$xr7, $a5, 1
-	xvinsgr2vr.w	$xr7, $a6, 2
-	xvinsgr2vr.w	$xr7, $a7, 3
-	xvinsgr2vr.w	$xr7, $t0, 4
-	xvinsgr2vr.w	$xr7, $t1, 5
-	xvinsgr2vr.w	$xr7, $t2, 6
-	xvinsgr2vr.w	$xr7, $t3, 7
-	xvmul.w	$xr4, $xr6, $xr4
-	xvmul.w	$xr5, $xr7, $xr5
+	vinsgr2vr.w	$vr6, $t0, 0
+	vinsgr2vr.w	$vr6, $t1, 1
+	vinsgr2vr.w	$vr6, $t2, 2
+	vinsgr2vr.w	$vr6, $t3, 3
+	vinsgr2vr.w	$vr8, $a4, 0
+	vinsgr2vr.w	$vr8, $a5, 1
+	vinsgr2vr.w	$vr8, $a6, 2
+	vinsgr2vr.w	$vr8, $a7, 3
+	xvpermi.q	$xr8, $xr6, 2
+	xvmul.w	$xr4, $xr7, $xr4
+	xvmul.w	$xr5, $xr8, $xr5
 	xvmadd.w	$xr4, $xr2, $xr1
 	xvmadd.w	$xr5, $xr3, $xr0
 	xvadd.w	$xr0, $xr5, $xr4
@@ -242,15 +246,16 @@ Innerproduct:                           # @Innerproduct
 	ldx.w	$t1, $a2, $t1
 	ori	$a3, $a3, 2464
 	ldx.w	$a2, $a2, $a3
-	xvinsgr2vr.w	$xr1, $a1, 0
-	xvinsgr2vr.w	$xr1, $a4, 1
-	xvinsgr2vr.w	$xr1, $a5, 2
-	xvinsgr2vr.w	$xr1, $a6, 3
-	xvinsgr2vr.w	$xr1, $a7, 4
-	xvinsgr2vr.w	$xr1, $t0, 5
-	xvinsgr2vr.w	$xr1, $t1, 6
-	xvinsgr2vr.w	$xr1, $a2, 7
-	xvmadd.w	$xr2, $xr1, $xr0
+	vinsgr2vr.w	$vr1, $a7, 0
+	vinsgr2vr.w	$vr1, $t0, 1
+	vinsgr2vr.w	$vr1, $t1, 2
+	vinsgr2vr.w	$vr1, $a2, 3
+	vinsgr2vr.w	$vr3, $a1, 0
+	vinsgr2vr.w	$vr3, $a4, 1
+	vinsgr2vr.w	$vr3, $a5, 2
+	vinsgr2vr.w	$vr3, $a6, 3
+	xvpermi.q	$xr3, $xr1, 2
+	xvmadd.w	$xr2, $xr3, $xr0
 	xvpermi.d	$xr0, $xr2, 78
 	xvshuf4i.w	$xr0, $xr0, 228
 	xvadd.w	$xr0, $xr2, $xr0

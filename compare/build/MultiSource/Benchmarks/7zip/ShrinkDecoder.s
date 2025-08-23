@@ -905,33 +905,19 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	vpickve2gr.b	$a0, $vr0, 0
 	vinsgr2vr.h	$vr1, $a0, 0
 	vpickve2gr.b	$a0, $vr0, 1
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 17
+	vinsgr2vr.h	$vr1, $a0, 1
 	vpickve2gr.b	$a0, $vr0, 2
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 34
+	vinsgr2vr.h	$vr1, $a0, 2
 	vpickve2gr.b	$a0, $vr0, 3
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 51
+	vinsgr2vr.h	$vr1, $a0, 3
 	vpickve2gr.b	$a0, $vr0, 4
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 68
+	vinsgr2vr.h	$vr1, $a0, 4
 	vpickve2gr.b	$a0, $vr0, 5
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 85
+	vinsgr2vr.h	$vr1, $a0, 5
 	vpickve2gr.b	$a0, $vr0, 6
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 102
+	vinsgr2vr.h	$vr1, $a0, 6
 	vpickve2gr.b	$a0, $vr0, 7
-	xvreplgr2vr.h	$xr0, $a0
-	xvpermi.q	$xr0, $xr1, 18
-	xvextrins.h	$xr1, $xr0, 119
+	vinsgr2vr.h	$vr1, $a0, 7
 	xvld	$xr0, $sp, 128                  # 32-byte Folded Reload
 	xvand.v	$xr0, $xr1, $xr0
 	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
@@ -984,33 +970,19 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	vpickve2gr.b	$a0, $vr0, 0
 	vinsgr2vr.h	$vr1, $a0, 0
 	vpickve2gr.b	$a0, $vr0, 1
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 17
+	vinsgr2vr.h	$vr1, $a0, 1
 	vpickve2gr.b	$a0, $vr0, 2
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 34
+	vinsgr2vr.h	$vr1, $a0, 2
 	vpickve2gr.b	$a0, $vr0, 3
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 51
+	vinsgr2vr.h	$vr1, $a0, 3
 	vpickve2gr.b	$a0, $vr0, 4
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 68
+	vinsgr2vr.h	$vr1, $a0, 4
 	vpickve2gr.b	$a0, $vr0, 5
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 85
+	vinsgr2vr.h	$vr1, $a0, 5
 	vpickve2gr.b	$a0, $vr0, 6
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 102
+	vinsgr2vr.h	$vr1, $a0, 6
 	vpickve2gr.b	$a0, $vr0, 7
-	xvreplgr2vr.h	$xr0, $a0
-	xvpermi.q	$xr0, $xr1, 18
-	xvextrins.h	$xr1, $xr0, 119
+	vinsgr2vr.h	$vr1, $a0, 7
 	xvld	$xr0, $sp, 128                  # 32-byte Folded Reload
 	xvand.v	$xr0, $xr1, $xr0
 	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
@@ -1063,33 +1035,19 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	vpickve2gr.b	$a0, $vr0, 0
 	vinsgr2vr.h	$vr1, $a0, 0
 	vpickve2gr.b	$a0, $vr0, 1
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 17
+	vinsgr2vr.h	$vr1, $a0, 1
 	vpickve2gr.b	$a0, $vr0, 2
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 34
+	vinsgr2vr.h	$vr1, $a0, 2
 	vpickve2gr.b	$a0, $vr0, 3
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 51
+	vinsgr2vr.h	$vr1, $a0, 3
 	vpickve2gr.b	$a0, $vr0, 4
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 68
+	vinsgr2vr.h	$vr1, $a0, 4
 	vpickve2gr.b	$a0, $vr0, 5
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 85
+	vinsgr2vr.h	$vr1, $a0, 5
 	vpickve2gr.b	$a0, $vr0, 6
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr1, 18
-	xvextrins.h	$xr1, $xr2, 102
+	vinsgr2vr.h	$vr1, $a0, 6
 	vpickve2gr.b	$a0, $vr0, 7
-	xvreplgr2vr.h	$xr0, $a0
-	xvpermi.q	$xr0, $xr1, 18
-	xvextrins.h	$xr1, $xr0, 119
+	vinsgr2vr.h	$vr1, $a0, 7
 	xvld	$xr0, $sp, 128                  # 32-byte Folded Reload
 	xvand.v	$xr0, $xr1, $xr0
 	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
