@@ -935,23 +935,6 @@ Trial:                                  # @Trial
 	.word	3                               # 0x3
 	.word	1                               # 0x1
 	.word	1                               # 0x1
-.LCPI6_6:
-	.byte	0                               # 0x0
-	.byte	4                               # 0x4
-	.byte	8                               # 0x8
-	.byte	12                              # 0xc
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	Puzzle
 	.p2align	5
@@ -1445,9 +1428,10 @@ Puzzle:                                 # @Puzzle
 	andi	$a1, $a4, 15
 	beqz	$a1, .LBB6_60
 # %bb.59:                               # %vector.early.exit
-	pcalau12i	$a1, %pc_hi20(.LCPI6_6)
-	vld	$vr1, $a1, %pc_lo12(.LCPI6_6)
-	vshuf.b	$vr0, $vr0, $vr0, $vr1
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr1, $vr0, 4
+	vpackev.h	$vr0, $vr1, $vr0
 	lu12i.w	$a1, 4128
 	ori	$a1, $a1, 772
 	vreplgr2vr.w	$vr1, $a1

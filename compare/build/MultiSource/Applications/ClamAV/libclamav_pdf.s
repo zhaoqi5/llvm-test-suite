@@ -1455,23 +1455,6 @@ pdf_nextlinestart:                      # @pdf_nextlinestart
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-.LCPI4_4:
-	.byte	0                               # 0x0
-	.byte	4                               # 0x4
-	.byte	8                               # 0x8
-	.byte	12                              # 0xc
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.p2align	5
 	.type	ascii85decode,@function
@@ -1737,8 +1720,8 @@ ascii85decode:                          # @ascii85decode
 	add.d	$a0, $s4, $a0
 	bgeu	$s1, $a1, .LBB4_39
 # %bb.38:
-	move	$a5, $zero
-	move	$a4, $s8
+	move	$a4, $zero
+	move	$a2, $s8
 	b	.LBB4_48
 .LBB4_39:                               # %vector.main.loop.iter.check
 	addi.d	$a1, $s1, -1
@@ -1794,43 +1777,44 @@ ascii85decode:                          # @ascii85decode
 # %bb.44:                               # %vec.epilog.iter.check
 	beqz	$a4, .LBB4_51
 .LBB4_45:                               # %vec.epilog.ph
-	bstrpick.d	$a4, $a1, 31, 2
-	slli.d	$a5, $a4, 2
-	alsl.d	$a4, $a4, $s8, 2
-	vld	$vr3, $a2, %pc_lo12(.LCPI4_3)
-	vreplgr2vr.w	$vr4, $a3
-	pcalau12i	$a2, %pc_hi20(.LCPI4_4)
-	vld	$vr2, $a2, %pc_lo12(.LCPI4_4)
-	vadd.w	$vr3, $vr4, $vr3
-	sub.d	$a2, $a3, $a5
+	bstrpick.d	$a5, $a1, 31, 2
+	vld	$vr2, $a2, %pc_lo12(.LCPI4_3)
+	slli.d	$a4, $a5, 2
+	alsl.d	$a2, $a5, $s8, 2
+	vreplgr2vr.w	$vr3, $a3
+	vadd.w	$vr2, $vr3, $vr2
+	sub.d	$a5, $a3, $a4
 	add.d	$a3, $s8, $a3
 .LBB4_46:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vslli.w	$vr4, $vr3, 3
-	vsub.w	$vr4, $vr1, $vr4
-	vsrl.w	$vr4, $vr0, $vr4
-	vshuf.b	$vr4, $vr0, $vr4, $vr2
-	vstelm.w	$vr4, $a3, 0, 0
-	vaddi.wu	$vr3, $vr3, 4
-	addi.d	$a2, $a2, 4
+	vslli.w	$vr3, $vr2, 3
+	vsub.w	$vr3, $vr1, $vr3
+	vsrl.w	$vr3, $vr0, $vr3
+	vshuf4i.h	$vr3, $vr3, 216
+	vshuf4i.b	$vr3, $vr3, 216
+	vreplvei.h	$vr4, $vr3, 4
+	vpackev.h	$vr3, $vr4, $vr3
+	vstelm.w	$vr3, $a3, 0, 0
+	vaddi.wu	$vr2, $vr2, 4
+	addi.d	$a5, $a5, 4
 	addi.d	$a3, $a3, 4
-	bnez	$a2, .LBB4_46
+	bnez	$a5, .LBB4_46
 # %bb.47:                               # %vec.epilog.middle.block
-	beq	$a5, $a1, .LBB4_50
+	beq	$a4, $a1, .LBB4_50
 .LBB4_48:                               # %for.body70.preheader
-	nor	$a1, $a5, $zero
+	nor	$a1, $a4, $zero
 	add.d	$a1, $a1, $s1
-	slli.d	$a2, $a5, 3
-	ori	$a3, $zero, 24
-	sub.d	$a2, $a3, $a2
+	slli.d	$a3, $a4, 3
+	ori	$a4, $zero, 24
+	sub.d	$a3, $a4, $a3
 	.p2align	4, , 16
 .LBB4_49:                               # %for.body70
                                         # =>This Inner Loop Header: Depth=1
-	srl.w	$a3, $a0, $a2
-	st.b	$a3, $a4, 0
-	addi.d	$a4, $a4, 1
+	srl.w	$a4, $a0, $a3
+	st.b	$a4, $a2, 0
+	addi.d	$a2, $a2, 1
 	addi.w	$a1, $a1, -1
-	addi.d	$a2, $a2, -8
+	addi.d	$a3, $a3, -8
 	bnez	$a1, .LBB4_49
 .LBB4_50:                               # %cleanup95
 	move	$a0, $a7
@@ -1848,8 +1832,8 @@ ascii85decode:                          # @ascii85decode
 	addi.d	$sp, $sp, 96
 	ret
 .LBB4_51:
-	add.d	$a4, $s8, $a3
-	move	$a5, $a3
+	add.d	$a2, $s8, $a3
+	move	$a4, $a3
 	b	.LBB4_48
 .Lfunc_end4:
 	.size	ascii85decode, .Lfunc_end4-ascii85decode

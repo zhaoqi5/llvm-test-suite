@@ -45,23 +45,6 @@ MidAlloc:                               # @MidAlloc
 .LCPI3_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-.LCPI3_1:
-	.byte	0                               # 0x0
-	.byte	8                               # 0x8
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.p2align	5
 	.type	VirtualAlloc,@function
@@ -164,10 +147,9 @@ VirtualAlloc:                           # @VirtualAlloc
 	addi.w	$a0, $zero, -1
 	beq	$s1, $a0, .LBB3_11
 # %bb.7:                                # %if.end18
-	pcalau12i	$a0, %pc_hi20(.LCPI3_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI3_1)
 	vld	$vr1, $fp, -112                 # 16-byte Folded Reload
-	vshuf.b	$vr0, $vr0, $vr1, $vr0
+	vreplvei.w	$vr0, $vr1, 2
+	vpackev.b	$vr0, $vr0, $vr1
 	vrepli.h	$vr1, 258
 	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 1
@@ -247,23 +229,6 @@ VirtualAlloc:                           # @VirtualAlloc
 .LCPI4_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-.LCPI4_1:
-	.byte	0                               # 0x0
-	.byte	8                               # 0x8
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	MidFree
 	.p2align	5
@@ -304,9 +269,8 @@ MidFree:                                # @MidFree
 	andi	$a2, $a4, 3
 	beqz	$a2, .LBB4_7
 # %bb.5:                                # %if.then.i
-	pcalau12i	$a2, %pc_hi20(.LCPI4_1)
-	vld	$vr1, $a2, %pc_lo12(.LCPI4_1)
-	vshuf.b	$vr1, $vr0, $vr4, $vr1
+	vreplvei.w	$vr1, $vr4, 2
+	vpackev.b	$vr1, $vr1, $vr4
 	vrepli.h	$vr2, 258
 	vand.v	$vr1, $vr1, $vr2
 	vbsrl.v	$vr2, $vr1, 1
@@ -514,23 +478,6 @@ BigAlloc:                               # @BigAlloc
 .LCPI8_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-.LCPI8_1:
-	.byte	0                               # 0x0
-	.byte	8                               # 0x8
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	BigFree
 	.p2align	5
@@ -571,9 +518,8 @@ BigFree:                                # @BigFree
 	andi	$a2, $a4, 3
 	beqz	$a2, .LBB8_7
 # %bb.5:                                # %if.then.i
-	pcalau12i	$a2, %pc_hi20(.LCPI8_1)
-	vld	$vr1, $a2, %pc_lo12(.LCPI8_1)
-	vshuf.b	$vr1, $vr0, $vr4, $vr1
+	vreplvei.w	$vr1, $vr4, 2
+	vpackev.b	$vr1, $vr1, $vr4
 	vrepli.h	$vr2, 258
 	vand.v	$vr1, $vr1, $vr2
 	vbsrl.v	$vr2, $vr1, 1

@@ -363,27 +363,7 @@ put_image:                              # @put_image
 .Lfunc_end3:
 	.size	put_image, .Lfunc_end3-put_image
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function int_to_uchar
-.LCPI4_0:
-	.byte	0                               # 0x0
-	.byte	4                               # 0x4
-	.byte	8                               # 0x8
-	.byte	12                              # 0xc
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.text
-	.globl	int_to_uchar
+	.globl	int_to_uchar                    # -- Begin function int_to_uchar
 	.p2align	5
 	.type	int_to_uchar,@function
 int_to_uchar:                           # @int_to_uchar
@@ -487,27 +467,31 @@ int_to_uchar:                           # @int_to_uchar
 	slli.d	$a5, $a5, 3
 	vreplgr2vr.w	$vr0, $a3
 	vreplgr2vr.w	$vr1, $a4
-	pcalau12i	$a6, %pc_hi20(.LCPI4_0)
-	vld	$vr2, $a6, %pc_lo12(.LCPI4_0)
 	addi.d	$a6, $a1, 4
 	addi.d	$a7, $a0, 16
-	vrepli.w	$vr3, 255
+	vrepli.w	$vr2, 255
 	move	$t0, $a5
 	.p2align	4, , 16
 .LBB4_16:                               # %vector.body54
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr4, $a7, -16
-	vld	$vr5, $a7, 0
+	vld	$vr3, $a7, -16
+	vld	$vr4, $a7, 0
+	vsub.w	$vr3, $vr3, $vr0
 	vsub.w	$vr4, $vr4, $vr0
-	vsub.w	$vr5, $vr5, $vr0
-	vmul.w	$vr4, $vr4, $vr3
-	vmul.w	$vr5, $vr5, $vr3
+	vmul.w	$vr3, $vr3, $vr2
+	vmul.w	$vr4, $vr4, $vr2
+	vdiv.w	$vr3, $vr3, $vr1
 	vdiv.w	$vr4, $vr4, $vr1
-	vdiv.w	$vr5, $vr5, $vr1
-	vshuf.b	$vr4, $vr0, $vr4, $vr2
-	vshuf.b	$vr5, $vr0, $vr5, $vr2
-	vstelm.w	$vr4, $a6, -4, 0
-	vstelm.w	$vr5, $a6, 0, 0
+	vshuf4i.h	$vr3, $vr3, 216
+	vshuf4i.b	$vr3, $vr3, 216
+	vreplvei.h	$vr5, $vr3, 4
+	vpackev.h	$vr3, $vr5, $vr3
+	vshuf4i.h	$vr4, $vr4, 216
+	vshuf4i.b	$vr4, $vr4, 216
+	vreplvei.h	$vr5, $vr4, 4
+	vpackev.h	$vr4, $vr5, $vr4
+	vstelm.w	$vr3, $a6, -4, 0
+	vstelm.w	$vr4, $a6, 0, 0
 	addi.d	$t0, $t0, -8
 	addi.d	$a6, $a6, 8
 	addi.d	$a7, $a7, 32
@@ -6910,44 +6894,27 @@ susan_corners_quick:                    # @susan_corners_quick
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
 .LCPI18_1:
-	.byte	0                               # 0x0
-	.byte	4                               # 0x4
-	.byte	8                               # 0x8
-	.byte	12                              # 0xc
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI18_2:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-.LCPI18_3:
+.LCPI18_2:
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI18_4:
+.LCPI18_3:
 	.dword	12                              # 0xc
 	.dword	13                              # 0xd
-.LCPI18_5:
+.LCPI18_4:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI18_6:
+.LCPI18_5:
 	.dword	8                               # 0x8
 	.dword	9                               # 0x9
-.LCPI18_7:
+.LCPI18_6:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
-.LCPI18_8:
+.LCPI18_7:
 	.dword	4                               # 0x4
 	.dword	5                               # 0x5
-.LCPI18_9:
+.LCPI18_8:
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
 	.text
@@ -7439,8 +7406,8 @@ main:                                   # @main
 	bltu	$a1, $a0, .LBB18_88
 # %bb.51:                               # %vector.main.loop.iter.check
 	vreplgr2vr.d	$vr0, $s4
-	pcalau12i	$a1, %pc_hi20(.LCPI18_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI18_9)
+	pcalau12i	$a1, %pc_hi20(.LCPI18_1)
+	pcalau12i	$a2, %pc_hi20(.LCPI18_8)
 	bgeu	$s3, $a0, .LBB18_91
 # %bb.52:
 	move	$a3, $zero
@@ -7534,27 +7501,31 @@ main:                                   # @main
 	bstrpick.d	$a2, $s3, 30, 3
 	slli.d	$a2, $a2, 3
 	vreplgr2vr.w	$vr0, $a0
-	pcalau12i	$a4, %pc_hi20(.LCPI18_1)
-	vld	$vr1, $a4, %pc_lo12(.LCPI18_1)
-	vreplgr2vr.w	$vr2, $a1
+	vreplgr2vr.w	$vr1, $a1
 	addi.d	$a4, $s0, 16
-	vrepli.w	$vr3, 255
+	vrepli.w	$vr2, 255
 	.p2align	4, , 16
 .LBB18_65:                              # %vector.body230
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr4, $a4, -16
-	vld	$vr5, $a4, 0
+	vld	$vr3, $a4, -16
+	vld	$vr4, $a4, 0
+	vsub.w	$vr3, $vr3, $vr0
 	vsub.w	$vr4, $vr4, $vr0
-	vsub.w	$vr5, $vr5, $vr0
-	vmul.w	$vr4, $vr4, $vr3
-	vmul.w	$vr5, $vr5, $vr3
-	vdiv.w	$vr4, $vr4, $vr2
-	vdiv.w	$vr5, $vr5, $vr2
-	vshuf.b	$vr4, $vr0, $vr4, $vr1
-	vshuf.b	$vr5, $vr0, $vr5, $vr1
+	vmul.w	$vr3, $vr3, $vr2
+	vmul.w	$vr4, $vr4, $vr2
+	vdiv.w	$vr3, $vr3, $vr1
+	vdiv.w	$vr4, $vr4, $vr1
+	vshuf4i.h	$vr3, $vr3, 216
+	vshuf4i.b	$vr3, $vr3, 216
+	vreplvei.h	$vr5, $vr3, 4
+	vpackev.h	$vr3, $vr5, $vr3
+	vshuf4i.h	$vr4, $vr4, 216
+	vshuf4i.b	$vr4, $vr4, 216
+	vreplvei.h	$vr5, $vr4, 4
+	vpackev.h	$vr4, $vr5, $vr4
 	add.d	$a5, $s2, $a3
-	vstelm.w	$vr4, $a5, 0, 0
-	vstelm.w	$vr5, $a5, 4, 0
+	vstelm.w	$vr3, $a5, 0, 0
+	vstelm.w	$vr4, $a5, 4, 0
 	addi.d	$a3, $a3, 8
 	addi.d	$a4, $a4, 32
 	bne	$a2, $a3, .LBB18_65
@@ -7717,27 +7688,31 @@ main:                                   # @main
 	bstrpick.d	$a2, $s5, 30, 3
 	slli.d	$a2, $a2, 3
 	vreplgr2vr.w	$vr0, $a0
-	pcalau12i	$a4, %pc_hi20(.LCPI18_1)
-	vld	$vr1, $a4, %pc_lo12(.LCPI18_1)
-	vreplgr2vr.w	$vr2, $a1
+	vreplgr2vr.w	$vr1, $a1
 	addi.d	$a4, $s4, 16
-	vrepli.w	$vr3, 255
+	vrepli.w	$vr2, 255
 	.p2align	4, , 16
 .LBB18_86:                              # %vector.body190
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr4, $a4, -16
-	vld	$vr5, $a4, 0
+	vld	$vr3, $a4, -16
+	vld	$vr4, $a4, 0
+	vsub.w	$vr3, $vr3, $vr0
 	vsub.w	$vr4, $vr4, $vr0
-	vsub.w	$vr5, $vr5, $vr0
-	vmul.w	$vr4, $vr4, $vr3
-	vmul.w	$vr5, $vr5, $vr3
-	vdiv.w	$vr4, $vr4, $vr2
-	vdiv.w	$vr5, $vr5, $vr2
-	vshuf.b	$vr4, $vr0, $vr4, $vr1
-	vshuf.b	$vr5, $vr0, $vr5, $vr1
+	vmul.w	$vr3, $vr3, $vr2
+	vmul.w	$vr4, $vr4, $vr2
+	vdiv.w	$vr3, $vr3, $vr1
+	vdiv.w	$vr4, $vr4, $vr1
+	vshuf4i.h	$vr3, $vr3, 216
+	vshuf4i.b	$vr3, $vr3, 216
+	vreplvei.h	$vr5, $vr3, 4
+	vpackev.h	$vr3, $vr5, $vr3
+	vshuf4i.h	$vr4, $vr4, 216
+	vshuf4i.b	$vr4, $vr4, 216
+	vreplvei.h	$vr5, $vr4, 4
+	vpackev.h	$vr4, $vr5, $vr4
 	add.d	$a5, $s2, $a3
-	vstelm.w	$vr4, $a5, 0, 0
-	vstelm.w	$vr5, $a5, 4, 0
+	vstelm.w	$vr3, $a5, 0, 0
+	vstelm.w	$vr4, $a5, 4, 0
 	addi.d	$a3, $a3, 8
 	addi.d	$a4, $a4, 32
 	bne	$a2, $a3, .LBB18_86
@@ -7764,20 +7739,20 @@ main:                                   # @main
 	b	.LBB18_138
 .LBB18_91:                              # %vector.ph243
 	andi	$a4, $s3, 12
-	vld	$vr1, $a1, %pc_lo12(.LCPI18_2)
+	vld	$vr1, $a1, %pc_lo12(.LCPI18_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI18_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI18_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI18_3)
-	vld	$vr2, $a0, %pc_lo12(.LCPI18_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI18_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI18_4)
-	vld	$vr3, $a0, %pc_lo12(.LCPI18_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI18_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI18_5)
-	vld	$vr4, $a0, %pc_lo12(.LCPI18_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI18_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI18_6)
-	vld	$vr5, $a0, %pc_lo12(.LCPI18_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI18_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI18_7)
-	vld	$vr6, $a0, %pc_lo12(.LCPI18_7)
-	pcalau12i	$a0, %pc_hi20(.LCPI18_8)
-	vld	$vr7, $a0, %pc_lo12(.LCPI18_8)
-	vld	$vr8, $a2, %pc_lo12(.LCPI18_9)
+	vld	$vr7, $a0, %pc_lo12(.LCPI18_7)
+	vld	$vr8, $a2, %pc_lo12(.LCPI18_8)
 	bstrpick.d	$a0, $s3, 30, 4
 	slli.d	$a3, $a0, 4
 	alsl.d	$a0, $a0, $s4, 4
@@ -8002,8 +7977,8 @@ main:                                   # @main
 	beqz	$a4, .LBB18_139
 .LBB18_127:                             # %vec.epilog.ph
 	bstrpick.d	$a4, $s3, 30, 2
-	vld	$vr1, $a1, %pc_lo12(.LCPI18_2)
-	vld	$vr2, $a2, %pc_lo12(.LCPI18_9)
+	vld	$vr1, $a1, %pc_lo12(.LCPI18_1)
+	vld	$vr2, $a2, %pc_lo12(.LCPI18_8)
 	slli.d	$a2, $a4, 2
 	alsl.d	$a1, $a4, $s4, 2
 	sub.d	$a3, $a3, $a2

@@ -183,23 +183,6 @@ _ZThn8_N7NCrypto6NWzAes10CBaseCoder17CryptoSetPasswordEPKhj: # @_ZThn8_N7NCrypto
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-.LCPI2_1:
-	.byte	0                               # 0x0
-	.byte	4                               # 0x4
-	.byte	8                               # 0x8
-	.byte	12                              # 0xc
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	_ZN7NCrypto6NWzAes10CBaseCoder4InitEv
 	.p2align	5
@@ -259,10 +242,8 @@ _ZN7NCrypto6NWzAes10CBaseCoder4InitEv:  # @_ZN7NCrypto6NWzAes10CBaseCoder4InitEv
 	addi.d	$a1, $a0, 18
 	pcalau12i	$a3, %pc_hi20(.LCPI2_0)
 	vld	$vr0, $a3, %pc_lo12(.LCPI2_0)
-	pcalau12i	$a3, %pc_hi20(.LCPI2_1)
-	vld	$vr1, $a3, %pc_lo12(.LCPI2_1)
 	addi.d	$a0, $a0, 16
-	vrepli.w	$vr2, 24
+	vrepli.w	$vr1, 24
 	addi.d	$a3, $sp, 342
 	.p2align	4, , 16
 .LBB2_3:                                # %vector.body
@@ -270,17 +251,23 @@ _ZN7NCrypto6NWzAes10CBaseCoder4InitEv:  # @_ZN7NCrypto6NWzAes10CBaseCoder4InitEv
 	add.d	$a4, $s2, $a2
 	ldx.w	$a5, $a2, $s2
 	ld.w	$a4, $a4, 4
-	vreplgr2vr.w	$vr3, $a5
-	vreplgr2vr.w	$vr4, $a4
-	vslli.w	$vr5, $vr0, 3
-	vandn.v	$vr5, $vr5, $vr2
-	vsrl.w	$vr3, $vr3, $vr5
-	vsrl.w	$vr4, $vr4, $vr5
-	vshuf.b	$vr3, $vr0, $vr3, $vr1
-	vshuf.b	$vr4, $vr0, $vr4, $vr1
+	vreplgr2vr.w	$vr2, $a5
+	vreplgr2vr.w	$vr3, $a4
+	vslli.w	$vr4, $vr0, 3
+	vandn.v	$vr4, $vr4, $vr1
+	vsrl.w	$vr2, $vr2, $vr4
+	vsrl.w	$vr3, $vr3, $vr4
+	vshuf4i.h	$vr2, $vr2, 216
+	vshuf4i.b	$vr2, $vr2, 216
+	vreplvei.h	$vr4, $vr2, 4
+	vpackev.h	$vr2, $vr4, $vr2
+	vshuf4i.h	$vr3, $vr3, 216
+	vshuf4i.b	$vr3, $vr3, 216
+	vreplvei.h	$vr4, $vr3, 4
+	vpackev.h	$vr3, $vr4, $vr3
 	add.d	$a4, $a3, $a2
-	vstelm.w	$vr3, $a4, 0, 0
-	vstelm.w	$vr4, $a4, 4, 0
+	vstelm.w	$vr2, $a4, 0, 0
+	vstelm.w	$vr3, $a4, 4, 0
 	addi.d	$a2, $a2, 8
 	vaddi.wu	$vr0, $vr0, 8
 	bne	$a0, $a2, .LBB2_3

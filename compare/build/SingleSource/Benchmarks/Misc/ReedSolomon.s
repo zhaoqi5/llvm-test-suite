@@ -11,23 +11,6 @@
 	.word	32                              # 0x20
 	.word	64                              # 0x40
 	.word	128                             # 0x80
-.LCPI0_2:
-	.byte	0                               # 0x0
-	.byte	4                               # 0x4
-	.byte	8                               # 0x8
-	.byte	12                              # 0xc
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	rsdec_204
 	.p2align	5
@@ -1133,147 +1116,283 @@ rsdec_204:                              # @rsdec_204
 	addi.d	$a0, $a0, 4
 	bne	$a0, $a2, .LBB0_92
 .LBB0_94:                               # %decode_rs.exit
-	vld	$vr1, $s1, 268
-	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_2)
-	vld	$vr2, $s1, 284
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
+	vld	$vr0, $s1, 268
+	vld	$vr1, $s1, 284
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	vstelm.w	$vr1, $a1, 0, 0
-	vstelm.w	$vr2, $a1, 4, 0
-	vld	$vr1, $s1, 300
-	vld	$vr2, $s1, 316
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 8, 0
-	vstelm.w	$vr2, $a1, 12, 0
-	vld	$vr1, $s1, 332
-	vld	$vr2, $s1, 348
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 16, 0
-	vstelm.w	$vr2, $a1, 20, 0
-	vld	$vr1, $s1, 364
-	vld	$vr2, $s1, 380
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 24, 0
-	vstelm.w	$vr2, $a1, 28, 0
-	vld	$vr1, $s1, 396
-	vld	$vr2, $s1, 412
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 32, 0
-	vstelm.w	$vr2, $a1, 36, 0
-	vld	$vr1, $s1, 428
-	vld	$vr2, $s1, 444
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 40, 0
-	vstelm.w	$vr2, $a1, 44, 0
-	vld	$vr1, $s1, 460
-	vld	$vr2, $s1, 476
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 48, 0
-	vstelm.w	$vr2, $a1, 52, 0
-	vld	$vr1, $s1, 492
-	vld	$vr2, $s1, 508
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 56, 0
-	vstelm.w	$vr2, $a1, 60, 0
-	vld	$vr1, $s1, 524
-	vld	$vr2, $s1, 540
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 64, 0
-	vstelm.w	$vr2, $a1, 68, 0
-	vld	$vr1, $s1, 556
-	vld	$vr2, $s1, 572
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 72, 0
-	vstelm.w	$vr2, $a1, 76, 0
-	vld	$vr1, $s1, 588
-	vld	$vr2, $s1, 604
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 80, 0
-	vstelm.w	$vr2, $a1, 84, 0
-	vld	$vr1, $s1, 620
-	vld	$vr2, $s1, 636
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 88, 0
-	vstelm.w	$vr2, $a1, 92, 0
-	vld	$vr1, $s1, 652
-	vld	$vr2, $s1, 668
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 96, 0
-	vstelm.w	$vr2, $a1, 100, 0
-	vld	$vr1, $s1, 684
-	vld	$vr2, $s1, 700
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 104, 0
-	vstelm.w	$vr2, $a1, 108, 0
-	vld	$vr1, $s1, 716
-	vld	$vr2, $s1, 732
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 112, 0
-	vstelm.w	$vr2, $a1, 116, 0
-	vld	$vr1, $s1, 748
-	vld	$vr2, $s1, 764
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 120, 0
-	vstelm.w	$vr2, $a1, 124, 0
-	vld	$vr1, $s1, 780
-	vld	$vr2, $s1, 796
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 128, 0
-	vstelm.w	$vr2, $a1, 132, 0
-	vld	$vr1, $s1, 812
-	vld	$vr2, $s1, 828
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 136, 0
-	vstelm.w	$vr2, $a1, 140, 0
-	vld	$vr1, $s1, 844
-	vld	$vr2, $s1, 860
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 144, 0
-	vstelm.w	$vr2, $a1, 148, 0
-	vld	$vr1, $s1, 876
-	vld	$vr2, $s1, 892
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 152, 0
-	vstelm.w	$vr2, $a1, 156, 0
-	vld	$vr1, $s1, 908
-	vld	$vr2, $s1, 924
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 160, 0
-	vstelm.w	$vr2, $a1, 164, 0
-	vld	$vr1, $s1, 940
-	vld	$vr2, $s1, 956
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 168, 0
-	vstelm.w	$vr2, $a1, 172, 0
-	vld	$vr1, $s1, 972
-	vld	$vr2, $s1, 988
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr0, $vr0, $vr2, $vr0
-	vstelm.w	$vr1, $a1, 176, 0
-	vstelm.w	$vr0, $a1, 180, 0
+	vstelm.w	$vr0, $a1, 0, 0
+	vstelm.w	$vr1, $a1, 4, 0
+	vld	$vr0, $s1, 300
+	vld	$vr1, $s1, 316
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 8, 0
+	vstelm.w	$vr1, $a1, 12, 0
+	vld	$vr0, $s1, 332
+	vld	$vr1, $s1, 348
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 16, 0
+	vstelm.w	$vr1, $a1, 20, 0
+	vld	$vr0, $s1, 364
+	vld	$vr1, $s1, 380
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 24, 0
+	vstelm.w	$vr1, $a1, 28, 0
+	vld	$vr0, $s1, 396
+	vld	$vr1, $s1, 412
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 32, 0
+	vstelm.w	$vr1, $a1, 36, 0
+	vld	$vr0, $s1, 428
+	vld	$vr1, $s1, 444
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 40, 0
+	vstelm.w	$vr1, $a1, 44, 0
+	vld	$vr0, $s1, 460
+	vld	$vr1, $s1, 476
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 48, 0
+	vstelm.w	$vr1, $a1, 52, 0
+	vld	$vr0, $s1, 492
+	vld	$vr1, $s1, 508
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 56, 0
+	vstelm.w	$vr1, $a1, 60, 0
+	vld	$vr0, $s1, 524
+	vld	$vr1, $s1, 540
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 64, 0
+	vstelm.w	$vr1, $a1, 68, 0
+	vld	$vr0, $s1, 556
+	vld	$vr1, $s1, 572
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 72, 0
+	vstelm.w	$vr1, $a1, 76, 0
+	vld	$vr0, $s1, 588
+	vld	$vr1, $s1, 604
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 80, 0
+	vstelm.w	$vr1, $a1, 84, 0
+	vld	$vr0, $s1, 620
+	vld	$vr1, $s1, 636
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 88, 0
+	vstelm.w	$vr1, $a1, 92, 0
+	vld	$vr0, $s1, 652
+	vld	$vr1, $s1, 668
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 96, 0
+	vstelm.w	$vr1, $a1, 100, 0
+	vld	$vr0, $s1, 684
+	vld	$vr1, $s1, 700
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 104, 0
+	vstelm.w	$vr1, $a1, 108, 0
+	vld	$vr0, $s1, 716
+	vld	$vr1, $s1, 732
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 112, 0
+	vstelm.w	$vr1, $a1, 116, 0
+	vld	$vr0, $s1, 748
+	vld	$vr1, $s1, 764
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 120, 0
+	vstelm.w	$vr1, $a1, 124, 0
+	vld	$vr0, $s1, 780
+	vld	$vr1, $s1, 796
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 128, 0
+	vstelm.w	$vr1, $a1, 132, 0
+	vld	$vr0, $s1, 812
+	vld	$vr1, $s1, 828
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 136, 0
+	vstelm.w	$vr1, $a1, 140, 0
+	vld	$vr0, $s1, 844
+	vld	$vr1, $s1, 860
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 144, 0
+	vstelm.w	$vr1, $a1, 148, 0
+	vld	$vr0, $s1, 876
+	vld	$vr1, $s1, 892
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 152, 0
+	vstelm.w	$vr1, $a1, 156, 0
+	vld	$vr0, $s1, 908
+	vld	$vr1, $s1, 924
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 160, 0
+	vstelm.w	$vr1, $a1, 164, 0
+	vld	$vr0, $s1, 940
+	vld	$vr1, $s1, 956
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 168, 0
+	vstelm.w	$vr1, $a1, 172, 0
+	vld	$vr0, $s1, 972
+	vld	$vr1, $s1, 988
+	vshuf4i.h	$vr0, $vr0, 216
+	vshuf4i.b	$vr0, $vr0, 216
+	vreplvei.h	$vr2, $vr0, 4
+	vpackev.h	$vr0, $vr2, $vr0
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr2, $vr1, 4
+	vpackev.h	$vr1, $vr2, $vr1
+	vstelm.w	$vr0, $a1, 176, 0
+	vstelm.w	$vr1, $a1, 180, 0
 	ld.b	$a0, $s1, 1004
 	st.b	$a0, $a1, 184
 	ld.b	$a0, $s1, 1008

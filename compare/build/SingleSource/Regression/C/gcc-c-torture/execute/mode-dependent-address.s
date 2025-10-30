@@ -1,74 +1,38 @@
 	.file	"mode-dependent-address.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function f883b
-.LCPI0_0:
-	.byte	0                               # 0x0
-	.byte	8                               # 0x8
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI0_1:
-	.byte	0                               # 0x0
-	.byte	4                               # 0x4
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
-	.globl	f883b
+	.globl	f883b                           # -- Begin function f883b
 	.p2align	5
 	.type	f883b,@function
 f883b:                                  # @f883b
 # %bb.0:                                # %entry
-	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a4, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a4, %pc_hi20(.LCPI0_1)
-	vld	$vr1, $a4, %pc_lo12(.LCPI0_1)
 	move	$a4, $zero
-	vrepli.w	$vr2, 32
+	vrepli.w	$vr0, 32
 	ori	$a5, $zero, 96
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a1, 0
-	vinsgr2vr.w	$vr3, $a6, 0
-	vmini.h	$vr3, $vr3, 1
+	vinsgr2vr.w	$vr1, $a6, 0
+	vmini.h	$vr1, $vr1, 1
 	ld.d	$a6, $a2, 0
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vinsgr2vr.d	$vr4, $a6, 0
-	vld	$vr5, $a3, 0
-	vsra.w	$vr3, $vr3, $vr4
-	vadd.w	$vr3, $vr3, $vr2
-	vsrli.w	$vr3, $vr3, 7
-	vshuf.b	$vr4, $vr0, $vr5, $vr0
-	vshuf.b	$vr3, $vr0, $vr3, $vr1
-	vori.b	$vr3, $vr3, 251
-	vand.v	$vr3, $vr3, $vr4
+	vilvl.h	$vr1, $vr1, $vr1
+	vslli.w	$vr1, $vr1, 16
+	vsrai.w	$vr1, $vr1, 16
+	vinsgr2vr.d	$vr2, $a6, 0
+	vld	$vr3, $a3, 0
+	vsra.w	$vr1, $vr1, $vr2
+	vadd.w	$vr1, $vr1, $vr0
+	vsrli.w	$vr1, $vr1, 7
+	vreplvei.w	$vr2, $vr3, 2
+	vpackev.b	$vr2, $vr2, $vr3
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr3, $vr1, 4
+	vpackev.h	$vr1, $vr3, $vr1
+	vori.b	$vr1, $vr1, 251
+	vand.v	$vr1, $vr1, $vr2
 	add.d	$a6, $a0, $a4
-	vstelm.h	$vr3, $a6, 0, 0
+	vstelm.h	$vr1, $a6, 0, 0
 	addi.d	$a4, $a4, 2
 	addi.d	$a3, $a3, 16
 	addi.d	$a2, $a2, 8
@@ -84,40 +48,6 @@ f883b:                                  # @f883b
 .LCPI1_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-.LCPI1_1:
-	.byte	0                               # 0x0
-	.byte	8                               # 0x8
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI1_2:
-	.byte	0                               # 0x0
-	.byte	4                               # 0x4
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	main
 	.p2align	5
@@ -169,11 +99,7 @@ main:                                   # @main
 	addi.d	$a5, $a5, 16
 	bne	$a6, $a7, .LBB1_1
 # %bb.2:                                # %for.end
-	pcalau12i	$a3, %pc_hi20(.LCPI1_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI1_1)
-	pcalau12i	$a3, %pc_hi20(.LCPI1_2)
-	vld	$vr1, $a3, %pc_lo12(.LCPI1_2)
-	vrepli.w	$vr2, 32
+	vrepli.w	$vr0, 32
 	pcalau12i	$a3, %pc_hi20(result)
 	addi.d	$a3, $a3, %pc_lo12(result)
 	move	$a4, $zero
@@ -182,23 +108,27 @@ main:                                   # @main
 .LBB1_3:                                # %vector.body26
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a2, 0
-	vinsgr2vr.w	$vr3, $a6, 0
-	vmini.h	$vr3, $vr3, 1
+	vinsgr2vr.w	$vr1, $a6, 0
+	vmini.h	$vr1, $vr1, 1
 	ld.d	$a6, $a1, 0
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vinsgr2vr.d	$vr4, $a6, 0
-	vld	$vr5, $a0, 0
-	vsra.w	$vr3, $vr3, $vr4
-	vadd.w	$vr3, $vr3, $vr2
-	vsrli.w	$vr3, $vr3, 7
-	vshuf.b	$vr4, $vr0, $vr5, $vr0
-	vshuf.b	$vr3, $vr0, $vr3, $vr1
-	vori.b	$vr3, $vr3, 251
-	vand.v	$vr3, $vr3, $vr4
+	vilvl.h	$vr1, $vr1, $vr1
+	vslli.w	$vr1, $vr1, 16
+	vsrai.w	$vr1, $vr1, 16
+	vinsgr2vr.d	$vr2, $a6, 0
+	vld	$vr3, $a0, 0
+	vsra.w	$vr1, $vr1, $vr2
+	vadd.w	$vr1, $vr1, $vr0
+	vsrli.w	$vr1, $vr1, 7
+	vreplvei.w	$vr2, $vr3, 2
+	vpackev.b	$vr2, $vr2, $vr3
+	vshuf4i.h	$vr1, $vr1, 216
+	vshuf4i.b	$vr1, $vr1, 216
+	vreplvei.h	$vr3, $vr1, 4
+	vpackev.h	$vr1, $vr3, $vr1
+	vori.b	$vr1, $vr1, 251
+	vand.v	$vr1, $vr1, $vr2
 	add.d	$a6, $a3, $a4
-	vstelm.h	$vr3, $a6, 0, 0
+	vstelm.h	$vr1, $a6, 0, 0
 	addi.d	$a4, $a4, 2
 	addi.d	$a0, $a0, 16
 	addi.d	$a1, $a1, 8
