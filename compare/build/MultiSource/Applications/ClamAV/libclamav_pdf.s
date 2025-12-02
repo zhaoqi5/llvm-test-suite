@@ -1470,6 +1470,39 @@ pdf_nextlinestart:                      # @pdf_nextlinestart
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
+.LCPI4_4:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
 	.text
 	.p2align	5
 	.type	ascii85decode,@function
@@ -1517,11 +1550,11 @@ ascii85decode:                          # @ascii85decode
 # %bb.5:                                # %while.body.i.preheader
 	ori	$s5, $zero, 2
 	move	$s1, $s2
-	move	$fp, $s3
+	move	$s0, $s3
 	.p2align	4, , 16
 .LBB4_6:                                # %while.body.i
                                         # =>This Inner Loop Header: Depth=1
-	sub.d	$a1, $fp, $a0
+	sub.d	$a1, $s0, $a0
 	add.d	$a1, $a1, $s1
 	bltu	$a1, $s5, .LBB4_2
 # %bb.7:                                # %if.end13.i
@@ -1530,15 +1563,15 @@ ascii85decode:                          # @ascii85decode
 	beq	$a2, $s4, .LBB4_9
 # %bb.8:                                # %if.end18.i
                                         #   in Loop: Header=BB4_6 Depth=1
-	xor	$a2, $fp, $a0
+	xor	$a2, $s0, $a0
 	sltui	$a2, $a2, 1
-	addi.d	$a3, $fp, 1
+	addi.d	$a3, $s0, 1
 	masknez	$a0, $a0, $a2
 	maskeqz	$a3, $a3, $a2
-	or	$fp, $a3, $a0
+	or	$s0, $a3, $a0
 	sub.d	$s1, $a1, $a2
 	ori	$a1, $zero, 126
-	move	$a0, $fp
+	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memchr)
 	jirl	$ra, $ra, 0
@@ -1579,26 +1612,26 @@ ascii85decode:                          # @ascii85decode
 	bgeu	$a3, $s2, .LBB4_56
 .LBB4_13:                               # %while.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$fp, $s3, -1
-	bne	$fp, $s5, .LBB4_15
+	ld.b	$s0, $s3, -1
+	bne	$s0, $s5, .LBB4_15
 # %bb.14:                               # %land.lhs.true
                                         #   in Loop: Header=BB4_13 Depth=1
 	ld.bu	$a0, $s3, 0
 	addi.d	$a0, $a0, -62
 	sltui	$a0, $a0, 1
 	sub.d	$a0, $zero, $a0
-	ori	$fp, $a0, 126
+	ori	$s0, $a0, 126
 .LBB4_15:                               # %if.end8
                                         #   in Loop: Header=BB4_13 Depth=1
-	addi.d	$a0, $fp, -33
+	addi.d	$a0, $s0, -33
 	bgeu	$s6, $a0, .LBB4_11
 # %bb.16:                               # %if.else
                                         #   in Loop: Header=BB4_13 Depth=1
-	beq	$fp, $a4, .LBB4_19
+	beq	$s0, $a4, .LBB4_19
 # %bb.17:                               # %if.else
                                         #   in Loop: Header=BB4_13 Depth=1
-	move	$s0, $t0
-	beq	$fp, $s7, .LBB4_22
+	move	$fp, $t0
+	beq	$s0, $s7, .LBB4_22
 # %bb.18:                               # %if.else81
                                         #   in Loop: Header=BB4_13 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
@@ -1607,10 +1640,10 @@ ascii85decode:                          # @ascii85decode
 	ori	$a3, $zero, 1
 	ori	$a2, $zero, 5
 	ld.d	$a0, $a0, 0
-	slli.d	$a1, $fp, 1
+	slli.d	$a1, $s0, 1
 	ldx.hu	$a0, $a0, $a1
 	slli.d	$a0, $a0, 50
-	move	$t0, $s0
+	move	$t0, $fp
 	bltz	$a0, .LBB4_12
 	b	.LBB4_25
 	.p2align	4, , 16
@@ -1651,7 +1684,7 @@ ascii85decode:                          # @ascii85decode
 	move	$t0, $s7
 	b	.LBB4_56
 .LBB4_25:                               # %if.then86
-	andi	$a1, $fp, 255
+	andi	$a1, $s0, 255
 	addi.d	$a2, $s2, -2
 	pcalau12i	$a0, %pc_hi20(.L.str.59)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.59)
@@ -1667,11 +1700,11 @@ ascii85decode:                          # @ascii85decode
 	addi.w	$t0, $zero, -1
 	b	.LBB4_56
 .LBB4_27:
-	move	$t0, $s0
+	move	$t0, $fp
 	b	.LBB4_56
 .LBB4_28:                               # %for.cond.preheader
 	ori	$a1, $zero, 4
-	move	$t0, $s0
+	move	$t0, $fp
 	blt	$a1, $s1, .LBB4_42
 # %bb.29:                               # %iter.check
 	ori	$a0, $zero, 5
@@ -1763,8 +1796,8 @@ ascii85decode:                          # @ascii85decode
 	add.d	$a0, $s4, $a0
 	bgeu	$s1, $a1, .LBB4_45
 # %bb.44:
-	move	$a4, $zero
-	move	$a2, $s8
+	move	$a5, $zero
+	move	$a4, $s8
 	b	.LBB4_54
 .LBB4_45:                               # %vector.main.loop.iter.check169
 	addi.d	$a1, $s1, -1
@@ -1883,56 +1916,44 @@ ascii85decode:                          # @ascii85decode
 # %bb.50:                               # %vec.epilog.iter.check181
 	beqz	$a4, .LBB4_58
 .LBB4_51:                               # %vec.epilog.ph183
-	bstrpick.d	$a5, $a1, 31, 3
-	xvld	$xr2, $a2, %pc_lo12(.LCPI4_3)
-	slli.d	$a4, $a5, 3
-	alsl.d	$a2, $a5, $s8, 3
-	xvreplgr2vr.w	$xr3, $a3
-	xvadd.w	$xr2, $xr3, $xr2
-	sub.d	$a5, $a3, $a4
+	bstrpick.d	$a4, $a1, 31, 3
+	slli.d	$a5, $a4, 3
+	alsl.d	$a4, $a4, $s8, 3
+	xvld	$xr3, $a2, %pc_lo12(.LCPI4_3)
+	xvreplgr2vr.w	$xr4, $a3
+	pcalau12i	$a2, %pc_hi20(.LCPI4_4)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI4_4)
+	xvadd.w	$xr3, $xr4, $xr3
+	sub.d	$a2, $a3, $a5
 	add.d	$a3, $s8, $a3
 .LBB4_52:                               # %vec.epilog.vector.body190
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.w	$xr3, $xr2, 3
-	xvsub.w	$xr3, $xr1, $xr3
-	xvsrl.w	$xr3, $xr0, $xr3
-	xvpickve2gr.w	$a6, $xr3, 0
-	vinsgr2vr.b	$vr4, $a6, 0
-	xvpickve2gr.w	$a6, $xr3, 1
-	vinsgr2vr.b	$vr4, $a6, 1
-	xvpickve2gr.w	$a6, $xr3, 2
-	vinsgr2vr.b	$vr4, $a6, 2
-	xvpickve2gr.w	$a6, $xr3, 3
-	vinsgr2vr.b	$vr4, $a6, 3
-	xvpickve2gr.w	$a6, $xr3, 4
-	vinsgr2vr.b	$vr4, $a6, 4
-	xvpickve2gr.w	$a6, $xr3, 5
-	vinsgr2vr.b	$vr4, $a6, 5
-	xvpickve2gr.w	$a6, $xr3, 6
-	vinsgr2vr.b	$vr4, $a6, 6
-	xvpickve2gr.w	$a6, $xr3, 7
-	vinsgr2vr.b	$vr4, $a6, 7
+	xvslli.w	$xr4, $xr3, 3
+	xvsub.w	$xr4, $xr1, $xr4
+	xvsrl.w	$xr4, $xr0, $xr4
+	xvpermi.d	$xr5, $xr4, 78
+	xvshuf.b	$xr4, $xr5, $xr4, $xr2
 	vstelm.d	$vr4, $a3, 0, 0
-	xvaddi.wu	$xr2, $xr2, 8
-	addi.d	$a5, $a5, 8
+	xvaddi.wu	$xr3, $xr3, 8
+	addi.d	$a2, $a2, 8
 	addi.d	$a3, $a3, 8
-	bnez	$a5, .LBB4_52
+	bnez	$a2, .LBB4_52
 # %bb.53:                               # %vec.epilog.middle.block196
-	beq	$a4, $a1, .LBB4_56
+	beq	$a5, $a1, .LBB4_56
 .LBB4_54:                               # %for.body70.preheader
-	nor	$a1, $a4, $zero
+	nor	$a1, $a5, $zero
 	add.d	$a1, $a1, $s1
-	slli.d	$a3, $a4, 3
-	ori	$a4, $zero, 24
-	sub.d	$a3, $a4, $a3
+	slli.d	$a2, $a5, 3
+	ori	$a3, $zero, 24
+	sub.d	$a2, $a3, $a2
 	.p2align	4, , 16
 .LBB4_55:                               # %for.body70
                                         # =>This Inner Loop Header: Depth=1
-	srl.w	$a4, $a0, $a3
-	st.b	$a4, $a2, 0
-	addi.d	$a2, $a2, 1
+	srl.w	$a3, $a0, $a2
+	st.b	$a3, $a4, 0
+	addi.d	$a4, $a4, 1
 	addi.w	$a1, $a1, -1
-	addi.d	$a3, $a3, -8
+	addi.d	$a2, $a2, -8
 	bnez	$a1, .LBB4_55
 .LBB4_56:                               # %cleanup95
 	move	$a0, $t0
@@ -1953,8 +1974,8 @@ ascii85decode:                          # @ascii85decode
 	add.d	$a2, $s1, $a1
 	b	.LBB4_40
 .LBB4_58:
-	add.d	$a2, $s8, $a3
-	move	$a4, $a3
+	add.d	$a4, $s8, $a3
+	move	$a5, $a3
 	b	.LBB4_54
 .Lfunc_end4:
 	.size	ascii85decode, .Lfunc_end4-ascii85decode

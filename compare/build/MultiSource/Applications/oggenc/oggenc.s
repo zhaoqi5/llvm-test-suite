@@ -12109,9 +12109,44 @@ ogg_stream_packetin:                    # @ogg_stream_packetin
 .Lfunc_end46:
 	.size	ogg_stream_packetin, .Lfunc_end46-ogg_stream_packetin
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function ogg_stream_flush
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function ogg_stream_flush
 .LCPI47_0:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI47_1:
 	.byte	0                               # 0x0
 	.byte	4                               # 0x4
 	.byte	8                               # 0x8
@@ -12281,25 +12316,25 @@ ogg_stream_flush:                       # @ogg_stream_flush
 	bgeu	$a2, $a4, .LBB47_35
 .LBB47_22:
 	move	$a4, $zero
-	move	$a6, $zero
+	move	$a5, $zero
 .LBB47_23:                              # %for.body134.preheader
 	alsl.d	$a2, $a4, $a2, 2
-	add.d	$a5, $a4, $a0
-	addi.d	$a5, $a5, 107
+	add.d	$a6, $a4, $a0
+	addi.d	$a6, $a6, 107
 	sub.d	$a4, $s0, $a4
 	.p2align	4, , 16
 .LBB47_24:                              # %for.body134
                                         # =>This Inner Loop Header: Depth=1
 	ld.wu	$a7, $a2, 0
 	andi	$t0, $a7, 255
-	st.b	$a7, $a5, 0
-	add.d	$a6, $t0, $a6
+	st.b	$a7, $a6, 0
+	add.d	$a5, $t0, $a5
 	addi.d	$a2, $a2, 4
 	addi.d	$a4, $a4, -1
-	addi.d	$a5, $a5, 1
+	addi.d	$a6, $a6, 1
 	bnez	$a4, .LBB47_24
 .LBB47_25:                              # %if.then.i.loopexit
-	addi.w	$s1, $a6, 0
+	addi.w	$s1, $a5, 0
 	b	.LBB47_27
 .LBB47_26:
 	move	$s1, $zero
@@ -12408,85 +12443,59 @@ ogg_stream_flush:                       # @ogg_stream_flush
 	bgeu	$s0, $a4, .LBB47_37
 # %bb.36:
 	move	$a4, $zero
-	move	$a6, $zero
+	move	$a5, $zero
 	b	.LBB47_41
 .LBB47_37:                              # %vector.ph
-	andi	$a5, $s0, 12
+	andi	$a6, $s0, 12
 	bstrpick.d	$a4, $s0, 30, 4
 	slli.d	$a4, $a4, 4
-	addi.d	$a6, $a0, 115
+	addi.d	$a5, $a0, 115
+	pcalau12i	$a7, %pc_hi20(.LCPI47_0)
+	xvld	$xr0, $a7, %pc_lo12(.LCPI47_0)
 	addi.d	$a7, $a2, 32
-	xvrepli.b	$xr0, 0
-	xvrepli.w	$xr1, 255
+	xvrepli.b	$xr1, 0
+	xvrepli.w	$xr2, 255
 	move	$t0, $a4
-	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr3, $xr1, 0
 	.p2align	4, , 16
 .LBB47_38:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr3, $a7, -32
-	xvld	$xr4, $a7, 0
-	xvpickve2gr.w	$t1, $xr3, 0
-	vinsgr2vr.b	$vr5, $t1, 0
-	xvpickve2gr.w	$t1, $xr3, 1
-	vinsgr2vr.b	$vr5, $t1, 1
-	xvpickve2gr.w	$t1, $xr3, 2
-	vinsgr2vr.b	$vr5, $t1, 2
-	xvpickve2gr.w	$t1, $xr3, 3
-	vinsgr2vr.b	$vr5, $t1, 3
-	xvpickve2gr.w	$t1, $xr3, 4
-	vinsgr2vr.b	$vr5, $t1, 4
-	xvpickve2gr.w	$t1, $xr3, 5
-	vinsgr2vr.b	$vr5, $t1, 5
-	xvpickve2gr.w	$t1, $xr3, 6
-	vinsgr2vr.b	$vr5, $t1, 6
-	xvpickve2gr.w	$t1, $xr3, 7
-	vinsgr2vr.b	$vr5, $t1, 7
-	xvpickve2gr.w	$t1, $xr4, 0
-	vinsgr2vr.b	$vr6, $t1, 0
-	xvpickve2gr.w	$t1, $xr4, 1
-	vinsgr2vr.b	$vr6, $t1, 1
-	xvpickve2gr.w	$t1, $xr4, 2
-	vinsgr2vr.b	$vr6, $t1, 2
-	xvpickve2gr.w	$t1, $xr4, 3
-	vinsgr2vr.b	$vr6, $t1, 3
-	xvpickve2gr.w	$t1, $xr4, 4
-	vinsgr2vr.b	$vr6, $t1, 4
-	xvpickve2gr.w	$t1, $xr4, 5
-	vinsgr2vr.b	$vr6, $t1, 5
-	xvpickve2gr.w	$t1, $xr4, 6
-	vinsgr2vr.b	$vr6, $t1, 6
-	xvpickve2gr.w	$t1, $xr4, 7
-	vinsgr2vr.b	$vr6, $t1, 7
-	vpackev.d	$vr5, $vr6, $vr5
-	vst	$vr5, $a6, -8
-	xvand.v	$xr3, $xr3, $xr1
-	xvand.v	$xr4, $xr4, $xr1
-	xvadd.w	$xr0, $xr3, $xr0
-	xvadd.w	$xr2, $xr4, $xr2
+	xvld	$xr4, $a7, -32
+	xvld	$xr5, $a7, 0
+	xvpermi.d	$xr6, $xr4, 78
+	xvshuf.b	$xr6, $xr6, $xr4, $xr0
+	xvpermi.d	$xr7, $xr5, 78
+	xvshuf.b	$xr7, $xr7, $xr5, $xr0
+	vpackev.d	$vr6, $vr7, $vr6
+	vst	$vr6, $a5, -8
+	xvand.v	$xr4, $xr4, $xr2
+	xvand.v	$xr5, $xr5, $xr2
+	xvadd.w	$xr1, $xr4, $xr1
+	xvadd.w	$xr3, $xr5, $xr3
 	addi.d	$t0, $t0, -16
-	addi.d	$a6, $a6, 16
+	addi.d	$a5, $a5, 16
 	addi.d	$a7, $a7, 64
 	bnez	$t0, .LBB47_38
 # %bb.39:                               # %middle.block
-	xvadd.w	$xr0, $xr2, $xr0
+	xvadd.w	$xr0, $xr3, $xr1
 	xvhaddw.d.w	$xr0, $xr0, $xr0
 	xvhaddw.q.d	$xr0, $xr0, $xr0
 	xvpermi.d	$xr1, $xr0, 2
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a6, $xr0, 0
+	xvpickve2gr.d	$a5, $xr0, 0
 	beq	$a4, $s0, .LBB47_25
 # %bb.40:                               # %vec.epilog.iter.check
-	beqz	$a5, .LBB47_23
+	beqz	$a6, .LBB47_23
 .LBB47_41:                              # %vec.epilog.ph
 	move	$a7, $a4
 	bstrpick.d	$a4, $s0, 30, 2
 	slli.d	$a4, $a4, 2
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a6, 0
+	vinsgr2vr.w	$vr0, $a5, 0
 	sub.d	$a5, $a7, $a4
 	add.d	$a6, $a7, $a0
-	pcalau12i	$t0, %pc_hi20(.LCPI47_0)
-	vld	$vr1, $t0, %pc_lo12(.LCPI47_0)
+	pcalau12i	$t0, %pc_hi20(.LCPI47_1)
+	vld	$vr1, $t0, %pc_lo12(.LCPI47_1)
 	addi.d	$a6, $a6, 107
 	alsl.d	$a7, $a7, $a2, 2
 	vrepli.w	$vr2, 255
@@ -12505,7 +12514,7 @@ ogg_stream_flush:                       # @ogg_stream_flush
 # %bb.43:                               # %vec.epilog.middle.block
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a6, $vr0, 0
+	vpickve2gr.d	$a5, $vr0, 0
 	bne	$a4, $s0, .LBB47_23
 	b	.LBB47_25
 .Lfunc_end47:
