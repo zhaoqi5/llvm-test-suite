@@ -11744,7 +11744,7 @@ s331:                                   # @s331
 	add.d	$s5, $a1, $a0
 	lu12i.w	$a0, 568
 	ori	$a0, $a0, 2464
-	move	$s7, $a1
+	move	$fp, $a1
 	add.d	$s6, $a1, $a0
 	xvst	$xr7, $sp, 16                   # 32-byte Folded Spill
 	.p2align	4, , 16
@@ -11764,24 +11764,12 @@ s331:                                   # @s331
 	vaddi.wu	$vr4, $vr2, 4
 	xvld	$xr5, $a0, 0
 	xvfcmp.clt.d	$xr3, $xr3, $xr7
-	xvpickve2gr.d	$a2, $xr3, 0
-	vinsgr2vr.w	$vr6, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
-	vinsgr2vr.w	$vr6, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
-	vinsgr2vr.w	$vr6, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
-	vinsgr2vr.w	$vr6, $a2, 3
-	xvfcmp.clt.d	$xr3, $xr5, $xr7
-	xvpickve2gr.d	$a2, $xr3, 0
-	vinsgr2vr.w	$vr5, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
-	vinsgr2vr.w	$vr5, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
-	vinsgr2vr.w	$vr5, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
-	vinsgr2vr.w	$vr5, $a2, 3
-	vbitsel.v	$vr0, $vr0, $vr2, $vr6
+	xvpermi.q	$xr6, $xr3, 1
+	vpickev.w	$vr3, $vr6, $vr3
+	xvfcmp.clt.d	$xr5, $xr5, $xr7
+	xvpermi.q	$xr6, $xr5, 1
+	vpickev.w	$vr5, $vr6, $vr5
+	vbitsel.v	$vr0, $vr0, $vr2, $vr3
 	vbitsel.v	$vr1, $vr1, $vr4, $vr5
 	vaddi.wu	$vr2, $vr2, 8
 	addi.d	$a1, $a1, -8
@@ -11801,10 +11789,10 @@ s331:                                   # @s331
 	masknez	$a0, $a0, $a1
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	maskeqz	$a1, $a2, $a1
-	or	$fp, $a1, $a0
-	movgr2fr.w	$fa0, $fp
+	or	$s7, $a1, $a0
+	movgr2fr.w	$fa0, $s7
 	ffint.d.w	$fa0, $fa0
-	move	$a0, $s7
+	move	$a0, $fp
 	move	$a1, $s0
 	move	$a2, $s1
 	move	$a3, $s2
@@ -11820,7 +11808,7 @@ s331:                                   # @s331
 	addi.w	$s8, $s8, 1
 	blt	$s8, $a0, .LBB6_2
 # %bb.5:                                # %for.cond.cleanup.loopexit
-	addi.d	$a0, $fp, 1
+	addi.d	$a0, $s7, 1
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fs0, $fa0
 	b	.LBB6_7
@@ -12491,22 +12479,10 @@ set:                                    # @set
 	.p2align	4, , 16
 .LBB10_19:                              # %vector.body130
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a2, $xr1, 0
-	vinsgr2vr.w	$vr3, $a2, 0
-	xvpickve2gr.d	$a2, $xr1, 1
-	vinsgr2vr.w	$vr3, $a2, 1
-	xvpickve2gr.d	$a2, $xr1, 2
-	vinsgr2vr.w	$vr3, $a2, 2
-	xvpickve2gr.d	$a2, $xr1, 3
-	vinsgr2vr.w	$vr3, $a2, 3
-	xvpickve2gr.d	$a2, $xr0, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr0, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr0, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr0, 3
-	vinsgr2vr.w	$vr4, $a2, 3
+	xvpermi.q	$xr3, $xr1, 1
+	vpickev.w	$vr3, $vr3, $vr1
+	xvpermi.q	$xr4, $xr0, 1
+	vpickev.w	$vr4, $vr4, $vr0
 	xvpermi.q	$xr3, $xr4, 2
 	xvaddi.wu	$xr3, $xr3, 1
 	xvand.v	$xr3, $xr3, $xr2

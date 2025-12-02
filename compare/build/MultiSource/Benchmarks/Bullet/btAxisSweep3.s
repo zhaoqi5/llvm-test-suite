@@ -283,39 +283,51 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	.p2align	4, , 16
 .LBB1_17:                               # %vector.body64
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$t0, $xr3, 0
+	xvpermi.q	$xr4, $xr3, 1
+	vpickev.w	$vr5, $vr4, $vr3
+	xvpermi.q	$xr4, $xr2, 1
+	vpickev.w	$vr4, $vr4, $vr2
+	xvpermi.q	$xr5, $xr4, 2
+	vpickve2gr.h	$t0, $vr5, 0
 	vinsgr2vr.h	$vr4, $t0, 0
-	xvpickve2gr.d	$t0, $xr3, 1
+	vpickve2gr.h	$t0, $vr5, 2
 	vinsgr2vr.h	$vr4, $t0, 1
-	xvpickve2gr.d	$t0, $xr3, 2
+	vpickve2gr.h	$t0, $vr5, 4
 	vinsgr2vr.h	$vr4, $t0, 2
-	xvpickve2gr.d	$t0, $xr3, 3
+	vpickve2gr.h	$t0, $vr5, 6
 	vinsgr2vr.h	$vr4, $t0, 3
-	xvpickve2gr.d	$t0, $xr2, 0
+	xvpermi.d	$xr5, $xr5, 14
+	vpickve2gr.h	$t0, $vr5, 0
 	vinsgr2vr.h	$vr4, $t0, 4
-	xvpickve2gr.d	$t0, $xr2, 1
+	vpickve2gr.h	$t0, $vr5, 2
 	vinsgr2vr.h	$vr4, $t0, 5
-	xvpickve2gr.d	$t0, $xr2, 2
+	vpickve2gr.h	$t0, $vr5, 4
 	vinsgr2vr.h	$vr4, $t0, 6
-	xvpickve2gr.d	$t0, $xr2, 3
+	vpickve2gr.h	$t0, $vr5, 6
 	vinsgr2vr.h	$vr4, $t0, 7
-	xvpickve2gr.d	$t0, $xr1, 0
-	vinsgr2vr.h	$vr5, $t0, 0
-	xvpickve2gr.d	$t0, $xr1, 1
-	vinsgr2vr.h	$vr5, $t0, 1
-	xvpickve2gr.d	$t0, $xr1, 2
-	vinsgr2vr.h	$vr5, $t0, 2
-	xvpickve2gr.d	$t0, $xr1, 3
-	vinsgr2vr.h	$vr5, $t0, 3
-	xvpickve2gr.d	$t0, $xr0, 0
-	vinsgr2vr.h	$vr5, $t0, 4
-	xvpickve2gr.d	$t0, $xr0, 1
-	vinsgr2vr.h	$vr5, $t0, 5
-	xvpickve2gr.d	$t0, $xr0, 2
-	vinsgr2vr.h	$vr5, $t0, 6
-	xvpickve2gr.d	$t0, $xr0, 3
-	vinsgr2vr.h	$vr5, $t0, 7
-	xvpermi.q	$xr4, $xr5, 2
+	xvpermi.q	$xr5, $xr1, 1
+	vpickev.w	$vr5, $vr5, $vr1
+	xvpermi.q	$xr6, $xr0, 1
+	vpickev.w	$vr6, $vr6, $vr0
+	xvpermi.q	$xr5, $xr6, 2
+	vpickve2gr.h	$t0, $vr5, 0
+	vinsgr2vr.h	$vr6, $t0, 0
+	vpickve2gr.h	$t0, $vr5, 2
+	vinsgr2vr.h	$vr6, $t0, 1
+	vpickve2gr.h	$t0, $vr5, 4
+	vinsgr2vr.h	$vr6, $t0, 2
+	vpickve2gr.h	$t0, $vr5, 6
+	vinsgr2vr.h	$vr6, $t0, 3
+	xvpermi.d	$xr5, $xr5, 14
+	vpickve2gr.h	$t0, $vr5, 0
+	vinsgr2vr.h	$vr6, $t0, 4
+	vpickve2gr.h	$t0, $vr5, 2
+	vinsgr2vr.h	$vr6, $t0, 5
+	vpickve2gr.h	$t0, $vr5, 4
+	vinsgr2vr.h	$vr6, $t0, 6
+	vpickve2gr.h	$t0, $vr5, 6
+	vinsgr2vr.h	$vr6, $t0, 7
+	xvpermi.q	$xr4, $xr6, 2
 	xvaddi.hu	$xr4, $xr4, 1
 	vpickve2gr.h	$t0, $vr4, 0
 	vpickve2gr.h	$t1, $vr4, 1
