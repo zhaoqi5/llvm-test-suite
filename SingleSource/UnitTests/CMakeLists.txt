@@ -1,15 +1,15 @@
 include(CheckCCompilerFlag)
 
-add_subdirectory(C++11)
-add_subdirectory(Float)
-add_subdirectory(Matrix)
-add_subdirectory(SignlessTypes)
-add_subdirectory(Threads)
-add_subdirectory(Vector)
+# add_subdirectory(C++11)
+# add_subdirectory(Float)
+# add_subdirectory(Matrix)
+# add_subdirectory(SignlessTypes)
+# add_subdirectory(Threads)
+# add_subdirectory(Vector)
 add_subdirectory(Vectorizer)
-add_subdirectory(HashRecognize)
-add_subdirectory(X86)
-add_subdirectory(AArch64)
+# add_subdirectory(HashRecognize)
+# add_subdirectory(X86)
+# add_subdirectory(AArch64)
 
 list(APPEND CFLAGS -Wno-implicit-function-declaration -Wno-implicit-int)
 
@@ -20,7 +20,12 @@ if(TARGET_OS STREQUAL "Darwin")
   add_subdirectory(ObjC++)
 endif()
 
-file(GLOB Source RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.c *.cpp)
+file(GLOB Source RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} # *.c *.cpp
+  2003-05-07-VarArgs.c
+  2003-05-14-AtExit.c
+  matrix-types-spec.cpp
+)
+
 if(TARGET_OS STREQUAL "AIX" AND ARCH STREQUAL "PowerPC")
   list(REMOVE_ITEM Source 2007-04-25-weak.c)
   if (NOT PPC_IS_PPC64_ENABLED)

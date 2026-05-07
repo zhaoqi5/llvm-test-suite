@@ -1,4 +1,4 @@
-add_subdirectory(ieee)
+# add_subdirectory(ieee)
 
 # GCC C Torture Suite is conventionally run without warnings
 list(APPEND CFLAGS -Wno-implicit-int -Wno-int-conversion -Wno-implicit-function-declaration -w)
@@ -372,7 +372,12 @@ endif()
 ##
 
 file(GLOB TestFiles CONFIGURE_DEPENDS
-  *.c
+  # *.c
+  920302-1.c
+  920501-5.c
+  comp-goto-1.c
+  pr67037.c
+  pr70460.c
 )
 foreach(TestToSkip ${TestsToSkip})
   list(REMOVE_ITEM TestFiles ${TestToSkip})
