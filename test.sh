@@ -17,8 +17,8 @@ cmake \
   -DCMAKE_CXX_COMPILER=$LLVM_PATH/bin/clang++ \
   -C../cmake/caches/O3.cmake \
   ../ \
-  -DCMAKE_C_FLAGS="-O3 -Wl,-q -fuse-ld=lld" \
-  -DCMAKE_CXX_FLAGS="-O3 -Wl,-q -fuse-ld=lld"
+  -DCMAKE_C_FLAGS="-O3 -Wl,-q -fuse-ld=lld -mno-relax" \
+  -DCMAKE_CXX_FLAGS="-O3 -Wl,-q -fuse-ld=lld -mno-relax"
 
 make -j$(nproc) VERBOSE=1
 $LLVM_PATH/bin/llvm-lit -v -j $(nproc) -o ../results-s1.json .
